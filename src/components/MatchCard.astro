@@ -15,14 +15,19 @@ import { calcNightOwlScore, toStars } from '../lib/score.js';
 
 const { match, teams, locale = 'en', defaultTz = 'Asia/Tokyo' } = Astro.props;
 
-const detailHref = locale === 'ja' ? `/ja/match/${match.id}` : `/match/${match.id}`;
+const detailHref = locale === 'en' ? `/match/${match.id}/` : `/${locale}/match/${match.id}/`;
 
 const homeInfo = match.home_team && teams[Object.keys(teams).find(slug => teams[slug].name_en === match.home_team)] || null;
 const awayInfo = match.away_team && teams[Object.keys(teams).find(slug => teams[slug].name_en === match.away_team)] || null;
 
 function teamLabel(info, fallback) {
   if (!info) return { name: fallback, flag: '' };
-  return { name: locale === 'ja' ? info.name_ja : info.name_en, flag: info.flag };
+  const nameByLocale = {
+    ja: info.name_ja,
+    ko: info.name_ko,
+    zh: info.name_zh,
+  };
+  return { name: nameByLocale[locale] || info.name_en, flag: info.flag };
 }
 const home = teamLabel(homeInfo, match.home_team);
 const away = teamLabel(awayInfo, match.away_team);
@@ -36,10 +41,18 @@ const initialScore = calcNightOwlScore(match, { locale, timezone: defaultTz });
 const STAGE_LABELS = {
   en: { 'group': 'Group', 'round-of-32': 'R32', 'round-of-16': 'R16', 'quarter-final': 'QF', 'semi-final': 'SF', 'third-place': '3rd', 'final': 'Final' },
   ja: { 'group': 'グループ', 'round-of-32': 'R32', 'round-of-16': 'R16', 'quarter-final': '準々決勝', 'semi-final': '準決勝', 'third-place': '3位決定戦', 'final': '決勝' },
+  ko: { 'group': '조', 'round-of-32': '32강', 'round-of-16': '16강', 'quarter-final': '8강', 'semi-final': '4강', 'third-place': '3·4위전', 'final': '결승' },
+  zh: { 'group': '小組', 'round-of-32': '32 強', 'round-of-16': '16 強', 'quarter-final': '8 強', 'semi-final': '4 強', 'third-place': '季軍戰', 'final': '決賽' },
 };
-const stageLabel = STAGE_LABELS[locale][match.stage] || match.stage;
+const stageLabel = (STAGE_LABELS[locale] || STAGE_LABELS.en)[match.stage] || match.stage;
+const MATCHDAY_SUFFIX = {
+  en: (md) => ` · MD${md}`,
+  ja: (md) => ` · 第${md}戦`,
+  ko: (md) => ` · ${md}차전`,
+  zh: (md) => ` · 第${md}輪`,
+};
 const matchdaySuffix = match.matchday
-  ? (locale === 'ja' ? ` · 第${match.matchday}戦` : ` · MD${match.matchday}`)
+  ? (MATCHDAY_SUFFIX[locale] || MATCHDAY_SUFFIX.en)(match.matchday)
   : '';
 const subTitle = match.stage === 'group' && match.group
   ? `${stageLabel} ${match.group}${matchdaySuffix}`

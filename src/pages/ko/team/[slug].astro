@@ -1,10 +1,9 @@
 ---
-import matchesData from '../../data/matches.json';
-import teamsData from '../../data/teams.json';
-import { getLocalParts } from '../../lib/timezone.js';
-import MatchCard from '../../components/MatchCard.astro';
-import SiteHeader from '../../components/SiteHeader.astro';
-import SiteFooter from '../../components/SiteFooter.astro';
+import matchesData from '../../../data/matches.json';
+import teamsData from '../../../data/teams.json';
+import MatchCard from '../../../components/MatchCard.astro';
+import SiteHeader from '../../../components/SiteHeader.astro';
+import SiteFooter from '../../../components/SiteFooter.astro';
 
 export function getStaticPaths() {
   return Object.keys(teamsData).map(slug => ({
@@ -14,19 +13,16 @@ export function getStaticPaths() {
 }
 
 const { slug, team } = Astro.props;
-const locale = 'en';
-const defaultTz = 'Asia/Tokyo';
+const locale = 'ko';
+const defaultTz = 'Asia/Seoul';
 
-// 球队所有比赛（home 或 away）
 const teamMatches = matchesData
   .filter(m => m.home_team === team.name_en || m.away_team === team.name_en)
   .sort((a, b) => a.kickoff_utc < b.kickoff_utc ? -1 : 1);
 
-// 推断球队所在小组
 const groupMatch = teamMatches.find(m => m.stage === 'group' && m.group);
 const teamGroup = groupMatch?.group || null;
 
-// 同组其他球队
 const groupmates = teamGroup
   ? Array.from(new Set(
       matchesData
@@ -38,15 +34,14 @@ const groupmates = teamGroup
       .filter(Boolean)
   : [];
 
-// SEO — long-tail: "{country} 2026 World Cup fixtures kickoff time Asia"
-const title = `${team.name_en} 2026 World Cup Schedule — Kickoff Times in JST & Asia | KickoffWhen`;
-const description = `${team.name_en}'s ${teamMatches.length} fixtures at the 2026 FIFA World Cup ${teamGroup ? `(Group ${teamGroup}) ` : ''}with kickoff times in JST, KST and 5 more Asian zones. Night-owl scores and one-click .ics calendar download.`;
-const canonical = `https://kickoffwhen.com/team/${slug}/`;
+const title = `${team.name_ko} 2026 월드컵 일정 한국시간｜전 ${teamMatches.length} 경기 - KickoffWhen`;
+const description = `${team.name_ko}의 2026 W杯 ${teamGroup ? `${teamGroup}조 ` : ''}전 ${teamMatches.length} 경기를 한국시간으로. 밤샘 가치 점수・원클릭 Google/Apple 캘린더 등록.`;
+const canonical = `https://kickoffwhen.com/ko/team/${slug}/`;
 const icsHref = `/team/${slug}.ics`;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -54,16 +49,17 @@ const icsHref = `/team/${slug}.ics`;
     <meta name="description" content={description} />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href={canonical} />
-    <link rel="alternate" hreflang="en" href={canonical} />
+    <link rel="alternate" hreflang="en" href={`https://kickoffwhen.com/team/${slug}/`} />
     <link rel="alternate" hreflang="ja" href={`https://kickoffwhen.com/ja/team/${slug}/`} />
-    <link rel="alternate" hreflang="ko" href={`https://kickoffwhen.com/ko/team/${slug}/`} />
+    <link rel="alternate" hreflang="ko" href={canonical} />
     <link rel="alternate" hreflang="zh-Hant" href={`https://kickoffwhen.com/zh/team/${slug}/`} />
-    <link rel="alternate" hreflang="x-default" href={canonical} />
+    <link rel="alternate" hreflang="x-default" href={`https://kickoffwhen.com/team/${slug}/`} />
 
-    <meta property="og:title" content={`${team.flag} ${team.name_en} at 2026 World Cup`} />
+    <meta property="og:title" content={`${team.flag} ${team.name_ko} 2026 월드컵`} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ko_KR" />
   </head>
   <body class="bg-navy text-panel min-h-screen font-sans">
 
@@ -72,17 +68,16 @@ const icsHref = `/team/${slug}.ics`;
     <main class="max-w-3xl mx-auto px-4 pt-6 pb-16">
 
       <nav class="text-xs mb-4">
-        <a href="/" class="text-slate hover:text-moon">← Back to schedule</a>
+        <a href="/ko/" class="text-slate hover:text-moon">← 전체 일정으로 돌아가기</a>
       </nav>
 
-      <!-- Team hero -->
       <header class="text-center mb-8" data-team-slug={slug}>
         <div class="text-7xl sm:text-8xl mb-3">{team.flag}</div>
-        <h1 class="text-3xl sm:text-4xl font-bold mb-1">{team.name_en}</h1>
+        <h1 class="text-3xl sm:text-4xl font-bold mb-1">{team.name_ko}</h1>
         <p class="text-slate text-sm mb-5">
           {teamGroup
-            ? <>Group {teamGroup} · 2026 FIFA World Cup</>
-            : '2026 FIFA World Cup'}
+            ? <>{teamGroup}조 · 2026 FIFA 월드컵</>
+            : '2026 FIFA 월드컵'}
         </p>
 
         <div class="flex items-center justify-center gap-3 flex-wrap">
@@ -93,7 +88,7 @@ const icsHref = `/team/${slug}.ics`;
             type="button"
           >
             <span class="follow-icon">☆</span>
-            <span class="follow-label">Follow</span>
+            <span class="follow-label">즐겨찾기</span>
           </button>
           <a
             href={icsHref}
@@ -101,18 +96,17 @@ const icsHref = `/team/${slug}.ics`;
             class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-pitch/40 text-pitch text-sm font-semibold hover:bg-pitch/10 transition-colors no-underline"
           >
             <span>⬇</span>
-            <span>Add to calendar</span>
+            <span>캘린더에 추가</span>
           </a>
         </div>
       </header>
 
-      <!-- Matches -->
       <section class="mb-10">
         <h2 class="text-sm font-bold uppercase tracking-wider text-slate mb-3">
-          {team.name_en}'s matches ({teamMatches.length})
+          {team.name_ko} 경기 ({teamMatches.length})
         </h2>
         {teamMatches.length === 0 ? (
-          <p class="text-slate-dim text-sm">No matches scheduled yet.</p>
+          <p class="text-slate-dim text-sm">예정된 경기가 없습니다.</p>
         ) : (
           <div class="grid gap-3">
             {teamMatches.map(m => <MatchCard match={m} teams={teamsData} locale={locale} defaultTz={defaultTz} />)}
@@ -120,18 +114,17 @@ const icsHref = `/team/${slug}.ics`;
         )}
       </section>
 
-      <!-- Group context -->
       {groupmates.length > 0 && (
         <section>
-          <h2 class="text-sm font-bold uppercase tracking-wider text-slate mb-3">Group {teamGroup} teams</h2>
+          <h2 class="text-sm font-bold uppercase tracking-wider text-slate mb-3">같은 조의 팀 ({teamGroup}조)</h2>
           <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
             {groupmates.map(t => (
               <a
-                href={`/team/${t.slug}`}
+                href={`/ko/team/${t.slug}/`}
                 class="flex items-center gap-2 p-3 rounded-xl bg-navy/40 border border-slate/20 hover:border-moon/40 transition-colors no-underline"
               >
                 <span class="text-2xl">{t.flag}</span>
-                <span class="font-semibold text-panel text-sm">{t.name_en}</span>
+                <span class="font-semibold text-panel text-sm">{t.name_ko}</span>
               </a>
             ))}
           </div>
@@ -145,18 +138,17 @@ const icsHref = `/team/${slug}.ics`;
     <script type="application/json" id="page-config" set:html={JSON.stringify({ locale, defaultTz, slug })} />
 
     <script>
-      import { getFavorites, toggleFavorite, isFavorite } from '../../lib/favorites.js';
-      import { detectUserTimezone, getLocalParts } from '../../lib/timezone.js';
-      import { calcNightOwlScore } from '../../lib/score.js';
+      import { getFavorites, toggleFavorite, isFavorite } from '../../../lib/favorites.js';
+      import { detectUserTimezone, getLocalParts } from '../../../lib/timezone.js';
+      import { calcNightOwlScore } from '../../../lib/score.js';
 
       const cfg = JSON.parse(document.getElementById('page-config').textContent);
 
-      // --- Follow button ---
       const followBtn = document.getElementById('follow-btn');
       function renderFollowState() {
         const fav = isFavorite(cfg.slug);
         followBtn.querySelector('.follow-icon').textContent = fav ? '★' : '☆';
-        followBtn.querySelector('.follow-label').textContent = fav ? 'Following' : 'Follow';
+        followBtn.querySelector('.follow-label').textContent = fav ? '즐겨찾기 중' : '즐겨찾기';
         followBtn.classList.toggle('bg-moon/15', fav);
       }
       renderFollowState();
@@ -165,7 +157,6 @@ const icsHref = `/team/${slug}.ics`;
         renderFollowState();
       });
 
-      // --- Timezone-driven re-render of all match cards on this page ---
       const STORAGE_KEY = 'kickoffwhen.timezone';
       const select = document.getElementById('tz-select');
 
@@ -215,7 +206,6 @@ const icsHref = `/team/${slug}.ics`;
         rerenderCards();
       });
 
-      // Re-render when favorites change from another tab
       window.addEventListener('storage', e => {
         if (e.key === 'kickoffwhen.favorites') {
           renderFollowState();

@@ -5,12 +5,12 @@ import MatchCard from '../../components/MatchCard.astro';
 import SiteHeader from '../../components/SiteHeader.astro';
 import SiteFooter from '../../components/SiteFooter.astro';
 
-const locale = 'ja';
-const defaultTz = 'Asia/Tokyo';
+const locale = 'zh';
+const defaultTz = 'Asia/Taipei';
 
 const matches = [...matchesData].sort((a, b) => a.kickoff_utc < b.kickoff_utc ? -1 : 1);
 
-function jstDateKey(utcIso) {
+function dateKey(utcIso) {
   const d = new Date(utcIso);
   const parts = new Intl.DateTimeFormat('en-CA', {
     timeZone: defaultTz, year: 'numeric', month: '2-digit', day: '2-digit'
@@ -21,7 +21,7 @@ function jstDateKey(utcIso) {
 
 const groupedByDate = new Map();
 for (const m of matches) {
-  const key = jstDateKey(m.kickoff_utc);
+  const key = dateKey(m.kickoff_utc);
   if (!groupedByDate.has(key)) groupedByDate.set(key, []);
   groupedByDate.get(key).push(m);
 }
@@ -29,7 +29,7 @@ const sortedDays = Array.from(groupedByDate.entries()).sort((a, b) => a[0] < b[0
 
 function formatDayHeader(dateIso) {
   const d = new Date(dateIso + 'T12:00:00Z');
-  return new Intl.DateTimeFormat('ja-JP', {
+  return new Intl.DateTimeFormat('zh-TW', {
     month: 'long', day: 'numeric', weekday: 'short'
   }).format(d);
 }
@@ -37,37 +37,33 @@ function formatDayHeader(dateIso) {
 const now = Date.now();
 const upcoming = matches.filter(m => new Date(m.kickoff_utc).getTime() > now);
 const nextMatch = upcoming[0] || null;
-const topPicks = [...upcoming]
-  .slice(0, 24)
-  .sort((a, b) => (b.match_appeal || 0) - (a.match_appeal || 0))
-  .slice(0, 3);
+const topPicks = [...upcoming].slice(0, 24).sort((a, b) => (b.match_appeal || 0) - (a.match_appeal || 0)).slice(0, 3);
 
 const totalMatches = matches.length;
-
-const title = '2026 ワールドカップ 日本時間スケジュール｜全試合キックオフ何時 - KickoffWhen';
-const description = '2026年 北中米ワールドカップの全試合を日本時間で。試合ごとの「徹夜価値スコア」付きで、徹夜すべきか寝ていいかが一目でわかる。アジア各国時間にも対応。';
+const title = '2026 世界盃 臺灣時間賽程｜全場開球時間 - KickoffWhen';
+const description = '2026 北中美世界盃全場賽事，臺灣時間一目了然。每場「熬夜值得分數」、一鍵加入行事曆。亞洲 7 個時區對照。';
 ---
 
 <!doctype html>
-<html lang="ja">
+<html lang="zh-Hant">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://kickoffwhen.com/ja/" />
+    <link rel="canonical" href="https://kickoffwhen.com/zh/" />
     <link rel="alternate" hreflang="en" href="https://kickoffwhen.com/" />
     <link rel="alternate" hreflang="ja" href="https://kickoffwhen.com/ja/" />
     <link rel="alternate" hreflang="ko" href="https://kickoffwhen.com/ko/" />
     <link rel="alternate" hreflang="zh-Hant" href="https://kickoffwhen.com/zh/" />
     <link rel="alternate" hreflang="x-default" href="https://kickoffwhen.com/" />
 
-    <meta property="og:title" content="2026 W杯 日本時間スケジュール｜キックオフ何時" />
-    <meta property="og:description" content="2026年W杯の全試合を日本時間で。試合ごとに徹夜価値スコア付き。" />
-    <meta property="og:url" content="https://kickoffwhen.com/ja/" />
+    <meta property="og:title" content="2026 世界盃 臺灣時間賽程｜全場開球時間" />
+    <meta property="og:description" content="2026 世界盃全場賽事，臺灣時間一目了然。熬夜值得分數加持。" />
+    <meta property="og:url" content="https://kickoffwhen.com/zh/" />
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:locale" content="zh_TW" />
   </head>
   <body class="bg-navy text-panel min-h-screen font-sans">
 
@@ -77,20 +73,20 @@ const description = '2026年 北中米ワールドカップの全試合を日本
 
       <section class="text-center pt-8 sm:pt-12 pb-6">
         <h1 class="text-3xl sm:text-4xl font-bold mb-3 leading-tight">
-          2026 ワールドカップ<br/>
-          <span class="text-moon">全試合を、日本時間で</span>。
+          2026 世界盃<br/>
+          <span class="text-moon">全場賽事，臺灣時間</span>。
         </h1>
         <p class="text-slate text-sm sm:text-base mb-7 max-w-lg mx-auto">
-          全 {totalMatches} 試合・48 か国。
-          試合ごとの徹夜価値スコアで、徹夜すべきか寝ていいかが一目でわかる。
+          全 {totalMatches} 場賽事・48 隊。
+          每場「熬夜值得分數」幫你判斷，是該熬夜還是早點睡。
         </p>
 
         <div class="my-6" aria-live="polite">
-          <div class="text-xs text-slate mb-2.5 uppercase tracking-wider">開幕まで</div>
+          <div class="text-xs text-slate mb-2.5 uppercase tracking-wider">距開幕還有</div>
           <div class="grid grid-cols-4 gap-2 max-w-sm mx-auto" id="countdown">
             <div class="bg-moon/10 border border-moon/20 rounded-xl px-1 py-2.5">
               <div class="text-xl sm:text-2xl font-bold text-moon tabular-nums leading-none" id="cd-d">--</div>
-              <div class="text-[10px] text-slate mt-1">日</div>
+              <div class="text-[10px] text-slate mt-1">天</div>
             </div>
             <div class="bg-moon/10 border border-moon/20 rounded-xl px-1 py-2.5">
               <div class="text-xl sm:text-2xl font-bold text-moon tabular-nums leading-none" id="cd-h">--</div>
@@ -110,14 +106,14 @@ const description = '2026年 北中米ワールドカップの全試合を日本
 
       {nextMatch && (
         <section class="mb-10">
-          <h2 class="text-sm font-bold uppercase tracking-wider text-slate mb-3">⚡ 次の試合</h2>
+          <h2 class="text-sm font-bold uppercase tracking-wider text-slate mb-3">⚡ 下一場</h2>
           <MatchCard match={nextMatch} teams={teamsData} locale={locale} defaultTz={defaultTz} />
         </section>
       )}
 
       {topPicks.length > 0 && (
         <section class="mb-10">
-          <h2 class="text-sm font-bold uppercase tracking-wider text-slate mb-3">🌙 徹夜価値が高い試合</h2>
+          <h2 class="text-sm font-bold uppercase tracking-wider text-slate mb-3">🌙 值得熬夜的賽事</h2>
           <div class="grid gap-3">
             {topPicks.map(m => <MatchCard match={m} teams={teamsData} locale={locale} defaultTz={defaultTz} />)}
           </div>
@@ -125,7 +121,7 @@ const description = '2026年 北中米ワールドカップの全試合を日本
       )}
 
       <section>
-        <h2 class="text-sm font-bold uppercase tracking-wider text-slate mb-4">📅 全試合スケジュール</h2>
+        <h2 class="text-sm font-bold uppercase tracking-wider text-slate mb-4">📅 全部賽程</h2>
         {sortedDays.map(([dayIso, dayMatches]) => (
           <div class="mb-8">
             <h3 class="text-base font-bold text-moon mb-3 sticky top-[57px] bg-navy/95 backdrop-blur py-2 -mx-4 px-4 border-b border-slate/10">
@@ -147,6 +143,7 @@ const description = '2026年 北中米ワールドカップの全試合を日本
     <script>
       import { formatLocalTime, getLocalParts, detectUserTimezone } from '../../lib/timezone.js';
       import { calcNightOwlScore } from '../../lib/score.js';
+      import { getFavorites } from '../../lib/favorites.js';
 
       const cfg = JSON.parse(document.getElementById('page-config').textContent);
 
@@ -158,7 +155,7 @@ const description = '2026年 北中米ワールドカップの全試合を日本
           const diff = KICKOFF - Date.now();
           if (diff <= 0) {
             const cd = document.getElementById('countdown');
-            if (cd) cd.innerHTML = '<div class="col-span-4 text-pitch font-semibold">🎉 大会開催中</div>';
+            if (cd) cd.innerHTML = '<div class="col-span-4 text-pitch font-semibold">🎉 賽事進行中</div>';
             clearInterval(timer);
             return;
           }
@@ -181,6 +178,7 @@ const description = '2026年 北中米ワールドカップの全試合を日本
 
       function rerenderAll() {
         const tz = currentTz();
+        const favorites = getFavorites();
         document.querySelectorAll('.match-card').forEach(card => {
           const utc = card.dataset.utc;
           if (!utc) return;
@@ -199,7 +197,7 @@ const description = '2026年 北中米ワールドカップの全試合を日本
             away_slug: card.dataset.awaySlug || null,
             match_appeal: parseFloat(card.dataset.matchAppeal) || 2,
           };
-          const score = calcNightOwlScore(match, { locale: cfg.locale, timezone: tz });
+          const score = calcNightOwlScore(match, { locale: cfg.locale, timezone: tz, favoriteTeams: favorites });
           const starsEl = card.querySelector('.night-owl-stars');
           if (starsEl) {
             starsEl.textContent = score.stars;
@@ -213,14 +211,14 @@ const description = '2026年 北中米ワールドカップの全試合を日本
         const opt = Array.from(select.options).find(o => o.value === saved);
         if (opt) select.value = saved;
       }
-      if (select.value === 'auto' || select.value !== cfg.defaultTz) {
-        rerenderAll();
-      }
+      if (select.value === 'auto' || select.value !== cfg.defaultTz) rerenderAll();
 
       select.addEventListener('change', () => {
         localStorage.setItem(STORAGE_KEY, select.value);
         rerenderAll();
       });
+
+      window.addEventListener('favorites-change', rerenderAll);
     </script>
 
   </body>

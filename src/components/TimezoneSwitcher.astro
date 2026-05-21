@@ -1,24 +1,24 @@
 ---
-/**
- * TimezoneSwitcher - 顶部时区切换 select
- * 选了之后会触发 'tz-change' DOM event，首页 script 监听并重新格式化时间/评分。
- */
-import { ASIA_TIMEZONES } from '../lib/timezone.js';
+import { ASIA_TIMEZONES, getCityLabel } from '../lib/timezone.js';
 
 const { locale = 'en', defaultTz = 'Asia/Tokyo' } = Astro.props;
 
-const labels = locale === 'ja'
-  ? { auto: '自動検出', tz: 'タイムゾーン' }
-  : { auto: 'Auto-detect', tz: 'Timezone' };
+const LABELS = {
+  en: { auto: 'Auto-detect', tz: 'Timezone' },
+  ja: { auto: '自動検出',     tz: 'タイムゾーン' },
+  ko: { auto: '자동 감지',    tz: '시간대' },
+  zh: { auto: '自動偵測',     tz: '時區' },
+};
+const t = LABELS[locale] || LABELS.en;
 ---
 
 <label class="tz-switcher inline-flex items-center gap-1.5 text-xs">
-  <span class="text-slate">{labels.tz}:</span>
+  <span class="text-slate">{t.tz}:</span>
   <select id="tz-select" class="bg-navy/80 border border-slate/30 rounded-md px-2 py-1 text-panel text-xs cursor-pointer hover:border-moon focus:border-moon focus:outline-none">
-    <option value="auto">{labels.auto}</option>
+    <option value="auto">{t.auto}</option>
     {ASIA_TIMEZONES.map(tz => (
       <option value={tz.id} selected={tz.id === defaultTz}>
-        {locale === 'ja' ? tz.cityJa : tz.cityEn} ({tz.label})
+        {getCityLabel(tz, locale)} ({tz.label})
       </option>
     ))}
   </select>

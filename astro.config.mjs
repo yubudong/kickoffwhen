@@ -13,14 +13,15 @@ export default defineConfig({
         locales: {
           en: 'en',
           ja: 'ja',
+          ko: 'ko',
+          zh: 'zh-Hant',
         },
       },
-      // 不让 sitemap 包含 .ics 文件（爬虫不需要）
       filter: (page) => !page.endsWith('.ics'),
     }),
   ],
   i18n: {
-    locales: ['en', 'ja'],
+    locales: ['en', 'ja', 'ko', 'zh'],
     defaultLocale: 'en',
     routing: {
       prefixDefaultLocale: false,

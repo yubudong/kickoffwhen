@@ -1,35 +1,34 @@
 ---
-import matchesData from '../../data/matches.json';
-import teamsData from '../../data/teams.json';
-import { getLocalParts } from '../../lib/timezone.js';
-import { calcNightOwlScore } from '../../lib/score.js';
-import SiteHeader from '../../components/SiteHeader.astro';
-import SiteFooter from '../../components/SiteFooter.astro';
-import MultiTimezoneTable from '../../components/MultiTimezoneTable.astro';
+import matchesData from '../../../data/matches.json';
+import teamsData from '../../../data/teams.json';
+import { getLocalParts } from '../../../lib/timezone.js';
+import { calcNightOwlScore } from '../../../lib/score.js';
+import SiteHeader from '../../../components/SiteHeader.astro';
+import SiteFooter from '../../../components/SiteFooter.astro';
+import MultiTimezoneTable from '../../../components/MultiTimezoneTable.astro';
 
 export function getStaticPaths() {
   return matchesData.map(m => ({ params: { id: m.id }, props: { match: m } }));
 }
 
 const { match } = Astro.props;
-const locale = 'en';
-const defaultTz = 'Asia/Tokyo';
+const locale = 'ko';
+const defaultTz = 'Asia/Seoul';
 
 const STAGE_LABELS = {
-  'group': 'Group stage',
-  'round-of-32': 'Round of 32',
-  'round-of-16': 'Round of 16',
-  'quarter-final': 'Quarter-final',
-  'semi-final': 'Semi-final',
-  'third-place': 'Third-place play-off',
-  'final': 'Final',
+  'group': '조별리그',
+  'round-of-32': '32강',
+  'round-of-16': '16강',
+  'quarter-final': '8강',
+  'semi-final': '4강',
+  'third-place': '3·4위전',
+  'final': '결승',
 };
 const stageLabel = STAGE_LABELS[match.stage] || match.stage;
 const stageSub = match.stage === 'group' && match.group
-  ? `Group ${match.group} · Matchday ${match.matchday}`
+  ? `${match.group}조 · ${match.matchday}차전`
   : stageLabel;
 
-// 球队信息
 function teamBySlug(slug) {
   return slug ? teamsData[slug] : null;
 }
@@ -38,38 +37,35 @@ const awayInfo = teamBySlug(Object.keys(teamsData).find(s => teamsData[s].name_e
 
 function teamDisplay(info, fallback) {
   return info
-    ? { name: info.name_en, flag: info.flag, slug: info.slug }
-    : { name: fallback, flag: '⏳', slug: null };
+    ? { name: info.name_ko, name_en: info.name_en, flag: info.flag, slug: info.slug }
+    : { name: fallback, name_en: fallback, flag: '⏳', slug: null };
 }
 const home = teamDisplay(homeInfo, match.home_team);
 const away = teamDisplay(awayInfo, match.away_team);
 
-// 服务端预算分（JST 视角）+ 主时间显示
 const parts = getLocalParts(match.kickoff_utc, defaultTz, locale);
-const initialTimeStr = parts ? `${parts.month}/${parts.day} ${String(parts.hour).padStart(2,'0')}:${parts.minute}` : 'TBA';
+const initialTimeStr = parts ? `${parts.month}/${parts.day} ${String(parts.hour).padStart(2,'0')}:${parts.minute}` : '미정';
 const weekdayStr = parts ? parts.weekday : '';
 const initialScore = calcNightOwlScore(match, { locale, timezone: defaultTz });
 
 const REASON_LABELS = {
-  home_country:  'Home team match',
-  asian_team:    'Asian team in match',
-  favorite:      'Your favorite team',
-  high_appeal:   'High-profile match',
-  late_night:    'Late night (00–02)',
-  deep_night:    'Deep night (03–05)',
-  early_morning: 'Early morning (06–08)',
+  home_country:  '대한민국 경기',
+  asian_team:    '아시아 팀 경기',
+  favorite:      '내가 응원하는 팀',
+  high_appeal:   '주목 카드',
+  late_night:    '심야 킥오프 (00–02)',
+  deep_night:    '새벽 킥오프 (03–05)',
+  early_morning: '이른 아침 킥오프 (06–08)',
 };
 
-// SEO — search-friendly: "{team1} vs {team2} kickoff time in Japan / Asia"
-const title = `${home.name} vs ${away.name} · ${stageSub} Kickoff Time (JST / Asia) — KickoffWhen`;
-const description = `${home.name} vs ${away.name} kicks off ${match.date} at ${match.kickoff_local || 'TBD'} local time (${match.venue_name || 'venue TBD'}). See the time in JST, KST and 5 more Asian zones, plus a night-owl score.`;
-const canonical = `https://kickoffwhen.com/match/${match.id}/`;
+const title = `${home.name} vs ${away.name} 한국시간 몇시 킥오프｜${stageSub} - KickoffWhen`;
+const description = `${home.name} vs ${away.name} 킥오프는 한국시간 ${initialTimeStr}（${match.venue_name || '경기장 미정'}）. 밤샘 가치 점수・아시아 7개 지역 시차표 제공.`;
+const canonical = `https://kickoffwhen.com/ko/match/${match.id}/`;
 
-// Schema.org SportsEvent JSON-LD
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'SportsEvent',
-  name: `${home.name} vs ${away.name}`,
+  name: `${home.name_en} vs ${away.name_en}`,
   description,
   startDate: match.kickoff_utc,
   sport: 'Soccer',
@@ -77,18 +73,15 @@ const jsonLd = {
   location: match.venue_name ? {
     '@type': 'Place',
     name: match.venue_name,
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: match.venue_city,
-    },
+    address: { '@type': 'PostalAddress', addressLocality: match.venue_city },
   } : undefined,
-  homeTeam: { '@type': 'SportsTeam', name: home.name },
-  awayTeam: { '@type': 'SportsTeam', name: away.name },
+  homeTeam: { '@type': 'SportsTeam', name: home.name_en },
+  awayTeam: { '@type': 'SportsTeam', name: away.name_en },
 };
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -96,16 +89,17 @@ const jsonLd = {
     <meta name="description" content={description} />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href={canonical} />
-    <link rel="alternate" hreflang="en" href={canonical} />
+    <link rel="alternate" hreflang="en" href={`https://kickoffwhen.com/match/${match.id}/`} />
     <link rel="alternate" hreflang="ja" href={`https://kickoffwhen.com/ja/match/${match.id}/`} />
-    <link rel="alternate" hreflang="ko" href={`https://kickoffwhen.com/ko/match/${match.id}/`} />
+    <link rel="alternate" hreflang="ko" href={canonical} />
     <link rel="alternate" hreflang="zh-Hant" href={`https://kickoffwhen.com/zh/match/${match.id}/`} />
-    <link rel="alternate" hreflang="x-default" href={canonical} />
+    <link rel="alternate" hreflang="x-default" href={`https://kickoffwhen.com/match/${match.id}/`} />
 
     <meta property="og:title" content={`${home.name} vs ${away.name} — ${stageSub}`} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:type" content="article" />
+    <meta property="og:locale" content="ko_KR" />
 
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>
@@ -116,7 +110,7 @@ const jsonLd = {
     <main class="max-w-3xl mx-auto px-4 pt-6 pb-16">
 
       <nav class="text-xs mb-4">
-        <a href="/" class="text-slate hover:text-moon">← Back to schedule</a>
+        <a href="/ko/" class="text-slate hover:text-moon">← 전체 일정으로 돌아가기</a>
       </nav>
 
       <article
@@ -128,17 +122,15 @@ const jsonLd = {
         data-away-slug={away.slug || ''}
         data-match-appeal={match.match_appeal}
       >
-        <!-- Stage tag -->
         <div class="text-center mb-4">
           <span class="inline-block px-3 py-1 rounded-full bg-moon/10 text-moon text-xs font-semibold uppercase tracking-wider">
             {stageSub} · {match.match_label}
           </span>
         </div>
 
-        <!-- Teams -->
         <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-3 sm:gap-6 mb-6">
           {home.slug ? (
-            <a href={`/team/${home.slug}`} class="text-center no-underline hover:opacity-80 transition-opacity">
+            <a href={`/ko/team/${home.slug}/`} class="text-center no-underline hover:opacity-80 transition-opacity">
               <div class="text-5xl sm:text-6xl mb-2">{home.flag}</div>
               <div class="font-bold text-base sm:text-xl">{home.name}</div>
             </a>
@@ -150,7 +142,7 @@ const jsonLd = {
           )}
           <div class="text-slate-dim text-sm font-bold">vs</div>
           {away.slug ? (
-            <a href={`/team/${away.slug}`} class="text-center no-underline hover:opacity-80 transition-opacity">
+            <a href={`/ko/team/${away.slug}/`} class="text-center no-underline hover:opacity-80 transition-opacity">
               <div class="text-5xl sm:text-6xl mb-2">{away.flag}</div>
               <div class="font-bold text-base sm:text-xl">{away.name}</div>
             </a>
@@ -162,10 +154,9 @@ const jsonLd = {
           )}
         </div>
 
-        <!-- Big kickoff time -->
         <section class="bg-moon/5 border border-moon/30 rounded-2xl p-5 sm:p-6 text-center mb-6">
           <div class="text-xs text-slate mb-2 uppercase tracking-wider">
-            Kickoff (<span class="kickoff-tz-label">JST</span>)
+            킥오프 (<span class="kickoff-tz-label">KST</span>)
           </div>
           <div class="text-4xl sm:text-5xl font-bold text-moon tabular-nums kickoff-time-big mb-1" data-utc={match.kickoff_utc}>
             {initialTimeStr}
@@ -176,37 +167,33 @@ const jsonLd = {
           </div>
         </section>
 
-        <!-- Night-owl score -->
         <section class="bg-navy/40 border border-slate/20 rounded-2xl p-5 mb-6 text-center">
-          <div class="text-xs text-slate mb-2 uppercase tracking-wider">Night-owl score</div>
+          <div class="text-xs text-slate mb-2 uppercase tracking-wider">밤샘 가치 점수</div>
           <div class="text-3xl mb-2 night-owl-stars">{initialScore.stars}</div>
           <div class="text-sm text-slate-dim night-owl-reason">
             {initialScore.reasons.length > 0
               ? initialScore.reasons.map(r => REASON_LABELS[r] || r).join(' · ')
-              : 'Neutral match'}
+              : '일반 경기'}
           </div>
         </section>
 
-        <!-- Multi-timezone table -->
         <div class="mb-6">
           <MultiTimezoneTable utcIso={match.kickoff_utc} locale={locale} />
         </div>
 
-        <!-- Venue -->
         {match.venue_name && (
           <section class="bg-navy/40 border border-slate/20 rounded-2xl p-5 mb-6">
-            <h3 class="text-sm font-bold uppercase tracking-wider text-slate mb-3">📍 Venue</h3>
+            <h3 class="text-sm font-bold uppercase tracking-wider text-slate mb-3">📍 경기장</h3>
             <div class="font-semibold text-panel mb-1">{match.venue_name}</div>
             <div class="text-sm text-slate">{match.venue_city}</div>
             {match.kickoff_local && (
-              <div class="text-xs text-slate-dim mt-2">Local kickoff: {match.kickoff_local} ({match.venue_timezone})</div>
+              <div class="text-xs text-slate-dim mt-2">현지 시간: {match.kickoff_local}（{match.venue_timezone}）</div>
             )}
           </section>
         )}
 
       </article>
 
-      <!-- Reason labels for client JS -->
       <script type="application/json" id="page-config" set:html={JSON.stringify({ locale, defaultTz, reasonLabels: REASON_LABELS })} />
 
     </main>
@@ -214,8 +201,9 @@ const jsonLd = {
     <SiteFooter locale={locale} />
 
     <script>
-      import { getLocalParts, detectUserTimezone, ASIA_TIMEZONES } from '../../lib/timezone.js';
-      import { calcNightOwlScore } from '../../lib/score.js';
+      import { getLocalParts, detectUserTimezone, ASIA_TIMEZONES } from '../../../lib/timezone.js';
+      import { calcNightOwlScore } from '../../../lib/score.js';
+      import { getFavorites } from '../../../lib/favorites.js';
 
       const cfg = JSON.parse(document.getElementById('page-config').textContent);
 
@@ -228,7 +216,7 @@ const jsonLd = {
       }
 
       function tzLabel(tzId) {
-        if (tzId === 'auto' || !tzId) return 'local';
+        if (tzId === 'auto' || !tzId) return '로컬';
         const found = ASIA_TIMEZONES.find(t => t.id === tzId);
         return found ? found.label : tzId.split('/')[1] || tzId;
       }
@@ -240,7 +228,6 @@ const jsonLd = {
         const utc = matchEl.dataset.utc;
         const parts = getLocalParts(utc, tz, cfg.locale);
 
-        // Big kickoff time
         const timeEl = document.querySelector('.kickoff-time-big');
         const wdEl   = document.querySelector('.kickoff-weekday');
         const tzLabelEl = document.querySelector('.kickoff-tz-label');
@@ -250,7 +237,6 @@ const jsonLd = {
         }
         if (tzLabelEl) tzLabelEl.textContent = tzLabel(select.value);
 
-        // Score
         const match = {
           kickoff_utc: utc,
           home_code: matchEl.dataset.homeCode || null,
@@ -259,44 +245,40 @@ const jsonLd = {
           away_slug: matchEl.dataset.awaySlug || null,
           match_appeal: parseFloat(matchEl.dataset.matchAppeal) || 2,
         };
-        const score = calcNightOwlScore(match, { locale: cfg.locale, timezone: tz });
+        const score = calcNightOwlScore(match, { locale: cfg.locale, timezone: tz, favoriteTeams: getFavorites() });
         const starsEl = document.querySelector('.night-owl-stars');
         if (starsEl) starsEl.textContent = score.stars;
         const reasonEl = document.querySelector('.night-owl-reason');
         if (reasonEl) {
           reasonEl.textContent = score.reasons.length > 0
             ? score.reasons.map(r => cfg.reasonLabels[r] || r).join(' · ')
-            : 'Neutral match';
+            : '일반 경기';
         }
       }
 
-      // Countdown
       function updateCountdown() {
         const el = document.querySelector('.countdown');
         if (!el) return;
         const utc = el.dataset.utc;
         const diff = new Date(utc).getTime() - Date.now();
         if (diff <= 0) {
-          el.textContent = '⚽ Match in progress or finished';
+          el.textContent = '⚽ 경기 진행 중 또는 종료';
           return;
         }
         const d = Math.floor(diff / 86400000);
         const h = Math.floor((diff % 86400000) / 3600000);
         const m = Math.floor((diff % 3600000) / 60000);
         const s = Math.floor((diff % 60000) / 1000);
-        el.textContent = `${d}d ${h}h ${m}m ${s}s until kickoff`;
+        el.textContent = `킥오프까지 ${d}일 ${h}시간 ${m}분 ${s}초`;
       }
 
-      // Apply saved timezone
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved) {
         const opt = Array.from(select.options).find(o => o.value === saved);
         if (opt) select.value = saved;
       }
-      if (select.value === 'auto' || select.value !== cfg.defaultTz) {
-        rerender();
-      } else {
-        // ensure tz label is set even on first paint
+      if (select.value === 'auto' || select.value !== cfg.defaultTz) rerender();
+      else {
         const tzLabelEl = document.querySelector('.kickoff-tz-label');
         if (tzLabelEl) tzLabelEl.textContent = tzLabel(select.value);
       }
@@ -308,6 +290,7 @@ const jsonLd = {
         localStorage.setItem(STORAGE_KEY, select.value);
         rerender();
       });
+      window.addEventListener('favorites-change', rerender);
     </script>
 
   </body>

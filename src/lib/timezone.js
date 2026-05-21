@@ -17,14 +17,24 @@ export function detectUserTimezone() {
 
 /** 我们 UI 顶部时区切换器的几个固定亚洲选项 */
 export const ASIA_TIMEZONES = [
-  { id: 'Asia/Tokyo',     label: 'JST',  cityJa: '東京',   cityEn: 'Tokyo'    },
-  { id: 'Asia/Seoul',     label: 'KST',  cityJa: 'ソウル', cityEn: 'Seoul'    },
-  { id: 'Asia/Shanghai',  label: 'CST',  cityJa: '上海',   cityEn: 'Shanghai' },
-  { id: 'Asia/Taipei',    label: 'TWT',  cityJa: '台北',   cityEn: 'Taipei'   },
-  { id: 'Asia/Hong_Kong', label: 'HKT',  cityJa: '香港',   cityEn: 'Hong Kong'},
-  { id: 'Asia/Singapore', label: 'SGT',  cityJa: 'シンガポール', cityEn: 'Singapore' },
-  { id: 'Asia/Bangkok',   label: 'ICT',  cityJa: 'バンコク', cityEn: 'Bangkok' },
+  { id: 'Asia/Tokyo',     label: 'JST',  cityEn: 'Tokyo',     cityJa: '東京',   cityKo: '도쿄',     cityZh: '東京'  },
+  { id: 'Asia/Seoul',     label: 'KST',  cityEn: 'Seoul',     cityJa: 'ソウル', cityKo: '서울',     cityZh: '首爾'  },
+  { id: 'Asia/Shanghai',  label: 'CST',  cityEn: 'Shanghai',  cityJa: '上海',   cityKo: '상하이',   cityZh: '上海'  },
+  { id: 'Asia/Taipei',    label: 'TWT',  cityEn: 'Taipei',    cityJa: '台北',   cityKo: '타이베이', cityZh: '台北'  },
+  { id: 'Asia/Hong_Kong', label: 'HKT',  cityEn: 'Hong Kong', cityJa: '香港',   cityKo: '홍콩',     cityZh: '香港'  },
+  { id: 'Asia/Singapore', label: 'SGT',  cityEn: 'Singapore', cityJa: 'シンガポール', cityKo: '싱가포르', cityZh: '新加坡' },
+  { id: 'Asia/Bangkok',   label: 'ICT',  cityEn: 'Bangkok',   cityJa: 'バンコク', cityKo: '방콕',   cityZh: '曼谷'  },
 ];
+
+// 取本地化城市名的辅助函数
+export function getCityLabel(tz, locale) {
+  switch (locale) {
+    case 'ja': return tz.cityJa;
+    case 'ko': return tz.cityKo;
+    case 'zh': return tz.cityZh;
+    default:   return tz.cityEn;
+  }
+}
 
 /**
  * 把 UTC ISO 字符串格式化为指定时区下的 "MM/DD HH:mm"。

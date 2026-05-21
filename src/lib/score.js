@@ -13,6 +13,7 @@
 import { categorizeKickoff } from './timezone.js';
 
 // locale → 本国 ISO 三字母代码（其他语言不加 localeHomeTeam 分）
+// zh (Taiwan/HK): 台港没有 World Cup 球队，所以不映射
 const LOCALE_HOME = {
   ja: 'JPN',
   ko: 'KOR',

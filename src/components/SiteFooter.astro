@@ -1,11 +1,28 @@
 ---
 const { locale = 'en' } = Astro.props;
 
-const text = locale === 'ja'
-  ? '本サイトはFIFA公式サイトではありません。試合情報は参考用です。'
-  : 'kickoffwhen.com is not affiliated with FIFA. Match information is for reference only.';
+const TEXTS = {
+  en: 'kickoffwhen.com is not affiliated with FIFA. Match information is for reference only.',
+  ja: '本サイトはFIFA公式サイトではありません。試合情報は参考用です。',
+  ko: '본 사이트는 FIFA 공식 사이트가 아닙니다. 경기 정보는 참고용입니다.',
+  zh: '本網站非 FIFA 官方網站，賽事資訊僅供參考。',
+};
+
+const FEEDBACK = {
+  ko: '한국어 번역에 대한 피드백은 GitHub에서 환영합니다',
+  zh: '譯文建議歡迎透過 GitHub 反饋',
+};
+
+const footerText = TEXTS[locale] || TEXTS.en;
+const feedbackText = FEEDBACK[locale];
+const repoHref = 'https://github.com/yubudong/kickoffwhen/issues';
 ---
 
-<footer class="border-t border-slate/10 py-6 text-center text-xs text-slate-dim">
-  {text}
+<footer class="border-t border-slate/10 py-6 text-center text-xs text-slate-dim space-y-1.5">
+  <p>{footerText}</p>
+  {feedbackText && (
+    <p>
+      <a href={repoHref} class="hover:text-moon underline-offset-2 hover:underline" target="_blank" rel="noopener">{feedbackText}</a>
+    </p>
+  )}
 </footer>
