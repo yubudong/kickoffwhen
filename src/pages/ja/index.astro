@@ -140,9 +140,7 @@ const description = '2026年北中米W杯の全試合を日本時間で。試合
 
     <SiteFooter locale={locale} />
 
-    <script type="application/json" id="page-config">
-      {JSON.stringify({ locale, defaultTz, asianCodes: ['JPN','KOR','AUS','IRN','KSA','UZB','JOR','IRQ','QAT'] })}
-    </script>
+    <script type="application/json" id="page-config" set:html={JSON.stringify({ locale, defaultTz, asianCodes: ['JPN','KOR','AUS','IRN','KSA','UZB','JOR','IRQ','QAT'] })} />
 
     <script>
       import { formatLocalTime, getLocalParts, detectUserTimezone } from '../../lib/timezone.js';

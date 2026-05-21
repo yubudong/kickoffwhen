@@ -148,9 +148,7 @@ const description = 'Every 2026 World Cup match in YOUR time. 104 matches, 48 te
     <SiteFooter locale={locale} />
 
     <!-- Embed data for client-side rendering -->
-    <script type="application/json" id="page-config">
-      {JSON.stringify({ locale, defaultTz, asianCodes: ['JPN','KOR','AUS','IRN','KSA','UZB','JOR','IRQ','QAT'] })}
-    </script>
+    <script type="application/json" id="page-config" set:html={JSON.stringify({ locale, defaultTz, asianCodes: ['JPN','KOR','AUS','IRN','KSA','UZB','JOR','IRQ','QAT'] })} />
 
     <script>
       import { formatLocalTime, getLocalParts, detectUserTimezone } from '../lib/timezone.js';
