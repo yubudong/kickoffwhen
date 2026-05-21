@@ -1,0 +1,28 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Private planning docs and credentials (keep local only)
+kickoffwhen-launch-plan.md
+tonight-checklist.md
+账号信息.txt
+*.local
+
+# Node / Astro (for later)
+node_modules/
+dist/
+.astro/
+.env
+.env.local
+.wrangler/
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
