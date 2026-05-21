@@ -10,7 +10,7 @@ export default {
         panel: '#F8FAFC',
         slate: {
           DEFAULT: '#9FB2CA',
-          dim: '#6B7A8C',
+          dim: '#8A99AD',
         },
       },
       fontFamily: {

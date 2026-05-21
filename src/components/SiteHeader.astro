@@ -20,11 +20,11 @@ const homeHref = `/${locale === 'en' ? '' : locale + '/'}`;
     </a>
     <div class="flex items-center gap-3">
       <TimezoneSwitcher locale={locale} defaultTz={defaultTz} />
-      <nav class="flex gap-0.5 text-xs">
+      <nav class="flex gap-1 text-xs">
         {LANG_LINKS.map(l => (
           <a
             href={l.href}
-            class={`px-2 py-1 rounded ${l.code === locale ? 'bg-moon/15 text-moon font-semibold' : 'hover:bg-slate/10 text-slate'}`}
+            class={`inline-flex items-center justify-center min-w-[36px] min-h-[36px] px-2 rounded ${l.code === locale ? 'bg-moon/15 text-moon font-semibold' : 'hover:bg-slate/10 text-slate'}`}
           >{l.label}</a>
         ))}
       </nav>
