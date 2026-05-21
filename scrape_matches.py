@@ -52,6 +52,45 @@ HEADERS = {
 }
 
 
+# --- 球队实力分级（用于 match_appeal 预计算）---
+# 这是 KickoffWhen 的主观分级，不是官方排名，目的是让"熬夜评分"对球迷有意义
+TEAM_TIER = {
+    # TIER S — 公认顶级（夺冠热门）
+    "ARG": 1.0, "BRA": 1.0, "FRA": 1.0, "ENG": 1.0,
+    # TIER A — 传统强队 / 上届八强
+    "GER": 0.6, "ESP": 0.6, "POR": 0.6, "NED": 0.6,
+    "BEL": 0.6, "CRO": 0.6, "URU": 0.6, "MAR": 0.6,
+    # TIER B — 黑马 / 北中美洲东道主 / 亚洲焦点
+    "JPN": 0.3, "KOR": 0.3, "USA": 0.3, "MEX": 0.3,
+    "SUI": 0.3, "SWE": 0.3,
+    # 其他 28 队默认 0
+}
+
+STAGE_WEIGHT = {
+    "group":         0.0,
+    "round-of-32":   1.0,
+    "round-of-16":   1.5,
+    "quarter-final": 2.0,
+    "semi-final":    2.5,
+    "third-place":   1.0,
+    "final":         3.0,
+}
+
+
+def calc_match_appeal(home_code: str | None, away_code: str | None, stage: str, matchday: int | None) -> float:
+    """
+    中立比赛吸引力（不含 personalBoost / sleepPain）。
+    Raw 值不封顶，前端做最终 clamp。预计算到 matches.json，前端不重复算。
+    """
+    score = 2.0  # 基础分（任何 FIFA World Cup 比赛起步）
+    score += TEAM_TIER.get(home_code or "", 0.0)
+    score += TEAM_TIER.get(away_code or "", 0.0)
+    score += STAGE_WEIGHT.get(stage, 0.0)
+    if stage == "group" and matchday == 3:
+        score += 0.5  # potential stakes（出线悬念，未必每场都有）
+    return round(score * 2) / 2  # 保留 0.5 精度
+
+
 # 48 支参赛队 — Wikipedia 英文名 → 我们的内部数据
 # 球队抽签后已确定（2025-12-05），名字以 Wikipedia 2026_FIFA_World_Cup 页面为准
 TEAMS = {
@@ -321,6 +360,11 @@ def main():
         # 生成 match ID
         match_id = f"{m['date_iso']}-{slugify(m['home'] or 'tba')}-vs-{slugify(m['away'] or 'tba')}"
 
+        # 中立比赛吸引力（仅含双队实力 + 阶段 + 出线悬念，不含 personalBoost / sleepPain）
+        home_code = (TEAMS.get(m["home"]) or {}).get("code")
+        away_code = (TEAMS.get(m["away"]) or {}).get("code")
+        match_appeal = calc_match_appeal(home_code, away_code, m["stage"], m["matchday"])
+
         matches.append({
             "id": match_id,
             "match_label": m["match_label"],
@@ -329,6 +373,8 @@ def main():
             "kickoff_utc": kickoff_utc,
             "home_team": m["home"],
             "away_team": m["away"],
+            "home_code": home_code,
+            "away_code": away_code,
             "venue_name": m["venue_name"],
             "venue_city": m["venue_city"],
             "venue_slug": venue_info.get("slug"),
@@ -336,6 +382,7 @@ def main():
             "stage": m["stage"],
             "group": m["group"],
             "matchday": m["matchday"],
+            "match_appeal": match_appeal,
         })
 
     # 排序 by date_iso then match_label
