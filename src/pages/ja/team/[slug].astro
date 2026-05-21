@@ -1,0 +1,218 @@
+---
+import matchesData from '../../../data/matches.json';
+import teamsData from '../../../data/teams.json';
+import MatchCard from '../../../components/MatchCard.astro';
+import SiteHeader from '../../../components/SiteHeader.astro';
+import SiteFooter from '../../../components/SiteFooter.astro';
+
+export function getStaticPaths() {
+  return Object.keys(teamsData).map(slug => ({
+    params: { slug },
+    props: { slug, team: teamsData[slug] },
+  }));
+}
+
+const { slug, team } = Astro.props;
+const locale = 'ja';
+const defaultTz = 'Asia/Tokyo';
+
+const teamMatches = matchesData
+  .filter(m => m.home_team === team.name_en || m.away_team === team.name_en)
+  .sort((a, b) => a.kickoff_utc < b.kickoff_utc ? -1 : 1);
+
+const groupMatch = teamMatches.find(m => m.stage === 'group' && m.group);
+const teamGroup = groupMatch?.group || null;
+
+const groupmates = teamGroup
+  ? Array.from(new Set(
+      matchesData
+        .filter(m => m.stage === 'group' && m.group === teamGroup)
+        .flatMap(m => [m.home_team, m.away_team])
+        .filter(name => name && name !== team.name_en)
+    ))
+      .map(name => Object.values(teamsData).find(t => t.name_en === name))
+      .filter(Boolean)
+  : [];
+
+// SEO — 日文长尾关键词
+const title = `${team.name_ja} 2026 ワールドカップ 全試合 日本時間スケジュール | KickoffWhen`;
+const description = `${team.name_ja}の2026 FIFAワールドカップ全${teamMatches.length}試合を日本時間で。${teamGroup ? `グループ${teamGroup}所属。` : ''}徹夜価値スコア・ワンクリックでカレンダー登録。`;
+const canonical = `https://kickoffwhen.com/ja/team/${slug}`;
+const icsHref = `/team/${slug}.ics`;
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="en" href={`https://kickoffwhen.com/team/${slug}`} />
+    <link rel="alternate" hreflang="ja" href={canonical} />
+    <link rel="alternate" hreflang="x-default" href={`https://kickoffwhen.com/team/${slug}`} />
+
+    <meta property="og:title" content={`${team.flag} ${team.name_ja} 2026 ワールドカップ`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ja_JP" />
+  </head>
+  <body class="bg-navy text-panel min-h-screen font-sans">
+
+    <SiteHeader locale={locale} defaultTz={defaultTz} />
+
+    <main class="max-w-3xl mx-auto px-4 pt-6 pb-16">
+
+      <nav class="text-xs mb-4">
+        <a href="/ja/" class="text-slate hover:text-moon">← 全試合に戻る</a>
+      </nav>
+
+      <header class="text-center mb-8" data-team-slug={slug}>
+        <div class="text-7xl sm:text-8xl mb-3">{team.flag}</div>
+        <h1 class="text-3xl sm:text-4xl font-bold mb-1">{team.name_ja}</h1>
+        <p class="text-slate text-sm mb-5">
+          {teamGroup
+            ? <>グループ{teamGroup} · 2026 FIFA ワールドカップ</>
+            : '2026 FIFA ワールドカップ'}
+        </p>
+
+        <div class="flex items-center justify-center gap-3 flex-wrap">
+          <button
+            id="follow-btn"
+            class="follow-btn inline-flex items-center gap-2 px-4 py-2 rounded-full border border-moon/40 text-moon text-sm font-semibold hover:bg-moon/10 transition-colors"
+            data-slug={slug}
+            type="button"
+          >
+            <span class="follow-icon">☆</span>
+            <span class="follow-label">お気に入り</span>
+          </button>
+          <a
+            href={icsHref}
+            download={`kickoffwhen-${slug}.ics`}
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-pitch/40 text-pitch text-sm font-semibold hover:bg-pitch/10 transition-colors no-underline"
+          >
+            <span>⬇</span>
+            <span>カレンダーに追加</span>
+          </a>
+        </div>
+      </header>
+
+      <section class="mb-10">
+        <h2 class="text-sm font-bold uppercase tracking-wider text-slate mb-3">
+          {team.name_ja}の試合 ({teamMatches.length})
+        </h2>
+        {teamMatches.length === 0 ? (
+          <p class="text-slate-dim text-sm">試合は未定です。</p>
+        ) : (
+          <div class="grid gap-3">
+            {teamMatches.map(m => <MatchCard match={m} teams={teamsData} locale={locale} defaultTz={defaultTz} />)}
+          </div>
+        )}
+      </section>
+
+      {groupmates.length > 0 && (
+        <section>
+          <h2 class="text-sm font-bold uppercase tracking-wider text-slate mb-3">グループ{teamGroup}の他のチーム</h2>
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+            {groupmates.map(t => (
+              <a
+                href={`/ja/team/${t.slug}`}
+                class="flex items-center gap-2 p-3 rounded-xl bg-navy/40 border border-slate/20 hover:border-moon/40 transition-colors no-underline"
+              >
+                <span class="text-2xl">{t.flag}</span>
+                <span class="font-semibold text-panel text-sm">{t.name_ja}</span>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+
+    </main>
+
+    <SiteFooter locale={locale} />
+
+    <script type="application/json" id="page-config" set:html={JSON.stringify({ locale, defaultTz, slug })} />
+
+    <script>
+      import { getFavorites, toggleFavorite, isFavorite } from '../../../lib/favorites.js';
+      import { detectUserTimezone, getLocalParts } from '../../../lib/timezone.js';
+      import { calcNightOwlScore } from '../../../lib/score.js';
+
+      const cfg = JSON.parse(document.getElementById('page-config').textContent);
+
+      const followBtn = document.getElementById('follow-btn');
+      function renderFollowState() {
+        const fav = isFavorite(cfg.slug);
+        followBtn.querySelector('.follow-icon').textContent = fav ? '★' : '☆';
+        followBtn.querySelector('.follow-label').textContent = fav ? 'お気に入り済み' : 'お気に入り';
+        followBtn.classList.toggle('bg-moon/15', fav);
+      }
+      renderFollowState();
+      followBtn.addEventListener('click', () => {
+        toggleFavorite(cfg.slug);
+        renderFollowState();
+      });
+
+      const STORAGE_KEY = 'kickoffwhen.timezone';
+      const select = document.getElementById('tz-select');
+
+      function currentTz() {
+        const val = select.value;
+        return val === 'auto' ? detectUserTimezone() : val;
+      }
+
+      function rerenderCards() {
+        const tz = currentTz();
+        const favorites = getFavorites();
+        document.querySelectorAll('.match-card').forEach(card => {
+          const utc = card.dataset.utc;
+          if (!utc) return;
+
+          const parts = getLocalParts(utc, tz, cfg.locale);
+          const timeEl = card.querySelector('.kickoff-time');
+          if (timeEl && parts) {
+            timeEl.textContent = `${parts.month}/${parts.day} ${String(parts.hour).padStart(2,'0')}:${parts.minute} (${parts.weekday})`;
+          }
+
+          const match = {
+            kickoff_utc: utc,
+            home_code: card.dataset.homeCode || null,
+            away_code: card.dataset.awayCode || null,
+            home_slug: card.dataset.homeSlug || null,
+            away_slug: card.dataset.awaySlug || null,
+            match_appeal: parseFloat(card.dataset.matchAppeal) || 2,
+          };
+          const score = calcNightOwlScore(match, { locale: cfg.locale, timezone: tz, favoriteTeams: favorites });
+          const starsEl = card.querySelector('.night-owl-stars');
+          if (starsEl) {
+            starsEl.textContent = score.stars;
+            starsEl.title = `Raw ${score.raw}`;
+          }
+        });
+      }
+
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        const opt = Array.from(select.options).find(o => o.value === saved);
+        if (opt) select.value = saved;
+      }
+      if (select.value === 'auto' || select.value !== cfg.defaultTz) rerenderCards();
+      select.addEventListener('change', () => {
+        localStorage.setItem(STORAGE_KEY, select.value);
+        rerenderCards();
+      });
+
+      window.addEventListener('storage', e => {
+        if (e.key === 'kickoffwhen.favorites') {
+          renderFollowState();
+          rerenderCards();
+        }
+      });
+      window.addEventListener('favorites-change', rerenderCards);
+    </script>
+
+  </body>
+</html>

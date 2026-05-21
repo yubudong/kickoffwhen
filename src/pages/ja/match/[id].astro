@@ -131,15 +131,29 @@ const jsonLd = {
         </div>
 
         <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-3 sm:gap-6 mb-6">
-          <div class="text-center">
-            <div class="text-5xl sm:text-6xl mb-2">{home.flag}</div>
-            <div class="font-bold text-base sm:text-xl">{home.name}</div>
-          </div>
+          {home.slug ? (
+            <a href={`/ja/team/${home.slug}`} class="text-center no-underline hover:opacity-80 transition-opacity">
+              <div class="text-5xl sm:text-6xl mb-2">{home.flag}</div>
+              <div class="font-bold text-base sm:text-xl">{home.name}</div>
+            </a>
+          ) : (
+            <div class="text-center">
+              <div class="text-5xl sm:text-6xl mb-2">{home.flag}</div>
+              <div class="font-bold text-base sm:text-xl text-slate-dim">{home.name}</div>
+            </div>
+          )}
           <div class="text-slate-dim text-sm font-bold">vs</div>
-          <div class="text-center">
-            <div class="text-5xl sm:text-6xl mb-2">{away.flag}</div>
-            <div class="font-bold text-base sm:text-xl">{away.name}</div>
-          </div>
+          {away.slug ? (
+            <a href={`/ja/team/${away.slug}`} class="text-center no-underline hover:opacity-80 transition-opacity">
+              <div class="text-5xl sm:text-6xl mb-2">{away.flag}</div>
+              <div class="font-bold text-base sm:text-xl">{away.name}</div>
+            </a>
+          ) : (
+            <div class="text-center">
+              <div class="text-5xl sm:text-6xl mb-2">{away.flag}</div>
+              <div class="font-bold text-base sm:text-xl text-slate-dim">{away.name}</div>
+            </div>
+          )}
         </div>
 
         <section class="bg-moon/5 border border-moon/30 rounded-2xl p-5 sm:p-6 text-center mb-6">
