@@ -1,0 +1,97 @@
+---
+const title = 'KickoffWhen — 2026 ワールドカップ 日本時間スケジュール';
+const description =
+  '2026年北中米W杯の全試合を日本時間で表示。試合ごとの「徹夜価値スコア」付き、ワンクリックでカレンダー登録。近日公開。';
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://kickoffwhen.com/ja/" />
+    <link rel="alternate" hreflang="en" href="https://kickoffwhen.com/" />
+    <link rel="alternate" hreflang="ja" href="https://kickoffwhen.com/ja/" />
+    <link rel="alternate" hreflang="x-default" href="https://kickoffwhen.com/" />
+
+    <meta property="og:title" content="KickoffWhen — 2026 W杯 日本時間スケジュール" />
+    <meta property="og:description" content="2026年W杯の全試合を日本時間で。徹夜価値スコア付き。" />
+    <meta property="og:url" content="https://kickoffwhen.com/ja/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ja_JP" />
+  </head>
+  <body class="bg-navy text-panel min-h-screen flex items-center justify-center p-5 font-sans">
+    <main class="max-w-xl text-center">
+      <h1 class="text-4xl sm:text-5xl font-bold mb-2">
+        Kickoff<span class="text-moon">When</span> 🌙⚽
+      </h1>
+      <p class="text-base sm:text-lg text-slate leading-relaxed my-4">
+        2026年ワールドカップの全試合を、あなたの時間で。日本・韓国・台湾・香港・東南アジアのファンのために作られた、徹夜価値スコア付きスケジュール。
+      </p>
+      <p class="text-base sm:text-lg text-slate leading-relaxed my-4">
+        Coming soon — full schedule, time-zone aware, one-tap calendar export.
+      </p>
+
+      <div class="my-9" aria-live="polite">
+        <div class="text-xs text-slate mb-3 uppercase tracking-wider">
+          開幕まで · Tournament kicks off in
+        </div>
+        <div class="grid grid-cols-4 gap-2 max-w-md mx-auto" id="countdown">
+          <div class="bg-moon/10 border border-moon/20 rounded-xl px-1 py-3">
+            <div class="text-2xl sm:text-3xl font-bold text-moon tabular-nums leading-none" id="d">--</div>
+            <div class="text-xs text-slate mt-1.5">日 · days</div>
+          </div>
+          <div class="bg-moon/10 border border-moon/20 rounded-xl px-1 py-3">
+            <div class="text-2xl sm:text-3xl font-bold text-moon tabular-nums leading-none" id="h">--</div>
+            <div class="text-xs text-slate mt-1.5">時 · hours</div>
+          </div>
+          <div class="bg-moon/10 border border-moon/20 rounded-xl px-1 py-3">
+            <div class="text-2xl sm:text-3xl font-bold text-moon tabular-nums leading-none" id="m">--</div>
+            <div class="text-xs text-slate mt-1.5">分 · min</div>
+          </div>
+          <div class="bg-moon/10 border border-moon/20 rounded-xl px-1 py-3">
+            <div class="text-2xl sm:text-3xl font-bold text-moon tabular-nums leading-none" id="s">--</div>
+            <div class="text-xs text-slate mt-1.5">秒 · sec</div>
+          </div>
+        </div>
+      </div>
+
+      <p class="mt-12 text-xs text-slate-dim">
+        本サイトはFIFA公式サイトではありません。試合情報は参考用です。
+      </p>
+    </main>
+
+    <script is:inline>
+      (function () {
+        var KICKOFF = Date.UTC(2026, 5, 11, 0, 0, 0);
+        var els = {
+          d: document.getElementById('d'),
+          h: document.getElementById('h'),
+          m: document.getElementById('m'),
+          s: document.getElementById('s'),
+        };
+        function pad(n) {
+          return n < 10 ? '0' + n : '' + n;
+        }
+        function tick() {
+          var diff = KICKOFF - Date.now();
+          if (diff <= 0) {
+            document.getElementById('countdown').innerHTML =
+              '<div class="col-span-4 text-pitch font-semibold">🎉 大会開催中 · The 2026 tournament is live</div>';
+            clearInterval(timer);
+            return;
+          }
+          els.d.textContent = Math.floor(diff / 86400000);
+          els.h.textContent = pad(Math.floor((diff % 86400000) / 3600000));
+          els.m.textContent = pad(Math.floor((diff % 3600000) / 60000));
+          els.s.textContent = pad(Math.floor((diff % 60000) / 1000));
+        }
+        tick();
+        var timer = setInterval(tick, 1000);
+      })();
+    </script>
+  </body>
+</html>
