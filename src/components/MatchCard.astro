@@ -1,0 +1,75 @@
+---
+/**
+ * MatchCard - 单场比赛卡片
+ *
+ * Props:
+ *   match    — matches.json 里的一条记录
+ *   teams    — teams.json
+ *   locale   — 'en' | 'ja'
+ *   defaultTz — 服务端预渲染用的时区（一般是 'Asia/Tokyo'）
+ *
+ * 客户端用 JS 监听时区切换、根据 data-utc 重渲染时间和评分。
+ */
+import { formatLocalTime, getLocalParts } from '../lib/timezone.js';
+import { calcNightOwlScore, toStars } from '../lib/score.js';
+
+const { match, teams, locale = 'en', defaultTz = 'Asia/Tokyo' } = Astro.props;
+
+const homeInfo = match.home_team && teams[Object.keys(teams).find(slug => teams[slug].name_en === match.home_team)] || null;
+const awayInfo = match.away_team && teams[Object.keys(teams).find(slug => teams[slug].name_en === match.away_team)] || null;
+
+function teamLabel(info, fallback) {
+  if (!info) return { name: fallback, flag: '' };
+  return { name: locale === 'ja' ? info.name_ja : info.name_en, flag: info.flag };
+}
+const home = teamLabel(homeInfo, match.home_team);
+const away = teamLabel(awayInfo, match.away_team);
+
+const parts = getLocalParts(match.kickoff_utc, defaultTz, locale);
+const initialTimeStr = parts ? `${parts.month}/${parts.day} ${String(parts.hour).padStart(2,'0')}:${parts.minute} (${parts.weekday})` : 'TBA';
+
+const initialScore = calcNightOwlScore(match, { locale, timezone: defaultTz });
+
+// stage 文案本地化
+const STAGE_LABELS = {
+  en: { 'group': 'Group', 'round-of-32': 'R32', 'round-of-16': 'R16', 'quarter-final': 'QF', 'semi-final': 'SF', 'third-place': '3rd', 'final': 'Final' },
+  ja: { 'group': 'グループ', 'round-of-32': 'R32', 'round-of-16': 'R16', 'quarter-final': '準々決勝', 'semi-final': '準決勝', 'third-place': '3位決定戦', 'final': '決勝' },
+};
+const stageLabel = STAGE_LABELS[locale][match.stage] || match.stage;
+const subTitle = match.stage === 'group' && match.group
+  ? `${stageLabel} ${match.group}${match.matchday ? ` · MD${match.matchday}` : ''}`
+  : stageLabel;
+---
+
+<article
+  class="match-card bg-navy/60 border border-slate/20 rounded-2xl p-4 sm:p-5"
+  data-match-id={match.id}
+  data-utc={match.kickoff_utc}
+  data-home-code={match.home_code || ''}
+  data-away-code={match.away_code || ''}
+  data-home-slug={homeInfo?.slug || ''}
+  data-away-slug={awayInfo?.slug || ''}
+  data-match-appeal={match.match_appeal}
+>
+  <header class="flex items-center justify-between text-xs text-slate mb-3">
+    <span class="font-semibold tracking-wider uppercase">{subTitle}</span>
+    <span class="kickoff-time tabular-nums" data-utc={match.kickoff_utc}>{initialTimeStr}</span>
+  </header>
+
+  <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-2 sm:gap-3">
+    <div class="text-right">
+      <div class="text-2xl mb-1">{home.flag || '🏳️'}</div>
+      <div class="font-semibold text-panel text-sm sm:text-base leading-tight">{home.name}</div>
+    </div>
+    <div class="text-slate-dim text-xs font-bold px-2">vs</div>
+    <div class="text-left">
+      <div class="text-2xl mb-1">{away.flag || '🏳️'}</div>
+      <div class="font-semibold text-panel text-sm sm:text-base leading-tight">{away.name}</div>
+    </div>
+  </div>
+
+  <footer class="mt-3 pt-3 border-t border-slate/10 flex items-center justify-between text-xs">
+    <span class="text-slate-dim truncate pr-2">{match.venue_name}</span>
+    <span class="night-owl-stars text-moon shrink-0" title={`Raw ${initialScore.raw}`}>{initialScore.stars}</span>
+  </footer>
+</article>
