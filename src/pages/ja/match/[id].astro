@@ -26,7 +26,7 @@ const STAGE_LABELS = {
 };
 const stageLabel = STAGE_LABELS[match.stage] || match.stage;
 const stageSub = match.stage === 'group' && match.group
-  ? `グループ${match.group} · 第${match.matchday}節`
+  ? `グループ${match.group} · 第${match.matchday}戦`
   : stageLabel;
 
 function teamBySlug(slug) {
@@ -58,9 +58,9 @@ const REASON_LABELS = {
   early_morning: '早朝キックオフ (06–08)',
 };
 
-// SEO
-const title = `${home.name} vs ${away.name} — 日本時間キックオフ | KickoffWhen`;
-const description = `${home.name} vs ${away.name} のキックオフは ${initialTimeStr} (日本時間)。${match.venue_name || '会場未定'}。徹夜価値スコア・アジア7時間帯の対照表付き。`;
+// SEO — 日本人が実際に検索する形：「[国名] vs [国名] 日本時間 何時」
+const title = `${home.name} vs ${away.name} 日本時間 何時キックオフ｜${stageSub} - KickoffWhen`;
+const description = `${home.name} vs ${away.name} のキックオフは日本時間 ${initialTimeStr}（${match.venue_name || '会場未定'}）。徹夜価値スコア・アジア7地域の時差早見表付き。`;
 const canonical = `https://kickoffwhen.com/ja/match/${match.id}`;
 
 const jsonLd = {
@@ -175,7 +175,7 @@ const jsonLd = {
           <div class="text-sm text-slate-dim night-owl-reason">
             {initialScore.reasons.length > 0
               ? initialScore.reasons.map(r => REASON_LABELS[r] || r).join(' · ')
-              : '標準的な試合'}
+              : '通常の試合'}
           </div>
         </section>
 
@@ -189,7 +189,7 @@ const jsonLd = {
             <div class="font-semibold text-panel mb-1">{match.venue_name}</div>
             <div class="text-sm text-slate">{match.venue_city}</div>
             {match.kickoff_local && (
-              <div class="text-xs text-slate-dim mt-2">現地キックオフ: {match.kickoff_local} ({match.venue_timezone})</div>
+              <div class="text-xs text-slate-dim mt-2">現地時間: {match.kickoff_local}（{match.venue_timezone}）</div>
             )}
           </section>
         )}
@@ -253,7 +253,7 @@ const jsonLd = {
         if (reasonEl) {
           reasonEl.textContent = score.reasons.length > 0
             ? score.reasons.map(r => cfg.reasonLabels[r] || r).join(' · ')
-            : '標準的な試合';
+            : '通常の試合';
         }
       }
 

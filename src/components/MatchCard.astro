@@ -38,8 +38,11 @@ const STAGE_LABELS = {
   ja: { 'group': 'グループ', 'round-of-32': 'R32', 'round-of-16': 'R16', 'quarter-final': '準々決勝', 'semi-final': '準決勝', 'third-place': '3位決定戦', 'final': '決勝' },
 };
 const stageLabel = STAGE_LABELS[locale][match.stage] || match.stage;
+const matchdaySuffix = match.matchday
+  ? (locale === 'ja' ? ` · 第${match.matchday}戦` : ` · MD${match.matchday}`)
+  : '';
 const subTitle = match.stage === 'group' && match.group
-  ? `${stageLabel} ${match.group}${match.matchday ? ` · MD${match.matchday}` : ''}`
+  ? `${stageLabel} ${match.group}${matchdaySuffix}`
   : stageLabel;
 ---
 

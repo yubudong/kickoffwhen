@@ -34,9 +34,9 @@ const groupmates = teamGroup
       .filter(Boolean)
   : [];
 
-// SEO — 日文长尾关键词
-const title = `${team.name_ja} 2026 ワールドカップ 全試合 日本時間スケジュール | KickoffWhen`;
-const description = `${team.name_ja}の2026 FIFAワールドカップ全${teamMatches.length}試合を日本時間で。${teamGroup ? `グループ${teamGroup}所属。` : ''}徹夜価値スコア・ワンクリックでカレンダー登録。`;
+// SEO — 日本人検索パターン：「[国名] 日程 日本時間」「[国名] ワールドカップ 試合」
+const title = `${team.name_ja} 2026 ワールドカップ 日程 日本時間｜全${teamMatches.length}試合 - KickoffWhen`;
+const description = `${team.name_ja}の2026年W杯 ${teamGroup ? `グループ${teamGroup} ` : ''}全${teamMatches.length}試合を日本時間で。徹夜価値スコア・ワンクリックでGoogle/Appleカレンダーに登録可。`;
 const canonical = `https://kickoffwhen.com/ja/team/${slug}`;
 const icsHref = `/team/${slug}.ics`;
 ---
@@ -115,7 +115,7 @@ const icsHref = `/team/${slug}.ics`;
 
       {groupmates.length > 0 && (
         <section>
-          <h2 class="text-sm font-bold uppercase tracking-wider text-slate mb-3">グループ{teamGroup}の他のチーム</h2>
+          <h2 class="text-sm font-bold uppercase tracking-wider text-slate mb-3">同組のチーム（グループ{teamGroup}）</h2>
           <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
             {groupmates.map(t => (
               <a
@@ -147,7 +147,7 @@ const icsHref = `/team/${slug}.ics`;
       function renderFollowState() {
         const fav = isFavorite(cfg.slug);
         followBtn.querySelector('.follow-icon').textContent = fav ? '★' : '☆';
-        followBtn.querySelector('.follow-label').textContent = fav ? 'お気に入り済み' : 'お気に入り';
+        followBtn.querySelector('.follow-label').textContent = fav ? 'お気に入り中' : 'お気に入り';
         followBtn.classList.toggle('bg-moon/15', fav);
       }
       renderFollowState();
