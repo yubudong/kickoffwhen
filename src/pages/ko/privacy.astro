@@ -1,0 +1,86 @@
+---
+import LegalLayout from '../../layouts/LegalLayout.astro';
+---
+
+<LegalLayout
+  locale="ko"
+  slug="privacy"
+  title="개인정보처리방침 — KickoffWhen"
+  description="KickoffWhen은 개인정보를 일절 수집하지 않습니다. 시간대 및 즐겨찾기 팀 설정은 브라우저의 localStorage에 저장됩니다. Cloudflare Web Analytics는 쿠키를 사용하지 않습니다."
+  pageHeading="개인정보처리방침"
+>
+
+  <p class="text-xs text-slate-dim">최종 업데이트: 2026-05-21</p>
+
+  <p>
+    KickoffWhen은 사용자의 개인정보를 존중합니다. 계정 등록이 불필요하고, 사이트 간 추적을 하지 않으며,
+    수집한 데이터를 제3자에게 판매·제공하지 않습니다.
+  </p>
+
+  <h2>수집하지 않는 정보</h2>
+  <ul>
+    <li>이름, 이메일, 전화번호, 주소</li>
+    <li>IP 주소 (Cloudflare 엣지가 페이지 전송에 필요한 범위를 넘어서)</li>
+    <li>본 사이트 외의 열람 이력</li>
+    <li>기타 개인을 특정할 수 있는 정보</li>
+  </ul>
+
+  <h2>단말기에 저장하는 정보 (localStorage)</h2>
+  <p>
+    재방문 시 사용자 설정을 기억하기 위해 브라우저의 <code>localStorage</code>에 다음을 저장합니다:
+  </p>
+  <ul>
+    <li><code>kickoffwhen.timezone</code> — 선택한 시간대</li>
+    <li><code>kickoffwhen.favorites</code> — ⭐로 등록한 즐겨찾기 팀</li>
+  </ul>
+  <p>
+    모두 사용자의 브라우저에만 남아있으며, 서버로 전송되지 않습니다. 브라우저 데이터를 삭제하면 초기화됩니다.
+  </p>
+
+  <h2>접속 분석</h2>
+  <p>
+    <a href="https://www.cloudflare.com/web-analytics/" target="_blank" rel="noopener">Cloudflare Web Analytics</a>를
+    사용합니다. 쿠키를 사용하지 않고, 방문자 핑거프린팅도 하지 않습니다.
+    집계 수준의 페이지뷰 수와 국가 단위의 대략적인 지리 정보만 수집합니다. 개별 세션은 식별 불가능합니다.
+  </p>
+  <p>
+    Google Analytics, Meta Pixel 등 제3자 추적 SDK는 <strong>사용하지 않습니다</strong>.
+  </p>
+
+  <h2>쿠키</h2>
+  <p>
+    KickoffWhen 자체는 쿠키를 설정하지 않습니다. Cloudflare가 봇 차단을 위해 <code>__cf_bm</code> 쿠키를
+    30분간 설정할 수 있으나, 이는 보안 목적이며 개인정보를 포함하지 않습니다.
+  </p>
+
+  <h2>캘린더 다운로드 (.ics)</h2>
+  <p>
+    팀 페이지의 「캘린더에 추가」를 클릭하면 정적 <code>.ics</code> 파일이 다운로드됩니다.
+    Google / Apple / Outlook 캘린더로의 가져오기는 각 앱이 처리하며, 본 사이트는 관여하지 않습니다.
+  </p>
+
+  <h2>외부 링크</h2>
+  <p>
+    Wikipedia, GitHub, 경기장 정보 사이트로의 링크가 포함되어 있습니다. 링크 대상의 개인정보 처리 관행에 대해서는 책임지지 않습니다.
+  </p>
+
+  <h2>아동 개인정보</h2>
+  <p>
+    본 사이트는 13세 미만을 의도적으로 타겟팅하지 않습니다. 애초에 개인정보를 일절 수집하지 않으므로,
+    아동 대상 특별 처리 절차는 존재하지 않습니다.
+  </p>
+
+  <h2>방침 변경</h2>
+  <p>
+    중요한 변경이 있을 경우 상단의 「최종 업데이트」 일자를 갱신하고, 홈페이지에서 안내합니다.
+    이메일 주소를 보유하지 않으므로 개별 통지는 불가능합니다. 정기적으로 확인해주세요.
+  </p>
+
+  <h2>문의</h2>
+  <p>
+    개인정보 관련 문의:
+    <a href="https://github.com/yubudong/kickoffwhen/issues" target="_blank" rel="noopener">github.com/yubudong/kickoffwhen/issues</a>에서
+    공개 이슈를 등록해주세요.
+  </p>
+
+</LegalLayout>

@@ -1,0 +1,86 @@
+---
+import LegalLayout from '../../layouts/LegalLayout.astro';
+---
+
+<LegalLayout
+  locale="ja"
+  slug="privacy"
+  title="プライバシーポリシー — KickoffWhen"
+  description="KickoffWhen は個人情報を一切収集しません。タイムゾーンとお気に入りチームの設定はブラウザの localStorage に保存されます。Cloudflare Web Analytics は Cookie 非使用です。"
+  pageHeading="プライバシーポリシー"
+>
+
+  <p class="text-xs text-slate-dim">最終更新日: 2026-05-21</p>
+
+  <p>
+    KickoffWhen はユーザーのプライバシーを尊重します。アカウント登録は不要、クロスサイトトラッキングは行わず、
+    収集したデータを第三者に販売・提供することもありません。
+  </p>
+
+  <h2>収集しないもの</h2>
+  <ul>
+    <li>氏名、メールアドレス、電話番号、住所</li>
+    <li>IP アドレス(Cloudflare のエッジがページ配信に必要な範囲を超えて)</li>
+    <li>当サイト外の閲覧履歴</li>
+    <li>その他、個人を特定できる情報</li>
+  </ul>
+
+  <h2>端末に保存するもの(localStorage)</h2>
+  <p>
+    再訪問時にあなたの設定を覚えておくため、ブラウザの <code>localStorage</code> に以下を保存します:
+  </p>
+  <ul>
+    <li><code>kickoffwhen.timezone</code> — 選択したタイムゾーン</li>
+    <li><code>kickoffwhen.favorites</code> — ⭐ で登録したお気に入りチーム</li>
+  </ul>
+  <p>
+    いずれもあなたのブラウザ内に留まり、サーバーには送信されません。ブラウザデータを消去すればリセットされます。
+  </p>
+
+  <h2>アクセス解析</h2>
+  <p>
+    <a href="https://www.cloudflare.com/web-analytics/" target="_blank" rel="noopener">Cloudflare Web Analytics</a>
+    を利用しています。Cookie 非使用で、訪問者をフィンガープリントしません。集計レベルのページビュー数と国単位の
+    大まかな地理情報のみ取得します。個別セッションは識別できません。
+  </p>
+  <p>
+    Google Analytics、Meta Pixel など第三者トラッキング SDK は<strong>使用していません</strong>。
+  </p>
+
+  <h2>Cookie について</h2>
+  <p>
+    KickoffWhen 自体は Cookie をセットしません。Cloudflare がボット対策のため <code>__cf_bm</code> を
+    30 分間セットすることがありますが、これはセキュリティ目的のみで個人情報を含みません。
+  </p>
+
+  <h2>カレンダーダウンロード(.ics)</h2>
+  <p>
+    チームページの「カレンダーに追加」をクリックすると静的な <code>.ics</code> ファイルがダウンロードされます。
+    Google / Apple / Outlook へのインポートは各アプリの処理であり、当サイトは関知しません。
+  </p>
+
+  <h2>外部リンク</h2>
+  <p>
+    Wikipedia、GitHub、スタジアム情報サイトへリンクしています。リンク先のプライバシー慣行については当方は責任を負いません。
+  </p>
+
+  <h2>未成年者のプライバシー</h2>
+  <p>
+    当サイトは 13 歳未満を意図的なターゲットとしていません。そもそも個人情報を一切収集していないため、
+    児童向けの特別な処理フローは存在しません。
+  </p>
+
+  <h2>ポリシーの変更</h2>
+  <p>
+    重要な変更がある場合は、上部の「最終更新日」を改定し、トップページで告知します。メールアドレスを保有していないため
+    個別通知はできません。定期的にご確認ください。
+  </p>
+
+  <h2>お問い合わせ</h2>
+  <p>
+    プライバシーに関するご質問:
+    <a href="https://github.com/yubudong/kickoffwhen/issues" target="_blank" rel="noopener">github.com/yubudong/kickoffwhen/issues</a>
+    にて公開イシューを立ててください。
+  </p>
+
+</LegalLayout>
