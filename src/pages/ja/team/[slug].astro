@@ -37,7 +37,7 @@ const groupmates = teamGroup
 // SEO — 日本人検索パターン：「[国名] 日程 日本時間」「[国名] ワールドカップ 試合」
 const title = `${team.name_ja} 2026 ワールドカップ 日程 日本時間｜全${teamMatches.length}試合 - KickoffWhen`;
 const description = `${team.name_ja}の2026年W杯 ${teamGroup ? `グループ${teamGroup} ` : ''}全${teamMatches.length}試合を日本時間で。徹夜価値スコア・ワンクリックでGoogle/Appleカレンダーに登録可。`;
-const canonical = `https://kickoffwhen.com/ja/team/${slug}`;
+const canonical = `https://kickoffwhen.com/ja/team/${slug}/`;
 const icsHref = `/team/${slug}.ics`;
 ---
 
@@ -50,9 +50,9 @@ const icsHref = `/team/${slug}.ics`;
     <meta name="description" content={description} />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href={canonical} />
-    <link rel="alternate" hreflang="en" href={`https://kickoffwhen.com/team/${slug}`} />
+    <link rel="alternate" hreflang="en" href={`https://kickoffwhen.com/team/${slug}/`} />
     <link rel="alternate" hreflang="ja" href={canonical} />
-    <link rel="alternate" hreflang="x-default" href={`https://kickoffwhen.com/team/${slug}`} />
+    <link rel="alternate" hreflang="x-default" href={`https://kickoffwhen.com/team/${slug}/`} />
 
     <meta property="og:title" content={`${team.flag} ${team.name_ja} 2026 ワールドカップ`} />
     <meta property="og:description" content={description} />

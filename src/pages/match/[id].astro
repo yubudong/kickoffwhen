@@ -60,10 +60,10 @@ const REASON_LABELS = {
   early_morning: 'Early morning (06–08)',
 };
 
-// SEO
-const title = `${home.name} vs ${away.name} — Kickoff Time | KickoffWhen`;
-const description = `${home.name} vs ${away.name} kicks off ${match.date} at ${match.kickoff_local || 'TBD'} local (${match.venue_name || 'TBD'}). See the time in JST, KST, and 5 more Asian zones plus night-owl score.`;
-const canonical = `https://kickoffwhen.com/match/${match.id}`;
+// SEO — search-friendly: "{team1} vs {team2} kickoff time in Japan / Asia"
+const title = `${home.name} vs ${away.name} · ${stageSub} Kickoff Time (JST / Asia) — KickoffWhen`;
+const description = `${home.name} vs ${away.name} kicks off ${match.date} at ${match.kickoff_local || 'TBD'} local time (${match.venue_name || 'venue TBD'}). See the time in JST, KST and 5 more Asian zones, plus a night-owl score.`;
+const canonical = `https://kickoffwhen.com/match/${match.id}/`;
 
 // Schema.org SportsEvent JSON-LD
 const jsonLd = {

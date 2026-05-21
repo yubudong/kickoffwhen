@@ -38,10 +38,10 @@ const groupmates = teamGroup
       .filter(Boolean)
   : [];
 
-// SEO
-const title = `${team.name_en} 2026 World Cup Schedule — Local Kickoff Times | KickoffWhen`;
-const description = `${team.name_en}'s ${teamMatches.length} matches at the 2026 FIFA World Cup, with kickoff times in your timezone. Group ${teamGroup || 'TBD'}. Night-owl scores and one-click calendar export.`;
-const canonical = `https://kickoffwhen.com/team/${slug}`;
+// SEO — long-tail: "{country} 2026 World Cup fixtures kickoff time Asia"
+const title = `${team.name_en} 2026 World Cup Schedule — Kickoff Times in JST & Asia | KickoffWhen`;
+const description = `${team.name_en}'s ${teamMatches.length} fixtures at the 2026 FIFA World Cup ${teamGroup ? `(Group ${teamGroup}) ` : ''}with kickoff times in JST, KST and 5 more Asian zones. Night-owl scores and one-click .ics calendar download.`;
+const canonical = `https://kickoffwhen.com/team/${slug}/`;
 const icsHref = `/team/${slug}.ics`;
 ---
 

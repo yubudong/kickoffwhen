@@ -61,7 +61,7 @@ const REASON_LABELS = {
 // SEO — 日本人が実際に検索する形：「[国名] vs [国名] 日本時間 何時」
 const title = `${home.name} vs ${away.name} 日本時間 何時キックオフ｜${stageSub} - KickoffWhen`;
 const description = `${home.name} vs ${away.name} のキックオフは日本時間 ${initialTimeStr}（${match.venue_name || '会場未定'}）。徹夜価値スコア・アジア7地域の時差早見表付き。`;
-const canonical = `https://kickoffwhen.com/ja/match/${match.id}`;
+const canonical = `https://kickoffwhen.com/ja/match/${match.id}/`;
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -93,9 +93,9 @@ const jsonLd = {
     <meta name="description" content={description} />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href={canonical} />
-    <link rel="alternate" hreflang="en" href={`https://kickoffwhen.com/match/${match.id}`} />
+    <link rel="alternate" hreflang="en" href={`https://kickoffwhen.com/match/${match.id}/`} />
     <link rel="alternate" hreflang="ja" href={canonical} />
-    <link rel="alternate" hreflang="x-default" href={`https://kickoffwhen.com/match/${match.id}`} />
+    <link rel="alternate" hreflang="x-default" href={`https://kickoffwhen.com/match/${match.id}/`} />
 
     <meta property="og:title" content={`${home.name} vs ${away.name} — ${stageSub}`} />
     <meta property="og:description" content={description} />
