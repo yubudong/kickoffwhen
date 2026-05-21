@@ -15,6 +15,8 @@ import { calcNightOwlScore, toStars } from '../lib/score.js';
 
 const { match, teams, locale = 'en', defaultTz = 'Asia/Tokyo' } = Astro.props;
 
+const detailHref = locale === 'ja' ? `/ja/match/${match.id}` : `/match/${match.id}`;
+
 const homeInfo = match.home_team && teams[Object.keys(teams).find(slug => teams[slug].name_en === match.home_team)] || null;
 const awayInfo = match.away_team && teams[Object.keys(teams).find(slug => teams[slug].name_en === match.away_team)] || null;
 
@@ -41,8 +43,9 @@ const subTitle = match.stage === 'group' && match.group
   : stageLabel;
 ---
 
-<article
-  class="match-card bg-navy/60 border border-slate/20 rounded-2xl p-4 sm:p-5"
+<a
+  href={detailHref}
+  class="match-card block bg-navy/60 border border-slate/20 rounded-2xl p-4 sm:p-5 hover:border-moon/40 hover:bg-navy/80 transition-colors no-underline"
   data-match-id={match.id}
   data-utc={match.kickoff_utc}
   data-home-code={match.home_code || ''}
@@ -72,4 +75,4 @@ const subTitle = match.stage === 'group' && match.group
     <span class="text-slate-dim truncate pr-2">{match.venue_name}</span>
     <span class="night-owl-stars text-moon shrink-0" title={`Raw ${initialScore.raw}`}>{initialScore.stars}</span>
   </footer>
-</article>
+</a>

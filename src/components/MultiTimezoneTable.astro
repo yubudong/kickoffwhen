@@ -1,0 +1,44 @@
+---
+/**
+ * MultiTimezoneTable — 一场比赛在亚洲 7 个时区下的开球时间
+ *
+ * 不响应顶部时区切换：用户切换 JST/KST/CST 改的是"主时间"显示，
+ * 但这个表格目的就是一目了然看所有亚洲时区，所以保持固定。
+ *
+ * 服务端预渲染所有时区下的时间，前端 JS 不需要重算。
+ */
+import { ASIA_TIMEZONES, getLocalParts } from '../lib/timezone.js';
+
+const { utcIso, locale = 'en' } = Astro.props;
+
+const rows = ASIA_TIMEZONES.map(tz => {
+  const parts = getLocalParts(utcIso, tz.id, locale);
+  return {
+    city:  locale === 'ja' ? tz.cityJa : tz.cityEn,
+    code:  tz.label,
+    text:  parts ? `${parts.month}/${parts.day} ${String(parts.hour).padStart(2,'0')}:${parts.minute}` : 'TBA',
+    weekday: parts ? parts.weekday : '',
+    isNight: parts ? (parts.hour <= 5 || parts.hour >= 22) : false,
+  };
+});
+
+const heading = locale === 'ja' ? '時差早見表' : 'Across Asia';
+---
+
+<section class="bg-navy/40 border border-slate/20 rounded-2xl p-4 sm:p-5">
+  <h3 class="text-sm font-bold uppercase tracking-wider text-slate mb-3">⏰ {heading}</h3>
+  <ul class="space-y-1.5">
+    {rows.map(row => (
+      <li class="flex items-baseline justify-between text-sm">
+        <span class="text-slate">
+          <span class="font-semibold text-panel">{row.city}</span>
+          <span class="text-xs text-slate-dim ml-1.5">({row.code})</span>
+        </span>
+        <span class={`tabular-nums ${row.isNight ? 'text-moon' : 'text-panel'}`}>
+          {row.text}
+          <span class="text-xs text-slate-dim ml-1">({row.weekday})</span>
+        </span>
+      </li>
+    ))}
+  </ul>
+</section>

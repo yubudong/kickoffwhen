@@ -1,0 +1,11 @@
+---
+const { locale = 'en' } = Astro.props;
+
+const text = locale === 'ja'
+  ? '本サイトはFIFA公式サイトではありません。試合情報は参考用です。'
+  : 'kickoffwhen.com is not affiliated with FIFA. Match information is for reference only.';
+---
+
+<footer class="border-t border-slate/10 py-6 text-center text-xs text-slate-dim">
+  {text}
+</footer>
