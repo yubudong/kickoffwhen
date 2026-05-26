@@ -423,6 +423,7 @@ def main():
         if not info:
             continue
         teams_out[info["slug"]] = {
+            "slug": info["slug"],
             "code": info["code"],
             "name_en": en_name,
             "name_ja": info["name_ja"],
