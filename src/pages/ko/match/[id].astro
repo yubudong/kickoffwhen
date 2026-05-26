@@ -273,7 +273,7 @@ const jsonLd = {
         const h = Math.floor((diff % 86400000) / 3600000);
         const m = Math.floor((diff % 3600000) / 60000);
         const s = Math.floor((diff % 60000) / 1000);
-        el.textContent = `킥오프까지 ${d}일 ${h}시간 ${m}분 ${s}초`;
+        el.textContent = `경기 시작까지 ${d}일 ${h}시간 ${m}분 ${s}초`;
       }
 
       const saved = localStorage.getItem(STORAGE_KEY);

@@ -44,7 +44,7 @@ export function getCityLabel(tz, locale) {
 export function formatLocalTime(utcIso, timezone, locale = 'en') {
   if (!utcIso) return '';
   const d = new Date(utcIso);
-  const fmt = new Intl.DateTimeFormat(locale === 'ja' ? 'ja-JP' : 'en-US', {
+  const fmt = new Intl.DateTimeFormat({ ja: 'ja-JP', ko: 'ko-KR', zh: 'zh-TW' }[locale] || 'en-US', {
     timeZone: timezone,
     month:    '2-digit',
     day:      '2-digit',
@@ -62,7 +62,7 @@ export function formatLocalTime(utcIso, timezone, locale = 'en') {
 export function getLocalParts(utcIso, timezone, locale = 'en') {
   if (!utcIso) return null;
   const d = new Date(utcIso);
-  const parts = new Intl.DateTimeFormat(locale === 'ja' ? 'ja-JP' : 'en-US', {
+  const parts = new Intl.DateTimeFormat({ ja: 'ja-JP', ko: 'ko-KR', zh: 'zh-TW' }[locale] || 'en-US', {
     timeZone: timezone,
     year:     'numeric',
     month:    '2-digit',
