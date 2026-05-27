@@ -12,6 +12,7 @@
  */
 import { formatLocalTime, getLocalParts } from '../lib/timezone.js';
 import { calcNightOwlScore, toStars } from '../lib/score.js';
+import { getLocalizedVenue } from '../lib/venue.js';
 
 const { match, teams, locale = 'en', defaultTz = 'Asia/Tokyo' } = Astro.props;
 
@@ -57,6 +58,8 @@ const matchdaySuffix = match.matchday
 const subTitle = match.stage === 'group' && match.group
   ? `${stageLabel} ${match.group}${matchdaySuffix}`
   : stageLabel;
+
+const venue = getLocalizedVenue(match.venue_name, locale);
 ---
 
 <a
@@ -88,7 +91,7 @@ const subTitle = match.stage === 'group' && match.group
   </div>
 
   <footer class="mt-3 pt-3 border-t border-slate/10 flex items-center justify-between text-xs">
-    <span class="text-slate-dim truncate pr-2">{match.venue_name}</span>
+    <span class="text-slate-dim truncate pr-2">{venue.name}</span>
     <span class="night-owl-stars text-moon shrink-0" title={`Raw ${initialScore.raw}`}>{initialScore.stars}</span>
   </footer>
 </a>

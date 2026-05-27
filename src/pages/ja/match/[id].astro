@@ -3,6 +3,7 @@ import matchesData from '../../../data/matches.json';
 import teamsData from '../../../data/teams.json';
 import { getLocalParts } from '../../../lib/timezone.js';
 import { calcNightOwlScore } from '../../../lib/score.js';
+import { getLocalizedVenue } from '../../../lib/venue.js';
 import SiteHeader from '../../../components/SiteHeader.astro';
 import SiteFooter from '../../../components/SiteFooter.astro';
 import MultiTimezoneTable from '../../../components/MultiTimezoneTable.astro';
@@ -47,6 +48,7 @@ const parts = getLocalParts(match.kickoff_utc, defaultTz, locale);
 const initialTimeStr = parts ? `${parts.month}/${parts.day} ${String(parts.hour).padStart(2,'0')}:${parts.minute}` : '未定';
 const weekdayStr = parts ? parts.weekday : '';
 const initialScore = calcNightOwlScore(match, { locale, timezone: defaultTz });
+const venue = getLocalizedVenue(match.venue_name, locale);
 
 const REASON_LABELS = {
   home_country:  '日本代表の試合',
@@ -60,7 +62,7 @@ const REASON_LABELS = {
 
 // SEO — 日本人が実際に検索する形：「[国名] vs [国名] 日本時間 何時」
 const title = `${home.name} vs ${away.name} 日本時間 何時キックオフ｜${stageSub} - KickoffWhen`;
-const description = `${home.name} vs ${away.name} のキックオフは日本時間 ${initialTimeStr}（${match.venue_name || '会場未定'}）。徹夜価値スコア・アジア7地域の時差早見表付き。`;
+const description = `${home.name} vs ${away.name} のキックオフは日本時間 ${initialTimeStr}（${venue.name || '会場未定'}）。徹夜価値スコア・アジア7地域の時差早見表付き。`;
 const canonical = `https://kickoffwhen.com/ja/match/${match.id}/`;
 
 const jsonLd = {
@@ -71,12 +73,12 @@ const jsonLd = {
   startDate: match.kickoff_utc,
   sport: 'Soccer',
   url: canonical,
-  location: match.venue_name ? {
+  location: venue.name ? {
     '@type': 'Place',
-    name: match.venue_name,
+    name: venue.name,
     address: {
       '@type': 'PostalAddress',
-      addressLocality: match.venue_city,
+      addressLocality: venue.city,
     },
   } : undefined,
   homeTeam: { '@type': 'SportsTeam', name: home.name_en },
@@ -189,11 +191,11 @@ const jsonLd = {
           <MultiTimezoneTable utcIso={match.kickoff_utc} locale={locale} />
         </div>
 
-        {match.venue_name && (
+        {venue.name && (
           <section class="bg-navy/40 border border-slate/20 rounded-2xl p-5 mb-6">
             <h3 class="text-sm font-bold uppercase tracking-wider text-slate mb-3">📍 会場</h3>
-            <div class="font-semibold text-panel mb-1">{match.venue_name}</div>
-            <div class="text-sm text-slate">{match.venue_city}</div>
+            <div class="font-semibold text-panel mb-1">{venue.name}</div>
+            <div class="text-sm text-slate">{venue.city}</div>
             {match.kickoff_local && (
               <div class="text-xs text-slate-dim mt-2">現地時間: {match.kickoff_local}（{match.venue_timezone}）</div>
             )}
