@@ -15,7 +15,7 @@
 
 kickoffwhen.com — every match in YOUR local time across Japan, Korea, Taiwan, HK + SE Asia. Night-owl scores so you sleep smart. One-tap calendar add.
 
-Free. No ads. No login. 🌙
+Free. No login. No tracking. 🌙
 
 https://kickoffwhen.com
 ```
@@ -68,7 +68,8 @@ So I built this:
 - A "night-owl score" (1-5 stars) for which late-night matches are actually worth losing sleep over
 - One-tap calendar add (ICS)
 - 4 languages (EN, JA, KO, ZH-Hant)
-- No ads, no login, no tracking beyond aggregate Cloudflare counts
+- No login, no tracking beyond aggregate Cloudflare counts
+- No ads today — I may add unobtrusive ones later just to cover hosting
 
 Tech: Astro static build, no JS framework, ~50KB JS total, deployed to Cloudflare Pages. Lighthouse 100/100/100/100 locally. Match data scraped from Wikipedia and manually verified (data accuracy is what I'm most paranoid about — one wrong kickoff time and Japanese football Twitter will eat me alive).
 
