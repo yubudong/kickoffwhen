@@ -96,6 +96,54 @@ Built in 21 evenings, 4 hours a night, pair-programming with Claude. Happy to ta
 
 ---
 
+## 👽 Reddit（6/6 HN 受阻后转此渠道）
+
+> ⚠️ HN Show HN 因"新账号"被拦,Reddit 顶替。**Reddit 对自推更敏感**:r/soccer 等大版会秒删新账号自推链接;发前确认账号有 karma/历史,且**一次只发一个版**(同文速发多版=spam)。每发完守着回评论。
+
+### r/worldcup（主推，人群最对口）
+
+标题：
+```
+I built a free site showing every 2026 World Cup match in your local time (no login, no tracking)
+```
+正文：
+```
+Hey all — with the World Cup a few days away, I wanted to share something I built.
+
+I'm an indie dev and a football fan in Asia. Last World Cup I kept messing up kickoff times — waking up to find a match had already ended, or staying up for what turned out to be a 5am start. Official sites show CET, and most aggregators are US/Europe-centric.
+
+So I made kickoffwhen.com: every one of the 104 matches in your local time (auto-detects, or switch between Asian cities like JST/KST/CST/SGT/HKT). It also has a "night-owl score" for which late matches are worth losing sleep over, one-tap calendar add, and 4 languages.
+
+It's free, no login, no tracking — just a tool I wished existed.
+
+Would love any feedback, especially if you spot a wrong kickoff time (data accuracy is what I'm most paranoid about). Hope it's useful for some of you.
+
+https://kickoffwhen.com
+```
+
+### r/SideProject（最安全，创客友好，不卡新号）
+
+标题：
+```
+I built a free site showing every 2026 World Cup match in your local time
+```
+正文：
+```
+I built kickoffwhen.com — it shows all 104 matches of the 2026 World Cup in your local time, with timezone switching for Asian cities, a "night-owl score" for late-night matches, one-tap calendar add, and 4 languages.
+
+Background: I live in Asia and kept missing matches at the last World Cup because every site showed times in CET or a US-centric format. So I built the thing I wanted.
+
+Tech: Astro static build, no JS framework (~50KB JS total), deployed on Cloudflare Pages. Match data manually verified (one wrong kickoff time and I'd never hear the end of it).
+
+Free, no login, no tracking. Would really appreciate feedback on the UX or anything that feels off.
+
+https://kickoffwhen.com
+```
+
+### 其他可选版（按需）
+- **r/InternetIsBeautiful**：适合"免费好用的网页工具",但质量门槛高、自推限制严,可作为站稳脚后再发。
+- **PTT 世足板**(台湾):繁中受众,用 `kol-outreach.md` 的繁中语气改写,板规更宽松。
+
 ## 📷 Instagram
 
 ### Bio（已在 tonight-checklist.md 里定好，复用）
