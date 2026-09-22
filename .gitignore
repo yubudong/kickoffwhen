@@ -1,30 +1,10 @@
-# OS
-.DS_Store
-Thumbs.db
-
-# Editor
-.vscode/
-.idea/
-*.swp
-
-# Private planning docs and credentials (keep local only)
-kickoffwhen-launch-plan.md
-kickoffwhen-21day-plan.md
-day12-real-device-checklist.md
-tonight-checklist.md
-账号信息.txt
-*.local
-
-# Node / Astro (for later)
+.worktrees/
+.superpowers/
 node_modules/
-dist/
-.astro/
-.env
-.env.local
-.wrangler/
-
-# Python
-__pycache__/
-*.pyc
-venv/
-.venv/
+.next/
+.next-e2e/
+playwright-report/
+test-results/
+next-env.d.ts
+tsconfig.tsbuildinfo
+/var/media/

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Family Learning textbook seed",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["publisher", "series", "subject", "grade", "volume", "editionText", "units"],
+  "properties": {
+    "publisher": { "type": "string", "minLength": 1 },
+    "series": { "type": "string", "minLength": 1 },
+    "subject": { "enum": ["chinese", "english"] },
+    "grade": { "type": "integer", "minimum": 1 },
+    "volume": { "type": "string", "minLength": 1 },
+    "editionText": { "type": "string", "minLength": 1 },
+    "units": { "type": "array", "items": { "$ref": "#/$defs/unit" } }
+  },
+  "$defs": {
+    "unit": {
+      "type": "object", "additionalProperties": false,
+      "required": ["order", "title", "sections"],
+      "properties": { "order": { "type": "integer", "minimum": 1 }, "title": { "type": "string", "minLength": 1 }, "sections": { "type": "array", "items": { "$ref": "#/$defs/section" } } }
+    },
+    "section": {
+      "type": "object", "additionalProperties": false,
+      "required": ["key", "order", "title", "type", "cards"],
+      "properties": { "key": { "type": "string", "minLength": 1 }, "order": { "type": "integer", "minimum": 1 }, "title": { "type": "string", "minLength": 1 }, "type": { "enum": ["lesson", "language_garden", "other"] }, "cards": { "type": "array", "items": { "$ref": "#/$defs/card" } } }
+    },
+    "card": {
+      "type": "object", "additionalProperties": false,
+      "required": ["answerText", "broadcastText", "builtinKey"],
+      "properties": {
+        "answerText": { "type": "string", "minLength": 1 }, "broadcastText": { "type": "string", "minLength": 1 },
+        "pinyinText": { "type": "string", "minLength": 1 }, "hintText": { "type": "string", "minLength": 1 },
+        "curriculumSource": { "enum": ["required_vocabulary", "writing_practice"] },
+        "adaptation": { "enum": ["retained", "replaced", "coverage_added"] },
+        "originalAnswerText": { "type": "string", "minLength": 1 }, "builtinKey": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}
