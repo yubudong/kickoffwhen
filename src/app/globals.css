@@ -838,6 +838,10 @@ h1 {
 .todo-table form,.todo-table label { display:grid; gap:10px; }.todo-table form { min-width:190px; }
 .todo-table button,.todo-filters button { background:#2349dc;color:white;border:0;border-radius:12px;padding:11px 15px;cursor:pointer; }
 .todo-table button:disabled { opacity:.55; cursor:wait; }.todo-table .secondary-button { background:#e8edf6;color:#263248; }
+.todo-manual-actions { display:flex;flex-wrap:wrap;gap:8px;margin-top:10px; }
+.todo-edit,.todo-cancel-confirm { margin-top:12px;padding:12px;border:1px solid #d6dfe9;border-radius:10px;background:#f8fafc; }
+.todo-edit label { font-size:.9rem; }.todo-edit input,.todo-edit textarea { width:100%; }
+.todo-cancel-confirm p { margin:0; }
 .todo-name { display:flex;align-items:baseline;gap:10px;overflow-wrap:anywhere; }.todo-name input { accent-color:#27764a; }
 .todo-done .todo-name { color:#697586; }.todo-done { background:#f8fafc; }
 .todo-status { display:block;font-size:.9rem;margin:12px 0 6px; }.status-submitted { color:#91620e; }.status-approved,.todo-points { color:#177044; }.status-rejected,.todo-error { color:#b1272c; }

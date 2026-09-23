@@ -12,6 +12,7 @@ type Task = {
     title: string;
     requirements: string;
     date: string;
+    updatedAt: string;
     childName: string;
     kind: string;
     dictationTaskId: string | null;
@@ -45,6 +46,8 @@ export function TodoBoard({ role, childOptions = [] }: {
     const [data, setData] = useState<Data>({ tasks: [], points: 0 });
     const [error, setError] = useState('');
     const [pending, setPending] = useState(false);
+    const [editingTodo, setEditingTodo] = useState<{ id: string; expectedUpdatedAt: string } | null>(null);
+    const [confirmCancelId, setConfirmCancelId] = useState<string | null>(null);
     const [recordingTaskId, setRecordingTaskId] = useState<string | null>(null);
     const recordingActivity = useCallback((id: string, busy: boolean) => { setRecordingTaskId(current => busy ? id : current === id ? null : current); }, []);
     const [loaded, setLoaded] = useState(false);
@@ -98,6 +101,16 @@ export function TodoBoard({ role, childOptions = [] }: {
         return send(data);
     }
     async function review(event: FormEvent<HTMLFormElement>, t: Task) { event.preventDefault(); const v = new FormData(event.currentTarget); const decision = (event.nativeEvent as SubmitEvent).submitter?.getAttribute('value'); await send({ action: 'review', id: t.id, number: t.submissionNumber, decision, bonus: Number(v.get('bonus') ?? 0), note: String(v.get('note') ?? '') }); }
+    async function update(event: FormEvent<HTMLFormElement>, t: Task) {
+        event.preventDefault();
+        if (!editingTodo || editingTodo.id !== t.id) return;
+        const values = new FormData(event.currentTarget);
+        if (await send({ action: 'update', id: t.id, title: values.get('title'), requirements: values.get('requirements'), date: values.get('date'), expectedUpdatedAt: editingTodo.expectedUpdatedAt }))
+            setEditingTodo(null);
+    }
+    async function cancel(t: Task) {
+        if (await send({ action: 'cancel', id: t.id })) setConfirmCancelId(null);
+    }
     async function start(t: Task) { setPending(true); setError(''); try {
         const r = await fetch(`/api/child/tasks/${t.dictationTaskId}/start`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: '{}' });
         const v = await r.json();
@@ -111,7 +124,7 @@ export function TodoBoard({ role, childOptions = [] }: {
     } }
     const counts = summarizeTodos(data.tasks);
     const sorted = [...data.tasks].sort((a, b) => Number(['submitted', 'approved'].includes(a.status)) - Number(['submitted', 'approved'].includes(b.status)));
-    return <section className="todo-board"><div className="todo-filters"><label>日期<input type="date" disabled={recordingTaskId !== null} value={date} onChange={e => { requestGuard.current.select(`${endpoint}:${e.target.value}:${childId}`); setLoaded(false); setDate(e.target.value); }} required/></label>{role === 'parent' && <label>孩子<select value={childId} onChange={e => { requestGuard.current.select(`${endpoint}:${date}:${e.target.value}`); setLoaded(false); setChildId(e.target.value); }}>{childOptions.map(c => <option key={c.id} value={c.id}>{c.nickname}</option>)}</select></label>}<button type="button" onClick={() => void refresh().catch(() => setError('刷新失败，请稍后重试。'))}>刷新</button></div>
+    return <section className="todo-board"><div className="todo-filters"><label>日期<input type="date" disabled={recordingTaskId !== null} value={date} onChange={e => { requestGuard.current.select(`${endpoint}:${e.target.value}:${childId}`); setEditingTodo(null); setConfirmCancelId(null); setLoaded(false); setDate(e.target.value); }} required/></label>{role === 'parent' && <label>孩子<select value={childId} onChange={e => { requestGuard.current.select(`${endpoint}:${date}:${e.target.value}`); setEditingTodo(null); setConfirmCancelId(null); setLoaded(false); setChildId(e.target.value); }}>{childOptions.map(c => <option key={c.id} value={c.id}>{c.nickname}</option>)}</select></label>}<button type="button" onClick={() => void refresh().catch(() => setError('刷新失败，请稍后重试。'))}>刷新</button></div>
  <div className="todo-summary" aria-live="polite"><strong>共 {counts.total} 项 · 已完成 {counts.completed} 项 · 待完成 {counts.remaining} 项 · 待审核 {data.tasks.filter(task => task.status === 'submitted').length} 项</strong><span>累计积分：{data.points}</span></div>
  <p className="muted">提交后显示“待审核”，家长通过后显示“审核通过”并到账积分。</p>
  {role === 'parent' && <form className="auth-form todo-create" onSubmit={create}><h2>添加待办</h2><label>待办任务<input name="title" maxLength={120} placeholder="例如：阅读20分钟" required/></label><label>任务要求<textarea name="requirements" maxLength={2000} placeholder="说明完成标准（可选）" rows={2}/></label><p>基础积分 1 分；审核时可另加奖励积分。</p><button disabled={pending || !childId}>添加到清单</button></form>}
@@ -137,6 +150,19 @@ export function TodoBoard({ role, childOptions = [] }: {
  {role === 'child' && done && <span>{t.status === 'submitted' ? '等待家长审核' : '已通过审核，积分已到账'}</span>}
  {role === 'parent' && t.status === 'submitted' && <ReviewForm pending={pending} onSubmit={e => void review(e, t)}/>}
  {role === 'parent' && t.status !== 'submitted' && <span>{t.status === 'approved' ? '审核通过，已发积分' : t.status === 'cancelled' ? '已撤回' : t.status === 'rejected' ? '等待孩子重新提交' : dictationState ?? '等待孩子完成'}</span>}
+ {role === 'parent' && t.kind === 'manual' && <div className="todo-manual-actions">
+   {t.status === 'open' && <button type="button" disabled={pending} onClick={() => { setEditingTodo({ id: t.id, expectedUpdatedAt: t.updatedAt }); setConfirmCancelId(null); }}>编辑</button>}
+   {['open', 'submitted', 'rejected'].includes(t.status) && <button type="button" className="secondary-button" disabled={pending} onClick={() => { setConfirmCancelId(t.id); setEditingTodo(null); }}>撤回</button>}
+ </div>}
+ {role === 'parent' && t.kind === 'manual' && editingTodo?.id === t.id && t.status === 'open' &&
+   <form className="todo-edit" aria-label={`${t.title}的编辑表单`} onSubmit={e => void update(e, t)}>
+     <label>待办任务<input name="title" defaultValue={t.title} maxLength={120} required/></label>
+     <label>任务要求<textarea name="requirements" defaultValue={t.requirements} maxLength={2000} rows={2}/></label>
+     <label>日期<input name="date" type="date" defaultValue={t.date} required/></label>
+     <div className="todo-manual-actions"><button type="submit" disabled={pending}>保存修改</button><button type="button" className="secondary-button" disabled={pending} onClick={() => setEditingTodo(null)}>取消编辑</button></div>
+   </form>}
+ {role === 'parent' && t.kind === 'manual' && confirmCancelId === t.id && ['open', 'submitted', 'rejected'].includes(t.status) &&
+   <div className="todo-cancel-confirm" role="group" aria-label={`${t.title}撤回确认`}><p>撤回后孩子将看不到这项任务。</p><div className="todo-manual-actions"><button type="button" className="secondary-button" disabled={pending} onClick={() => setConfirmCancelId(null)}>保留任务</button><button type="button" disabled={pending} onClick={() => void cancel(t)}>确定撤回</button></div></div>}
  {role === 'parent' && t.kind === 'dictation' && t.dictationTaskId && t.status !== 'approved' && <TaskManagementControls taskId={t.dictationTaskId} onChanged={refresh}/>}
  </td></tr>;
             })}</tbody></table></div>}</section>;
