@@ -12,7 +12,7 @@ import {
   createJobService,
   type GenerateTtsJobPayload,
 } from "@/modules/jobs/service";
-import { learningCards, textbookUnits, textbookSections } from "@/modules/learning-content/schema";
+import { learningCards, textbookEditions, textbookUnits, textbookSections } from "@/modules/learning-content/schema";
 import { activeTtsMediaPredicate } from "@/modules/media/active-cache";
 import { privateMedia } from "@/modules/media/schema";
 import { childCardStates } from "@/modules/review/db-schema";
@@ -22,7 +22,9 @@ import { getActiveTaskCards } from "./active-task-cards";
 import { learningTaskItems, learningTasks } from "./task-schema";
 import {
   buildTaskInputSchema,
+  buildTaskBatchInputSchema,
   type BuildTaskInput,
+  type BuildTaskBatchInput,
   type LearningTask,
   type LearningTaskItem,
 } from "./task-types";
@@ -30,8 +32,20 @@ import {
 export type { BuildTaskInput, LearningTask } from "./task-types";
 
 type TaskDatabase = typeof db | DbTransaction;
+type TaskMetadata = {
+  origin: "curriculum" | "extra_practice" | "auto_review";
+  title: string;
+  sectionId?: string;
+  batchCommandId?: string;
+  batchFingerprint?: string;
+};
 
-function fingerprint(input: BuildTaskInput): string {
+function derivedCommandId(batchId: string, discriminator: string): string {
+  const hash = createHash("sha256").update(`${batchId}:${discriminator}`).digest("hex");
+  return `${hash.slice(0, 8)}-${hash.slice(8, 12)}-4${hash.slice(13, 16)}-a${hash.slice(17, 20)}-${hash.slice(20, 32)}`;
+}
+
+function fingerprint(input: unknown): string {
   return createHash("sha256").update(JSON.stringify(input)).digest("hex");
 }
 
@@ -152,7 +166,7 @@ export function createDictationTaskService(
       .orderBy(asc(learningTaskItems.position));
     const items: LearningTaskItem[] = rows.map(({ item, mediaId }) => ({
       cardId: item.cardId,
-      kind: z.enum(["due_review", "new"]).parse(item.kind),
+      kind: z.enum(["due_review", "new", "manual_review"]).parse(item.kind),
       position: item.position,
       ttsDedupeKey: item.ttsDedupeKey,
       audioStatus: mediaId ? "ready" : "queued",
@@ -178,12 +192,15 @@ export function createDictationTaskService(
   async function buildDailyTask(
     actor: GuardianActor,
     rawInput: BuildTaskInput,
+    metadata?: TaskMetadata,
   ): Promise<LearningTask> {
     const input = buildTaskInputSchema.parse(rawInput);
     if (new Set(input.newCardIds).size !== input.newCardIds.length) {
       throw new Error("TASK_CARD_DUPLICATE");
     }
-    const inputFingerprint = fingerprint(input);
+    const inputFingerprint = metadata
+      ? `${fingerprint({ input, metadata })}${metadata.batchFingerprint ? `:${metadata.batchFingerprint}` : ""}`
+      : fingerprint(input);
 
     return database.transaction(async (tx) => {
       const [child] = await tx
@@ -215,6 +232,12 @@ export function createDictationTaskService(
           speechRate: String(input.speechRate),
           allowManualReplay: input.allowManualReplay,
           maxReviewCards: input.maxReviewCards,
+          ...(metadata ? {
+            origin: metadata.origin,
+            title: metadata.title,
+            sectionId: metadata.sectionId ?? null,
+            batchCommandId: metadata.batchCommandId ?? null,
+          } : {}),
         })
         .onConflictDoNothing({ target: [learningTasks.familyId, learningTasks.commandId] })
         .returning();
@@ -282,7 +305,11 @@ export function createDictationTaskService(
         throw new Error("TASK_CARD_SUBJECT_MISMATCH");
       }
       const activeCardIdSet = new Set(activeCardIds);
+      if (metadata?.origin === "extra_practice" && requestedCards.some(({ card }) => activeCardIdSet.has(card.id))) {
+        throw new Error("TASK_CARD_ACTIVE");
+      }
       const selectedCards = requestedCards.filter(({ card }) => !activeCardIdSet.has(card.id));
+      let existingStateIds = new Set<string>();
       if (selectedCards.length > 0) {
         const existingStates = await tx
           .select({ cardId: childCardStates.cardId })
@@ -297,12 +324,16 @@ export function createDictationTaskService(
               ),
             ),
           );
-        if (existingStates.length > 0) throw new Error("TASK_NEW_CARD_ALREADY_STARTED");
+        existingStateIds = new Set(existingStates.map(({ cardId }) => cardId));
+        if (metadata?.origin !== "extra_practice" && existingStates.length > 0) throw new Error("TASK_NEW_CARD_ALREADY_STARTED");
       }
 
       const orderedNewCards = stableSourceOrder(selectedCards);
       let dueItems = dueRows.map(({ card }) => ({ card, cardId: card.id, kind: "due_review" as const }));
-      let newItems = orderedNewCards.map(({ card }) => ({ card, cardId: card.id, kind: "new" as const }));
+      let newItems = orderedNewCards.map(({ card }) => ({
+        card, cardId: card.id,
+        kind: metadata?.origin === "extra_practice" && existingStateIds.has(card.id) ? "manual_review" as const : "new" as const,
+      }));
       if (input.order === "random") {
         dueItems = randomShuffle(dueItems, random);
         newItems = randomShuffle(newItems, random);
@@ -345,8 +376,85 @@ export function createDictationTaskService(
         });
       }
       await tx.insert(learningTaskItems).values(values);
-      await addDictationTodo(tx, created, values.length);
+      await addDictationTodo(tx, created, values.length, metadata?.title);
       return loadTask(tx, actor, created.id);
+    });
+  }
+
+  async function buildTaskBatch(actor: GuardianActor, rawInput: BuildTaskBatchInput): Promise<LearningTask[]> {
+    const input = buildTaskBatchInputSchema.parse(rawInput);
+    if (new Set(input.sectionIds).size !== input.sectionIds.length || input.sectionIds.length > 30 || input.extraCardIds.length > 100) {
+      throw new Error("TASK_BATCH_INVALID");
+    }
+    if (input.sectionIds.length === 0 && input.extraCardIds.length === 0) throw new Error("TASK_EMPTY");
+    return database.transaction(async (tx) => {
+      const [child] = await tx.select({ id: children.id }).from(children).where(and(
+        eq(children.id, input.childId), eq(children.familyId, actor.familyId), eq(children.active, true),
+      )).limit(1).for("update");
+      if (!child) throw new Error("CHILD_NOT_FOUND");
+      const batchFingerprint = fingerprint(input);
+      const sections = input.sectionIds.length === 0 ? [] : await tx.select({
+        id: textbookSections.id, title: textbookSections.title,
+        unitId: textbookUnits.id, unitTitle: textbookUnits.title, unitOrder: textbookUnits.unitOrder,
+      }).from(textbookSections)
+        .innerJoin(textbookUnits, eq(textbookUnits.id, textbookSections.unitId))
+        .innerJoin(textbookEditions, eq(textbookEditions.id, textbookUnits.textbookEditionId))
+        .where(and(inArray(textbookSections.id, input.sectionIds), eq(textbookEditions.subject, input.subject)))
+        .orderBy(asc(textbookUnits.unitOrder), asc(textbookSections.sectionOrder));
+      if (sections.length !== input.sectionIds.length) throw new Error("TASK_SECTION_NOT_FOUND");
+      const existing = await tx.select().from(learningTasks).where(and(
+        eq(learningTasks.familyId, actor.familyId),
+        eq(learningTasks.childId, input.childId),
+        eq(learningTasks.batchCommandId, input.commandId),
+      ));
+      if (existing.length > 0) {
+        const sectionSet = new Set(sections.map((section) => section.id));
+        if (existing.some((task) => !task.inputFingerprint.endsWith(`:${batchFingerprint}`) ||
+          (task.sectionId ? !sectionSet.has(task.sectionId) : task.origin !== "extra_practice")) ||
+          (input.extraCardIds.length > 0 && !existing.some((task) => task.origin === "extra_practice"))) {
+          throw new Error("TASK_IDEMPOTENCY_CONFLICT");
+        }
+        return Promise.all(existing.map((task) => loadTask(tx, actor, task.id)));
+      }
+      const extraCards = input.extraCardIds.length === 0 ? [] : await tx.select({ id: learningCards.id })
+        .from(learningCards).where(and(inArray(learningCards.id, input.extraCardIds),
+          eq(learningCards.subject, input.subject),
+          or(eq(learningCards.familyId, actor.familyId), isNull(learningCards.familyId))));
+      if (extraCards.length !== input.extraCardIds.length || new Set(input.extraCardIds).size !== input.extraCardIds.length) {
+        throw new Error("TASK_CARD_NOT_FOUND");
+      }
+      const actorCards = await tx.select({ card: learningCards }).from(learningCards).where(and(
+        eq(learningCards.subject, input.subject),
+        or(eq(learningCards.familyId, actor.familyId), isNull(learningCards.familyId)),
+        inArray(learningCards.sectionId, input.sectionIds),
+      ));
+      const active = new Set((await getActiveTaskCards(tx, actor.familyId, [input.childId])).map((row) => row.cardId));
+      const started = actorCards.length === 0 ? new Set<string>() : new Set((await tx.select({ cardId: childCardStates.cardId })
+        .from(childCardStates).where(and(eq(childCardStates.familyId, actor.familyId), eq(childCardStates.childId, input.childId),
+          inArray(childCardStates.cardId, actorCards.map(({ card }) => card.id))))).map((row) => row.cardId));
+      const result: LearningTask[] = [];
+      for (const section of sections) {
+        const ids = actorCards.filter(({ card }) => card.sectionId === section.id && !active.has(card.id) && !started.has(card.id)).map(({ card }) => card.id);
+        if (ids.length === 0) continue;
+        const title = `${input.subject === "chinese" ? "语文" : "英语"} · ${section.unitTitle} · ${section.title}`;
+        result.push(await createDictationTaskService(tx, now, random).buildDailyTask(actor, {
+          childId: input.childId, subject: input.subject, newCardIds: ids,
+          commandId: derivedCommandId(input.commandId, section.id), maxReviewCards: 0,
+          mode: input.mode, order: input.order, intervalSeconds: input.intervalSeconds,
+          repeatCount: input.repeatCount, speechRate: input.speechRate, allowManualReplay: input.allowManualReplay,
+        }, { origin: "curriculum", title, sectionId: section.id, batchCommandId: input.commandId, batchFingerprint }));
+      }
+      if (input.extraCardIds.length > 0) {
+        const title = `${input.subject === "chinese" ? "语文" : "英语"} · 单独加练`;
+        result.push(await createDictationTaskService(tx, now, random).buildDailyTask(actor, {
+          childId: input.childId, subject: input.subject, newCardIds: input.extraCardIds,
+          commandId: derivedCommandId(input.commandId, "extra"), maxReviewCards: 0,
+          mode: input.mode, order: input.order, intervalSeconds: input.intervalSeconds,
+          repeatCount: input.repeatCount, speechRate: input.speechRate, allowManualReplay: input.allowManualReplay,
+        }, { origin: "extra_practice", title, batchCommandId: input.commandId, batchFingerprint }));
+      }
+      if (result.length === 0) throw new Error("TASK_EMPTY");
+      return result;
     });
   }
 
@@ -358,7 +466,7 @@ export function createDictationTaskService(
     return createReviewService(database).getDueCards(actor, at, limit);
   }
 
-  return { buildDailyTask, getDueCards, getTask };
+  return { buildDailyTask, buildTaskBatch, getDueCards, getTask };
 }
 
 const taskService = createDictationTaskService();

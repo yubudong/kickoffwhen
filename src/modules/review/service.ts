@@ -58,6 +58,7 @@ function storedScheduledReview(row: typeof reviewEvents.$inferSelect) {
     eventType: z.enum([
       "new_first",
       "scheduled_first",
+      "manual_first",
       "same_session_relearning",
     ]).parse(row.eventType),
     parameters: { request_retention: 0.9 as const },
@@ -161,7 +162,7 @@ function buildReviewService(
       commandId: string;
       correct: boolean;
       reviewedAt: Date;
-      eventType: "new_first" | "scheduled_first";
+      eventType: "new_first" | "scheduled_first" | "manual_first";
     },
   ): Promise<ScheduledReview & { reviewEventId: string }> {
     const cardId = z.string().uuid().parse(input.cardId);
@@ -172,7 +173,7 @@ function buildReviewService(
       commandId,
       correct: z.boolean().parse(input.correct),
       reviewedAt: reviewedAt.toISOString(),
-      eventType: z.enum(["new_first", "scheduled_first"]).parse(input.eventType),
+      eventType: z.enum(["new_first", "scheduled_first", "manual_first"]).parse(input.eventType),
     });
     return inTransaction(async (tx) => {
       await lockReviewScope(tx, actor, cardId);
@@ -211,13 +212,13 @@ function buildReviewService(
       if (input.eventType === "new_first" && stored) {
         throw new Error("REVIEW_EVENT_TYPE_INVALID");
       }
-      if (input.eventType === "scheduled_first" && !stored) {
+      if ((input.eventType === "scheduled_first" || input.eventType === "manual_first") && !stored) {
         throw new Error("REVIEW_EVENT_TYPE_INVALID");
       }
       if (
         stored &&
         (reviewedAt.getTime() <= stored.updatedAt.getTime() ||
-          reviewedAt.getTime() < stored.dueAt.getTime())
+          (input.eventType !== "manual_first" && reviewedAt.getTime() < stored.dueAt.getTime()))
       ) {
         throw new Error("REVIEW_TIME_INVALID");
       }
@@ -321,7 +322,7 @@ function buildReviewService(
       if (
         !source ||
         !stored ||
-        !["new_first", "scheduled_first"].includes(source.eventType)
+        !["new_first", "scheduled_first", "manual_first"].includes(source.eventType)
       ) {
         throw new Error("RELEARNING_SOURCE_INVALID");
       }

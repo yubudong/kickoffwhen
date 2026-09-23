@@ -104,7 +104,7 @@ export const learningTaskItems = pgTable(
       "learning_task_items_card_family_check",
       sql`${table.cardFamilyId} is null or ${table.cardFamilyId} = ${table.familyId}`,
     ),
-    check("learning_task_items_kind_check", sql`${table.kind} in ('due_review', 'new')`),
+    check("learning_task_items_kind_check", sql`${table.kind} in ('due_review', 'new', 'manual_review')`),
     check("learning_task_items_position_check", sql`${table.position} >= 0`),
     unique("learning_task_items_task_position_unique").on(table.taskId, table.position),
     unique("learning_task_items_task_card_unique").on(table.taskId, table.cardId),

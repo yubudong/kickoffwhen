@@ -101,7 +101,7 @@ export const reviewEvents = pgTable(
     }).onDelete("restrict"),
     check(
       "review_events_type_check",
-      sql`${table.eventType} in ('new_first', 'scheduled_first', 'same_session_relearning')`,
+      sql`${table.eventType} in ('new_first', 'scheduled_first', 'manual_first', 'same_session_relearning')`,
     ),
     check(
       "review_events_rating_check",

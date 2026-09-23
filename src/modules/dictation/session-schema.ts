@@ -180,7 +180,7 @@ export const dictationSessionItems = pgTable(
         learningTaskItems.id,
       ],
     }).onDelete("restrict"),
-    check("dictation_session_items_kind_check", sql`${table.kind} in ('due_review', 'new')`),
+    check("dictation_session_items_kind_check", sql`${table.kind} in ('due_review', 'new', 'manual_review')`),
     check("dictation_session_items_position_check", sql`${table.position} >= 0`),
     check("dictation_session_items_replay_check", sql`${table.replayCount} >= 0`),
     check(

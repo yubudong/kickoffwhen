@@ -1,4 +1,4 @@
-import { and, eq, sql, asc } from 'drizzle-orm';
+import { and, eq, sql, asc, ne } from 'drizzle-orm';
 import { z } from 'zod';
 import { db, type DbTransaction } from '@/db/client';
 import type { Actor, GuardianActor, ChildActor } from '@/modules/auth/actor';
@@ -36,7 +36,7 @@ export function createTodoService(database: Database = db) {
         dateSchema.parse(date);
         if (childId)
             z.string().uuid().parse(childId);
-        const rows = await database.select({ task: todoTasks, childName: children.nickname, attachmentId: todoSubmissions.attachmentId, mimeType: todoSubmissions.mimeType, base: todoRewards.basePoints, bonus: todoRewards.bonusPoints }).from(todoTasks).innerJoin(children, eq(children.id, todoTasks.childId)).leftJoin(todoSubmissions, and(eq(todoSubmissions.todoId, todoTasks.id), eq(todoSubmissions.number, todoTasks.submissionNumber))).leftJoin(todoRewards, eq(todoRewards.todoId, todoTasks.id)).where(and(scope(actor), eq(todoTasks.date, date), childId ? eq(todoTasks.childId, childId) : undefined)).orderBy(asc(todoTasks.createdAt));
+        const rows = await database.select({ task: todoTasks, childName: children.nickname, attachmentId: todoSubmissions.attachmentId, mimeType: todoSubmissions.mimeType, base: todoRewards.basePoints, bonus: todoRewards.bonusPoints }).from(todoTasks).innerJoin(children, eq(children.id, todoTasks.childId)).leftJoin(todoSubmissions, and(eq(todoSubmissions.todoId, todoTasks.id), eq(todoSubmissions.number, todoTasks.submissionNumber))).leftJoin(todoRewards, eq(todoRewards.todoId, todoTasks.id)).where(and(scope(actor), eq(todoTasks.date, date), childId ? eq(todoTasks.childId, childId) : undefined, actor.role === 'child' ? ne(todoTasks.status, 'cancelled') : undefined)).orderBy(asc(todoTasks.createdAt));
         const [points] = await database.select({ total: sql<number> `coalesce(sum(${todoRewards.basePoints}+${todoRewards.bonusPoints}),0)::int` }).from(todoRewards).innerJoin(todoTasks, eq(todoTasks.id, todoRewards.todoId)).where(and(scope(actor), childId ? eq(todoTasks.childId, childId) : undefined));
         return { tasks: rows.map(r => ({ ...r.task, childName: r.childName, attachment: r.attachmentId ? { id: r.attachmentId, mimeType: r.mimeType! } : null, points: r.base === null ? null : r.base + (r.bonus ?? 0) })), points: points.total };
     }

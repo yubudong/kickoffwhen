@@ -529,7 +529,7 @@ export function createDictationSessionService(
             commandId: deriveReviewCommandId(command.commandId, item.taskItemId, "first_pass"),
             correct: mark.correct,
             reviewedAt: answeredAt,
-            eventType: item.kind === "new" ? "new_first" : "scheduled_first",
+            eventType: item.kind === "new" ? "new_first" : item.kind === "manual_review" ? "manual_first" : "scheduled_first",
           });
           reviewEventId = result.reviewEventId;
         } else if (mark.correct && !item.finalCorrect) {

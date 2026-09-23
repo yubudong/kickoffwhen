@@ -5,7 +5,7 @@ export const taskInputSchema = z.object({ childId: z.string().uuid(), title: z.s
 export function todayShanghai(at = new Date()) { return new Date(at.getTime() + 8 * 3600000).toISOString().slice(0, 10); }
 export function summarizeTodos(rows: Array<{
     status: string;
-}>) { const completed = rows.filter(r => ['submitted', 'approved'].includes(r.status)).length; return { total: rows.length, completed, remaining: rows.length - completed }; }
+}>) { const active = rows.filter(r => r.status !== 'cancelled'); const completed = active.filter(r => ['submitted', 'approved'].includes(r.status)).length; return { total: active.length, completed, remaining: active.length - completed }; }
 export const MAX_ATTACHMENT_BYTES = 8 * 1024 * 1024;
 export function attachmentType(bytes: Uint8Array, mime: string): string {
     mime = mime.split(';')[0].trim().toLowerCase();

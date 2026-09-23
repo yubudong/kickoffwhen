@@ -1,5 +1,6 @@
 'use client';
 import Image from 'next/image';
+import { TaskManagementControls } from '@/components/dictation/task-management-controls';
 import { TodoSubmission } from './todo-submission';
 import { createTodoRequestGuard } from '@/modules/todos/request-guard';
 import { useRouter } from 'next/navigation';
@@ -26,7 +27,7 @@ type Data = {
     tasks: Task[];
     points: number;
 };
-const labels: Record<string, string> = { open: '待完成', submitted: '待审核', approved: '审核通过', rejected: '审核未通过，请重新完成' };
+const labels: Record<string, string> = { open: '待完成', submitted: '待审核', approved: '审核通过', rejected: '审核未通过，请重新完成', cancelled: '已撤回' };
 export function TodoBoard({ role, childOptions = [] }: {
     role: 'parent' | 'child';
     childOptions?: Array<{
@@ -108,7 +109,7 @@ export function TodoBoard({ role, childOptions = [] }: {
     const counts = summarizeTodos(data.tasks);
     const sorted = [...data.tasks].sort((a, b) => Number(['submitted', 'approved'].includes(a.status)) - Number(['submitted', 'approved'].includes(b.status)));
     return <section className="todo-board"><div className="todo-filters"><label>日期<input type="date" disabled={recordingTaskId !== null} value={date} onChange={e => { requestGuard.current.select(`${endpoint}:${e.target.value}:${childId}`); setLoaded(false); setDate(e.target.value); }} required/></label>{role === 'parent' && <label>孩子<select value={childId} onChange={e => { requestGuard.current.select(`${endpoint}:${date}:${e.target.value}`); setLoaded(false); setChildId(e.target.value); }}>{childOptions.map(c => <option key={c.id} value={c.id}>{c.nickname}</option>)}</select></label>}<button type="button" onClick={() => void refresh().catch(() => setError('刷新失败，请稍后重试。'))}>刷新</button></div>
- <div className="todo-summary" aria-live="polite"><strong>共 {counts.total} 项 · 已完成 {counts.completed} 项 · 待完成 {counts.remaining} 项</strong><span>累计积分：{data.points}</span></div>
+ <div className="todo-summary" aria-live="polite"><strong>共 {counts.total} 项 · 已完成 {counts.completed} 项 · 待完成 {counts.remaining} 项 · 待审核 {data.tasks.filter(task => task.status === 'submitted').length} 项</strong><span>累计积分：{data.points}</span></div>
  <p className="muted">提交后显示“待审核”，家长通过后显示“审核通过”并到账积分。</p>
  {role === 'parent' && <form className="auth-form todo-create" onSubmit={create}><h2>添加待办</h2><label>待办任务<input name="title" maxLength={120} placeholder="例如：阅读20分钟" required/></label><label>任务要求<textarea name="requirements" maxLength={2000} placeholder="说明完成标准（可选）" rows={2}/></label><p>基础积分 1 分；审核时可另加奖励积分。</p><button disabled={pending || !childId}>添加到清单</button></form>}
  {error && <p role="alert" className="todo-error">{error}</p>}
@@ -118,7 +119,8 @@ export function TodoBoard({ role, childOptions = [] }: {
  {role === 'child' && !done && (t.kind === 'dictation' && t.status === 'open' ? <button disabled={pending || recordingTaskId !== null} onClick={() => void start(t)}>开始听写</button> : <TodoSubmission taskId={t.id} disabled={pending || (recordingTaskId !== null && recordingTaskId !== t.id)} onActivityChange={recordingActivity} onSubmit={data => submit(data, t)}/>)}
  {role === 'child' && done && <span>{t.status === 'submitted' ? '等待家长审核' : '已通过审核，积分已到账'}</span>}
  {role === 'parent' && t.status === 'submitted' && <ReviewForm pending={pending} onSubmit={e => void review(e, t)}/>}
- {role === 'parent' && t.status !== 'submitted' && <span>{t.status === 'approved' ? '审核通过，已发积分' : t.status === 'rejected' ? '等待孩子重新提交' : '等待孩子完成'}</span>}
+ {role === 'parent' && t.status !== 'submitted' && <span>{t.status === 'approved' ? '审核通过，已发积分' : t.status === 'cancelled' ? '已撤回' : t.status === 'rejected' ? '等待孩子重新提交' : '等待孩子完成'}</span>}
+ {role === 'parent' && t.kind === 'dictation' && t.dictationTaskId && t.status !== 'approved' && <TaskManagementControls taskId={t.dictationTaskId} onChanged={refresh}/>}
  </td></tr>;
             })}</tbody></table></div>}</section>;
 }

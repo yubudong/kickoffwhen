@@ -22,7 +22,7 @@ export type FirstResultInput = {
   state: Card;
   correct: boolean;
   reviewedAt: Date;
-  eventType: "new_first" | "scheduled_first";
+  eventType: "new_first" | "scheduled_first" | "manual_first";
 };
 
 export type RelearningInput = {

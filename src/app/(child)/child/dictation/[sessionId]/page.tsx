@@ -27,7 +27,7 @@ export default async function ChildDictationPage({
           <section className="dictation-card">
             <h1>音频还没准备好</h1>
             <p>请让家长准备好音频后，再回来开始听写。</p>
-            <a className="dictation-primary" href="/child/tasks">返回今日任务</a>
+            <a className="dictation-primary" href="/child">返回今日任务</a>
           </section>
         </main>
       );

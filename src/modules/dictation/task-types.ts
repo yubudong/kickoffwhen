@@ -16,9 +16,20 @@ export const buildTaskInputSchema = z.object({
 
 export type BuildTaskInput = z.infer<typeof buildTaskInputSchema>;
 
+export const buildTaskBatchInputSchema = buildTaskInputSchema.omit({
+  newCardIds: true,
+  maxReviewCards: true,
+}).extend({
+  subject: z.enum(["chinese", "english"]),
+  sectionIds: z.array(z.string().uuid()).max(30),
+  extraCardIds: z.array(z.string().uuid()).max(100),
+}).strict();
+
+export type BuildTaskBatchInput = z.infer<typeof buildTaskBatchInputSchema>;
+
 export const learningTaskItemSchema = z.object({
   cardId: z.string().uuid(),
-  kind: z.enum(["due_review", "new"]),
+  kind: z.enum(["due_review", "new", "manual_review"]),
   position: z.number().int().min(0),
   ttsDedupeKey: z.string().min(1).max(500),
   audioStatus: z.enum(["queued", "ready"]),
@@ -43,6 +54,11 @@ export const parentTaskPostResponseSchema = z.object({
   task: learningTaskSchema,
 }).strict();
 
+export const parentTaskBatchPostResponseSchema = z.object({
+  tasks: z.array(learningTaskSchema).min(1),
+}).strict();
+
 export type LearningTaskItem = z.infer<typeof learningTaskItemSchema>;
 export type LearningTask = z.infer<typeof learningTaskSchema>;
 export type ParentTaskPostResponse = z.infer<typeof parentTaskPostResponseSchema>;
+export type ParentTaskBatchPostResponse = z.infer<typeof parentTaskBatchPostResponseSchema>;

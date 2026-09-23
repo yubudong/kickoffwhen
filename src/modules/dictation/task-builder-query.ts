@@ -3,7 +3,7 @@ import { and, asc, eq, inArray, isNull, or, sql } from "drizzle-orm";
 import { db, type DbTransaction } from "@/db/client";
 import type { GuardianActor } from "@/modules/auth/actor";
 import { children } from "@/modules/families/schema";
-import { learningCards, textbookUnits, textbookSections } from "@/modules/learning-content/schema";
+import { learningCards, textbookEditions, textbookUnits, textbookSections } from "@/modules/learning-content/schema";
 import { childCardStates } from "@/modules/review/db-schema";
 
 import { getActiveTaskCards } from "./active-task-cards";
@@ -29,8 +29,9 @@ export function createTaskBuilderQueryService(
       .where(and(eq(children.familyId, actor.familyId), eq(children.active, true)))
       .orderBy(asc(children.createdAt), asc(children.id));
     const cardRows = await database
-      .select({ card: learningCards, unitTitle: textbookUnits.title, unitOrder: textbookUnits.unitOrder, sectionTitle: textbookSections.title, sectionOrder: textbookSections.sectionOrder })
+      .select({ card: learningCards, grade: textbookEditions.grade, volume: textbookEditions.volume, unitTitle: textbookUnits.title, unitOrder: textbookUnits.unitOrder, sectionTitle: textbookSections.title, sectionOrder: textbookSections.sectionOrder })
       .from(learningCards)
+      .leftJoin(textbookEditions, eq(textbookEditions.id, learningCards.textbookEditionId))
       .leftJoin(textbookUnits, eq(textbookUnits.id, learningCards.unitId))
       .leftJoin(textbookSections, eq(textbookSections.id, learningCards.sectionId))
       .where(or(eq(learningCards.familyId, actor.familyId), isNull(learningCards.familyId)))
@@ -91,11 +92,14 @@ export function createTaskBuilderQueryService(
         dueCount: dueByChild.get(child.id) ?? 0,
         dueCounts: dueSubjectsByChild.get(child.id) ?? { chinese: 0, english: 0 },
       })),
-      cards: cardRows.map(({ card, unitTitle, unitOrder, sectionTitle, sectionOrder }) => ({
+      cards: cardRows.map(({ card, grade, volume, unitTitle, unitOrder, sectionTitle, sectionOrder }) => ({
         id: card.id,
         answerText: card.answerText,
         subject: card.subject === "chinese" ? "chinese" : "english",
         source: card.source as TaskCardOption["source"],
+        editionId: card.textbookEditionId,
+        grade,
+        volume,
         unitId: card.unitId,
         unitTitle,
         unitOrder,
@@ -103,6 +107,7 @@ export function createTaskBuilderQueryService(
         sectionTitle,
         sectionOrder,
         startedChildIds: [...(startedByCard.get(card.id) ?? [])],
+        activeChildIds: childRows.filter((child) => activeByChildAndCard.has(`${child.id}:${card.id}`)).map((child) => child.id),
       })),
     };
   }

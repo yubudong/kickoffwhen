@@ -3,6 +3,9 @@ export type TaskCardOption = {
   answerText: string;
   subject: "chinese" | "english";
   source: "manual" | "bulk" | "ocr" | "builtin";
+  editionId?: string | null;
+  grade?: number | null;
+  volume?: string | null;
   unitId: string | null;
   unitTitle: string | null;
   unitOrder?: number | null;
@@ -10,6 +13,7 @@ export type TaskCardOption = {
   sectionTitle?: string | null;
   sectionOrder?: number | null;
   startedChildIds: string[];
+  activeChildIds?: string[];
 };
 
 export type TaskCardFilter = {

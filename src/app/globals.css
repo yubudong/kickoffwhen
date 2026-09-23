@@ -808,6 +808,32 @@ h1 {
 .todo-done .todo-name { color:#697586; }.todo-done { background:#f8fafc; }
 .todo-status { display:block;font-size:.9rem;margin:12px 0 6px; }.status-submitted { color:#91620e; }.status-approved,.todo-points { color:#177044; }.status-rejected,.todo-error { color:#b1272c; }
 .todo-requirements,.todo-review-note { white-space:pre-wrap;overflow-wrap:anywhere; }.todo-review-note { background:#fff5de;padding:10px;border-radius:8px; }
+
+.curriculum-tree,.extra-practice-picker { border:1px solid #d9e4db;border-radius:14px;background:#fff;overflow:hidden; }
+.curriculum-tree details summary,.extra-practice-picker summary { cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;font-weight:700; }
+.curriculum-tree details summary::-webkit-details-marker,.extra-practice-picker summary::-webkit-details-marker { display:none; }
+.curriculum-tree details summary::before,.extra-practice-picker summary::before { content:'▸';color:#507d66;margin-right:4px; }
+.curriculum-tree details[open]>summary::before,.extra-practice-picker[open]>summary::before { content:'▾'; }
+.curriculum-tree summary span,.extra-practice-picker summary span { margin-left:auto;font-size:.85rem;color:#66756b;font-weight:500; }
+.curriculum-edition+ .curriculum-edition { border-top:1px solid #e6ebe6; }
+.curriculum-units { padding:0 12px 12px; }
+.curriculum-unit { display:grid;grid-template-columns:auto minmax(0,1fr);align-items:start;gap:8px;border:1px solid #e4ebe4;border-radius:10px;margin-top:8px;padding:0 8px; }
+.curriculum-unit>input { margin-top:17px;width:20px;height:20px; }
+.curriculum-unit details { min-width:0; }
+.curriculum-unit details summary { padding:12px 4px; }
+.curriculum-sections { border-top:1px solid #e8eee8;padding:6px 0 10px; }
+.curriculum-sections label,.extra-practice-results label { display:flex;align-items:center;gap:10px;padding:8px 4px;min-height:40px; }
+.curriculum-sections input,.extra-practice-results input { width:18px;height:18px;flex:none; }
+.curriculum-sections small,.extra-practice-results small { margin-left:auto;color:#69756e;font-size:.8rem; }
+.extra-practice-content { padding:0 16px 16px; }
+.extra-practice-content label { display:block; }
+.extra-practice-content input[type=search] { display:block;width:100%;margin-top:6px; }
+.extra-practice-results { max-height:300px;overflow:auto;margin-top:8px; }
+.extra-practice-results label { display:flex; }
+.extra-practice-chips { display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 14px; }
+.extra-practice-chips button { border:1px solid #b9d4c1;background:#edf7ef;border-radius:999px;padding:5px 10px; }
+.task-batch-preview { background:#edf7ef;border:1px solid #c7e1cd;border-radius:10px;padding:12px 14px;font-weight:600; }
+@media (max-width:600px) { .curriculum-unit { gap:4px; } .curriculum-tree details summary,.extra-practice-picker summary { padding:12px 10px;flex-wrap:wrap; } .curriculum-sections label { flex-wrap:wrap; } .curriculum-sections small { width:100%;margin-left:28px; } }
 .todo-evidence img,.todo-evidence video { display:block;max-width:100%;max-height:220px;border-radius:10px;margin-top:12px; }.todo-evidence audio { max-width:100%;width:100%; }
 .todo-table small,.muted { color:#627088; }.todo-table small { display:block; }
 @media(max-width:700px){.todo-table thead{display:none}.todo-table,.todo-table tbody,.todo-table tr,.todo-table td{display:block;width:100%!important}.todo-table tr{border:1px solid #dce3ee;border-radius:16px;margin:14px 0;padding:8px}.todo-table td{border:0;padding:12px}.todo-table td:nth-child(2)::before{content:'任务要求';font-size:.85rem;color:#627088}.todo-summary{align-items:flex-start;flex-direction:column}.todo-table form{min-width:0}}
@@ -820,3 +846,9 @@ h1 {
 .todo-recorder p { margin: 0; }
 .todo-recorder audio { width: 100%; min-width: 0; }
 .recording-clock { color: #b42318; font-weight: 700; font-variant-numeric: tabular-nums; }
+.task-management { margin-top: 0.8rem; padding: 0.7rem; border: 1px solid #d6dfe9; border-radius: 10px; background: #f8fafc; }
+.task-management summary { cursor: pointer; font-weight: 700; color: #24426a; }
+.task-management ul { list-style: none; padding: 0; margin: 0.7rem 0; max-height: 14rem; overflow: auto; }
+.task-management li { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; border-bottom: 1px solid #e3e8ef; padding: 0.4rem 0; }
+.task-management li button { padding: 0.3rem 0.6rem; background: #e8edf6; color: #263248; }
+.task-management [role="alert"] { color: #b1272c; }

@@ -23,6 +23,7 @@ export const fsrsCardSchema = z.object({
 export const reviewEventTypeSchema = z.enum([
   "new_first",
   "scheduled_first",
+  "manual_first",
   "same_session_relearning",
 ]);
 

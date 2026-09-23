@@ -8,8 +8,8 @@ export async function addDictationTodo(tx: DbTransaction, input: {
     childId: string;
     guardianId: string;
     createdAt: Date;
-}, count: number) {
-    await tx.insert(todoTasks).values({ familyId: input.familyId, childId: input.childId, guardianId: input.guardianId, commandId: input.id, title: `今日听写（${count}项）`, requirements: '完成全部听写及错题订正，完成后自动提交家长审核。', date: todayShanghai(input.createdAt), kind: 'dictation', dictationTaskId: input.id }).onConflictDoNothing();
+}, count: number, title?: string) {
+    await tx.insert(todoTasks).values({ familyId: input.familyId, childId: input.childId, guardianId: input.guardianId, commandId: input.id, title: title ? `${title}（${count}词）` : `今日听写（${count}项）`, requirements: '完成全部听写及错题订正，完成后自动提交家长审核。', date: todayShanghai(input.createdAt), kind: 'dictation', dictationTaskId: input.id }).onConflictDoNothing();
 }
 export async function submitDictationTodo(tx: DbTransaction, taskId: string, at: Date) {
     const [todo] = await tx.select().from(todoTasks).where(and(eq(todoTasks.dictationTaskId, taskId), eq(todoTasks.status, 'open'))).for('update');
