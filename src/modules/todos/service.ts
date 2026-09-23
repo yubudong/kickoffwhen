@@ -8,7 +8,7 @@ import { dictationSessions } from '@/modules/dictation/session-schema';
 import { activeTtsMediaPredicate } from '@/modules/media/active-cache';
 import { privateMedia } from '@/modules/media/schema';
 import { todoTasks, todoSubmissions, todoReviews, todoRewards } from './schema';
-import { bonusSchema, dateSchema, taskInputSchema } from './validation';
+import { bonusSchema, dateSchema, taskInputSchema, updateManualSchema } from './validation';
 type Database = typeof db | DbTransaction;
 export type Attachment = {
     id: string;
@@ -33,6 +33,44 @@ export function createTodoService(database: Database = db) {
             if (!existing || existing.childId !== v.childId || existing.title !== v.title || existing.requirements !== v.requirements || existing.date !== v.date)
                 throw new Error('TODO_STALE');
             return existing;
+        });
+    }
+    async function updateManual(actor: GuardianActor, id: string, input: unknown) {
+        if (actor.role !== 'guardian')
+            throw new Error('FORBIDDEN');
+        z.string().uuid().parse(id);
+        const v = updateManualSchema.parse(input);
+        return database.transaction(async (tx) => {
+            const [row] = await tx.select().from(todoTasks).where(and(eq(todoTasks.familyId, actor.familyId), eq(todoTasks.id, id))).for('update');
+            if (!row)
+                throw new Error('TODO_NOT_FOUND');
+            if (row.kind !== 'manual')
+                throw new Error('TODO_KIND');
+            if (row.status !== 'open' || row.updatedAt.toISOString() !== v.expectedUpdatedAt)
+                throw new Error('TODO_STALE');
+            const [updated] = await tx.update(todoTasks).set({ title: v.title, requirements: v.requirements, date: v.date,
+                updatedAt: new Date(Math.max(Date.now(), row.updatedAt.getTime() + 1)) }).where(eq(todoTasks.id, id)).returning();
+            return updated;
+        });
+    }
+    async function cancelManual(actor: GuardianActor, id: string) {
+        if (actor.role !== 'guardian')
+            throw new Error('FORBIDDEN');
+        z.string().uuid().parse(id);
+        return database.transaction(async (tx) => {
+            const [row] = await tx.select().from(todoTasks).where(and(eq(todoTasks.familyId, actor.familyId), eq(todoTasks.id, id))).for('update');
+            if (!row)
+                throw new Error('TODO_NOT_FOUND');
+            if (row.kind !== 'manual')
+                throw new Error('TODO_KIND');
+            if (row.status === 'cancelled')
+                return;
+            if (row.status === 'approved')
+                throw new Error('TODO_REWARDED');
+            const [reward] = await tx.select({ id: todoRewards.id }).from(todoRewards).where(eq(todoRewards.todoId, id));
+            if (reward)
+                throw new Error('TODO_REWARDED');
+            await tx.update(todoTasks).set({ status: 'cancelled', updatedAt: new Date() }).where(eq(todoTasks.id, id));
         });
     }
     async function list(actor: Actor, date: string, childId?: string) {
@@ -115,5 +153,5 @@ export function createTodoService(database: Database = db) {
             throw new Error('TODO_NOT_FOUND');
         return row;
     }
-    return { create, list, submit, review, attachment };
+    return { create, updateManual, cancelManual, list, submit, review, attachment };
 }

@@ -2,6 +2,7 @@ import { z } from 'zod';
 export const bonusSchema = z.number().int().min(0).max(10000);
 export const dateSchema = z.string().regex(/^\d{4}-\d{2}-\d{2}$/).refine(v => { const d = new Date(v + 'T00:00:00Z'); return !isNaN(d.getTime()) && d.toISOString().slice(0, 10) === v; });
 export const taskInputSchema = z.object({ childId: z.string().uuid(), title: z.string().trim().min(1).max(120), requirements: z.string().trim().max(2000).default(''), date: dateSchema, commandId: z.string().uuid() });
+export const updateManualSchema = taskInputSchema.pick({ title: true, requirements: true, date: true }).extend({ expectedUpdatedAt: z.iso.datetime() });
 export function todayShanghai(at = new Date()) { return new Date(at.getTime() + 8 * 3600000).toISOString().slice(0, 10); }
 export function summarizeTodos(rows: Array<{
     status: string;
