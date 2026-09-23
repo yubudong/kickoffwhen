@@ -8,7 +8,11 @@ import {
   learningCards,
   ocrDraftLines,
   ocrDrafts,
+  textbookEditions,
+  textbookSections,
+  textbookUnits,
 } from "./schema";
+import { buildContentLibrary, type CatalogEdition, type ContentLibrary } from "./library-tree";
 import type {
   CardFilter,
   CardSource,
@@ -127,6 +131,59 @@ export function createLearningContentService(
       .where(and(...conditions))
       .orderBy(learningCards.createdAt, learningCards.id);
     return rows.map(toLearningCard);
+  }
+
+  async function listContentLibrary(actor: GuardianActor): Promise<ContentLibrary> {
+    const rows = await database
+      .select({ edition: textbookEditions, unit: textbookUnits, section: textbookSections })
+      .from(textbookEditions)
+      .leftJoin(textbookUnits, eq(textbookUnits.textbookEditionId, textbookEditions.id))
+      .leftJoin(textbookSections, eq(textbookSections.unitId, textbookUnits.id))
+      .orderBy(
+        textbookEditions.subject,
+        textbookEditions.grade,
+        textbookEditions.volume,
+        textbookEditions.publisher,
+        textbookEditions.id,
+        textbookUnits.unitOrder,
+        textbookUnits.id,
+        textbookSections.sectionOrder,
+        textbookSections.id,
+      );
+    const catalog: CatalogEdition[] = [];
+    const editionsById = new Map<string, CatalogEdition>();
+    for (const row of rows) {
+      let edition = editionsById.get(row.edition.id);
+      if (!edition) {
+        edition = {
+          id: row.edition.id,
+          publisher: row.edition.publisher,
+          series: row.edition.series,
+          editionText: row.edition.editionText,
+          subject: subjectSchema.parse(row.edition.subject),
+          grade: row.edition.grade,
+          volume: row.edition.volume,
+          units: [],
+        };
+        editionsById.set(edition.id, edition);
+        catalog.push(edition);
+      }
+      const rowUnit = row.unit;
+      if (!rowUnit) continue;
+      let unit = edition.units.find((item) => item.id === rowUnit.id);
+      if (!unit) {
+        unit = { id: rowUnit.id, title: rowUnit.title, order: rowUnit.unitOrder, sections: [] };
+        edition.units.push(unit);
+      }
+      if (row.section) {
+        unit.sections.push({
+          id: row.section.id,
+          title: row.section.title,
+          order: row.section.sectionOrder,
+        });
+      }
+    }
+    return buildContentLibrary(catalog, await listCards(actor, {}));
   }
 
   async function confirmOcrDraft(
@@ -273,7 +330,7 @@ export function createLearningContentService(
     });
   }
 
-  return { createBulkCards, createCard, confirmOcrDraft, listCards };
+  return { createBulkCards, createCard, confirmOcrDraft, listCards, listContentLibrary };
 }
 
 const learningContentService = createLearningContentService();
@@ -282,3 +339,4 @@ export const createCard = learningContentService.createCard;
 export const createBulkCards = learningContentService.createBulkCards;
 export const confirmOcrDraft = learningContentService.confirmOcrDraft;
 export const listCards = learningContentService.listCards;
+export const listContentLibrary = learningContentService.listContentLibrary;

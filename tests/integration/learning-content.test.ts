@@ -14,6 +14,48 @@ import {
 } from "@/modules/learning-content/schema";
 import { families, guardians } from "@/modules/families/schema";
 
+test("内容库列出教材内置卡和本家庭卡片，隔离其他家庭", async () => {
+  await withDatabaseRollback(async (tx) => {
+    const suffix = crypto.randomUUID();
+    const [familyA, familyB] = await tx.insert(families).values([
+      { name: `内容库 A-${suffix}` }, { name: `内容库 B-${suffix}` },
+    ]).returning();
+    await tx.insert(authUsers).values([
+      { id: `library-a-${suffix}`, name: "家长 A", email: `library-a-${suffix}@example.test` },
+      { id: `library-b-${suffix}`, name: "家长 B", email: `library-b-${suffix}@example.test` },
+    ]);
+    const [guardianA] = await tx.insert(guardians).values({
+      familyId: familyA.id, authUserId: `library-a-${suffix}`,
+    }).returning();
+    const [edition] = await tx.insert(textbookEditions).values({
+      publisher: "内容库测试", series: suffix, subject: "chinese", grade: 5,
+      volume: "上册", editionText: "2024版",
+    }).returning();
+    const [unit] = await tx.insert(textbookUnits).values({
+      textbookEditionId: edition.id, unitOrder: 1, title: "第一单元",
+    }).returning();
+    const [section] = await tx.insert(textbookSections).values({
+      unitId: unit.id, sectionKey: "lesson-1", sectionOrder: 1,
+      title: "第一课", sectionType: "lesson",
+    }).returning();
+    await tx.insert(learningCards).values([
+      { familyId: null, subject: "chinese", answerText: "内置词", broadcastText: "内置词", source: "builtin", builtinKey: `library-${suffix}`, textbookEditionId: edition.id, unitId: unit.id, sectionId: section.id, sourceOrder: 1 },
+      { familyId: familyA.id, subject: "chinese", answerText: "家庭 A 词", broadcastText: "家庭 A 词", source: "manual", textbookEditionId: edition.id, unitId: unit.id },
+      { familyId: familyB.id, subject: "chinese", answerText: "家庭 B 词", broadcastText: "家庭 B 词", source: "manual", textbookEditionId: edition.id, unitId: unit.id, sectionId: section.id },
+    ]);
+
+    const tree = await createLearningContentService(tx).listContentLibrary({
+      role: "guardian", familyId: familyA.id, guardianId: guardianA.id,
+    });
+    const selected = tree.editions.find((item) => item.id === edition.id)!;
+    expect(selected.count).toBe(2);
+    expect(selected.units[0]!.count).toBe(2);
+    expect(selected.units[0]!.sections[0]!.cards.map((item) => item.answerText)).toEqual(["内置词"]);
+    expect(selected.units[0]!.unplaced.map((item) => item.answerText)).toEqual(["家庭 A 词"]);
+    expect(JSON.stringify(tree)).not.toContain("家庭 B 词");
+  });
+});
+
 test("教材卡片保存小节、拼音、课程来源和原始顺序", async () => {
   await withDatabaseRollback(async (tx) => {
     const [edition] = await tx.insert(textbookEditions).values({ publisher: "p", series: "s", subject: "chinese", grade: 5, volume: "v", editionText: crypto.randomUUID() }).returning();
