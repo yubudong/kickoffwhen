@@ -601,6 +601,8 @@ test("连续听写、刷新、切换孩子、批改恢复和错题循环", async
   await childPage.goto("/child");
   await expect(childPage.getByText("等待家长审核")).toBeVisible();
   await page.goto("/parent/todos");
+  await page.locator(".todo-filters").getByLabel("日期").fill(completedTodo.date);
+  await page.locator(".todo-filters").getByLabel("孩子").selectOption({ label: "小雨" });
   await expect(page.getByRole("button", { name: /通过并发放/ })).toBeVisible();
   expect(await childPage.evaluate(() => Object.keys(localStorage).filter((key) => key.startsWith("dictation:")))).toEqual([]);
   const audioEvidence = await childPage.evaluate(() => ({
