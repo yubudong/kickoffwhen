@@ -1,6 +1,9 @@
+import { readFileSync } from "node:fs";
+
 import { expect, test } from "vitest";
 
 import { buildContentLibrary, type CatalogEdition } from "@/modules/learning-content/library-tree";
+import { validateSeedContent } from "@/modules/learning-content/seed-validator";
 import type { LearningCard } from "@/modules/learning-content/types";
 
 const edition: CatalogEdition = {
@@ -77,4 +80,67 @@ test("卡片科目与教材科目不一致时归入卡片自身科目的个人�
   expect(tree.editions[0]!.units[0]!.sections[0]!.cards).toEqual([]);
   expect(tree.personal.english.map((item) => item.answerText)).toEqual(["hello"]);
   expect(tree.total).toBe(1);
+});
+
+test("五年级上册 312 个内置词全部归入原教材单元和小节", () => {
+  const seed = validateSeedContent(JSON.parse(readFileSync("content/seed/chinese-grade5-volume1.json", "utf8")));
+  const catalog: CatalogEdition = {
+    id: "seed-edition",
+    publisher: seed.publisher,
+    series: seed.series,
+    editionText: seed.editionText,
+    subject: seed.subject,
+    grade: seed.grade,
+    volume: seed.volume,
+    units: seed.units.map((unit) => ({
+      id: `unit-${unit.order}`,
+      title: unit.title,
+      order: unit.order,
+      sections: unit.sections.map((section) => ({
+        id: `unit-${unit.order}-${section.key}`,
+        title: section.title,
+        order: section.order,
+      })),
+    })),
+  };
+  const cards: LearningCard[] = seed.units.flatMap((unit) => unit.sections.flatMap((section) =>
+    section.cards.map((item, index) => ({
+      id: item.builtinKey,
+      familyId: null,
+      subject: seed.subject,
+      answerText: item.answerText,
+      broadcastText: item.broadcastText,
+      hintText: item.hintText ?? null,
+      pinyinText: item.pinyinText ?? null,
+      curriculumSource: item.curriculumSource ?? null,
+      sourceOrder: index + 1,
+      textbookEditionId: catalog.id,
+      unitId: `unit-${unit.order}`,
+      sectionId: `unit-${unit.order}-${section.key}`,
+      source: "builtin" as const,
+    }))));
+
+  const tree = buildContentLibrary([catalog], cards);
+  const grouped = tree.editions[0]!;
+  const groupedKeys = grouped.units.flatMap((unit) => unit.sections.flatMap((section) => section.cards.map((item) => item.id)));
+
+  expect(cards).toHaveLength(312);
+  expect(grouped.units).toHaveLength(8);
+  expect(grouped.units.flatMap((unit) => unit.sections)).toHaveLength(22);
+  expect(grouped.count).toBe(312);
+  expect(tree.total).toBe(312);
+  expect(groupedKeys).toHaveLength(312);
+  expect(new Set(groupedKeys).size).toBe(312);
+  expect(groupedKeys).toEqual(cards.map((item) => item.id));
+  expect(grouped.unplaced).toEqual([]);
+  expect(grouped.units.every((unit) => unit.unplaced.length === 0)).toBe(true);
+  expect(tree.personal).toEqual({ chinese: [], english: [] });
+  for (const [unitIndex, unit] of grouped.units.entries()) {
+    const sourceUnit = seed.units[unitIndex]!;
+    expect(unit.count).toBe(sourceUnit.sections.reduce((sum, section) => sum + section.cards.length, 0));
+    for (const [sectionIndex, section] of unit.sections.entries()) {
+      const sourceSection = sourceUnit.sections[sectionIndex]!;
+      expect(section.cards.map((item) => item.id)).toEqual(sourceSection.cards.map((item) => item.builtinKey));
+    }
+  }
 });

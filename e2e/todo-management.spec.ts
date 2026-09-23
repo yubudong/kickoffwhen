@@ -28,7 +28,9 @@ async function createFamily(page: Page) {
   await page.getByRole("button", { name: "创建孩子并完成" }).click();
   await expect(page).toHaveURL(/\/parent\/children$/);
   await page.goto("/parent/todos");
+  await expect(page.getByText("这一天还没有待办任务。")).toBeVisible();
   await page.locator(".todo-filters").getByLabel("日期").fill("2026-09-23");
+  await expect(page.locator(".todo-filters").getByLabel("日期")).toHaveValue("2026-09-23");
   await expect(page.getByText("这一天还没有待办任务。")).toBeVisible();
 }
 
@@ -58,7 +60,9 @@ async function createChildPage(parentPage: Page, context: BrowserContext) {
   await page.getByRole("button", { name: "连接设备" }).click();
   // A device paired to one child opens that child's page automatically.
   await expect(page).toHaveURL(/\/child$/);
+  await expect(page.getByText("这一天还没有待办任务。")).toBeVisible();
   await page.locator(".todo-filters").getByLabel("日期").fill("2026-09-23");
+  await expect(page.locator(".todo-filters").getByLabel("日期")).toHaveValue("2026-09-23");
   return page;
 }
 
@@ -110,7 +114,9 @@ test("编辑期间另一页面修改任务后，旧草稿不能取得新版本�
   const otherPage = await page.context().newPage();
   try {
     await otherPage.goto("/parent/todos");
+    await expect(otherPage.getByText("这一天还没有待办任务。")).toBeVisible();
     await otherPage.locator(".todo-filters").getByLabel("日期").fill("2026-09-23");
+    await expect(otherPage.locator(".todo-filters").getByLabel("日期")).toHaveValue("2026-09-23");
     const otherRow = otherPage.getByRole("row").filter({ hasText: "阅读20分钟" });
     await expect(otherRow).toBeVisible();
 

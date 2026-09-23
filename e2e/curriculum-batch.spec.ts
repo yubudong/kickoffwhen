@@ -63,7 +63,7 @@ test("家长展开教材、勾选整个单元后按课下发", async ({ page }) 
   await expect(page).toHaveURL(/\/parent\/children$/);
 
   await page.goto("/parent/tasks/content");
-  await expect(page.getByText("还没有听写内容")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "听写内容库" })).toBeVisible();
 
   const { db } = await import("@/db/client");
   const { learningCards, textbookEditions, textbookSections, textbookUnits } = await import("@/modules/learning-content/schema");
@@ -100,6 +100,21 @@ test("家长展开教材、勾选整个单元后按课下发", async ({ page }) 
   await expect(libraryEdition.getByText("第1课", { exact: true })).toBeVisible();
   await expect(libraryEdition.getByText("桂花", { exact: true })).toBeVisible();
 
+  await page.setViewportSize({ width: 390, height: 844 });
+  await expect(libraryEdition.locator(":scope > summary")).toBeVisible();
+  await expect(libraryUnit.locator(":scope > summary")).toBeVisible();
+  await expect(librarySection.locator(":scope > summary")).toBeVisible();
+  await expect(libraryEdition.getByText("桂花", { exact: true })).toBeVisible();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390);
+
+  const sectionSummary = librarySection.locator(":scope > summary");
+  await sectionSummary.focus();
+  await expect(sectionSummary).toBeFocused();
+  await sectionSummary.press("Enter");
+  await expect(libraryEdition.getByText("桂花", { exact: true })).toBeHidden();
+  await sectionSummary.press("Space");
+  await expect(libraryEdition.getByText("桂花", { exact: true })).toBeVisible();
+
   await page.goto("/parent/tasks/new");
   const editionDetails = page.locator("details.curriculum-edition").filter({ hasText: editionText });
   await expect(editionDetails).toHaveCount(1);
@@ -117,4 +132,30 @@ test("家长展开教材、勾选整个单元后按课下发", async ({ page }) 
   await expect(page).toHaveURL(/\/parent\/todos$/);
   await expect(page.getByText("语文 · 第一单元 · 第1课（1词）")).toBeVisible();
   await expect(page.getByText("语文 · 第一单元 · 第2课（1词）")).toBeVisible();
+
+  const { user } = await import("@/modules/auth/schema");
+  const { guardians } = await import("@/modules/families/schema");
+  const { eq } = await import("drizzle-orm");
+  const [account] = await db.select({ id: user.id }).from(user).where(eq(user.email, fixtureEmail)).limit(1);
+  const [guardian] = await db.select({ familyId: guardians.familyId }).from(guardians)
+    .where(eq(guardians.authUserId, account!.id)).limit(1);
+  await db.insert(learningCards).values([
+    { familyId: guardian!.familyId, subject: "chinese", answerText: "单元散词", broadcastText: "单元散词",
+      source: "manual", textbookEditionId: edition.id, unitId: unit.id },
+    { familyId: guardian!.familyId, subject: "chinese", answerText: "教材散词", broadcastText: "教材散词",
+      source: "manual", textbookEditionId: edition.id },
+    { familyId: guardian!.familyId, subject: "english", answerText: "hello", broadcastText: "hello", source: "manual" },
+  ]);
+
+  await page.goto("/parent/tasks/content");
+  await expect(libraryEdition.locator(":scope > summary")).toContainText("1 个单元 · 4 个词");
+  await libraryEdition.locator(":scope > summary").click();
+  await expect(libraryEdition.locator(":scope > .library-edition-content > .library-unplaced")).toContainText("教材散词");
+  await expect(libraryUnit.locator(":scope > summary")).toContainText("2 课 · 3 个词");
+  await libraryUnit.locator(":scope > summary").click();
+  await expect(libraryUnit.locator(":scope > .library-unit-content > .library-unplaced")).toContainText("单元散词");
+  const personalEnglish = page.locator("details.library-personal").filter({ hasText: "英语" });
+  await expect(personalEnglish.locator(":scope > summary")).toContainText("1 个词");
+  await personalEnglish.locator(":scope > summary").click();
+  await expect(personalEnglish.getByText("hello", { exact: true })).toBeVisible();
 });
