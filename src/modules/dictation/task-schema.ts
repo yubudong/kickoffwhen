@@ -15,7 +15,7 @@ import {
 } from "drizzle-orm/pg-core";
 
 import { children, families, guardians } from "@/modules/families/schema";
-import { learningCards } from "@/modules/learning-content/schema";
+import { learningCards, textbookSections } from "@/modules/learning-content/schema";
 
 export const learningTasks = pgTable(
   "learning_tasks",
@@ -35,6 +35,10 @@ export const learningTasks = pgTable(
     speechRate: numeric("speech_rate", { precision: 4, scale: 2 }).notNull(),
     allowManualReplay: boolean("allow_manual_replay").notNull(),
     maxReviewCards: integer("max_review_cards").notNull(),
+    origin: text("origin").notNull().default("manual"),
+    title: text("title").notNull().default("今日听写"),
+    sectionId: uuid("section_id").references(() => textbookSections.id, { onDelete: "set null" }),
+    batchCommandId: uuid("batch_command_id"),
     status: text("status").notNull().default("active"),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
     completedAt: timestamp("completed_at", { withTimezone: true }),
@@ -63,6 +67,8 @@ export const learningTasks = pgTable(
     check("learning_tasks_speech_rate_check", sql`${table.speechRate} between 0.5 and 2`),
     check("learning_tasks_review_cap_check", sql`${table.maxReviewCards} between 0 and 100`),
     check("learning_tasks_status_check", sql`${table.status} in ('active', 'completed', 'cancelled')`),
+    check("learning_tasks_origin_check", sql`${table.origin} in ('manual', 'curriculum', 'extra_practice', 'auto_review')`),
+    index("learning_tasks_batch_idx").on(table.familyId, table.batchCommandId),
     index("learning_tasks_child_status_idx").on(table.familyId, table.childId, table.status),
   ],
 );
