@@ -1,13 +1,14 @@
 # Hetzner 生产功能与五年级听写整合手册（2026-09-22）
 
-## 2026-09-23 分层布置候选（尚未发布）
+## 2026-09-23 分层布置发布记录
 
-- 本节对应隔离分支 `codex/dictation-task-tree`，不是下方已上线的 `20260923-dictation1`。截至本记录，分层布置、自动到期复习和软撤回仅在本地测试；未推送、合并、部署或操作生产数据。
-- 新迁移依次为 `0021_previous_bushwacker.sql`（任务来源、课次、批量命令及待办 `cancelled`）和 `0022_free_sebastian_shaw.sql`（单独加练已学词的 `manual_review` 与 `manual_first`）。生产现有 `0020` 不改；旧任务保留默认来源 `manual`。迁移仅增列、索引和调整检查约束，不删除任务、审核、积分或媒体。
-- 发布前在独立数据库验证 0000→0022 及旧家庭记录、审核、积分不变；备份生产数据库与媒体，核对当前发布版本及迁移记录，再停写迁移、同时切换 Web/Worker。Worker 每分钟检查一次，到北京时间 06:00 后按孩子和科目至多生成当天一项到期复习，最多 20 词。
-- 任务撤回将学习任务与待办软标记 `cancelled`，保留历史；已审核通过或有奖励行的任务拒绝撤回。上线后需在真实设备验收整单元按课布置、继续听写、撤回进行中任务、审核积分与真实 TTS。
-- 本地验证：单元测试 51 文件/193 项、独立测试库集成测试 25 文件/146 项、Chromium 9/9、WebKit 9/9；lint、typecheck、build 成功。构建仍有 8 条既有的 `src/modules/media/store.ts` 动态目录追踪警告。独立代码复审未发现 P1/P2 阻断项。真实生产旧记录升级前后比对、手机端手动操作和真实 TTS 仍属发布前验收。
-- 应用回退优先恢复上一版 Web/Worker，不回滚数据库迁移或覆盖切换后数据。旧版本不认识新增的 `cancelled` 状态及 `manual_review`，因此回退后应暂停新的听写布置/批改，待兼容版本修复；不可把应用回退视为完整功能回退。
+- Tom 确认后，已把候选快进推送到现有 [PR #1](https://github.com/yubudong/kickoffwhen/pull/1)；生产镜像源码提交为 `2b701a2`，镜像 `family-learning:20260923-tasktree1`，发布目录 `/root/family-learning/releases/20260923-tasktree1`。PR 尚未合并；既有 Cloudflare 与共享 Caddy 配置未改。
+- 迁移 `0021_previous_bushwacker.sql` 与 `0022_free_sebastian_shaw.sql` 已从生产原 `0020` 顺序执行。最新迁移 id 为 23，hash 为 `a46f392509b66c1470cdc5d8cc51941a019b46a28179b261dbc0bcc5a137a397`。旧任务保留默认来源 `manual`；新迁移不删除任务、审核、积分或媒体。
+- 发布前用独立数据库演练 0000→0022，原任务、待办、奖励不变。生产停写后备份数据库和媒体到 `/root/backups/kickoffwhen/20260923-tasktree1/`；目录为 0700、备份为 0600，归档可列出且 SHA-256 校验通过，尚未做完整恢复演练。
+- 生产迁移前后计数相同：监护人 1、孩子 3、学习任务 5、待办 6、奖励 2、私有词条 11。内置词条仍为 312，其中教材词语表必留词 247。Web 镜像健康、Worker 运行，公网 ready 与登录页均返回 200，受保护的家长/孩子待办接口在未登录时返回 401。
+- 本地验证：单元测试 51 文件/193 项、独立测试库集成测试 25 文件/146 项、Chromium 9/9、WebKit 9/9；lint、typecheck、build 成功。构建仍有 8 条既有的 `src/modules/media/store.ts` 动态目录追踪警告。独立代码复审未发现 P1/P2 阻断项。
+- Worker 每分钟检查一次，到北京时间 06:00 后按孩子和科目至多生成当天一项到期复习，最多 20 词。任务撤回将学习任务与待办软标记 `cancelled`；已审核通过或有奖励行的任务拒绝撤回。真实设备上的整单元按课布置、继续听写、撤回进行中任务、审核积分及真实 TTS 仍需 Tom 手动验收。
+- 管理命令：`sh /root/family-learning/releases/20260923-tasktree1/compose-current.sh ...`，使用受管旧 Compose/env 与新镜像。若要仅回退应用：`APP_IMAGE=family-learning:20260923-dictation1 sh /root/family-learning/releases/20260923-tasktree1/compose-current.sh up -d --no-deps web worker`。不回滚数据库或覆盖切换后的数据；旧版本不认识新增 `cancelled` / `manual_review`，回退后应暂停新的听写布置与批改。
 
 ## 当前状态与边界
 
