@@ -103,6 +103,48 @@ test("家长编辑未提交的普通待办后，任务出现在新日期", async
   await expect(movedRow).toContainText("读完一章");
 });
 
+test("编辑期间另一页面修改任务后，旧草稿不能取得新版本并覆盖修改", async ({ page }) => {
+  test.setTimeout(90_000);
+  await createFamily(page);
+  await addTodo(page, "阅读20分钟");
+  const otherPage = await page.context().newPage();
+  try {
+    await otherPage.goto("/parent/todos");
+    await otherPage.locator(".todo-filters").getByLabel("日期").fill("2026-09-23");
+    const otherRow = otherPage.getByRole("row").filter({ hasText: "阅读20分钟" });
+    await expect(otherRow).toBeVisible();
+
+    const row = page.getByRole("row").filter({ hasText: "阅读20分钟" });
+    await row.getByRole("button", { name: "编辑" }).click();
+    const draft = page.locator(".todo-edit");
+    await draft.getByLabel("待办任务").fill("我的旧草稿");
+
+    await otherRow.getByRole("button", { name: "编辑" }).click();
+    const otherForm = otherPage.locator(".todo-edit");
+    await otherForm.getByLabel("待办任务").fill("另一页面的新内容");
+    await otherForm.getByRole("button", { name: "保存修改" }).click();
+    await expect(otherPage.getByRole("row").filter({ hasText: "另一页面的新内容" })).toBeVisible();
+
+    await page.getByRole("button", { name: "刷新" }).click();
+    const refreshedRow = page.getByRole("row").filter({ hasText: "另一页面的新内容" });
+    await expect(refreshedRow).toBeVisible();
+    await expect(draft.getByLabel("待办任务")).toHaveValue("我的旧草稿");
+    await expect(refreshedRow.getByRole("button", { name: "编辑", exact: true })).toBeDisabled();
+
+    await draft.getByRole("button", { name: "保存修改" }).click();
+    await expect(page.locator(".todo-error")).toContainText("任务状态已更新");
+    await expect(refreshedRow).toBeVisible();
+    await otherPage.getByRole("button", { name: "刷新" }).click();
+    await expect(otherPage.getByRole("row").filter({ hasText: "另一页面的新内容" })).toBeVisible();
+    await expect(otherPage.getByRole("row").filter({ hasText: "我的旧草稿" })).toHaveCount(0);
+    await draft.getByRole("button", { name: "取消编辑" }).click();
+    await refreshedRow.getByRole("button", { name: "编辑", exact: true }).click();
+    await expect(page.locator(".todo-edit").getByLabel("待办任务")).toHaveValue("另一页面的新内容");
+  } finally {
+    await otherPage.close();
+  }
+});
+
 test("家长确认撤回后孩子看不到任务，已提交任务没有编辑入口", async ({ browser, page }) => {
   test.setTimeout(90_000);
   await createFamily(page);

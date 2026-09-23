@@ -151,7 +151,7 @@ export function TodoBoard({ role, childOptions = [] }: {
  {role === 'parent' && t.status === 'submitted' && <ReviewForm pending={pending} onSubmit={e => void review(e, t)}/>}
  {role === 'parent' && t.status !== 'submitted' && <span>{t.status === 'approved' ? '审核通过，已发积分' : t.status === 'cancelled' ? '已撤回' : t.status === 'rejected' ? '等待孩子重新提交' : dictationState ?? '等待孩子完成'}</span>}
  {role === 'parent' && t.kind === 'manual' && <div className="todo-manual-actions">
-   {t.status === 'open' && <button type="button" disabled={pending} onClick={() => { setEditingTodo({ id: t.id, expectedUpdatedAt: t.updatedAt }); setConfirmCancelId(null); }}>编辑</button>}
+   {t.status === 'open' && <button type="button" disabled={pending || editingTodo?.id === t.id} onClick={() => { setEditingTodo({ id: t.id, expectedUpdatedAt: t.updatedAt }); setConfirmCancelId(null); }}>编辑</button>}
    {['open', 'submitted', 'rejected'].includes(t.status) && <button type="button" className="secondary-button" disabled={pending} onClick={() => { setConfirmCancelId(t.id); setEditingTodo(null); }}>撤回</button>}
  </div>}
  {role === 'parent' && t.kind === 'manual' && editingTodo?.id === t.id && t.status === 'open' &&
