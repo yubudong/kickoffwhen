@@ -168,6 +168,7 @@ test.each(["TASK_NOT_ACTIVE", "DICTATION_SESSION_NOT_ACTIVE"])(
       phase: "completed",
       itemCount: 0,
       items: [],
+      todoSubmission: null,
     };
     const completedHandler = createChildSessionCommandHandler({
       resolveActor: async () => actor,

@@ -120,6 +120,7 @@ test("旧pending命令收到权威completed后释放重试锁并丢弃草稿", (
     speechRate: 1,
     allowManualReplay: true,
     items: [],
+    todoSubmission: null,
   } satisfies ChildSessionView;
   expect(reconcileAuthoritativeCommand(completed, {
     retryCommand: pending,

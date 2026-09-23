@@ -6,6 +6,7 @@ import type { ChildActor } from "@/modules/auth/actor";
 import { learningCards } from "@/modules/learning-content/schema";
 import { activeTtsMediaPredicate } from "@/modules/media/active-cache";
 import { privateMedia } from "@/modules/media/schema";
+import { todoTasks } from "@/modules/todos/schema";
 
 import { dictationSessionItems, dictationSessions } from "./session-schema";
 import { learningTaskItems, learningTasks } from "./task-schema";
@@ -151,7 +152,22 @@ export function createChildDictationViewService(
       allowManualReplay: row.task.allowManualReplay,
     };
     if (snapshot.phase === "completed") {
-      return childSessionViewSchema.parse({ ...base, phase: "completed", items: [] });
+      const [todo] = await database.select({
+        id: todoTasks.id,
+        date: todoTasks.date,
+        number: todoTasks.submissionNumber,
+        status: todoTasks.status,
+      }).from(todoTasks).where(and(
+        eq(todoTasks.dictationTaskId, row.task.id),
+        eq(todoTasks.familyId, actor.familyId),
+        eq(todoTasks.childId, actor.childId),
+      )).limit(1);
+      return childSessionViewSchema.parse({
+        ...base, phase: "completed", items: [],
+        todoSubmission: todo ? { ...todo, status: z.enum([
+          "open", "submitted", "approved", "rejected", "cancelled",
+        ]).parse(todo.status) } : null,
+      });
     }
 
     if (snapshot.phase === "listening") {

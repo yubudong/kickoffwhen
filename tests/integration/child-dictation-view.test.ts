@@ -11,6 +11,7 @@ import { learningTaskItems, learningTasks } from "@/modules/dictation/task-schem
 import { children, families, guardians } from "@/modules/families/schema";
 import { learningCards } from "@/modules/learning-content/schema";
 import { privateMedia } from "@/modules/media/schema";
+import { todoTasks } from "@/modules/todos/schema";
 
 import { withDatabaseRollback } from "../helpers/database";
 
@@ -207,10 +208,48 @@ describe("儿童听写视图", () => {
         marks: [{ itemId: data.item.id, correct: true }],
       });
       expect(completed.phase).toBe("completed");
-      expect(await viewService.getSession(data.actor, started.sessionId)).toMatchObject({
+      const completedView = await viewService.getSession(data.actor, started.sessionId);
+      expect(completedView).toMatchObject({
         phase: "completed",
         items: [],
       });
+      expect(completedView).toHaveProperty("todoSubmission", null);
+      expect(JSON.stringify(completedView)).not.toMatch(/answerText|broadcastText|private-answer|private-broadcast/);
+    });
+  });
+
+  test("完成会话只显示当前孩子关联待办的提交状态", async () => {
+    await withDatabaseRollback(async (tx) => {
+      const data = await fixture(tx);
+      const [todo] = await tx.insert(todoTasks).values({
+        familyId: data.family.id,
+        childId: data.child.id,
+        guardianId: data.task.guardianId,
+        commandId: crypto.randomUUID(),
+        title: "今日听写",
+        date: "2026-09-23",
+        kind: "dictation",
+        dictationTaskId: data.task.id,
+      }).returning();
+      const sessions = createDictationSessionService(tx);
+      const views = createChildDictationViewService(tx);
+      const started = await sessions.startSession(data.actor, data.task.id);
+      const grading = await sessions.recordPlayback(data.actor, {
+        commandId: crypto.randomUUID(), sessionId: started.sessionId,
+        expectedVersion: started.version, roundNumber: 1,
+        playedItemIds: [data.item.id], sequenceFinished: true,
+      });
+      await sessions.submitBatchMarks(data.actor, {
+        commandId: crypto.randomUUID(), sessionId: started.sessionId,
+        expectedVersion: grading.version, roundNumber: 1,
+        marks: [{ itemId: data.item.id, correct: true }],
+      });
+      const completedView = await views.getSession(data.actor, started.sessionId);
+      expect(completedView.phase).toBe("completed");
+      expect(completedView).toHaveProperty("todoSubmission", {
+        id: todo.id, date: "2026-09-23", number: 0, status: "open",
+      });
+      expect(JSON.stringify(completedView)).not.toMatch(/answerText|broadcastText|private-answer|private-broadcast/);
     });
   });
 

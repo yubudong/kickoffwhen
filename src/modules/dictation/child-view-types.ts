@@ -41,6 +41,13 @@ const gradingItemSchema = z.object({
   answerText: z.string().min(1),
 }).strict();
 
+const todoSubmissionSchema = z.object({
+  id: uuidSchema,
+  date: z.iso.date(),
+  number: z.number().int().nonnegative(),
+  status: z.enum(["open", "submitted", "approved", "rejected", "cancelled"]),
+}).strict();
+
 export const listeningSessionViewSchema = sessionBaseSchema.extend({
   phase: z.literal("listening"),
   items: z.array(listeningItemSchema).min(1),
@@ -54,6 +61,7 @@ export const gradingSessionViewSchema = sessionBaseSchema.extend({
 export const completedSessionViewSchema = sessionBaseSchema.extend({
   phase: z.literal("completed"),
   items: z.array(z.never()).length(0),
+  todoSubmission: todoSubmissionSchema.nullable(),
 }).strict();
 
 export const childSessionViewSchema = z.discriminatedUnion("phase", [
