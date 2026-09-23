@@ -1,3 +1,4 @@
-import { authHandler } from "@/modules/auth/server";
+import { authHandler, guardedAuthPost } from "@/modules/auth/server";
 
-export const { DELETE, GET, PATCH, POST, PUT } = authHandler;
+export const { DELETE, GET, PATCH, PUT } = authHandler;
+export const POST = guardedAuthPost;

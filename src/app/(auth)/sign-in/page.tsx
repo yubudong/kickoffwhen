@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { type FormEvent, useState } from "react";
 
 import { authClient } from "@/modules/auth/client";
+import { signInErrorMessage } from "@/modules/auth/feedback";
 
 export default function SignInPage() {
   const router = useRouter();
@@ -17,19 +18,24 @@ export default function SignInPage() {
     setError("");
 
     const form = new FormData(event.currentTarget);
-    const result = await authClient.signIn.email({
-      email: String(form.get("email")),
-      password: String(form.get("password")),
-    });
+    try {
+      const result = await authClient.signIn.email({
+        email: String(form.get("email")),
+        password: String(form.get("password")),
+      });
 
-    setPending(false);
-    if (result.error) {
-      setError("邮箱或密码不正确。");
-      return;
+      if (result.error) {
+        setError(signInErrorMessage(result.error));
+        return;
+      }
+
+      router.push("/parent");
+      router.refresh();
+    } catch {
+      setError("网络连接失败，请检查网络后重试。");
+    } finally {
+      setPending(false);
     }
-
-    router.push("/parent");
-    router.refresh();
   }
 
   return (

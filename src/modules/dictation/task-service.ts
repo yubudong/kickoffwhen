@@ -1,3 +1,4 @@
+import { addDictationTodo } from "@/modules/todos/dictation";
 import { createHash } from "node:crypto";
 
 import { and, asc, eq, inArray, isNull, lte, notInArray, or } from "drizzle-orm";
@@ -344,6 +345,7 @@ export function createDictationTaskService(
         });
       }
       await tx.insert(learningTaskItems).values(values);
+      await addDictationTodo(tx, created, values.length);
       return loadTask(tx, actor, created.id);
     });
   }

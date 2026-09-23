@@ -1,0 +1,42 @@
+import { expect,test } from 'vitest';
+import { withDatabaseRollback } from '../helpers/database';
+import { user } from '@/modules/auth/schema';
+import { families,guardians,children } from '@/modules/families/schema';
+import { createTodoService } from '@/modules/todos/service';
+test('待办退回后重提、审核发积分且重复审核不重复发放，孩子隔离',async()=>withDatabaseRollback(async tx=>{
+ const id=crypto.randomUUID();await tx.insert(user).values({id,name:'测试',email:id+'@example.test'});
+ const [f]=await tx.insert(families).values({name:'待办测试'}).returning();
+ const [g]=await tx.insert(guardians).values({familyId:f.id,authUserId:id}).returning();
+ const [c,sibling]=await tx.insert(children).values([{familyId:f.id,nickname:'甲',grade:5},{familyId:f.id,nickname:'乙',grade:5}]).returning();
+ const parent={role:'guardian' as const,familyId:f.id,guardianId:g.id};
+ const child={role:'child' as const,familyId:f.id,childId:c.id,deviceId:crypto.randomUUID()};
+ const service=createTodoService(tx);
+ const task=await service.create(parent,{childId:c.id,title:'阅读',requirements:'20分钟',date:'2026-09-22',commandId:crypto.randomUUID()});
+ await expect(service.submit({...child,childId:sibling.id},task.id,0)).rejects.toThrow('TODO_NOT_FOUND');
+ await service.submit(child,task.id,0);
+ await service.review(parent,task.id,{number:1,decision:'rejected',bonus:0,note:'请补充'});
+ expect((await service.list(child,'2026-09-22')).points).toBe(0);
+ const attachment={id:crypto.randomUUID(),mimeType:"image/png",byteSize:100};
+ await service.submit(child,task.id,1,attachment);
+ expect(await service.attachment(child,attachment.id)).toMatchObject(attachment);
+ await expect(service.attachment({...child,childId:sibling.id},attachment.id)).rejects.toThrow("TODO_NOT_FOUND");
+ await expect(service.attachment({...parent,familyId:crypto.randomUUID()},attachment.id)).rejects.toThrow("TODO_NOT_FOUND");
+ await expect(service.review(parent,task.id,{number:1,decision:'approved',bonus:3,note:''})).rejects.toThrow('TODO_STALE');
+ await service.review(parent,task.id,{number:2,decision:'approved',bonus:3,note:''});
+ await service.review(parent,task.id,{number:2,decision:'approved',bonus:3,note:''});
+ const result=await service.list(child,'2026-09-22');expect(result.points).toBe(4);expect(result.tasks[0].status).toBe('approved');
+ expect((await service.list({...child,childId:sibling.id},'2026-09-22')).tasks).toHaveLength(0);
+}));
+
+test('并发审核通过只发一次积分，跨家庭审核被拒绝',async()=>{
+ const {db}=await import('@/db/client');const service=createTodoService(db);const id=crypto.randomUUID();
+ await db.insert(user).values({id,name:'并发测试',email:id+'@example.test'});
+ const [f]=await db.insert(families).values({name:'并发隔离测试'}).returning();
+ const [g]=await db.insert(guardians).values({familyId:f.id,authUserId:id}).returning();
+ const [c]=await db.insert(children).values({familyId:f.id,nickname:'测试',grade:5}).returning();
+ const parent={role:'guardian' as const,familyId:f.id,guardianId:g.id};const child={role:'child' as const,familyId:f.id,childId:c.id,deviceId:crypto.randomUUID()};
+ const t=await service.create(parent,{childId:c.id,title:'整理',date:'2026-09-22',commandId:crypto.randomUUID()});await service.submit(child,t.id,0);
+ await expect(service.review({...parent,familyId:crypto.randomUUID()},t.id,{number:1,decision:'approved',bonus:7,note:''})).rejects.toThrow('TODO_NOT_FOUND');
+ await Promise.all([service.review(parent,t.id,{number:1,decision:'approved',bonus:7,note:''}),service.review(parent,t.id,{number:1,decision:'approved',bonus:7,note:''})]);
+ expect((await service.list(child,'2026-09-22')).points).toBe(8);
+});

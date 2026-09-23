@@ -1,0 +1,14 @@
+.git
+.next
+.next-e2e
+.pnpm-store
+node_modules
+playwright-report
+test-results
+tests
+docs
+.superpowers
+var
+.env*
+**/.env*
+**/.DS_Store

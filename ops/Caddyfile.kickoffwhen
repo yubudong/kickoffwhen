@@ -1,0 +1,22 @@
+www.kickoffwhen.com {
+	redir https://kickoffwhen.com{uri} permanent
+}
+
+kickoffwhen.com {
+	encode zstd gzip
+	request_body {
+		max_size 10MB
+	}
+
+	header {
+		X-Content-Type-Options nosniff
+		X-Frame-Options DENY
+		Referrer-Policy strict-origin-when-cross-origin
+		Permissions-Policy "camera=(), microphone=(self), geolocation=()"
+	}
+
+	reverse_proxy family-learning-web:3000 {
+		health_uri /api/health/live
+		lb_try_duration 5s
+	}
+}

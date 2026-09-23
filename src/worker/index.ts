@@ -2,6 +2,8 @@ import { pathToFileURL } from "node:url";
 
 import nextEnvironment from "@next/env";
 
+import { createConfiguredTtsProvider } from "./tts-runtime";
+
 const IDLE_POLL_MS = 1_000;
 
 function wait(milliseconds: number) {
@@ -18,10 +20,10 @@ export async function runWorker(signal?: AbortSignal): Promise<void> {
     import("@/modules/jobs/worker"),
     import("@/modules/media/store"),
   ]);
-  // Azure providers are deliberately not instantiated here. Until Tom enables
-  // real external calls, runOnce leaves those jobs queued without consuming an
-  // attempt. Tests and future authorized wiring inject providers explicitly.
-  const worker = createJobWorker({ mediaStore: privateMediaStore });
+  const worker = createJobWorker({
+    mediaStore: privateMediaStore,
+    ttsProvider: createConfiguredTtsProvider(),
+  });
   while (!signal?.aborted) {
     const processed = await worker.runOnce();
     if (!processed) await wait(IDLE_POLL_MS);

@@ -38,6 +38,8 @@ describe("readEnv", () => {
         APP_URL: "https://family.example.test",
         BETTER_AUTH_SECRET: "12345678901234567890123456789012",
         SMTP_URL: "smtp://localhost:2525",
+        SMTP_FROM: "Family Learning <learn@example.test>",
+        REGISTRATION_ALLOWED_EMAILS: "tom@example.test",
         AUTH_TEST_EMAIL_ENABLED: "true",
         AUTH_TEST_EMAIL_SECRET: "test-only-mailbox-secret-1234567890",
       }),

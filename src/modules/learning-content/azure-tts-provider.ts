@@ -28,7 +28,8 @@ export function buildSafeSsml(input: TtsInput): string {
     throw new Error("TTS_TEXT_INVALID");
   }
 
-  const rate = `${Math.round(input.rate * 100)}%`;
+  // Azure numeric rates are multipliers; percentages mean relative increases.
+  const rate = String(input.rate);
   return `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="${input.language}"><voice name="${input.voice}"><prosody rate="${rate}">${escapeXml(input.text)}</prosody></voice></speak>`;
 }
 

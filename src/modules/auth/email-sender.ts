@@ -19,19 +19,30 @@ export class FakeEmailSender implements EmailSender {
 }
 
 class SmtpEmailSender implements EmailSender {
-  constructor(private readonly transporter: Transporter) {}
+  constructor(
+    private readonly transporter: Pick<Transporter, "sendMail">,
+    private readonly from: string,
+  ) {}
 
   async send(input: EmailInput): Promise<void> {
-    await this.transporter.sendMail(input);
+    await this.transporter.sendMail({ ...input, from: this.from });
   }
 }
 
 type EmailEnvironment = {
   nodeEnv: "development" | "test" | "production";
   smtpUrl?: string;
+  smtpFrom?: string;
 };
 
-export function createEmailSender(config: EmailEnvironment): EmailSender {
+type EmailDependencies = {
+  createTransport: (url: string) => Pick<Transporter, "sendMail">;
+};
+
+export function createEmailSender(
+  config: EmailEnvironment,
+  dependencies: EmailDependencies = { createTransport: nodemailer.createTransport },
+): EmailSender {
   if (config.nodeEnv !== "production") {
     return new FakeEmailSender();
   }
@@ -40,5 +51,12 @@ export function createEmailSender(config: EmailEnvironment): EmailSender {
     throw new Error("SMTP_URL_REQUIRED");
   }
 
-  return new SmtpEmailSender(nodemailer.createTransport(config.smtpUrl));
+  if (!config.smtpFrom) {
+    throw new Error("SMTP_FROM_REQUIRED");
+  }
+
+  return new SmtpEmailSender(
+    dependencies.createTransport(config.smtpUrl),
+    config.smtpFrom,
+  );
 }

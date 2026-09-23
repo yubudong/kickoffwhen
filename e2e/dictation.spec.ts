@@ -4,7 +4,9 @@ import { expect, type BrowserContext, type Page, test } from "@playwright/test";
 
 import { hasExactFixtureJobKeys, mergeFixtureJobIds } from "./job-fixture";
 
-process.env.DATABASE_URL = "postgres://app:app@127.0.0.1:5433/family_learning_test";
+process.env.DATABASE_URL =
+  process.env.E2E_DATABASE_URL ??
+  "postgres://app:app@127.0.0.1:5433/family_learning_test";
 process.env.APP_URL = "http://127.0.0.1:3105";
 process.env.BETTER_AUTH_SECRET = "test-only-secret-123456789012345678901234567890";
 process.env.FAMILY_LEARNING_TEST_MODE = "e2e";
@@ -187,6 +189,7 @@ async function cleanupFixture(state: FixtureState) {
     familySchema,
     authSchema,
     jobSchema,
+    todoSchema,
     { createPrivateMediaStore },
     orm,
   ] = await Promise.all([
@@ -199,6 +202,7 @@ async function cleanupFixture(state: FixtureState) {
     import("@/modules/families/schema"),
     import("@/modules/auth/schema"),
     import("@/modules/jobs/schema"),
+    import("@/modules/todos/schema"),
     import("@/modules/media/store"),
     import("drizzle-orm"),
   ]);
@@ -245,6 +249,16 @@ async function cleanupFixture(state: FixtureState) {
     await tx.delete(sessionSchema.dictationAnswerEvents).where(orm.eq(sessionSchema.dictationAnswerEvents.familyId, familyId));
     await tx.delete(sessionSchema.dictationPlaybackEvents).where(orm.eq(sessionSchema.dictationPlaybackEvents.familyId, familyId));
     await tx.delete(sessionSchema.dictationCommands).where(orm.eq(sessionSchema.dictationCommands.familyId, familyId));
+    const todoIds = (await tx.select({ id: todoSchema.todoTasks.id })
+      .from(todoSchema.todoTasks)
+      .where(orm.eq(todoSchema.todoTasks.familyId, familyId)))
+      .map((todo) => todo.id);
+    if (todoIds.length > 0) {
+      await tx.delete(todoSchema.todoReviews).where(orm.inArray(todoSchema.todoReviews.todoId, todoIds));
+      await tx.delete(todoSchema.todoRewards).where(orm.inArray(todoSchema.todoRewards.todoId, todoIds));
+      await tx.delete(todoSchema.todoSubmissions).where(orm.inArray(todoSchema.todoSubmissions.todoId, todoIds));
+      await tx.delete(todoSchema.todoTasks).where(orm.inArray(todoSchema.todoTasks.id, todoIds));
+    }
     // Task deletion owns the tested aggregate and cascades through sessions,
     // immutable round membership and task items without bypassing DB guards.
     await tx.delete(taskSchema.learningTasks).where(orm.eq(taskSchema.learningTasks.familyId, familyId));
@@ -281,12 +295,10 @@ test.afterEach(async () => {
 
 test("连续听写、刷新、切换孩子、批改恢复和错题循环", async ({ browser, page }) => {
   test.setTimeout(120_000);
-  await page.setExtraHTTPHeaders({
-    "x-forwarded-for": `dictation-parent-${crypto.randomUUID()}`,
-  });
   const setup = await createFamilyAndTask(page);
+  const childIp = test.info().project.name === "webkit" ? "198.51.100.20" : "192.0.2.20";
   const childContext = await browser.newContext({
-    extraHTTPHeaders: { "x-forwarded-for": `dictation-${crypto.randomUUID()}` },
+    extraHTTPHeaders: { "x-forwarded-for": childIp },
   });
   await childContext.addInitScript(() => {
     Object.defineProperty(globalThis, "__e2eDocumentId", {
@@ -332,8 +344,8 @@ test("连续听写、刷新、切换孩子、批改恢复和错题循环", async
   let blockAudio = true;
   await childPage.route("**/api/private-media/**", (route) => blockAudio ? route.abort() : route.continue());
 
-  await expect(childPage.getByRole("heading", { name: "小雨的今日任务" })).toBeVisible();
-  await expect(childPage.getByText("听写任务 1", { exact: true })).toBeVisible();
+  await expect(childPage.getByRole("heading", { name: "小雨的今日待办" })).toBeVisible();
+  await expect(childPage.getByText("今日听写（3项）", { exact: true })).toBeVisible();
   // Leave a genuine previous child document in history, then prove that the
   // header switch and new-child selection both replace the current document.
   await childPage.goto("/child/tasks");
@@ -352,7 +364,7 @@ test("连续听写、刷新、切换孩子、批改恢复和错题循环", async
     childPage.waitForURL(/\/child$/, { waitUntil: "domcontentloaded" }),
     childPage.getByRole("button", { name: /小川/ }).click(),
   ]);
-  await expect(childPage.getByRole("heading", { name: "小川的今日任务" })).toBeVisible();
+  await expect(childPage.getByRole("heading", { name: "小川的今日待办" })).toBeVisible();
   await expectDocumentReplaced(childPage, firstSwitchDocumentId);
   await childPage.waitForLoadState("networkidle");
   const firstSecondChildDocumentId = await readDocumentId(childPage);
@@ -364,7 +376,7 @@ test("连续听写、刷新、切换孩子、批改恢复和错题循环", async
   await expectDocumentReplaced(childPage, firstSecondChildDocumentId);
   const firstBackDocumentId = await readDocumentId(childPage);
   await childPage.goForward();
-  await expect(childPage.getByRole("heading", { name: "小川的今日任务" })).toBeVisible();
+  await expect(childPage.getByRole("heading", { name: "小川的今日待办" })).toBeVisible();
   await expectDocumentReplaced(childPage, firstBackDocumentId);
   await childPage.waitForLoadState("networkidle");
   const secondHomeDocumentId = await readDocumentId(childPage);
@@ -374,7 +386,7 @@ test("连续听写、刷新、切换孩子、批改恢复和错题循环", async
   ]);
   await expectDocumentReplaced(childPage, secondHomeDocumentId);
   await childPage.getByRole("button", { name: /小雨/ }).click();
-  await expect(childPage.getByRole("heading", { name: "小雨的今日任务" })).toBeVisible();
+  await expect(childPage.getByRole("heading", { name: "小雨的今日待办" })).toBeVisible();
   await childPage.waitForLoadState("networkidle");
   await childPage.getByRole("button", { name: "开始听写" }).click();
   await expect(childPage).toHaveURL(/\/child\/dictation\//);
@@ -445,20 +457,20 @@ test("连续听写、刷新、切换孩子、批改恢复和错题循环", async
   await childPage.getByRole("button", { name: /小川/ }).click();
   await expect.poll(() => childPage.evaluate(() => (globalThis as typeof globalThis & { __e2eDocumentId: string }).__e2eDocumentId))
     .not.toBe(switchDocumentId);
-  await expect(childPage.getByRole("heading", { name: "小川的今日任务" })).toBeVisible();
+  await expect(childPage.getByRole("heading", { name: "小川的今日待办" })).toBeVisible();
   expect(nativeNavigationDialogs).toEqual([]);
   childPage.off("dialog", recordNativeDialog);
   await childPage.goBack();
-  await expect(childPage.getByRole("heading", { name: "小川的今日任务" })).toBeVisible();
-  await expect(childPage.getByRole("heading", { name: "小雨的今日任务" })).toHaveCount(0);
-  await expect(childPage.getByText("听写任务 1", { exact: true })).toHaveCount(0);
+  await expect(childPage.getByRole("heading", { name: "小川的今日待办" })).toBeVisible();
+  await expect(childPage.getByRole("heading", { name: "小雨的今日待办" })).toHaveCount(0);
+  await expect(childPage.getByText("今日听写（3项）", { exact: true })).toHaveCount(0);
   await expect(childPage.getByText("桂花", { exact: true })).toHaveCount(0);
   await childPage.goForward();
-  await expect(childPage.getByRole("heading", { name: "小川的今日任务" })).toBeVisible();
+  await expect(childPage.getByRole("heading", { name: "小川的今日待办" })).toBeVisible();
   await childPage.waitForLoadState("networkidle");
   await childPage.getByRole("button", { name: "切换孩子" }).click();
   await childPage.getByRole("button", { name: /小雨/ }).click();
-  await childPage.getByRole("link", { name: "继续听写" }).click();
+  await childPage.getByRole("button", { name: "开始听写" }).click();
   await expect(childPage.getByLabel("第 2 / 3 题")).toBeVisible();
   await childPage.getByRole("button", { name: "继续听写" }).click();
 
@@ -473,14 +485,14 @@ test("连续听写、刷新、切换孩子、批改恢复和错题循环", async
     () => (globalThis as typeof globalThis & { __e2eDocumentId: string }).__e2eDocumentId,
   )).not.toBe(gradingDocumentId);
   await childPage.getByRole("button", { name: /小川/ }).click();
-  await expect(childPage.getByRole("heading", { name: "小川的今日任务" })).toBeVisible();
+  await expect(childPage.getByRole("heading", { name: "小川的今日待办" })).toBeVisible();
   const gradingSwitchDocumentId = await childPage.evaluate(
     () => (globalThis as typeof globalThis & { __e2eDocumentId: string }).__e2eDocumentId,
   );
   await childPage.goBack();
-  await expect(childPage.getByRole("heading", { name: "小川的今日任务" })).toBeVisible();
+  await expect(childPage.getByRole("heading", { name: "小川的今日待办" })).toBeVisible();
   await expect(childPage.getByRole("heading", { name: "请认真核对每一题" })).toHaveCount(0);
-  await expect(childPage.getByRole("heading", { name: "小雨的今日任务" })).toHaveCount(0);
+  await expect(childPage.getByRole("heading", { name: "小雨的今日待办" })).toHaveCount(0);
   await expect(childPage.getByText("桂花", { exact: true })).toHaveCount(0);
   await expect(childPage.getByText("故乡", { exact: true })).toHaveCount(0);
   await expect(childPage.getByText("清晨", { exact: true })).toHaveCount(0);
@@ -488,11 +500,11 @@ test("连续听写、刷新、切换孩子、批改恢复和错题循环", async
     () => (globalThis as typeof globalThis & { __e2eDocumentId: string }).__e2eDocumentId,
   )).not.toBe(gradingSwitchDocumentId);
   await childPage.goForward();
-  await expect(childPage.getByRole("heading", { name: "小川的今日任务" })).toBeVisible();
+  await expect(childPage.getByRole("heading", { name: "小川的今日待办" })).toBeVisible();
   await childPage.waitForLoadState("networkidle");
   await childPage.getByRole("button", { name: "切换孩子" }).click();
   await childPage.getByRole("button", { name: /小雨/ }).click();
-  await childPage.getByRole("link", { name: "继续听写" }).click();
+  await childPage.getByRole("button", { name: "开始听写" }).click();
   await expect(childPage.getByRole("heading", { name: "请认真核对每一题" })).toBeVisible();
   await childPage.waitForLoadState("networkidle");
   const firstAnswer = childPage.locator("fieldset").nth(0);
@@ -546,7 +558,7 @@ test("连续听写、刷新、切换孩子、批改恢复和错题循环", async
     }>,
   }));
   expect(audioEvidence.count).toBeGreaterThanOrEqual(9);
-  expect([...new Set(audioEvidence.observations.map((entry) => entry.rate))]).toEqual([1.25]);
+  expect([...new Set(audioEvidence.observations.map((entry) => entry.rate))]).toEqual([1]);
   expect(
     audioEvidence.observations.some(
       (entry, index) => index > 0 && entry.at - audioEvidence.observations[index - 1]!.at >= 1_500,
@@ -579,16 +591,17 @@ test("连续听写、刷新、切换孩子、批改恢复和错题循环", async
 });
 
 test("初始化中途失败也能按email精确清理已创建用户", async ({ page }) => {
-  await page.setExtraHTTPHeaders({
-    "x-forwarded-for": `dictation-partial-${crypto.randomUUID()}`,
-  });
   const email = `dictation-partial-${Date.now()}-${test.info().project.name}-${crypto.randomUUID()}@example.test`;
   fixtureState = { email, mediaIds: [], jobIds: [], jobDedupeKeys: [] };
   await page.goto("/sign-up");
   await page.getByLabel("称呼").fill("部分初始化家长");
   await page.getByLabel("邮箱").fill(email);
   await page.getByLabel("密码", { exact: true }).fill(password);
-  await page.getByRole("button", { name: "注册" }).click();
+  const [signUpResponse] = await Promise.all([
+    page.waitForResponse((response) => response.url().endsWith("/api/auth/sign-up/email")),
+    page.getByRole("button", { name: "注册" }).click(),
+  ]);
+  expect(signUpResponse.status()).toBe(200);
   await expect(page).toHaveURL(/\/onboarding/);
   await cleanupFixture(fixtureState);
   fixtureState = null;

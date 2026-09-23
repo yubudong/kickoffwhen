@@ -13,6 +13,7 @@ import { buildTtsDedupeKey } from "@/modules/jobs/service";
 import { jobs } from "@/modules/jobs/schema";
 import { learningCards } from "@/modules/learning-content/schema";
 import { privateMedia } from "@/modules/media/schema";
+import { todoTasks } from "@/modules/todos/schema";
 
 type TaskTestDatabase = typeof db;
 const connectionString = process.env.DATABASE_URL!;
@@ -196,6 +197,7 @@ test("独立连接真实重叠时，同 command 幂等且不同 command 不会�
       await db
         .delete(learningTaskItems)
         .where(eq(learningTaskItems.familyId, cleanup.familyId));
+      await db.delete(todoTasks).where(eq(todoTasks.familyId, cleanup.familyId));
       await db.delete(learningTasks).where(eq(learningTasks.familyId, cleanup.familyId));
       await db.delete(families).where(eq(families.id, cleanup.familyId));
       await db.delete(authUsers).where(eq(authUsers.id, cleanup.authUserId));

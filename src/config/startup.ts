@@ -1,6 +1,7 @@
 import nextEnvironment from "@next/env";
 
 import { createEmailSender } from "@/modules/auth/email-sender";
+import { parseRegistrationAllowedEmails } from "@/modules/auth/registration-policy";
 
 import { readEnv } from "./env";
 
@@ -9,6 +10,9 @@ export function validateStartupEnvironment(
 ) {
   const environment = readEnv(source);
   createEmailSender(environment);
+  if (environment.nodeEnv === "production") {
+    parseRegistrationAllowedEmails(environment.registrationAllowedEmails ?? "");
+  }
   return environment;
 }
 

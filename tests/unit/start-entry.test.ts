@@ -17,6 +17,8 @@ function isolatedEnvironment() {
     "APP_URL",
     "BETTER_AUTH_SECRET",
     "SMTP_URL",
+    "SMTP_FROM",
+    "REGISTRATION_ALLOWED_EMAILS",
     "MEDIA_ROOT",
     "AUTH_TEST_EMAIL_ENABLED",
     "AUTH_TEST_EMAIL_SECRET",
@@ -94,6 +96,8 @@ test("预检从隔离目录加载 .env.production", () => {
         "APP_URL=https://family.example.test",
         "BETTER_AUTH_SECRET=env-file-only-secret-1234567890123456789012",
         "SMTP_URL=smtp://127.0.0.1:2525",
+        "SMTP_FROM=Family Learning <learn@example.test>",
+        "REGISTRATION_ALLOWED_EMAILS=tom@example.test",
       ].join("\n"),
     );
 

@@ -16,8 +16,13 @@ describe("Azure TTS adapter", () => {
         rate: 0.85,
       }),
     ).toBe(
-      `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zh-CN"><voice name="zh-CN-XiaoxiaoNeural"><prosody rate="85%">甲&lt;乙&gt;&amp;&quot;丙&quot;&apos;丁&apos;</prosody></voice></speak>`,
+      `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zh-CN"><voice name="zh-CN-XiaoxiaoNeural"><prosody rate="0.85">甲&lt;乙&gt;&amp;&quot;丙&quot;&apos;丁&apos;</prosody></voice></speak>`,
     );
+  });
+
+  test.each([0.5, 0.85, 1, 1.5, 2])("语速 %s 使用倍率而非增速百分比", (rate) => {
+    const ssml = buildSafeSsml({ text: "苹果", language: "zh-CN", voice: "zh-CN-XiaoxiaoNeural", rate });
+    expect(ssml).toContain(`<prosody rate="${rate}">`);
   });
 
   test("拒绝语言与声音不匹配", () => {

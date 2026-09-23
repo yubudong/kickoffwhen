@@ -24,6 +24,9 @@ export function preloadAudio(audio: HTMLAudioElement, signal: AbortSignal, timeo
 }
 
 export function playAudioToEnd(audio: HTMLAudioElement, signal: AbortSignal): Promise<void> {
+  // Azure has already synthesized the requested task speed into the media.
+  audio.defaultPlaybackRate = 1;
+  audio.playbackRate = 1;
   return new Promise((resolve, reject) => {
     const ended = () => { cleanup(); resolve(); };
     const failed = () => { cleanup(); reject(new Error("AUDIO_PLAY_FAILED")); };
@@ -101,8 +104,6 @@ export class AudioPlayback {
     this.activeIndex = index;
     this.callbacks.index(index);
     audio.currentTime = 0;
-    audio.defaultPlaybackRate = session.speechRate;
-    audio.playbackRate = session.speechRate;
     this.playingAudio = audio;
     try {
       await playAudioToEnd(audio, run.signal);

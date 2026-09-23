@@ -51,3 +51,15 @@ test("已终止的预载即使已有缓存也拒绝，不留下事件监听", as
   await expect(preloadAudio(audio as unknown as HTMLAudioElement, controller.signal)).rejects.toThrow("AUDIO_ABORTED");
   expect(audio.load).not.toHaveBeenCalled();
 });
+
+
+test("已按任务语速合成的音频播放时不再次变速", async () => {
+  const audio = Object.assign(new FakeAudio(), { playbackRate: 0.85, defaultPlaybackRate: 0.85 });
+  const controller = new AbortController();
+  const pending = playAudioToEnd(audio as unknown as HTMLAudioElement, controller.signal);
+  const rejected = expect(pending).rejects.toThrow("AUDIO_ABORTED");
+  controller.abort();
+  await rejected;
+  expect(audio.playbackRate).toBe(1);
+  expect(audio.defaultPlaybackRate).toBe(1);
+});

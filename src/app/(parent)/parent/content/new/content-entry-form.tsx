@@ -101,7 +101,8 @@ export function ContentEntryForm({
     if (mode === "builtin") return;
     setPending(true);
     setMessage("");
-    const form = new FormData(event.currentTarget);
+    const formElement = event.currentTarget;
+    const form = new FormData(formElement);
     const subject = String(form.get("subject"));
     if (mode === "ocr") {
       try {
@@ -147,7 +148,7 @@ export function ContentEntryForm({
       return;
     }
     const data = (await response.json()) as { cards: unknown[] };
-    event.currentTarget.reset();
+    formElement.reset();
     setMessage(`已加入 ${data.cards.length} 张学习卡片。`);
   }
 

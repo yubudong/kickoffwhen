@@ -1,3 +1,4 @@
+import { todoTasks } from '@/modules/todos/schema';
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
@@ -83,7 +84,7 @@ function taskInput(childId: string, newCardIds: string[], commandId = crypto.ran
   };
 }
 
-test("按科目统计到期数并且创建任务只包含同科目复习和新词", async () => {
+test("按科目创建的听写只包含同科目内容并同步创建待办", async () => {
   await withDatabaseRollback(async (tx) => {
     const { actor, child } = await makeFamily(tx, "subject");
     const now = new Date("2026-09-22T08:00:00Z");
@@ -99,6 +100,13 @@ test("按科目统计到期数并且创建任务只包含同科目复习和新�
     await expect(service.buildDailyTask(actor, { ...taskInput(child.id, [enNew.id]), subject: "chinese" })).rejects.toThrow("TASK_CARD_SUBJECT_MISMATCH");
     const task = await service.buildDailyTask(actor, { ...taskInput(child.id, [cnNew.id]), subject: "chinese" });
     expect(task.items.map(c => c.cardId)).toEqual([cnDue.id, cnNew.id]);
+    const [todo] = await tx.select().from(todoTasks).where(eq(todoTasks.dictationTaskId, task.id));
+    expect(todo).toMatchObject({
+      childId: child.id,
+      kind: "dictation",
+      status: "open",
+      title: "今日听写（2项）",
+    });
     const after = await createTaskBuilderQueryService(tx).getTaskBuilderData(actor, now);
     expect(after.children.find(c => c.id === child.id)).toMatchObject({ dueCounts: { chinese: 0, english: 1 } });
   });
@@ -169,6 +177,9 @@ test("到期复习优先且受上限约束，幂等重试不重复建任务", as
     const replay = await service.buildDailyTask(actor, input);
 
     expect(replay.id).toBe(first.id);
+    const linkedTodos = await tx.select().from(todoTasks).where(eq(todoTasks.dictationTaskId, first.id));
+    expect(linkedTodos).toHaveLength(1);
+    expect(linkedTodos[0]).toMatchObject({ status: "open", kind: "dictation", childId: child.id });
     expect(first.items.map((item) => item.kind)).toEqual([
       "due_review",
       "due_review",

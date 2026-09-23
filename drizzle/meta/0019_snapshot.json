@@ -1,5 +1,5 @@
 {
-  "id": "b35c3cc9-0721-45ed-be72-fbc01dee27fb",
+  "id": "42a64634-04f6-4c12-a192-b0ed64afe156",
   "prevId": "ca6dfcf6-6298-4a5a-a85f-3eaf488cf230",
   "version": "7",
   "dialect": "postgresql",
@@ -3474,24 +3474,6 @@
           "primaryKey": false,
           "notNull": false
         },
-        "pinyin_text": {
-          "name": "pinyin_text",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "curriculum_source": {
-          "name": "curriculum_source",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "source_order": {
-          "name": "source_order",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": false
-        },
         "textbook_edition_id": {
           "name": "textbook_edition_id",
           "type": "uuid",
@@ -3500,12 +3482,6 @@
         },
         "unit_id": {
           "name": "unit_id",
-          "type": "uuid",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "section_id": {
-          "name": "section_id",
           "type": "uuid",
           "primaryKey": false,
           "notNull": false
@@ -3597,21 +3573,6 @@
           "concurrently": false,
           "method": "btree",
           "with": {}
-        },
-        "learning_cards_section_id_idx": {
-          "name": "learning_cards_section_id_idx",
-          "columns": [
-            {
-              "expression": "section_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
         }
       },
       "foreignKeys": {
@@ -3653,19 +3614,6 @@
           ],
           "onDelete": "set null",
           "onUpdate": "no action"
-        },
-        "learning_cards_section_id_textbook_sections_id_fk": {
-          "name": "learning_cards_section_id_textbook_sections_id_fk",
-          "tableFrom": "learning_cards",
-          "tableTo": "textbook_sections",
-          "columnsFrom": [
-            "section_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "set null",
-          "onUpdate": "no action"
         }
       },
       "compositePrimaryKeys": {},
@@ -3688,10 +3636,6 @@
         "learning_cards_source_check": {
           "name": "learning_cards_source_check",
           "value": "\"learning_cards\".\"source\" in ('manual', 'bulk', 'ocr', 'builtin')"
-        },
-        "learning_cards_curriculum_source_check": {
-          "name": "learning_cards_curriculum_source_check",
-          "value": "\"learning_cards\".\"curriculum_source\" is null or \"learning_cards\".\"curriculum_source\" in ('required_vocabulary', 'writing_practice')"
         },
         "learning_cards_builtin_scope_check": {
           "name": "learning_cards_builtin_scope_check",
@@ -4054,99 +3998,6 @@
         "textbook_editions_subject_check": {
           "name": "textbook_editions_subject_check",
           "value": "\"textbook_editions\".\"subject\" in ('chinese', 'english')"
-        }
-      },
-      "isRLSEnabled": false
-    },
-    "public.textbook_sections": {
-      "name": "textbook_sections",
-      "schema": "",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "uuid",
-          "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
-        },
-        "unit_id": {
-          "name": "unit_id",
-          "type": "uuid",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "section_key": {
-          "name": "section_key",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "section_order": {
-          "name": "section_order",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "title": {
-          "name": "title",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "section_type": {
-          "name": "section_type",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "created_at": {
-          "name": "created_at",
-          "type": "timestamp with time zone",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {
-        "textbook_sections_unit_id_textbook_units_id_fk": {
-          "name": "textbook_sections_unit_id_textbook_units_id_fk",
-          "tableFrom": "textbook_sections",
-          "tableTo": "textbook_units",
-          "columnsFrom": [
-            "unit_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {
-        "textbook_sections_unit_key_unique": {
-          "name": "textbook_sections_unit_key_unique",
-          "nullsNotDistinct": false,
-          "columns": [
-            "unit_id",
-            "section_key"
-          ]
-        },
-        "textbook_sections_unit_order_unique": {
-          "name": "textbook_sections_unit_order_unique",
-          "nullsNotDistinct": false,
-          "columns": [
-            "unit_id",
-            "section_order"
-          ]
-        }
-      },
-      "policies": {},
-      "checkConstraints": {
-        "textbook_sections_type_check": {
-          "name": "textbook_sections_type_check",
-          "value": "\"textbook_sections\".\"section_type\" in ('lesson', 'language_garden', 'other')"
         }
       },
       "isRLSEnabled": false
@@ -4875,6 +4726,466 @@
         "review_events_input_fingerprint_check": {
           "name": "review_events_input_fingerprint_check",
           "value": "\"review_events\".\"input_fingerprint\" ~ '^[0-9a-f]{64}$'"
+        }
+      },
+      "isRLSEnabled": false
+    },
+    "public.todo_reviews": {
+      "name": "todo_reviews",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "todo_id": {
+          "name": "todo_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "submission_number": {
+          "name": "submission_number",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "guardian_id": {
+          "name": "guardian_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "decision": {
+          "name": "decision",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "note": {
+          "name": "note",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "todo_reviews_todo_id_todo_tasks_id_fk": {
+          "name": "todo_reviews_todo_id_todo_tasks_id_fk",
+          "tableFrom": "todo_reviews",
+          "tableTo": "todo_tasks",
+          "columnsFrom": [
+            "todo_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "todo_reviews_guardian_id_guardians_id_fk": {
+          "name": "todo_reviews_guardian_id_guardians_id_fk",
+          "tableFrom": "todo_reviews",
+          "tableTo": "guardians",
+          "columnsFrom": [
+            "guardian_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "todo_reviews_todo_id_submission_number_unique": {
+          "name": "todo_reviews_todo_id_submission_number_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "todo_id",
+            "submission_number"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {
+        "todo_review_decision": {
+          "name": "todo_review_decision",
+          "value": "\"todo_reviews\".\"decision\" in ('approved','rejected')"
+        }
+      },
+      "isRLSEnabled": false
+    },
+    "public.todo_rewards": {
+      "name": "todo_rewards",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "todo_id": {
+          "name": "todo_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "base_points": {
+          "name": "base_points",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 1
+        },
+        "bonus_points": {
+          "name": "bonus_points",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "todo_rewards_todo_id_todo_tasks_id_fk": {
+          "name": "todo_rewards_todo_id_todo_tasks_id_fk",
+          "tableFrom": "todo_rewards",
+          "tableTo": "todo_tasks",
+          "columnsFrom": [
+            "todo_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "todo_rewards_todo_id_unique": {
+          "name": "todo_rewards_todo_id_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "todo_id"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {
+        "todo_reward_points": {
+          "name": "todo_reward_points",
+          "value": "\"todo_rewards\".\"base_points\"=1 and \"todo_rewards\".\"bonus_points\" between 0 and 10000"
+        }
+      },
+      "isRLSEnabled": false
+    },
+    "public.todo_submissions": {
+      "name": "todo_submissions",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "todo_id": {
+          "name": "todo_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "number": {
+          "name": "number",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "attachment_id": {
+          "name": "attachment_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mime_type": {
+          "name": "mime_type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "byte_size": {
+          "name": "byte_size",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "submitted_at": {
+          "name": "submitted_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "todo_submissions_todo_id_todo_tasks_id_fk": {
+          "name": "todo_submissions_todo_id_todo_tasks_id_fk",
+          "tableFrom": "todo_submissions",
+          "tableTo": "todo_tasks",
+          "columnsFrom": [
+            "todo_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "todo_submissions_attachment_id_unique": {
+          "name": "todo_submissions_attachment_id_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "attachment_id"
+          ]
+        },
+        "todo_submissions_todo_id_number_unique": {
+          "name": "todo_submissions_todo_id_number_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "todo_id",
+            "number"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.todo_tasks": {
+      "name": "todo_tasks",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "family_id": {
+          "name": "family_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "child_id": {
+          "name": "child_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "guardian_id": {
+          "name": "guardian_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "command_id": {
+          "name": "command_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "title": {
+          "name": "title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "requirements": {
+          "name": "requirements",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "''"
+        },
+        "date": {
+          "name": "date",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "kind": {
+          "name": "kind",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'manual'"
+        },
+        "dictation_task_id": {
+          "name": "dictation_task_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "status": {
+          "name": "status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'open'"
+        },
+        "submission_number": {
+          "name": "submission_number",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "review_note": {
+          "name": "review_note",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "''"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "todo_tasks_family_id_families_id_fk": {
+          "name": "todo_tasks_family_id_families_id_fk",
+          "tableFrom": "todo_tasks",
+          "tableTo": "families",
+          "columnsFrom": [
+            "family_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "todo_tasks_dictation_task_id_learning_tasks_id_fk": {
+          "name": "todo_tasks_dictation_task_id_learning_tasks_id_fk",
+          "tableFrom": "todo_tasks",
+          "tableTo": "learning_tasks",
+          "columnsFrom": [
+            "dictation_task_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "todo_tasks_family_id_child_id_children_family_id_id_fk": {
+          "name": "todo_tasks_family_id_child_id_children_family_id_id_fk",
+          "tableFrom": "todo_tasks",
+          "tableTo": "children",
+          "columnsFrom": [
+            "family_id",
+            "child_id"
+          ],
+          "columnsTo": [
+            "family_id",
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "todo_tasks_family_id_guardian_id_guardians_family_id_id_fk": {
+          "name": "todo_tasks_family_id_guardian_id_guardians_family_id_id_fk",
+          "tableFrom": "todo_tasks",
+          "tableTo": "guardians",
+          "columnsFrom": [
+            "family_id",
+            "guardian_id"
+          ],
+          "columnsTo": [
+            "family_id",
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "todo_tasks_dictation_task_id_unique": {
+          "name": "todo_tasks_dictation_task_id_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "dictation_task_id"
+          ]
+        },
+        "todo_tasks_family_id_command_id_unique": {
+          "name": "todo_tasks_family_id_command_id_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "family_id",
+            "command_id"
+          ]
+        },
+        "todo_tasks_family_id_child_id_id_unique": {
+          "name": "todo_tasks_family_id_child_id_id_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "family_id",
+            "child_id",
+            "id"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {
+        "todo_status": {
+          "name": "todo_status",
+          "value": "\"todo_tasks\".\"status\" in ('open','submitted','approved','rejected')"
+        },
+        "todo_kind": {
+          "name": "todo_kind",
+          "value": "(\"todo_tasks\".\"kind\"='manual' and \"todo_tasks\".\"dictation_task_id\" is null) or (\"todo_tasks\".\"kind\"='dictation' and \"todo_tasks\".\"dictation_task_id\" is not null)"
         }
       },
       "isRLSEnabled": false

@@ -53,6 +53,16 @@ test("暂停播放恢复同一个音频，词间暂停不推进提示或新增�
   expect(f.completed).toEqual([["one", false, 0], ["two", true, 1]]);
 });
 
+test("已按任务语速合成的音频始终用正常倍率播放", async () => {
+  const f = setup();
+  const run = f.playback.start(f.session);
+  await flush();
+  expect(f.audios[0]!.playbackRate).toBe(1);
+  expect(f.audios[0]!.defaultPlaybackRate).toBe(1);
+  f.playback.dispose();
+  await run;
+});
+
 test("暂停在重复轮次边界时不启动下一遍", async () => {
   const f = setup(2);
   const run = f.playback.start(f.session);

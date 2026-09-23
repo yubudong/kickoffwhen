@@ -7,3 +7,5 @@ export * from "@/modules/jobs/schema";
 export * from "@/modules/learning-content/schema";
 export * from "@/modules/media/schema";
 export * from "@/modules/review/db-schema";
+
+export * from "@/modules/todos/schema";
