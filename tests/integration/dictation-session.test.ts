@@ -1,4 +1,5 @@
 import { addDictationTodo } from '@/modules/todos/dictation';
+import { createTodoService } from '@/modules/todos/service';
 import { todoTasks, todoSubmissions } from '@/modules/todos/schema';
 import { asc, count, eq, sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/node-postgres";
@@ -347,8 +348,10 @@ describe("dictation session lifecycle", () => {
       const [storedTask] = await tx.select().from(learningTasks).where(eq(learningTasks.id, task.id));
       expect(storedTask.status).toBe("completed");
       const [todo] = await tx.select().from(todoTasks).where(eq(todoTasks.dictationTaskId, task.id));
-      expect(todo).toMatchObject({ status: "submitted", submissionNumber: 1 });
-      expect(await tx.select().from(todoSubmissions).where(eq(todoSubmissions.todoId, todo.id))).toHaveLength(1);
+      expect(todo).toMatchObject({ status: "open", submissionNumber: 0 });
+      expect(await tx.select().from(todoSubmissions).where(eq(todoSubmissions.todoId, todo.id))).toHaveLength(0);
+      await createTodoService(tx).submit(family.actor, todo.id, 0);
+      expect((await tx.select().from(todoTasks).where(eq(todoTasks.id, todo.id)))[0]!.status).toBe("submitted");
       await expect(service.resumeSession(family.actor, started.sessionId)).rejects.toThrow("DICTATION_SESSION_NOT_FOUND");
       await expect(service.startSession(family.actor, task.id)).rejects.toThrow("TASK_NOT_ACTIVE");
     });

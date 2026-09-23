@@ -3,6 +3,43 @@ import { withDatabaseRollback } from '../helpers/database';
 import { user } from '@/modules/auth/schema';
 import { families,guardians,children } from '@/modules/families/schema';
 import { createTodoService } from '@/modules/todos/service';
+import { learningTasks } from '@/modules/dictation/task-schema';
+import { todoTasks, todoSubmissions } from '@/modules/todos/schema';
+import { eq } from 'drizzle-orm';
+
+test('听写待办仅在听写完成后提交，附件可省略或为图片',async()=>withDatabaseRollback(async tx=>{
+ const id=crypto.randomUUID();await tx.insert(user).values({id,name:'听写待办测试',email:id+'@example.test'});
+ const [family]=await tx.insert(families).values({name:'听写待办测试'}).returning();
+ const [guardian]=await tx.insert(guardians).values({familyId:family.id,authUserId:id}).returning();
+ const [child]=await tx.insert(children).values({familyId:family.id,nickname:'甲',grade:5}).returning();
+ const actor={role:'child' as const,familyId:family.id,childId:child.id,deviceId:crypto.randomUUID()};
+ const service=createTodoService(tx);
+ async function makeDictationTodo(status:'active'|'completed') {
+  const [task]=await tx.insert(learningTasks).values({
+   familyId:family.id,childId:child.id,guardianId:guardian.id,commandId:crypto.randomUUID(),
+   inputFingerprint:'a'.repeat(64),mode:'continuous_batch',taskOrder:'source',intervalSeconds:8,
+   repeatCount:1,speechRate:'1',allowManualReplay:true,maxReviewCards:0,status,
+  }).returning();
+  const [todo]=await tx.insert(todoTasks).values({
+   familyId:family.id,childId:child.id,guardianId:guardian.id,commandId:crypto.randomUUID(),
+   title:'今日听写',date:'2026-09-22',kind:'dictation',dictationTaskId:task.id,
+  }).returning();
+  return todo;
+ }
+ const incomplete=await makeDictationTodo('active');
+ await expect(service.submit(actor,incomplete.id,0)).rejects.toThrow('DICTATION_INCOMPLETE');
+ const noPhoto=await makeDictationTodo('completed');
+ await service.submit(actor,noPhoto.id,0);
+ expect((await tx.select().from(todoSubmissions).where(eq(todoSubmissions.todoId,noPhoto.id)))[0]).toMatchObject({number:1,attachmentId:null});
+ const photo=await makeDictationTodo('completed');
+ const image={id:crypto.randomUUID(),mimeType:'image/png',byteSize:100};
+ await service.submit(actor,photo.id,0,image);
+ expect((await tx.select().from(todoSubmissions).where(eq(todoSubmissions.todoId,photo.id)))[0]).toMatchObject({number:1,attachmentId:image.id,mimeType:image.mimeType,byteSize:image.byteSize});
+ const audio=await makeDictationTodo('completed');
+ await expect(service.submit(actor,audio.id,0,{id:crypto.randomUUID(),mimeType:'audio/mpeg',byteSize:100})).rejects.toThrow('DICTATION_IMAGE_ONLY');
+ expect((await tx.select().from(todoTasks).where(eq(todoTasks.id,audio.id)))[0]).toMatchObject({status:'open',submissionNumber:0});
+ expect(await tx.select().from(todoSubmissions).where(eq(todoSubmissions.todoId,audio.id))).toHaveLength(0);
+}));
 test('待办退回后重提、审核发积分且重复审核不重复发放，孩子隔离',async()=>withDatabaseRollback(async tx=>{
  const id=crypto.randomUUID();await tx.insert(user).values({id,name:'测试',email:id+'@example.test'});
  const [f]=await tx.insert(families).values({name:'待办测试'}).returning();

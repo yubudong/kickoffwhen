@@ -80,6 +80,8 @@ export function createTodoService(database: Database = db) {
                 const [task] = await tx.select().from(learningTasks).where(eq(learningTasks.id, row.dictationTaskId));
                 if (task?.status !== 'completed')
                     throw new Error('DICTATION_INCOMPLETE');
+                if (attachment && !['image/jpeg', 'image/png', 'image/webp'].includes(attachment.mimeType))
+                    throw new Error('DICTATION_IMAGE_ONLY');
             }
             await tx.insert(todoSubmissions).values({ todoId: id, number: number + 1, attachmentId: attachment?.id, mimeType: attachment?.mimeType, byteSize: attachment?.byteSize });
             await tx.update(todoTasks).set({ status: 'submitted', submissionNumber: number + 1, reviewNote: '', updatedAt: new Date() }).where(eq(todoTasks.id, id));

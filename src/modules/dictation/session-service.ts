@@ -1,4 +1,3 @@
-import { submitDictationTodo } from "@/modules/todos/dictation";
 import { createHash } from "node:crypto";
 
 import { and, asc, desc, eq, inArray, sql } from "drizzle-orm";
@@ -650,7 +649,6 @@ export function createDictationSessionService(
               eq(learningTasks.status, "active"),
             ),
           );
-        await submitDictationTodo(tx, session.taskId, at);
         await tx.insert(dictationCompletionEvents).values({
           familyId: actor.familyId,
           childId: actor.childId,
