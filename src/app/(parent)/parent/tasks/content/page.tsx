@@ -2,9 +2,10 @@ import Link from "next/link";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
+import { ContentLibraryTree } from "@/components/content/content-library-tree";
 import { requireParentActor } from "@/modules/auth/parent-access";
 import { getFamilySetupStage } from "@/modules/families/service";
-import { listCards } from "@/modules/learning-content/service";
+import { createLearningContentService } from "@/modules/learning-content/service";
 
 export default async function ContentPage() {
   let actor;
@@ -19,17 +20,15 @@ export default async function ContentPage() {
   }
   if ((await getFamilySetupStage(actor)) === "pin") redirect("/parent/onboarding");
 
-  const cards = await listCards(actor, {});
+  const library = await createLearningContentService().listContentLibrary(actor);
   return (
     <main className="page-shell content-shell">
       <section className="hero-card content-card">
         <p className="eyebrow">家长中心</p>
         <h1>听写内容库</h1><nav className="parent-nav"><Link href="/parent/tasks/new">布置听写</Link><Link href="/parent/tasks/content">听写内容库</Link></nav>
-        <p>当前家庭已有 {cards.length} 张可用学习卡片。</p>
+        <p>当前家庭已有 {library.total} 张可用学习卡片。</p>
         <Link className="primary-link" href="/parent/tasks/content/new">添加听写内容库</Link>
-        <div className="card-list">
-          {cards.length === 0 ? <p>还没有学习卡片。可从单条输入或批量粘贴开始。</p> : cards.map((card) => <article className="card-row" key={card.id}><strong>{card.answerText}</strong><span>{card.subject === "chinese" ? "语文" : "英语"} · {card.source}</span></article>)}
-        </div>
+        <ContentLibraryTree library={library} />
       </section>
     </main>
   );

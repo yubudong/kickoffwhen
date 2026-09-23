@@ -62,10 +62,14 @@ test("家长展开教材、勾选整个单元后按课下发", async ({ page }) 
   await page.getByRole("button", { name: "创建孩子并完成" }).click();
   await expect(page).toHaveURL(/\/parent\/children$/);
 
+  await page.goto("/parent/tasks/content");
+  await expect(page.getByText("还没有听写内容")).toBeVisible();
+
   const { db } = await import("@/db/client");
   const { learningCards, textbookEditions, textbookSections, textbookUnits } = await import("@/modules/learning-content/schema");
+  const editionText = `测试版-${crypto.randomUUID()}`;
   const [edition] = await db.insert(textbookEditions).values({ publisher: "统编", series: "语文",
-    subject: "chinese", grade: 5, volume: "上册", editionText: `测试版-${crypto.randomUUID()}` }).returning();
+    subject: "chinese", grade: 5, volume: "上册", editionText }).returning();
   fixtureEditionId = edition.id;
   const [unit] = await db.insert(textbookUnits).values({ textbookEditionId: edition.id,
     unitOrder: 1, title: "第一单元" }).returning();
@@ -79,8 +83,25 @@ test("家长展开教材、勾选整个单元后按课下发", async ({ page }) 
     textbookEditionId: edition.id, unitId: unit.id, sectionId: section.id, sourceOrder: 1,
   })));
 
+  await page.goto("/parent/tasks/content");
+  const libraryEdition = page.locator("details.library-edition").filter({ hasText: editionText });
+  await expect(libraryEdition.locator("summary").first()).toContainText("1 个单元 · 2 个词");
+  await expect(libraryEdition.getByText("桂花", { exact: true })).toBeHidden();
+  await expect(page.locator("article.card-row")).toHaveCount(0);
+  await libraryEdition.locator("summary").first().click();
+  const libraryUnit = libraryEdition.locator("details.library-unit").first();
+  await expect(libraryUnit.locator(":scope > summary")).toBeVisible();
+  await expect(libraryEdition.getByText("第1课", { exact: true })).toBeHidden();
+  await libraryUnit.locator(":scope > summary").click();
+  const librarySection = libraryUnit.locator("details.library-section").first();
+  await expect(librarySection.locator(":scope > summary")).toBeVisible();
+  await expect(libraryEdition.getByText("桂花", { exact: true })).toBeHidden();
+  await librarySection.locator(":scope > summary").click();
+  await expect(libraryEdition.getByText("第1课", { exact: true })).toBeVisible();
+  await expect(libraryEdition.getByText("桂花", { exact: true })).toBeVisible();
+
   await page.goto("/parent/tasks/new");
-  const editionDetails = page.locator("details.curriculum-edition").filter({ hasText: "第一单元" });
+  const editionDetails = page.locator("details.curriculum-edition").filter({ hasText: editionText });
   await expect(editionDetails).toHaveCount(1);
   await expect(editionDetails).not.toHaveAttribute("open", "");
   await editionDetails.locator("summary").first().click();
