@@ -454,14 +454,18 @@ test("连续听写、刷新、切换孩子、批改恢复和错题循环", async
     void dialog.accept();
   };
   childPage.on("dialog", recordNativeDialog);
-  await childPage.getByRole("button", { name: "确认切换" }).click();
-  await expect.poll(() => childPage.evaluate(() => (globalThis as typeof globalThis & { __e2eDocumentId: string }).__e2eDocumentId))
-    .not.toBe(originalDocumentId);
-  const switchDocumentId = await childPage.evaluate(() => (globalThis as typeof globalThis & { __e2eDocumentId: string }).__e2eDocumentId);
-  await childPage.getByRole("button", { name: /小川/ }).click();
-  await expect.poll(() => childPage.evaluate(() => (globalThis as typeof globalThis & { __e2eDocumentId: string }).__e2eDocumentId))
-    .not.toBe(switchDocumentId);
+  await Promise.all([
+    childPage.waitForURL(/\/child\/switch$/, { waitUntil: "domcontentloaded" }),
+    childPage.getByRole("button", { name: "确认切换" }).click(),
+  ]);
+  await expectDocumentReplaced(childPage, originalDocumentId);
+  const switchDocumentId = await readDocumentId(childPage);
+  await Promise.all([
+    childPage.waitForURL(/\/child$/, { waitUntil: "domcontentloaded" }),
+    childPage.getByRole("button", { name: /小川/ }).click(),
+  ]);
   await expect(childPage.getByRole("heading", { name: "小川的今日待办" })).toBeVisible();
+  await expectDocumentReplaced(childPage, switchDocumentId);
   expect(nativeNavigationDialogs).toEqual([]);
   childPage.off("dialog", recordNativeDialog);
   await childPage.goBack();
