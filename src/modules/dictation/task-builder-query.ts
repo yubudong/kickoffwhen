@@ -7,6 +7,7 @@ import { learningCards, textbookEditions, textbookUnits, textbookSections } from
 import { childCardStates } from "@/modules/review/db-schema";
 
 import { getActiveTaskCards } from "./active-task-cards";
+import type { CurriculumCatalogEdition } from "./curriculum-selection";
 import type { TaskCardOption } from "./task-card-filter";
 
 type TaskBuilderDatabase = typeof db | DbTransaction;
@@ -14,6 +15,7 @@ type TaskBuilderDatabase = typeof db | DbTransaction;
 export type TaskBuilderData = {
   children: Array<{ id: string; nickname: string; dueCount: number; dueCounts: Record<"chinese" | "english", number> }>;
   cards: TaskCardOption[];
+  catalog: CurriculumCatalogEdition[];
 };
 
 export function createTaskBuilderQueryService(
@@ -36,6 +38,31 @@ export function createTaskBuilderQueryService(
       .leftJoin(textbookSections, eq(textbookSections.id, learningCards.sectionId))
       .where(or(eq(learningCards.familyId, actor.familyId), isNull(learningCards.familyId)))
       .orderBy(asc(sql`case when ${learningCards.unitId} is null then 1 else 0 end`), asc(learningCards.subject), asc(learningCards.textbookEditionId), asc(textbookUnits.unitOrder), asc(textbookSections.sectionOrder), asc(learningCards.sourceOrder), asc(sql`case ${learningCards.source} when 'builtin' then 0 when 'manual' then 1 when 'bulk' then 2 else 3 end`), asc(learningCards.createdAt), asc(learningCards.id));
+
+    const catalogRows = await database.select({ edition: textbookEditions, unit: textbookUnits,
+      section: textbookSections }).from(textbookEditions)
+      .leftJoin(textbookUnits, eq(textbookUnits.textbookEditionId, textbookEditions.id))
+      .leftJoin(textbookSections, eq(textbookSections.unitId, textbookUnits.id))
+      .orderBy(asc(textbookEditions.grade), asc(textbookEditions.subject), asc(textbookEditions.volume),
+        asc(textbookUnits.unitOrder), asc(textbookSections.sectionOrder));
+    const catalogById = new Map<string, CurriculumCatalogEdition>();
+    for (const row of catalogRows) {
+      let edition = catalogById.get(row.edition.id);
+      if (!edition) {
+        edition = { id: row.edition.id, publisher: row.edition.publisher, series: row.edition.series,
+          editionText: row.edition.editionText, grade: row.edition.grade, volume: row.edition.volume,
+          subject: row.edition.subject === "chinese" ? "chinese" : "english", units: [] };
+        catalogById.set(edition.id, edition);
+      }
+      if (!row.unit) continue;
+      let unit = edition.units.find((item) => item.id === row.unit!.id);
+      if (!unit) {
+        unit = { id: row.unit.id, title: row.unit.title, order: row.unit.unitOrder, sections: [] };
+        edition.units.push(unit);
+      }
+      if (row.section) unit.sections.push({ id: row.section.id, title: row.section.title,
+        order: row.section.sectionOrder });
+    }
 
     const states = childRows.length === 0 || cardRows.length === 0
       ? []
@@ -92,6 +119,7 @@ export function createTaskBuilderQueryService(
         dueCount: dueByChild.get(child.id) ?? 0,
         dueCounts: dueSubjectsByChild.get(child.id) ?? { chinese: 0, english: 0 },
       })),
+      catalog: [...catalogById.values()],
       cards: cardRows.map(({ card, grade, volume, unitTitle, unitOrder, sectionTitle, sectionOrder }) => ({
         id: card.id,
         answerText: card.answerText,

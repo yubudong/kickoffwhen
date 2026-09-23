@@ -28,11 +28,12 @@ export default async function NewTaskPage() {
       <div>
         <p className="eyebrow">学习任务</p>
         <h1>今日听写</h1><nav className="parent-nav"><Link href="/parent/tasks/new">布置听写</Link><Link href="/parent/tasks/content">听写内容库</Link></nav><p>布置后自动加入孩子的今日待办，听写完成后交由家长审核。</p>
-        <p>到期复习会自动优先，新内容由家长选择。音频未就绪时任务会清楚标记为准备中。</p>
+        <p>到期词会自动生成单独的复习任务；新内容按教材单元或课次选择。</p>
       </div>
       <TaskBuilderForm
         childOptions={data.children}
         cards={data.cards}
+        catalog={data.catalog}
       />
     </main>
   );

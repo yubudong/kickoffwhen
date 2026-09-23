@@ -5,7 +5,7 @@ import { useMemo, useRef, useState } from "react";
 
 import { CurriculumTree } from "@/components/dictation/curriculum-tree";
 import { ExtraPracticePicker } from "@/components/dictation/extra-practice-picker";
-import { buildCurriculumTree } from "@/modules/dictation/curriculum-selection";
+import { buildCurriculumTree, type CurriculumCatalogEdition } from "@/modules/dictation/curriculum-selection";
 import type { TaskCardOption } from "@/modules/dictation/task-card-filter";
 import {
   createTaskSubmissionController,
@@ -18,9 +18,11 @@ type CardOption = TaskCardOption;
 export function TaskBuilderForm({
   childOptions,
   cards,
+  catalog,
 }: {
   childOptions: ChildOption[];
   cards: CardOption[];
+  catalog: CurriculumCatalogEdition[];
 }) {
   const router = useRouter();
   const [childId, setChildId] = useState(childOptions[0]?.id ?? "");
@@ -37,7 +39,7 @@ export function TaskBuilderForm({
     () => childOptions.find((item) => item.id === childId),
     [childId, childOptions],
   );
-  const editions = useMemo(() => buildCurriculumTree(cards, childId, subject), [cards, childId, subject]);
+  const editions = useMemo(() => buildCurriculumTree(cards, childId, subject, catalog), [cards, childId, subject, catalog]);
   const selectedSections = editions.flatMap((edition) => edition.units.flatMap((unit) => unit.sections))
     .filter((section) => selectedSectionIds.includes(section.id) && section.availableCount > 0);
   const selectedNewWords = selectedSections.reduce((total, section) => total + section.availableCount, 0);

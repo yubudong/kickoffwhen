@@ -3,6 +3,9 @@ import { readFile } from "node:fs/promises";
 import { expect, type BrowserContext, type Page, test } from "@playwright/test";
 
 import { hasExactFixtureJobKeys, mergeFixtureJobIds } from "./job-fixture";
+import { uniqueTestIp } from "./test-config";
+
+test.use({ extraHTTPHeaders: { "x-forwarded-for": uniqueTestIp() } });
 
 process.env.DATABASE_URL =
   process.env.E2E_DATABASE_URL ??
@@ -349,8 +352,9 @@ test("连续听写、刷新、切换孩子、批改恢复和错题循环", async
   // Leave a genuine previous child document in history, then prove that the
   // header switch and new-child selection both replace the current document.
   await childPage.goto("/child/tasks");
-  await expect(childPage.getByRole("heading", { name: "小雨的今日任务" })).toBeVisible();
-  await expect(childPage.getByText("听写任务 1", { exact: true })).toBeVisible();
+  await expect(childPage).toHaveURL(/\/child$/);
+  await expect(childPage.getByRole("heading", { name: "小雨的今日待办" })).toBeVisible();
+  await expect(childPage.getByText("今日听写（3项）", { exact: true })).toBeVisible();
   await childPage.goto("/child");
   await childPage.waitForLoadState("networkidle");
   const firstHomeDocumentId = await readDocumentId(childPage);
@@ -369,9 +373,9 @@ test("连续听写、刷新、切换孩子、批改恢复和错题循环", async
   await childPage.waitForLoadState("networkidle");
   const firstSecondChildDocumentId = await readDocumentId(childPage);
   await childPage.goBack();
-  await expect(childPage.getByRole("heading", { name: "小川的今日任务" })).toBeVisible();
-  await expect(childPage.getByRole("heading", { name: "小雨的今日任务" })).toHaveCount(0);
-  await expect(childPage.getByText("听写任务 1", { exact: true })).toHaveCount(0);
+  await expect(childPage.getByRole("heading", { name: "小川的今日待办" })).toBeVisible();
+  await expect(childPage.getByRole("heading", { name: "小雨的今日待办" })).toHaveCount(0);
+  await expect(childPage.getByText("今日听写（3项）", { exact: true })).toHaveCount(0);
   await expect(childPage.getByText("桂花", { exact: true })).toHaveCount(0);
   await expectDocumentReplaced(childPage, firstSecondChildDocumentId);
   const firstBackDocumentId = await readDocumentId(childPage);
@@ -470,7 +474,7 @@ test("连续听写、刷新、切换孩子、批改恢复和错题循环", async
   await childPage.waitForLoadState("networkidle");
   await childPage.getByRole("button", { name: "切换孩子" }).click();
   await childPage.getByRole("button", { name: /小雨/ }).click();
-  await childPage.getByRole("button", { name: "开始听写" }).click();
+  await childPage.getByRole("button", { name: "继续听写" }).click();
   await expect(childPage.getByLabel("第 2 / 3 题")).toBeVisible();
   await childPage.getByRole("button", { name: "继续听写" }).click();
 
@@ -504,7 +508,7 @@ test("连续听写、刷新、切换孩子、批改恢复和错题循环", async
   await childPage.waitForLoadState("networkidle");
   await childPage.getByRole("button", { name: "切换孩子" }).click();
   await childPage.getByRole("button", { name: /小雨/ }).click();
-  await childPage.getByRole("button", { name: "开始听写" }).click();
+  await childPage.getByRole("button", { name: "继续听写" }).click();
   await expect(childPage.getByRole("heading", { name: "请认真核对每一题" })).toBeVisible();
   await childPage.waitForLoadState("networkidle");
   const firstAnswer = childPage.locator("fieldset").nth(0);

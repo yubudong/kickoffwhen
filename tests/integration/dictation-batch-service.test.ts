@@ -3,6 +3,7 @@ import { expect, test } from "vitest";
 
 import { user } from "@/modules/auth/schema";
 import { createDictationTaskService } from "@/modules/dictation/task-service";
+import { createTaskBuilderQueryService } from "@/modules/dictation/task-builder-query";
 import { learningTasks } from "@/modules/dictation/task-schema";
 import { children, families, guardians } from "@/modules/families/schema";
 import { learningCards, textbookEditions, textbookSections, textbookUnits } from "@/modules/learning-content/schema";
@@ -26,12 +27,17 @@ test("勾选单元后每课产生一项听写与待办，重复提交不增加�
       { unitId: unit.id, sectionKey: "lesson-1", sectionOrder: 1, title: "第1课", sectionType: "lesson" },
       { unitId: unit.id, sectionKey: "lesson-2", sectionOrder: 2, title: "第2课", sectionType: "lesson" },
     ]).returning();
+    await tx.insert(textbookSections).values({ unitId: unit.id, sectionKey: "lesson-3",
+      sectionOrder: 3, title: "第3课", sectionType: "lesson" });
     await tx.insert(learningCards).values(sections.map((section, index) => ({
       subject: "chinese", answerText: index ? "故乡" : "桂花", broadcastText: index ? "故乡" : "桂花",
       source: "builtin", builtinKey: `unit-batch-${authId}-${index}`, textbookEditionId: edition.id,
       unitId: unit.id, sectionId: section.id, sourceOrder: 1,
     })));
     const actor = { role: "guardian" as const, familyId: family.id, guardianId: guardian.id };
+    const catalog = (await createTaskBuilderQueryService(tx).getTaskBuilderData(actor)).catalog;
+    expect(catalog.find((item) => item.id === edition.id)?.units[0].sections.map((section) => section.title))
+      .toEqual(["第1课", "第2课", "第3课"]);
     const service = createDictationTaskService(tx);
     const input = {
       childId: child.id, subject: "chinese" as const, sectionIds: sections.map((section) => section.id),

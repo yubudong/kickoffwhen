@@ -28,7 +28,7 @@ export function CurriculumTree({ editions, selected, onChange }: {
   if (editions.length === 0) return <p>这门科目的教材词库还没有内容。</p>;
   return <div className="curriculum-tree">
     {editions.map((edition) => <details key={edition.id} className="curriculum-edition">
-      <summary>{edition.grade}年级{edition.subject === "chinese" ? "语文" : "英语"} · {edition.volume}<span>{edition.units.length} 个单元</span></summary>
+      <summary>{edition.grade}年级{edition.subject === "chinese" ? "语文" : "英语"} · {edition.volume} · {edition.publisher}{edition.editionText ? `（${edition.editionText}）` : ""}<span>{edition.units.length} 个单元</span></summary>
       <div className="curriculum-units">
         {edition.units.map((unit) => {
           const selectable = unit.sections.filter((section) => section.availableCount > 0).map((section) => section.id);

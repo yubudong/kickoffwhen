@@ -1,5 +1,9 @@
 import { expect, test } from "@playwright/test";
 
+import { uniqueTestIp } from "./test-config";
+
+test.use({ extraHTTPHeaders: { "x-forwarded-for": uniqueTestIp() } });
+
 const password = "Device-Test-Password-1";
 
 test("家长授权共享设备，孩子可切换档案且撤销后立即退出", async ({
@@ -7,13 +11,17 @@ test("家长授权共享设备，孩子可切换档案且撤销后立即退出",
   page,
 }) => {
   test.setTimeout(60_000);
-  const email = `device-${Date.now()}-${test.info().project.name}@example.test`;
+  const email = `device-${crypto.randomUUID()}-${test.info().project.name}@example.test`;
 
   await page.goto("/sign-up");
   await page.getByLabel("称呼").fill("设备测试家长");
   await page.getByLabel("邮箱").fill(email);
   await page.getByLabel("密码", { exact: true }).fill(password);
-  await page.getByRole("button", { name: "注册" }).click();
+  const [registrationResponse] = await Promise.all([
+    page.waitForResponse((response) => response.url().endsWith("/api/auth/sign-up/email")),
+    page.getByRole("button", { name: "注册" }).click(),
+  ]);
+  expect(registrationResponse.status(), await registrationResponse.text()).toBe(200);
 
   await page.getByLabel("家庭名称").fill("星河设备家庭");
   await page.getByLabel("家长显示名").fill("星爸");

@@ -118,6 +118,22 @@ async function lockSession(
   actor: ChildActor,
   sessionId: string,
 ) {
+  const [sessionIdentity] = await tx
+    .select({ taskId: dictationSessions.taskId })
+    .from(dictationSessions)
+    .where(and(
+      eq(dictationSessions.id, sessionId),
+      eq(dictationSessions.familyId, actor.familyId),
+      eq(dictationSessions.childId, actor.childId),
+    ))
+    .limit(1);
+  if (!sessionIdentity) throw new Error("DICTATION_SESSION_NOT_FOUND");
+  // Start, commands and cancellation all lock task before session.
+  const [task] = await tx.select({ id: learningTasks.id }).from(learningTasks)
+    .where(and(eq(learningTasks.id, sessionIdentity.taskId),
+      eq(learningTasks.familyId, actor.familyId), eq(learningTasks.childId, actor.childId)))
+    .limit(1).for("update");
+  if (!task) throw new Error("DICTATION_SESSION_NOT_FOUND");
   const [session] = await tx
     .select()
     .from(dictationSessions)

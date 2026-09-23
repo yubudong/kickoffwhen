@@ -1,9 +1,12 @@
-import { and, eq, sql, asc, ne } from 'drizzle-orm';
+import { and, eq, sql, asc, ne, inArray } from 'drizzle-orm';
 import { z } from 'zod';
 import { db, type DbTransaction } from '@/db/client';
 import type { Actor, GuardianActor, ChildActor } from '@/modules/auth/actor';
 import { children } from '@/modules/families/schema';
-import { learningTasks } from '@/modules/dictation/task-schema';
+import { learningTasks, learningTaskItems } from '@/modules/dictation/task-schema';
+import { dictationSessions } from '@/modules/dictation/session-schema';
+import { activeTtsMediaPredicate } from '@/modules/media/active-cache';
+import { privateMedia } from '@/modules/media/schema';
 import { todoTasks, todoSubmissions, todoReviews, todoRewards } from './schema';
 import { bonusSchema, dateSchema, taskInputSchema } from './validation';
 type Database = typeof db | DbTransaction;
@@ -37,8 +40,30 @@ export function createTodoService(database: Database = db) {
         if (childId)
             z.string().uuid().parse(childId);
         const rows = await database.select({ task: todoTasks, childName: children.nickname, attachmentId: todoSubmissions.attachmentId, mimeType: todoSubmissions.mimeType, base: todoRewards.basePoints, bonus: todoRewards.bonusPoints }).from(todoTasks).innerJoin(children, eq(children.id, todoTasks.childId)).leftJoin(todoSubmissions, and(eq(todoSubmissions.todoId, todoTasks.id), eq(todoSubmissions.number, todoTasks.submissionNumber))).leftJoin(todoRewards, eq(todoRewards.todoId, todoTasks.id)).where(and(scope(actor), eq(todoTasks.date, date), childId ? eq(todoTasks.childId, childId) : undefined, actor.role === 'child' ? ne(todoTasks.status, 'cancelled') : undefined)).orderBy(asc(todoTasks.createdAt));
+        const taskIds = rows.flatMap(({ task }) => task.dictationTaskId ? [task.dictationTaskId] : []);
+        const mediaRows = taskIds.length ? await database.select({ taskId: learningTaskItems.taskId, mediaId: privateMedia.id })
+            .from(learningTaskItems).leftJoin(privateMedia, activeTtsMediaPredicate({
+                dedupeKey: learningTaskItems.ttsDedupeKey, familyId: learningTaskItems.familyId,
+                childId: learningTaskItems.childId, at: new Date(),
+            })).where(inArray(learningTaskItems.taskId, taskIds)) : [];
+        const sessionRows = taskIds.length ? await database.select({ taskId: dictationSessions.taskId,
+            status: dictationSessions.status }).from(dictationSessions)
+            .where(inArray(dictationSessions.taskId, taskIds)) : [];
+        const mediaCounts = new Map<string, { total: number; ready: number }>();
+        for (const row of mediaRows) {
+            const counts = mediaCounts.get(row.taskId) ?? { total: 0, ready: 0 };
+            counts.total += 1;
+            if (row.mediaId) counts.ready += 1;
+            mediaCounts.set(row.taskId, counts);
+        }
+        const sessionStatus = new Map(sessionRows.map((row) => [row.taskId, row.status]));
         const [points] = await database.select({ total: sql<number> `coalesce(sum(${todoRewards.basePoints}+${todoRewards.bonusPoints}),0)::int` }).from(todoRewards).innerJoin(todoTasks, eq(todoTasks.id, todoRewards.todoId)).where(and(scope(actor), childId ? eq(todoTasks.childId, childId) : undefined));
-        return { tasks: rows.map(r => ({ ...r.task, childName: r.childName, attachment: r.attachmentId ? { id: r.attachmentId, mimeType: r.mimeType! } : null, points: r.base === null ? null : r.base + (r.bonus ?? 0) })), points: points.total };
+        return { tasks: rows.map(r => { const counts = r.task.dictationTaskId ? mediaCounts.get(r.task.dictationTaskId) : undefined;
+            return { ...r.task, childName: r.childName, attachment: r.attachmentId ? { id: r.attachmentId, mimeType: r.mimeType! } : null,
+                points: r.base === null ? null : r.base + (r.bonus ?? 0),
+                dictationAudioStatus: r.task.dictationTaskId ? counts && counts.total > 0 && counts.total === counts.ready ? 'ready' : 'preparing' : null,
+                dictationSessionStatus: r.task.dictationTaskId ? sessionStatus.get(r.task.dictationTaskId) ?? null : null };
+        }), points: points.total };
     }
     async function submit(actor: ChildActor, id: string, number: number, attachment?: Attachment) {
         z.string().uuid().parse(id);

@@ -39,9 +39,13 @@ export function createDictationTaskManagementService(database: Database = db) {
   }
 
   async function ensureNoReward(tx: DbTransaction, taskId: string) {
+    const [todo] = await tx.select({ id: todoTasks.id, status: todoTasks.status }).from(todoTasks)
+      .where(eq(todoTasks.dictationTaskId, taskId)).limit(1).for("update");
+    if (!todo) throw new Error("TASK_TODO_NOT_FOUND");
+    if (todo.status === "approved") throw new Error("TASK_REWARDED");
     const [reward] = await tx.select({ id: todoRewards.id }).from(todoRewards)
       .innerJoin(todoTasks, eq(todoTasks.id, todoRewards.todoId))
-      .where(eq(todoTasks.dictationTaskId, taskId)).limit(1);
+      .where(eq(todoRewards.todoId, todo.id)).limit(1);
     if (reward) throw new Error("TASK_REWARDED");
   }
 
@@ -50,8 +54,6 @@ export function createDictationTaskManagementService(database: Database = db) {
     await tx.update(learningTasks).set({ status: "cancelled" }).where(eq(learningTasks.id, taskId));
     await tx.update(todoTasks).set({ status: "cancelled", updatedAt: at })
       .where(eq(todoTasks.dictationTaskId, taskId));
-    await tx.update(dictationSessions).set({ status: "cancelled", cancelledAt: at, updatedAt: at })
-      .where(and(eq(dictationSessions.taskId, taskId), eq(dictationSessions.status, "active")));
   }
 
   async function cancelTask(actor: GuardianActor, rawTaskId: string): Promise<void> {
@@ -59,6 +61,9 @@ export function createDictationTaskManagementService(database: Database = db) {
     await database.transaction(async (tx) => {
       const task = await lockTask(tx, actor, taskId);
       if (task.status === "cancelled") return;
+      const at = new Date();
+      await tx.update(dictationSessions).set({ status: "cancelled", cancelledAt: at, updatedAt: at })
+        .where(and(eq(dictationSessions.taskId, taskId), eq(dictationSessions.familyId, actor.familyId), eq(dictationSessions.status, "active")));
       await ensureNoReward(tx, taskId);
       await cancelLocked(tx, taskId);
     });
@@ -69,6 +74,11 @@ export function createDictationTaskManagementService(database: Database = db) {
     const cardId = z.string().uuid().parse(rawCardId);
     await database.transaction(async (tx) => {
       const task = await lockTask(tx, actor, taskId);
+      if (task.status === "cancelled") {
+        const [remainingItem] = await tx.select({ id: learningTaskItems.id }).from(learningTaskItems)
+          .where(and(eq(learningTaskItems.taskId, taskId), eq(learningTaskItems.cardId, cardId))).limit(1);
+        if (!remainingItem) return;
+      }
       if (task.status !== "active") throw new Error("TASK_NOT_ACTIVE");
       await ensureNoReward(tx, taskId);
       const [session] = await tx.select({ id: dictationSessions.id }).from(dictationSessions)
@@ -77,7 +87,7 @@ export function createDictationTaskManagementService(database: Database = db) {
       const [item] = await tx.select().from(learningTaskItems).where(and(
         eq(learningTaskItems.taskId, taskId), eq(learningTaskItems.cardId, cardId),
       )).limit(1);
-      if (!item) throw new Error("TASK_ITEM_NOT_FOUND");
+      if (!item) return;
       await tx.delete(learningTaskItems).where(eq(learningTaskItems.id, item.id));
       const remaining = await tx.select({ id: learningTaskItems.id, position: learningTaskItems.position })
         .from(learningTaskItems).where(eq(learningTaskItems.taskId, taskId))

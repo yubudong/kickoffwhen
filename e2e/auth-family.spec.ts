@@ -1,6 +1,8 @@
 import { expect, test } from "@playwright/test";
 
-import { testEmailSecret } from "./test-config";
+import { testEmailSecret, uniqueTestIp } from "./test-config";
+
+test.use({ extraHTTPHeaders: { "x-forwarded-for": uniqueTestIp() } });
 
 const initialPassword = "Family-Test-Password-1";
 const resetPassword = "Family-Test-Password-2";
@@ -33,7 +35,7 @@ test("家长可注册、退出、重新登录并完成密码重置", async ({
   await page.getByLabel("邮箱").fill(email);
   await page.getByRole("button", { name: "发送重置邮件" }).click();
   await expect(page.getByRole("status")).toHaveText(
-    "如果该邮箱存在，重置邮件已发送。",
+    "如果该邮箱已注册，我们会发送重置邮件。邮件可能需要几分钟送达，请同时检查垃圾邮件。",
   );
 
   const mailboxResponse = await request.get(
@@ -76,20 +78,24 @@ test("忘记密码页不泄露邮箱是否注册", async ({ page }) => {
   await page.getByRole("button", { name: "发送重置邮件" }).click();
 
   await expect(page.getByRole("status")).toHaveText(
-    "如果该邮箱存在，重置邮件已发送。",
+    "如果该邮箱已注册，我们会发送重置邮件。邮件可能需要几分钟送达，请同时检查垃圾邮件。",
   );
 });
 
 test("家长从真实会话完成家庭、PIN 和首个孩子入门", async ({
   page,
 }) => {
-  const email = `onboarding-${Date.now()}-${test.info().project.name}@example.test`;
+  const email = `onboarding-${crypto.randomUUID()}-${test.info().project.name}@example.test`;
 
   await page.goto("/sign-up");
   await page.getByLabel("称呼").fill("测试家长");
   await page.getByLabel("邮箱").fill(email);
   await page.getByLabel("密码", { exact: true }).fill(initialPassword);
-  await page.getByRole("button", { name: "注册" }).click();
+  const [registrationResponse] = await Promise.all([
+    page.waitForResponse((response) => response.url().endsWith("/api/auth/sign-up/email")),
+    page.getByRole("button", { name: "注册" }).click(),
+  ]);
+  expect(registrationResponse.status(), await registrationResponse.text()).toBe(200);
   await expect(page).toHaveURL(/\/parent\/onboarding/);
 
   await page.getByLabel("家庭名称").fill("星河家庭");

@@ -8,37 +8,37 @@ export type CurriculumSection = {
   totalCount: number;
 };
 export type CurriculumUnit = { id: string; title: string; order: number; sections: CurriculumSection[] };
-export type CurriculumEdition = {
+export type CurriculumCatalogEdition = {
   id: string;
+  publisher: string;
+  series: string;
+  editionText: string;
   grade: number;
   volume: string;
   subject: "chinese" | "english";
-  units: CurriculumUnit[];
+  units: Array<{ id: string; title: string; order: number;
+    sections: Array<{ id: string; title: string; order: number }> }>;
 };
+export type CurriculumEdition = Omit<CurriculumCatalogEdition, "units"> & { units: CurriculumUnit[] };
 
 export function buildCurriculumTree(
   cards: TaskCardOption[],
   childId: string,
   subject: "chinese" | "english",
+  catalog: CurriculumCatalogEdition[],
 ): CurriculumEdition[] {
-  const editions = new Map<string, CurriculumEdition>();
+  const editions = new Map(catalog.filter((edition) => edition.subject === subject).map((edition) => [
+    edition.id,
+    { ...edition, units: edition.units.map((unit) => ({ ...unit,
+      sections: unit.sections.map((section) => ({ ...section, availableCount: 0, totalCount: 0 })),
+    })) },
+  ] as const));
   for (const card of cards) {
-    if (card.subject !== subject || !card.editionId || !card.unitId || !card.sectionId || !card.grade || !card.volume) continue;
-    let edition = editions.get(card.editionId);
-    if (!edition) {
-      edition = { id: card.editionId, grade: card.grade, volume: card.volume, subject, units: [] };
-      editions.set(card.editionId, edition);
-    }
-    let unit = edition.units.find((item) => item.id === card.unitId);
-    if (!unit) {
-      unit = { id: card.unitId, title: card.unitTitle ?? "未命名单元", order: card.unitOrder ?? 0, sections: [] };
-      edition.units.push(unit);
-    }
-    let section = unit.sections.find((item) => item.id === card.sectionId);
-    if (!section) {
-      section = { id: card.sectionId, title: card.sectionTitle ?? "未命名课次", order: card.sectionOrder ?? 0, availableCount: 0, totalCount: 0 };
-      unit.sections.push(section);
-    }
+    if (card.subject !== subject || !card.editionId || !card.unitId || !card.sectionId) continue;
+    const edition = editions.get(card.editionId);
+    const unit = edition?.units.find((item) => item.id === card.unitId);
+    const section = unit?.sections.find((item) => item.id === card.sectionId);
+    if (!section) continue;
     section.totalCount += 1;
     if (!card.startedChildIds.includes(childId) && !card.activeChildIds?.includes(childId)) section.availableCount += 1;
   }

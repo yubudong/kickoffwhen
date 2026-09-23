@@ -36,6 +36,12 @@ function renderForm(subject: "chinese" | "english" = "chinese") {
   componentState.values = [childId, [sectionId], [], "", false, subject];
   return TaskBuilderForm({
     childOptions: [{ id: childId, nickname: "孩子", dueCount: 3, dueCounts: { chinese: 1, english: 2 } }],
+    catalog: [
+      { id: "cn-edition", publisher: "统编", series: "语文", editionText: "测试版", subject: "chinese", grade: 5, volume: "上册",
+        units: [{ id: "cn-unit", title: "第一单元", order: 1, sections: [{ id: sectionId, title: "第1课", order: 1 }] }] },
+      { id: "en-edition", publisher: "测试社", series: "英语", editionText: "测试版", subject: "english", grade: 5, volume: "上册",
+        units: [{ id: "en-unit", title: "Unit 1", order: 1, sections: [{ id: "en-part-a", title: "Part A", order: 1 }] }] },
+    ],
     cards: [
       { id: cardId, answerText: "桂花", subject: "chinese", source: "builtin", editionId: "cn-edition", grade: 5, volume: "上册",
         unitId: "cn-unit", unitTitle: "第一单元", unitOrder: 1, sectionId, sectionTitle: "第1课", sectionOrder: 1, startedChildIds: [] },
@@ -84,12 +90,15 @@ test("切换科目或孩子会清除先前选中的课次和加练词", () => {
 });
 
 test("批量提交包含科目与课次 ID", async () => {
-  const request = vi.fn(async (_url: string, _init: RequestInit) => success());
+  const request = vi.fn(async (url: string, init: RequestInit) => {
+    expect(url).toBe("/api/parent/task-batches");
+    expect(JSON.parse(init.body as string))
+      .toMatchObject({ subject: "chinese", sectionIds: [sectionId], extraCardIds: [] });
+    return success();
+  });
   vi.stubGlobal("fetch", request);
   await renderForm().props.action(formData());
-  expect(request.mock.calls[0][0]).toBe("/api/parent/task-batches");
-  expect(JSON.parse(request.mock.calls[0][1].body as string))
-    .toMatchObject({ subject: "chinese", sectionIds: [sectionId], extraCardIds: [] });
+  expect(request).toHaveBeenCalledOnce();
 });
 
 test("教材树按科目展示，保留英语教材的 Part A 名称", () => {
