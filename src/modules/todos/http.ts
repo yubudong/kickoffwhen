@@ -15,6 +15,7 @@ export async function todosHandler(request: Request, role: 'parent' | 'child') {
         return Response.json({ error: '请重新登录。' }, { status: 401 });
     }
     const service = createTodoService();
+    let isParentUpdate = false;
     try {
         if (request.method === 'GET') {
             const u = new URL(request.url);
@@ -27,8 +28,10 @@ export async function todosHandler(request: Request, role: 'parent' | 'child') {
             const v = await request.json();
             if (v.action === 'review')
                 await service.review(actor, v.id, v);
-            else if (v.action === 'update')
+            else if (v.action === 'update') {
+                isParentUpdate = true;
                 await service.updateManual(actor, v.id, v);
+            }
             else if (v.action === 'cancel')
                 await service.cancelManual(actor, v.id);
             else if (v.action === undefined)
@@ -61,7 +64,7 @@ export async function todosHandler(request: Request, role: 'parent' | 'child') {
     }
     catch (error) {
         const m = error instanceof Error ? error.message : '';
-        const message = m === 'TODO_STALE' ? '任务状态已更新，请刷新后重试。' : m === 'TODO_KIND' ? '听写任务请在听写页面管理。' : m === 'TODO_REWARDED' ? '任务已审核并发放积分，不能撤回。' : m === 'DICTATION_INCOMPLETE' ? '请先完成听写及订正。' : m === 'DICTATION_IMAGE_ONLY' ? '听写只能上传图片，也可以不上传照片直接提交。' : m.startsWith('ATTACHMENT') ? '请选择8MB以内的图片、音频或视频，或不带附件提交。' : m === 'TODO_NOT_FOUND' ? '任务不存在或无权访问。' : '请检查填写内容后重试。';
+        const message = m === 'TODO_STALE' ? isParentUpdate ? '任务状态已更新，请刷新清单，取消编辑后重新打开。' : '任务状态已更新，请刷新后重试。' : m === 'TODO_KIND' ? '听写任务请在听写页面管理。' : m === 'TODO_REWARDED' ? '任务已审核并发放积分，不能撤回。' : m === 'DICTATION_INCOMPLETE' ? '请先完成听写及订正。' : m === 'DICTATION_IMAGE_ONLY' ? '听写只能上传图片，也可以不上传照片直接提交。' : m.startsWith('ATTACHMENT') ? '请选择8MB以内的图片、音频或视频，或不带附件提交。' : m === 'TODO_NOT_FOUND' ? '任务不存在或无权访问。' : '请检查填写内容后重试。';
         return Response.json({ error: message }, { status: m === 'TODO_NOT_FOUND' ? 404 : error instanceof z.ZodError ? 400 : 409 });
     }
 }

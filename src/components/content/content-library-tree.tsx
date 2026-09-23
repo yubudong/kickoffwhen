@@ -44,11 +44,12 @@ export function ContentLibraryTree({ library }: { library: ContentLibrary }) {
                 <span className="library-count">{edition.units.length} 个单元 · {edition.count} 个词</span>
               </summary>
               <div className="library-edition-content">
+                {edition.count === 0 && <p className="library-empty">该教材暂无词条</p>}
                 {edition.units.map((unit) => (
                   <details className="library-unit" key={unit.id}>
                     <summary>
                       <span className="library-title">{unit.title}</span>
-                      <span className="library-count">{unit.sections.length} 课 · {unit.count} 个词</span>
+                      <span className="library-count">{unit.sections.length} 个小节 · {unit.count} 个词</span>
                     </summary>
                     <div className="library-unit-content">
                       {unit.sections.map((section) => (
@@ -70,7 +71,7 @@ export function ContentLibraryTree({ library }: { library: ContentLibrary }) {
           ))}
         </div>
       )}
-      {!library.editions.some((edition) => edition.subject === "english") && (
+      {!library.editions.some((edition) => edition.subject === "english" && edition.count > 0) && (
         <p className="library-empty library-english-empty">英语教材词库尚未导入</p>
       )}
       {hasPersonal && (

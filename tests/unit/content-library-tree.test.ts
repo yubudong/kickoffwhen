@@ -1,10 +1,13 @@
 import { readFileSync } from "node:fs";
+import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
 
 import { expect, test } from "vitest";
 
 import { buildContentLibrary, type CatalogEdition } from "@/modules/learning-content/library-tree";
 import { validateSeedContent } from "@/modules/learning-content/seed-validator";
 import type { LearningCard } from "@/modules/learning-content/types";
+import { ContentLibraryTree } from "@/components/content/content-library-tree";
 
 const edition: CatalogEdition = {
   id: "edition-1", publisher: "人民教育出版社", series: "统编版", editionText: "2024版",
@@ -26,6 +29,38 @@ function card(answerText: string, sourceOrder: number | null, placement: Partial
     ...placement,
   };
 }
+
+test("内容库单元计数包含课文和语文园地时统一称为小节", () => {
+  const mixedEdition: CatalogEdition = {
+    ...edition,
+    units: [{ id: "unit-1", title: "第一单元", order: 1, sections: [
+      { id: "lesson-1", title: "第一课", order: 1 },
+      { id: "language-garden", title: "语文园地", order: 2 },
+    ] }],
+  };
+  const library = buildContentLibrary([mixedEdition], [card("桂花", 1)]);
+  const html = renderToStaticMarkup(createElement(ContentLibraryTree, { library }));
+
+  expect(html).toContain("2 个小节 · 1 个词");
+});
+
+test("零词教材展开后明确提示暂无词条", () => {
+  const library = buildContentLibrary([edition], []);
+  const html = renderToStaticMarkup(createElement(ContentLibraryTree, { library }));
+
+  expect(html).toContain("该教材暂无词条");
+});
+
+test("英语目录存在但零词时仍提示英语教材词库尚未导入", () => {
+  const englishEdition: CatalogEdition = { ...edition, id: "english-edition", subject: "english" };
+  const library = buildContentLibrary([englishEdition], [card("hello", null, {
+    familyId: "family-1", subject: "english", textbookEditionId: null,
+    unitId: null, sectionId: null, source: "manual",
+  })]);
+  const html = renderToStaticMarkup(createElement(ContentLibraryTree, { library }));
+
+  expect(html).toContain("英语教材词库尚未导入");
+});
 
 test("按教材路径和原始顺序归位所有卡片，并统计真实卡片数", () => {
   const cards = [

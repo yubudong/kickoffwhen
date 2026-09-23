@@ -138,7 +138,7 @@ test("编辑期间另一页面修改任务后，旧草稿不能取得新版本�
     await expect(refreshedRow.getByRole("button", { name: "编辑", exact: true })).toBeDisabled();
 
     await draft.getByRole("button", { name: "保存修改" }).click();
-    await expect(page.locator(".todo-error")).toContainText("任务状态已更新");
+    await expect(page.locator(".todo-error")).toContainText("任务状态已更新，请刷新清单，取消编辑后重新打开。");
     await expect(refreshedRow).toBeVisible();
     await otherPage.getByRole("button", { name: "刷新" }).click();
     await expect(otherPage.getByRole("row").filter({ hasText: "另一页面的新内容" })).toBeVisible();

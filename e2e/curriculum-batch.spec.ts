@@ -93,6 +93,7 @@ test("家长展开教材、勾选整个单元后按课下发", async ({ page }) 
   await expect(libraryUnit.locator(":scope > summary")).toBeVisible();
   await expect(libraryEdition.getByText("第1课", { exact: true })).toBeHidden();
   await libraryUnit.locator(":scope > summary").click();
+  await expect(libraryUnit.locator(":scope > summary")).toContainText("2 个小节 · 2 个词");
   const librarySection = libraryUnit.locator("details.library-section").first();
   await expect(librarySection.locator(":scope > summary")).toBeVisible();
   await expect(libraryEdition.getByText("桂花", { exact: true })).toBeHidden();
@@ -151,7 +152,7 @@ test("家长展开教材、勾选整个单元后按课下发", async ({ page }) 
   await expect(libraryEdition.locator(":scope > summary")).toContainText("1 个单元 · 4 个词");
   await libraryEdition.locator(":scope > summary").click();
   await expect(libraryEdition.locator(":scope > .library-edition-content > .library-unplaced")).toContainText("教材散词");
-  await expect(libraryUnit.locator(":scope > summary")).toContainText("2 课 · 3 个词");
+  await expect(libraryUnit.locator(":scope > summary")).toContainText("2 个小节 · 3 个词");
   await libraryUnit.locator(":scope > summary").click();
   await expect(libraryUnit.locator(":scope > .library-unit-content > .library-unplaced")).toContainText("单元散词");
   const personalEnglish = page.locator("details.library-personal").filter({ hasText: "英语" });
