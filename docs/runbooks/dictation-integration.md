@@ -2,7 +2,7 @@
 
 ## 当前状态与边界
 
-- 本文档记录的是本地候选，尚未推送、合并或部署，也未写入正式数据库。
+- 2026-09-23 经 Tom 明确确认，候选已更新 PR #1 并部署到 Hetzner；0020 已执行，312 条词库已导入。PR 尚未合并。以下本地验证记录保留为发布前证据。
 - 听写分支起点为 `a9cd2d7`，已上线生产源为 Hetzner release `20260922-recording1`，两者共同代码基线为 `ad1f066`。
 - 生产源 worktree 全程只读。未读取或复制生产环境文件、密钥、媒体或家庭数据；未发信，未调用真实 TTS。
 - 线上只读 SHA-256 核对确认 release 中 209 个 `src`/`scripts`/`drizzle` 文件及列举的包、Docker 和 Compose 文件与本地部署源一致；扩展整合保留检查共对照 212 个生产文件，194 个完全一致，18 个差异均是原 `a9cd2d7` 听写修改覆盖的共享文件，无其他遗漏。
@@ -48,3 +48,14 @@
 
 - 如应用切换失败，只回退 web/worker 到 `20260922-recording1`，保留已执行的 0019/0020、todo 表、`textbook_sections`、卡片元数据、待办/提交/审核/积分历史和媒体。
 - 不通过恢复旧数据库覆盖切换后新写入，不删除新表、新词条或历史。`20260922-recording1` 仍保留听写待办的创建/提交联动，但没有新小节、拼音、语境和科目筛选能力；回退后仍需验收既有待办链路。
+
+## 2026-09-23 正式发布记录
+
+- 源码提交 `7b0913c`，PR 快照 `44aac5d`；镜像 `family-learning:20260923-dictation1`，发布目录 `/root/family-learning/releases/20260923-dictation1`。真实环境文件未进入新源码目录或镜像。
+- 先完成服务器镜像构建，再停止 web/worker 写入，备份数据库与媒体到 `/root/backups/kickoffwhen/20260923-dictation1/`。目录 0700、备份 0600；数据库归档目录可读、媒体压缩包可列出，尚未进行完整恢复演练。
+- 原 0019 hash 已匹配；0020 迁移成功，词库审计通过，正式导入 `inserted=312 / updated=0`。迁移前后账号、孩子、学习任务、待办和私有词条数量完全一致。
+- 正式库 312 条逐项比对源码：词语、播报文本、拼音、语境、来源、单元和小节一致；247 必留词保留，拼音/语境/小节无缺失，播报文本不包含语境。
+- 公网 ready=200，登录页=200，未登录待办接口=401，未登录家长布置页=307。首次 ready 请求在切换期间为 503，随后公网及容器内部均恢复 200。保留录音 microphone=(self)。
+- 本次未更改 DNS、Cloudflare Pages 或共享 Caddy；未发送邮件、未操作家庭任务或调用真实 TTS。真实设备上的发音、暂停/重听和完整任务流程仍需 Tom 试听验收；英语教材内容仍待提供。
+- 管理命令：`sh /root/family-learning/releases/20260923-dictation1/compose-current.sh ...`，默认使用新镜像及既有受管 Compose/env。不要直接运行新源码目录的 Compose，也不要裸用旧 Compose 的旧 APP_IMAGE 默认值。
+- 应用回退命令：`APP_IMAGE=family-learning:20260922-recording1 sh /root/family-learning/releases/20260923-dictation1/compose-current.sh up -d --no-deps web worker`。保留数据库、媒体、新词条和全部历史，不恢复旧库覆盖新写入。
