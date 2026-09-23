@@ -67,3 +67,14 @@ test("路径不完整或跨单元时放入最近的教材未分课", () => {
   expect(tree.personal.chinese.map((item) => item.answerText)).toEqual(["无效教材"]);
   expect(tree.total).toBe(4);
 });
+
+test("卡片科目与教材科目不一致时归入卡片自身科目的个人组", () => {
+  const tree = buildContentLibrary([edition], [card("hello", 1, {
+    familyId: "family-1", subject: "english", source: "manual",
+  })]);
+
+  expect(tree.editions[0]!.count).toBe(0);
+  expect(tree.editions[0]!.units[0]!.sections[0]!.cards).toEqual([]);
+  expect(tree.personal.english.map((item) => item.answerText)).toEqual(["hello"]);
+  expect(tree.total).toBe(1);
+});

@@ -53,7 +53,8 @@ export function buildContentLibrary(catalog: CatalogEdition[], cards: LearningCa
   const personal: Record<Subject, LearningCard[]> = { chinese: [], english: [] };
   const editionsById = new Map(editions.map((edition) => [edition.id, edition]));
   for (const card of cards) {
-    const edition = editionsById.get(card.textbookEditionId ?? "");
+    const candidate = editionsById.get(card.textbookEditionId ?? "");
+    const edition = candidate?.subject === card.subject ? candidate : undefined;
     const unit = edition?.units.find((item) => item.id === card.unitId);
     const section = unit?.sections.find((item) => item.id === card.sectionId);
     if (section) section.cards.push(card);
