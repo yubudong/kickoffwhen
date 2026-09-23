@@ -1,6 +1,7 @@
 'use client';
 import Image from 'next/image';
 import { TaskManagementControls } from '@/components/dictation/task-management-controls';
+import { DictationEvidenceSubmit } from '@/components/dictation/dictation-evidence-submit';
 import { TodoSubmission } from './todo-submission';
 import { createTodoRequestGuard } from '@/modules/todos/request-guard';
 import { useRouter } from 'next/navigation';
@@ -117,11 +118,22 @@ export function TodoBoard({ role, childOptions = [] }: {
  {error && <p role="alert" className="todo-error">{error}</p>}
  {!loaded ? <p>正在读取清单…</p> : !data.tasks.length ? <p>这一天还没有待办任务。</p> : <div className="todo-table-wrap"><table className="todo-table"><thead><tr><th>待办任务</th><th>任务要求</th><th>操作</th></tr></thead><tbody>{sorted.map(t => {
                 const done = ['submitted', 'approved'].includes(t.status);
-                const dictationState = t.kind === 'dictation' && t.status === 'open'
-                    ? t.dictationSessionStatus === 'active' ? '进行中' : t.dictationAudioStatus === 'preparing' ? '音频准备中' : '待完成'
+                const dictationCompleted = t.kind === 'dictation' && t.dictationSessionStatus === 'completed';
+                const dictationState = t.kind === 'dictation' && ['open', 'rejected'].includes(t.status)
+                    ? dictationCompleted ? '听写已完成，待提交' : t.dictationSessionStatus === 'active' ? '进行中' : t.dictationAudioStatus === 'preparing' ? '音频准备中' : '待完成'
                     : null;
                 return <tr key={t.id} className={done ? 'todo-done' : ''}><td><div className="todo-name"><input type="checkbox" checked={done} readOnly aria-label={`${t.title}${done ? '已提交' : '待完成'}`}/>{done ? <s>{t.title}</s> : <strong>{t.title}</strong>}</div><span className={`todo-status status-${t.status}`}>{dictationState ?? labels[t.status]}</span>{t.kind === 'dictation' && <small>听写任务</small>}{t.points !== null && <p className="todo-points">已获得 {t.points} 积分</p>}</td><td><p className="todo-requirements">{t.requirements || '按要求完成即可。'}</p>{t.reviewNote && <p className="todo-review-note">家长反馈：{t.reviewNote}</p>}{t.attachment && <Evidence attachment={t.attachment}/>}</td><td>
- {role === 'child' && !done && (t.kind === 'dictation' && t.status === 'open' ? <button disabled={pending || recordingTaskId !== null || (t.dictationSessionStatus !== 'active' && t.dictationAudioStatus !== 'ready')} onClick={() => void start(t)}>{t.dictationSessionStatus === 'active' ? '继续听写' : t.dictationAudioStatus === 'ready' ? '开始听写' : '音频准备中'}</button> : <TodoSubmission taskId={t.id} disabled={pending || (recordingTaskId !== null && recordingTaskId !== t.id)} onActivityChange={recordingActivity} onSubmit={data => submit(data, t)}/>)}
+ {role === 'child' && !done && t.status !== 'cancelled' && (dictationCompleted ? (
+   <DictationEvidenceSubmit todo={{ id: t.id, date: t.date, number: t.submissionNumber }}
+     disabled={pending || recordingTaskId !== null}
+     onSubmitted={() => void refresh().catch(() => setError('提交已保存，刷新清单失败，请手动刷新。'))} />
+ ) : t.kind === 'dictation' ? (
+   <button disabled={pending || recordingTaskId !== null || (t.dictationSessionStatus !== 'active' && t.dictationAudioStatus !== 'ready')}
+     onClick={() => void start(t)}>{t.dictationSessionStatus === 'active' ? '继续听写' : t.dictationAudioStatus === 'ready' ? '开始听写' : '音频准备中'}</button>
+ ) : (
+   <TodoSubmission taskId={t.id} disabled={pending || (recordingTaskId !== null && recordingTaskId !== t.id)}
+     onActivityChange={recordingActivity} onSubmit={data => submit(data, t)}/>
+ ))}
  {role === 'child' && done && <span>{t.status === 'submitted' ? '等待家长审核' : '已通过审核，积分已到账'}</span>}
  {role === 'parent' && t.status === 'submitted' && <ReviewForm pending={pending} onSubmit={e => void review(e, t)}/>}
  {role === 'parent' && t.status !== 'submitted' && <span>{t.status === 'approved' ? '审核通过，已发积分' : t.status === 'cancelled' ? '已撤回' : t.status === 'rejected' ? '等待孩子重新提交' : dictationState ?? '等待孩子完成'}</span>}

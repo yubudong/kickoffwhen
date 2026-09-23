@@ -1,4 +1,4 @@
-import { readFile } from "node:fs/promises";
+import { readFile, readdir } from "node:fs/promises";
 
 import { expect, type BrowserContext, type Page, test } from "@playwright/test";
 
@@ -194,6 +194,7 @@ async function cleanupFixture(state: FixtureState) {
     jobSchema,
     todoSchema,
     { createPrivateMediaStore },
+    { removeAttachment },
     orm,
   ] = await Promise.all([
     import("@/db/client"),
@@ -207,6 +208,7 @@ async function cleanupFixture(state: FixtureState) {
     import("@/modules/jobs/schema"),
     import("@/modules/todos/schema"),
     import("@/modules/media/store"),
+    import("@/modules/todos/attachments"),
     import("drizzle-orm"),
   ]);
   const store = createPrivateMediaStore();
@@ -222,6 +224,7 @@ async function cleanupFixture(state: FixtureState) {
   let familyId = state.familyId;
   let authUserId = state.authUserId;
   let cleanupJobIds = [...state.jobIds];
+  let todoAttachmentIds: string[] = [];
   if (state.jobIds.length > 0 || state.jobDedupeKeys.length > 0) {
     const trackedJobs = await db.select({ id: jobSchema.jobs.id })
       .from(jobSchema.jobs)
@@ -257,6 +260,10 @@ async function cleanupFixture(state: FixtureState) {
       .where(orm.eq(todoSchema.todoTasks.familyId, familyId)))
       .map((todo) => todo.id);
     if (todoIds.length > 0) {
+      todoAttachmentIds = (await tx.select({ id: todoSchema.todoSubmissions.attachmentId })
+        .from(todoSchema.todoSubmissions)
+        .where(orm.inArray(todoSchema.todoSubmissions.todoId, todoIds)))
+        .flatMap((attachment) => attachment.id ? [attachment.id] : []);
       await tx.delete(todoSchema.todoReviews).where(orm.inArray(todoSchema.todoReviews.todoId, todoIds));
       await tx.delete(todoSchema.todoRewards).where(orm.inArray(todoSchema.todoRewards.todoId, todoIds));
       await tx.delete(todoSchema.todoSubmissions).where(orm.inArray(todoSchema.todoSubmissions.todoId, todoIds));
@@ -278,6 +285,7 @@ async function cleanupFixture(state: FixtureState) {
     if (state.builtinCardIds?.length) await tx.delete(contentSchema.learningCards).where(orm.inArray(contentSchema.learningCards.id, state.builtinCardIds));
     if (authUserId) await tx.delete(authSchema.user).where(orm.eq(authSchema.user.id, authUserId));
   });
+  await Promise.all(todoAttachmentIds.map((id) => removeAttachment(id)));
   if (cleanupJobIds.length > 0 || state.jobDedupeKeys.length > 0) {
     const remainingJobs = await db.select({ id: jobSchema.jobs.id })
       .from(jobSchema.jobs)
@@ -557,6 +565,43 @@ test("连续听写、刷新、切换孩子、批改恢复和错题循环", async
   await childPage.getByRole("button", { name: "正确" }).click();
   await childPage.getByRole("button", { name: "提交本轮" }).click();
   await expect(childPage.getByRole("heading", { name: "本次听写已完成" })).toBeVisible();
+  await expect(childPage.getByText("听写已完成，待提交")).toBeVisible();
+  await expect(childPage.getByLabel("上传照片（可选）")).toBeVisible();
+  const completedTodo = await childPage.evaluate(async () => {
+    const response = await fetch(window.location.pathname.replace("/child/dictation/", "/api/child/dictation/"));
+    const payload = await response.json() as { session: { todoSubmission: { id: string; date: string; number: number } } };
+    return payload.session.todoSubmission;
+  });
+  const audioMarker = `ID3dictation-${crypto.randomUUID()}`;
+  const audioResult = await childPage.evaluate(async ({ todo, marker }) => {
+    const body = new FormData();
+    body.set("id", todo.id);
+    body.set("date", todo.date);
+    body.set("number", String(todo.number));
+    body.set("file", new File([marker], "dictation.mp3", { type: "audio/mpeg" }));
+    const response = await fetch("/api/child/todos", { method: "POST", body });
+    return { status: response.status, error: (await response.json()).error as string };
+  }, { todo: completedTodo, marker: audioMarker });
+  expect(audioResult.status).toBe(409);
+  expect(audioResult.error).toContain("只能上传图片");
+  const { db: todoDb } = await import("@/db/client");
+  const { todoTasks: todoTable, todoSubmissions: submissionTable } = await import("@/modules/todos/schema");
+  const { eq: same } = await import("drizzle-orm");
+  expect((await todoDb.select().from(todoTable).where(same(todoTable.id, completedTodo.id)))[0]).toMatchObject({ status: "open", submissionNumber: 0 });
+  expect(await todoDb.select().from(submissionTable).where(same(submissionTable.todoId, completedTodo.id))).toHaveLength(0);
+  const savedEvidence = await readdir("var/media/todo").catch((error: NodeJS.ErrnoException) => {
+    if (error.code === "ENOENT") return [] as string[];
+    throw error;
+  });
+  for (const name of savedEvidence) {
+    expect((await readFile(`var/media/todo/${name}`)).includes(audioMarker)).toBe(false);
+  }
+  await childPage.getByRole("button", { name: "提交家长审核" }).click();
+  await expect(childPage.getByText("等待家长审核")).toBeVisible();
+  await childPage.goto("/child");
+  await expect(childPage.getByText("等待家长审核")).toBeVisible();
+  await page.goto("/parent/todos");
+  await expect(page.getByRole("button", { name: /通过并发放/ })).toBeVisible();
   expect(await childPage.evaluate(() => Object.keys(localStorage).filter((key) => key.startsWith("dictation:")))).toEqual([]);
   const audioEvidence = await childPage.evaluate(() => ({
     count: Number(sessionStorage.getItem("e2eAudioPlayCount") ?? "0"),
@@ -595,6 +640,59 @@ test("连续听写、刷新、切换孩子、批改恢复和错题循环", async
   await expect(page.getByText("本场订正完成")).toBeVisible();
   await expect(page.getByText("答题记录（最近 100 次）")).toBeVisible();
 
+  await childContext.close();
+});
+
+test("完成听写后可在待办清单上传照片，家长可打开凭证", async ({ browser, page }) => {
+  test.setTimeout(120_000);
+  const setup = await createFamilyAndTask(page);
+  const child = setup.children.find((item) => item.nickname === "小雨")!;
+  const [{ db }, { learningTasks }, { dictationSessions }, { eq }] = await Promise.all([
+    import("@/db/client"),
+    import("@/modules/dictation/task-schema"),
+    import("@/modules/dictation/session-schema"),
+    import("drizzle-orm"),
+  ]);
+  await db.update(learningTasks).set({ status: "completed", completedAt: new Date() }).where(eq(learningTasks.id, setup.task.id));
+  await db.insert(dictationSessions).values({
+    familyId: fixtureState!.familyId!, childId: child.id, taskId: setup.task.id,
+    mode: "continuous_batch", status: "completed", phase: "completed",
+    completedAt: new Date(), currentRoundItemIds: [],
+  });
+  const childContext = await browser.newContext();
+  const childPage = await pairAndSelect(childContext, setup.pairingCode, "小雨");
+  await expect(childPage.getByText("听写已完成，待提交")).toBeVisible();
+  const photo = Buffer.from("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+X6uoAAAAASUVORK5CYII=", "base64");
+  await childPage.getByLabel("上传照片（可选）").setInputFiles({ name: "dictation.png", mimeType: "image/png", buffer: photo });
+  let releaseSubmission!: () => void;
+  let submissionStarted!: () => void;
+  const submissionGate = new Promise<void>((resolve) => { releaseSubmission = resolve; });
+  const started = new Promise<void>((resolve) => { submissionStarted = resolve; });
+  await childPage.route("**/api/child/todos", async (route) => {
+    if (route.request().method() === "POST") {
+      submissionStarted();
+      await submissionGate;
+    }
+    await route.continue();
+  });
+  await childPage.getByRole("button", { name: "提交家长审核" }).click();
+  await started;
+  await expect(childPage.getByRole("button", { name: "正在提交…" })).toBeDisabled();
+  releaseSubmission();
+  await expect(childPage.getByText("等待家长审核")).toBeVisible();
+  await page.goto("/parent/todos");
+  const evidenceLink = page.getByRole("link", { name: "完成任务的图片" });
+  await expect(evidenceLink).toBeVisible();
+  const [evidencePage] = await Promise.all([page.waitForEvent("popup"), evidenceLink.click()]);
+  await expect(evidencePage).toHaveURL(/\/api\/todo-attachments\//);
+  const evidence = await page.request.get(evidencePage.url());
+  expect(evidence.status()).toBe(200);
+  expect(evidence.headers()["content-type"]).toBe("image/png");
+  await page.getByPlaceholder("退回时必填").fill("请确认照片");
+  await page.getByRole("button", { name: "退回，不发积分" }).click();
+  await childPage.getByRole("button", { name: "刷新" }).click();
+  await expect(childPage.getByText("听写已完成，待提交")).toBeVisible();
+  await expect(childPage.getByLabel("上传照片（可选）")).toBeVisible();
   await childContext.close();
 });
 

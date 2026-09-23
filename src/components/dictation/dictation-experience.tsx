@@ -17,6 +17,7 @@ import {
 
 import { AudioSequence } from "./audio-sequence";
 import { BatchGrader } from "./batch-grader";
+import { DictationEvidenceSubmit } from "./dictation-evidence-submit";
 
 export function DictationExperience({ initialSession }: { initialSession: ChildSessionView }) {
   const router = useRouter();
@@ -238,6 +239,21 @@ export function DictationExperience({ initialSession }: { initialSession: ChildS
           <p aria-hidden="true" className="completion-star">⭐</p>
           <h1>本次听写已完成</h1>
           <p>你认真完成了每一道题。</p>
+          {session.todoSubmission && ["open", "rejected"].includes(session.todoSubmission.status) ? (
+            <>
+              <p className="dictation-submission-status">听写已完成，待提交</p>
+              <DictationEvidenceSubmit todo={session.todoSubmission} onSubmitted={() => setSession(current =>
+                current.phase === "completed" && current.todoSubmission ? {
+                  ...current,
+                  todoSubmission: { ...current.todoSubmission, status: "submitted", number: current.todoSubmission.number + 1 },
+                } : current
+              )} />
+            </>
+          ) : session.todoSubmission?.status === "submitted" ? (
+            <p className="dictation-submission-status">等待家长审核</p>
+          ) : session.todoSubmission?.status === "approved" ? (
+            <p className="dictation-submission-status">已通过审核，积分已到账</p>
+          ) : null}
           <button className="dictation-primary" onClick={() => router.replace("/child")} type="button">
             返回今日任务
           </button>

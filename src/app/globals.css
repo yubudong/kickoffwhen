@@ -509,6 +509,40 @@ h1 {
   text-align: center;
 }
 
+.dictation-submission-status {
+  color: #1e3a8a;
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.dictation-evidence-submit {
+  display: grid;
+  gap: 12px;
+  justify-items: center;
+  margin: 20px 0;
+}
+
+.dictation-evidence-submit label {
+  display: grid;
+  gap: 8px;
+  text-align: left;
+  font-weight: 700;
+}
+
+.dictation-evidence-submit input {
+  width: min(100%, 320px);
+  font: inherit;
+}
+
+.dictation-evidence-submit p {
+  margin: 0;
+  color: #475569;
+}
+
+.dictation-evidence-submit .dictation-evidence-error {
+  color: #b1272c;
+}
+
 .dictation-progress {
   display: grid;
   gap: 12px;
