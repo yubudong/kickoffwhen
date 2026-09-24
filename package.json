@@ -1,19 +1,55 @@
 {
-  "name": "kickoffwhen",
-  "type": "module",
+  "name": "family-learning-mvp",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.9.0",
+  "engines": {
+    "node": ">=24 <25"
+  },
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "pnpm start:preflight && next start",
+    "start:preflight": "node --import tsx scripts/preflight.ts",
+    "lint": "eslint .",
+    "typecheck": "next typegen && tsc --noEmit",
+    "test": "vitest run tests/unit",
+    "test:integration": "FAMILY_LEARNING_TEST_MODE=integration vitest run --config vitest.integration.config.ts tests/integration",
+    "test:e2e": "playwright test",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "tsx scripts/migrate.ts",
+    "seed:content": "tsx scripts/seed-content.ts",
+    "worker": "tsx src/worker/index.ts"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.7.2",
-    "@astrojs/tailwind": "^6.0.2",
-    "astro": "^5.18.1",
-    "tailwindcss": "^3.4.19"
+    "@better-auth/drizzle-adapter": "1.7.2",
+    "@next/env": "16.3.3",
+    "argon2": "0.45.1",
+    "better-auth": "1.7.2",
+    "drizzle-orm": "0.45.2",
+    "next": "16.3.3",
+    "nodemailer": "9.0.6",
+    "pg": "8.23.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "server-only": "0.0.1",
+    "ts-fsrs": "5.4.2",
+    "zod": "4.5.4"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.62.1",
+    "@types/node": "24.13.3",
+    "@types/nodemailer": "7.0.11",
+    "@types/pg": "8.23.1",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.5",
+    "@vitest/coverage-v8": "4.1.11",
+    "drizzle-kit": "0.31.10",
+    "eslint": "9.39.5",
+    "eslint-config-next": "16.3.3",
+    "tsx": "4.23.13",
+    "typescript": "5.9.3",
+    "vitest": "4.1.11"
   }
 }
