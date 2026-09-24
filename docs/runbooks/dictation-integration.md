@@ -1,5 +1,14 @@
 # Hetzner 生产功能与五年级听写整合手册（2026-09-22）
 
+## 2026-09-24 听写凭证与教材内容库发布记录
+
+- Tom 授权推送并部署。现有 PR #1 的 `codex/replace-with-learning-site` 分支已推送功能源码提交 `86b2898`；新镜像 `family-learning:20260924-evidence-library1` 从该提交的纯源码归档构建，发布目录为 `/root/family-learning/releases/20260924-evidence-library1`。源码归档传输前后 SHA-256 一致，镜像标记同一完整提交号，镜像内没有 `.env` 文件。
+- 本次没有新增数据库迁移，也没有重新导入词库。生产迁移账本仍为 23 条、最新 id 为 23；内置词条 312 条，其中教材词语表必留词 247 条。
+- 切换前短暂停止 Web/Worker，将 PostgreSQL 与媒体卷备份到 `/root/backups/kickoffwhen/20260924-evidence-library1/`。备份文件为 `0600`，数据库归档可列目录，媒体归档可列目录，并记录了 SHA-256；旧镜像、旧发布目录和原有受管 Compose/env 均保留。
+- 新镜像的生产配置预检通过。切换后 Web 健康、Worker 运行，二者重启计数均为 0；公网 ready 为 200、登录页为 200、未登录家长待办为 401、未登录家长页面重定向为 307、测试邮件读取接口为 404，`www` 保留路径及查询参数跳转到根域。未更改 DNS、Cloudflare Pages 或共享 Caddy。
+- 本地发布前验证：204 项单元测试、153 项集成测试、Chromium/WebKit 共 26 项浏览器测试全部通过；lint、typecheck 和生产构建通过。构建仍有 8 条既有的私有媒体动态目录追踪警告。真实设备的拍照提交、听写语音与家长审核仍需 Tom 人工验收。
+- 仅回退应用时使用 `APP_IMAGE=family-learning:20260923-tasktree1 sh /root/family-learning/releases/20260923-tasktree1/compose-current.sh up -d --no-deps web worker`；不回滚或覆盖上线后新增的数据库及媒体资料。旧版会恢复听写完成自动提交等旧行为，回退后应暂停使用本次新增的手动提交入口。
+
 ## 2026-09-23 分层布置发布记录
 
 - Tom 确认后，已把候选快进推送到现有 [PR #1](https://github.com/yubudong/kickoffwhen/pull/1)；生产镜像源码提交为 `2b701a2`，镜像 `family-learning:20260923-tasktree1`，发布目录 `/root/family-learning/releases/20260923-tasktree1`。PR 尚未合并；既有 Cloudflare 与共享 Caddy 配置未改。
