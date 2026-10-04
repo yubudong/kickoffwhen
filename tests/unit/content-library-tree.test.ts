@@ -1,0 +1,181 @@
+import { readFileSync } from "node:fs";
+import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
+
+import { expect, test } from "vitest";
+
+import { buildContentLibrary, type CatalogEdition } from "@/modules/learning-content/library-tree";
+import { validateSeedContent } from "@/modules/learning-content/seed-validator";
+import type { LearningCard } from "@/modules/learning-content/types";
+import { ContentLibraryTree } from "@/components/content/content-library-tree";
+
+const edition: CatalogEdition = {
+  id: "edition-1", publisher: "人民教育出版社", series: "统编版", editionText: "2024版",
+  subject: "chinese", grade: 5, volume: "上册",
+  units: [
+    { id: "unit-2", title: "第二单元", order: 2, sections: [{ id: "lesson-3", title: "第三课", order: 1 }] },
+    { id: "unit-1", title: "第一单元", order: 1, sections: [
+      { id: "lesson-2", title: "第二课", order: 2 },
+      { id: "lesson-1", title: "第一课", order: 1 },
+    ] },
+  ],
+};
+
+function card(answerText: string, sourceOrder: number | null, placement: Partial<LearningCard> = {}): LearningCard {
+  return {
+    id: answerText, familyId: null, subject: "chinese", answerText, broadcastText: answerText,
+    hintText: null, pinyinText: null, curriculumSource: null, sourceOrder,
+    textbookEditionId: "edition-1", unitId: "unit-1", sectionId: "lesson-1", source: "builtin",
+    ...placement,
+  };
+}
+
+test("内容库单元计数包含课文和语文园地时统一称为小节", () => {
+  const mixedEdition: CatalogEdition = {
+    ...edition,
+    units: [{ id: "unit-1", title: "第一单元", order: 1, sections: [
+      { id: "lesson-1", title: "第一课", order: 1 },
+      { id: "language-garden", title: "语文园地", order: 2 },
+    ] }],
+  };
+  const library = buildContentLibrary([mixedEdition], [card("桂花", 1)]);
+  const html = renderToStaticMarkup(createElement(ContentLibraryTree, { library }));
+
+  expect(html).toContain("2 个小节 · 1 个词");
+});
+
+test("零词教材展开后明确提示暂无词条", () => {
+  const library = buildContentLibrary([edition], []);
+  const html = renderToStaticMarkup(createElement(ContentLibraryTree, { library }));
+
+  expect(html).toContain("该教材暂无词条");
+});
+
+test("英语目录存在但零词时仍提示英语教材词库尚未导入", () => {
+  const englishEdition: CatalogEdition = { ...edition, id: "english-edition", subject: "english" };
+  const library = buildContentLibrary([englishEdition], [card("hello", null, {
+    familyId: "family-1", subject: "english", textbookEditionId: null,
+    unitId: null, sectionId: null, source: "manual",
+  })]);
+  const html = renderToStaticMarkup(createElement(ContentLibraryTree, { library }));
+
+  expect(html).toContain("英语教材词库尚未导入");
+});
+
+test("按教材路径和原始顺序归位所有卡片，并统计真实卡片数", () => {
+  const cards = [
+    card("桂花", 2),
+    card("故乡", 1),
+    card("花生", 1, { sectionId: "lesson-2" }),
+    card("未分课", null, { unitId: null, sectionId: null }),
+    card("hello", null, { familyId: "family-1", subject: "english", textbookEditionId: null, unitId: null, sectionId: null, source: "manual" }),
+  ];
+  const tree = buildContentLibrary([edition], cards);
+
+  expect(tree.total).toBe(5);
+  expect(tree.editions[0]!.count).toBe(4);
+  expect(tree.editions[0]!.units.map((unit) => unit.title)).toEqual(["第一单元", "第二单元"]);
+  expect(tree.editions[0]!.units[0]!.count).toBe(3);
+  expect(tree.editions[0]!.units[0]!.sections.map((section) => section.title)).toEqual(["第一课", "第二课"]);
+  expect(tree.editions[0]!.units[0]!.sections[0]!.cards.map((item) => item.answerText)).toEqual(["故乡", "桂花"]);
+  expect(tree.editions[0]!.unplaced.map((item) => item.answerText)).toEqual(["未分课"]);
+  expect(tree.personal.english.map((item) => item.answerText)).toEqual(["hello"]);
+  expect(cards.map((item) => item.answerText)).toEqual(["桂花", "故乡", "花生", "未分课", "hello"]);
+  expect(edition.units.map((unit) => unit.title)).toEqual(["第二单元", "第一单元"]);
+});
+
+test("无目录时按科目保留个人卡片，英文组保持为空", () => {
+  const tree = buildContentLibrary([], [card("个人词语", null, {
+    familyId: "family-1", textbookEditionId: null, unitId: null, sectionId: null, source: "manual",
+  })]);
+  expect(tree).toMatchObject({ editions: [], total: 1 });
+  expect(tree.personal.chinese.map((item) => item.answerText)).toEqual(["个人词语"]);
+  expect(tree.personal.english).toEqual([]);
+});
+
+test("路径不完整或跨单元时放入最近的教材未分课", () => {
+  const tree = buildContentLibrary([edition], [
+    card("单元未分课", null, { sectionId: null }),
+    card("跨单元小节", null, { sectionId: "lesson-3" }),
+    card("教材未分单元", null, { unitId: "unknown", sectionId: "lesson-1" }),
+    card("无效教材", null, { textbookEditionId: "unknown" }),
+  ]);
+  expect(tree.editions[0]!.units[0]!.unplaced.map((item) => item.answerText)).toEqual(["单元未分课", "跨单元小节"]);
+  expect(tree.editions[0]!.unplaced.map((item) => item.answerText)).toEqual(["教材未分单元"]);
+  expect(tree.personal.chinese.map((item) => item.answerText)).toEqual(["无效教材"]);
+  expect(tree.total).toBe(4);
+});
+
+test("卡片科目与教材科目不一致时归入卡片自身科目的个人组", () => {
+  const tree = buildContentLibrary([edition], [card("hello", 1, {
+    familyId: "family-1", subject: "english", source: "manual",
+  })]);
+
+  expect(tree.editions[0]!.count).toBe(0);
+  expect(tree.editions[0]!.units[0]!.sections[0]!.cards).toEqual([]);
+  expect(tree.personal.english.map((item) => item.answerText)).toEqual(["hello"]);
+  expect(tree.total).toBe(1);
+});
+
+test("五年级上册 312 个内置词全部归入原教材单元和小节", () => {
+  const seed = validateSeedContent(JSON.parse(readFileSync("content/seed/chinese-grade5-volume1.json", "utf8")));
+  const catalog: CatalogEdition = {
+    id: "seed-edition",
+    publisher: seed.publisher,
+    series: seed.series,
+    editionText: seed.editionText,
+    subject: seed.subject,
+    grade: seed.grade,
+    volume: seed.volume,
+    units: seed.units.map((unit) => ({
+      id: `unit-${unit.order}`,
+      title: unit.title,
+      order: unit.order,
+      sections: unit.sections.map((section) => ({
+        id: `unit-${unit.order}-${section.key}`,
+        title: section.title,
+        order: section.order,
+      })),
+    })),
+  };
+  const cards: LearningCard[] = seed.units.flatMap((unit) => unit.sections.flatMap((section) =>
+    section.cards.map((item, index) => ({
+      id: item.builtinKey,
+      familyId: null,
+      subject: seed.subject,
+      answerText: item.answerText,
+      broadcastText: item.broadcastText,
+      hintText: item.hintText ?? null,
+      pinyinText: item.pinyinText ?? null,
+      curriculumSource: item.curriculumSource ?? null,
+      sourceOrder: index + 1,
+      textbookEditionId: catalog.id,
+      unitId: `unit-${unit.order}`,
+      sectionId: `unit-${unit.order}-${section.key}`,
+      source: "builtin" as const,
+    }))));
+
+  const tree = buildContentLibrary([catalog], cards);
+  const grouped = tree.editions[0]!;
+  const groupedKeys = grouped.units.flatMap((unit) => unit.sections.flatMap((section) => section.cards.map((item) => item.id)));
+
+  expect(cards).toHaveLength(312);
+  expect(grouped.units).toHaveLength(8);
+  expect(grouped.units.flatMap((unit) => unit.sections)).toHaveLength(22);
+  expect(grouped.count).toBe(312);
+  expect(tree.total).toBe(312);
+  expect(groupedKeys).toHaveLength(312);
+  expect(new Set(groupedKeys).size).toBe(312);
+  expect(groupedKeys).toEqual(cards.map((item) => item.id));
+  expect(grouped.unplaced).toEqual([]);
+  expect(grouped.units.every((unit) => unit.unplaced.length === 0)).toBe(true);
+  expect(tree.personal).toEqual({ chinese: [], english: [] });
+  for (const [unitIndex, unit] of grouped.units.entries()) {
+    const sourceUnit = seed.units[unitIndex]!;
+    expect(unit.count).toBe(sourceUnit.sections.reduce((sum, section) => sum + section.cards.length, 0));
+    for (const [sectionIndex, section] of unit.sections.entries()) {
+      const sourceSection = sourceUnit.sections[sectionIndex]!;
+      expect(section.cards.map((item) => item.id)).toEqual(sourceSection.cards.map((item) => item.builtinKey));
+    }
+  }
+});

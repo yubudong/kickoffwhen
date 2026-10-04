@@ -1,0 +1,11 @@
+export * from "@/modules/auth/schema";
+export * from "@/modules/devices/schema";
+export * from "@/modules/dictation/task-schema";
+export * from "@/modules/dictation/session-schema";
+export * from "@/modules/families/schema";
+export * from "@/modules/jobs/schema";
+export * from "@/modules/learning-content/schema";
+export * from "@/modules/media/schema";
+export * from "@/modules/review/db-schema";
+
+export * from "@/modules/todos/schema";

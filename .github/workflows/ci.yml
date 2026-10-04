@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      DATABASE_URL: postgres://ci:ci@127.0.0.1:65432/ci_never_connect
+      APP_URL: http://localhost:3000
+      BETTER_AUTH_SECRET: "00000000000000000000000000000000"
+      SMTP_URL: smtp://127.0.0.1:1
+      SMTP_FROM: "CI <ci@example.invalid>"
+      REGISTRATION_ALLOWED_EMAILS: ci@example.invalid
+      AZURE_SPEECH_ENABLED: "false"
+      AUTH_TEST_EMAIL_ENABLED: "false"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Install pnpm
+        run: |
+          npm install --prefix "$RUNNER_TEMP/pnpm-cli" pnpm@11.9.0
+          echo "$RUNNER_TEMP/pnpm-cli/node_modules/.bin" >> "$GITHUB_PATH"
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Lint
+        run: pnpm lint
+      - name: Typecheck
+        run: pnpm typecheck
+      - name: Unit tests
+        run: pnpm test
+      - name: Build
+        run: pnpm build

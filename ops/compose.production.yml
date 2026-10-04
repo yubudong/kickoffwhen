@@ -1,0 +1,84 @@
+name: family-learning
+
+services:
+  db:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-family_learning}
+      POSTGRES_USER: ${POSTGRES_USER:-family_learning}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - internal
+
+  migrate:
+    image: ${APP_IMAGE:?APP_IMAGE is required}
+    command: ["pnpm", "db:migrate"]
+    env_file: .env.production
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - internal
+    profiles: ["migration"]
+
+  web:
+    image: ${APP_IMAGE:?APP_IMAGE is required}
+    restart: unless-stopped
+    env_file: .env.production
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "--input-type=module",
+          "--eval",
+          "fetch('http://127.0.0.1:3000/api/health/ready').then(r=>{if(!r.ok)process.exit(1)})",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
+    volumes:
+      - private_media:/app/var/media
+    networks:
+      internal:
+      outbound:
+      edge:
+        aliases: [family-learning-web]
+
+  worker:
+    image: ${APP_IMAGE:?APP_IMAGE is required}
+    command: ["pnpm", "worker"]
+    restart: unless-stopped
+    env_file: .env.production
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - private_media:/app/var/media
+    networks:
+      - internal
+      - outbound
+
+volumes:
+  postgres_data:
+  private_media:
+
+networks:
+  internal:
+    internal: true
+  outbound:
+  edge:
+    external: true
+    name: ecomsellerkit_internal
