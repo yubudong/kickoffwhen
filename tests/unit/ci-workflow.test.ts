@@ -9,26 +9,37 @@ const readWorkflow = () => readFileSync(workflowPath, "utf8");
 
 test("CI 仅由指向 main 的 PR 与 main 推送触发，并使用只读权限", () => {
   const source = readWorkflow();
-  expect(source).toMatch(/^on:\n  pull_request:\n    branches: \[main\]\n  push:\n    branches: \[main\]/m);
-  expect(source).toMatch(/^permissions:\n  contents: read$/m);
+  expect(source.match(/^on:\n([\s\S]*?)(?=^\S)/m)?.[1].trimEnd()).toBe(
+    "  pull_request:\n    branches: [main]\n  push:\n    branches: [main]",
+  );
+  expect(source.match(/^permissions:\n([\s\S]*?)(?=^\S)/m)?.[1].trimEnd()).toBe(
+    "  contents: read",
+  );
+  expect(source.match(/^\s*permissions:/gm)).toHaveLength(1);
   expect(source).not.toContain("pull_request_target");
 });
 
 test("CI 使用项目工具链并按顺序执行四项基础检查", () => {
   const source = readWorkflow();
   expect(source).toContain("runs-on: ubuntu-24.04");
-  expect(source).toContain("uses: pnpm/setup@v3");
-  expect(source).toContain("runtime: node@24");
+  expect(source.match(/uses: .+/g)).toEqual([
+    "uses: actions/checkout@v6",
+    "uses: actions/setup-node@v6",
+  ]);
+  expect(source).toMatch(/uses: actions\/setup-node@v6\n        with:\n          node-version: 24\n          package-manager-cache: false\n      - name:/);
+  expect(source).not.toMatch(/^\s*cache(?:-[\w-]+)?:/m);
   const commands = [
+    'npm install --prefix "$RUNNER_TEMP/pnpm-cli" pnpm@11.9.0',
+    'echo "$RUNNER_TEMP/pnpm-cli/node_modules/.bin" >> "$GITHUB_PATH"',
     "pnpm install --frozen-lockfile",
     "pnpm lint",
     "pnpm typecheck",
     "pnpm test",
     "pnpm build",
   ];
-  let previous = -1;
+  let previous = source.indexOf("uses: actions/setup-node@v6");
   for (const command of commands) {
-    const index = source.indexOf(`run: ${command}`);
+    const index = source.indexOf(command);
     expect(index).toBeGreaterThan(previous);
     previous = index;
   }

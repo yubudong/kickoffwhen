@@ -16,6 +16,7 @@
 - `pull_request` 指向 `main` 与 `push` 到 `main` 触发；不使用 `pull_request_target`。
 - `permissions` 只授予 `contents: read`；不使用 GitHub Secrets 或生产数据库、邮件、TTS 凭据。
 - 使用 Node.js 24、`package.json` 的 pnpm 11.9.0 和 `pnpm install --frozen-lockfile`。
+- 用 `actions/setup-node@v6` 设置 `node-version: 24` 和 `package-manager-cache: false`，不配置显式 `cache`。只在 GitHub runner 上运行 `npm install --prefix "$RUNNER_TEMP/pnpm-cli" pnpm@11.9.0`，然后将临时目录的 `node_modules/.bin` 追加到 `$GITHUB_PATH`，避免已有 Corepack shim 冲突；本地使用已有工具链，不执行全局安装。该方案替代会保留锁文件校验缓存的 `pnpm/setup@v3`。
 - 顺序执行 `pnpm lint`、`pnpm typecheck`、`pnpm test`、`pnpm build`。本轮不接入集成/E2E 测试、缓存、分支保护、合并或部署。
 - 构建占位配置使用 `127.0.0.1` 未开放端口与 `example.invalid`，不启动数据库或 SMTP 服务，不上传构建产物。
 - 现有隔离 worktree 为 `/Users/yubudong/code/学习管理网站/.worktrees/grade5-dictation`，分支 `codex/replace-with-learning-site`；先核对工作区，仅改计划列出的文件，保留其他改动。
@@ -58,26 +59,37 @@ const readWorkflow = () => readFileSync(workflowPath, "utf8");
 
 test("CI 仅由指向 main 的 PR 与 main 推送触发，并使用只读权限", () => {
   const source = readWorkflow();
-  expect(source).toMatch(/^on:\n  pull_request:\n    branches: \[main\]\n  push:\n    branches: \[main\]/m);
-  expect(source).toMatch(/^permissions:\n  contents: read$/m);
+  expect(source.match(/^on:\n([\s\S]*?)(?=^\S)/m)?.[1].trimEnd()).toBe(
+    "  pull_request:\n    branches: [main]\n  push:\n    branches: [main]",
+  );
+  expect(source.match(/^permissions:\n([\s\S]*?)(?=^\S)/m)?.[1].trimEnd()).toBe(
+    "  contents: read",
+  );
+  expect(source.match(/^\s*permissions:/gm)).toHaveLength(1);
   expect(source).not.toContain("pull_request_target");
 });
 
 test("CI 使用项目工具链并按顺序执行四项基础检查", () => {
   const source = readWorkflow();
   expect(source).toContain("runs-on: ubuntu-24.04");
-  expect(source).toContain("uses: pnpm/setup@v3");
-  expect(source).toContain("runtime: node@24");
+  expect(source.match(/uses: .+/g)).toEqual([
+    "uses: actions/checkout@v6",
+    "uses: actions/setup-node@v6",
+  ]);
+  expect(source).toMatch(/uses: actions\/setup-node@v6\n        with:\n          node-version: 24\n          package-manager-cache: false\n      - name:/);
+  expect(source).not.toMatch(/^\s*cache(?:-[\w-]+)?:/m);
   const commands = [
+    'npm install --prefix "$RUNNER_TEMP/pnpm-cli" pnpm@11.9.0',
+    'echo "$RUNNER_TEMP/pnpm-cli/node_modules/.bin" >> "$GITHUB_PATH"',
     "pnpm install --frozen-lockfile",
     "pnpm lint",
     "pnpm typecheck",
     "pnpm test",
     "pnpm build",
   ];
-  let previous = -1;
+  let previous = source.indexOf("uses: actions/setup-node@v6");
   for (const command of commands) {
-    const index = source.indexOf(`run: ${command}`);
+    const index = source.indexOf(command);
     expect(index).toBeGreaterThan(previous);
     previous = index;
   }
@@ -87,6 +99,7 @@ test("CI 不读取生产密钥或执行部署、迁移和导入", () => {
   const source = readWorkflow();
   expect(source).toContain("DATABASE_URL: postgres://ci:ci@127.0.0.1:65432/ci_never_connect");
   expect(source).toContain("SMTP_URL: smtp://127.0.0.1:1");
+  expect(source).toContain("REGISTRATION_ALLOWED_EMAILS: ci@example.invalid");
   expect(source).not.toMatch(/secrets\.|pull_request_target|db:migrate|seed:content|deploy/i);
   expect(source).not.toContain("actions/cache");
   expect(source).not.toContain("services:");
@@ -125,17 +138,21 @@ jobs:
       BETTER_AUTH_SECRET: "00000000000000000000000000000000"
       SMTP_URL: smtp://127.0.0.1:1
       SMTP_FROM: "CI <ci@example.invalid>"
+      REGISTRATION_ALLOWED_EMAILS: ci@example.invalid
       AZURE_SPEECH_ENABLED: "false"
       AUTH_TEST_EMAIL_ENABLED: "false"
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-      - name: Set up pnpm and Node.js
-        uses: pnpm/setup@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
         with:
-          runtime: node@24
-          cache: false
-          install: false
+          node-version: 24
+          package-manager-cache: false
+      - name: Install pnpm
+        run: |
+          npm install --prefix "$RUNNER_TEMP/pnpm-cli" pnpm@11.9.0
+          echo "$RUNNER_TEMP/pnpm-cli/node_modules/.bin" >> "$GITHUB_PATH"
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - name: Lint
@@ -199,7 +216,7 @@ pnpm test
 - [ ] **Step 11: 用与工作流相同的占位变量运行生产构建。**
 
 ```bash
-DATABASE_URL=postgres://ci:ci@127.0.0.1:65432/ci_never_connect APP_URL=http://localhost:3000 BETTER_AUTH_SECRET=00000000000000000000000000000000 SMTP_URL=smtp://127.0.0.1:1 SMTP_FROM='CI <ci@example.invalid>' AZURE_SPEECH_ENABLED=false AUTH_TEST_EMAIL_ENABLED=false pnpm build
+DATABASE_URL=postgres://ci:ci@127.0.0.1:65432/ci_never_connect APP_URL=http://localhost:3000 BETTER_AUTH_SECRET=00000000000000000000000000000000 SMTP_URL=smtp://127.0.0.1:1 SMTP_FROM='CI <ci@example.invalid>' REGISTRATION_ALLOWED_EMAILS=ci@example.invalid AZURE_SPEECH_ENABLED=false AUTH_TEST_EMAIL_ENABLED=false pnpm build
 ```
 
 预期：退出 0，无实际数据库或邮件连接。若构建失败，定位具体原因，不能删除失败的检查项来换取绿色结果。运行后检查 `git status --short`，仅保留本任务文件；Next 生成文件若变化须先查明归属再处理。
