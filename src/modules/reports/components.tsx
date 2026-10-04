@@ -35,6 +35,9 @@ export function ReportsOverview({ dashboard }: { dashboard: ReportDashboard }) {
             <article className="report-card" key={child.childId}>
               <h3>{child.nickname}</h3>
               <p>{taskLabels[child.todayTaskStatus]}</p>
+              {child.latestCompletedSessionId && child.latestCompletedSessionWithdrawn ? (
+                <p className="report-notice">最近完成的听写任务已撤回，历史报告保留。</p>
+              ) : null}
               {child.latestCompletedSessionId ? (
                 <Link href={`/parent/reports/sessions/${child.latestCompletedSessionId}`}>查看今日听写报告</Link>
               ) : null}
@@ -97,6 +100,9 @@ export function ReportsOverview({ dashboard }: { dashboard: ReportDashboard }) {
 export function SessionReportView({ report }: { report: SessionReport }) {
   return (
     <div className="report-stack">
+      {report.withdrawn ? (
+        <p className="report-notice">本次听写任务已撤回，历史报告及指标保留。</p>
+      ) : null}
       <section className="report-grid" aria-label="单次听写指标">
         <article className="report-card"><strong>{report.itemCount}</strong><span>本次词数</span></article>
         <article className="report-card"><strong>{percent(report.firstPassAccuracy)}</strong><span>首轮正确率</span></article>
@@ -136,6 +142,9 @@ export function WeeklyReportView({ report }: { report: WeeklyReport }) {
         <article className="report-card"><strong>{percent(report.firstPassAccuracy)}</strong><span>首轮正确率</span></article>
         <article className="report-card"><strong>{report.dueReviewsCompleted}</strong><span>到期复习完成</span></article>
       </div>
+      {report.withdrawnCompletedTasks > 0 ? (
+        <p>其中已撤回 {report.withdrawnCompletedTasks} 次，已计入完成听写总数。</p>
+      ) : null}
       <p>到期复习完成 {report.dueReviewsCompleted} 个，首次回忆正确率 {percent(report.dueReviewAccuracy)}。</p>
       <h3>每日趋势</h3>
       <ul className="report-list">

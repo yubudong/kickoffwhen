@@ -35,6 +35,7 @@ test("周报 API 只传递验证 actor 并将 Date 序列化为 ISO", async () =
     weekEnd: new Date("2026-09-13T16:00:00.000Z"),
     studyDays: 1,
     completedTasks: 1,
+    withdrawnCompletedTasks: 0,
     firstPassAccuracy: 0.5,
     dailyTrend: [
       { date: "2026-09-07", completedTasks: 1, firstPassAccuracy: 0.5 },
@@ -72,6 +73,7 @@ test("周报 API 只传递验证 actor 并将 Date 序列化为 ISO", async () =
     report: {
       weekStart: "2026-09-06T16:00:00.000Z",
       weekEnd: "2026-09-13T16:00:00.000Z",
+      withdrawnCompletedTasks: 0,
       weakCards: [{ latestErrorAt: "2026-09-07T01:00:00.000Z" }],
     },
   });

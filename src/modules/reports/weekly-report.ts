@@ -15,7 +15,7 @@ import { learningCards } from "@/modules/learning-content/schema";
 import { reviewEvents } from "@/modules/review/db-schema";
 
 import { validateReportAttemptFact } from "./attempt-facts";
-import { calculateScheduledRetention } from "./session-report";
+import { calculateScheduledRetention, validateCompletedTaskState } from "./session-report";
 import type {
   ReportAttemptRole,
   ReportReviewEventType,
@@ -300,15 +300,9 @@ export function createWeeklyReportService(database?: ReportDatabase) {
         ))
         .orderBy(asc(dictationAnswerEvents.answeredAt), asc(dictationAnswerEvents.id));
 
+    let withdrawnCompletedTasks = 0;
     for (const completion of completionRows) {
-      if (
-        completion.sessionStatus !== "completed" ||
-        completion.taskStatus !== "completed" ||
-        !completion.sessionCompletedAt ||
-        !completion.taskCompletedAt ||
-        completion.sessionCompletedAt.getTime() !== completion.completedAt.getTime() ||
-        completion.taskCompletedAt.getTime() !== completion.completedAt.getTime()
-      ) inconsistent();
+      if (validateCompletedTaskState(completion)) withdrawnCompletedTasks += 1;
     }
     const completionIds = new Set(completionRows.map((row) => row.sessionId));
     if (completionIds.size !== completionRows.length) inconsistent();
@@ -394,6 +388,7 @@ export function createWeeklyReportService(database?: ReportDatabase) {
       weekEnd: calendar.end,
       studyDays: completedByDay.size,
       completedTasks: completionRows.length,
+      withdrawnCompletedTasks,
       firstPassAccuracy:
         firstPassFacts.length === 0 ? null : firstCorrect / firstPassFacts.length,
       dailyTrend: trend,

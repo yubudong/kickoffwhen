@@ -17,6 +17,7 @@ export const weeklyReportResponseSchema = z.object({
     weekEnd: z.iso.datetime(),
     studyDays: z.number().int().nonnegative(),
     completedTasks: z.number().int().nonnegative(),
+    withdrawnCompletedTasks: z.number().int().nonnegative(),
     firstPassAccuracy: z.number().min(0).max(1).nullable(),
     dailyTrend: z.array(z.object({
       date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),

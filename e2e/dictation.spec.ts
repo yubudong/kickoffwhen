@@ -683,7 +683,10 @@ test("完成听写后可在待办清单上传照片，家长可打开凭证", as
   releaseSubmission();
   await expect(childPage.getByText("等待家长审核")).toBeVisible();
   await page.goto("/parent/todos");
-  await expect(page.getByRole("row").filter({ hasText: "今日听写（3项）" }).getByRole("button", { name: "编辑" })).toHaveCount(0);
+  await page.locator(".todo-filters").getByLabel("孩子").selectOption({ label: "小雨" });
+  const submittedRow = page.getByRole("row").filter({ hasText: "今日听写（3项）" });
+  await expect(submittedRow).toBeVisible();
+  await expect(submittedRow.getByRole("button", { name: "编辑" })).toHaveCount(0);
   const evidenceLink = page.getByRole("link", { name: "完成任务的图片" });
   await expect(evidenceLink).toBeVisible();
   const [evidencePage] = await Promise.all([page.waitForEvent("popup"), evidenceLink.click()]);

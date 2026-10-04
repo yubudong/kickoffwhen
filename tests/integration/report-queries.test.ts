@@ -11,6 +11,7 @@ import {
   dictationSessionItems,
   dictationSessions,
 } from "@/modules/dictation/session-schema";
+import { createDictationTaskManagementService } from "@/modules/dictation/task-management";
 import { learningTaskItems, learningTasks } from "@/modules/dictation/task-schema";
 import { children, families, guardians } from "@/modules/families/schema";
 import { learningCards } from "@/modules/learning-content/schema";
@@ -19,6 +20,8 @@ import { createReportDashboardService } from "@/modules/reports/dashboard";
 import { createSessionReportService } from "@/modules/reports/session-report";
 import { createWeeklyReportService } from "@/modules/reports/weekly-report";
 import { childCardStates, reviewEvents } from "@/modules/review/db-schema";
+import { todoSubmissions, todoTasks } from "@/modules/todos/schema";
+import { createTodoService } from "@/modules/todos/service";
 
 import { withDatabaseRollback } from "../helpers/database";
 
@@ -297,6 +300,81 @@ async function insertCompletedSession(
 }
 
 describe("report queries", () => {
+  test("已完成听写撤回后仍可查历史单次报告、周报和今日概览", async () => {
+    await withDatabaseRollback(async (tx) => {
+      const family = await makeFamily(tx, "withdrawn-completed");
+      const completedAt = new Date("2026-09-08T03:00:00.000Z");
+      const fixture = await insertCompletedSession(tx, family, {
+        label: "withdrawn-completed",
+        completedAt,
+      });
+      const [todo] = await tx.insert(todoTasks).values({
+        familyId: family.family.id,
+        childId: family.child.id,
+        guardianId: family.guardian.id,
+        commandId: crypto.randomUUID(),
+        title: "今日听写",
+        date: "2026-09-08",
+        kind: "dictation",
+        dictationTaskId: fixture.task.id,
+      }).returning();
+      const image = { id: crypto.randomUUID(), mimeType: "image/png", byteSize: 1024 };
+      await createTodoService(tx).submit({
+        role: "child",
+        familyId: family.family.id,
+        childId: family.child.id,
+        deviceId: crypto.randomUUID(),
+      }, todo.id, 0, image);
+
+      await createDictationTaskManagementService(tx).cancelTask(family.actor, fixture.task.id);
+      expect((await tx.select().from(learningTasks)
+        .where(eq(learningTasks.id, fixture.task.id)))[0].status).toBe("cancelled");
+      expect((await tx.select().from(dictationSessions)
+        .where(eq(dictationSessions.id, fixture.session.id)))[0].status).toBe("completed");
+      expect((await tx.select().from(todoTasks)
+        .where(eq(todoTasks.id, todo.id)))[0]).toMatchObject({ status: "cancelled", submissionNumber: 1 });
+      expect((await tx.select().from(todoSubmissions)
+        .where(eq(todoSubmissions.todoId, todo.id)))[0]).toMatchObject({
+          number: 1,
+          attachmentId: image.id,
+          mimeType: image.mimeType,
+          byteSize: image.byteSize,
+        });
+      expect((await tx.select().from(dictationCompletionEvents)
+        .where(eq(dictationCompletionEvents.sessionId, fixture.session.id)))).toHaveLength(1);
+
+      await expect(createSessionReportService(tx).getSessionReport(
+        family.actor,
+        fixture.session.id,
+      )).resolves.toMatchObject({
+        sessionId: fixture.session.id,
+        completedAt,
+        withdrawn: true,
+        itemCount: 2,
+      });
+      await expect(createWeeklyReportService(tx).getWeeklyReport(
+        family.actor,
+        family.child.id,
+        new Date("2026-09-06T16:00:00.000Z"),
+      )).resolves.toMatchObject({
+        completedTasks: 1,
+        withdrawnCompletedTasks: 1,
+        studyDays: 1,
+      });
+      const dashboard = await createReportDashboardService(tx).getReportDashboard(
+        family.actor,
+        new Date("2026-09-08T04:00:00.000Z"),
+      );
+      expect(dashboard.children.find((child) => child.childId === family.child.id))
+        .toMatchObject({
+          todayTaskStatus: "completed",
+          latestCompletedSessionId: fixture.session.id,
+          latestCompletedSessionWithdrawn: true,
+          todayWeakCards: [{ cardId: fixture.customCard.id, answerText: "weak-withdrawn-completed" }],
+        });
+    });
+  });
+
   test("单次报告从不可变事实计算并严格隔离家庭", async () => {
     await withDatabaseRollback(async (tx) => {
       const family = await makeFamily(tx, "session-a");

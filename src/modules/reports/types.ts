@@ -42,6 +42,7 @@ export type SessionReport = SessionMetrics & {
   childId: string;
   taskId: string;
   completedAt: Date;
+  withdrawn: boolean;
   selfGraded: true;
 };
 
@@ -64,6 +65,7 @@ export type WeeklyReport = {
   weekEnd: Date;
   studyDays: number;
   completedTasks: number;
+  withdrawnCompletedTasks: number;
   firstPassAccuracy: number | null;
   dailyTrend: WeeklyTrendDay[];
   dueReviewsCompleted: number;
@@ -96,6 +98,7 @@ export type ChildReportDashboard = {
   nickname: string;
   todayTaskStatus: "not_created" | "in_progress" | "completed";
   latestCompletedSessionId: string | null;
+  latestCompletedSessionWithdrawn: boolean;
   todayWeakCards: Array<{ cardId: string; answerText: string }>;
   tomorrowDueReviewCount: number;
 };

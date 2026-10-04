@@ -33,6 +33,24 @@ function inconsistent(): never {
   throw new Error("REPORT_INCONSISTENT");
 }
 
+export function validateCompletedTaskState(input: {
+  sessionStatus: string;
+  taskStatus: string;
+  sessionCompletedAt: Date | null;
+  taskCompletedAt: Date | null;
+  completedAt: Date;
+}): boolean {
+  if (
+    input.sessionStatus !== "completed" ||
+    (input.taskStatus !== "completed" && input.taskStatus !== "cancelled") ||
+    !input.sessionCompletedAt ||
+    !input.taskCompletedAt ||
+    input.sessionCompletedAt.getTime() !== input.completedAt.getTime() ||
+    input.taskCompletedAt.getTime() !== input.completedAt.getTime()
+  ) inconsistent();
+  return input.taskStatus === "cancelled";
+}
+
 export function calculateSessionMetrics(input: {
   itemIds: string[];
   attempts: SessionAttemptFact[];
@@ -221,14 +239,7 @@ export function createSessionReportService(database?: ReportDatabase) {
       ))
       .limit(1);
     if (!base) reportNotFound();
-    if (
-      base.sessionStatus !== "completed" ||
-      base.taskStatus !== "completed" ||
-      !base.sessionCompletedAt ||
-      !base.taskCompletedAt ||
-      base.sessionCompletedAt.getTime() !== base.completedAt.getTime() ||
-      base.taskCompletedAt.getTime() !== base.completedAt.getTime()
-    ) inconsistent();
+    const withdrawn = validateCompletedTaskState(base);
 
     const items = await client
         .select({
@@ -382,6 +393,7 @@ export function createSessionReportService(database?: ReportDatabase) {
       taskId: base.taskId,
       ...metrics,
       completedAt: base.completedAt,
+      withdrawn,
       selfGraded: true,
     };
   }

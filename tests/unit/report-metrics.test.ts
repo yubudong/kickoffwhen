@@ -4,6 +4,7 @@ import { validateReportAttemptFact } from "@/modules/reports/attempt-facts";
 import {
   calculateSessionMetrics,
   calculateScheduledRetention,
+  validateCompletedTaskState,
 } from "@/modules/reports/session-report";
 import {
   rankWeakCards,
@@ -11,6 +12,29 @@ import {
 } from "@/modules/reports/weekly-report";
 
 describe("session report metrics", () => {
+  test("已完成听写撤回后保留完成事实，未完成或时间错配仍拒绝", () => {
+    const completedAt = new Date("2026-09-08T03:00:00.000Z");
+    const fact = {
+      sessionStatus: "completed",
+      taskStatus: "completed",
+      sessionCompletedAt: completedAt,
+      taskCompletedAt: completedAt,
+      completedAt,
+    };
+
+    expect(validateCompletedTaskState(fact)).toBe(false);
+    expect(validateCompletedTaskState({ ...fact, taskStatus: "cancelled" })).toBe(true);
+    expect(() => validateCompletedTaskState({ ...fact, taskStatus: "active" }))
+      .toThrow("REPORT_INCONSISTENT");
+    expect(() => validateCompletedTaskState({ ...fact, sessionStatus: "cancelled" }))
+      .toThrow("REPORT_INCONSISTENT");
+    expect(() => validateCompletedTaskState({
+      ...fact,
+      taskStatus: "cancelled",
+      taskCompletedAt: new Date(completedAt.getTime() + 1),
+    })).toThrow("REPORT_INCONSISTENT");
+  });
+
   test("首轮正确率、最终完成率和连续错误各自保留", () => {
     const result = calculateSessionMetrics({
       itemIds: ["a", "b"],

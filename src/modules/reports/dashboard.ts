@@ -64,7 +64,7 @@ export function createReportDashboardService(database?: ReportDatabase) {
         or(
           eq(learningTasks.status, "active"),
           and(
-            eq(learningTasks.status, "completed"),
+            or(eq(learningTasks.status, "completed"), eq(learningTasks.status, "cancelled")),
             isNotNull(dictationCompletionEvents.sessionId),
             gte(dictationCompletionEvents.completedAt, bounds.start),
             lt(dictationCompletionEvents.completedAt, bounds.end),
@@ -144,9 +144,13 @@ export function createReportDashboardService(database?: ReportDatabase) {
       date: bounds.date,
       children: childRows.map((child) => {
         const tasks = taskRows.filter((task) => task.childId === child.id);
-        const completed = tasks.some(
-          (task) => task.status === "completed" && task.completedSessionId,
-        );
+        const completedTasks = tasks
+          .filter((task) =>
+            (task.status === "completed" || task.status === "cancelled") && task.completedSessionId)
+          .sort((left, right) =>
+            (right.completedAt?.getTime() ?? 0) - (left.completedAt?.getTime() ?? 0));
+        const latestCompleted = completedTasks[0];
+        const completed = completedTasks.length > 0;
         const active = tasks.some((task) => task.status === "active");
         const seenCards = new Set<string>();
         const weakCards = weakRows
@@ -161,11 +165,8 @@ export function createReportDashboardService(database?: ReportDatabase) {
           childId: child.id,
           nickname: child.nickname,
           todayTaskStatus: active ? "in_progress" as const : completed ? "completed" as const : "not_created" as const,
-          latestCompletedSessionId: tasks
-            .filter((task) => task.status === "completed" && task.completedSessionId)
-            .sort((left, right) =>
-              (right.completedAt?.getTime() ?? 0) - (left.completedAt?.getTime() ?? 0))
-            .at(0)?.completedSessionId ?? null,
+          latestCompletedSessionId: latestCompleted?.completedSessionId ?? null,
+          latestCompletedSessionWithdrawn: latestCompleted?.status === "cancelled",
           todayWeakCards: weakCards,
           tomorrowDueReviewCount: dueRows.filter((row) => row.childId === child.id).length,
         };
