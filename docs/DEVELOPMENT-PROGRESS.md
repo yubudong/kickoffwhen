@@ -43,7 +43,7 @@
 
 ## 新窗口接手注意
 
-1. 最新完整发布源码：`/Users/yubudong/code/学习管理网站/.worktrees/release-20261013-dictation-parent1`，来源及操作状态见 `docs/runbooks/deployment-20261013-state.md`。原1540工作树落后于本次对齐结果，不能再全量覆盖线上。
+1. 最新完整发布源码：`/Users/yubudong/.codex/worktrees/dictation-parent-release/学习管理网站`，来源及操作状态见 `docs/runbooks/deployment-20261013-state.md`。原1540工作树落后于本次对齐结果，不能再全量覆盖线上。
 2. 原工作区有用户未提交工作，不能清理、覆盖或打包无关改动。正式Compose仍在 `/root/family-learning/releases/20260922-recording1/ops`，只切换APP_IMAGE。
 3. 不打印密码、密钥、Cookie或生产环境文件内容。生产env及备份文件保持0600。
 4. 本次部署、迁移和验证已经Tom授权且已执行，不要重复部署。后续生产变更需按新的用户要求处理。

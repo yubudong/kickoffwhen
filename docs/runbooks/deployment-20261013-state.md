@@ -32,3 +32,5 @@ Tom已授权：对齐线上完整源码及迁移，备份后部署kickoffwhen.co
 - 生产内临时验证脚本与静音文件已按root精确删除；服务器恢复演练容器/卷/网络已清理，备份保留。发布记录docs/runbooks/dictation-parent-release.md。
 
 - 已逐一核对线上src/drizzle/scripts共241文件与本地候选，hash完全一致。将该候选保存为独立codex/dictation-parent-release-20261013分支，包含线上完整基线、本次功能与发布文档，不触碰原用户工作区索引。
+
+- 最新已附加的托管工作树：`/Users/yubudong/.codex/worktrees/dictation-parent-release/学习管理网站`，分支codex/dictation-parent-release-20261013，源码提交1fc87954aa671cf4d2d5d75f218b50a3b1aa5305。原候选目录保留；后续开发以此托管工作树为准。原1540及主工作区未改动。演练与本地测试数据库已清理，两份生产备份、旧镜像保留。

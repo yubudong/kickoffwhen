@@ -9,7 +9,8 @@ Tom已明确授权对齐最新线上源码/迁移、备份、部署与验证。�
 - 回退镜像：`family-learning:20261012-home-login1`，原镜像保留。
 - 发布目录：`/root/family-learning/releases/20261013-dictation-parent1`。
 - 正式Compose/env目录：`/root/family-learning/releases/20260922-recording1/ops`，只替换APP_IMAGE，继续挂载原数据库及私有媒体卷。
-- 本地完整源码候选：`/Users/yubudong/code/学习管理网站/.worktrees/release-20261013-dictation-parent1`。
+- 最新完整工作树：`/Users/yubudong/.codex/worktrees/dictation-parent-release/学习管理网站`。
+- 本地保存分支：`codex/dictation-parent-release-20261013`；功能源码提交 `1fc87954aa671cf4d2d5d75f218b50a3b1aa5305`，尚未推送。
 - 对齐方式：Git9c21f32归档补足测试与文档，叠加当前运行容器白名单源码（含10月12日首页），再三方合入本次功能。保留教材批量、拼音/语境、manual_review、撤回事实与待办凭证/积分审核。未覆盖原工作区无关改动。
 - 运行源码包SHA256：`14f622a1dca4159c483a29cfd2c742d6b6f14ecf7c29f3ba18e4498a2497620e`。
 - 本次构建源码包SHA256：`78759592ba8025956e5df17e1e6b5b40f482549db3a9449344cc785bcd7092b6`。
