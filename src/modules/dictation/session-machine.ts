@@ -11,7 +11,9 @@ export type SessionMachineEvent =
       playedItemIds: string[];
       sequenceFinished: boolean;
     }
-  | { type: "BATCH_MARKED"; roundNumber: number; marks: DictationMark[] };
+  | { type: "BATCH_MARKED"; roundNumber: number; marks: DictationMark[] }
+  | { type: "ROUND_RESTARTED"; roundNumber: number }
+  | { type: "PHOTO_SUBMITTED"; roundNumber: number };
 
 function unique(values: string[]): boolean {
   return new Set(values).size === values.length;
@@ -48,10 +50,18 @@ function recordPlayback(
   }
 
   if (state.mode === "item_by_item") {
+    if (event.playedItemIds.length === 1 && state.playedItemIds.includes(event.playedItemIds[0]!) && !event.sequenceFinished) {
+      return { ...state };
+    }
+    const nextReplay = state.currentRoundItemIds[state.playedItemIds.length];
+    if (event.playedItemIds.length === 1 && event.playedItemIds[0] === nextReplay &&
+      state.markedItemIds.includes(nextReplay!) && !event.sequenceFinished) {
+      return { ...state, playedItemIds: [...state.playedItemIds, nextReplay!] };
+    }
     const nextItemId = state.currentRoundItemIds[state.markedItemIds.length];
     if (
       event.playedItemIds.length !== 1 ||
-      event.playedItemIds[0] !== nextItemId
+      event.playedItemIds[0] !== nextItemId || state.playedItemIds.length !== state.markedItemIds.length
     ) {
       throw new Error("PLAYBACK_OUT_OF_ORDER");
     }
@@ -70,11 +80,9 @@ function recordPlayback(
   const advancesPrefix =
     nextPrefix.length === event.playedItemIds.length &&
     nextPrefix.every((itemId, index) => itemId === event.playedItemIds[index]);
-  const currentItemId = state.playedItemIds.at(-1);
   const replaysCurrent =
     event.playedItemIds.length === 1 &&
-    currentItemId !== undefined &&
-    event.playedItemIds[0] === currentItemId;
+    state.playedItemIds.includes(event.playedItemIds[0]!);
   if (!advancesPrefix && !replaysCurrent) throw new Error("PLAYBACK_OUT_OF_ORDER");
   const playedItemIds = advancesPrefix
     ? [...state.playedItemIds, ...event.playedItemIds]
@@ -93,7 +101,7 @@ function submitMarks(
   state: DictationState,
   marks: DictationMark[],
 ): DictationState {
-  if (state.phase !== "grading") throw new Error("GRADING_NOT_READY");
+  if (state.phase !== "grading" && state.phase !== "awaiting_parent") throw new Error("GRADING_NOT_READY");
   const ids = marks.map((mark) => mark.itemId);
   if (!unique(ids)) throw new Error("MARKS_DUPLICATE");
   const current = new Set(state.currentRoundItemIds);
@@ -157,6 +165,14 @@ export function reduceSession(
 ): DictationState {
   if (state.phase === "completed") throw new Error("SESSION_COMPLETED");
   if (event.roundNumber !== state.roundNumber) throw new Error("SESSION_ROUND_MISMATCH");
+  if (event.type === "ROUND_RESTARTED") {
+    if (state.phase !== "listening" && state.phase !== "grading") throw new Error("RESTART_NOT_ALLOWED");
+    return { ...state, phase: "listening", playedItemIds: [] };
+  }
+  if (event.type === "PHOTO_SUBMITTED") {
+    if (state.phase !== "grading") throw new Error("GRADING_NOT_READY");
+    return { ...state, phase: "awaiting_parent" };
+  }
   return event.type === "PLAYBACK_RECORDED"
     ? recordPlayback(state, event)
     : submitMarks(state, event.marks);

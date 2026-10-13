@@ -63,6 +63,7 @@ export function TaskBuilderForm({
           repeatCount: Number(formData.get("repeatCount")),
           speechRate: Number(formData.get("speechRate")),
           allowManualReplay: formData.get("allowManualReplay") === "on",
+          gradingMode: formData.get("gradingMode") ?? "self",
         }),
       });
       return readTaskBatchCreationResponse(response);
@@ -134,6 +135,12 @@ export function TaskBuilderForm({
         <label>朗读速度<input name="speechRate" type="number" min="0.5" max="2" step="0.05" defaultValue="1" /></label>
       </div>
       <label><input name="allowManualReplay" type="checkbox" defaultChecked /> 允许孩子手动重听</label>
+      <fieldset>
+        <legend>批改方式</legend>
+        <label><input type="radio" name="gradingMode" value="self" defaultChecked /> 孩子自己批改</label>
+        <label><input type="radio" name="gradingMode" value="parent" /> 提交给家长批改</label>
+        <p>家长批改：孩子听完后拍照上传，家长逐词判对错；错词继续听写订正。</p>
+      </fieldset>
       <p>当前孩子有 {child?.dueCounts[subject] ?? 0} 张{subject === "chinese" ? "语文" : "英语"}到期卡片，会自动汇总成复习任务。</p>
       <button disabled={pending || !childId || (selectedSections.length === 0 && extraCardIds.length === 0)} type="submit">{pending ? "正在创建…" : "下发所选任务"}</button>
       {message ? <p role="status">{message}</p> : null}

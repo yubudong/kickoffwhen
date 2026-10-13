@@ -132,3 +132,24 @@ test("创建失败时恢复按钮且不刷新", async () => {
   expect(componentState.setters[3]).toHaveBeenCalledWith("创建失败：TASK_EMPTY");
   expect(componentState.setters[4].mock.calls).toEqual([[true], [false]]);
 });
+
+test("发布任务保留家长选择的批改方式", async () => {
+  let payload: Record<string, unknown> | undefined;
+  vi.stubGlobal("fetch", vi.fn(async (_url, init) => {
+    payload = JSON.parse(init.body);
+    return success();
+  }));
+  const form = renderForm();
+  const data = formData();
+  data.set("gradingMode", "parent");
+  await form.props.action(data);
+  expect(payload?.gradingMode).toBe("parent");
+});
+
+
+test("批量发布提供孩子自批和家长照片批改选择", () => {
+  const tree = elements(renderForm());
+  const choices = tree.filter((element) => element.type === "input" && element.props.name === "gradingMode");
+  expect(choices.map((element) => element.props.value)).toEqual(["self", "parent"]);
+  expect(choices.find((element) => element.props.value === "self")?.props.defaultChecked).toBe(true);
+});

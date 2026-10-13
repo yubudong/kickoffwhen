@@ -20,6 +20,7 @@ async function fixture(
   mode: "continuous_batch" | "item_by_item" = "continuous_batch",
   itemCount = 1,
   builtin = false,
+  gradingMode: "self" | "parent" = "self",
 ) {
   const id = crypto.randomUUID();
   const authUserId = `child-view-${id}`;
@@ -43,6 +44,7 @@ async function fixture(
     commandId: crypto.randomUUID(),
     inputFingerprint: "a".repeat(64),
     mode,
+    gradingMode,
     taskOrder: "source",
     intervalSeconds: 2,
     repeatCount: 1,
@@ -66,6 +68,7 @@ async function fixture(
   const mediaId = mediaIds[0]!;
   return {
     family,
+    guardian,
     child,
     sibling,
     task,
@@ -460,5 +463,90 @@ describe("儿童听写视图", () => {
       expect(crossActorResponse.status).toBe(404);
       expect(await crossActorResponse.json()).toEqual({ error: "SESSION_NOT_FOUND" });
     });
+  });
+});
+
+ test("家长批改不泄露答案，隔离家庭权限，重复提交不重复批改，错词订正保留首轮事实", async () => {
+  await withDatabaseRollback(async (tx) => {
+    const data = await fixture(tx, "continuous_batch", 2, false, "parent");
+    const other = await fixture(tx);
+    const service = createDictationSessionService(tx);
+    const views = createChildDictationViewService(tx);
+    const parent = { role: "guardian" as const, familyId: data.family.id, guardianId: data.guardian.id };
+    let snapshot = await service.startSession(data.actor, data.task.id);
+    snapshot = await service.recordPlayback(data.actor, {
+      commandId: crypto.randomUUID(), sessionId: snapshot.sessionId, expectedVersion: snapshot.version,
+      roundNumber: 1, playedItemIds: data.items.map(i => i.id), sequenceFinished: true,
+    });
+    const childView = await views.getSession(data.actor, snapshot.sessionId);
+    expect(childView.phase).toBe("submission");
+    expect(JSON.stringify(childView)).not.toMatch(/private-answer|answerText/);
+    const marks = data.items.map((i, index) => ({ itemId: i.id, correct: index === 0 }));
+    const grade = { commandId: crypto.randomUUID(), sessionId: snapshot.sessionId,
+      expectedVersion: snapshot.version, roundNumber: 1, marks };
+    await expect(service.submitBatchMarks(data.actor, grade)).rejects.toThrow("PARENT_GRADING_REQUIRED");
+    const upload = { commandId: crypto.randomUUID(), sessionId: snapshot.sessionId,
+      expectedVersion: snapshot.version, roundNumber: 1,
+      photos: [{ id: crypto.randomUUID(), mimeType: "image/png" as const, byteSize: 100, sha256: "a".repeat(64) }] };
+    await expect(service.submitPhotos(other.actor, upload)).rejects.toThrow("DICTATION_SESSION_NOT_FOUND");
+    snapshot = await service.submitPhotos(data.actor, upload);
+    expect((await service.submitPhotos(data.actor, upload)).version).toBe(snapshot.version);
+    await expect(service.photoForActor(other.actor, upload.photos[0].id)).rejects.toThrow("DICTATION_PHOTO_NOT_FOUND");
+    await expect(service.photoForActor({ ...data.actor, childId: data.sibling.id }, upload.photos[0].id)).rejects.toThrow("DICTATION_PHOTO_NOT_FOUND");
+    expect(await service.photoForActor(parent, upload.photos[0].id)).toMatchObject({ id: upload.photos[0].id });
+    await expect(service.submitPhotos(data.actor, { ...upload, photos: [{ ...upload.photos[0], sha256: "b".repeat(64) }] })).rejects.toThrow("DICTATION_IDEMPOTENCY_CONFLICT");
+    expect((await views.getSession(data.actor, snapshot.sessionId)).phase).toBe("awaiting_parent");
+    expect(JSON.stringify(await views.getSession(data.actor, snapshot.sessionId))).not.toMatch(/private-answer|answerText/);
+    expect(await service.listParentReviews(parent)).toMatchObject([{ sessionId: snapshot.sessionId,
+      items: [{ answerText: "private-answer-1" }, { answerText: "private-answer-2" }] }]);
+    expect(await service.listParentReviews({ ...parent, familyId: other.family.id, guardianId: other.guardian.id })).toEqual([]);
+    const grading = { ...grade, expectedVersion: snapshot.version };
+    snapshot = await service.submitBatchMarks(parent, grading);
+    expect(snapshot).toMatchObject({ phase: "listening", roundNumber: 2, currentRoundItemIds: [data.items[1].id] });
+    expect(await service.submitBatchMarks(parent, grading)).toEqual(snapshot);
+    await expect(service.submitBatchMarks(data.actor, grading)).rejects.toThrow("PARENT_GRADING_REQUIRED");
+    const restart = { commandId: crypto.randomUUID(), sessionId: snapshot.sessionId, expectedVersion: snapshot.version, roundNumber: 2 };
+    snapshot = await service.restartRound(data.actor, restart);
+    expect(await service.restartRound(data.actor, restart)).toEqual(snapshot);
+    const [stored] = await tx.select().from(dictationSessions).where(eq(dictationSessions.id, snapshot.sessionId));
+    expect(stored.firstPassMarks).toEqual({ [data.items[0].id]: true, [data.items[1].id]: false });
+    snapshot = await service.recordPlayback(data.actor, { ...restart, commandId: crypto.randomUUID(),
+      expectedVersion: snapshot.version, playedItemIds: [data.items[1].id], sequenceFinished: true });
+    snapshot = await service.submitPhotos(data.actor, { ...upload, commandId: crypto.randomUUID(), expectedVersion: snapshot.version, roundNumber: 2 });
+    const finalGrade = { ...grading, commandId: crypto.randomUUID(), expectedVersion: snapshot.version, roundNumber: 2,
+      marks: [{ itemId: data.items[1].id, correct: true }] };
+    snapshot = await service.submitBatchMarks(parent, finalGrade);
+    expect(snapshot.phase).toBe("completed");
+    expect(await service.submitBatchMarks(parent, finalGrade)).toEqual(snapshot);
+    const { createSessionReportService } = await import("@/modules/reports/session-report");
+    expect(await createSessionReportService(tx).getSessionReport(parent, snapshot.sessionId)).toMatchObject({
+      selfGraded: false, firstPassAccuracy: 0.5, finalCompletionRate: 1,
+    });
+  });
+});
+
+
+test.each([true, false])("逐题中途重启不重复批改，报告仍可读取（首词=%s）", async (firstCorrect) => {
+  await withDatabaseRollback(async tx => {
+    const data = await fixture(tx, "item_by_item", 2);
+    const service = createDictationSessionService(tx);
+    let snapshot = await service.startSession(data.actor, data.task.id);
+    const base = () => ({ commandId: crypto.randomUUID(), sessionId: snapshot.sessionId, expectedVersion: snapshot.version, roundNumber: snapshot.roundNumber });
+    snapshot = await service.recordPlayback(data.actor, { ...base(), playedItemIds: [data.items[0].id], sequenceFinished: true });
+    snapshot = await service.submitBatchMarks(data.actor, { ...base(), marks: [{ itemId: data.items[0].id, correct: firstCorrect }] });
+    snapshot = await service.restartRound(data.actor, base());
+    expect(snapshot.markedItemIds).toEqual([data.items[0].id]);
+    snapshot = await service.recordPlayback(data.actor, { ...base(), playedItemIds: [data.items[0].id], sequenceFinished: false });
+    expect(snapshot.phase).toBe("listening");
+    snapshot = await service.recordPlayback(data.actor, { ...base(), playedItemIds: [data.items[1].id], sequenceFinished: true });
+    snapshot = await service.submitBatchMarks(data.actor, { ...base(), marks: [{ itemId: data.items[1].id, correct: true }] });
+    if (!firstCorrect) {
+      snapshot = await service.recordPlayback(data.actor, { ...base(), playedItemIds: [data.items[0].id], sequenceFinished: true });
+      snapshot = await service.submitBatchMarks(data.actor, { ...base(), marks: [{ itemId: data.items[0].id, correct: true }] });
+    }
+    expect(snapshot.phase).toBe("completed");
+    const { createSessionReportService } = await import("@/modules/reports/session-report");
+    expect(await createSessionReportService(tx).getSessionReport({ role: "guardian", familyId: data.family.id, guardianId: data.guardian.id }, snapshot.sessionId))
+      .toMatchObject({ selfGraded: true, firstPassAccuracy: firstCorrect ? 1 : 0.5, finalCompletionRate: 1 });
   });
 });

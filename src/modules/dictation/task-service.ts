@@ -181,6 +181,7 @@ export function createDictationTaskService(
       repeatCount: z.union([z.literal(1), z.literal(2), z.literal(3)]).parse(task.repeatCount),
       speechRate: Number(task.speechRate),
       allowManualReplay: task.allowManualReplay,
+      gradingMode: z.enum(["self", "parent"]).parse(task.gradingMode),
       maxReviewCards: task.maxReviewCards,
       audioStatus: items.length > 0 && items.every((item) => item.audioStatus === "ready")
         ? "ready"
@@ -231,6 +232,7 @@ export function createDictationTaskService(
           repeatCount: input.repeatCount,
           speechRate: String(input.speechRate),
           allowManualReplay: input.allowManualReplay,
+          gradingMode: input.gradingMode,
           maxReviewCards: input.maxReviewCards,
           ...(metadata ? {
             origin: metadata.origin,
@@ -442,6 +444,7 @@ export function createDictationTaskService(
           commandId: derivedCommandId(input.commandId, section.id), maxReviewCards: 0,
           mode: input.mode, order: input.order, intervalSeconds: input.intervalSeconds,
           repeatCount: input.repeatCount, speechRate: input.speechRate, allowManualReplay: input.allowManualReplay,
+          gradingMode: input.gradingMode,
         }, { origin: "curriculum", title, sectionId: section.id, batchCommandId: input.commandId, batchFingerprint }));
       }
       if (input.extraCardIds.length > 0) {
@@ -451,6 +454,7 @@ export function createDictationTaskService(
           commandId: derivedCommandId(input.commandId, "extra"), maxReviewCards: 0,
           mode: input.mode, order: input.order, intervalSeconds: input.intervalSeconds,
           repeatCount: input.repeatCount, speechRate: input.speechRate, allowManualReplay: input.allowManualReplay,
+          gradingMode: input.gradingMode,
         }, { origin: "extra_practice", title, batchCommandId: input.commandId, batchFingerprint }));
       }
       if (result.length === 0) throw new Error("TASK_EMPTY");

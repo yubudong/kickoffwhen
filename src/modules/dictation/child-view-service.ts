@@ -120,7 +120,7 @@ export function createChildDictationViewService(
       sessionId: row.session.id,
       taskId: row.task.id,
       version: row.session.version,
-      phase: z.enum(["listening", "grading", "completed"]).parse(row.session.phase),
+      phase: z.enum(["listening", "grading", "awaiting_parent", "completed"]).parse(row.session.phase),
       roundNumber: row.session.roundNumber,
       currentRoundItemIds: row.session.currentRoundItemIds,
       playedItemIds: row.session.playedItemIds,
@@ -146,10 +146,12 @@ export function createChildDictationViewService(
       roundNumber: snapshot.roundNumber,
       itemCount: snapshot.currentRoundItemIds.length,
       playedItemIds: snapshot.playedItemIds,
+      markedItemIds: snapshot.markedItemIds,
       intervalSeconds: row.task.intervalSeconds,
       repeatCount: row.task.repeatCount,
       speechRate: Number(row.task.speechRate),
       allowManualReplay: row.task.allowManualReplay,
+      gradingMode: row.task.gradingMode,
     };
     if (snapshot.phase === "completed") {
       const [todo] = await database.select({
@@ -168,6 +170,11 @@ export function createChildDictationViewService(
           "open", "submitted", "approved", "rejected", "cancelled",
         ]).parse(todo.status) } : null,
       });
+    }
+
+    if (row.task.gradingMode === "parent" && (snapshot.phase === "grading" || snapshot.phase === "awaiting_parent")) {
+      return childSessionViewSchema.parse({ ...base,
+        phase: snapshot.phase === "grading" ? "submission" : "awaiting_parent", items: [] });
     }
 
     if (snapshot.phase === "listening") {

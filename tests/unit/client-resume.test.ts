@@ -119,6 +119,7 @@ test("旧pending命令收到权威completed后释放重试锁并丢弃草稿", (
     repeatCount: 1,
     speechRate: 1,
     allowManualReplay: true,
+  gradingMode: "self" as const,
     items: [],
     todoSubmission: null,
   } satisfies ChildSessionView;

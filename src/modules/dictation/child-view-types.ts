@@ -16,15 +16,17 @@ const sessionBaseSchema = z.object({
   familyId: uuidSchema,
   childId: uuidSchema,
   version: z.number().int().nonnegative(),
-  phase: z.enum(["listening", "grading", "completed"]),
+  phase: z.enum(["listening", "grading", "submission", "awaiting_parent", "completed"]),
   mode: z.enum(["continuous_batch", "item_by_item"]),
   roundNumber: z.number().int().positive(),
   itemCount: z.number().int().positive(),
   playedItemIds: z.array(uuidSchema),
+  markedItemIds: z.array(uuidSchema).optional(),
   intervalSeconds: z.number().int().min(2).max(120),
   repeatCount: z.union([z.literal(1), z.literal(2), z.literal(3)]),
   speechRate: z.number().min(0.5).max(2),
   allowManualReplay: z.boolean(),
+  gradingMode: z.enum(["self", "parent"]).default("self"),
 });
 
 const listeningItemSchema = z.object({
@@ -64,9 +66,21 @@ export const completedSessionViewSchema = sessionBaseSchema.extend({
   todoSubmission: todoSubmissionSchema.nullable(),
 }).strict();
 
+export const submissionSessionViewSchema = sessionBaseSchema.extend({
+  phase: z.literal("submission"),
+  items: z.array(z.never()).length(0),
+}).strict();
+
+export const awaitingParentSessionViewSchema = sessionBaseSchema.extend({
+  phase: z.literal("awaiting_parent"),
+  items: z.array(z.never()).length(0),
+}).strict();
+
 export const childSessionViewSchema = z.discriminatedUnion("phase", [
   listeningSessionViewSchema,
   gradingSessionViewSchema,
+  submissionSessionViewSchema,
+  awaitingParentSessionViewSchema,
   completedSessionViewSchema,
 ]);
 

@@ -6,6 +6,34 @@ import {
 } from "@/modules/dictation/session-machine";
 
 describe("continuous batch dictation", () => {
+  test("回听已播过的上一个词不推进顺序", () => {
+    const state = reduceSession(createSessionState({ mode: "continuous_batch", itemIds: ["a", "b", "c"] }), {
+      type: "PLAYBACK_RECORDED", roundNumber: 1, playedItemIds: ["a", "b"], sequenceFinished: false,
+    });
+    expect(reduceSession(state, {
+      type: "PLAYBACK_RECORDED", roundNumber: 1, playedItemIds: ["a"], sequenceFinished: false,
+    }).playedItemIds).toEqual(["a", "b"]);
+  });
+
+  test("从头重新听写清空本轮进度，保留首轮错误事实", () => {
+    const state = { ...createSessionState({ mode: "continuous_batch", itemIds: ["b"] }),
+      roundNumber: 2, playedItemIds: ["b"], firstPassMarks: { a: true, b: false }, latestMarks: { a: true, b: false } };
+    expect(reduceSession(state, { type: "ROUND_RESTARTED", roundNumber: 2 })).toMatchObject({
+      phase: "listening", roundNumber: 2, currentRoundItemIds: ["b"], playedItemIds: [],
+      firstPassMarks: { a: true, b: false }, latestMarks: { a: true, b: false },
+    });
+  });
+
+  test("上传照片后等待家长批改，不能重新听写覆盖待批作业", () => {
+    const grading = reduceSession(createSessionState({ mode: "continuous_batch", itemIds: ["a"] }), {
+      type: "PLAYBACK_RECORDED", roundNumber: 1, playedItemIds: ["a"], sequenceFinished: true,
+    });
+    const waiting = reduceSession(grading, { type: "PHOTO_SUBMITTED", roundNumber: 1 });
+    expect(waiting.phase).toBe("awaiting_parent");
+    expect(() => reduceSession(waiting, { type: "ROUND_RESTARTED", roundNumber: 1 })).toThrow("RESTART_NOT_ALLOWED");
+    expect(reduceSession(waiting, { type: "BATCH_MARKED", roundNumber: 1, marks: [{ itemId: "a", correct: false }] }))
+      .toMatchObject({ phase: "listening", roundNumber: 2, firstPassMarks: { a: false } });
+  });
   test("播完当前轮后才能集中批改，错题进入下一轮", () => {
     let state = createSessionState({
       mode: "continuous_batch",
@@ -229,4 +257,25 @@ describe("item by item dictation", () => {
       marks: [{ itemId: "foreign", correct: true }],
     })).toThrow("MARK_ITEM_NOT_IN_ROUND");
   });
+});
+
+ test("逐题练习允许回听已批过的词，继续仍播当前未批题", () => {
+  let state = createSessionState({ mode: "item_by_item", itemIds: ["a", "b"] });
+  state = reduceSession(state, { type: "PLAYBACK_RECORDED", roundNumber: 1, playedItemIds: ["a"], sequenceFinished: true });
+  state = reduceSession(state, { type: "BATCH_MARKED", roundNumber: 1, marks: [{ itemId: "a", correct: true }] });
+  const replay = reduceSession(state, { type: "PLAYBACK_RECORDED", roundNumber: 1, playedItemIds: ["a"], sequenceFinished: false });
+  expect(replay).toEqual(state);
+});
+
+test("逐题中途从头重听保留批改，已批词只播放，未批词才进入批改", () => {
+  let state = createSessionState({ mode: "item_by_item", itemIds: ["a", "b"] });
+  state = reduceSession(state, { type: "PLAYBACK_RECORDED", roundNumber: 1, playedItemIds: ["a"], sequenceFinished: true });
+  state = reduceSession(state, { type: "BATCH_MARKED", roundNumber: 1, marks: [{ itemId: "a", correct: true }] });
+  state = reduceSession(state, { type: "ROUND_RESTARTED", roundNumber: 1 });
+  expect(state.markedItemIds).toEqual(["a"]);
+  expect(state.playedItemIds).toEqual([]);
+  state = reduceSession(state, { type: "PLAYBACK_RECORDED", roundNumber: 1, playedItemIds: ["a"], sequenceFinished: false });
+  expect(state.phase).toBe("listening");
+  state = reduceSession(state, { type: "PLAYBACK_RECORDED", roundNumber: 1, playedItemIds: ["b"], sequenceFinished: true });
+  expect(state.phase).toBe("grading");
 });

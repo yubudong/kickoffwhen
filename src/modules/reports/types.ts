@@ -43,7 +43,7 @@ export type SessionReport = SessionMetrics & {
   taskId: string;
   completedAt: Date;
   withdrawn: boolean;
-  selfGraded: true;
+  selfGraded: boolean;
 };
 
 export type WeeklyTrendDay = {

@@ -18,6 +18,7 @@ import {
 import { AudioSequence } from "./audio-sequence";
 import { BatchGrader } from "./batch-grader";
 import { DictationEvidenceSubmit } from "./dictation-evidence-submit";
+import { PhotoSubmission } from "./photo-submission";
 
 export function DictationExperience({ initialSession }: { initialSession: ChildSessionView }) {
   const router = useRouter();
@@ -34,6 +35,25 @@ export function DictationExperience({ initialSession }: { initialSession: ChildS
   const switchButtonRef = useRef<HTMLButtonElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
   const storageKey = recoveryStorageKey(session.familyId, session.childId, session.sessionId);
+
+  const refreshSession = useCallback(async (signal?: AbortSignal) => {
+    const response = await fetch(`/api/child/dictation/${session.sessionId}`, { cache: "no-store", signal });
+    if (!response.ok) throw new Error("暂时无法读取批改进度，请稍后重试。");
+    const data = await response.json();
+    const next = childSessionViewSchema.parse(data.session);
+    if (!signal?.aborted) setSession(current => next.version >= current.version ? next : current);
+  }, [session.sessionId]);
+  useEffect(() => {
+    if (session.phase !== "awaiting_parent") return;
+    const controller = new AbortController();
+    let timer: number;
+    const poll = async () => {
+      try { await refreshSession(controller.signal); } catch { /* Manual refresh remains available. */ }
+      if (!controller.signal.aborted) timer = window.setTimeout(poll, 5000);
+    };
+    timer = window.setTimeout(poll, 5000);
+    return () => { controller.abort(); window.clearTimeout(timer); };
+  }, [refreshSession, session.phase]);
 
   useEffect(() => {
     if (session.phase === "completed") return;
@@ -216,16 +236,17 @@ export function DictationExperience({ initialSession }: { initialSession: ChildS
   return (
     <main className="page-shell dictation-shell">
       <div className="dictation-topbar">
-        <button className="dictation-switch" onClick={() => void requestNavigation("/child")} type="button">
+        <button disabled={pending} className="dictation-switch" onClick={() => void requestNavigation("/child")} type="button">
           ← 返回今日清单
         </button>
-        <button ref={switchButtonRef} className="dictation-switch" onClick={() => void requestNavigation("/child/switch")} type="button">
+        <button ref={switchButtonRef} disabled={pending} className="dictation-switch" onClick={() => void requestNavigation("/child/switch")} type="button">
           切换孩子
         </button>
       </div>
       {error ? <p className="dictation-global-error" role="alert">{error}</p> : null}
       {revoked ? <section className="dictation-card completed-card"><h1>这项任务已撤回</h1><p>这项听写已从你的待办中移除。</p><button className="dictation-primary" onClick={() => router.replace("/child")} type="button">返回今日清单</button></section> : session.phase === "listening" ? (
-        <AudioSequence key={session.roundNumber} pending={pending || retryLocked} session={session} onPlayback={playback} />
+        <AudioSequence key={session.roundNumber} pending={pending || retryLocked} session={session} onPlayback={playback}
+          onRestart={expectedVersion => sendCommand({ type: "restart", expectedVersion, roundNumber: session.roundNumber })} />
       ) : session.phase === "grading" ? (
         <BatchGrader
           key={`${session.roundNumber}:${session.version}`}
@@ -234,6 +255,14 @@ export function DictationExperience({ initialSession }: { initialSession: ChildS
           onDirtyChange={setDirtyMarks}
           onSubmit={submitMarks}
         />
+      ) : session.phase === "submission" ? (
+        <PhotoSubmission key={`${session.sessionId}:${session.roundNumber}`} session={session} onSession={setSession} onActivityChange={setPending} />
+      ) : session.phase === "awaiting_parent" ? (
+        <section className="dictation-card"><p className="eyebrow">照片已提交</p><h1>等待家长批改</h1>
+          <p>家长批改后，错词会在这里继续听写订正。</p>
+          <button onClick={() => void refreshSession().catch(e => setError(e.message))} type="button">查看批改进度</button>
+          <button onClick={() => router.replace("/child")} type="button">返回今日任务</button>
+        </section>
       ) : (
         <section className="dictation-card completed-card">
           <p aria-hidden="true" className="completion-star">⭐</p>

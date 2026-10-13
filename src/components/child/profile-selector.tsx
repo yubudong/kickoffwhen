@@ -17,13 +17,17 @@ const serverSnapshot = () => false;
 
 export function ProfileSelector({
   availableChildren,
+  embedded = false,
+  autoSelectSingle = true,
 }: {
   availableChildren: AuthorizedChild[];
+  embedded?: boolean;
+  autoSelectSingle?: boolean;
 }) {
   const automaticSelectionStarted = useRef(false);
   const onlyChild = availableChildren.length === 1 ? availableChildren[0] : null;
   const [selected, setSelected] = useState<AuthorizedChild | null>(
-    onlyChild?.requiresPin ? onlyChild : null,
+    autoSelectSingle && onlyChild?.requiresPin ? onlyChild : null,
   );
   const interactive = useSyncExternalStore(
     subscribeToHydration,
@@ -37,6 +41,7 @@ export function ProfileSelector({
     async (child: AuthorizedChild, childPin?: string) => {
       setPending(true);
       setError("");
+      try {
       const response = await fetch("/api/child/select", {
         method: "POST",
         headers: { "content-type": "application/json" },
@@ -55,6 +60,8 @@ export function ProfileSelector({
         return;
       }
       window.location.replace("/child");
+      } catch { setError("网络连接失败，请重试。"); }
+      finally { setPending(false); }
     },
     [],
   );
@@ -65,6 +72,7 @@ export function ProfileSelector({
 
   useEffect(() => {
     if (
+      autoSelectSingle &&
       availableChildren.length === 1 &&
       !availableChildren[0].requiresPin &&
       !automaticSelectionStarted.current
@@ -72,7 +80,7 @@ export function ProfileSelector({
       automaticSelectionStarted.current = true;
       void enter(availableChildren[0]);
     }
-  }, [availableChildren, enter]);
+  }, [availableChildren, enter, autoSelectSingle]);
 
   function choose(child: AuthorizedChild) {
     if (child.requiresPin) {
@@ -90,18 +98,20 @@ export function ProfileSelector({
     void enter(selected, childPin);
   }
 
+  const Wrapper = embedded ? "div" : "main";
+  const Heading = embedded ? "h2" : "h1";
   return (
-    <main className="page-shell">
-      <section className="hero-card child-select-card">
+    <Wrapper className={embedded ? "" : "page-shell"}>
+      <section className={embedded ? "child-select-card" : "hero-card child-select-card"}>
         <p className="eyebrow">家庭学习</p>
-        <h1>
-          {onlyChild && !onlyChild.requiresPin
+        <Heading>
+          {autoSelectSingle && onlyChild && !onlyChild.requiresPin
             ? "正在进入…"
-            : onlyChild
+            : autoSelectSingle && onlyChild
               ? "请输入儿童口令"
               : "今天是谁来学习？"}
-        </h1>
-        {availableChildren.length > 1 || onlyChild?.requiresPin ? (
+        </Heading>
+        {!autoSelectSingle || availableChildren.length > 1 || onlyChild?.requiresPin ? (
           <div className="child-choice-grid">
             {availableChildren.map((child) => (
               <button
@@ -141,6 +151,6 @@ export function ProfileSelector({
           <p role="alert">{error}</p>
         ) : null}
       </section>
-    </main>
+    </Wrapper>
   );
 }

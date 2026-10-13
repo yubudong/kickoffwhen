@@ -411,7 +411,7 @@ test("连续听写、刷新、切换孩子、批改恢复和错题循环", async
   await expect(childPage.getByText("桂花", { exact: true })).toHaveCount(0);
   await expect(childPage.getByText("guì huā", { exact: true })).toBeVisible();
   await expect(childPage.getByText("语境：院子里的（　　）开了。", { exact: true })).toBeVisible();
-  await expect(childPage.getByText("音频还没准备好，请让家长准备音频后再试。")).toBeVisible();
+  await expect(childPage.getByText("音频还没准备好，请重新准备后再试。")).toBeVisible();
   blockAudio = false;
   await childPage.getByRole("button", { name: "重新准备" }).click();
   await expect(childPage.getByRole("button", { name: "开始听写" })).toBeEnabled();
@@ -547,7 +547,7 @@ test("连续听写、刷新、切换孩子、批改恢复和错题循环", async
   });
   await childPage.getByRole("button", { name: "提交本轮" }).click();
   await corruptRequestStarted;
-  await childPage.getByRole("button", { name: "切换孩子" }).click();
+  await expect(childPage.getByRole("button", { name: "切换孩子" })).toBeDisabled();
   await expect(childPage.getByRole("dialog")).toHaveCount(0);
   releaseCorruptResponse();
   await expect(childPage.getByRole("button", { name: "重试保存" })).toBeVisible();

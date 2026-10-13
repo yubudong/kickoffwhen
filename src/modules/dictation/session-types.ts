@@ -1,5 +1,5 @@
 export type DictationMode = "continuous_batch" | "item_by_item";
-export type DictationPhase = "listening" | "grading" | "completed";
+export type DictationPhase = "listening" | "grading" | "awaiting_parent" | "completed";
 
 export type DictationMark = { itemId: string; correct: boolean };
 
@@ -30,6 +30,8 @@ export type SubmitBatchMarksInput = {
   roundNumber: number;
   marks: DictationMark[];
 };
+
+export type RestartRoundInput = Omit<SubmitBatchMarksInput, "marks">;
 
 export type DictationSnapshot = {
   sessionId: string;

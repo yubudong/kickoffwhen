@@ -1,7 +1,10 @@
 import { getEventListeners } from "node:events";
+import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
 import { expect, test, vi } from "vitest";
 
-import { playAudioToEnd, preloadAudio } from "@/components/dictation/audio-sequence";
+import { AudioSequence, playAudioToEnd, preloadAudio } from "@/components/dictation/audio-sequence";
+import type { ListeningSessionView } from "@/modules/dictation/child-view-types";
 
 class FakeAudio extends EventTarget {
   readyState = 0;
@@ -62,4 +65,23 @@ test("已按任务语速合成的音频播放时不再次变速", async () => {
   await rejected;
   expect(audio.playbackRate).toBe(1);
   expect(audio.defaultPlaybackRate).toBe(1);
+});
+
+test("听写准备页同时保留拼音语境与原重听入口，并提供回听和重新开始", () => {
+  const session: ListeningSessionView = {
+    sessionId: crypto.randomUUID(), taskId: crypto.randomUUID(), familyId: crypto.randomUUID(), childId: crypto.randomUUID(),
+    phase: "listening", mode: "continuous_batch", gradingMode: "parent", version: 0, roundNumber: 1, itemCount: 1,
+    playedItemIds: [], intervalSeconds: 2, repeatCount: 1, speechRate: 1, allowManualReplay: true,
+    items: [{ itemId: crypto.randomUUID(), position: 0, audioUrl: `/api/private-media/${crypto.randomUUID()}`,
+      pinyinText: "shū xiě", contextText: "请在横线上填写这个词。" }],
+  };
+  const html = renderToStaticMarkup(createElement(AudioSequence, {
+    session, pending: false, onPlayback: async () => true, onRestart: async () => true,
+  }));
+  expect(html).toContain("shū xiě");
+  expect(html).toContain("语境：请在横线上填写这个词。");
+  expect(html).toContain('aria-label="重听当前词语"');
+  expect(html).toContain("回听上一个词");
+  expect(html).toContain("从头重新听写");
+  expect(html).toContain("听完后拍照，提交给家长批改。");
 });

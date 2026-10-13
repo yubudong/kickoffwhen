@@ -12,9 +12,10 @@ export const buildTaskInputSchema = z.object({
   repeatCount: z.union([z.literal(1), z.literal(2), z.literal(3)]),
   speechRate: z.number().finite().min(0.5).max(2),
   allowManualReplay: z.boolean(),
+  gradingMode: z.enum(["self", "parent"]).default("self"),
 }).strict();
 
-export type BuildTaskInput = z.infer<typeof buildTaskInputSchema>;
+export type BuildTaskInput = z.input<typeof buildTaskInputSchema>;
 
 export const buildTaskBatchInputSchema = buildTaskInputSchema.omit({
   newCardIds: true,
@@ -25,7 +26,7 @@ export const buildTaskBatchInputSchema = buildTaskInputSchema.omit({
   extraCardIds: z.array(z.string().uuid()).max(100),
 }).strict();
 
-export type BuildTaskBatchInput = z.infer<typeof buildTaskBatchInputSchema>;
+export type BuildTaskBatchInput = z.input<typeof buildTaskBatchInputSchema>;
 
 export const learningTaskItemSchema = z.object({
   cardId: z.string().uuid(),
@@ -45,6 +46,7 @@ export const learningTaskSchema = z.object({
   repeatCount: buildTaskInputSchema.shape.repeatCount,
   speechRate: buildTaskInputSchema.shape.speechRate,
   allowManualReplay: buildTaskInputSchema.shape.allowManualReplay,
+  gradingMode: buildTaskInputSchema.shape.gradingMode,
   maxReviewCards: buildTaskInputSchema.shape.maxReviewCards,
   audioStatus: z.enum(["preparing", "ready"]),
   items: z.array(learningTaskItemSchema),

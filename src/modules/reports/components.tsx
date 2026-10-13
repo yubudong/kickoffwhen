@@ -127,7 +127,7 @@ export function SessionReportView({ report }: { report: SessionReport }) {
         )}
       </section>
       <p>完成时间：{shanghaiTime(report.completedAt)}</p>
-      <p className="report-notice">由孩子自主批改，未经机器或家长判卷</p>
+      <p className="report-notice">{report.selfGraded ? "由孩子自主批改，未经机器或家长判卷" : "由家长对照上传照片逐词批改"}</p>
     </div>
   );
 }

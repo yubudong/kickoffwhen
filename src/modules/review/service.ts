@@ -26,7 +26,7 @@ function commandFingerprint(value: Record<string, unknown>): string {
 
 async function lockReviewScope(
   tx: DbTransaction,
-  actor: ChildActor,
+  actor: Pick<ChildActor, "familyId" | "childId">,
   cardId: string,
 ): Promise<void> {
   const scope = `${actor.familyId}:${actor.childId}:${cardId}`;
@@ -37,7 +37,7 @@ async function lockReviewScope(
 
 export async function lockReviewCardsInTransaction(
   tx: DbTransaction,
-  actor: ChildActor,
+  actor: Pick<ChildActor, "familyId" | "childId">,
   cardIds: string[],
 ): Promise<void> {
   const orderedCardIds = [...new Set(cardIds.map((id) => z.string().uuid().parse(id)))].sort();
@@ -68,7 +68,7 @@ function storedScheduledReview(row: typeof reviewEvents.$inferSelect) {
 
 async function findCommandReplay(
   tx: DbTransaction,
-  actor: ChildActor,
+  actor: Pick<ChildActor, "familyId" | "childId">,
   commandId: string,
   inputFingerprint: string,
 ) {
@@ -112,7 +112,7 @@ function buildReviewService(
   database: ReviewDatabase,
   inTransaction: <T>(work: (tx: DbTransaction) => Promise<T>) => Promise<T>,
 ) {
-  async function countDueCards(actor: ChildActor, at: Date): Promise<number> {
+  async function countDueCards(actor: Pick<ChildActor, "familyId" | "childId">, at: Date): Promise<number> {
     const [result] = await database
       .select({ value: count() })
       .from(childCardStates)
@@ -129,7 +129,7 @@ function buildReviewService(
   }
 
   async function getDueCards(
-    actor: ChildActor,
+    actor: Pick<ChildActor, "familyId" | "childId">,
     at: Date,
     limit: number,
   ): Promise<LearningCard[]> {
@@ -156,7 +156,7 @@ function buildReviewService(
   }
 
   async function recordFirstResult(
-    actor: ChildActor,
+    actor: Pick<ChildActor, "familyId" | "childId">,
     input: {
       cardId: string;
       commandId: string;
@@ -265,7 +265,7 @@ function buildReviewService(
   }
 
   async function markRelearningComplete(
-    actor: ChildActor,
+    actor: Pick<ChildActor, "familyId" | "childId">,
     input: {
       cardId: string;
       commandId: string;

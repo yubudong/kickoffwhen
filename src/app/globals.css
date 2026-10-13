@@ -924,3 +924,22 @@ h1 {
 .task-management li { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; border-bottom: 1px solid #e3e8ef; padding: 0.4rem 0; }
 .task-management li button { padding: 0.3rem 0.6rem; background: #e8edf6; color: #263248; }
 .task-management [role="alert"] { color: #b1272c; }
+
+.home-login-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+.home-login-actions button { font: inherit; font-weight: 700; border: 0; cursor: pointer; }
+.home-child-login { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid #dce3ee; }
+.home-child-login .child-select-card { padding: 0; }
+.home-child-login h2 { margin-top: 0; }
+
+.dictation-photo-grid { display: grid; gap: 1rem; align-content: start; }
+.dictation-photo-grid img { display: block; width: 100%; height: auto; max-height: 70vh; object-fit: contain; border-radius: 12px; background: #f5f7fa; }
+.dictation-review-card { padding: 1.5rem; border: 1px solid #dbe4ee; border-radius: 16px; }
+.dictation-review-layout { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 1.5rem; align-items: start; }
+@media (max-width: 720px) { .dictation-review-layout { grid-template-columns: 1fr; } .dictation-review-card { padding: 1rem; } }
+
+.dictation-review-shell { width: min(100%, 1100px); }
+.dictation-review-layout > .dictation-photo-grid { position: sticky; top: 1rem; max-height: 80vh; overflow: auto; }
+@media (max-width: 720px) { .dictation-review-layout > .dictation-photo-grid { position: static; max-height: none; } }
+.parent-nav { flex-wrap: wrap; }
+.parent-nav > a, .parent-nav > button { white-space: nowrap; flex-shrink: 0; }
+@media (max-width: 720px) { .dictation-review-shell { padding: 24px 16px; } }
