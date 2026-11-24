@@ -22,10 +22,12 @@ const commandSchema = z.discriminatedUnion("type", [
     ...base,
     marks: z.array(z.object({ itemId: uuidSchema, correct: z.boolean() }).strict()).min(1),
   }).strict(),
+  z.object({ type: z.literal("restart"), ...base }).strict(),
 ]);
 
 type Command = z.infer<typeof commandSchema>;
 type Dependencies = {
+  restartRound?: (actor: ChildActor, input: Omit<Extract<Command, { type: "restart" }>, "type"> & { sessionId: string }) => Promise<DictationSnapshot>;
   resolveActor: (request: Request) => Promise<ChildActor>;
   recordPlayback: (
     actor: ChildActor,
@@ -70,6 +72,12 @@ export function createChildSessionCommandHandler(dependencies: Dependencies) {
           sequenceFinished: command.sequenceFinished,
           sessionId,
         });
+      } else if (command.type === "restart") {
+        if (!dependencies.restartRound) throw new Error("RESTART_NOT_ALLOWED");
+        snapshot = await dependencies.restartRound(actor, {
+          commandId: command.commandId, expectedVersion: command.expectedVersion,
+          roundNumber: command.roundNumber, sessionId,
+        });
       } else {
         snapshot = await dependencies.submitMarks(actor, {
           commandId: command.commandId,
@@ -88,6 +96,9 @@ export function createChildSessionCommandHandler(dependencies: Dependencies) {
       return Response.json({ session });
     } catch (error) {
       const message = error instanceof Error ? error.message : "";
+      if (message === "PARENT_GRADING_REQUIRED") {
+        return Response.json({ error: message }, { status: 403 });
+      }
       if (message === "DICTATION_SESSION_NOT_FOUND") {
         return Response.json({ error: "SESSION_NOT_FOUND" }, { status: 404 });
       }
@@ -135,6 +146,7 @@ async function productionDependencies(): Promise<Dependencies> {
     resolveActor: requireChildActor,
     recordPlayback: service.recordPlayback,
     submitMarks: service.submitBatchMarks,
+    restartRound: service.restartRound,
     getSession: childDictationViewService.getSession,
     getSessionFromSnapshot: childDictationViewService.getSessionFromSnapshot,
   };

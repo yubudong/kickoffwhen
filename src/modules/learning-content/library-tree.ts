@@ -71,6 +71,7 @@ export function buildContentLibrary(catalog: CatalogEdition[], cards: LearningCa
       unit.count = unit.unplaced.length + unit.sections.reduce((sum, section) => sum + section.cards.length, 0);
     }
     edition.count = edition.unplaced.length + edition.units.reduce((sum, unit) => sum + unit.count, 0);
+    edition.units = edition.units.filter(unit => unit.count > 0).map(unit => ({ ...unit, sections: unit.sections.filter(section => section.cards.length > 0) }));
   }
   personal.chinese.sort(compareCards);
   personal.english.sort(compareCards);

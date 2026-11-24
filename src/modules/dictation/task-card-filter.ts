@@ -1,4 +1,8 @@
+import type { EnglishLearningTarget } from "@/modules/learning-content/english-types";
+
 export type TaskCardOption = {
+  englishLearningTarget?: EnglishLearningTarget;
+  englishMeaningZh?: string;
   id: string;
   answerText: string;
   subject: "chinese" | "english";

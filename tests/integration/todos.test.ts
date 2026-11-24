@@ -4,6 +4,7 @@ import { user } from '@/modules/auth/schema';
 import { families,guardians,children } from '@/modules/families/schema';
 import { createTodoService } from '@/modules/todos/service';
 import { learningTasks } from '@/modules/dictation/task-schema';
+import { dictationSessions } from '@/modules/dictation/session-schema';
 import { todoTasks, todoSubmissions, todoReviews, todoRewards } from '@/modules/todos/schema';
 import { eq } from 'drizzle-orm';
 
@@ -159,3 +160,64 @@ test('并发审核与撤回只有一个最终状态和匹配的唯一积分结�
  if(final.status==='approved') {expect(rejected).toMatchObject({reason:expect.objectContaining({message:'TODO_REWARDED'})});expect(rewards).toHaveLength(1);expect(reviews).toHaveLength(1);expect((await service.list(child,'2026-09-22')).points).toBe(8);expect((await service.list(child,'2026-09-22')).tasks).toHaveLength(1);}
  else {expect(final.status).toBe('cancelled');expect(rejected).toMatchObject({reason:expect.objectContaining({message:'TODO_STALE'})});expect(rewards).toHaveLength(0);expect(reviews).toHaveLength(0);expect((await service.list(child,'2026-09-22')).points).toBe(0);expect((await service.list(child,'2026-09-22')).tasks).toHaveLength(0);}
 });
+
+
+test('待办保留家长批改阶段、听写音频状态及退回审核附件，孩子不见撤回任务',async()=>withDatabaseRollback(async tx=>{
+ const id=crypto.randomUUID();await tx.insert(user).values({id,name:'批改清单',email:id+'@example.test'});
+ const [family]=await tx.insert(families).values({name:'批改清单'}).returning();
+ const [guardian]=await tx.insert(guardians).values({familyId:family.id,authUserId:id}).returning();
+ const [childRow]=await tx.insert(children).values({familyId:family.id,nickname:'甲',grade:5}).returning();
+ const parent={role:'guardian' as const,familyId:family.id,guardianId:guardian.id};
+ const child={role:'child' as const,familyId:family.id,childId:childRow.id,deviceId:crypto.randomUUID()};
+ const [task]=await tx.insert(learningTasks).values({familyId:family.id,childId:childRow.id,guardianId:guardian.id,
+  commandId:crypto.randomUUID(),inputFingerprint:'b'.repeat(64),mode:'continuous_batch',taskOrder:'source',intervalSeconds:8,
+  repeatCount:1,speechRate:'1',allowManualReplay:true,maxReviewCards:0,gradingMode:'parent'}).returning();
+ await tx.insert(dictationSessions).values({familyId:family.id,childId:childRow.id,taskId:task.id,
+  mode:'continuous_batch',phase:'awaiting_parent',currentRoundItemIds:[]});
+ const [waiting]=await tx.insert(todoTasks).values({familyId:family.id,childId:childRow.id,guardianId:guardian.id,
+  commandId:crypto.randomUUID(),title:'待照片批改',date:'2026-10-13',kind:'dictation',dictationTaskId:task.id}).returning();
+ const service=createTodoService(tx);
+ const reviewed=await service.create(parent,{childId:childRow.id,title:'待办附件复查',date:'2026-10-13',commandId:crypto.randomUUID()});
+ const attachment={id:crypto.randomUUID(),mimeType:'audio/webm',byteSize:1024};
+ await service.submit(child,reviewed.id,0,attachment);
+ await service.review(parent,reviewed.id,{number:1,decision:'rejected',bonus:0,note:'请补充说明'});
+ const withdrawn=await service.create(parent,{childId:childRow.id,title:'撤回记录',date:'2026-10-13',commandId:crypto.randomUUID()});
+ await service.cancelManual(parent,withdrawn.id);
+ const childList=await service.list(child,'2026-10-13');
+ expect(childList.tasks.find(todo=>todo.id===waiting.id)).toMatchObject({status:'open',gradingMode:'parent',
+  dictationPhase:'awaiting_parent',dictationSessionStatus:'active',dictationAudioStatus:'preparing'});
+ expect(childList.tasks.find(todo=>todo.id===reviewed.id)).toMatchObject({status:'rejected',reviewNote:'请补充说明',
+  attachment:{id:attachment.id,mimeType:'audio/webm'},gradingMode:null,dictationPhase:null});
+ expect(await service.attachment(parent,attachment.id)).toMatchObject(attachment);
+ expect(childList.tasks.some(todo=>todo.id===withdrawn.id)).toBe(false);
+ expect((await service.list(parent,'2026-10-13')).tasks.find(todo=>todo.id===withdrawn.id)?.status).toBe('cancelled');
+}));
+
+test('日周月范围只返回范围内任务，积分也只累计该范围',async()=>withDatabaseRollback(async tx=>{
+ const id=crypto.randomUUID();await tx.insert(user).values({id,name:'范围测试',email:id+'@example.test'});
+ const [family]=await tx.insert(families).values({name:'范围测试'}).returning();
+ const [guardian]=await tx.insert(guardians).values({familyId:family.id,authUserId:id}).returning();
+ const [childRow]=await tx.insert(children).values({familyId:family.id,nickname:'甲',grade:5}).returning();
+ const parent={role:'guardian' as const,familyId:family.id,guardianId:guardian.id};
+ const child={role:'child' as const,familyId:family.id,childId:childRow.id,deviceId:crypto.randomUUID()};
+ const service=createTodoService(tx);
+ async function add(date:string,title:string,bonus:number){
+  const task=await service.create(parent,{childId:childRow.id,title,requirements:'',date,commandId:crypto.randomUUID()});
+  await service.submit(child,task.id,0);
+  await service.review(parent,task.id,{number:1,decision:'approved',bonus,note:''});
+ }
+ await add('2026-11-07','周六',1);
+ await add('2026-11-03','周二',2);
+ await add('2026-11-20','月内',3);
+ await add('2026-10-31','上月',10);
+ const day=await service.list(child,'2026-11-07',undefined,'day');
+ expect(day.tasks.map(task=>task.title)).toEqual(['周六']);
+ expect(day.points).toBe(2);
+ const week=await service.list(child,'2026-11-07',undefined,'week');
+ expect(week.tasks.map(task=>task.title).sort()).toEqual(['周二','周六']);
+ expect(week.points).toBe(5);
+ const month=await service.list(child,'2026-11-07',undefined,'month');
+ expect(month.tasks.map(task=>task.title).sort()).toEqual(['周二','周六','月内']);
+ expect(month.points).toBe(9);
+ expect((await service.list(child,'2026-10-31')).points).toBe(11);
+}));

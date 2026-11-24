@@ -1,3 +1,4 @@
+import { activeLearningCardPredicate } from "@/modules/learning-content/active-cards";
 import { and, asc, eq, gte, inArray, isNotNull, isNull, lt, or } from "drizzle-orm";
 import { z } from "zod";
 
@@ -135,6 +136,7 @@ export function createReportDashboardService(database?: ReportDatabase) {
       .where(and(
         eq(childCardStates.familyId, actor.familyId),
         inArray(childCardStates.childId, childIds),
+        activeLearningCardPredicate(),
         gte(childCardStates.dueAt, bounds.tomorrowStart),
         lt(childCardStates.dueAt, bounds.tomorrowEnd),
       ));

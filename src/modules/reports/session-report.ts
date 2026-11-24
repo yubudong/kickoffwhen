@@ -212,6 +212,7 @@ export function createSessionReportService(database?: ReportDatabase) {
         sessionStatus: dictationSessions.status,
         sessionCompletedAt: dictationSessions.completedAt,
         taskStatus: learningTasks.status,
+        gradingMode: learningTasks.gradingMode,
         taskCompletedAt: learningTasks.completedAt,
         completedAt: dictationCompletionEvents.completedAt,
       })
@@ -394,7 +395,7 @@ export function createSessionReportService(database?: ReportDatabase) {
       ...metrics,
       completedAt: base.completedAt,
       withdrawn,
-      selfGraded: true,
+      selfGraded: base.gradingMode === "self",
     };
   }
 

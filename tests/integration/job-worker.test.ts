@@ -682,7 +682,7 @@ test("OCR只形成本家庭草稿行，确认前不创建正式卡片", async ()
       kind: "ocr_source",
       bytes: new Uint8Array([0x89, 0x50, 0x4e, 0x47]),
       mimeType: "image/png",
-      expiresAt: new Date("2026-09-09T00:00:00.000Z"),
+      expiresAt: new Date(Date.now() + 7 * 24 * 3600 * 1000),
     });
     const service = createJobService(tx, () => now);
     const dedupeKey = `ocr:${family.id}:${draft.id}:${source.id}`;

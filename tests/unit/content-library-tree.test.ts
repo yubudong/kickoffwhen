@@ -41,14 +41,16 @@ test("内容库单元计数包含课文和语文园地时统一称为小节", ()
   const library = buildContentLibrary([mixedEdition], [card("桂花", 1)]);
   const html = renderToStaticMarkup(createElement(ContentLibraryTree, { library }));
 
-  expect(html).toContain("2 个小节 · 1 个词");
+  expect(html).toContain("1 个小节 · 1 项字词");
+  expect(html).not.toContain("语文园地");
 });
 
-test("零词教材展开后明确提示暂无词条", () => {
+test("零词教材不列空行，空库提示还没有内容", () => {
   const library = buildContentLibrary([edition], []);
   const html = renderToStaticMarkup(createElement(ContentLibraryTree, { library }));
 
-  expect(html).toContain("该教材暂无词条");
+  expect(html).not.toContain("library-edition");
+  expect(html).toContain("还没有听写内容");
 });
 
 test("英语目录存在但零词时仍提示英语教材词库尚未导入", () => {
@@ -74,7 +76,7 @@ test("按教材路径和原始顺序归位所有卡片，并统计真实卡片�
 
   expect(tree.total).toBe(5);
   expect(tree.editions[0]!.count).toBe(4);
-  expect(tree.editions[0]!.units.map((unit) => unit.title)).toEqual(["第一单元", "第二单元"]);
+  expect(tree.editions[0]!.units.map((unit) => unit.title)).toEqual(["第一单元"]);
   expect(tree.editions[0]!.units[0]!.count).toBe(3);
   expect(tree.editions[0]!.units[0]!.sections.map((section) => section.title)).toEqual(["第一课", "第二课"]);
   expect(tree.editions[0]!.units[0]!.sections[0]!.cards.map((item) => item.answerText)).toEqual(["故乡", "桂花"]);
@@ -112,7 +114,7 @@ test("卡片科目与教材科目不一致时归入卡片自身科目的个人�
   })]);
 
   expect(tree.editions[0]!.count).toBe(0);
-  expect(tree.editions[0]!.units[0]!.sections[0]!.cards).toEqual([]);
+  expect(tree.editions[0]!.units).toHaveLength(0);
   expect(tree.personal.english.map((item) => item.answerText)).toEqual(["hello"]);
   expect(tree.total).toBe(1);
 });

@@ -1,3 +1,6 @@
+import { englishGradingDetails } from "./english-metadata";
+import { getPracticeOrigin } from "./practice-metadata";
+import { activeLearningCardPredicate } from "@/modules/learning-content/active-cards";
 import { and, eq, ilike, inArray, isNull, or } from "drizzle-orm";
 import { z } from "zod";
 
@@ -56,7 +59,11 @@ const cardFilterSchema = z.object({
 type LearningContentDatabase = typeof db | DbTransaction;
 
 function toLearningCard(row: typeof learningCards.$inferSelect): LearningCard {
+  const practiceOrigin = getPracticeOrigin(row.builtinKey);
+  const english = row.subject === "english" ? englishGradingDetails(row.builtinKey) : undefined;
   return {
+    ...(practiceOrigin ? { practiceOrigin } : {}),
+    ...(english ? { english } : {}),
     id: row.id,
     familyId: row.familyId,
     subject: subjectSchema.parse(row.subject),
@@ -118,6 +125,7 @@ export function createLearningContentService(
     const value = cardFilterSchema.parse(filter);
     const conditions = [
       or(eq(learningCards.familyId, actor.familyId), isNull(learningCards.familyId)),
+      activeLearningCardPredicate(),
     ];
     if (value.subject) conditions.push(eq(learningCards.subject, value.subject));
     if (value.unitId) conditions.push(eq(learningCards.unitId, value.unitId));

@@ -10,6 +10,7 @@ import { children, families, guardians } from "@/modules/families/schema";
 import { todoRewards, todoReviews, todoTasks } from "@/modules/todos/schema";
 import { createTodoService } from "@/modules/todos/service";
 import { todayShanghai } from "@/modules/todos/validation";
+import { growthEntries, wallets } from '@/modules/engagement/schema';
 
 test("撤回与审核发积分、答题占用会话并发时保持一致且无锁序死锁", async () => {
   const authId = crypto.randomUUID();
@@ -74,7 +75,11 @@ test("撤回与审核发积分、答题占用会话并发时保持一致且无�
       await db.delete(dictationSessions).where(inArray(dictationSessions.taskId, taskIds));
       await db.delete(learningTasks).where(inArray(learningTasks.id, taskIds));
     }
-    if (childId) await db.delete(children).where(eq(children.id, childId));
+    if (childId) {
+      await db.delete(growthEntries).where(eq(growthEntries.childId, childId));
+      await db.delete(wallets).where(eq(wallets.childId, childId));
+      await db.delete(children).where(eq(children.id, childId));
+    }
     if (guardianId) await db.delete(guardians).where(eq(guardians.id, guardianId));
     if (familyId) await db.delete(families).where(eq(families.id, familyId));
     await db.delete(user).where(eq(user.id, authId));

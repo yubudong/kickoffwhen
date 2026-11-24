@@ -15,7 +15,8 @@ import {
   uuid,
 } from "drizzle-orm/pg-core";
 
-import { children, families } from "@/modules/families/schema";
+import { children, families, guardians } from "@/modules/families/schema";
+import type { DictationPhoto } from "./grading-types";
 import { reviewEvents } from "@/modules/review/db-schema";
 
 import { learningTaskItems, learningTasks } from "./task-schema";
@@ -80,7 +81,7 @@ export const dictationSessions = pgTable(
     }).onDelete("cascade"),
     check("dictation_sessions_mode_check", sql`${table.mode} in ('continuous_batch', 'item_by_item')`),
     check("dictation_sessions_status_check", sql`${table.status} in ('active', 'completed', 'cancelled')`),
-    check("dictation_sessions_phase_check", sql`${table.phase} in ('listening', 'grading', 'completed')`),
+    check("dictation_sessions_phase_check", sql`${table.phase} in ('listening', 'grading', 'awaiting_parent', 'completed')`),
     check("dictation_sessions_version_check", sql`${table.version} >= 0`),
     check("dictation_sessions_round_check", sql`${table.roundNumber} >= 1`),
     check(
@@ -123,6 +124,32 @@ export const dictationRounds = pgTable(
     check("dictation_rounds_number_check", sql`${table.roundNumber} >= 1`),
   ],
 );
+
+export const dictationSubmissions = pgTable("dictation_submissions", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  familyId: uuid("family_id").notNull(),
+  childId: uuid("child_id").notNull(),
+  sessionId: uuid("session_id").notNull(),
+  roundNumber: integer("round_number").notNull(),
+  commandId: uuid("command_id").notNull(),
+  inputFingerprint: text("input_fingerprint").notNull(),
+  photos: jsonb("photos").$type<DictationPhoto[]>().notNull(),
+  status: text("status").notNull().default("pending"),
+  marks: jsonb("marks").$type<Array<{ itemId: string; correct: boolean }>>(),
+  reviewedBy: uuid("reviewed_by"),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  reviewedAt: timestamp("reviewed_at", { withTimezone: true }),
+}, (table) => [
+  unique("dictation_submissions_command_unique").on(table.sessionId, table.commandId),
+  uniqueIndex("dictation_submissions_one_pending").on(table.sessionId).where(sql`${table.status} = 'pending'`),
+  foreignKey({ name: "dictation_submissions_session_scope_fk", columns: [table.familyId, table.childId, table.sessionId],
+    foreignColumns: [dictationSessions.familyId, dictationSessions.childId, dictationSessions.id] }).onDelete("cascade"),
+  foreignKey({ name: "dictation_submissions_reviewer_scope_fk", columns: [table.familyId, table.reviewedBy],
+    foreignColumns: [guardians.familyId, guardians.id] }).onDelete("restrict"),
+  check("dictation_submissions_status_check", sql`${table.status} in ('pending', 'reviewed')`),
+  check("dictation_submissions_photos_check", sql`jsonb_typeof(${table.photos}) = 'array' and jsonb_array_length(${table.photos}) between 1 and 4`),
+  check("dictation_submissions_review_check", sql`(${table.status} = 'pending' and ${table.reviewedBy} is null and ${table.reviewedAt} is null and ${table.marks} is null) or (${table.status} = 'reviewed' and ${table.reviewedBy} is not null and ${table.reviewedAt} is not null and ${table.marks} is not null)`),
+]);
 
 export const dictationSessionItems = pgTable(
   "dictation_session_items",
@@ -262,7 +289,7 @@ export const dictationCommands = pgTable(
       columns: [table.familyId, table.childId, table.sessionId],
       foreignColumns: [dictationSessions.familyId, dictationSessions.childId, dictationSessions.id],
     }).onDelete("cascade"),
-    check("dictation_commands_type_check", sql`${table.commandType} in ('playback', 'grading')`),
+    check("dictation_commands_type_check", sql`${table.commandType} in ('playback', 'grading', 'restart', 'submission')`),
     check("dictation_commands_fingerprint_check", sql`${table.inputFingerprint} ~ '^[0-9a-f]{64}$'`),
     check("dictation_commands_version_check", sql`${table.resultingVersion} >= 1`),
   ],

@@ -27,7 +27,7 @@ export default async function NewTaskPage() {
     <main className="stack">
       <div>
         <p className="eyebrow">学习任务</p>
-        <h1>今日听写</h1><nav className="parent-nav"><Link href="/parent/tasks/new">布置听写</Link><Link href="/parent/tasks/content">听写内容库</Link></nav><p>布置后自动加入孩子的今日待办，听写完成后交由家长审核。</p>
+        <h1>今日听写</h1><nav className="parent-nav"><Link href="/parent/tasks/new">布置听写</Link><Link href="/parent/tasks/content">听写内容库</Link></nav><p>布置后自动加入孩子的待办清单，听写完成后交由家长审核。</p>
         <p>到期词会自动生成单独的复习任务；新内容按教材单元或课次选择。</p>
       </div>
       <TaskBuilderForm

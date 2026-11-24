@@ -1,3 +1,4 @@
+import { cleanupEngagement } from './engagement-cleanup';
 import { expect, type BrowserContext, type Page, test } from "@playwright/test";
 
 const password = "Switching-Test-Password-1";
@@ -114,6 +115,7 @@ async function cleanupFixture(state: SwitchingFixtureState) {
     .limit(1);
   await db.transaction(async (tx) => {
     if (membership) {
+      await cleanupEngagement(tx, membership.familyId);
       await tx.delete(familySchema.families)
         .where(orm.eq(familySchema.families.id, membership.familyId));
     }
@@ -232,21 +234,21 @@ test("共享设备可自由切换孩子，家长模式需 PIN 且随设备撤销
 
   await selectProfile(sharedPage, "小雨");
   await expect(
-    sharedPage.getByRole("heading", { name: "小雨的今日待办" }),
+    sharedPage.getByRole("heading", { name: "小雨的待办清单" }),
   ).toBeVisible();
   await expect(sharedPage.getByText("这一天还没有待办任务。")).toBeVisible();
   await expect(sharedPage.getByText("设备管理")).toHaveCount(0);
-  await expect(sharedPage.getByRole("button", { name: "审核" })).toHaveCount(0);
+  await expect(sharedPage.getByRole("button", { name: "审核", exact: true })).toHaveCount(0);
   await expect(sharedPage.getByText("积分调整")).toHaveCount(0);
 
   await selectProfile(sharedPage, "小川");
   await expect(
-    sharedPage.getByRole("heading", { name: "小川的今日待办" }),
+    sharedPage.getByRole("heading", { name: "小川的待办清单" }),
   ).toBeVisible();
   await expect(sharedPage.getByText("小雨", { exact: true })).toHaveCount(0);
   await expect(secondPage).toHaveURL(/\/child$/);
   await expect(
-    secondPage.getByRole("heading", { name: "小川的今日待办" }),
+    secondPage.getByRole("heading", { name: "小川的待办清单" }),
   ).toBeVisible();
 
   await shared.clearCookies({ name: "family_learning_child_session" });

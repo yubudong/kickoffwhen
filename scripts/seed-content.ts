@@ -1,47 +1,73 @@
 import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
-
-import {
-  seedContentSummary,
-  validateSeedContents,
-} from "@/modules/learning-content/seed-validator";
+import { seedContentSummary, validateSeedContents, type SeedContent } from "@/modules/learning-content/seed-validator";
 import { assertChineseSeedAudit, type ChineseContentRequirements } from "@/modules/learning-content/content-audit";
+import { assertEnglishSeedAudit, type EnglishContentRequirements } from "@/modules/learning-content/english-content-audit";
 
-const seedFiles = [
-  "content/seed/chinese-grade5-volume1.json",
-  "content/seed/english-pep-grade5-volume1.json",
-];
-const requirementsFile = "content/reference/chinese-grade5-volume1.json";
+const legacySeedFiles = ["content/seed/chinese-grade5-volume1.json", "content/seed/english-pep-grade5-volume1.json"];
+const load = async (filename: string) => JSON.parse(await readFile(resolve(process.cwd(), filename), "utf8")) as unknown;
+type OfficialManifest = { teachingProfile: string; books: Array<{ grade: number; volume: number; seedFile: string; referenceFile: string; wordCount: number; writingCharacterCount: number; cardCount: number }> };
+type EnglishManifest = { revision: string; books: Array<{grade:number;volume:number;seedFile:string;referenceFile:string;cardCount:number}> };
 
 async function main() {
-  const arguments_ = process.argv.slice(2);
-  if (arguments_.length !== 1 || !["--validate-only", "--apply"].includes(arguments_[0])) {
-    throw new Error("Exactly one mode is required: --validate-only or --apply");
+  const args = process.argv.slice(2);
+  const officialOnly = args.includes("--official-only");
+  const englishOnly = args.includes("--english-only");
+  const modes = args.filter(arg => arg === "--validate-only" || arg === "--apply");
+  if ((officialOnly && englishOnly) || modes.length !== 1 || args.length !== (officialOnly || englishOnly ? 2 : 1)) throw new Error("Exactly one mode is required: --validate-only or --apply; optional --official-only (Chinese) or --english-only");
+  const filenames: string[] = [];
+  const inputs: SeedContent[] = [];
+  const requirements: ChineseContentRequirements[] = [];
+  const englishRequirements: EnglishContentRequirements[] = [];
+  if (!officialOnly && !englishOnly) {
+    const legacy = validateSeedContents(await Promise.all(legacySeedFiles.map(load)));
+    const reference = await load("content/reference/chinese-grade5-volume1.json") as ChineseContentRequirements;
+    for (const content of legacy) if (content.subject === "chinese") assertChineseSeedAudit(content, reference);
+    filenames.push(...legacySeedFiles); inputs.push(...legacy); requirements.push(reference);
   }
-
-  const contents = validateSeedContents(
-    await Promise.all(
-      seedFiles.map(async (filename) =>
-        JSON.parse(await readFile(resolve(process.cwd(), filename), "utf8")),
-      ),
-    ),
-  );
-  const requirements = JSON.parse(await readFile(resolve(process.cwd(), requirementsFile), "utf8")) as ChineseContentRequirements;
-  for (const content of contents) if (content.subject === "chinese") assertChineseSeedAudit(content, requirements);
+  if (!englishOnly) {
+    const manifest = await load("content/official-chinese-manifest.json") as OfficialManifest;
+    if (manifest.teachingProfile !== "grade_aware_v2") throw new Error("OFFICIAL_MANIFEST_REVISION_MISMATCH");
+    if (!Array.isArray(manifest.books) || manifest.books.length !== 12 || new Set(manifest.books.map(book => `${book.grade}:${book.volume}`)).size !== 12
+      || manifest.books.some(book => book.grade < 1 || book.grade > 6 || ![1, 2].includes(book.volume)
+        || book.seedFile !== `content/seed/chinese-official-grade${book.grade}-volume${book.volume}.json`
+        || book.referenceFile !== `content/reference/chinese-official-grade${book.grade}-volume${book.volume}.json`)) throw new Error("OFFICIAL_MANIFEST_INCOMPLETE");
+    for (const book of manifest.books) {
+      const [raw, reference] = await Promise.all([load(book.seedFile), load(book.referenceFile)]);
+      const [content] = validateSeedContents([raw]);
+      if (!content || content.grade !== book.grade || content.volume !== (book.volume === 1 ? "上册" : "下册") || content.auditProfile !== "official_textbook") throw new Error("OFFICIAL_MANIFEST_CONTENT_MISMATCH");
+      const ref = reference as ChineseContentRequirements; assertChineseSeedAudit(content, ref);
+      const summary = seedContentSummary(content);
+      if (summary.cards !== book.cardCount || ref.requiredVocabulary.reduce((sum, item) => sum + item.words.length, 0) !== book.wordCount
+        || ref.requiredCharacters.reduce((sum, item) => sum + item.characters.length, 0) !== book.writingCharacterCount) throw new Error("OFFICIAL_MANIFEST_TOTAL_MISMATCH");
+      inputs.push(content); requirements.push(ref); filenames.push(book.seedFile);
+    }
+  }
+  if (!officialOnly) {
+    const manifest = await load("content/official-english-manifest.json") as EnglishManifest;
+    if (manifest.revision !== "english_pep_v1" || manifest.books.length !== 8 || new Set(manifest.books.map(book=>`${book.grade}:${book.volume}`)).size !== 8
+      || manifest.books.some(book => book.grade < 3 || book.grade > 6 || ![1,2].includes(book.volume)
+        || book.seedFile !== `content/seed/english-official-grade${book.grade}-volume${book.volume}.json`
+        || book.referenceFile !== `content/reference/english-official-grade${book.grade}-volume${book.volume}.json`)) throw new Error("ENGLISH_MANIFEST_INCOMPLETE");
+    for (const book of manifest.books) {
+      const [raw, reference] = await Promise.all([load(book.seedFile),load(book.referenceFile)]);
+      const [content] = validateSeedContents([raw]); const ref = reference as EnglishContentRequirements;
+      if (!content || content.subject !== "english" || content.grade !== book.grade || content.volume !== (book.volume===1?"上册":"下册")) throw new Error("ENGLISH_MANIFEST_CONTENT_MISMATCH");
+      const audit = assertEnglishSeedAudit(content,ref);
+      if (audit.cards !== book.cardCount) throw new Error("ENGLISH_MANIFEST_TOTAL_MISMATCH");
+      inputs.push(content); englishRequirements.push(ref); filenames.push(book.seedFile);
+    }
+  }
+  const contents = validateSeedContents(inputs);
   for (const [index, content] of contents.entries()) {
-    const filename = seedFiles[index];
     const summary = seedContentSummary(content);
-    console.log(`${filename}: ${summary.edition}; units=${summary.units}; sections=${summary.sections}; cards=${summary.cards}`);
+    console.log(`${filenames[index]}: ${summary.edition}; units=${summary.units}; sections=${summary.sections}; cards=${summary.cards}`);
   }
   console.log("validation: PASS");
-  if (arguments_[0] === "--apply") {
+  if (modes[0] === "--apply") {
     const [{ db }, { applySeedContents }] = await Promise.all([import("@/db/client"), import("@/modules/learning-content/seed-service")]);
-    const summaries = await applySeedContents(db, contents, [requirements]);
+    const summaries = await applySeedContents(db, contents, requirements, englishRequirements);
     for (const summary of summaries) console.log(`${summary.edition}: inserted=${summary.insertedCards}; updated=${summary.updatedCards}`);
   }
 }
-
-void main().catch((error: unknown) => {
-  console.error(error instanceof Error ? error.message : error);
-  process.exitCode = 1;
-});
+void main().catch((error: unknown) => { console.error(error instanceof Error ? error.message : error); process.exitCode = 1; });

@@ -1,0 +1,13 @@
+import { beforeEach, expect, test, vi } from 'vitest';
+const mocks = vi.hoisted(() => ({ parent: vi.fn(), child: vi.fn(), feed: vi.fn(), list: vi.fn(), createHabit: vi.fn() }));
+vi.mock('@/config/runtime', () => ({ env: { appUrl: 'http://example.test' } }));
+vi.mock('@/modules/auth/parent-access', () => ({ requireParentActor: mocks.parent }));
+vi.mock('@/modules/devices/child-actor', () => ({ requireChildActor: mocks.child }));
+vi.mock('@/modules/engagement/service', () => ({ createEngagementService: () => mocks }));
+import { engagementHandler } from '@/modules/engagement/http';
+beforeEach(() => { vi.resetAllMocks(); mocks.child.mockResolvedValue({ role: 'child', familyId: 'family', childId: 'child-a', deviceId: 'device' }); mocks.parent.mockResolvedValue({ role: 'guardian', familyId: 'family', guardianId: 'parent' }); });
+const req = (body: object, origin = 'http://example.test') => new Request('http://example.test/api/child/engagement', { method: 'POST', headers: { origin, 'content-type': 'application/json' }, body: JSON.stringify(body) });
+test('未登录请求在服务执行前被拒绝', async () => { mocks.child.mockRejectedValue(new Error('INVALID')); expect((await engagementHandler(req({ action: 'feed' }), 'child')).status).toBe(401); expect(mocks.feed).not.toHaveBeenCalled(); });
+test('跨站请求不能扣星币或投喂', async () => { expect((await engagementHandler(req({ action: 'feed' }, 'http://other.test'), 'child')).status).toBe(403); expect(mocks.feed).not.toHaveBeenCalled(); });
+test('孩子伪造childId不会改变操作对象', async () => { const response = await engagementHandler(req({ action: 'feed', childId: 'child-b', amount: 10, commandId: crypto.randomUUID() }), 'child'); expect(response.status).toBe(200); expect(mocks.feed).toHaveBeenCalledWith(expect.objectContaining({ childId: 'child-a' }), expect.not.objectContaining({ childId: 'child-b' })); });
+test('读取孩子资料忽略查询里的其他孩子id且禁止缓存', async () => { mocks.list.mockResolvedValue({ wallet: { coins: 1 } }); const response = await engagementHandler(new Request('http://example.test/api/child/engagement?childId=child-b'), 'child'); expect(mocks.list).toHaveBeenCalledWith(expect.objectContaining({ childId: 'child-a' }), undefined); expect(response.headers.get('cache-control')).toBe('no-store'); });

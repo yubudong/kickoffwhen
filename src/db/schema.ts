@@ -9,3 +9,4 @@ export * from "@/modules/media/schema";
 export * from "@/modules/review/db-schema";
 
 export * from "@/modules/todos/schema";
+export * from "@/modules/engagement/schema";

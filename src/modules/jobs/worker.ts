@@ -264,6 +264,7 @@ export function createJobWorker({
       language: payload.language,
       voice: payload.voice,
       rate: payload.rate,
+      ...(payload.pronunciation ? { pronunciation: payload.pronunciation } : {}),
     });
     await mediaStore.put({
       familyId: payload.familyId,

@@ -14,7 +14,10 @@ import { serializeFsrsCard } from "@/modules/review/schema";
 
 import { withDatabaseRollback } from "../helpers/database";
 
-test("勾选单元后每课产生一项听写与待办，重复提交不增加任务", async () => {
+test.each([
+  { label: "未传批改方式时默认孩子自批", gradingMode: undefined, expectedGradingMode: "self" },
+  { label: "家长批改", gradingMode: "parent" as const, expectedGradingMode: "parent" },
+])("$label：勾选单元后每课产生一项听写与待办，重复提交不增加任务", async ({ gradingMode, expectedGradingMode }) => {
   await withDatabaseRollback(async (tx) => {
     const authId = crypto.randomUUID();
     await tx.insert(user).values({ id: authId, name: "家长", email: `${authId}@example.test` });
@@ -43,14 +46,17 @@ test("勾选单元后每课产生一项听写与待办，重复提交不增加�
       childId: child.id, subject: "chinese" as const, sectionIds: sections.map((section) => section.id),
       extraCardIds: [], commandId: crypto.randomUUID(), mode: "continuous_batch" as const,
       order: "source" as const, intervalSeconds: 8, repeatCount: 1 as const,
-      speechRate: 1, allowManualReplay: true,
+      speechRate: 1, allowManualReplay: true, gradingMode,
     };
     const first = await service.buildTaskBatch(actor, input);
     const retry = await service.buildTaskBatch(actor, input);
     expect(first.map((task) => task.id)).toEqual(retry.map((task) => task.id));
     await expect(service.buildTaskBatch(actor, { ...input, intervalSeconds: 9 })).rejects.toThrow("TASK_IDEMPOTENCY_CONFLICT");
+    await expect(service.buildTaskBatch(actor, { ...input, gradingMode: expectedGradingMode === "parent" ? "self" : "parent" })).rejects.toThrow("TASK_IDEMPOTENCY_CONFLICT");
     expect(first).toHaveLength(2);
+    expect(first.map((task) => task.gradingMode)).toEqual([expectedGradingMode, expectedGradingMode]);
     const saved = await tx.select().from(learningTasks).where(eq(learningTasks.familyId, family.id));
+    expect(saved.map((task) => task.gradingMode)).toEqual([expectedGradingMode, expectedGradingMode]);
     expect(saved.map((task) => task.title)).toEqual(["语文 · 第一单元 · 第1课", "语文 · 第一单元 · 第2课"]);
     expect((await tx.select().from(todoTasks).where(eq(todoTasks.familyId, family.id))).map((todo) => todo.title).sort()).toEqual([
       "语文 · 第一单元 · 第1课（1词）", "语文 · 第一单元 · 第2课（1词）",
@@ -72,7 +78,35 @@ test("勾选单元后每课产生一项听写与待办，重复提交不增加�
     const [extra] = await service.buildTaskBatch(actor, {
       ...input, commandId: crypto.randomUUID(), sectionIds: [], extraCardIds: [practice.id],
     });
+    expect(extra.gradingMode).toBe(expectedGradingMode);
+    expect((await tx.select().from(learningTasks).where(eq(learningTasks.id, extra.id)))[0]?.gradingMode).toBe(expectedGradingMode);
     expect(extra.items).toMatchObject([{ cardId: practice.id, kind: "manual_review" }]);
     expect((await tx.select().from(todoTasks).where(eq(todoTasks.dictationTaskId, extra.id)))[0]?.title).toBe("语文 · 单独加练（1词）");
+  });
+});
+
+
+test("手工选词任务持久化家长批改方式并保留可选订正凭证", async () => {
+  await withDatabaseRollback(async (tx) => {
+    const authId = crypto.randomUUID();
+    await tx.insert(user).values({ id: authId, name: "家长", email: `${authId}@example.test` });
+    const [family] = await tx.insert(families).values({ name: "手工听写" }).returning();
+    const [guardian] = await tx.insert(guardians).values({ familyId: family.id, authUserId: authId }).returning();
+    const [child] = await tx.insert(children).values({ familyId: family.id, nickname: "小雨", grade: 5 }).returning();
+    const [card] = await tx.insert(learningCards).values({ familyId: family.id, subject: "chinese",
+      answerText: "桂花", broadcastText: "桂花", source: "manual" }).returning();
+    const actor = { role: "guardian" as const, familyId: family.id, guardianId: guardian.id };
+    const input = { childId: child.id, newCardIds: [card.id], commandId: crypto.randomUUID(), maxReviewCards: 0,
+      mode: "continuous_batch" as const, order: "source" as const, intervalSeconds: 8, repeatCount: 1 as const,
+      speechRate: 1, allowManualReplay: true, gradingMode: "parent" as const };
+    const service = createDictationTaskService(tx);
+    const task = await service.buildDailyTask(actor, input);
+    expect(task.gradingMode).toBe("parent");
+    expect((await tx.select().from(learningTasks).where(eq(learningTasks.id, task.id)))[0]?.gradingMode).toBe("parent");
+    const [todo] = await tx.select().from(todoTasks).where(eq(todoTasks.dictationTaskId, task.id));
+    expect(todo.requirements).toContain("家长逐词批改");
+    expect(todo.requirements).toContain("手动提交积分审核");
+    expect(todo.status).toBe("open");
+    await expect(service.buildDailyTask(actor, { ...input, gradingMode: "self" })).rejects.toThrow("TASK_IDEMPOTENCY_CONFLICT");
   });
 });

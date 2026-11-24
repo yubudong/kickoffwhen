@@ -2,7 +2,13 @@ export type Subject = "chinese" | "english";
 
 export type CardSource = "manual" | "bulk" | "ocr" | "builtin";
 
+export type PracticeOrigin = "grade_one_character" | "lesson_text" | "age_appropriate";
+
+import type { EnglishDetails } from "./english-types";
+
 export type LearningCard = {
+  english?: EnglishDetails;
+  practiceOrigin?: PracticeOrigin;
   id: string;
   familyId: string | null;
   subject: Subject;

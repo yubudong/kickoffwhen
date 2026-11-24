@@ -28,9 +28,18 @@ test("教材树只按单元与课展示可用词数，整单元勾选可半选",
   expect(tree[0]).toMatchObject({ publisher: "统编", grade: 5, volume: "上册", units: [{ title: "第一单元", sections: [
     { id: first, title: "第1课", availableCount: 1, totalCount: 2 },
     { id: second, title: "第2课", availableCount: 1, totalCount: 1 },
-    { id: "empty-lesson", title: "第3课", availableCount: 0, totalCount: 0 },
-  ] }, { title: "第二单元", sections: [] }] });
+  ] }] });
+  expect(tree[0]!.units).toHaveLength(1);
   expect(toggleUnitSections([], [first, second])).toEqual([first, second]);
   expect(toggleUnitSections([first, second], [first, second])).toEqual([]);
   expect(toggleUnitSections([first], [first, second])).toEqual([first, second]);
+});
+
+
+test("已学课次的可用数为零时仍保留，只有真实空课次隐藏", () => {
+  const learned = cards.map(card => ({ ...card, startedChildIds: [child] }));
+  const tree = buildCurriculumTree(learned, child, "chinese", catalog);
+  expect(tree[0]!.units).toHaveLength(1);
+  expect(tree[0]!.units[0]!.sections).toHaveLength(2);
+  expect(tree[0]!.units[0]!.sections.every(section => section.totalCount > 0 && section.availableCount === 0)).toBe(true);
 });

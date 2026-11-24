@@ -1,0 +1,2342 @@
+{
+  "auditProfile": "official_english",
+  "publisher": "人民教育出版社",
+  "series": "义务教育教科书英语（三年级起点）",
+  "subject": "english",
+  "grade": 6,
+  "volume": "下册",
+  "editionText": "PEP（平台原版）·2026-11整理",
+  "units": [
+    {
+      "order": 1,
+      "title": "Unit 1 How tall are you?",
+      "sections": [
+        {
+          "key": "en-pep-g6-v2-u1-a",
+          "order": 1,
+          "title": "Part A · 词汇",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "younger",
+              "broadcastText": "younger",
+              "hintText": "My sister is（　　）than me.",
+              "builtinKey": "en-pep-202611-g6-v2-u1-a-86d70db62190f8",
+              "english": {
+                "version": 1,
+                "learningTarget": "spelling",
+                "meaningZh": "更年轻的（比较级）",
+                "exampleWithBlank": "My sister is（　　）than me.",
+                "exampleSentence": "My sister is younger than me.",
+                "exampleTranslation": "我妹妹比我年轻。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "younger",
+                "sourcePrintedPage": 5,
+                "sourceImagePage": 59,
+                "phonetic": "ˈjʌŋɡə(r)",
+                "grammarForm": "comparative",
+                "baseForm": "young"
+              }
+            },
+            {
+              "answerText": "older",
+              "broadcastText": "older",
+              "hintText": "My sister is（　　）than me.",
+              "builtinKey": "en-pep-202611-g6-v2-u1-a-415a51b3cd2c12",
+              "english": {
+                "version": 1,
+                "learningTarget": "spelling",
+                "meaningZh": "更年长的（比较级）",
+                "exampleWithBlank": "My sister is（　　）than me.",
+                "exampleSentence": "My sister is older than me.",
+                "exampleTranslation": "我姐姐比我年长。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "older",
+                "sourcePrintedPage": 5,
+                "sourceImagePage": 59,
+                "phonetic": "ˈəʊldə(r)",
+                "grammarForm": "comparative",
+                "baseForm": "old"
+              }
+            },
+            {
+              "answerText": "taller",
+              "broadcastText": "taller",
+              "hintText": "My dad is（　　）than me.",
+              "builtinKey": "en-pep-202611-g6-v2-u1-a-027f900d46428d",
+              "english": {
+                "version": 1,
+                "learningTarget": "spelling",
+                "meaningZh": "更高的（比较级）",
+                "exampleWithBlank": "My dad is（　　）than me.",
+                "exampleSentence": "My dad is taller than me.",
+                "exampleTranslation": "我爸爸比我高。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "taller",
+                "sourcePrintedPage": 5,
+                "sourceImagePage": 59,
+                "phonetic": "ˈtɔːlə(r)",
+                "grammarForm": "comparative",
+                "baseForm": "tall"
+              }
+            },
+            {
+              "answerText": "shorter",
+              "broadcastText": "shorter",
+              "hintText": "This pencil is（　　）than that one.",
+              "builtinKey": "en-pep-202611-g6-v2-u1-a-248697427e0a44",
+              "english": {
+                "version": 1,
+                "learningTarget": "spelling",
+                "meaningZh": "更矮的；更短的（比较级）",
+                "exampleWithBlank": "This pencil is（　　）than that one.",
+                "exampleSentence": "This pencil is shorter than that one.",
+                "exampleTranslation": "这支铅笔比那支短。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "shorter",
+                "sourcePrintedPage": 5,
+                "sourceImagePage": 59,
+                "phonetic": "ˈʃɔːtə(r)",
+                "grammarForm": "comparative",
+                "baseForm": "short"
+              }
+            },
+            {
+              "answerText": "longer",
+              "broadcastText": "longer",
+              "hintText": "This rope is（　　）than that one.",
+              "builtinKey": "en-pep-202611-g6-v2-u1-a-97c0c78ef8d8eb",
+              "english": {
+                "version": 1,
+                "learningTarget": "spelling",
+                "meaningZh": "更长的（比较级）",
+                "exampleWithBlank": "This rope is（　　）than that one.",
+                "exampleSentence": "This rope is longer than that one.",
+                "exampleTranslation": "这根绳子比那根长。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "longer",
+                "sourcePrintedPage": 5,
+                "sourceImagePage": 59,
+                "phonetic": "ˈlɒŋɡə(r)",
+                "grammarForm": "comparative",
+                "baseForm": "long"
+              }
+            },
+            {
+              "answerText": "dinosaur",
+              "broadcastText": "dinosaur",
+              "hintText": "The（　　）lived long ago.",
+              "builtinKey": "en-pep-202611-g6-v2-u1-a-09355ed6a7babf",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "恐龙",
+                "exampleWithBlank": "The（　　）lived long ago.",
+                "exampleSentence": "The dinosaur lived long ago.",
+                "exampleTranslation": "恐龙生活在很久以前。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "dinosaur",
+                "sourcePrintedPage": 4,
+                "sourceImagePage": 59,
+                "phonetic": "ˈdaɪnəsɔː(r)"
+              }
+            },
+            {
+              "answerText": "hall",
+              "broadcastText": "hall",
+              "hintText": "We meet in the school（　　）.",
+              "builtinKey": "en-pep-202611-g6-v2-u1-a-d0a83d5730ce2e",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "大厅",
+                "exampleWithBlank": "We meet in the school（　　）.",
+                "exampleSentence": "We meet in the school hall.",
+                "exampleTranslation": "我们在学校大厅集合。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "hall",
+                "sourcePrintedPage": 4,
+                "sourceImagePage": 59,
+                "phonetic": "hɔːl"
+              }
+            },
+            {
+              "answerText": "metre",
+              "broadcastText": "metre",
+              "hintText": "This rope is one（　　）long.",
+              "builtinKey": "en-pep-202611-g6-v2-u1-a-fad4d8f7dace61",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "米",
+                "exampleWithBlank": "This rope is one（　　）long.",
+                "exampleSentence": "This rope is one metre long.",
+                "exampleTranslation": "这根绳子一米长。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": [
+                    "meter"
+                  ]
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "metre",
+                "sourcePrintedPage": 4,
+                "sourceImagePage": 59,
+                "phonetic": "ˈmiːtə(r)"
+              }
+            },
+            {
+              "answerText": "than",
+              "broadcastText": "than",
+              "hintText": "This box is bigger（　　）that one.",
+              "builtinKey": "en-pep-202611-g6-v2-u1-a-1f896148338c95",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "比",
+                "exampleWithBlank": "This box is bigger（　　）that one.",
+                "exampleSentence": "This box is bigger than that one.",
+                "exampleTranslation": "这个盒子比那个大。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "than",
+                "sourcePrintedPage": 4,
+                "sourceImagePage": 59,
+                "phonetic": "ðən, ðæn"
+              }
+            },
+            {
+              "answerText": "both",
+              "broadcastText": "both",
+              "hintText": "（　　）of my parents are teachers.",
+              "builtinKey": "en-pep-202611-g6-v2-u1-a-094d4c05bec471",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "两个都",
+                "exampleWithBlank": "（　　）of my parents are teachers.",
+                "exampleSentence": "Both of my parents are teachers.",
+                "exampleTranslation": "我的父母都是教师。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "both",
+                "sourcePrintedPage": 4,
+                "sourceImagePage": 59,
+                "phonetic": "bəʊθ"
+              }
+            }
+          ]
+        },
+        {
+          "key": "en-pep-g6-v2-u1-b",
+          "order": 2,
+          "title": "Part B · 词汇",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "thinner",
+              "broadcastText": "thinner",
+              "hintText": "My brother is（　　）than me.",
+              "builtinKey": "en-pep-202611-g6-v2-u1-b-e2f39c41bc74b4",
+              "english": {
+                "version": 1,
+                "learningTarget": "spelling",
+                "meaningZh": "更瘦的（比较级）",
+                "exampleWithBlank": "My brother is（　　）than me.",
+                "exampleSentence": "My brother is thinner than me.",
+                "exampleTranslation": "我哥哥比我瘦。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "thinner",
+                "sourcePrintedPage": 7,
+                "sourceImagePage": 59,
+                "phonetic": "ˈθɪnə(r)",
+                "grammarForm": "comparative",
+                "baseForm": "thin"
+              }
+            },
+            {
+              "answerText": "heavier",
+              "broadcastText": "heavier",
+              "hintText": "This bag is（　　）than mine.",
+              "builtinKey": "en-pep-202611-g6-v2-u1-b-330fde11e5f439",
+              "english": {
+                "version": 1,
+                "learningTarget": "spelling",
+                "meaningZh": "更重的（比较级）",
+                "exampleWithBlank": "This bag is（　　）than mine.",
+                "exampleSentence": "This bag is heavier than mine.",
+                "exampleTranslation": "这个包比我的重。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "heavier",
+                "sourcePrintedPage": 7,
+                "sourceImagePage": 59,
+                "phonetic": "ˈheviə(r)",
+                "grammarForm": "comparative",
+                "baseForm": "heavy"
+              }
+            },
+            {
+              "answerText": "bigger",
+              "broadcastText": "bigger",
+              "hintText": "This box is（　　）than that one.",
+              "builtinKey": "en-pep-202611-g6-v2-u1-b-7680883196fb4b",
+              "english": {
+                "version": 1,
+                "learningTarget": "spelling",
+                "meaningZh": "更大的（比较级）",
+                "exampleWithBlank": "This box is（　　）than that one.",
+                "exampleSentence": "This box is bigger than that one.",
+                "exampleTranslation": "这个盒子比那个大。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "bigger",
+                "sourcePrintedPage": 7,
+                "sourceImagePage": 59,
+                "phonetic": "ˈbɪɡə(r)",
+                "grammarForm": "comparative",
+                "baseForm": "big"
+              }
+            },
+            {
+              "answerText": "smaller",
+              "broadcastText": "smaller",
+              "hintText": "This box is（　　）than mine.",
+              "builtinKey": "en-pep-202611-g6-v2-u1-b-c0dce268c31c9e",
+              "english": {
+                "version": 1,
+                "learningTarget": "spelling",
+                "meaningZh": "更小的（比较级）",
+                "exampleWithBlank": "This box is（　　）than mine.",
+                "exampleSentence": "This box is smaller than mine.",
+                "exampleTranslation": "这个盒子比我的小。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "smaller",
+                "sourcePrintedPage": 7,
+                "sourceImagePage": 59,
+                "phonetic": "ˈsmɔːlə(r)",
+                "grammarForm": "comparative",
+                "baseForm": "small"
+              }
+            },
+            {
+              "answerText": "stronger",
+              "broadcastText": "stronger",
+              "hintText": "My brother is（　　）than me.",
+              "builtinKey": "en-pep-202611-g6-v2-u1-b-29fa2a55661284",
+              "english": {
+                "version": 1,
+                "learningTarget": "spelling",
+                "meaningZh": "更强壮的（比较级）",
+                "exampleWithBlank": "My brother is（　　）than me.",
+                "exampleSentence": "My brother is stronger than me.",
+                "exampleTranslation": "我哥哥比我强壮。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "stronger",
+                "sourcePrintedPage": 7,
+                "sourceImagePage": 59,
+                "phonetic": "ˈstrɒŋɡə(r)",
+                "grammarForm": "comparative",
+                "baseForm": "strong"
+              }
+            },
+            {
+              "answerText": "kilogram",
+              "broadcastText": "kilogram",
+              "hintText": "I buy one（　　）of rice.",
+              "builtinKey": "en-pep-202611-g6-v2-u1-b-6be02db20e00ec",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "千克；公斤",
+                "exampleWithBlank": "I buy one（　　）of rice.",
+                "exampleSentence": "I buy one kilogram of rice.",
+                "exampleTranslation": "我买一公斤大米。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "kilogram",
+                "sourcePrintedPage": 6,
+                "sourceImagePage": 59,
+                "phonetic": "ˈkɪləɡræm"
+              }
+            },
+            {
+              "answerText": "countryside",
+              "broadcastText": "countryside",
+              "hintText": "My grandparents live in the（　　）.",
+              "builtinKey": "en-pep-202611-g6-v2-u1-b-7a84f0b7792aa0",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "乡村",
+                "exampleWithBlank": "My grandparents live in the（　　）.",
+                "exampleSentence": "My grandparents live in the countryside.",
+                "exampleTranslation": "我的祖父母住在乡村。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "countryside",
+                "sourcePrintedPage": 8,
+                "sourceImagePage": 59,
+                "phonetic": "ˈkʌntrisaɪd"
+              }
+            },
+            {
+              "answerText": "lower",
+              "broadcastText": "lower",
+              "hintText": "This table is（　　）than that one.",
+              "builtinKey": "en-pep-202611-g6-v2-u1-b-5d2197b3abdfdc",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "更低（比较级）",
+                "exampleWithBlank": "This table is（　　）than that one.",
+                "exampleSentence": "This table is lower than that one.",
+                "exampleTranslation": "这张桌子比那张低。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "lower",
+                "sourcePrintedPage": 8,
+                "sourceImagePage": 59,
+                "phonetic": "ˈləʊə(r)",
+                "grammarForm": "comparative",
+                "baseForm": "low"
+              }
+            },
+            {
+              "answerText": "shadow",
+              "broadcastText": "shadow",
+              "hintText": "My（　　）gets longer in the evening.",
+              "builtinKey": "en-pep-202611-g6-v2-u1-b-af1d399f168072",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "阴影；影子",
+                "exampleWithBlank": "My（　　）gets longer in the evening.",
+                "exampleSentence": "My shadow gets longer in the evening.",
+                "exampleTranslation": "傍晚，我的影子变长。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "shadow",
+                "sourcePrintedPage": 8,
+                "sourceImagePage": 59,
+                "phonetic": "ˈʃædəʊ"
+              }
+            },
+            {
+              "answerText": "smarter",
+              "broadcastText": "smarter",
+              "hintText": "The fox is（　　）than the wolf in this story.",
+              "builtinKey": "en-pep-202611-g6-v2-u1-b-eb14d5df1e3280",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "更聪明的（比较级）",
+                "exampleWithBlank": "The fox is（　　）than the wolf in this story.",
+                "exampleSentence": "The fox is smarter than the wolf in this story.",
+                "exampleTranslation": "这个故事里的狐狸比狼聪明。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "smarter",
+                "sourcePrintedPage": 8,
+                "sourceImagePage": 59,
+                "phonetic": "ˈsmɑːtə(r)",
+                "grammarForm": "comparative",
+                "baseForm": "smart"
+              }
+            },
+            {
+              "answerText": "become",
+              "broadcastText": "become",
+              "hintText": "Leaves（　　）yellow in autumn.",
+              "builtinKey": "en-pep-202611-g6-v2-u1-b-176b6b6197975b",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "开始变得；变成",
+                "exampleWithBlank": "Leaves（　　）yellow in autumn.",
+                "exampleSentence": "Leaves become yellow in autumn.",
+                "exampleTranslation": "叶子在秋天变黄。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "become",
+                "sourcePrintedPage": 8,
+                "sourceImagePage": 59,
+                "phonetic": "bɪˈkʌm"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "title": "Unit 2 Last weekend",
+      "sections": [
+        {
+          "key": "en-pep-g6-v2-u2-a",
+          "order": 1,
+          "title": "Part A · 词汇",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "cleaned",
+              "broadcastText": "cleaned",
+              "hintText": "I（　　）my room yesterday.",
+              "builtinKey": "en-pep-202611-g6-v2-u2-a-e11f057c7eeb30",
+              "english": {
+                "version": 1,
+                "learningTarget": "spelling",
+                "meaningZh": "打扫（过去式）",
+                "exampleWithBlank": "I（　　）my room yesterday.",
+                "exampleSentence": "I cleaned my room yesterday.",
+                "exampleTranslation": "我昨天打扫了房间。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "cleaned",
+                "sourcePrintedPage": 15,
+                "sourceImagePage": 59,
+                "phonetic": "kliːnd",
+                "grammarForm": "past",
+                "baseForm": "clean"
+              }
+            },
+            {
+              "answerText": "stayed",
+              "broadcastText": "stayed",
+              "hintText": "We（　　）at home yesterday.",
+              "builtinKey": "en-pep-202611-g6-v2-u2-a-462b608b9b197b",
+              "english": {
+                "version": 1,
+                "learningTarget": "spelling",
+                "meaningZh": "停留；待（过去式）",
+                "exampleWithBlank": "We（　　）at home yesterday.",
+                "exampleSentence": "We stayed at home yesterday.",
+                "exampleTranslation": "我们昨天待在家。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "stayed",
+                "sourcePrintedPage": 15,
+                "sourceImagePage": 59,
+                "phonetic": "steɪd",
+                "grammarForm": "past",
+                "baseForm": "stay"
+              }
+            },
+            {
+              "answerText": "washed",
+              "broadcastText": "washed",
+              "hintText": "I（　　）my clothes yesterday.",
+              "builtinKey": "en-pep-202611-g6-v2-u2-a-c4eb11efcedc93",
+              "english": {
+                "version": 1,
+                "learningTarget": "spelling",
+                "meaningZh": "洗（过去式）",
+                "exampleWithBlank": "I（　　）my clothes yesterday.",
+                "exampleSentence": "I washed my clothes yesterday.",
+                "exampleTranslation": "我昨天洗了衣服。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "washed",
+                "sourcePrintedPage": 15,
+                "sourceImagePage": 59,
+                "phonetic": "wɒʃt",
+                "grammarForm": "past",
+                "baseForm": "wash"
+              }
+            },
+            {
+              "answerText": "watched",
+              "broadcastText": "watched",
+              "hintText": "We（　　）a film last night.",
+              "builtinKey": "en-pep-202611-g6-v2-u2-a-50c7cc44ec2de8",
+              "english": {
+                "version": 1,
+                "learningTarget": "spelling",
+                "meaningZh": "看（过去式）",
+                "exampleWithBlank": "We（　　）a film last night.",
+                "exampleSentence": "We watched a film last night.",
+                "exampleTranslation": "我们昨晚看了一部电影。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "watched",
+                "sourcePrintedPage": 15,
+                "sourceImagePage": 59,
+                "phonetic": "wɒtʃt",
+                "grammarForm": "past",
+                "baseForm": "watch"
+              }
+            },
+            {
+              "answerText": "drank",
+              "broadcastText": "drank",
+              "hintText": "I（　　）some milk yesterday.",
+              "builtinKey": "en-pep-202611-g6-v2-u2-a-455b07a54e74ee",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "喝（过去式）",
+                "exampleWithBlank": "I（　　）some milk yesterday.",
+                "exampleSentence": "I drank some milk yesterday.",
+                "exampleTranslation": "我昨天喝了一些奶。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "drank",
+                "sourcePrintedPage": 14,
+                "sourceImagePage": 60,
+                "phonetic": "dræŋk",
+                "grammarForm": "past",
+                "baseForm": "drink"
+              }
+            },
+            {
+              "answerText": "show",
+              "broadcastText": "show",
+              "hintText": "The（　　）starts at seven.",
+              "builtinKey": "en-pep-202611-g6-v2-u2-a-30a0c9fc518064",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "演出",
+                "exampleWithBlank": "The（　　）starts at seven.",
+                "exampleSentence": "The show starts at seven.",
+                "exampleTranslation": "这场演出七点开始。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "show",
+                "sourcePrintedPage": 14,
+                "sourceImagePage": 60,
+                "phonetic": "ʃəʊ"
+              }
+            }
+          ]
+        },
+        {
+          "key": "en-pep-g6-v2-u2-b",
+          "order": 2,
+          "title": "Part B · 词汇",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "had",
+              "broadcastText": "had",
+              "hintText": "I（　　）a cold last week.",
+              "builtinKey": "en-pep-202611-g6-v2-u2-b-97cc763843d8f4",
+              "english": {
+                "version": 1,
+                "learningTarget": "spelling",
+                "meaningZh": "患病；得病（过去式）",
+                "exampleWithBlank": "I（　　）a cold last week.",
+                "exampleSentence": "I had a cold last week.",
+                "exampleTranslation": "我上周感冒了。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "had",
+                "sourcePrintedPage": 17,
+                "sourceImagePage": 59,
+                "phonetic": "hæd",
+                "grammarForm": "past",
+                "baseForm": "have"
+              }
+            },
+            {
+              "answerText": "had a cold",
+              "broadcastText": "had a cold",
+              "hintText": "I（　　）last week.",
+              "builtinKey": "en-pep-202611-g6-v2-u2-b-5dc1249664e2a6",
+              "english": {
+                "version": 1,
+                "learningTarget": "spelling",
+                "meaningZh": "感冒（过去式）",
+                "exampleWithBlank": "I（　　）last week.",
+                "exampleSentence": "I had a cold last week.",
+                "exampleTranslation": "我上周感冒了。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "had a cold",
+                "sourcePrintedPage": 17,
+                "sourceImagePage": 59,
+                "grammarForm": "past"
+              }
+            },
+            {
+              "answerText": "slept",
+              "broadcastText": "slept",
+              "hintText": "I（　　）well last night.",
+              "builtinKey": "en-pep-202611-g6-v2-u2-b-190451a8446cd4",
+              "english": {
+                "version": 1,
+                "learningTarget": "spelling",
+                "meaningZh": "睡觉（过去式）",
+                "exampleWithBlank": "I（　　）well last night.",
+                "exampleSentence": "I slept well last night.",
+                "exampleTranslation": "我昨晚睡得很好。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "slept",
+                "sourcePrintedPage": 17,
+                "sourceImagePage": 59,
+                "phonetic": "slept",
+                "grammarForm": "past",
+                "baseForm": "sleep"
+              }
+            },
+            {
+              "answerText": "read",
+              "broadcastText": "read. I read a book yesterday.",
+              "hintText": "I（　　）a book yesterday.",
+              "builtinKey": "en-pep-202611-g6-v2-u2-b-96990da64a82e1",
+              "english": {
+                "version": 1,
+                "learningTarget": "spelling",
+                "meaningZh": "读（过去式）",
+                "exampleWithBlank": "I（　　）a book yesterday.",
+                "exampleSentence": "I read a book yesterday.",
+                "exampleTranslation": "我昨天读了一本书。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "read",
+                "sourcePrintedPage": 17,
+                "sourceImagePage": 60,
+                "phonetic": "red",
+                "grammarForm": "past",
+                "baseForm": "read",
+                "pronunciation": {
+                  "kind": "ipa",
+                  "target": "read",
+                  "ipa": "rɛd"
+                },
+                "spokenContext": "I read a book yesterday."
+              }
+            },
+            {
+              "answerText": "saw",
+              "broadcastText": "saw",
+              "hintText": "I（　　）a bird yesterday.",
+              "builtinKey": "en-pep-202611-g6-v2-u2-b-6791b6960ffc76",
+              "english": {
+                "version": 1,
+                "learningTarget": "spelling",
+                "meaningZh": "看见（过去式）",
+                "exampleWithBlank": "I（　　）a bird yesterday.",
+                "exampleSentence": "I saw a bird yesterday.",
+                "exampleTranslation": "我昨天看见一只鸟。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "saw",
+                "sourcePrintedPage": 17,
+                "sourceImagePage": 60,
+                "phonetic": "sɔː",
+                "grammarForm": "past",
+                "baseForm": "see"
+              }
+            },
+            {
+              "answerText": "last",
+              "broadcastText": "last",
+              "hintText": "We played football（　　）week.",
+              "builtinKey": "en-pep-202611-g6-v2-u2-b-1fceb87315ffee",
+              "english": {
+                "version": 1,
+                "learningTarget": "spelling",
+                "meaningZh": "最近的；上一个的",
+                "exampleWithBlank": "We played football（　　）week.",
+                "exampleSentence": "We played football last week.",
+                "exampleTranslation": "我们上周踢了足球。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "last",
+                "sourcePrintedPage": 17,
+                "sourceImagePage": 60,
+                "phonetic": "lɑːst"
+              }
+            },
+            {
+              "answerText": "yesterday",
+              "broadcastText": "yesterday",
+              "hintText": "We played football（　　）.",
+              "builtinKey": "en-pep-202611-g6-v2-u2-b-ee1264583b69d2",
+              "english": {
+                "version": 1,
+                "learningTarget": "spelling",
+                "meaningZh": "昨天",
+                "exampleWithBlank": "We played football（　　）.",
+                "exampleSentence": "We played football yesterday.",
+                "exampleTranslation": "我们昨天踢了足球。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "yesterday",
+                "sourcePrintedPage": 17,
+                "sourceImagePage": 60,
+                "phonetic": "ˈjestədeɪ"
+              }
+            },
+            {
+              "answerText": "before",
+              "broadcastText": "before",
+              "hintText": "Wash your hands（　　）you eat.",
+              "builtinKey": "en-pep-202611-g6-v2-u2-b-8a7e02712c7b56",
+              "english": {
+                "version": 1,
+                "learningTarget": "spelling",
+                "meaningZh": "在……之前",
+                "exampleWithBlank": "Wash your hands（　　）you eat.",
+                "exampleSentence": "Wash your hands before you eat.",
+                "exampleTranslation": "吃饭前洗手。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "before",
+                "sourcePrintedPage": 17,
+                "sourceImagePage": 60,
+                "phonetic": "bɪˈfɔː(r)"
+              }
+            },
+            {
+              "answerText": "magazine",
+              "broadcastText": "magazine",
+              "hintText": "Dad reads a（　　）on the bus.",
+              "builtinKey": "en-pep-202611-g6-v2-u2-b-3d4e16ee7fe035",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "杂志",
+                "exampleWithBlank": "Dad reads a（　　）on the bus.",
+                "exampleSentence": "Dad reads a magazine on the bus.",
+                "exampleTranslation": "爸爸在公交车上看杂志。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "magazine",
+                "sourcePrintedPage": 16,
+                "sourceImagePage": 60,
+                "phonetic": "ˌmæɡəˈziːn"
+              }
+            },
+            {
+              "answerText": "better",
+              "broadcastText": "better",
+              "hintText": "I feel（　　）today.",
+              "builtinKey": "en-pep-202611-g6-v2-u2-b-c275473d5c0bf9",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "更好的（比较级）",
+                "exampleWithBlank": "I feel（　　）today.",
+                "exampleSentence": "I feel better today.",
+                "exampleTranslation": "我今天感觉好些了。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "better",
+                "sourcePrintedPage": 16,
+                "sourceImagePage": 60,
+                "phonetic": "ˈbetə(r)",
+                "grammarForm": "comparative",
+                "baseForm": "well"
+              }
+            },
+            {
+              "answerText": "faster",
+              "broadcastText": "faster",
+              "hintText": "The cheetah runs（　　）than the dog.",
+              "builtinKey": "en-pep-202611-g6-v2-u2-b-9840e0a3f4d152",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "更快的（比较级）",
+                "exampleWithBlank": "The cheetah runs（　　）than the dog.",
+                "exampleSentence": "The cheetah runs faster than the dog.",
+                "exampleTranslation": "猎豹跑得比狗快。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "faster",
+                "sourcePrintedPage": 16,
+                "sourceImagePage": 60,
+                "phonetic": "ˈfɑːstə(r)",
+                "grammarForm": "comparative",
+                "baseForm": "fast"
+              }
+            },
+            {
+              "answerText": "hotel",
+              "broadcastText": "hotel",
+              "hintText": "We stay at a（　　）on our trip.",
+              "builtinKey": "en-pep-202611-g6-v2-u2-b-a3d556b12814e9",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "旅馆",
+                "exampleWithBlank": "We stay at a（　　）on our trip.",
+                "exampleSentence": "We stay at a hotel on our trip.",
+                "exampleTranslation": "我们旅行时住在一家旅馆。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "hotel",
+                "sourcePrintedPage": 18,
+                "sourceImagePage": 60,
+                "phonetic": "həʊˈtel"
+              }
+            },
+            {
+              "answerText": "fixed",
+              "broadcastText": "fixed",
+              "hintText": "Dad（　　）the broken chair.",
+              "builtinKey": "en-pep-202611-g6-v2-u2-b-ec846a78278a02",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "修理（过去式）",
+                "exampleWithBlank": "Dad（　　）the broken chair.",
+                "exampleSentence": "Dad fixed the broken chair.",
+                "exampleTranslation": "爸爸修好了那把坏椅子。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "fixed",
+                "sourcePrintedPage": 18,
+                "sourceImagePage": 60,
+                "phonetic": "fɪkst",
+                "grammarForm": "past",
+                "baseForm": "fix"
+              }
+            },
+            {
+              "answerText": "broken",
+              "broadcastText": "broken",
+              "hintText": "This chair is（　　）.",
+              "builtinKey": "en-pep-202611-g6-v2-u2-b-9a6a50e69a202d",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "破损的",
+                "exampleWithBlank": "This chair is（　　）.",
+                "exampleSentence": "This chair is broken.",
+                "exampleTranslation": "这把椅子坏了。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "broken",
+                "sourcePrintedPage": 18,
+                "sourceImagePage": 60,
+                "phonetic": "ˈbrəʊkən"
+              }
+            },
+            {
+              "answerText": "lamp",
+              "broadcastText": "lamp",
+              "hintText": "The（　　）is on my desk.",
+              "builtinKey": "en-pep-202611-g6-v2-u2-b-9fd86b049038fb",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "台灯",
+                "exampleWithBlank": "The（　　）is on my desk.",
+                "exampleSentence": "The lamp is on my desk.",
+                "exampleTranslation": "台灯在我的书桌上。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "lamp",
+                "sourcePrintedPage": 18,
+                "sourceImagePage": 60,
+                "phonetic": "læmp"
+              }
+            },
+            {
+              "answerText": "loud",
+              "broadcastText": "loud",
+              "hintText": "The music is too（　　）.",
+              "builtinKey": "en-pep-202611-g6-v2-u2-b-1bb91c0fedfd77",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "喧闹的；大声的",
+                "exampleWithBlank": "The music is too（　　）.",
+                "exampleSentence": "The music is too loud.",
+                "exampleTranslation": "音乐的声音太大了。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "loud",
+                "sourcePrintedPage": 18,
+                "sourceImagePage": 60,
+                "phonetic": "laʊd"
+              }
+            },
+            {
+              "answerText": "enjoy",
+              "broadcastText": "enjoy",
+              "hintText": "I（　　）reading stories.",
+              "builtinKey": "en-pep-202611-g6-v2-u2-b-8b495e21886219",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "享受；乐趣；喜爱",
+                "exampleWithBlank": "I（　　）reading stories.",
+                "exampleSentence": "I enjoy reading stories.",
+                "exampleTranslation": "我喜欢读故事。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "enjoy",
+                "sourcePrintedPage": 18,
+                "sourceImagePage": 60,
+                "phonetic": "ɪnˈdʒɔɪ"
+              }
+            },
+            {
+              "answerText": "stay",
+              "broadcastText": "stay",
+              "hintText": "We（　　）at a hotel.",
+              "builtinKey": "en-pep-202611-g6-v2-u2-b-873b1879a69020",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "暂住；逗留",
+                "exampleWithBlank": "We（　　）at a hotel.",
+                "exampleSentence": "We stay at a hotel.",
+                "exampleTranslation": "我们住在一家旅馆。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "stay",
+                "sourcePrintedPage": 18,
+                "sourceImagePage": 60,
+                "phonetic": "steɪ"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "title": "Unit 3 Where did you go?",
+      "sections": [
+        {
+          "key": "en-pep-g6-v2-u3-a",
+          "order": 1,
+          "title": "Part A · 词汇",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "went",
+              "broadcastText": "went",
+              "hintText": "I（　　）to the park yesterday.",
+              "builtinKey": "en-pep-202611-g6-v2-u3-a-2604d87eebfe42",
+              "english": {
+                "version": 1,
+                "learningTarget": "spelling",
+                "meaningZh": "去（过去式）",
+                "exampleWithBlank": "I（　　）to the park yesterday.",
+                "exampleSentence": "I went to the park yesterday.",
+                "exampleTranslation": "我昨天去了公园。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "went",
+                "sourcePrintedPage": 25,
+                "sourceImagePage": 60,
+                "phonetic": "went",
+                "grammarForm": "past",
+                "baseForm": "go"
+              }
+            },
+            {
+              "answerText": "camp",
+              "broadcastText": "camp",
+              "hintText": "We will（　　）by the lake.",
+              "builtinKey": "en-pep-202611-g6-v2-u3-a-f850b2ca02bb8f",
+              "english": {
+                "version": 1,
+                "learningTarget": "spelling",
+                "meaningZh": "野营",
+                "exampleWithBlank": "We will（　　）by the lake.",
+                "exampleSentence": "We will camp by the lake.",
+                "exampleTranslation": "我们将在湖边野营。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "camp",
+                "sourcePrintedPage": 25,
+                "sourceImagePage": 60,
+                "phonetic": "kæmp"
+              }
+            },
+            {
+              "answerText": "went camping",
+              "broadcastText": "went camping",
+              "hintText": "We（　　）by the lake last week.",
+              "builtinKey": "en-pep-202611-g6-v2-u3-a-998b10e7dd294a",
+              "english": {
+                "version": 1,
+                "learningTarget": "spelling",
+                "meaningZh": "野营（过去式短语）",
+                "exampleWithBlank": "We（　　）by the lake last week.",
+                "exampleSentence": "We went camping by the lake last week.",
+                "exampleTranslation": "我们上周去湖边野营了。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "went camping",
+                "sourcePrintedPage": 25,
+                "sourceImagePage": 60,
+                "grammarForm": "past"
+              }
+            },
+            {
+              "answerText": "fish",
+              "broadcastText": "fish",
+              "hintText": "We like to（　　）by the river.",
+              "builtinKey": "en-pep-202611-g6-v2-u3-a-583d06d6577307",
+              "english": {
+                "version": 1,
+                "learningTarget": "spelling",
+                "meaningZh": "钓鱼；捕鱼",
+                "exampleWithBlank": "We like to（　　）by the river.",
+                "exampleSentence": "We like to fish by the river.",
+                "exampleTranslation": "我们喜欢在河边钓鱼。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "fish",
+                "sourcePrintedPage": 25,
+                "sourceImagePage": 60,
+                "phonetic": "fɪʃ"
+              }
+            },
+            {
+              "answerText": "went fishing",
+              "broadcastText": "went fishing",
+              "hintText": "We（　　）on Sunday.",
+              "builtinKey": "en-pep-202611-g6-v2-u3-a-3ea9c21b8af0b7",
+              "english": {
+                "version": 1,
+                "learningTarget": "spelling",
+                "meaningZh": "去钓鱼（过去式）",
+                "exampleWithBlank": "We（　　）on Sunday.",
+                "exampleSentence": "We went fishing on Sunday.",
+                "exampleTranslation": "我们星期日去钓鱼了。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "went fishing",
+                "sourcePrintedPage": 25,
+                "sourceImagePage": 60,
+                "grammarForm": "past"
+              }
+            },
+            {
+              "answerText": "rode",
+              "broadcastText": "rode",
+              "hintText": "I（　　）a horse on Sunday.",
+              "builtinKey": "en-pep-202611-g6-v2-u3-a-7937efc664c2b6",
+              "english": {
+                "version": 1,
+                "learningTarget": "spelling",
+                "meaningZh": "骑（过去式）",
+                "exampleWithBlank": "I（　　）a horse on Sunday.",
+                "exampleSentence": "I rode a horse on Sunday.",
+                "exampleTranslation": "我星期日骑了马。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "rode",
+                "sourcePrintedPage": 25,
+                "sourceImagePage": 60,
+                "phonetic": "rəʊd",
+                "grammarForm": "past",
+                "baseForm": "ride"
+              }
+            },
+            {
+              "answerText": "hurt",
+              "broadcastText": "hurt",
+              "hintText": "I（　　）my foot yesterday.",
+              "builtinKey": "en-pep-202611-g6-v2-u3-a-742b2e0f13f6e3",
+              "english": {
+                "version": 1,
+                "learningTarget": "spelling",
+                "meaningZh": "使受伤（过去式）",
+                "exampleWithBlank": "I（　　）my foot yesterday.",
+                "exampleSentence": "I hurt my foot yesterday.",
+                "exampleTranslation": "我昨天伤了脚。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "hurt",
+                "sourcePrintedPage": 25,
+                "sourceImagePage": 60,
+                "phonetic": "hɜːt",
+                "grammarForm": "past",
+                "baseForm": "hurt"
+              }
+            },
+            {
+              "answerText": "fell",
+              "broadcastText": "fell",
+              "hintText": "I（　　）off my bike yesterday.",
+              "builtinKey": "en-pep-202611-g6-v2-u3-a-a74950d91ba109",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "摔倒（过去式）",
+                "exampleWithBlank": "I（　　）off my bike yesterday.",
+                "exampleSentence": "I fell off my bike yesterday.",
+                "exampleTranslation": "我昨天从自行车上摔了下来。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "fell",
+                "sourcePrintedPage": 24,
+                "sourceImagePage": 60,
+                "phonetic": "fel",
+                "grammarForm": "past",
+                "baseForm": "fall"
+              }
+            },
+            {
+              "answerText": "off",
+              "broadcastText": "off",
+              "hintText": "I fell（　　）my bike yesterday.",
+              "builtinKey": "en-pep-202611-g6-v2-u3-a-9f52d1a9aa0095",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "从某处落下",
+                "exampleWithBlank": "I fell（　　）my bike yesterday.",
+                "exampleSentence": "I fell off my bike yesterday.",
+                "exampleTranslation": "我昨天从自行车上摔了下来。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "off",
+                "sourcePrintedPage": 24,
+                "sourceImagePage": 60,
+                "phonetic": "ɒf"
+              }
+            },
+            {
+              "answerText": "mule",
+              "broadcastText": "mule",
+              "hintText": "The farmer has a（　　）.",
+              "builtinKey": "en-pep-202611-g6-v2-u3-a-f0f8806c90376a",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "骡子",
+                "exampleWithBlank": "The farmer has a（　　）.",
+                "exampleSentence": "The farmer has a mule.",
+                "exampleTranslation": "这位农民有一头骡子。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "mule",
+                "sourcePrintedPage": 24,
+                "sourceImagePage": 60,
+                "phonetic": "mjuːl"
+              }
+            },
+            {
+              "answerText": "Turpan",
+              "broadcastText": "Turpan",
+              "hintText": "We visited（　　）on our trip.",
+              "builtinKey": "en-pep-202611-g6-v2-u3-a-3094c934da9935",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "吐鲁番",
+                "exampleWithBlank": "We visited（　　）on our trip.",
+                "exampleSentence": "We visited Turpan on our trip.",
+                "exampleTranslation": "我们旅行时去了吐鲁番。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": [],
+                  "note": "请保留名称、星期、月份等词中的必要大写。"
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "Turpan",
+                "sourcePrintedPage": 24,
+                "sourceImagePage": 60,
+                "phonetic": "ˌtuəˈpɑːn"
+              }
+            },
+            {
+              "answerText": "could",
+              "broadcastText": "could",
+              "hintText": "I（　　）swim when I was five.",
+              "builtinKey": "en-pep-202611-g6-v2-u3-a-ddf78901eacad0",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "能（过去式）",
+                "exampleWithBlank": "I（　　）swim when I was five.",
+                "exampleSentence": "I could swim when I was five.",
+                "exampleTranslation": "我五岁时就会游泳。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "could",
+                "sourcePrintedPage": 24,
+                "sourceImagePage": 60,
+                "phonetic": "kəd, kʊd",
+                "grammarForm": "past",
+                "baseForm": "can"
+              }
+            },
+            {
+              "answerText": "till",
+              "broadcastText": "till",
+              "hintText": "We wait（　　）the bus comes.",
+              "builtinKey": "en-pep-202611-g6-v2-u3-a-10ba2174100432",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "直到",
+                "exampleWithBlank": "We wait（　　）the bus comes.",
+                "exampleSentence": "We wait till the bus comes.",
+                "exampleTranslation": "我们等到公交车来。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "till",
+                "sourcePrintedPage": 24,
+                "sourceImagePage": 60,
+                "phonetic": "tɪl"
+              }
+            }
+          ]
+        },
+        {
+          "key": "en-pep-g6-v2-u3-b",
+          "order": 2,
+          "title": "Part B · 词汇",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "ate",
+              "broadcastText": "ate. I ate an apple yesterday.",
+              "hintText": "I（　　）an apple yesterday.",
+              "builtinKey": "en-pep-202611-g6-v2-u3-b-0e972eb69ac5fa",
+              "english": {
+                "version": 1,
+                "learningTarget": "spelling",
+                "meaningZh": "吃（过去式）",
+                "exampleWithBlank": "I（　　）an apple yesterday.",
+                "exampleSentence": "I ate an apple yesterday.",
+                "exampleTranslation": "我昨天吃了一个苹果。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "ate",
+                "sourcePrintedPage": 27,
+                "sourceImagePage": 60,
+                "phonetic": "eɪt",
+                "grammarForm": "past",
+                "baseForm": "eat",
+                "spokenContext": "I ate an apple yesterday."
+              }
+            },
+            {
+              "answerText": "took",
+              "broadcastText": "took",
+              "hintText": "I（　　）a picture of the lake yesterday.",
+              "builtinKey": "en-pep-202611-g6-v2-u3-b-11eb0e4358f9de",
+              "english": {
+                "version": 1,
+                "learningTarget": "spelling",
+                "meaningZh": "拍照（过去式）",
+                "exampleWithBlank": "I（　　）a picture of the lake yesterday.",
+                "exampleSentence": "I took a picture of the lake yesterday.",
+                "exampleTranslation": "我昨天拍了一张湖的照片。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "took",
+                "sourcePrintedPage": 27,
+                "sourceImagePage": 60,
+                "phonetic": "tʊk",
+                "grammarForm": "past",
+                "baseForm": "take"
+              }
+            },
+            {
+              "answerText": "took pictures",
+              "broadcastText": "took pictures",
+              "hintText": "We（　　）at the park yesterday.",
+              "builtinKey": "en-pep-202611-g6-v2-u3-b-b5d56b1e46db00",
+              "english": {
+                "version": 1,
+                "learningTarget": "spelling",
+                "meaningZh": "照相（过去式）",
+                "exampleWithBlank": "We（　　）at the park yesterday.",
+                "exampleSentence": "We took pictures at the park yesterday.",
+                "exampleTranslation": "我们昨天在公园拍了照片。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "took pictures",
+                "sourcePrintedPage": 27,
+                "sourceImagePage": 60,
+                "grammarForm": "past"
+              }
+            },
+            {
+              "answerText": "bought",
+              "broadcastText": "bought",
+              "hintText": "I（　　）a book yesterday.",
+              "builtinKey": "en-pep-202611-g6-v2-u3-b-3abc06728b3327",
+              "english": {
+                "version": 1,
+                "learningTarget": "spelling",
+                "meaningZh": "买（过去式）",
+                "exampleWithBlank": "I（　　）a book yesterday.",
+                "exampleSentence": "I bought a book yesterday.",
+                "exampleTranslation": "我昨天买了一本书。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "bought",
+                "sourcePrintedPage": 27,
+                "sourceImagePage": 60,
+                "phonetic": "bɔːt",
+                "grammarForm": "past",
+                "baseForm": "buy"
+              }
+            },
+            {
+              "answerText": "gift",
+              "broadcastText": "gift",
+              "hintText": "This（　　）is for you.",
+              "builtinKey": "en-pep-202611-g6-v2-u3-b-61af1ac812d25d",
+              "english": {
+                "version": 1,
+                "learningTarget": "spelling",
+                "meaningZh": "礼物",
+                "exampleWithBlank": "This（　　）is for you.",
+                "exampleSentence": "This gift is for you.",
+                "exampleTranslation": "这份礼物是给你的。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "gift",
+                "sourcePrintedPage": 27,
+                "sourceImagePage": 60,
+                "phonetic": "ɡɪft"
+              }
+            },
+            {
+              "answerText": "beach",
+              "broadcastText": "beach",
+              "hintText": "We play on the（　　）.",
+              "builtinKey": "en-pep-202611-g6-v2-u3-b-aca90581510b33",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "海滩；沙滩",
+                "exampleWithBlank": "We play on the（　　）.",
+                "exampleSentence": "We play on the beach.",
+                "exampleTranslation": "我们在沙滩上玩。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "beach",
+                "sourcePrintedPage": 26,
+                "sourceImagePage": 60,
+                "phonetic": "biːtʃ"
+              }
+            },
+            {
+              "answerText": "basket",
+              "broadcastText": "basket",
+              "hintText": "The apples are in the（　　）.",
+              "builtinKey": "en-pep-202611-g6-v2-u3-b-9bf7357c1dbb14",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "篮；筐",
+                "exampleWithBlank": "The apples are in the（　　）.",
+                "exampleSentence": "The apples are in the basket.",
+                "exampleTranslation": "苹果在篮子里。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "basket",
+                "sourcePrintedPage": 28,
+                "sourceImagePage": 60,
+                "phonetic": "ˈbɑːskɪt"
+              }
+            },
+            {
+              "answerText": "part",
+              "broadcastText": "part",
+              "hintText": "She plays an important（　　）in the play.",
+              "builtinKey": "en-pep-202611-g6-v2-u3-b-e7d59ae32991d1",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "角色",
+                "exampleWithBlank": "She plays an important（　　）in the play.",
+                "exampleSentence": "She plays an important part in the play.",
+                "exampleTranslation": "她在剧中扮演重要角色。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "part",
+                "sourcePrintedPage": 28,
+                "sourceImagePage": 60,
+                "phonetic": "pɑːt"
+              }
+            },
+            {
+              "answerText": "licked",
+              "broadcastText": "licked",
+              "hintText": "The dog（　　）my hand.",
+              "builtinKey": "en-pep-202611-g6-v2-u3-b-3b591431ba3759",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "舔（过去式）",
+                "exampleWithBlank": "The dog（　　）my hand.",
+                "exampleSentence": "The dog licked my hand.",
+                "exampleTranslation": "狗舔了我的手。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "licked",
+                "sourcePrintedPage": 28,
+                "sourceImagePage": 60,
+                "phonetic": "lɪkt",
+                "grammarForm": "past",
+                "baseForm": "lick"
+              }
+            },
+            {
+              "answerText": "laughed",
+              "broadcastText": "laughed",
+              "hintText": "We（　　）at the funny story.",
+              "builtinKey": "en-pep-202611-g6-v2-u3-b-155f65884efd8d",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "笑（过去式）",
+                "exampleWithBlank": "We（　　）at the funny story.",
+                "exampleSentence": "We laughed at the funny story.",
+                "exampleTranslation": "我们听了这个有趣的故事都笑了。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "laughed",
+                "sourcePrintedPage": 28,
+                "sourceImagePage": 60,
+                "phonetic": "lɑːft",
+                "grammarForm": "past",
+                "baseForm": "laugh"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "title": "Unit 4 Then and now",
+      "sections": [
+        {
+          "key": "en-pep-g6-v2-u4-a",
+          "order": 1,
+          "title": "Part A · 词汇",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "dining hall",
+              "broadcastText": "dining hall",
+              "hintText": "We eat lunch in the（　　）.",
+              "builtinKey": "en-pep-202611-g6-v2-u4-a-eb82f09d0491e4",
+              "english": {
+                "version": 1,
+                "learningTarget": "spelling",
+                "meaningZh": "饭厅",
+                "exampleWithBlank": "We eat lunch in the（　　）.",
+                "exampleSentence": "We eat lunch in the dining hall.",
+                "exampleTranslation": "我们在饭厅吃午饭。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "dining hall",
+                "sourcePrintedPage": 35,
+                "sourceImagePage": 60,
+                "phonetic": "ˈdaɪnɪŋ hɔːl"
+              }
+            },
+            {
+              "answerText": "grass",
+              "broadcastText": "grass",
+              "hintText": "We played on the（　　）.",
+              "builtinKey": "en-pep-202611-g6-v2-u4-a-b045b578d62173",
+              "english": {
+                "version": 1,
+                "learningTarget": "spelling",
+                "meaningZh": "草坪",
+                "exampleWithBlank": "We played on the（　　）.",
+                "exampleSentence": "We played on the grass.",
+                "exampleTranslation": "我们在草坪上玩过。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "grass",
+                "sourcePrintedPage": 35,
+                "sourceImagePage": 60,
+                "phonetic": "ɡrɑːs"
+              }
+            },
+            {
+              "answerText": "gym",
+              "broadcastText": "gym",
+              "hintText": "We play basketball in the（　　）.",
+              "builtinKey": "en-pep-202611-g6-v2-u4-a-5bd6cc8c222fd8",
+              "english": {
+                "version": 1,
+                "learningTarget": "spelling",
+                "meaningZh": "体育馆",
+                "exampleWithBlank": "We play basketball in the（　　）.",
+                "exampleSentence": "We play basketball in the gym.",
+                "exampleTranslation": "我们在体育馆打篮球。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "gym",
+                "sourcePrintedPage": 35,
+                "sourceImagePage": 60,
+                "phonetic": "dʒɪm"
+              }
+            },
+            {
+              "answerText": "ago",
+              "broadcastText": "ago",
+              "hintText": "We moved here two years（　　）.",
+              "builtinKey": "en-pep-202611-g6-v2-u4-a-1108a754453756",
+              "english": {
+                "version": 1,
+                "learningTarget": "spelling",
+                "meaningZh": "以前",
+                "exampleWithBlank": "We moved here two years（　　）.",
+                "exampleSentence": "We moved here two years ago.",
+                "exampleTranslation": "我们两年前搬到了这里。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "ago",
+                "sourcePrintedPage": 35,
+                "sourceImagePage": 61,
+                "phonetic": "əˈɡəʊ"
+              }
+            },
+            {
+              "answerText": "star",
+              "broadcastText": "star",
+              "hintText": "We can see a（　　）at night.",
+              "builtinKey": "en-pep-202611-g6-v2-u4-a-3c49e429c3cd2c",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "星",
+                "exampleWithBlank": "We can see a（　　）at night.",
+                "exampleSentence": "We can see a star at night.",
+                "exampleTranslation": "我们晚上能看见一颗星星。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "star",
+                "sourcePrintedPage": 34,
+                "sourceImagePage": 61,
+                "phonetic": "stɑː(r)"
+              }
+            },
+            {
+              "answerText": "easy",
+              "broadcastText": "easy",
+              "hintText": "This game is（　　）.",
+              "builtinKey": "en-pep-202611-g6-v2-u4-a-f4419ea48ae2b7",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "容易的",
+                "exampleWithBlank": "This game is（　　）.",
+                "exampleSentence": "This game is easy.",
+                "exampleTranslation": "这个游戏很容易。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "easy",
+                "sourcePrintedPage": 34,
+                "sourceImagePage": 61,
+                "phonetic": "ˈiːzi"
+              }
+            },
+            {
+              "answerText": "look up",
+              "broadcastText": "look up",
+              "hintText": "I（　　）new words in a dictionary.",
+              "builtinKey": "en-pep-202611-g6-v2-u4-a-48798e25966f33",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "查阅（在词典中或通过电脑）",
+                "exampleWithBlank": "I（　　）new words in a dictionary.",
+                "exampleSentence": "I look up new words in a dictionary.",
+                "exampleTranslation": "我在词典中查生词。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "look up",
+                "sourcePrintedPage": 34,
+                "sourceImagePage": 61
+              }
+            },
+            {
+              "answerText": "Internet",
+              "broadcastText": "Internet",
+              "hintText": "I look up words on the（　　）.",
+              "builtinKey": "en-pep-202611-g6-v2-u4-a-e0f76b5a21933e",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "互联网",
+                "exampleWithBlank": "I look up words on the（　　）.",
+                "exampleSentence": "I look up words on the Internet.",
+                "exampleTranslation": "我在互联网上查单词。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": [],
+                  "note": "请保留名称、星期、月份等词中的必要大写。"
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "Internet",
+                "sourcePrintedPage": 34,
+                "sourceImagePage": 61,
+                "phonetic": "ˈɪntənet"
+              }
+            }
+          ]
+        },
+        {
+          "key": "en-pep-g6-v2-u4-b",
+          "order": 2,
+          "title": "Part B · 词汇",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "cycling",
+              "broadcastText": "cycling",
+              "hintText": "（　　）is good exercise.",
+              "builtinKey": "en-pep-202611-g6-v2-u4-b-2716669dc700c8",
+              "english": {
+                "version": 1,
+                "learningTarget": "spelling",
+                "meaningZh": "骑自行车运动或活动",
+                "exampleWithBlank": "（　　）is good exercise.",
+                "exampleSentence": "Cycling is good exercise.",
+                "exampleTranslation": "骑自行车是一项有益的运动。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "cycling",
+                "sourcePrintedPage": 37,
+                "sourceImagePage": 61,
+                "phonetic": "ˈsaɪklɪŋ"
+              }
+            },
+            {
+              "answerText": "go cycling",
+              "broadcastText": "go cycling",
+              "hintText": "We（　　）on Sundays.",
+              "builtinKey": "en-pep-202611-g6-v2-u4-b-56ff07e852c0a4",
+              "english": {
+                "version": 1,
+                "learningTarget": "spelling",
+                "meaningZh": "去骑自行车",
+                "exampleWithBlank": "We（　　）on Sundays.",
+                "exampleSentence": "We go cycling on Sundays.",
+                "exampleTranslation": "我们星期日去骑自行车。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "go cycling",
+                "sourcePrintedPage": 37,
+                "sourceImagePage": 61
+              }
+            },
+            {
+              "answerText": "ice-skate",
+              "broadcastText": "ice-skate",
+              "hintText": "I can（　　）now.",
+              "builtinKey": "en-pep-202611-g6-v2-u4-b-ff36ad74731deb",
+              "english": {
+                "version": 1,
+                "learningTarget": "spelling",
+                "meaningZh": "滑冰",
+                "exampleWithBlank": "I can（　　）now.",
+                "exampleSentence": "I can ice-skate now.",
+                "exampleTranslation": "我现在会滑冰了。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "ice-skate",
+                "sourcePrintedPage": 37,
+                "sourceImagePage": 61,
+                "phonetic": "ˈaɪs skeɪt"
+              }
+            },
+            {
+              "answerText": "badminton",
+              "broadcastText": "badminton",
+              "hintText": "We play（　　）after school.",
+              "builtinKey": "en-pep-202611-g6-v2-u4-b-c0aab679d970ef",
+              "english": {
+                "version": 1,
+                "learningTarget": "spelling",
+                "meaningZh": "羽毛球运动",
+                "exampleWithBlank": "We play（　　）after school.",
+                "exampleSentence": "We play badminton after school.",
+                "exampleTranslation": "我们放学后打羽毛球。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "badminton",
+                "sourcePrintedPage": 37,
+                "sourceImagePage": 61,
+                "phonetic": "ˈbædmɪntən"
+              }
+            },
+            {
+              "answerText": "different",
+              "broadcastText": "different",
+              "hintText": "Our bags are（　　）colours.",
+              "builtinKey": "en-pep-202611-g6-v2-u4-b-4f958903781861",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "不同的",
+                "exampleWithBlank": "Our bags are（　　）colours.",
+                "exampleSentence": "Our bags are different colours.",
+                "exampleTranslation": "我们的包颜色不同。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "different",
+                "sourcePrintedPage": 36,
+                "sourceImagePage": 61,
+                "phonetic": "ˈdɪfrənt"
+              }
+            },
+            {
+              "answerText": "active",
+              "broadcastText": "active",
+              "hintText": "She is（　　）in class.",
+              "builtinKey": "en-pep-202611-g6-v2-u4-b-c95e224e02df12",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "积极的；活跃的",
+                "exampleWithBlank": "She is（　　）in class.",
+                "exampleSentence": "She is active in class.",
+                "exampleTranslation": "她在课堂上很活跃。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "active",
+                "sourcePrintedPage": 36,
+                "sourceImagePage": 61,
+                "phonetic": "ˈæktɪv"
+              }
+            },
+            {
+              "answerText": "race",
+              "broadcastText": "race",
+              "hintText": "We run in the school（　　）.",
+              "builtinKey": "en-pep-202611-g6-v2-u4-b-a12b23c770d636",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "赛跑",
+                "exampleWithBlank": "We run in the school（　　）.",
+                "exampleSentence": "We run in the school race.",
+                "exampleTranslation": "我们参加学校的赛跑。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "race",
+                "sourcePrintedPage": 38,
+                "sourceImagePage": 61,
+                "phonetic": "reɪs"
+              }
+            },
+            {
+              "answerText": "nothing",
+              "broadcastText": "nothing",
+              "hintText": "There is（　　）in this box.",
+              "builtinKey": "en-pep-202611-g6-v2-u4-b-75c977c210abcc",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "没有什么",
+                "exampleWithBlank": "There is（　　）in this box.",
+                "exampleSentence": "There is nothing in this box.",
+                "exampleTranslation": "这个盒子里什么也没有。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "nothing",
+                "sourcePrintedPage": 38,
+                "sourceImagePage": 61,
+                "phonetic": "ˈnʌθɪŋ"
+              }
+            },
+            {
+              "answerText": "thought",
+              "broadcastText": "thought",
+              "hintText": "I（　　）the game was easy.",
+              "builtinKey": "en-pep-202611-g6-v2-u4-b-e312cac73d6616",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "想（过去式）",
+                "exampleWithBlank": "I（　　）the game was easy.",
+                "exampleSentence": "I thought the game was easy.",
+                "exampleTranslation": "我原以为这个游戏很容易。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "thought",
+                "sourcePrintedPage": 38,
+                "sourceImagePage": 61,
+                "phonetic": "θɔːt",
+                "grammarForm": "past",
+                "baseForm": "think"
+              }
+            },
+            {
+              "answerText": "felt",
+              "broadcastText": "felt",
+              "hintText": "I（　　）happy yesterday.",
+              "builtinKey": "en-pep-202611-g6-v2-u4-b-6663a95862c94a",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "感觉（过去式）",
+                "exampleWithBlank": "I（　　）happy yesterday.",
+                "exampleSentence": "I felt happy yesterday.",
+                "exampleTranslation": "我昨天感到开心。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "felt",
+                "sourcePrintedPage": 38,
+                "sourceImagePage": 61,
+                "phonetic": "felt",
+                "grammarForm": "past",
+                "baseForm": "feel"
+              }
+            },
+            {
+              "answerText": "cheetah",
+              "broadcastText": "cheetah",
+              "hintText": "The（　　）can run very fast.",
+              "builtinKey": "en-pep-202611-g6-v2-u4-b-6a8b600c1095a1",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "猎豹",
+                "exampleWithBlank": "The（　　）can run very fast.",
+                "exampleSentence": "The cheetah can run very fast.",
+                "exampleTranslation": "猎豹跑得非常快。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "cheetah",
+                "sourcePrintedPage": 38,
+                "sourceImagePage": 61,
+                "phonetic": "ˈtʃiːtə"
+              }
+            },
+            {
+              "answerText": "trip",
+              "broadcastText": "trip",
+              "hintText": "Do not（　　）over the bag.",
+              "builtinKey": "en-pep-202611-g6-v2-u4-b-948a4115d934e7",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "绊倒",
+                "exampleWithBlank": "Do not（　　）over the bag.",
+                "exampleSentence": "Do not trip over the bag.",
+                "exampleTranslation": "不要被这个包绊倒。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "trip",
+                "sourcePrintedPage": 38,
+                "sourceImagePage": 61,
+                "phonetic": "trɪp"
+              }
+            },
+            {
+              "answerText": "woke",
+              "broadcastText": "woke",
+              "hintText": "I（　　）up at seven yesterday.",
+              "builtinKey": "en-pep-202611-g6-v2-u4-b-118f50b979db35",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "醒（过去式）",
+                "exampleWithBlank": "I（　　）up at seven yesterday.",
+                "exampleSentence": "I woke up at seven yesterday.",
+                "exampleTranslation": "我昨天七点醒来。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "woke",
+                "sourcePrintedPage": 38,
+                "sourceImagePage": 61,
+                "phonetic": "wəʊk",
+                "grammarForm": "past",
+                "baseForm": "wake"
+              }
+            },
+            {
+              "answerText": "dream",
+              "broadcastText": "dream",
+              "hintText": "I had a nice（　　）last night.",
+              "builtinKey": "en-pep-202611-g6-v2-u4-b-d9bfbd87654611",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "梦",
+                "exampleWithBlank": "I had a nice（　　）last night.",
+                "exampleSentence": "I had a nice dream last night.",
+                "exampleTranslation": "我昨晚做了一个美梦。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "dream",
+                "sourcePrintedPage": 38,
+                "sourceImagePage": 61,
+                "phonetic": "driːm"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

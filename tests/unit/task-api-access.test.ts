@@ -23,6 +23,7 @@ const validInput = {
   repeatCount: 1,
   speechRate: 1,
   allowManualReplay: true,
+  gradingMode: "self" as const,
 };
 
 test("家长任务 API 严格拒绝请求伪造 familyId", async () => {
@@ -50,6 +51,7 @@ test("家长任务 API 只把已验证 actor 交给服务层", async () => {
     repeatCount: 1 as const,
     speechRate: 1,
     allowManualReplay: true,
+  gradingMode: "self" as const,
     maxReviewCards: 20,
     audioStatus: "preparing" as const,
     items: [],

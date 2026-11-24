@@ -1,10 +1,11 @@
+import { englishGradingDetails } from "@/modules/learning-content/english-metadata";
 import { createHash } from "node:crypto";
 
 import { and, asc, desc, eq, inArray, sql } from "drizzle-orm";
 import { z } from "zod";
 
 import { db, type DbTransaction } from "@/db/client";
-import type { ChildActor } from "@/modules/auth/actor";
+import type { Actor, ChildActor, GuardianActor } from "@/modules/auth/actor";
 import { activeTtsMediaPredicate } from "@/modules/media/active-cache";
 import { privateMedia } from "@/modules/media/schema";
 import { childCardStates, reviewEvents } from "@/modules/review/db-schema";
@@ -23,21 +24,26 @@ import {
   dictationRounds,
   dictationSessionItems,
   dictationSessions,
+  dictationSubmissions,
 } from "./session-schema";
 import { createSessionState, reduceSession } from "./session-machine";
+import { children } from "@/modules/families/schema";
+import { learningCards } from "@/modules/learning-content/schema";
+import { dictationPhotoSchema, type DictationPhoto, type ParentDictationReview } from "./grading-types";
 import { learningTaskItems, learningTasks } from "./task-schema";
 import type {
   DictationSnapshot,
   DictationState,
   PlaybackCommand,
   SubmitBatchMarksInput,
+  RestartRoundInput,
 } from "./session-types";
 
 type SessionDatabase = typeof db | DbTransaction;
 
 const uuidSchema = z.string().uuid();
 const modeSchema = z.enum(["continuous_batch", "item_by_item"]);
-const phaseSchema = z.enum(["listening", "grading", "completed"]);
+const phaseSchema = z.enum(["listening", "grading", "awaiting_parent", "completed"]);
 
 function fingerprint(value: Record<string, unknown>): string {
   return createHash("sha256").update(JSON.stringify(value)).digest("hex");
@@ -114,7 +120,7 @@ function stateUpdate(state: DictationState, at: Date) {
 
 async function lockSession(
   tx: DbTransaction,
-  actor: ChildActor,
+  actor: Actor,
   sessionId: string,
 ) {
   const [sessionIdentity] = await tx
@@ -123,14 +129,14 @@ async function lockSession(
     .where(and(
       eq(dictationSessions.id, sessionId),
       eq(dictationSessions.familyId, actor.familyId),
-      eq(dictationSessions.childId, actor.childId),
+      ...(actor.role === "child" ? [eq(dictationSessions.childId, actor.childId)] : []),
     ))
     .limit(1);
   if (!sessionIdentity) throw new Error("DICTATION_SESSION_NOT_FOUND");
   // Start, commands and cancellation all lock task before session.
   const [task] = await tx.select({ id: learningTasks.id }).from(learningTasks)
     .where(and(eq(learningTasks.id, sessionIdentity.taskId),
-      eq(learningTasks.familyId, actor.familyId), eq(learningTasks.childId, actor.childId)))
+      eq(learningTasks.familyId, actor.familyId), ...(actor.role === "child" ? [eq(learningTasks.childId, actor.childId)] : [])))
     .limit(1).for("update");
   if (!task) throw new Error("DICTATION_SESSION_NOT_FOUND");
   const [session] = await tx
@@ -140,7 +146,7 @@ async function lockSession(
       and(
         eq(dictationSessions.id, sessionId),
         eq(dictationSessions.familyId, actor.familyId),
-        eq(dictationSessions.childId, actor.childId),
+        ...(actor.role === "child" ? [eq(dictationSessions.childId, actor.childId)] : []),
       ),
     )
     .limit(1)
@@ -174,7 +180,7 @@ async function storeCommand(
   tx: DbTransaction,
   session: typeof dictationSessions.$inferSelect,
   commandId: string,
-  commandType: "playback" | "grading",
+  commandType: "playback" | "grading" | "restart" | "submission",
   inputFingerprint: string,
   snapshot: DictationSnapshot,
   createdAt: Date,
@@ -205,11 +211,13 @@ function ensureMutableVersion(
 async function ensureTaskActive(
   tx: DbTransaction,
   session: typeof dictationSessions.$inferSelect,
+  requireActive = true,
 ) {
   const [task] = await tx
     .select({
       status: learningTasks.status,
       allowManualReplay: learningTasks.allowManualReplay,
+      gradingMode: learningTasks.gradingMode,
     })
     .from(learningTasks)
     .where(
@@ -221,7 +229,7 @@ async function ensureTaskActive(
     )
     .limit(1)
     .for("update");
-  if (!task || task.status !== "active") throw new Error("TASK_NOT_ACTIVE");
+  if (!task || (requireActive && task.status !== "active")) throw new Error("TASK_NOT_ACTIVE");
   return task;
 }
 
@@ -383,9 +391,8 @@ export function createDictationSessionService(
       ensureMutableVersion(session, command.expectedVersion, command.roundNumber);
       const currentState = stateFromRow(session);
       const replaysCurrent =
-        currentState.mode === "continuous_batch" &&
         command.playedItemIds.length === 1 &&
-        command.playedItemIds[0] === currentState.playedItemIds.at(-1);
+        currentState.playedItemIds.includes(command.playedItemIds[0]!);
       if (replaysCurrent && !task.allowManualReplay) {
         throw new Error("PLAYBACK_REPLAY_NOT_ALLOWED");
       }
@@ -438,8 +445,105 @@ export function createDictationSessionService(
     });
   }
 
+  async function restartRound(actor: ChildActor, raw: RestartRoundInput): Promise<DictationSnapshot> {
+    const command = z.object({ commandId: uuidSchema, sessionId: uuidSchema,
+      expectedVersion: z.number().int().nonnegative(), roundNumber: z.number().int().positive() }).strict().parse(raw);
+    const inputFingerprint = fingerprint({ type: "restart", ...command });
+    return database.transaction(async (tx) => {
+      const session = await lockSession(tx, actor, command.sessionId);
+      const replay = await commandReplay(tx, session.id, command.commandId, inputFingerprint);
+      if (replay) return replay;
+      await ensureTaskActive(tx, session);
+      ensureMutableVersion(session, command.expectedVersion, command.roundNumber);
+      const next = reduceSession(stateFromRow(session), { type: "ROUND_RESTARTED", roundNumber: command.roundNumber });
+      const [updated] = await tx.update(dictationSessions).set({
+        ...stateUpdate(next, now()), version: session.version + 1,
+      }).where(eq(dictationSessions.id, session.id)).returning();
+      const snapshot = await snapshotFromRow(tx, updated);
+      await storeCommand(tx, session, command.commandId, "restart", inputFingerprint, snapshot, updated.updatedAt);
+      return snapshot;
+    });
+  }
+
+  async function submitPhotos(actor: ChildActor, raw: RestartRoundInput & { photos: DictationPhoto[] }): Promise<DictationSnapshot> {
+    const command = z.object({ commandId: uuidSchema, sessionId: uuidSchema,
+      expectedVersion: z.number().int().nonnegative(), roundNumber: z.number().int().positive(),
+      photos: z.array(dictationPhotoSchema).min(1).max(4), }).strict().parse(raw);
+    // File ids change on a retry. Content hashes preserve idempotency after a lost response.
+    const inputFingerprint = fingerprint({ ...command, photos: command.photos.map(photo => ({ mimeType: photo.mimeType, byteSize: photo.byteSize, sha256: photo.sha256 })) });
+    return database.transaction(async (tx) => {
+      const session = await lockSession(tx, actor, command.sessionId);
+      const task = await ensureTaskActive(tx, session, false);
+      if (task.gradingMode !== "parent") throw new Error("SELF_GRADING_REQUIRED");
+      const replay = await commandReplay(tx, session.id, command.commandId, inputFingerprint);
+      if (replay) return replay;
+      if (task.status !== "active") throw new Error("TASK_NOT_ACTIVE");
+      ensureMutableVersion(session, command.expectedVersion, command.roundNumber);
+      const next = reduceSession(stateFromRow(session), { type: "PHOTO_SUBMITTED", roundNumber: command.roundNumber });
+      const at = now();
+      await tx.insert(dictationSubmissions).values({ familyId: session.familyId, childId: session.childId,
+        sessionId: session.id, roundNumber: session.roundNumber, commandId: command.commandId,
+        inputFingerprint, photos: command.photos, createdAt: at });
+      const [updated] = await tx.update(dictationSessions).set({ ...stateUpdate(next, at), version: session.version + 1 })
+        .where(eq(dictationSessions.id, session.id)).returning();
+      const snapshot = await snapshotFromRow(tx, updated);
+      await storeCommand(tx, session, command.commandId, "submission", inputFingerprint, snapshot, at);
+      return snapshot;
+    });
+  }
+
+  async function submissionPhotos(actor: ChildActor, sessionId: string, commandId: string) {
+    const [row] = await database.select({ photos: dictationSubmissions.photos }).from(dictationSubmissions)
+      .where(and(eq(dictationSubmissions.familyId, actor.familyId), eq(dictationSubmissions.childId, actor.childId),
+        eq(dictationSubmissions.sessionId, uuidSchema.parse(sessionId)), eq(dictationSubmissions.commandId, uuidSchema.parse(commandId))));
+    if (!row) throw new Error("DICTATION_SESSION_NOT_FOUND");
+    return row.photos;
+  }
+
+  async function photoForActor(actor: Actor, rawId: string): Promise<DictationPhoto> {
+    const id = uuidSchema.parse(rawId);
+    const [row] = await database.select({ photos: dictationSubmissions.photos }).from(dictationSubmissions)
+      .where(and(eq(dictationSubmissions.familyId, actor.familyId),
+        actor.role === "child" ? eq(dictationSubmissions.childId, actor.childId) : undefined,
+        sql`${dictationSubmissions.photos} @> ${JSON.stringify([{ id }])}::jsonb`)).limit(1);
+    const photo = row?.photos.find(p => p.id === id);
+    if (!photo) throw new Error("DICTATION_PHOTO_NOT_FOUND");
+    return photo;
+  }
+
+  async function listParentReviews(actor: GuardianActor): Promise<ParentDictationReview[]> {
+    if (actor.role !== "guardian") throw new Error("PARENT_GRADING_REQUIRED");
+    const rows = await database.select({ submission: dictationSubmissions, session: dictationSessions, childName: children.nickname })
+      .from(dictationSubmissions)
+      .innerJoin(dictationSessions, eq(dictationSessions.id, dictationSubmissions.sessionId))
+      .innerJoin(learningTasks, eq(learningTasks.id, dictationSessions.taskId))
+      .innerJoin(children, eq(children.id, dictationSubmissions.childId))
+      .where(and(eq(dictationSubmissions.familyId, actor.familyId), eq(dictationSubmissions.status, "pending"),
+        eq(dictationSessions.phase, "awaiting_parent"), eq(dictationSessions.status, "active"), eq(learningTasks.status, "active")))
+      .orderBy(asc(dictationSubmissions.createdAt));
+    const reviews: ParentDictationReview[] = [];
+    for (const row of rows) {
+      const state = stateFromRow(row.session);
+      const ids = state.mode === "item_by_item"
+        ? state.currentRoundItemIds.slice(state.markedItemIds.length, state.markedItemIds.length + 1)
+        : state.currentRoundItemIds;
+      const items = await database.select({ itemId: dictationSessionItems.taskItemId, answerText: learningCards.answerText, builtinKey: learningCards.builtinKey })
+        .from(dictationSessionItems).innerJoin(learningCards, eq(learningCards.id, dictationSessionItems.cardId))
+        .where(and(eq(dictationSessionItems.sessionId, row.session.id), eq(dictationSessionItems.familyId, actor.familyId),
+          inArray(dictationSessionItems.taskItemId, ids)));
+      const byId = new Map(items.map(item => [item.itemId, item]));
+      reviews.push({ sessionId: row.session.id, childName: row.childName, version: row.session.version,
+        roundNumber: row.session.roundNumber, submittedAt: row.submission.createdAt.toISOString(), photos: row.submission.photos,
+        items: ids.map((id, position) => {
+          const item=byId.get(id)!;const english=englishGradingDetails(item.builtinKey);
+          return {itemId:item.itemId,answerText:item.answerText,...(english?{english}:{}),position:state.mode === "item_by_item" ? state.markedItemIds.length : position};
+        }) });
+    }
+    return reviews;
+  }
+
   async function submitBatchMarks(
-    actor: ChildActor,
+    actor: Actor,
     raw: SubmitBatchMarksInput,
   ): Promise<DictationSnapshot> {
     const command = {
@@ -452,10 +556,15 @@ export function createDictationSessionService(
     const inputFingerprint = fingerprint(command);
     return database.transaction(async (tx) => {
       const session = await lockSession(tx, actor, command.sessionId);
+      const task = await ensureTaskActive(tx, session, false);
+      if (task.gradingMode === "parent" && actor.role !== "guardian") throw new Error("PARENT_GRADING_REQUIRED");
+      if (task.gradingMode === "self" && actor.role !== "child") throw new Error("SELF_GRADING_REQUIRED");
       const replay = await commandReplay(tx, session.id, command.commandId, inputFingerprint);
       if (replay) return replay;
-      await ensureTaskActive(tx, session);
+      if (task.status !== "active") throw new Error("TASK_NOT_ACTIVE");
       ensureMutableVersion(session, command.expectedVersion, command.roundNumber);
+      if (task.gradingMode === "parent" && session.phase !== "awaiting_parent") throw new Error("PHOTO_REQUIRED");
+      const reviewScope = { familyId: session.familyId, childId: session.childId };
       const next = reduceSession(stateFromRow(session), {
         type: "BATCH_MARKED",
         roundNumber: command.roundNumber,
@@ -468,14 +577,14 @@ export function createDictationSessionService(
         .where(
           and(
             eq(dictationSessionItems.familyId, actor.familyId),
-            eq(dictationSessionItems.childId, actor.childId),
+            eq(dictationSessionItems.childId, session.childId),
             eq(dictationSessionItems.sessionId, session.id),
             inArray(dictationSessionItems.taskItemId, command.marks.map((mark) => mark.itemId)),
           ),
         );
       if (itemRows.length !== command.marks.length) throw new Error("DICTATION_ITEM_SCOPE_INVALID");
       const itemById = new Map(itemRows.map((item) => [item.taskItemId, item]));
-      await lockReviewCardsInTransaction(tx, actor, itemRows.map((item) => item.cardId));
+      await lockReviewCardsInTransaction(tx, reviewScope, itemRows.map((item) => item.cardId));
       const cardStates = itemRows.length === 0
         ? []
         : await tx
@@ -484,7 +593,7 @@ export function createDictationSessionService(
             .where(
               and(
                 eq(childCardStates.familyId, actor.familyId),
-                eq(childCardStates.childId, actor.childId),
+                eq(childCardStates.childId, session.childId),
                 inArray(childCardStates.cardId, itemRows.map((item) => item.cardId)),
               ),
             );
@@ -502,7 +611,7 @@ export function createDictationSessionService(
         .where(
           and(
             eq(reviewEvents.familyId, actor.familyId),
-            eq(reviewEvents.childId, actor.childId),
+            eq(reviewEvents.childId, session.childId),
             inArray(reviewEvents.cardId, itemRows.map((item) => item.cardId)),
           ),
         )
@@ -539,7 +648,7 @@ export function createDictationSessionService(
         let reviewEventId: string | null = null;
         if (item.firstCorrect === null) {
           eventRole = "first_pass";
-          const result = await reviewService.recordFirstResult(actor, {
+          const result = await reviewService.recordFirstResult(reviewScope, {
             cardId: item.cardId,
             commandId: deriveReviewCommandId(command.commandId, item.taskItemId, "first_pass"),
             correct: mark.correct,
@@ -550,7 +659,7 @@ export function createDictationSessionService(
         } else if (mark.correct && !item.finalCorrect) {
           eventRole = "same_session_relearning";
           if (!item.firstReviewEventId) throw new Error("DICTATION_FIRST_REVIEW_MISSING");
-          const result = await reviewService.markRelearningComplete(actor, {
+          const result = await reviewService.markRelearningComplete(reviewScope, {
             cardId: item.cardId,
             commandId: deriveReviewCommandId(
               command.commandId,
@@ -567,7 +676,7 @@ export function createDictationSessionService(
 
         await tx.insert(dictationAnswerEvents).values({
           familyId: actor.familyId,
-          childId: actor.childId,
+          childId: session.childId,
           sessionId: session.id,
           commandId: command.commandId,
           roundNumber: command.roundNumber,
@@ -609,7 +718,7 @@ export function createDictationSessionService(
       if (next.phase !== "completed" && next.roundNumber !== session.roundNumber) {
         await tx.insert(dictationRounds).values({
           familyId: actor.familyId,
-          childId: actor.childId,
+          childId: session.childId,
           sessionId: session.id,
           roundNumber: next.roundNumber,
           itemIds: next.currentRoundItemIds,
@@ -618,7 +727,7 @@ export function createDictationSessionService(
         await tx.insert(dictationRoundItems).values(
           next.currentRoundItemIds.map((taskItemId, position) => ({
             familyId: actor.familyId,
-            childId: actor.childId,
+            childId: session.childId,
             sessionId: session.id,
             roundNumber: next.roundNumber,
             taskItemId,
@@ -645,17 +754,24 @@ export function createDictationSessionService(
             and(
               eq(learningTasks.id, session.taskId),
               eq(learningTasks.familyId, actor.familyId),
-              eq(learningTasks.childId, actor.childId),
+              eq(learningTasks.childId, session.childId),
               eq(learningTasks.status, "active"),
             ),
           );
         await tx.insert(dictationCompletionEvents).values({
           familyId: actor.familyId,
-          childId: actor.childId,
+          childId: session.childId,
           taskId: session.taskId,
           sessionId: session.id,
           completedAt: at,
         });
+      }
+      if (actor.role === "guardian") {
+        const [submission] = await tx.update(dictationSubmissions).set({
+          status: "reviewed", marks: command.marks, reviewedBy: actor.guardianId, reviewedAt: at,
+        }).where(and(eq(dictationSubmissions.sessionId, session.id), eq(dictationSubmissions.status, "pending")))
+          .returning({ id: dictationSubmissions.id });
+        if (!submission) throw new Error("PHOTO_REQUIRED");
       }
       const snapshot = await snapshotFromRow(tx, updated);
       await storeCommand(
@@ -671,7 +787,8 @@ export function createDictationSessionService(
     });
   }
 
-  return { recordPlayback, resumeSession, startSession, submitBatchMarks };
+  return { recordPlayback, resumeSession, startSession, submitBatchMarks, restartRound, submitPhotos,
+    listParentReviews, photoForActor, submissionPhotos };
 }
 
 const sessionService = createDictationSessionService();

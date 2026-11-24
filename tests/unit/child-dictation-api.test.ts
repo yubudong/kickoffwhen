@@ -31,6 +31,7 @@ const listening: ChildSessionView = {
   repeatCount: 1,
   speechRate: 1,
   allowManualReplay: true,
+  gradingMode: "self" as const,
   items: [{ itemId, position: 0, audioUrl: `/api/private-media/${mediaId}`, pinyinText: "guì huā", contextText: "院子里的（　　）开了。" }],
 };
 

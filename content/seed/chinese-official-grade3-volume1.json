@@ -1,0 +1,3887 @@
+{
+  "publisher": "人民教育出版社",
+  "series": "义务教育教科书",
+  "grade": 3,
+  "volume": "上册",
+  "editionText": "统编版（2022课标修订）·2026-11整理",
+  "subject": "chinese",
+  "auditProfile": "official_textbook",
+  "units": [
+    {
+      "order": 1,
+      "title": "第一单元",
+      "sections": [
+        {
+          "key": "lesson-1",
+          "order": 1,
+          "title": "第1课 大青树下的小学",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "山坡",
+              "broadcastText": "山坡",
+              "pinyinText": "shān pō",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-1-v-cdb7328eac10",
+              "hintText": "小羊在（　　）上吃青草。"
+            },
+            {
+              "answerText": "学校",
+              "broadcastText": "学校",
+              "pinyinText": "xué xiào",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-1-v-dc6e2aafeb9e",
+              "hintText": "我喜欢去（　　）。"
+            },
+            {
+              "answerText": "飘扬",
+              "broadcastText": "飘扬",
+              "pinyinText": "piāo yáng",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-1-v-6d756851b92b",
+              "hintText": "鲜艳的国旗在校园上空（　　）。"
+            },
+            {
+              "answerText": "课文",
+              "broadcastText": "课文",
+              "pinyinText": "kè wén",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-1-v-d2efe5ca7fdc",
+              "hintText": "她认真地读（　　）。"
+            },
+            {
+              "answerText": "声音",
+              "broadcastText": "声音",
+              "pinyinText": "shēng yīn",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-1-v-473400815c0f",
+              "hintText": "树林里传来小鸟清脆的（　　）。"
+            },
+            {
+              "answerText": "招引",
+              "broadcastText": "招引",
+              "pinyinText": "zhāo yǐn",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-1-v-510c2f2c2a28",
+              "hintText": "花香（　　）来许多蝴蝶。"
+            },
+            {
+              "answerText": "热闹",
+              "broadcastText": "热闹",
+              "pinyinText": "rè nao",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-1-v-db83d5b4fc93",
+              "hintText": "节日里，大街上十分（　　）。"
+            },
+            {
+              "answerText": "古老",
+              "broadcastText": "古老",
+              "pinyinText": "gǔ lǎo",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-1-v-c61422eecf97",
+              "hintText": "这座桥很（　　）。"
+            },
+            {
+              "answerText": "粗壮",
+              "broadcastText": "粗壮",
+              "pinyinText": "cū zhuàng",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-1-v-87c6131ba7c5",
+              "hintText": "这棵大树的树干十分（　　）。"
+            },
+            {
+              "answerText": "枝干",
+              "broadcastText": "枝干",
+              "pinyinText": "zhī gàn",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-1-v-a07e10349df0",
+              "hintText": "小鸟停在大树的（　　）上休息。"
+            },
+            {
+              "answerText": "洁白",
+              "broadcastText": "洁白",
+              "pinyinText": "jié bái",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-1-v-d7b1a3bcc022",
+              "hintText": "春天，梨树开出（　　）的花。"
+            },
+            {
+              "answerText": "绒球花",
+              "broadcastText": "绒球花",
+              "pinyinText": "róng qiú huā",
+              "hintText": "校园里的（　　）一团团地盛开，像小绒球。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "lesson_text",
+              "practiceCharacters": [
+                "球"
+              ],
+              "lessonImagePages": [
+                7
+              ],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-1-w2-d1282aa8da83"
+            },
+            {
+              "answerText": "招呼",
+              "broadcastText": "招呼",
+              "pinyinText": "zhāo hu",
+              "hintText": "见到邻居，我主动打（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "lesson_text",
+              "practiceCharacters": [
+                "呼"
+              ],
+              "lessonImagePages": [
+                7,
+                9
+              ],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-1-w2-a83322abe97b"
+            },
+            {
+              "answerText": "阅读",
+              "broadcastText": "阅读",
+              "pinyinText": "yuè dú",
+              "hintText": "我每天都会花时间（　　）自己喜欢的书。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "lesson_text",
+              "practiceCharacters": [
+                "读"
+              ],
+              "lessonImagePages": [
+                7
+              ],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-1-w2-ce9b12499c47"
+            }
+          ]
+        },
+        {
+          "key": "lesson-2",
+          "order": 2,
+          "title": "第2课 花的学校",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "轰响",
+              "broadcastText": "轰响",
+              "pinyinText": "hōng xiǎng",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-2-v-974c773ff01a",
+              "hintText": "远处传来机器的（　　）。"
+            },
+            {
+              "answerText": "阵雨",
+              "broadcastText": "阵雨",
+              "pinyinText": "zhèn yǔ",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-2-v-448c8292f481",
+              "hintText": "午后，一场（　　）让空气凉快了许多。"
+            },
+            {
+              "answerText": "湿润",
+              "broadcastText": "湿润",
+              "pinyinText": "shī rùn",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-2-v-c9c1d4ea46eb",
+              "hintText": "春雨过后，泥土变得（　　）。"
+            },
+            {
+              "answerText": "风笛",
+              "broadcastText": "风笛",
+              "pinyinText": "fēng dí",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-2-v-ece333d2ccf3",
+              "hintText": "演奏者吹起（　　），传出悠长的乐声。"
+            },
+            {
+              "answerText": "狂欢",
+              "broadcastText": "狂欢",
+              "pinyinText": "kuáng huān",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-2-v-98efa0aedbdd",
+              "hintText": "节日里，人们唱歌跳舞，尽情（　　）。"
+            },
+            {
+              "answerText": "觉得",
+              "broadcastText": "觉得",
+              "pinyinText": "jué de",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-2-v-78c82d9f4112",
+              "hintText": "我（　　）这本书很有趣。"
+            },
+            {
+              "answerText": "功课",
+              "broadcastText": "功课",
+              "pinyinText": "gōng kè",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-2-v-40c7b23d4483",
+              "hintText": "放学后，我先完成当天的（　　）。"
+            },
+            {
+              "answerText": "放学",
+              "broadcastText": "放学",
+              "pinyinText": "fàng xué",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-2-v-9f1415b044b5",
+              "hintText": "（　　）后，我先回家。"
+            },
+            {
+              "answerText": "老师",
+              "broadcastText": "老师",
+              "pinyinText": "lǎo shī",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-2-v-c9a31a3f670b",
+              "hintText": "我向（　　）问好。"
+            },
+            {
+              "answerText": "急急忙忙",
+              "broadcastText": "急急忙忙",
+              "pinyinText": "jí jí máng máng",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-2-v-e95d4b57e2eb",
+              "hintText": "快迟到了，他（　　）地跑向学校。"
+            },
+            {
+              "answerText": "处罚",
+              "broadcastText": "处罚",
+              "pinyinText": "chǔ fá",
+              "hintText": "损坏公物的人应当受到（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "罚"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-2-w2-48c488d2292f"
+            },
+            {
+              "answerText": "互相",
+              "broadcastText": "互相",
+              "pinyinText": "hù xiāng",
+              "hintText": "同学之间要（　　）帮助。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "lesson_text",
+              "practiceCharacters": [
+                "互"
+              ],
+              "lessonImagePages": [
+                10,
+                11
+              ],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-2-w2-cccaf155e3e4"
+            },
+            {
+              "answerText": "相碰",
+              "broadcastText": "相碰",
+              "pinyinText": "xiāng pèng",
+              "hintText": "两只小船轻轻（　　），发出一声轻响。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "lesson_text",
+              "practiceCharacters": [
+                "碰"
+              ],
+              "lessonImagePages": [
+                10,
+                11
+              ],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-2-w2-8858ee548770"
+            },
+            {
+              "answerText": "金黄",
+              "broadcastText": "金黄",
+              "pinyinText": "jīn huáng",
+              "hintText": "秋天，田里的稻谷变得（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "黄"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-2-w2-29497ec0b98a"
+            }
+          ]
+        },
+        {
+          "key": "lesson-3",
+          "order": 3,
+          "title": "第3课 不懂就要问（略读）",
+          "type": "lesson",
+          "cards": []
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "title": "第二单元",
+      "sections": [
+        {
+          "key": "lesson-4",
+          "order": 1,
+          "title": "第4课 古诗三首",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "洞庭",
+              "broadcastText": "洞庭",
+              "pinyinText": "dòng tíng",
+              "hintText": "湖光秋月两相和，潭面无风镜未磨，写的是（　　）湖的景色。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "lesson_text",
+              "practiceCharacters": [
+                "庭"
+              ],
+              "lessonImagePages": [
+                19,
+                20
+              ],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-4-w2-37cbdecb9bcd"
+            },
+            {
+              "answerText": "相信",
+              "broadcastText": "相信",
+              "pinyinText": "xiāng xìn",
+              "hintText": "我（　　）只要努力，就一定会进步。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "相"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-4-w2-34241e377625"
+            },
+            {
+              "answerText": "未来",
+              "broadcastText": "未来",
+              "pinyinText": "wèi lái",
+              "hintText": "我对（　　）的生活充满希望。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "未"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-4-w2-1da16551ff9f"
+            },
+            {
+              "answerText": "严寒",
+              "broadcastText": "严寒",
+              "pinyinText": "yán hán",
+              "hintText": "（　　）的冬天，战士们仍在站岗。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "寒"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-4-w2-53647796c4ae"
+            },
+            {
+              "answerText": "石径",
+              "broadcastText": "石径",
+              "pinyinText": "shí jìng",
+              "hintText": "一条弯弯的（　　）通向山上的亭子。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "lesson_text",
+              "practiceCharacters": [
+                "径"
+              ],
+              "lessonImagePages": [
+                19
+              ],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-4-w2-79f3eaf6a9aa"
+            },
+            {
+              "answerText": "倾斜",
+              "broadcastText": "倾斜",
+              "pinyinText": "qīng xié",
+              "hintText": "大风过后，小树有些（　　），需要扶正。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "斜"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-4-w2-48ac74a37026"
+            },
+            {
+              "answerText": "枫林",
+              "broadcastText": "枫林",
+              "pinyinText": "fēng lín",
+              "hintText": "秋天的（　　），像一片红色的海洋。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "lesson_text",
+              "practiceCharacters": [
+                "枫"
+              ],
+              "lessonImagePages": [
+                19,
+                20
+              ],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-4-w2-50cf92f9eabd"
+            },
+            {
+              "answerText": "霜降",
+              "broadcastText": "霜降",
+              "pinyinText": "shuāng jiàng",
+              "hintText": "（　　）是二十四节气中的一个。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "霜"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-4-w2-cefe57ddd83c"
+            },
+            {
+              "answerText": "挑战",
+              "broadcastText": "挑战",
+              "pinyinText": "tiǎo zhàn",
+              "hintText": "面对新任务，他愿意接受（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "挑"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-4-w2-4eed57b5a12b"
+            },
+            {
+              "answerText": "夜深",
+              "broadcastText": "夜深",
+              "pinyinText": "yè shēn",
+              "hintText": "（　　）了，屋里仍亮着灯。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "lesson_text",
+              "practiceCharacters": [
+                "深"
+              ],
+              "lessonImagePages": [
+                20
+              ],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-4-w2-21acc4934ef2"
+            },
+            {
+              "answerText": "落叶",
+              "broadcastText": "落叶",
+              "pinyinText": "luò yè",
+              "hintText": "秋天，地上铺满了金黄的（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "落"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-4-w2-3ce777d39b5e"
+            }
+          ]
+        },
+        {
+          "key": "lesson-5",
+          "order": 2,
+          "title": "第5课 铺满金色巴掌的水泥道",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "秋风",
+              "broadcastText": "秋风",
+              "pinyinText": "qiū fēng",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-5-v-f48aef160909",
+              "hintText": "（　　）吹过，树叶慢慢变黄。"
+            },
+            {
+              "answerText": "放晴",
+              "broadcastText": "放晴",
+              "pinyinText": "fàng qíng",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-5-v-bbb97a644fdf",
+              "hintText": "下了几天雨，天空终于（　　）了。"
+            },
+            {
+              "answerText": "明朗",
+              "broadcastText": "明朗",
+              "pinyinText": "míng lǎng",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-5-v-cb0e4e5560b1",
+              "hintText": "雨后的天空格外（　　）。"
+            },
+            {
+              "answerText": "地面",
+              "broadcastText": "地面",
+              "pinyinText": "dì miàn",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-5-v-c9a0955518c9",
+              "hintText": "雨水打湿了（　　）。"
+            },
+            {
+              "answerText": "亮晶晶",
+              "broadcastText": "亮晶晶",
+              "pinyinText": "liàng jīng jīng",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-5-v-031dabb5cdad",
+              "hintText": "草叶上的露珠（　　）的。"
+            },
+            {
+              "answerText": "落叶",
+              "broadcastText": "落叶",
+              "pinyinText": "luò yè",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-5-v-3ce777d39b5e",
+              "hintText": "秋天，地上铺满了金黄的（　　）。"
+            },
+            {
+              "answerText": "图案",
+              "broadcastText": "图案",
+              "pinyinText": "tú àn",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-5-v-9fbb8e9f1ade",
+              "hintText": "我在纸上画了一个美丽的（　　）。"
+            },
+            {
+              "answerText": "闪闪发光",
+              "broadcastText": "闪闪发光",
+              "pinyinText": "shǎn shǎn fā guāng",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-5-v-bf963b370e01",
+              "hintText": "阳光下，湖面像宝石一样（　　）。"
+            },
+            {
+              "answerText": "尽头",
+              "broadcastText": "尽头",
+              "pinyinText": "jìn tóu",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-5-v-35b75d429fd9",
+              "hintText": "小路的（　　）有一座小屋。"
+            },
+            {
+              "answerText": "排列",
+              "broadcastText": "排列",
+              "pinyinText": "pái liè",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-5-v-70473d8ed97e",
+              "hintText": "同学们把椅子整齐地（　　）在教室里。"
+            },
+            {
+              "answerText": "规则",
+              "broadcastText": "规则",
+              "pinyinText": "guī zé",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-5-v-1123245d1bed",
+              "hintText": "过马路时，必须遵守交通（　　）。"
+            },
+            {
+              "answerText": "凌乱",
+              "broadcastText": "凌乱",
+              "pinyinText": "líng luàn",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-5-v-aab1eb86f37e",
+              "hintText": "桌上的书摆得很（　　），需要整理。"
+            },
+            {
+              "answerText": "歌唱",
+              "broadcastText": "歌唱",
+              "pinyinText": "gē chàng",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-5-v-f78aab36c3a9",
+              "hintText": "我们（　　）祖国，祝愿人民生活幸福。"
+            },
+            {
+              "answerText": "迟到",
+              "broadcastText": "迟到",
+              "pinyinText": "chí dào",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-5-v-f7b592d50acb",
+              "hintText": "上学快（　　）了，我们要赶快走。"
+            },
+            {
+              "answerText": "雨珠",
+              "broadcastText": "雨珠",
+              "pinyinText": "yǔ zhū",
+              "hintText": "一颗颗（　　）顺着树叶滚下来。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "lesson_text",
+              "practiceCharacters": [
+                "珠"
+              ],
+              "lessonImagePages": [
+                21
+              ],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-5-w2-b598c80b0c07"
+            },
+            {
+              "answerText": "粘贴",
+              "broadcastText": "粘贴",
+              "pinyinText": "zhān tiē",
+              "hintText": "我把照片（　　）在相册里。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "粘"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-5-w2-335179267471"
+            },
+            {
+              "answerText": "印刷",
+              "broadcastText": "印刷",
+              "pinyinText": "yìn shuā",
+              "hintText": "这本书经过（　　），送到了学校。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "lesson_text",
+              "practiceCharacters": [
+                "印"
+              ],
+              "lessonImagePages": [
+                23
+              ],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-5-w2-8ba60bd6375e"
+            },
+            {
+              "answerText": "平展",
+              "broadcastText": "平展",
+              "pinyinText": "píng zhǎn",
+              "hintText": "我把皱了的纸轻轻铺开，弄得十分（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "lesson_text",
+              "practiceCharacters": [
+                "展"
+              ],
+              "lessonImagePages": [
+                21
+              ],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-5-w2-429b360a421a"
+            }
+          ]
+        },
+        {
+          "key": "lesson-6",
+          "order": 3,
+          "title": "第6课 秋天的雨",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "秋天",
+              "broadcastText": "秋天",
+              "pinyinText": "qiū tiān",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-6-v-21691f1b8e10",
+              "hintText": "（　　），树叶慢慢变黄了。"
+            },
+            {
+              "answerText": "清凉",
+              "broadcastText": "清凉",
+              "pinyinText": "qīng liáng",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-6-v-ac18781c84c9",
+              "hintText": "山间的泉水清（　　）凉。"
+            },
+            {
+              "answerText": "炎热",
+              "broadcastText": "炎热",
+              "pinyinText": "yán rè",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-6-v-747d8d435976",
+              "hintText": "（　　）的夏天，我们要多喝水。"
+            },
+            {
+              "answerText": "枫树",
+              "broadcastText": "枫树",
+              "pinyinText": "fēng shù",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-6-v-bd819f205437",
+              "hintText": "秋天，（　　）的叶子红了。"
+            },
+            {
+              "answerText": "邮票",
+              "broadcastText": "邮票",
+              "pinyinText": "yóu piào",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-6-v-751252ac323a",
+              "hintText": "寄信前，要在信封上贴好（　　）。"
+            },
+            {
+              "answerText": "凉爽",
+              "broadcastText": "凉爽",
+              "pinyinText": "liáng shuǎng",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-6-v-4fb4c2d06a07",
+              "hintText": "一阵风吹来，天气变得（　　）。"
+            },
+            {
+              "answerText": "果树",
+              "broadcastText": "果树",
+              "pinyinText": "guǒ shù",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-6-v-f9e2dbcd4d49",
+              "hintText": "秋天，（　　）上结满了香甜的果子。"
+            },
+            {
+              "answerText": "菊花",
+              "broadcastText": "菊花",
+              "pinyinText": "jú huā",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-6-v-9cb22a0fe547",
+              "hintText": "（　　）在秋天盛开，有很多颜色。"
+            },
+            {
+              "answerText": "仙子",
+              "broadcastText": "仙子",
+              "pinyinText": "xiān zǐ",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-6-v-4b157d485523",
+              "hintText": "童话里的花（　　）住在花园中。"
+            },
+            {
+              "answerText": "频频",
+              "broadcastText": "频频",
+              "pinyinText": "pín pín",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-6-v-944c49f87649",
+              "hintText": "听了老师的讲解，他（　　）点头。"
+            },
+            {
+              "answerText": "气味",
+              "broadcastText": "气味",
+              "pinyinText": "qì wèi",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-6-v-e77ae7eeaacc",
+              "hintText": "我闻到了一股香甜的（　　）。"
+            },
+            {
+              "answerText": "香甜",
+              "broadcastText": "香甜",
+              "pinyinText": "xiāng tián",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-6-v-ed63edc11d9b",
+              "hintText": "成熟的苹果吃起来又脆又（　　）。"
+            },
+            {
+              "answerText": "松果",
+              "broadcastText": "松果",
+              "pinyinText": "sōng guǒ",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-6-v-6a43a1844831",
+              "hintText": "小松鼠忙着收集（　　），准备过冬。"
+            },
+            {
+              "answerText": "丰收",
+              "broadcastText": "丰收",
+              "pinyinText": "fēng shōu",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-6-v-3c2bc7ced01b",
+              "hintText": "秋天到了，农民迎来了（　　）。"
+            },
+            {
+              "answerText": "银杏",
+              "broadcastText": "银杏",
+              "pinyinText": "yín xìng",
+              "hintText": "秋天，（　　）的叶子像一把把金色的小扇子。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "lesson_text",
+              "practiceCharacters": [
+                "杏"
+              ],
+              "lessonImagePages": [
+                24,
+                25
+              ],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-6-w2-4d024e03d9fd"
+            },
+            {
+              "answerText": "一枚",
+              "broadcastText": "一枚",
+              "pinyinText": "yì méi",
+              "hintText": "我捡到了（　　）漂亮的贝壳。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "lesson_text",
+              "practiceCharacters": [
+                "枚"
+              ],
+              "lessonImagePages": [
+                24
+              ],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-6-w2-19f72f4add7e"
+            },
+            {
+              "answerText": "拥挤",
+              "broadcastText": "拥挤",
+              "pinyinText": "yōng jǐ",
+              "hintText": "放学时，校门口有些（　　），大家要排队走。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "挤"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-6-w2-44a200c274d6"
+            },
+            {
+              "answerText": "争执",
+              "broadcastText": "争执",
+              "pinyinText": "zhēng zhí",
+              "hintText": "两人为谁先使用球场发生了（　　），老师赶来调解。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "争"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-6-w2-2b5e57f1d896"
+            },
+            {
+              "answerText": "勾画",
+              "broadcastText": "勾画",
+              "pinyinText": "gōu huà",
+              "hintText": "我用铅笔（　　）出小鸟的轮廓。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "勾"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-6-w2-a7961bdeeaf6"
+            },
+            {
+              "answerText": "挖洞",
+              "broadcastText": "挖洞",
+              "pinyinText": "wā dòng",
+              "hintText": "小兔在土坡上（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "lesson_text",
+              "practiceCharacters": [
+                "挖"
+              ],
+              "lessonImagePages": [
+                25
+              ],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-6-w2-291451152dd8"
+            },
+            {
+              "answerText": "油亮",
+              "broadcastText": "油亮",
+              "pinyinText": "yóu liàng",
+              "hintText": "雨后的树叶绿得（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "lesson_text",
+              "practiceCharacters": [
+                "油"
+              ],
+              "lessonImagePages": [
+                25
+              ],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-6-w2-d446cdcf564d"
+            }
+          ]
+        },
+        {
+          "key": "lesson-7",
+          "order": 4,
+          "title": "第7课 听听，秋的声音（略读）",
+          "type": "lesson",
+          "cards": []
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "title": "第三单元",
+      "sections": [
+        {
+          "key": "lesson-8",
+          "order": 1,
+          "title": "第8课 总也倒不了的老屋",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "门板",
+              "broadcastText": "门板",
+              "pinyinText": "mén bǎn",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-8-v-dec0ca41c451",
+              "hintText": "这扇旧门的（　　）上有一道裂缝。"
+            },
+            {
+              "answerText": "准备",
+              "broadcastText": "准备",
+              "pinyinText": "zhǔn bèi",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-8-v-ddcf6e77b0ee",
+              "hintText": "你（　　）到哪儿去玩？"
+            },
+            {
+              "answerText": "旁边",
+              "broadcastText": "旁边",
+              "pinyinText": "páng biān",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-8-v-bab67370c50a",
+              "hintText": "我坐在妈妈（　　）。"
+            },
+            {
+              "answerText": "暴风雨",
+              "broadcastText": "暴风雨",
+              "pinyinText": "bào fēng yǔ",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-8-v-045083182561",
+              "hintText": "（　　）来临前，渔船纷纷回到岸边。"
+            },
+            {
+              "answerText": "安心",
+              "broadcastText": "安心",
+              "pinyinText": "ān xīn",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-8-v-79e00cdbc129",
+              "hintText": "事情已经安排好了，你可以（　　）休息。"
+            },
+            {
+              "answerText": "低头",
+              "broadcastText": "低头",
+              "pinyinText": "dī tóu",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-8-v-f1bd1d03999a",
+              "hintText": "小猫（　　）闻了闻地上的花。"
+            },
+            {
+              "answerText": "吃力",
+              "broadcastText": "吃力",
+              "pinyinText": "chī lì",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-8-v-f80b48aa6107",
+              "hintText": "箱子太重，搬起来十分（　　）。"
+            },
+            {
+              "answerText": "再见",
+              "broadcastText": "再见",
+              "pinyinText": "zài jiàn",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-8-v-c90a1cdb561d",
+              "hintText": "放学时，我对老师说（　　）。"
+            },
+            {
+              "answerText": "母鸡",
+              "broadcastText": "母鸡",
+              "pinyinText": "mǔ jī",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-8-v-076c592ecf9c",
+              "hintText": "一只（　　）带着小鸡在院子里找食物。"
+            },
+            {
+              "answerText": "注意",
+              "broadcastText": "注意",
+              "pinyinText": "zhù yì",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-8-v-4ffef8f3113a",
+              "hintText": "过马路时，要（　　）安全。"
+            },
+            {
+              "answerText": "屋子",
+              "broadcastText": "屋子",
+              "pinyinText": "wū zi",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-8-v-7cc5d34be6ab",
+              "hintText": "雨停了，于是我们走出了（　　）。"
+            },
+            {
+              "answerText": "漂亮",
+              "broadcastText": "漂亮",
+              "pinyinText": "piào liang",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-8-v-7f932e007e2c",
+              "hintText": "蝴蝶翅膀上的花纹真（　　）。"
+            },
+            {
+              "answerText": "意思",
+              "broadcastText": "意思",
+              "pinyinText": "yì si",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-8-v-65eb352d08bf",
+              "hintText": "这个词的（　　），你理解了吗？"
+            },
+            {
+              "answerText": "因此",
+              "broadcastText": "因此",
+              "pinyinText": "yīn cǐ",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-8-v-a07bd3196be5",
+              "hintText": "他每天坚持练习，（　　）进步很快。"
+            },
+            {
+              "answerText": "等待",
+              "broadcastText": "等待",
+              "pinyinText": "děng dài",
+              "hintText": "我们在车站（　　）公交车。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "等"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-8-w2-251bc40e7027"
+            },
+            {
+              "answerText": "哦哟",
+              "broadcastText": "哦哟",
+              "pinyinText": "ó yō",
+              "hintText": "看到满园鲜花，她惊喜地说：（　　），真漂亮！",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "哦"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-8-w2-47b0487284a3"
+            },
+            {
+              "answerText": "钻进",
+              "broadcastText": "钻进",
+              "pinyinText": "zuān jìn",
+              "hintText": "小老鼠（　　）了墙边的洞里。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "钻"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-8-w2-0448b0a72e2d"
+            },
+            {
+              "answerText": "爬行",
+              "broadcastText": "爬行",
+              "pinyinText": "pá xíng",
+              "hintText": "小乌龟在地上慢慢（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "爬"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-8-w2-ddd046c472a4"
+            },
+            {
+              "answerText": "晒太阳",
+              "broadcastText": "晒太阳",
+              "pinyinText": "shài tài yáng",
+              "hintText": "小猫喜欢趴在窗边（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "lesson_text",
+              "practiceCharacters": [
+                "晒"
+              ],
+              "lessonImagePages": [
+                35
+              ],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-8-w2-0a69a2e011e3"
+            }
+          ]
+        },
+        {
+          "key": "lesson-9",
+          "order": 2,
+          "title": "第9课 犟龟（略读）",
+          "type": "lesson",
+          "cards": []
+        },
+        {
+          "key": "lesson-10",
+          "order": 3,
+          "title": "第10课 小狗学叫（略读）",
+          "type": "lesson",
+          "cards": []
+        },
+        {
+          "key": "garden-3",
+          "order": 4,
+          "title": "语文园地",
+          "type": "language_garden",
+          "cards": [
+            {
+              "answerText": "恒心",
+              "broadcastText": "恒心",
+              "pinyinText": "héng xīn",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-garden-3-v-a3e326dcd43d",
+              "hintText": "做事情要有（　　），不能轻易放弃。"
+            },
+            {
+              "answerText": "神圣",
+              "broadcastText": "神圣",
+              "pinyinText": "shén shèng",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-garden-3-v-8d3d19f5e106",
+              "hintText": "守护祖国是军人的（　　）职责。"
+            },
+            {
+              "answerText": "萌发",
+              "broadcastText": "萌发",
+              "pinyinText": "méng fā",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-garden-3-v-86c797e9787b",
+              "hintText": "春天，种子开始（　　）新芽。"
+            },
+            {
+              "answerText": "妥当",
+              "broadcastText": "妥当",
+              "pinyinText": "tuǒ dang",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-garden-3-v-eea6121fbfaf",
+              "hintText": "出发前，老师把大家的行程安排（　　）。"
+            },
+            {
+              "answerText": "车轴",
+              "broadcastText": "车轴",
+              "pinyinText": "chē zhóu",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-garden-3-v-a44ad756a0f5",
+              "hintText": "修车师傅检查了车轮中间的（　　）。"
+            },
+            {
+              "answerText": "阁楼",
+              "broadcastText": "阁楼",
+              "pinyinText": "gé lóu",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-garden-3-v-2befa6073dc7",
+              "hintText": "老屋顶层的小（　　）里放着旧书。"
+            },
+            {
+              "answerText": "培植",
+              "broadcastText": "培植",
+              "pinyinText": "péi zhí",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-garden-3-v-ea51cd45081a",
+              "hintText": "园丁细心（　　）花苗。"
+            },
+            {
+              "answerText": "厘米",
+              "broadcastText": "厘米",
+              "pinyinText": "lí mǐ",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-garden-3-v-a49e3437fbb1",
+              "hintText": "这支铅笔长十五（　　）。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "title": "第四单元",
+      "sections": [
+        {
+          "key": "lesson-11",
+          "order": 1,
+          "title": "第11课 宝葫芦的秘密（节选）",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "葫芦",
+              "broadcastText": "葫芦",
+              "pinyinText": "hú lu",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-11-v-467eab465af4",
+              "hintText": "架子上的（　　）长得圆圆的。"
+            },
+            {
+              "answerText": "声明",
+              "broadcastText": "声明",
+              "pinyinText": "shēng míng",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-11-v-094394191e0f",
+              "hintText": "他先作了（　　），说明这次比赛的规则。"
+            },
+            {
+              "answerText": "神仙",
+              "broadcastText": "神仙",
+              "pinyinText": "shén xiān",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-11-v-631fd28c05fc",
+              "hintText": "故事里的（　　）会变化各种东西。"
+            },
+            {
+              "answerText": "普通",
+              "broadcastText": "普通",
+              "pinyinText": "pǔ tōng",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-11-v-de907d10df98",
+              "hintText": "这是一只很（　　）的小碗，没有特别的花纹。"
+            },
+            {
+              "answerText": "让步",
+              "broadcastText": "让步",
+              "pinyinText": "ràng bù",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-11-v-57035061135e",
+              "hintText": "两个人争执不下，最后都愿意各退一步，作出（　　）。"
+            },
+            {
+              "answerText": "条件",
+              "broadcastText": "条件",
+              "pinyinText": "tiáo jiàn",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-11-v-16bb1d2b098c",
+              "hintText": "有水、空气和合适的温度，种子才有发芽的（　　）。"
+            },
+            {
+              "answerText": "指甲",
+              "broadcastText": "指甲",
+              "pinyinText": "zhǐ jia",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-11-v-2cfe7d392b02",
+              "hintText": "我们要勤剪（　　），保持双手干净。"
+            },
+            {
+              "answerText": "得到",
+              "broadcastText": "得到",
+              "pinyinText": "dé dào",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-11-v-6805c7479b74",
+              "hintText": "经过努力，他终于（　　）了大家的认可。"
+            },
+            {
+              "answerText": "衣服",
+              "broadcastText": "衣服",
+              "pinyinText": "yī fu",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-11-v-3a28422f1f71",
+              "hintText": "天冷了，要多穿（　　）。"
+            },
+            {
+              "answerText": "所以",
+              "broadcastText": "所以",
+              "pinyinText": "suǒ yǐ",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-11-v-a2f7e42081a8",
+              "hintText": "今天下雨，（　　）我们改在室内活动。"
+            },
+            {
+              "answerText": "要是",
+              "broadcastText": "要是",
+              "pinyinText": "yào shi",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-11-v-467b2562ed66",
+              "hintText": "（　　）天气好，我们就去郊游。"
+            },
+            {
+              "answerText": "可怜",
+              "broadcastText": "可怜",
+              "pinyinText": "kě lián",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-11-v-9876c5d68163",
+              "hintText": "这只无家可归的小猫真（　　）。"
+            },
+            {
+              "answerText": "最好",
+              "broadcastText": "最好",
+              "pinyinText": "zuì hǎo",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-11-v-041e0910b5cc",
+              "hintText": "为了不迟到，我们（　　）早点出发。"
+            },
+            {
+              "answerText": "科学",
+              "broadcastText": "科学",
+              "pinyinText": "kē xué",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-11-v-6a98237a923b",
+              "hintText": "我们在（　　）课上观察种子发芽。"
+            },
+            {
+              "answerText": "不错",
+              "broadcastText": "不错",
+              "pinyinText": "bú cuò",
+              "hintText": "这幅画画得真（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "lesson_text",
+              "practiceCharacters": [
+                "错"
+              ],
+              "lessonImagePages": [
+                51
+              ],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-11-w2-3da947d6a115"
+            },
+            {
+              "answerText": "龙宫",
+              "broadcastText": "龙宫",
+              "pinyinText": "lóng gōng",
+              "hintText": "童话里的（　　）藏着许多宝物。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "lesson_text",
+              "practiceCharacters": [
+                "宫"
+              ],
+              "lessonImagePages": [
+                52
+              ],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-11-w2-caf5e24b21e1"
+            },
+            {
+              "answerText": "肯定",
+              "broadcastText": "肯定",
+              "pinyinText": "kěn dìng",
+              "hintText": "他认真地点头，给出了（　　）的回答。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "肯"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-11-w2-7f08691de6e7"
+            },
+            {
+              "answerText": "冒险",
+              "broadcastText": "冒险",
+              "pinyinText": "mào xiǎn",
+              "hintText": "故事中的小勇士决定出门（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "冒"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-11-w2-c79e8435b942"
+            },
+            {
+              "answerText": "式子",
+              "broadcastText": "式子",
+              "pinyinText": "shì zi",
+              "hintText": "老师在黑板上写下了一道数学（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "lesson_text",
+              "practiceCharacters": [
+                "式"
+              ],
+              "lessonImagePages": [
+                53
+              ],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-11-w2-6c7de6c4d233"
+            }
+          ]
+        },
+        {
+          "key": "lesson-12",
+          "order": 2,
+          "title": "第12课 在牛肚子里旅行",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "旅行",
+              "broadcastText": "旅行",
+              "pinyinText": "lǚ xíng",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-12-v-e751bca25e1f",
+              "hintText": "那次（　　）让我十分难忘。"
+            },
+            {
+              "answerText": "要好",
+              "broadcastText": "要好",
+              "pinyinText": "yào hǎo",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-12-v-845703001d38",
+              "hintText": "我和同桌是十分（　　）的朋友。"
+            },
+            {
+              "answerText": "答应",
+              "broadcastText": "答应",
+              "pinyinText": "dā ying",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-12-v-42773a00b183",
+              "hintText": "（　　）做不到的事，就是说大话。"
+            },
+            {
+              "answerText": "做梦",
+              "broadcastText": "做梦",
+              "pinyinText": "zuò mèng",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-12-v-22f62aab5407",
+              "hintText": "昨晚我（　　），梦见自己飞上了天空。"
+            },
+            {
+              "answerText": "来得及",
+              "broadcastText": "来得及",
+              "pinyinText": "lái de jí",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-12-v-6bd98ba761f2",
+              "hintText": "现在出发，还（　　）赶上校车。"
+            },
+            {
+              "answerText": "救命",
+              "broadcastText": "救命",
+              "pinyinText": "jiù mìng",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-12-v-9fde47a68eb9",
+              "hintText": "故事里，落水的小动物大声喊（　　）。"
+            },
+            {
+              "answerText": "大吃一惊",
+              "broadcastText": "大吃一惊",
+              "pinyinText": "dà chī yì jīng",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-12-v-053df57576a4",
+              "hintText": "看到小树一夜间开满鲜花，他（　　）。"
+            },
+            {
+              "answerText": "尾巴",
+              "broadcastText": "尾巴",
+              "pinyinText": "wěi ba",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-12-v-797d828e8c31",
+              "hintText": "小猴子的（　　）长长的。"
+            },
+            {
+              "answerText": "牙齿",
+              "broadcastText": "牙齿",
+              "pinyinText": "yá chǐ",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-12-v-7ee56603f63d",
+              "hintText": "我们每天都要认真刷（　　）。"
+            },
+            {
+              "answerText": "肚皮",
+              "broadcastText": "肚皮",
+              "pinyinText": "dù pí",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-12-v-e28c4482a9ba",
+              "hintText": "小猫躺在地上，露出圆圆的（　　）。"
+            },
+            {
+              "answerText": "食物",
+              "broadcastText": "食物",
+              "pinyinText": "shí wù",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-12-v-ab2775f0d353",
+              "hintText": "我们带好水和（　　），准备出发。"
+            },
+            {
+              "answerText": "消化",
+              "broadcastText": "消化",
+              "pinyinText": "xiāo huà",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-12-v-27e6553a66a0",
+              "hintText": "吃进肚子的食物，需要慢慢（　　）。"
+            },
+            {
+              "answerText": "当然",
+              "broadcastText": "当然",
+              "pinyinText": "dāng rán",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-12-v-0002e2d87fe9",
+              "hintText": "有人需要帮助，我们（　　）应该伸出手。"
+            },
+            {
+              "answerText": "刚才",
+              "broadcastText": "刚才",
+              "pinyinText": "gāng cái",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-12-v-e46b17ada920",
+              "hintText": "（　　）我还在这里看见一只小猫。"
+            },
+            {
+              "answerText": "知觉",
+              "broadcastText": "知觉",
+              "pinyinText": "zhī jué",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-12-v-321bb31931f6",
+              "hintText": "寒风里站久了，他的手冻得快失去（　　）。"
+            },
+            {
+              "answerText": "光亮",
+              "broadcastText": "光亮",
+              "pinyinText": "guāng liàng",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-12-v-2faa1a0cddd7",
+              "hintText": "夜里，远处的小屋透出一点（　　）。"
+            },
+            {
+              "answerText": "另外",
+              "broadcastText": "另外",
+              "pinyinText": "lìng wài",
+              "hintText": "这两本书我都读过，想再借（　　）一本。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "另"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-12-w2-3d90e73b8904"
+            },
+            {
+              "answerText": "眼睛",
+              "broadcastText": "眼睛",
+              "pinyinText": "yǎn jing",
+              "hintText": "我用（　　）看世界。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "lesson_text",
+              "practiceCharacters": [
+                "睛"
+              ],
+              "lessonImagePages": [
+                54
+              ],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-12-w2-9069cc8f2c62"
+            },
+            {
+              "answerText": "卷起",
+              "broadcastText": "卷起",
+              "pinyinText": "juǎn qǐ",
+              "hintText": "一阵风吹来，（　　）地上的落叶。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "卷"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-12-w2-a4f047a20660"
+            },
+            {
+              "answerText": "胃口",
+              "broadcastText": "胃口",
+              "pinyinText": "wèi kǒu",
+              "hintText": "运动以后，我的（　　）很好。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "胃"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-12-w2-4489e19dc0aa"
+            },
+            {
+              "answerText": "管理",
+              "broadcastText": "管理",
+              "pinyinText": "guǎn lǐ",
+              "hintText": "班长协助老师（　　）班级事务。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "管"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-12-w2-bb6d995724f4"
+            },
+            {
+              "answerText": "咬住",
+              "broadcastText": "咬住",
+              "pinyinText": "yǎo zhù",
+              "hintText": "小狗紧紧（　　）那根绳子。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "咬"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-12-w2-debc2975f904"
+            }
+          ]
+        },
+        {
+          "key": "lesson-13",
+          "order": 3,
+          "title": "第13课 一块奶酪（略读）",
+          "type": "lesson",
+          "cards": []
+        },
+        {
+          "key": "garden-4",
+          "order": 4,
+          "title": "语文园地",
+          "type": "language_garden",
+          "cards": [
+            {
+              "answerText": "申请",
+              "broadcastText": "申请",
+              "pinyinText": "shēn qǐng",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-garden-4-v-436a02934223",
+              "hintText": "我向老师（　　）参加绘画小组。"
+            },
+            {
+              "answerText": "介绍",
+              "broadcastText": "介绍",
+              "pinyinText": "jiè shào",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-garden-4-v-66a66f52a2b1",
+              "hintText": "请你向大家（　　）一下自己的家乡。"
+            },
+            {
+              "answerText": "主旨",
+              "broadcastText": "主旨",
+              "pinyinText": "zhǔ zhǐ",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-garden-4-v-061ef5ae4a93",
+              "hintText": "读完文章，我们讨论它主要想表达的（　　）。"
+            },
+            {
+              "answerText": "占领",
+              "broadcastText": "占领",
+              "pinyinText": "zhàn lǐng",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-garden-4-v-a9012846ac1c",
+              "hintText": "故事中，勇敢的战士们（　　）了山头。"
+            },
+            {
+              "answerText": "乏力",
+              "broadcastText": "乏力",
+              "pinyinText": "fá lì",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-garden-4-v-4da1fa8bdfbf",
+              "hintText": "他生病后有些（　　），走几步就想休息。"
+            },
+            {
+              "answerText": "宗旨",
+              "broadcastText": "宗旨",
+              "pinyinText": "zōng zhǐ",
+              "hintText": "全心全意为读者服务，是这家图书馆的（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "lesson_text",
+              "practiceCharacters": [
+                "宗"
+              ],
+              "lessonImagePages": [
+                60
+              ],
+              "builtinKey": "cn-official-202611-g3-v1-garden-4-w2-cf0513be4012"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 5,
+      "title": "第五单元",
+      "sections": [
+        {
+          "key": "lesson-14",
+          "order": 1,
+          "title": "第14课 搭船的鸟",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "母亲",
+              "broadcastText": "母亲",
+              "pinyinText": "mǔ qīn",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-14-v-568f6dca9137",
+              "hintText": "我的（　　）很喜欢种花。"
+            },
+            {
+              "answerText": "外祖父",
+              "broadcastText": "外祖父",
+              "pinyinText": "wài zǔ fù",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-14-v-5e83861272bb",
+              "hintText": "妈妈的父亲是我的（　　）。"
+            },
+            {
+              "answerText": "船夫",
+              "broadcastText": "船夫",
+              "pinyinText": "chuán fū",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-14-v-e12fad0cd1a6",
+              "hintText": "（　　）撑着小船，把我们送到对岸。"
+            },
+            {
+              "answerText": "羽毛",
+              "broadcastText": "羽毛",
+              "pinyinText": "yǔ máo",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-14-v-8bc127eb5b16",
+              "hintText": "这只小鸟的（　　）鲜艳又整齐。"
+            },
+            {
+              "answerText": "翠绿",
+              "broadcastText": "翠绿",
+              "pinyinText": "cuì lǜ",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-14-v-8ef3125606c1",
+              "hintText": "冬天，雪松的枝叶依然（　　）。"
+            },
+            {
+              "answerText": "静悄悄",
+              "broadcastText": "静悄悄",
+              "pinyinText": "jìng qiāo qiāo",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-14-v-9f702e8cd103",
+              "hintText": "夜深了，村庄里（　　）的。"
+            },
+            {
+              "answerText": "翠鸟",
+              "broadcastText": "翠鸟",
+              "pinyinText": "cuì niǎo",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-14-v-6480c2ad8d8b",
+              "hintText": "一只（　　）停在水边，准备捕鱼。"
+            },
+            {
+              "answerText": "捕鱼",
+              "broadcastText": "捕鱼",
+              "pinyinText": "bǔ yú",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-14-v-17feb4884a7b",
+              "hintText": "渔民划着小船出海（　　）。"
+            },
+            {
+              "answerText": "搭船",
+              "broadcastText": "搭船",
+              "pinyinText": "dā chuán",
+              "hintText": "我们准备（　　）到对岸去。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "lesson_text",
+              "practiceCharacters": [
+                "搭"
+              ],
+              "lessonImagePages": [
+                65
+              ],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-14-w2-2f3ec76dcecb"
+            },
+            {
+              "answerText": "披着",
+              "broadcastText": "披着",
+              "pinyinText": "pī zhe",
+              "hintText": "小羊身上（　　）厚厚的白毛。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "lesson_text",
+              "practiceCharacters": [
+                "披"
+              ],
+              "lessonImagePages": [
+                65
+              ],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-14-w2-df226c161561"
+            },
+            {
+              "answerText": "摇头",
+              "broadcastText": "摇头",
+              "pinyinText": "yáo tóu",
+              "hintText": "听说不能出去玩，他轻轻地（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "摇"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-14-w2-8be7156a778f"
+            },
+            {
+              "answerText": "停止",
+              "broadcastText": "停止",
+              "pinyinText": "tíng zhǐ",
+              "hintText": "红灯亮了，请（　　）前进。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "停"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-14-w2-ca4d973c0b00"
+            },
+            {
+              "answerText": "蓝色",
+              "broadcastText": "蓝色",
+              "pinyinText": "lán sè",
+              "hintText": "天空像一块（　　）的绸布。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "lesson_text",
+              "practiceCharacters": [
+                "蓝"
+              ],
+              "lessonImagePages": [
+                65
+              ],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-14-w2-67035e6b7f82"
+            },
+            {
+              "answerText": "吞下",
+              "broadcastText": "吞下",
+              "pinyinText": "tūn xià",
+              "hintText": "小鸟飞快地（　　）了一条小虫。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "吞"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-14-w2-9c3d91aa0f1f"
+            }
+          ]
+        },
+        {
+          "key": "lesson-15",
+          "order": 2,
+          "title": "第15课 金色的草地",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "草地",
+              "broadcastText": "草地",
+              "pinyinText": "cǎo dì",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-15-v-cca5bb81dd04",
+              "hintText": "小马在（　　）上跑。"
+            },
+            {
+              "answerText": "蒲公英",
+              "broadcastText": "蒲公英",
+              "pinyinText": "pú gōng yīng",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-15-v-bc236402358a",
+              "hintText": "（　　）的种子随风飞去，到处生长，真是四海为家。"
+            },
+            {
+              "answerText": "盛开",
+              "broadcastText": "盛开",
+              "pinyinText": "shèng kāi",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-15-v-502f102ca067",
+              "hintText": "（　　）的花朵吸引了许多蝴蝶。"
+            },
+            {
+              "answerText": "玩耍",
+              "broadcastText": "玩耍",
+              "pinyinText": "wán shuǎ",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-15-v-dba84fc32780",
+              "hintText": "假日里，小朋友们在草地上尽情（　　）。"
+            },
+            {
+              "answerText": "一本正经",
+              "broadcastText": "一本正经",
+              "pinyinText": "yì běn zhèng jīng",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-15-v-11eae789d303",
+              "hintText": "他学着大人的样子，（　　）地向大家讲话。"
+            },
+            {
+              "answerText": "使劲",
+              "broadcastText": "使劲",
+              "pinyinText": "shǐ jìn",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-15-v-2d49fb08ebd8",
+              "hintText": "这扇门太紧了，他（　　）推了几下才推开。"
+            },
+            {
+              "answerText": "钓鱼",
+              "broadcastText": "钓鱼",
+              "pinyinText": "diào yú",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-15-v-0147dc31ac13",
+              "hintText": "爷爷带着鱼竿到河边（　　）。"
+            },
+            {
+              "answerText": "观察",
+              "broadcastText": "观察",
+              "pinyinText": "guān chá",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-15-v-f262badacb76",
+              "hintText": "我们在科学课上（　　）种子发芽。"
+            },
+            {
+              "answerText": "合拢",
+              "broadcastText": "合拢",
+              "pinyinText": "hé lǒng",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-15-v-f6a5d87fe2fb",
+              "hintText": "傍晚，这些花瓣慢慢（　　）。"
+            },
+            {
+              "answerText": "张开",
+              "broadcastText": "张开",
+              "pinyinText": "zhāng kāi",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-15-v-3a6620b1d72e",
+              "hintText": "喝水前，我（　　）了口。"
+            },
+            {
+              "answerText": "喜爱",
+              "broadcastText": "喜爱",
+              "pinyinText": "xǐ ài",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-15-v-6c32444452ab",
+              "hintText": "我十分（　　）这只活泼的小猫。"
+            },
+            {
+              "answerText": "笑脸",
+              "broadcastText": "笑脸",
+              "pinyinText": "xiào liǎn",
+              "hintText": "她带着灿烂的（　　）走进教室。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "脸"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-15-w2-7fabd46b0d68"
+            },
+            {
+              "answerText": "哈欠",
+              "broadcastText": "哈欠",
+              "pinyinText": "hā qian",
+              "hintText": "河马张开大嘴，在水里打了个（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "lesson_text",
+              "practiceCharacters": [
+                "欠"
+              ],
+              "lessonImagePages": [
+                67
+              ],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-15-w2-84ca32da0c8f"
+            },
+            {
+              "answerText": "朝阳",
+              "broadcastText": "朝阳",
+              "pinyinText": "zhāo yáng",
+              "hintText": "清晨，红色的（　　）从海面升起。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "朝"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-15-w2-53c9dd5e587c"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 6,
+      "title": "第六单元",
+      "sections": [
+        {
+          "key": "lesson-16",
+          "order": 1,
+          "title": "第16课 富饶的西沙群岛",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "风景",
+              "broadcastText": "风景",
+              "pinyinText": "fēng jǐng",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-16-v-0f70eef46ff0",
+              "hintText": "这里山清水秀，（　　）很美。"
+            },
+            {
+              "answerText": "优美",
+              "broadcastText": "优美",
+              "pinyinText": "yōu měi",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-16-v-221041d73f6c",
+              "hintText": "远处传来一阵（　　）的琴声。"
+            },
+            {
+              "answerText": "物产",
+              "broadcastText": "物产",
+              "pinyinText": "wù chǎn",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-16-v-b42f12e33089",
+              "hintText": "这里盛产水果和粮食，（　　）十分丰富。"
+            },
+            {
+              "answerText": "交错",
+              "broadcastText": "交错",
+              "pinyinText": "jiāo cuò",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-16-v-23f1917777d8",
+              "hintText": "树林里，许多树枝纵横（　　）。"
+            },
+            {
+              "answerText": "岩石",
+              "broadcastText": "岩石",
+              "pinyinText": "yán shí",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-16-v-9074f394383a",
+              "hintText": "海浪不停地拍打岸边的（　　）。"
+            },
+            {
+              "answerText": "鹿角",
+              "broadcastText": "鹿角",
+              "pinyinText": "lù jiǎo",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-16-v-bf7d9a7a9a7d",
+              "hintText": "小鹿头上的（　　）慢慢长大。"
+            },
+            {
+              "answerText": "成群结队",
+              "broadcastText": "成群结队",
+              "pinyinText": "chéng qún jié duì",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-16-v-07a912101051",
+              "hintText": "小鱼（　　）地游过珊瑚丛。"
+            },
+            {
+              "answerText": "布满",
+              "broadcastText": "布满",
+              "pinyinText": "bù mǎn",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-16-v-885d42ce0748",
+              "hintText": "天空（　　）了乌云，快下雨了。"
+            },
+            {
+              "answerText": "条纹",
+              "broadcastText": "条纹",
+              "pinyinText": "tiáo wén",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-16-v-d2fda4411d0f",
+              "hintText": "这只小鱼身上有蓝色的（　　）。"
+            },
+            {
+              "answerText": "周身",
+              "broadcastText": "周身",
+              "pinyinText": "zhōu shēn",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-16-v-bff987d5ed2e",
+              "hintText": "小鱼的（　　）布满了彩色斑点。"
+            },
+            {
+              "answerText": "皮球",
+              "broadcastText": "皮球",
+              "pinyinText": "pí qiú",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-16-v-bec1d31357db",
+              "hintText": "小猫正在玩（　　）。"
+            },
+            {
+              "answerText": "茂密",
+              "broadcastText": "茂密",
+              "pinyinText": "mào mì",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-16-v-53fbd7249318",
+              "hintText": "这棵树的枝叶十分（　　）。"
+            },
+            {
+              "answerText": "肥料",
+              "broadcastText": "肥料",
+              "pinyinText": "féi liào",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-16-v-304624dca588",
+              "hintText": "农民给庄稼施上合适的（　　）。"
+            },
+            {
+              "answerText": "祖国",
+              "broadcastText": "祖国",
+              "pinyinText": "zǔ guó",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-16-v-632c1d67933b",
+              "hintText": "我爱自己的（　　）。"
+            },
+            {
+              "answerText": "事业",
+              "broadcastText": "事业",
+              "pinyinText": "shì yè",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-16-v-0291e23d0b65",
+              "hintText": "爷爷一生都热爱教育（　　）。"
+            },
+            {
+              "answerText": "发展",
+              "broadcastText": "发展",
+              "pinyinText": "fā zhǎn",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-16-v-1f4d721b6358",
+              "hintText": "这些年，家乡的交通（　　）得很快。"
+            },
+            {
+              "answerText": "淡青",
+              "broadcastText": "淡青",
+              "pinyinText": "dàn qīng",
+              "hintText": "雨后，远山呈现出一片（　　）色。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "淡"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-16-w2-9909059e5f1e"
+            },
+            {
+              "answerText": "浅绿",
+              "broadcastText": "浅绿",
+              "pinyinText": "qiǎn lǜ",
+              "hintText": "春天的新叶是（　　）色的。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "lesson_text",
+              "practiceCharacters": [
+                "浅"
+              ],
+              "lessonImagePages": [
+                75
+              ],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-16-w2-00317ca85f85"
+            },
+            {
+              "answerText": "海底",
+              "broadcastText": "海底",
+              "pinyinText": "hǎi dǐ",
+              "hintText": "潜水员到（　　）观察美丽的珊瑚。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "lesson_text",
+              "practiceCharacters": [
+                "底"
+              ],
+              "lessonImagePages": [
+                75
+              ],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-16-w2-8c0f8088c6a7"
+            },
+            {
+              "answerText": "划过",
+              "broadcastText": "划过",
+              "pinyinText": "huá guò",
+              "hintText": "夜空中（　　）一道明亮的闪电。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "lesson_text",
+              "practiceCharacters": [
+                "划"
+              ],
+              "lessonImagePages": [
+                75
+              ],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-16-w2-53cea3a59414"
+            },
+            {
+              "answerText": "厚实",
+              "broadcastText": "厚实",
+              "pinyinText": "hòu shi",
+              "hintText": "奶奶给我准备了一床（　　）的棉被。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "厚"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-16-w2-23a1be7cea4c"
+            }
+          ]
+        },
+        {
+          "key": "lesson-17",
+          "order": 2,
+          "title": "第17课 海滨小城",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "海滨",
+              "broadcastText": "海滨",
+              "pinyinText": "hǎi bīn",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-17-v-271088ecbcd1",
+              "hintText": "夏天，我们到（　　）看海、玩沙。"
+            },
+            {
+              "answerText": "街道",
+              "broadcastText": "街道",
+              "pinyinText": "jiē dào",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-17-v-ee10a1a0c79d",
+              "hintText": "清晨，（　　）上十分安静。"
+            },
+            {
+              "answerText": "交界",
+              "broadcastText": "交界",
+              "pinyinText": "jiāo jiè",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-17-v-bbb3ae44e51b",
+              "hintText": "这条河位于两座城市的（　　）处。"
+            },
+            {
+              "answerText": "水平线",
+              "broadcastText": "水平线",
+              "pinyinText": "shuǐ píng xiàn",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-17-v-58e3496fb479",
+              "hintText": "远处，海面与天空在（　　）上相接。"
+            },
+            {
+              "answerText": "机帆船",
+              "broadcastText": "机帆船",
+              "pinyinText": "jī fān chuán",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-17-v-5f5e56fb7046",
+              "hintText": "一艘（　　）满载鱼虾回到了港口。"
+            },
+            {
+              "answerText": "来来往往",
+              "broadcastText": "来来往往",
+              "pinyinText": "lái lái wǎng wǎng",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-17-v-d0a7e5ba43e2",
+              "hintText": "大街上的人们（　　），十分热闹。"
+            },
+            {
+              "answerText": "朝阳",
+              "broadcastText": "朝阳",
+              "pinyinText": "zhāo yáng",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-17-v-53c9dd5e587c",
+              "hintText": "清晨，红色的（　　）从海面升起。"
+            },
+            {
+              "answerText": "渔民",
+              "broadcastText": "渔民",
+              "pinyinText": "yú mín",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-17-v-fdf09ac58ab7",
+              "hintText": "（　　）把捕到的鱼运到岸上。"
+            },
+            {
+              "answerText": "贝壳",
+              "broadcastText": "贝壳",
+              "pinyinText": "bèi ké",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-17-v-557e69ad7afa",
+              "hintText": "我在沙滩上捡到一个（　　）。"
+            },
+            {
+              "answerText": "理睬",
+              "broadcastText": "理睬",
+              "pinyinText": "lǐ cǎi",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-17-v-60334bc49b45",
+              "hintText": "他正专心看书，没有（　　）旁边的说话声。"
+            },
+            {
+              "answerText": "汽笛",
+              "broadcastText": "汽笛",
+              "pinyinText": "qì dí",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-17-v-571579259b08",
+              "hintText": "轮船离岸时，发出了响亮的（　　）声。"
+            },
+            {
+              "answerText": "出海",
+              "broadcastText": "出海",
+              "pinyinText": "chū hǎi",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-17-v-e6d2774e9b05",
+              "hintText": "天气晴朗，渔民们准备（　　）捕鱼。"
+            },
+            {
+              "answerText": "银光闪闪",
+              "broadcastText": "银光闪闪",
+              "pinyinText": "yín guāng shǎn shǎn",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-17-v-7857fae3725a",
+              "hintText": "阳光照在鱼身上，显得（　　）。"
+            },
+            {
+              "answerText": "庭院",
+              "broadcastText": "庭院",
+              "pinyinText": "tíng yuàn",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-17-v-6b9e6a42747f",
+              "hintText": "奶奶在（　　）里种满了花。"
+            },
+            {
+              "answerText": "散发",
+              "broadcastText": "散发",
+              "pinyinText": "sàn fā",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-17-v-af58496cf12c",
+              "hintText": "盛开的花朵（　　）着淡淡的清香。"
+            },
+            {
+              "answerText": "打扫",
+              "broadcastText": "打扫",
+              "pinyinText": "dǎ sǎo",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-17-v-dca3ee9e2c7d",
+              "hintText": "咱们一起把教室（　　）干净吧。"
+            },
+            {
+              "answerText": "干净",
+              "broadcastText": "干净",
+              "pinyinText": "gān jìng",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-17-v-535f2282f8c0",
+              "hintText": "桌子擦得很（　　）。"
+            },
+            {
+              "answerText": "棕色",
+              "broadcastText": "棕色",
+              "pinyinText": "zōng sè",
+              "hintText": "这只小熊的毛是（　　）的。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "lesson_text",
+              "practiceCharacters": [
+                "棕"
+              ],
+              "lessonImagePages": [
+                78
+              ],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-17-w2-d4969ce9b575"
+            },
+            {
+              "answerText": "灰色",
+              "broadcastText": "灰色",
+              "pinyinText": "huī sè",
+              "hintText": "小鸽子身上的羽毛是（　　）的。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "lesson_text",
+              "practiceCharacters": [
+                "灰"
+              ],
+              "lessonImagePages": [
+                78
+              ],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-17-w2-051e67d913f4"
+            },
+            {
+              "answerText": "跟随",
+              "broadcastText": "跟随",
+              "pinyinText": "gēn suí",
+              "hintText": "小鸭们（　　）着妈妈走向河边。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "跟"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-17-w2-735d31ed2d1b"
+            },
+            {
+              "answerText": "透风",
+              "broadcastText": "透风",
+              "pinyinText": "tòu fēng",
+              "hintText": "这扇窗户关不严，有些（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "lesson_text",
+              "practiceCharacters": [
+                "透"
+              ],
+              "lessonImagePages": [
+                79
+              ],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-17-w2-ba1c7c5c7add"
+            },
+            {
+              "answerText": "除去",
+              "broadcastText": "除去",
+              "pinyinText": "chú qù",
+              "hintText": "妈妈小心地（　　）衣服上的污渍。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "除"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-17-w2-8587db1ec106"
+            },
+            {
+              "answerText": "踩踏",
+              "broadcastText": "踩踏",
+              "pinyinText": "cǎi tà",
+              "hintText": "请爱护小草，不要随意（　　）草坪。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "踩"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-17-w2-79ab8d12bc04"
+            }
+          ]
+        },
+        {
+          "key": "lesson-18",
+          "order": 3,
+          "title": "第18课 美丽的小兴安岭",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "东北",
+              "broadcastText": "东北",
+              "pinyinText": "dōng běi",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-18-v-ddbc65483182",
+              "hintText": "小兴安岭位于我国的（　　）地区。"
+            },
+            {
+              "answerText": "密密层层",
+              "broadcastText": "密密层层",
+              "pinyinText": "mì mì céng céng",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-18-v-052142ef36b0",
+              "hintText": "树叶长得（　　），把阳光都挡住了。"
+            },
+            {
+              "answerText": "严严实实",
+              "broadcastText": "严严实实",
+              "pinyinText": "yán yán shí shí",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-18-v-e5392cee421c",
+              "hintText": "奶奶把食物包得（　　），没有露出一点。"
+            },
+            {
+              "answerText": "视线",
+              "broadcastText": "视线",
+              "pinyinText": "shì xiàn",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-18-v-55fa6f3f4849",
+              "hintText": "大雾挡住了我们的（　　）。"
+            },
+            {
+              "answerText": "山谷",
+              "broadcastText": "山谷",
+              "pinyinText": "shān gǔ",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-18-v-229736ce613d",
+              "hintText": "清脆的鸟鸣在（　　）里回荡。"
+            },
+            {
+              "answerText": "起来",
+              "broadcastText": "起来",
+              "pinyinText": "qǐ lai",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-18-v-b8a694b2df6d",
+              "hintText": "太阳升（　　）了。"
+            },
+            {
+              "answerText": "照射",
+              "broadcastText": "照射",
+              "pinyinText": "zhào shè",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-18-v-31b2be1c6df9",
+              "hintText": "阳光（　　）在窗台上。"
+            },
+            {
+              "answerText": "各种各样",
+              "broadcastText": "各种各样",
+              "pinyinText": "gè zhǒng gè yàng",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-18-v-2ba1683ef13f",
+              "hintText": "花园里种着（　　）的花。"
+            },
+            {
+              "answerText": "花坛",
+              "broadcastText": "花坛",
+              "pinyinText": "huā tán",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-18-v-cfc62340bee5",
+              "hintText": "校园的（　　）里开满了鲜花。"
+            },
+            {
+              "answerText": "显得",
+              "broadcastText": "显得",
+              "pinyinText": "xiǎn de",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-18-v-443ef55c1e32",
+              "hintText": "穿上新衣服，他（　　）特别精神。"
+            },
+            {
+              "answerText": "苍翠",
+              "broadcastText": "苍翠",
+              "pinyinText": "cāng cuì",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-18-v-44e7ff8fb9c4",
+              "hintText": "远处的树林（　　），充满生机。"
+            },
+            {
+              "answerText": "药材",
+              "broadcastText": "药材",
+              "pinyinText": "yào cái",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-18-v-3f04e8174f2d",
+              "hintText": "这座山上生长着许多可以入药的（　　）。"
+            },
+            {
+              "answerText": "捕捉",
+              "broadcastText": "捕捉",
+              "pinyinText": "bǔ zhuō",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-18-v-999ead4dd564",
+              "hintText": "小猫在院子里（　　）老鼠。"
+            },
+            {
+              "answerText": "野兔",
+              "broadcastText": "野兔",
+              "pinyinText": "yě tù",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-18-v-bc02c9af61ba",
+              "hintText": "一只（　　）从草丛里跳出来。"
+            },
+            {
+              "answerText": "景色",
+              "broadcastText": "景色",
+              "pinyinText": "jǐng sè",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-18-v-d01444282877",
+              "hintText": "雨后的山林，（　　）格外美丽。"
+            },
+            {
+              "answerText": "宝库",
+              "broadcastText": "宝库",
+              "pinyinText": "bǎo kù",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-18-v-cd7b98314387",
+              "hintText": "这片森林有丰富的资源，是一座绿色（　　）。"
+            },
+            {
+              "answerText": "抽出",
+              "broadcastText": "抽出",
+              "pinyinText": "chōu chū",
+              "hintText": "我从书架上（　　）一本故事书。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "lesson_text",
+              "practiceCharacters": [
+                "抽"
+              ],
+              "lessonImagePages": [
+                80,
+                82
+              ],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-18-w2-aeeedd0389ae"
+            },
+            {
+              "answerText": "密封",
+              "broadcastText": "密封",
+              "pinyinText": "mì fēng",
+              "hintText": "饼干吃不完，要把袋口（　　）好。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "封"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-18-w2-9d87d7d890bc"
+            },
+            {
+              "answerText": "挡住",
+              "broadcastText": "挡住",
+              "pinyinText": "dǎng zhù",
+              "hintText": "一棵倒下的树（　　）了去路。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "lesson_text",
+              "practiceCharacters": [
+                "挡"
+              ],
+              "lessonImagePages": [
+                80
+              ],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-18-w2-92efa6f0357b"
+            },
+            {
+              "answerText": "松软",
+              "broadcastText": "松软",
+              "pinyinText": "sōng ruǎn",
+              "hintText": "雨后的泥土十分（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "软"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-18-w2-6af140931492"
+            },
+            {
+              "answerText": "刮风",
+              "broadcastText": "刮风",
+              "pinyinText": "guā fēng",
+              "hintText": "今天（　　）了，树叶不停地摇动。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "刮"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-18-w2-03ce8aed5ebc"
+            }
+          ]
+        },
+        {
+          "key": "lesson-19",
+          "order": 4,
+          "title": "第19课 香港，璀璨的明珠（略读）",
+          "type": "lesson",
+          "cards": []
+        }
+      ]
+    },
+    {
+      "order": 7,
+      "title": "第七单元",
+      "sections": [
+        {
+          "key": "lesson-20",
+          "order": 1,
+          "title": "第20课 古诗三首",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "返回",
+              "broadcastText": "返回",
+              "pinyinText": "fǎn huí",
+              "hintText": "天快黑了，我们准备（　　）家中。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "返"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-20-w2-572cf45ba436"
+            },
+            {
+              "answerText": "远望",
+              "broadcastText": "远望",
+              "pinyinText": "yuǎn wàng",
+              "hintText": "登上高楼向（　　），能看见起伏的群山。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "望"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-20-w2-8efee63b417b"
+            },
+            {
+              "answerText": "中断",
+              "broadcastText": "中断",
+              "pinyinText": "zhōng duàn",
+              "hintText": "大雨让正在进行的比赛暂时（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "lesson_text",
+              "practiceCharacters": [
+                "断"
+              ],
+              "lessonImagePages": [
+                89
+              ],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-20-w2-f9d19345a067"
+            },
+            {
+              "answerText": "楚江",
+              "broadcastText": "楚江",
+              "pinyinText": "chǔ jiāng",
+              "hintText": "天门中断（　　）开，碧水东流至此回。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "lesson_text",
+              "practiceCharacters": [
+                "楚"
+              ],
+              "lessonImagePages": [
+                89
+              ],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-20-w2-cab649bdf8d5"
+            },
+            {
+              "answerText": "至此",
+              "broadcastText": "至此",
+              "pinyinText": "zhì cǐ",
+              "hintText": "碧水东流（　　）回。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "lesson_text",
+              "practiceCharacters": [
+                "至"
+              ],
+              "lessonImagePages": [
+                89
+              ],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-20-w2-6cf0252ded39"
+            },
+            {
+              "answerText": "两岸",
+              "broadcastText": "两岸",
+              "pinyinText": "liǎng àn",
+              "hintText": "小河（　　）长满了青草。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "lesson_text",
+              "practiceCharacters": [
+                "岸"
+              ],
+              "lessonImagePages": [
+                89,
+                90
+              ],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-20-w2-a5aa879905d9"
+            },
+            {
+              "answerText": "孤帆",
+              "broadcastText": "孤帆",
+              "pinyinText": "gū fān",
+              "hintText": "（　　）一片日边来。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "lesson_text",
+              "practiceCharacters": [
+                "孤"
+              ],
+              "lessonImagePages": [
+                89,
+                90
+              ],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-20-w2-6826bbd36316"
+            },
+            {
+              "answerText": "饮食",
+              "broadcastText": "饮食",
+              "pinyinText": "yǐn shí",
+              "hintText": "我们要注意（　　）卫生，少吃不洁食物。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "饮"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-20-w2-fe60e205a1c5"
+            },
+            {
+              "answerText": "亦可",
+              "broadcastText": "亦可",
+              "pinyinText": "yì kě",
+              "hintText": "晴天可以去公园，雨天（　　）在家读书。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "亦"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-20-w2-e28fe5bde3b0"
+            },
+            {
+              "answerText": "欲望",
+              "broadcastText": "欲望",
+              "pinyinText": "yù wàng",
+              "hintText": "读到有趣的知识，我产生了继续探索的（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "望",
+                "欲"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-20-w2-20027b9b351e"
+            },
+            {
+              "answerText": "一抹",
+              "broadcastText": "一抹",
+              "pinyinText": "yì mǒ",
+              "hintText": "夕阳给天空染上（　　）红色。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "抹"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-20-w2-fef8aef00ddd"
+            },
+            {
+              "answerText": "相宜",
+              "broadcastText": "相宜",
+              "pinyinText": "xiāng yí",
+              "hintText": "淡妆浓抹总（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "宜"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-20-w2-d65bb4ad009f"
+            }
+          ]
+        },
+        {
+          "key": "lesson-21",
+          "order": 2,
+          "title": "第21课 大自然的声音",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "大自然",
+              "broadcastText": "大自然",
+              "pinyinText": "dà zì rán",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-21-v-3dce988ae214",
+              "hintText": "（　　）里藏着无穷的奥秘。"
+            },
+            {
+              "answerText": "美妙",
+              "broadcastText": "美妙",
+              "pinyinText": "měi miào",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-21-v-448e24040a9b",
+              "hintText": "小提琴奏出了（　　）的音乐。"
+            },
+            {
+              "answerText": "音乐家",
+              "broadcastText": "音乐家",
+              "pinyinText": "yīn yuè jiā",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-21-v-2624cbbcd3e3",
+              "hintText": "这位（　　）创作了许多好听的乐曲。"
+            },
+            {
+              "answerText": "手风琴",
+              "broadcastText": "手风琴",
+              "pinyinText": "shǒu fēng qín",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-21-v-82dffcce8573",
+              "hintText": "演奏者拉起（　　），乐声充满了大厅。"
+            },
+            {
+              "answerText": "歌手",
+              "broadcastText": "歌手",
+              "pinyinText": "gē shǒu",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-21-v-cfb624b8a25b",
+              "hintText": "这位（　　）的歌声清亮又动听。"
+            },
+            {
+              "answerText": "感受",
+              "broadcastText": "感受",
+              "pinyinText": "gǎn shòu",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-21-v-f26fc895f68f",
+              "hintText": "走进花园，我们能（　　）到春天的气息。"
+            },
+            {
+              "answerText": "温柔",
+              "broadcastText": "温柔",
+              "pinyinText": "wēn róu",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-21-v-123e218b573a",
+              "hintText": "老师用（　　）的语气说话。"
+            },
+            {
+              "answerText": "合奏",
+              "broadcastText": "合奏",
+              "pinyinText": "hé zòu",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-21-v-e55cd05ed681",
+              "hintText": "几位同学用不同的乐器（　　）一首曲子。"
+            },
+            {
+              "answerText": "充满",
+              "broadcastText": "充满",
+              "pinyinText": "chōng mǎn",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-21-v-8ac7bb72d370",
+              "hintText": "今天的校园（　　）了欢乐。"
+            },
+            {
+              "answerText": "威力",
+              "broadcastText": "威力",
+              "pinyinText": "wēi lì",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-21-v-bc90551c0ef8",
+              "hintText": "大风把树枝吹断了，可见它的（　　）很大。"
+            },
+            {
+              "answerText": "乐器",
+              "broadcastText": "乐器",
+              "pinyinText": "yuè qì",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-21-v-a59949fd38a4",
+              "hintText": "笛子、钢琴都是（　　）。"
+            },
+            {
+              "answerText": "屋顶",
+              "broadcastText": "屋顶",
+              "pinyinText": "wū dǐng",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-21-v-3c9731b77a4a",
+              "hintText": "这座房子有红色的（　　）。"
+            },
+            {
+              "answerText": "河流",
+              "broadcastText": "河流",
+              "pinyinText": "hé liú",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-21-v-eebe4a446561",
+              "hintText": "这条（　　）穿过村庄，流向远方。"
+            },
+            {
+              "answerText": "轻快",
+              "broadcastText": "轻快",
+              "pinyinText": "qīng kuài",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-21-v-8da25c958f9d",
+              "hintText": "她迈着（　　）的脚步走进教室。"
+            },
+            {
+              "answerText": "合唱",
+              "broadcastText": "合唱",
+              "pinyinText": "hé chàng",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-21-v-a13f4f69b82e",
+              "hintText": "全班同学一起（　　）了一首歌。"
+            },
+            {
+              "answerText": "水塘",
+              "broadcastText": "水塘",
+              "pinyinText": "shuǐ táng",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-21-v-d9bf2fa34baa",
+              "hintText": "（　　）里开着几朵荷花。"
+            },
+            {
+              "answerText": "汇聚",
+              "broadcastText": "汇聚",
+              "pinyinText": "huì jù",
+              "hintText": "小溪慢慢（　　）成宽阔的河流。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "lesson_text",
+              "practiceCharacters": [
+                "汇"
+              ],
+              "lessonImagePages": [
+                91
+              ],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-21-w2-c8e6b6810cca"
+            },
+            {
+              "answerText": "鸣叫",
+              "broadcastText": "鸣叫",
+              "pinyinText": "míng jiào",
+              "hintText": "清晨，鸟儿在枝头（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "鸣"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-21-w2-ad2fee8a203d"
+            }
+          ]
+        },
+        {
+          "key": "lesson-22",
+          "order": 3,
+          "title": "第22课 读不完的大书",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "昆虫",
+              "broadcastText": "昆虫",
+              "pinyinText": "kūn chóng",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-22-v-d6df729b16c3",
+              "hintText": "周末，我们去野外观察小（　　）。"
+            },
+            {
+              "answerText": "万物",
+              "broadcastText": "万物",
+              "pinyinText": "wàn wù",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-22-v-a4fd9fd0d338",
+              "hintText": "春雨滋润着大地上的（　　）。"
+            },
+            {
+              "answerText": "沉思",
+              "broadcastText": "沉思",
+              "pinyinText": "chén sī",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-22-v-5e41359aecd1",
+              "hintText": "他看着这道难题，陷入了（　　）。"
+            },
+            {
+              "answerText": "搬家",
+              "broadcastText": "搬家",
+              "pinyinText": "bān jiā",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-22-v-8f38f5352339",
+              "hintText": "下个月，我们要从老屋（　　）到新房。"
+            },
+            {
+              "answerText": "井然有序",
+              "broadcastText": "井然有序",
+              "pinyinText": "jǐng rán yǒu xù",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-22-v-e82091af57a3",
+              "hintText": "图书馆里的书摆放得（　　）。"
+            },
+            {
+              "answerText": "精神",
+              "broadcastText": "精神",
+              "pinyinText": "jīng shén",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-22-v-c4710024e954",
+              "hintText": "穿上新衣服，他显得特别（　　）。"
+            },
+            {
+              "answerText": "植物",
+              "broadcastText": "植物",
+              "pinyinText": "zhí wù",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-22-v-a745bfdf3005",
+              "hintText": "（　　）和动物都属于生物。"
+            },
+            {
+              "answerText": "千姿百态",
+              "broadcastText": "千姿百态",
+              "pinyinText": "qiān zī bǎi tài",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-22-v-ab8b4f53386b",
+              "hintText": "天上的云朵（　　），一会儿像鱼，一会儿像鸟。"
+            },
+            {
+              "answerText": "鲜美",
+              "broadcastText": "鲜美",
+              "pinyinText": "xiān měi",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-22-v-fcb9ade3eb28",
+              "hintText": "妈妈煮的汤，味道真（　　）。"
+            },
+            {
+              "answerText": "池塘",
+              "broadcastText": "池塘",
+              "pinyinText": "chí táng",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-22-v-da861c10693d",
+              "hintText": "（　　）里有一只青蛙。"
+            },
+            {
+              "answerText": "秋高气爽",
+              "broadcastText": "秋高气爽",
+              "pinyinText": "qiū gāo qì shuǎng",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-22-v-1f90147e7f20",
+              "hintText": "今天（　　），很适合到郊外走走。"
+            },
+            {
+              "answerText": "倒映",
+              "broadcastText": "倒映",
+              "pinyinText": "dào yìng",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-22-v-ec38a2e95972",
+              "hintText": "小桥的影子（　　）在水中。"
+            },
+            {
+              "answerText": "游玩",
+              "broadcastText": "游玩",
+              "pinyinText": "yóu wán",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-22-v-cfdd02f7ac81",
+              "hintText": "周末，我们到湖边（　　）。"
+            },
+            {
+              "answerText": "画册",
+              "broadcastText": "画册",
+              "pinyinText": "huà cè",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-22-v-dc7f21e137cc",
+              "hintText": "这本（　　）里有许多漂亮的图画。"
+            },
+            {
+              "answerText": "无穷",
+              "broadcastText": "无穷",
+              "pinyinText": "wú qióng",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-22-v-b1f647d7f0c7",
+              "hintText": "大自然里藏着（　　）的奥秘。"
+            },
+            {
+              "answerText": "奥秘",
+              "broadcastText": "奥秘",
+              "pinyinText": "ào mì",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-22-v-2421f6dbd8d1",
+              "hintText": "大自然里藏着无穷的（　　）。"
+            },
+            {
+              "answerText": "无尽",
+              "broadcastText": "无尽",
+              "pinyinText": "wú jìn",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-22-v-93f58717877a",
+              "hintText": "大自然的变化带给我们（　　）的乐趣。"
+            },
+            {
+              "answerText": "虾子",
+              "broadcastText": "虾子",
+              "pinyinText": "xiā zi",
+              "hintText": "池塘里，小（　　）在水草间游动。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "虾"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-22-w2-004f94661f60"
+            },
+            {
+              "answerText": "不仅",
+              "broadcastText": "不仅",
+              "pinyinText": "bù jǐn",
+              "hintText": "他（　　）会画画，还会弹琴。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "lesson_text",
+              "practiceCharacters": [
+                "仅"
+              ],
+              "lessonImagePages": [
+                94
+              ],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-22-w2-8b86150100bb"
+            },
+            {
+              "answerText": "枯荣",
+              "broadcastText": "枯荣",
+              "pinyinText": "kū róng",
+              "hintText": "离离原上草，一岁一（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "荣",
+                "枯"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-22-w2-932b49bd0165"
+            },
+            {
+              "answerText": "讽刺",
+              "broadcastText": "讽刺",
+              "pinyinText": "fěng cì",
+              "hintText": "寓言用有趣的小故事，（　　）了爱说空话的人。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "刺"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-22-w2-084578c86f26"
+            },
+            {
+              "answerText": "梨树",
+              "broadcastText": "梨树",
+              "pinyinText": "lí shù",
+              "hintText": "春天，（　　）开出洁白的花。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "lesson_text",
+              "practiceCharacters": [
+                "梨"
+              ],
+              "lessonImagePages": [
+                94
+              ],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-22-w2-47b148e74995"
+            },
+            {
+              "answerText": "部分",
+              "broadcastText": "部分",
+              "pinyinText": "bù fèn",
+              "hintText": "种植粮食是农业生产的一（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "部"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-22-w2-1bb5512d7923"
+            }
+          ]
+        },
+        {
+          "key": "garden-7",
+          "order": 4,
+          "title": "语文园地",
+          "type": "language_garden",
+          "cards": [
+            {
+              "answerText": "田螺",
+              "broadcastText": "田螺",
+              "pinyinText": "tián luó",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-garden-7-v-738dbe2915fe",
+              "hintText": "小小的（　　）背着圆圆的壳。"
+            },
+            {
+              "answerText": "螃蟹",
+              "broadcastText": "螃蟹",
+              "pinyinText": "páng xiè",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-garden-7-v-3efc0d87f78e",
+              "hintText": "（　　）挥着两只大钳子，在沙地上爬行。"
+            },
+            {
+              "answerText": "鲤鱼",
+              "broadcastText": "鲤鱼",
+              "pinyinText": "lǐ yú",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-garden-7-v-cfe79522d542",
+              "hintText": "池塘里，一条（　　）跃出了水面。"
+            },
+            {
+              "answerText": "鲫鱼",
+              "broadcastText": "鲫鱼",
+              "pinyinText": "jì yú",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-garden-7-v-661c6c319c24",
+              "hintText": "爷爷今天钓到了几条小（　　）。"
+            },
+            {
+              "answerText": "鲨鱼",
+              "broadcastText": "鲨鱼",
+              "pinyinText": "shā yú",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-garden-7-v-d2f814bc1cb1",
+              "hintText": "（　　）是生活在海洋里的鱼。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 8,
+      "title": "第八单元",
+      "sections": [
+        {
+          "key": "lesson-23",
+          "order": 1,
+          "title": "第23课 司马光",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "司马",
+              "broadcastText": "司马",
+              "pinyinText": "sī mǎ",
+              "hintText": "（　　）光砸破水缸，救出了同伴。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "lesson_text",
+              "practiceCharacters": [
+                "司"
+              ],
+              "lessonImagePages": [
+                101
+              ],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-23-w2-be83ceae110e"
+            },
+            {
+              "answerText": "登山",
+              "broadcastText": "登山",
+              "pinyinText": "dēng shān",
+              "hintText": "周末，我们带上水杯去（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "登"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-23-w2-6af0ddf8b2f5"
+            },
+            {
+              "answerText": "跌倒",
+              "broadcastText": "跌倒",
+              "pinyinText": "diē dǎo",
+              "hintText": "弟弟不小心（　　）了，我赶紧把他扶起来。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "跌"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-23-w2-7072b5c4c4b3"
+            },
+            {
+              "answerText": "皆大欢喜",
+              "broadcastText": "皆大欢喜",
+              "pinyinText": "jiē dà huān xǐ",
+              "hintText": "事情顺利解决，大家都很满意，真是（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "皆"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-23-w2-47763f402395"
+            },
+            {
+              "answerText": "放弃",
+              "broadcastText": "放弃",
+              "pinyinText": "fàng qì",
+              "hintText": "做事情要有恒心，不能轻易（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "弃"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-23-w2-e7f51b070eff"
+            },
+            {
+              "answerText": "支持",
+              "broadcastText": "支持",
+              "pinyinText": "zhī chí",
+              "hintText": "我想学习画画，爸爸妈妈都很（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "持"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-23-w2-d93373f81363"
+            },
+            {
+              "answerText": "攻击",
+              "broadcastText": "攻击",
+              "pinyinText": "gōng jī",
+              "hintText": "故事中，勇士挡住了敌人的（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "击"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-23-w2-8226ca02ff36"
+            }
+          ]
+        },
+        {
+          "key": "lesson-24",
+          "order": 2,
+          "title": "第24课 一定要争气",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "生物",
+              "broadcastText": "生物",
+              "pinyinText": "shēng wù",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-24-v-61aacd674a2c",
+              "hintText": "植物和动物都属于（　　）。"
+            },
+            {
+              "answerText": "从事",
+              "broadcastText": "从事",
+              "pinyinText": "cóng shì",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-24-v-5a6cc75e9c9b",
+              "hintText": "长大后，我想（　　）和绘画有关的工作。"
+            },
+            {
+              "answerText": "成就",
+              "broadcastText": "成就",
+              "pinyinText": "chéng jiù",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-24-v-52b0e1703d14",
+              "hintText": "经过多年努力，他在研究中取得了重要（　　）。"
+            },
+            {
+              "answerText": "学期",
+              "broadcastText": "学期",
+              "pinyinText": "xué qī",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-24-v-79a4ef019e9c",
+              "hintText": "新（　　）开始了，我们又回到了校园。"
+            },
+            {
+              "answerText": "考试",
+              "broadcastText": "考试",
+              "pinyinText": "kǎo shì",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-24-v-d26ef0190d6c",
+              "hintText": "明天有一场语文（　　），我要认真复习。"
+            },
+            {
+              "answerText": "平均",
+              "broadcastText": "平均",
+              "pinyinText": "píng jūn",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-24-v-a49ffd73bc85",
+              "hintText": "把十个苹果（　　）分给五个人，每人两个。"
+            },
+            {
+              "answerText": "再三",
+              "broadcastText": "再三",
+              "pinyinText": "zài sān",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-24-v-9609ba415ac5",
+              "hintText": "出门前，妈妈（　　）提醒我注意安全。"
+            },
+            {
+              "answerText": "同意",
+              "broadcastText": "同意",
+              "pinyinText": "tóng yì",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-24-v-905819e2e3a0",
+              "hintText": "经过商量，大家都（　　）这个办法。"
+            },
+            {
+              "answerText": "难得",
+              "broadcastText": "难得",
+              "pinyinText": "nán dé",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-24-v-e8ddd4893540",
+              "hintText": "今天（　　）放晴，我们一起去散步。"
+            },
+            {
+              "answerText": "值班",
+              "broadcastText": "值班",
+              "pinyinText": "zhí bān",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-24-v-cc7d8487731b",
+              "hintText": "今晚，由爸爸在办公室（　　）。"
+            },
+            {
+              "answerText": "努力",
+              "broadcastText": "努力",
+              "pinyinText": "nǔ lì",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-24-v-abe26aa668de",
+              "hintText": "我答应你的事，一定会（　　）做到。"
+            },
+            {
+              "answerText": "满分",
+              "broadcastText": "满分",
+              "pinyinText": "mǎn fēn",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-24-v-b9035729a5a4",
+              "hintText": "认真检查以后，他在这次测验中得了（　　）。"
+            },
+            {
+              "answerText": "国家",
+              "broadcastText": "国家",
+              "pinyinText": "guó jiā",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-24-v-0cc659a9f57c",
+              "hintText": "我们热爱自己的（　　）。"
+            },
+            {
+              "answerText": "地位",
+              "broadcastText": "地位",
+              "pinyinText": "dì wèi",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-24-v-4a9420462955",
+              "hintText": "这项发明在人们的生活中有重要（　　）。"
+            },
+            {
+              "answerText": "环节",
+              "broadcastText": "环节",
+              "pinyinText": "huán jié",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-24-v-28475230f056",
+              "hintText": "讲故事比赛分为准备、展示和交流三个（　　）。"
+            },
+            {
+              "answerText": "难度",
+              "broadcastText": "难度",
+              "pinyinText": "nán dù",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-24-v-87b1bf8b511b",
+              "hintText": "练习熟练以后，我们可以增加一点（　　）。"
+            },
+            {
+              "answerText": "刻苦",
+              "broadcastText": "刻苦",
+              "pinyinText": "kè kǔ",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-24-v-0e02bbf8b986",
+              "hintText": "他学习十分（　　），进步很快。"
+            },
+            {
+              "answerText": "兴奋",
+              "broadcastText": "兴奋",
+              "pinyinText": "xīng fèn",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-24-v-4eeae343b29c",
+              "hintText": "第一次坐火车，我（　　）得睡不着。"
+            },
+            {
+              "answerText": "想念",
+              "broadcastText": "想念",
+              "pinyinText": "xiǎng niàn",
+              "hintText": "离开家乡以后，我常常（　　）奶奶。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "念"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-24-w2-c116c1c0c25c"
+            },
+            {
+              "answerText": "相差",
+              "broadcastText": "相差",
+              "pinyinText": "xiāng chà",
+              "hintText": "这两棵树的高度（　　）不大。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "差"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-24-w2-11ac0ba8bb2a"
+            },
+            {
+              "answerText": "退学",
+              "broadcastText": "退学",
+              "pinyinText": "tuì xué",
+              "hintText": "困难的日子里，他曾因为没钱交学费而（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "lesson_text",
+              "practiceCharacters": [
+                "退"
+              ],
+              "lessonImagePages": [
+                102,
+                104
+              ],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-24-w2-f2982b17cc42"
+            },
+            {
+              "answerText": "成绩单",
+              "broadcastText": "成绩单",
+              "pinyinText": "chéng jì dān",
+              "hintText": "拿到（　　）后，他认真总结自己的进步和不足。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "lesson_text",
+              "practiceCharacters": [
+                "单"
+              ],
+              "lessonImagePages": [
+                103
+              ],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-24-w2-5cd8128610d9"
+            },
+            {
+              "answerText": "留学",
+              "broadcastText": "留学",
+              "pinyinText": "liú xué",
+              "hintText": "哥哥到国外（　　），学习新的知识。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "lesson_text",
+              "practiceCharacters": [
+                "留"
+              ],
+              "lessonImagePages": [
+                103
+              ],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-24-w2-3a036c64c60c"
+            }
+          ]
+        },
+        {
+          "key": "lesson-25",
+          "order": 3,
+          "title": "第25课 手术台就是阵地",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "手术台",
+              "broadcastText": "手术台",
+              "pinyinText": "shǒu shù tái",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-25-v-396c795fdccb",
+              "hintText": "医生站在（　　）旁，认真准备手术。"
+            },
+            {
+              "answerText": "阵地",
+              "broadcastText": "阵地",
+              "pinyinText": "zhèn dì",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-25-v-7e82a3544e35",
+              "hintText": "战士们坚守（　　），不让敌人前进一步。"
+            },
+            {
+              "answerText": "战斗",
+              "broadcastText": "战斗",
+              "pinyinText": "zhàn dòu",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-25-v-a642a31e1182",
+              "hintText": "故事中的战士们勇敢地投入（　　）。"
+            },
+            {
+              "answerText": "打响",
+              "broadcastText": "打响",
+              "pinyinText": "dǎ xiǎng",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-25-v-0ef0606063df",
+              "hintText": "战斗已经（　　），故事里的战士们冲向前方。"
+            },
+            {
+              "answerText": "当头一棒",
+              "broadcastText": "当头一棒",
+              "pinyinText": "dāng tóu yí bàng",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-25-v-ef915c340c85",
+              "hintText": "突然失败的消息，像（　　），让他一下清醒过来。"
+            },
+            {
+              "answerText": "伤员",
+              "broadcastText": "伤员",
+              "pinyinText": "shāng yuán",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-25-v-cbed0e501092",
+              "hintText": "医生正在认真照顾（　　）。"
+            },
+            {
+              "answerText": "陆续",
+              "broadcastText": "陆续",
+              "pinyinText": "lù xù",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-25-v-2853f4f629de",
+              "hintText": "上课前，同学们（　　）走进教室。"
+            },
+            {
+              "answerText": "血丝",
+              "broadcastText": "血丝",
+              "pinyinText": "xuè sī",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-25-v-00041d6568c5",
+              "hintText": "他一夜没有休息，眼睛里布满了（　　）。"
+            },
+            {
+              "answerText": "匆匆",
+              "broadcastText": "匆匆",
+              "pinyinText": "cōng cōng",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-25-v-0dbf56813278",
+              "hintText": "他提着书包，（　　）走进教室。"
+            },
+            {
+              "answerText": "医生",
+              "broadcastText": "医生",
+              "pinyinText": "yī shēng",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-25-v-e8ec877c8da5",
+              "hintText": "生病了，要及时找（　　）看病。"
+            },
+            {
+              "answerText": "转告",
+              "broadcastText": "转告",
+              "pinyinText": "zhuǎn gào",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-25-v-7732f32da64d",
+              "hintText": "请你把明天集合的时间（　　）同学们。"
+            },
+            {
+              "answerText": "赶忙",
+              "broadcastText": "赶忙",
+              "pinyinText": "gǎn máng",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-25-v-f2e5e155e216",
+              "hintText": "看到奶奶提着重物，我（　　）上前帮忙。"
+            },
+            {
+              "answerText": "迅速",
+              "broadcastText": "迅速",
+              "pinyinText": "xùn sù",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-25-v-5663d9cd9b5a",
+              "hintText": "听到集合声，大家（　　）排好了队。"
+            },
+            {
+              "answerText": "争分夺秒",
+              "broadcastText": "争分夺秒",
+              "pinyinText": "zhēng fēn duó miǎo",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-25-v-01c7501f2966",
+              "hintText": "为了及时完成救援，大家（　　）地工作。"
+            },
+            {
+              "answerText": "连续",
+              "broadcastText": "连续",
+              "pinyinText": "lián xù",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-lesson-25-v-53b333e7b09d",
+              "hintText": "他（　　）三天坚持晨跑，没有间断。"
+            },
+            {
+              "answerText": "取出",
+              "broadcastText": "取出",
+              "pinyinText": "qǔ chū",
+              "hintText": "我从书包里（　　）课本。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "lesson_text",
+              "practiceCharacters": [
+                "取"
+              ],
+              "lessonImagePages": [
+                105,
+                107
+              ],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-25-w2-abb3912646e3"
+            },
+            {
+              "answerText": "盘子",
+              "broadcastText": "盘子",
+              "pinyinText": "pán zi",
+              "hintText": "这个（　　）是圆形的。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "lesson_text",
+              "practiceCharacters": [
+                "盘"
+              ],
+              "lessonImagePages": [
+                105,
+                107
+              ],
+              "builtinKey": "cn-official-202611-g3-v1-lesson-25-w2-f13de7aaabf8"
+            }
+          ]
+        },
+        {
+          "key": "lesson-26",
+          "order": 4,
+          "title": "第26课 一个粗瓷大碗（略读）",
+          "type": "lesson",
+          "cards": []
+        },
+        {
+          "key": "garden-8",
+          "order": 5,
+          "title": "语文园地",
+          "type": "language_garden",
+          "cards": [
+            {
+              "answerText": "怒目圆睁",
+              "broadcastText": "怒目圆睁",
+              "pinyinText": "nù mù yuán zhēng",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-garden-8-v-ed27fdd8f93e",
+              "hintText": "故事里的勇士（　　），盯着面前的敌人。"
+            },
+            {
+              "answerText": "眨眼",
+              "broadcastText": "眨眼",
+              "pinyinText": "zhǎ yǎn",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-garden-8-v-580df4b9aed1",
+              "hintText": "小星星一闪一闪，像在（　　）。"
+            },
+            {
+              "answerText": "眼眶",
+              "broadcastText": "眼眶",
+              "pinyinText": "yǎn kuàng",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-garden-8-v-b00bb85fc68b",
+              "hintText": "听了这个感人的故事，她的（　　）湿润了。"
+            },
+            {
+              "answerText": "目瞪口呆",
+              "broadcastText": "目瞪口呆",
+              "pinyinText": "mù dèng kǒu dāi",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-garden-8-v-4883fd741ca9",
+              "hintText": "看到精彩的魔术，他惊得（　　）。"
+            },
+            {
+              "answerText": "耳闻目睹",
+              "broadcastText": "耳闻目睹",
+              "pinyinText": "ěr wén mù dǔ",
+              "curriculumSource": "required_vocabulary",
+              "builtinKey": "cn-official-202611-g3-v1-garden-8-v-cd920df4e368",
+              "hintText": "这篇文章写下了作者亲身（　　）的事情。"
+            },
+            {
+              "answerText": "瞅见",
+              "broadcastText": "瞅见",
+              "pinyinText": "chǒu jiàn",
+              "hintText": "我从窗边（　　）一只小猫跑过。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "practiceOrigin": "age_appropriate",
+              "practiceCharacters": [
+                "瞅"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g3-v1-garden-8-w2-e60534c9884d"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "teachingProfile": "grade_aware_v2"
+}

@@ -1,0 +1,1767 @@
+{
+  "publisher": "人民教育出版社",
+  "series": "义务教育教科书",
+  "grade": 1,
+  "volume": "上册",
+  "editionText": "统编版（2022课标修订）·2026-11整理",
+  "subject": "chinese",
+  "auditProfile": "official_textbook",
+  "units": [
+    {
+      "order": 1,
+      "title": "第一单元·识字",
+      "sections": [
+        {
+          "key": "literacy-1",
+          "order": 1,
+          "title": "识字1 天地人",
+          "type": "lesson",
+          "cards": []
+        },
+        {
+          "key": "literacy-2",
+          "order": 2,
+          "title": "识字2 金木水火土",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "一",
+              "broadcastText": "一，一个的一",
+              "pinyinText": "yī",
+              "hintText": "桌上有（　　）个苹果。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "一个",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "一"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-literacy-2-c2-362afb078541"
+            },
+            {
+              "answerText": "二",
+              "broadcastText": "二，二月的二",
+              "pinyinText": "èr",
+              "hintText": "（　　）月过后就是三月。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "二月",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "二"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-literacy-2-c2-9749414521c0"
+            },
+            {
+              "answerText": "三",
+              "broadcastText": "三，三天的三",
+              "pinyinText": "sān",
+              "hintText": "再过（　　）天就是周末。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "三天",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "三"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-literacy-2-c2-e6c2be830e40"
+            },
+            {
+              "answerText": "上",
+              "broadcastText": "上，上下的上",
+              "pinyinText": "shàng",
+              "hintText": "小鸟飞（　　）了树梢。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "上下",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "上"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-literacy-2-c2-465e04626f67"
+            }
+          ]
+        },
+        {
+          "key": "literacy-3",
+          "order": 3,
+          "title": "识字3 口耳目手足",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "口",
+              "broadcastText": "口，开口的口",
+              "pinyinText": "kǒu",
+              "hintText": "喝水前，我张开了（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "开口",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "口"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-literacy-3-c2-ec56a0497d80"
+            },
+            {
+              "answerText": "耳",
+              "broadcastText": "耳，耳朵的耳",
+              "pinyinText": "ěr",
+              "hintText": "小兔有两只长长的（　　）朵。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "耳朵",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "耳"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-literacy-3-c-8033"
+            },
+            {
+              "answerText": "目",
+              "broadcastText": "目，目光的目",
+              "pinyinText": "mù",
+              "hintText": "她的（　　）光停在那朵花上。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "目光",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "目"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-literacy-3-c2-92bb4ebfd20f"
+            },
+            {
+              "answerText": "手",
+              "broadcastText": "手，小手的手",
+              "pinyinText": "shǒu",
+              "hintText": "我举起右（　　）回答问题。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "小手",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "手"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-literacy-3-c2-b4dd0927b74f"
+            }
+          ]
+        },
+        {
+          "key": "literacy-4",
+          "order": 4,
+          "title": "识字4 日月山川",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "日",
+              "broadcastText": "日，日月的日",
+              "pinyinText": "rì",
+              "hintText": "今天是星期（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "日月",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "日"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-literacy-4-c2-78d37616e53d"
+            },
+            {
+              "answerText": "火",
+              "broadcastText": "火，火苗的火",
+              "pinyinText": "huǒ",
+              "hintText": "炉子里升起了红红的（　　）苗。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "火苗",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "火"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-literacy-4-c2-e40ce26f6a08"
+            },
+            {
+              "answerText": "田",
+              "broadcastText": "田，田地的田",
+              "pinyinText": "tián",
+              "hintText": "爷爷在（　　）里种水稻。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "田地",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "田"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-literacy-4-c-7530"
+            },
+            {
+              "answerText": "禾",
+              "broadcastText": "禾，禾苗的禾",
+              "pinyinText": "hé",
+              "hintText": "雨后，（　　）苗长高了。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "禾苗",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "禾"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-literacy-4-c-79be"
+            }
+          ]
+        },
+        {
+          "key": "garden-1",
+          "order": 5,
+          "title": "语文园地一",
+          "type": "language_garden",
+          "cards": [
+            {
+              "answerText": "六",
+              "broadcastText": "六，六个的六",
+              "pinyinText": "liù",
+              "hintText": "盒子里有（　　）个鸡蛋。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "六个",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "六"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-garden-1-c-516d"
+            },
+            {
+              "answerText": "七",
+              "broadcastText": "七，七天的七",
+              "pinyinText": "qī",
+              "hintText": "一个星期有（　　）天。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "七天",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "七"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-garden-1-c-4e03"
+            },
+            {
+              "answerText": "八",
+              "broadcastText": "八，八月的八",
+              "pinyinText": "bā",
+              "hintText": "（　　）月里，天气很热。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "八月",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "八"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-garden-1-c2-d768a40d1e8f"
+            },
+            {
+              "answerText": "十",
+              "broadcastText": "十，十个的十",
+              "pinyinText": "shí",
+              "hintText": "两只手一共有（　　）个手指。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "十个",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "十"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-garden-1-c2-a07535502ee6"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "title": "第二单元·汉语拼音",
+      "sections": [
+        {
+          "key": "garden-2",
+          "order": 1,
+          "title": "语文园地二",
+          "type": "language_garden",
+          "cards": [
+            {
+              "answerText": "九",
+              "broadcastText": "九，九月的九",
+              "pinyinText": "jiǔ",
+              "hintText": "（　　）月到了，我们开学了。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "九月",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "九"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-garden-2-c-4e5d"
+            },
+            {
+              "answerText": "王",
+              "broadcastText": "王，王子的王",
+              "pinyinText": "wáng",
+              "hintText": "童话里的（　　）子骑着白马。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "王子",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "王"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-garden-2-c2-c4a02b1f51d3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "title": "第三单元·汉语拼音",
+      "sections": [
+        {
+          "key": "garden-3",
+          "order": 1,
+          "title": "语文园地三",
+          "type": "language_garden",
+          "cards": [
+            {
+              "answerText": "午",
+              "broadcastText": "午，中午的午",
+              "pinyinText": "wǔ",
+              "hintText": "中（　　），我们一起吃饭。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "中午",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "午"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-garden-3-c-5348"
+            },
+            {
+              "answerText": "下",
+              "broadcastText": "下，下来的下",
+              "pinyinText": "xià",
+              "hintText": "小雨从天空落（　　）来。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "下来",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "下"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-garden-3-c-4e0b"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "title": "第四单元·汉语拼音",
+      "sections": [
+        {
+          "key": "garden-4",
+          "order": 1,
+          "title": "语文园地四",
+          "type": "language_garden",
+          "cards": [
+            {
+              "answerText": "个",
+              "broadcastText": "个，一个的个",
+              "pinyinText": "gè",
+              "hintText": "我有一（　　）红苹果。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "一个",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "个"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-garden-4-c2-d623af35877a"
+            },
+            {
+              "answerText": "去",
+              "broadcastText": "去，回去的去",
+              "pinyinText": "qù",
+              "hintText": "放学了，我们一起回（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "回去",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "去"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-garden-4-c2-45bacf302c34"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 5,
+      "title": "第五单元·阅读",
+      "sections": [
+        {
+          "key": "lesson-1",
+          "order": 1,
+          "title": "第1课 秋天",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "了",
+              "broadcastText": "了，好了的了",
+              "pinyinText": "le",
+              "hintText": "小花开（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "好了",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "了"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-lesson-1-c-4e86"
+            },
+            {
+              "answerText": "子",
+              "broadcastText": "子，子女的子",
+              "pinyinText": "zǐ",
+              "hintText": "爸爸妈妈很爱自己的（　　）女。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "子女",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "子"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-lesson-1-c2-d7342adda71a"
+            },
+            {
+              "answerText": "大",
+              "broadcastText": "大，大小的大",
+              "pinyinText": "dà",
+              "hintText": "这棵树又高又（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "大小",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "大"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-lesson-1-c2-feb037a3970d"
+            },
+            {
+              "answerText": "人",
+              "broadcastText": "人，大人的人",
+              "pinyinText": "rén",
+              "hintText": "门口站着一个（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "大人",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "人"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-lesson-1-c2-85e62718421d"
+            }
+          ]
+        },
+        {
+          "key": "lesson-2",
+          "order": 2,
+          "title": "第2课 江南",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "可",
+              "broadcastText": "可，可以的可",
+              "pinyinText": "kě",
+              "hintText": "我（　　）以自己整理书包。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "可以",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "可"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-lesson-2-c-53ef"
+            },
+            {
+              "answerText": "叶",
+              "broadcastText": "叶，树叶的叶",
+              "pinyinText": "yè",
+              "hintText": "秋天，树（　　）慢慢变黄了。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "树叶",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "叶"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-lesson-2-c2-00f5ff8d29bb"
+            },
+            {
+              "answerText": "东",
+              "broadcastText": "东，东西的东",
+              "pinyinText": "dōng",
+              "hintText": "太阳从（　　）边升起。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "东西",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "东"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-lesson-2-c2-44e6cb95a8dc"
+            },
+            {
+              "answerText": "西",
+              "broadcastText": "西，东西的西",
+              "pinyinText": "xī",
+              "hintText": "太阳从（　　）边落下。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "东西",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "西"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-lesson-2-c-897f"
+            }
+          ]
+        },
+        {
+          "key": "lesson-3",
+          "order": 3,
+          "title": "第3课 雪地里的小画家",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "竹",
+              "broadcastText": "竹，竹子的竹",
+              "pinyinText": "zhú",
+              "hintText": "熊猫爱吃（　　）子。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "竹子",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "竹"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-lesson-3-c2-488e0f7f2a21"
+            },
+            {
+              "answerText": "马",
+              "broadcastText": "马，小马的马",
+              "pinyinText": "mǎ",
+              "hintText": "小（　　）在草地上跑。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "小马",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "马"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-lesson-3-c2-fee8d0de5467"
+            },
+            {
+              "answerText": "牙",
+              "broadcastText": "牙，牙齿的牙",
+              "pinyinText": "yá",
+              "hintText": "我每天早晚都刷（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "牙齿",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "牙"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-lesson-3-c-7259"
+            },
+            {
+              "answerText": "用",
+              "broadcastText": "用，用心的用",
+              "pinyinText": "yòng",
+              "hintText": "我（　　）铅笔写字。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "用心",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "用"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-lesson-3-c2-2d9b2149b723"
+            },
+            {
+              "answerText": "几",
+              "broadcastText": "几，几个的几",
+              "pinyinText": "jǐ",
+              "hintText": "树上有（　　）只小鸟？",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "几个",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "几"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-lesson-3-c-51e0"
+            }
+          ]
+        },
+        {
+          "key": "lesson-4",
+          "order": 4,
+          "title": "第4课 四季",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "四",
+              "broadcastText": "四，四季的四",
+              "pinyinText": "sì",
+              "hintText": "一年有春夏秋冬（　　）季。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "四季",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "四"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-lesson-4-c2-b4795ad2fd52"
+            },
+            {
+              "answerText": "小",
+              "broadcastText": "小，大小的小",
+              "pinyinText": "xiǎo",
+              "hintText": "这只猫的身体很（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "大小",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "小"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-lesson-4-c2-061bd2f7c5eb"
+            },
+            {
+              "answerText": "鸟",
+              "broadcastText": "鸟，小鸟的鸟",
+              "pinyinText": "niǎo",
+              "hintText": "小（　　）在树上唱歌。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "小鸟",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "鸟"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-lesson-4-c2-4da9b569a1e6"
+            },
+            {
+              "answerText": "是",
+              "broadcastText": "是，是不是的是",
+              "pinyinText": "shì",
+              "hintText": "这（　　）我的新书包。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "是不是",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "是"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-lesson-4-c2-9a160cd68366"
+            },
+            {
+              "answerText": "天",
+              "broadcastText": "天，天地的天",
+              "pinyinText": "tiān",
+              "hintText": "今（　　），我和妈妈去公园。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "天地",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "天"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-lesson-4-c2-3bb9930249be"
+            }
+          ]
+        },
+        {
+          "key": "garden-5",
+          "order": 5,
+          "title": "语文园地五",
+          "type": "language_garden",
+          "cards": [
+            {
+              "answerText": "女",
+              "broadcastText": "女，女儿的女",
+              "pinyinText": "nǚ",
+              "hintText": "妈妈的（　　）儿正在画画。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "女儿",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "女"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-garden-5-c2-5ad2630dee59"
+            },
+            {
+              "answerText": "开",
+              "broadcastText": "开，开门的开",
+              "pinyinText": "kāi",
+              "hintText": "早上，老师打（　　）教室的门。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "开门",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "开"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-garden-5-c2-31679b11ecff"
+            },
+            {
+              "answerText": "关",
+              "broadcastText": "关，关门的关",
+              "pinyinText": "guān",
+              "hintText": "离开房间时，请（　　）好门。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "关门",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "关"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-garden-5-c2-adfeadf04f5f"
+            },
+            {
+              "answerText": "先",
+              "broadcastText": "先，先后的先",
+              "pinyinText": "xiān",
+              "hintText": "吃饭前，我们要（　　）洗手。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "先后",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "先"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-garden-5-c2-cd846cc0141c"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 6,
+      "title": "第六单元·识字",
+      "sections": [
+        {
+          "key": "literacy-5",
+          "order": 1,
+          "title": "识字5 对韵歌",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "云",
+              "broadcastText": "云，白云的云",
+              "pinyinText": "yún",
+              "hintText": "天空飘着几朵白（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "白云",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "云"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-literacy-5-c2-a87b9679428c"
+            },
+            {
+              "answerText": "雨",
+              "broadcastText": "雨，下雨的雨",
+              "pinyinText": "yǔ",
+              "hintText": "天空下起了小（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "下雨",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "雨"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-literacy-5-c2-8e96f57eef89"
+            },
+            {
+              "answerText": "虫",
+              "broadcastText": "虫，小虫的虫",
+              "pinyinText": "chóng",
+              "hintText": "树叶上爬着一只小（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "小虫",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "虫"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-literacy-5-c2-d7711827da62"
+            },
+            {
+              "answerText": "山",
+              "broadcastText": "山，大山的山",
+              "pinyinText": "shān",
+              "hintText": "远处有一座高高的（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "大山",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "山"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-literacy-5-c2-724a9b0ffb58"
+            },
+            {
+              "answerText": "水",
+              "broadcastText": "水，山水的水",
+              "pinyinText": "shuǐ",
+              "hintText": "我口渴了，想喝（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "山水",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "水"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-literacy-5-c2-c8d1e75aa0c0"
+            }
+          ]
+        },
+        {
+          "key": "literacy-6",
+          "order": 2,
+          "title": "识字6 日月明",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "力",
+              "broadcastText": "力，力气的力",
+              "pinyinText": "lì",
+              "hintText": "他花了很大（　　）气才搬起箱子。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "力气",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "力"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-literacy-6-c2-0c5136c08ccc"
+            },
+            {
+              "answerText": "男",
+              "broadcastText": "男，男孩的男",
+              "pinyinText": "nán",
+              "hintText": "这个（　　）孩正在踢球。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "男孩",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "男"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-literacy-6-c2-60c3ee4b71ec"
+            },
+            {
+              "answerText": "土",
+              "broadcastText": "土，泥土的土",
+              "pinyinText": "tǔ",
+              "hintText": "小草从泥（　　）里钻出来。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "泥土",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "土"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-literacy-6-c-571f"
+            },
+            {
+              "answerText": "木",
+              "broadcastText": "木，木头的木",
+              "pinyinText": "mù",
+              "hintText": "这张桌子是用（　　）头做的。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "木头",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "木"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-literacy-6-c2-84202d8ba0cb"
+            },
+            {
+              "answerText": "心",
+              "broadcastText": "心，开心的心",
+              "pinyinText": "xīn",
+              "hintText": "我用（　　）听老师讲课。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "开心",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "心"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-literacy-6-c2-fc063612258f"
+            }
+          ]
+        },
+        {
+          "key": "literacy-7",
+          "order": 3,
+          "title": "识字7 小书包",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "尺",
+              "broadcastText": "尺，尺子的尺",
+              "pinyinText": "chǐ",
+              "hintText": "我拿出（　　）子画直线。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "尺子",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "尺"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-literacy-7-c2-f724e5e031ba"
+            },
+            {
+              "answerText": "本",
+              "broadcastText": "本，书本的本",
+              "pinyinText": "běn",
+              "hintText": "桌上放着许多书（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "书本",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "本"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-literacy-7-c2-5b11e63a88ce"
+            },
+            {
+              "answerText": "刀",
+              "broadcastText": "刀，小刀的刀",
+              "pinyinText": "dāo",
+              "hintText": "爸爸用小（　　）削苹果。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "小刀",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "刀"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-literacy-7-c2-0ce66cbc98b8"
+            },
+            {
+              "answerText": "不",
+              "broadcastText": "不，不是的不",
+              "pinyinText": "bù",
+              "hintText": "我（　　）把垃圾丢在地上。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "不是",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "不"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-literacy-7-c2-11be495dcfbf"
+            },
+            {
+              "answerText": "少",
+              "broadcastText": "少，多少的少",
+              "pinyinText": "shǎo",
+              "hintText": "这支笔一共多（　　）钱？",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "多少",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "少"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-literacy-7-c-5c11"
+            }
+          ]
+        },
+        {
+          "key": "literacy-8",
+          "order": 4,
+          "title": "识字8 升国旗",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "中",
+              "broadcastText": "中，中间的中",
+              "pinyinText": "zhōng",
+              "hintText": "小猫坐在两只小狗（　　）间。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "中间",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "中"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-literacy-8-c2-da9be82277c6"
+            },
+            {
+              "answerText": "五",
+              "broadcastText": "五，五个的五",
+              "pinyinText": "wǔ",
+              "hintText": "篮子里有（　　）个桃子。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "五个",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "五"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-literacy-8-c2-1644e3d700d4"
+            },
+            {
+              "answerText": "风",
+              "broadcastText": "风，大风的风",
+              "pinyinText": "fēng",
+              "hintText": "一阵（　　）吹来，树叶动了。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "大风",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "风"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-literacy-8-c2-13d766bb9b38"
+            },
+            {
+              "answerText": "立",
+              "broadcastText": "立，立正的立",
+              "pinyinText": "lì",
+              "hintText": "升旗时，我们站好，身体（　　）正。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "立正",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "立"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-literacy-8-c2-0142f040d65d"
+            },
+            {
+              "answerText": "正",
+              "broadcastText": "正，立正的正",
+              "pinyinText": "zhèng",
+              "hintText": "上课铃响了，请坐端（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "立正",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "正"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-literacy-8-c2-20827cc2db3e"
+            }
+          ]
+        },
+        {
+          "key": "garden-6",
+          "order": 5,
+          "title": "语文园地六",
+          "type": "language_garden",
+          "cards": [
+            {
+              "answerText": "工",
+              "broadcastText": "工，工人的工",
+              "pinyinText": "gōng",
+              "hintText": "（　　）人在修理马路。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "工人",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "工"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-garden-6-c2-a44bfaace9b5"
+            },
+            {
+              "answerText": "厂",
+              "broadcastText": "厂，工厂的厂",
+              "pinyinText": "chǎng",
+              "hintText": "爸爸在工（　　）里工作。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "工厂",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "厂"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-garden-6-c-5382"
+            },
+            {
+              "answerText": "门",
+              "broadcastText": "门，开门的门",
+              "pinyinText": "mén",
+              "hintText": "请轻轻推开这扇（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "开门",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "门"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-garden-6-c2-562965961591"
+            },
+            {
+              "answerText": "卫",
+              "broadcastText": "卫，卫生的卫",
+              "pinyinText": "wèi",
+              "hintText": "我们要保持教室（　　）生。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "卫生",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "卫"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-garden-6-c-536b"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 7,
+      "title": "第七单元·阅读",
+      "sections": [
+        {
+          "key": "lesson-5",
+          "order": 1,
+          "title": "第5课 小小的船",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "月",
+              "broadcastText": "月，月亮的月",
+              "pinyinText": "yuè",
+              "hintText": "天上挂着一轮（　　）亮。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "月亮",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "月"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-lesson-5-c2-9d0284cb4f0a"
+            },
+            {
+              "answerText": "儿",
+              "broadcastText": "儿，儿子的儿",
+              "pinyinText": "ér",
+              "hintText": "爸爸带着（　　）子去公园。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "儿子",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "儿"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-lesson-5-c-513f"
+            },
+            {
+              "answerText": "头",
+              "broadcastText": "头，头发的头",
+              "pinyinText": "tóu",
+              "hintText": "弟弟的（　　）发短短的。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "头发",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "头"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-lesson-5-c2-9b8c9d95854f"
+            },
+            {
+              "answerText": "里",
+              "broadcastText": "里，里面的里",
+              "pinyinText": "lǐ",
+              "hintText": "小猫躲在纸箱（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "里面",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "里"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-lesson-5-c2-a484fcf0e1b5"
+            },
+            {
+              "answerText": "见",
+              "broadcastText": "见，看见的见",
+              "pinyinText": "jiàn",
+              "hintText": "我看（　　）一只美丽的蝴蝶。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "看见",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "见"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-lesson-5-c-89c1"
+            }
+          ]
+        },
+        {
+          "key": "lesson-6",
+          "order": 2,
+          "title": "第6课 影子",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "在",
+              "broadcastText": "在，正在的在",
+              "pinyinText": "zài",
+              "hintText": "小鸟（　　）树上唱歌。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "正在",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "在"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-lesson-6-c2-1520ab924edd"
+            },
+            {
+              "answerText": "我",
+              "broadcastText": "我，我们的我",
+              "pinyinText": "wǒ",
+              "hintText": "（　　）喜欢和同学一起读书。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "我们",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "我"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-lesson-6-c-6211"
+            },
+            {
+              "answerText": "左",
+              "broadcastText": "左，左右的左",
+              "pinyinText": "zuǒ",
+              "hintText": "写字时，用（　　）手扶住本子。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "左右",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "左"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-lesson-6-c-5de6"
+            },
+            {
+              "answerText": "右",
+              "broadcastText": "右，左右的右",
+              "pinyinText": "yòu",
+              "hintText": "这只手是我的（　　）手。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "左右",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "右"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-lesson-6-c-53f3"
+            }
+          ]
+        },
+        {
+          "key": "lesson-7",
+          "order": 3,
+          "title": "第7课 两件宝",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "和",
+              "broadcastText": "和，和平的和",
+              "pinyinText": "hé",
+              "hintText": "我（　　）妈妈一起看书。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "和平",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "和"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-lesson-7-c2-44d2a4c390f2"
+            },
+            {
+              "answerText": "也",
+              "broadcastText": "也，也是的也",
+              "pinyinText": "yě",
+              "hintText": "哥哥会游泳，我（　　）会。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "也是",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "也"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-lesson-7-c2-dc91c4f4ff89"
+            },
+            {
+              "answerText": "又",
+              "broadcastText": "又，又来的又",
+              "pinyinText": "yòu",
+              "hintText": "小鸟昨天来过，今天（　　）来了。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "又来",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "又"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-lesson-7-c2-b3d00b341a85"
+            },
+            {
+              "answerText": "才",
+              "broadcastText": "才，刚才的才",
+              "pinyinText": "cái",
+              "hintText": "雨停了，我们（　　）走出教室。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "刚才",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "才"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-lesson-7-c-624d"
+            }
+          ]
+        },
+        {
+          "key": "garden-7",
+          "order": 4,
+          "title": "语文园地七",
+          "type": "language_garden",
+          "cards": [
+            {
+              "answerText": "爸",
+              "broadcastText": "爸，爸爸的爸",
+              "pinyinText": "bà",
+              "hintText": "我和（　　）妈一起去公园。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "爸爸",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "爸"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-garden-7-c-7238"
+            },
+            {
+              "answerText": "妈",
+              "broadcastText": "妈，妈妈的妈",
+              "pinyinText": "mā",
+              "hintText": "爸（　　）带我去看花。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "妈妈",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "妈"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-garden-7-c-5988"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 8,
+      "title": "第八单元·阅读",
+      "sections": [
+        {
+          "key": "lesson-8",
+          "order": 1,
+          "title": "第8课 比尾巴",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "比",
+              "broadcastText": "比，比较的比",
+              "pinyinText": "bǐ",
+              "hintText": "大象（　　）小兔重。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "比较",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "比"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-lesson-8-c-6bd4"
+            },
+            {
+              "answerText": "巴",
+              "broadcastText": "巴，尾巴的巴",
+              "pinyinText": "bā",
+              "hintText": "小猴子的尾（　　）长长的。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "尾巴",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "巴"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-lesson-8-c2-0a5fc76173e2"
+            },
+            {
+              "answerText": "长",
+              "broadcastText": "长，长短的长",
+              "pinyinText": "cháng",
+              "hintText": "这条绳子真（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "长短",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "长"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-lesson-8-c-957f"
+            },
+            {
+              "answerText": "公",
+              "broadcastText": "公，公园的公",
+              "pinyinText": "gōng",
+              "hintText": "周末，我们去（　　）园玩。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "公园",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "公"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-lesson-8-c-516c"
+            }
+          ]
+        },
+        {
+          "key": "lesson-9",
+          "order": 2,
+          "title": "第9课 乌鸦喝水",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "只",
+              "broadcastText": "只，一只的只",
+              "pinyinText": "zhī",
+              "hintText": "树下有一（　　）小猫。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "一只",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "只"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-lesson-9-c-53ea"
+            },
+            {
+              "answerText": "多",
+              "broadcastText": "多，多少的多",
+              "pinyinText": "duō",
+              "hintText": "花园里的花真（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "多少",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "多"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-lesson-9-c2-da126325b40b"
+            },
+            {
+              "answerText": "办",
+              "broadcastText": "办，办法的办",
+              "pinyinText": "bàn",
+              "hintText": "遇到困难，我们一起想（　　）法。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "办法",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "办"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-lesson-9-c-529e"
+            },
+            {
+              "answerText": "石",
+              "broadcastText": "石，石头的石",
+              "pinyinText": "shí",
+              "hintText": "河边有一块大（　　）头。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "石头",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "石"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-lesson-9-c2-a8786292c4e4"
+            },
+            {
+              "answerText": "出",
+              "broadcastText": "出，出来的出",
+              "pinyinText": "chū",
+              "hintText": "小草从土里长（　　）来了。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "出来",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "出"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-lesson-9-c-51fa"
+            }
+          ]
+        },
+        {
+          "key": "lesson-10",
+          "order": 3,
+          "title": "第10课 雨点儿",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "来",
+              "broadcastText": "来，回来的来",
+              "pinyinText": "lái",
+              "hintText": "爸爸下班回（　　）了。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "回来",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "来"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-lesson-10-c2-7024250492a0"
+            },
+            {
+              "answerText": "半",
+              "broadcastText": "半，一半的半",
+              "pinyinText": "bàn",
+              "hintText": "我把苹果分成两（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "一半",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "半"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-lesson-10-c2-2079cc621b21"
+            },
+            {
+              "answerText": "你",
+              "broadcastText": "你，你们的你",
+              "pinyinText": "nǐ",
+              "hintText": "（　　）愿意和我一起玩吗？",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "你们",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "你"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-lesson-10-c-4f60"
+            },
+            {
+              "answerText": "有",
+              "broadcastText": "有，没有的有",
+              "pinyinText": "yǒu",
+              "hintText": "我（　　）一本故事书。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "没有",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "有"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-lesson-10-c2-9899a3e9349e"
+            }
+          ]
+        },
+        {
+          "key": "garden-8",
+          "order": 4,
+          "title": "语文园地八",
+          "type": "language_garden",
+          "cards": [
+            {
+              "answerText": "牛",
+              "broadcastText": "牛，小牛的牛",
+              "pinyinText": "niú",
+              "hintText": "小（　　）在田边吃草。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "小牛",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "牛"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-garden-8-c2-79dfecf9a546"
+            },
+            {
+              "answerText": "羊",
+              "broadcastText": "羊，小羊的羊",
+              "pinyinText": "yáng",
+              "hintText": "小（　　）的毛白白的。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "小羊",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "羊"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-garden-8-c2-cca4dfbcd693"
+            },
+            {
+              "answerText": "爪",
+              "broadcastText": "爪，爪子的爪",
+              "pinyinText": "zhuǎ",
+              "hintText": "小猫用（　　）子洗脸。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "爪子",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "爪"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-garden-8-c-722a"
+            },
+            {
+              "answerText": "白",
+              "broadcastText": "白，白云的白",
+              "pinyinText": "bái",
+              "hintText": "这只兔子的毛很（　　）。",
+              "curriculumSource": "writing_practice",
+              "adaptation": "coverage_added",
+              "writingExample": "白云",
+              "practiceOrigin": "grade_one_character",
+              "practiceCharacters": [
+                "白"
+              ],
+              "lessonImagePages": [],
+              "builtinKey": "cn-official-202611-g1-v1-garden-8-c2-c863cca67a75"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "teachingProfile": "grade_aware_v2"
+}
