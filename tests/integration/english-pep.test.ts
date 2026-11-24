@@ -1,5 +1,5 @@
 import { readFileSync } from "node:fs";
-import { and, eq } from "drizzle-orm";
+import { eq } from "drizzle-orm";
 import { expect, test } from "vitest";
 import { user } from "@/modules/auth/schema";
 import { children, families, guardians } from "@/modules/families/schema";

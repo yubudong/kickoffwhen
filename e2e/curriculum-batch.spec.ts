@@ -1,3 +1,4 @@
+import { cleanupEngagement } from './engagement-cleanup';
 import { expect, test } from "@playwright/test";
 
 import { uniqueTestIp } from "./test-config";
@@ -34,6 +35,7 @@ test.afterEach(async () => {
     }
     await db.delete(todoSchema.todoTasks).where(orm.eq(todoSchema.todoTasks.familyId, guardian.familyId));
     await db.delete(taskSchema.learningTasks).where(orm.eq(taskSchema.learningTasks.familyId, guardian.familyId));
+    await cleanupEngagement(db, guardian.familyId);
     await db.delete(familySchema.families).where(orm.eq(familySchema.families.id, guardian.familyId));
   }
   if (fixtureEditionId) await db.delete(contentSchema.learningCards)
@@ -131,8 +133,8 @@ test("家长展开教材、勾选整个单元后按课下发", async ({ page }) 
   await expect(page.getByRole("status")).toContainText("已创建 2 项任务、共 2 词");
   await page.getByRole("link", { name: "待办清单" }).click();
   await expect(page).toHaveURL(/\/parent\/todos$/);
-  await expect(page.getByText("语文 · 第一单元 · 第1课（1词）")).toBeVisible();
-  await expect(page.getByText("语文 · 第一单元 · 第2课（1词）")).toBeVisible();
+  await expect(page.getByRole("button", { name: "语文 · 第一单元 · 第1课（1词）", exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: "语文 · 第一单元 · 第2课（1词）", exact: true })).toBeVisible();
 
   const { user } = await import("@/modules/auth/schema");
   const { guardians } = await import("@/modules/families/schema");

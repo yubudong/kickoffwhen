@@ -36,8 +36,8 @@ export function formatTodoDay(date: string) {
     const value = new Date(dateSchema.parse(date) + 'T00:00:00Z');
     return `${value.getUTCMonth() + 1}月${value.getUTCDate()}日 ${weekdays[value.getUTCDay()]}`;
 }
-export const taskInputSchema = z.object({ childId: z.string().uuid(), title: z.string().trim().min(1).max(120), requirements: z.string().trim().max(2000).default(''), date: dateSchema, commandId: z.string().uuid() });
-export const updateManualSchema = taskInputSchema.pick({ title: true, requirements: true, date: true }).extend({ expectedUpdatedAt: z.iso.datetime() });
+export const taskInputSchema = z.object({ childId: z.string().uuid(), title: z.string().trim().min(1).max(120), requirements: z.string().trim().max(2000).default(''), date: dateSchema, commandId: z.string().uuid(), rewardCoins: bonusSchema.default(1), rewardGrowth: bonusSchema.default(10), confirmation: z.enum(['self', 'parent']).default('parent') });
+export const updateManualSchema = taskInputSchema.pick({ title: true, requirements: true, date: true }).extend({ expectedUpdatedAt: z.iso.datetime(), rewardCoins: bonusSchema.optional(), rewardGrowth: bonusSchema.optional(), confirmation: z.enum(['self', 'parent']).optional() });
 export function todayShanghai(at = new Date()) { return new Date(at.getTime() + 8 * 3600000).toISOString().slice(0, 10); }
 export function summarizeTodos(rows: Array<{
     status: string;

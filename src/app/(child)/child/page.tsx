@@ -1,3 +1,5 @@
+import '@/components/engagement/engagement.css';
+import Link from "next/link";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
@@ -26,7 +28,7 @@ export default async function ChildHomePage() {
       <ChildHeader avatarKey={child.avatarKey} nickname={child.nickname} />
       <main className="page-shell child-page-shell">
         <section className="hero-card child-home-card">
-          <h1>{child.nickname}的待办清单</h1>
+          <div className="growth-heading"><h1>{child.nickname}的待办清单</h1><Link className="growth-home-link" href="/child/companion">✦ 我的伙伴 · 星币与奖励 →</Link></div>
           <TodoBoard role="child" childName={child.nickname} />
         </section>
       </main>

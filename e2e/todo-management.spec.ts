@@ -14,6 +14,7 @@ let fixtureEmail = "";
 async function createFamily(page: Page) {
   fixtureEmail = `todo-management-${crypto.randomUUID()}@example.test`;
   await page.goto("/sign-up");
+  await page.waitForLoadState("networkidle");
   await page.getByLabel("称呼").fill("待办测试家长");
   await page.getByLabel("邮箱").fill(fixtureEmail);
   await page.getByLabel("密码", { exact: true }).fill("Todo-Management-Test-Password-1");
@@ -84,6 +85,9 @@ test.afterEach(async () => {
       await db.delete(todoSchema.todoSubmissions).where(orm.inArray(todoSchema.todoSubmissions.todoId, todoIds));
       await db.delete(todoSchema.todoTasks).where(orm.inArray(todoSchema.todoTasks.id, todoIds));
     }
+    const engagement = await import('@/modules/engagement/schema');
+    await db.delete(engagement.growthEntries).where(orm.eq(engagement.growthEntries.familyId, guardian.familyId));
+    await db.delete(engagement.wallets).where(orm.eq(engagement.wallets.familyId, guardian.familyId));
     await db.delete(familySchema.families).where(orm.eq(familySchema.families.id, guardian.familyId));
   }
   if (authUser) await db.delete(authSchema.user).where(orm.eq(authSchema.user.id, authUser.id));
@@ -130,11 +134,12 @@ test("编辑期间另一页面修改任务后，旧草稿不能取得新版本�
     const otherForm = otherPage.locator(".todo-edit");
     await otherForm.getByLabel("待办任务").fill("另一页面的新内容");
     await otherForm.getByRole("button", { name: "保存修改" }).click();
+    await otherPage.getByRole("dialog").getByRole("button", { name: "关闭", exact: true }).click();
     await expect(otherPage.getByRole("row").filter({ hasText: "另一页面的新内容" })).toBeVisible();
 
-    await page.getByRole("button", { name: "刷新" }).click();
+    // The open drawer keeps the draft while the normal five-second poll refreshes its task.
     const refreshedRow = page.getByRole("row").filter({ hasText: "另一页面的新内容" });
-    await expect(refreshedRow).toBeVisible();
+    await expect(refreshedRow).toBeVisible({ timeout: 10000 });
     await expect(draft.getByLabel("待办任务")).toHaveValue("我的旧草稿");
     await expect(refreshedRow.getByRole("button", { name: "编辑", exact: true })).toBeDisabled();
 
@@ -145,6 +150,7 @@ test("编辑期间另一页面修改任务后，旧草稿不能取得新版本�
     await expect(otherPage.getByRole("row").filter({ hasText: "另一页面的新内容" })).toBeVisible();
     await expect(otherPage.getByRole("row").filter({ hasText: "我的旧草稿" })).toHaveCount(0);
     await draft.getByRole("button", { name: "取消编辑" }).click();
+    await page.getByRole("dialog").getByRole("button", { name: "关闭", exact: true }).click();
     await refreshedRow.getByRole("button", { name: "编辑", exact: true }).click();
     await expect(page.locator(".todo-edit").getByLabel("待办任务")).toHaveValue("另一页面的新内容");
   } finally {

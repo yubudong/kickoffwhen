@@ -93,7 +93,7 @@ test("周视图按天列出范围内每一天，日视图仍直接添加到所�
   expect(text).toContain("无任务");
   expect(text).toContain("阅读");
   expect(text).toContain("教材听写");
-  expect(text).toContain("累计积分：4");
+  expect(text).toContain("本范围获得星币：4");
   view.values[13] = true;
   view.stateIndex = 0;
   expect(textContent(TodoBoard({ role: "parent" }))).toContain("添加到哪一天");

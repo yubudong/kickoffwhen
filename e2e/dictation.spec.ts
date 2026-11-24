@@ -1,3 +1,4 @@
+import { cleanupEngagement } from './engagement-cleanup';
 import { readFile, readdir } from "node:fs/promises";
 
 import { expect, type BrowserContext, type Page, test } from "@playwright/test";
@@ -280,6 +281,7 @@ async function cleanupFixture(state: FixtureState) {
     await tx.delete(reviewSchema.childCardStates).where(orm.eq(reviewSchema.childCardStates.familyId, familyId));
     await tx.delete(mediaSchema.privateMedia).where(orm.eq(mediaSchema.privateMedia.familyId, familyId));
     await tx.delete(contentSchema.learningCards).where(orm.eq(contentSchema.learningCards.familyId, familyId));
+    await cleanupEngagement(tx, familyId);
     await tx.delete(familySchema.families).where(orm.eq(familySchema.families.id, familyId));
     }
     if (state.builtinCardIds?.length) await tx.delete(contentSchema.learningCards).where(orm.inArray(contentSchema.learningCards.id, state.builtinCardIds));
@@ -355,14 +357,14 @@ test("连续听写、刷新、切换孩子、批改恢复和错题循环", async
   let blockAudio = true;
   await childPage.route("**/api/private-media/**", (route) => blockAudio ? route.abort() : route.continue());
 
-  await expect(childPage.getByRole("heading", { name: "小雨的待办清单" })).toBeVisible();
-  await expect(childPage.getByText("今日听写（3项）", { exact: true })).toBeVisible();
+  await expect(childPage.locator(".growth-heading").getByRole("heading", { name: "小雨的待办清单" })).toBeVisible();
+  await expect(childPage.getByRole("button", { name: "今日听写（3项）", exact: true })).toBeVisible();
   // Leave a genuine previous child document in history, then prove that the
   // header switch and new-child selection both replace the current document.
   await childPage.goto("/child/tasks");
   await expect(childPage).toHaveURL(/\/child$/);
-  await expect(childPage.getByRole("heading", { name: "小雨的待办清单" })).toBeVisible();
-  await expect(childPage.getByText("今日听写（3项）", { exact: true })).toBeVisible();
+  await expect(childPage.locator(".growth-heading").getByRole("heading", { name: "小雨的待办清单" })).toBeVisible();
+  await expect(childPage.getByRole("button", { name: "今日听写（3项）", exact: true })).toBeVisible();
   await childPage.goto("/child");
   await childPage.waitForLoadState("networkidle");
   const firstHomeDocumentId = await readDocumentId(childPage);
@@ -376,19 +378,19 @@ test("连续听写、刷新、切换孩子、批改恢复和错题循环", async
     childPage.waitForURL(/\/child$/, { waitUntil: "domcontentloaded" }),
     childPage.getByRole("button", { name: /小川/ }).click(),
   ]);
-  await expect(childPage.getByRole("heading", { name: "小川的待办清单" })).toBeVisible();
+  await expect(childPage.locator(".growth-heading").getByRole("heading", { name: "小川的待办清单" })).toBeVisible();
   await expectDocumentReplaced(childPage, firstSwitchDocumentId);
   await childPage.waitForLoadState("networkidle");
   const firstSecondChildDocumentId = await readDocumentId(childPage);
   await childPage.goBack();
-  await expect(childPage.getByRole("heading", { name: "小川的待办清单" })).toBeVisible();
-  await expect(childPage.getByRole("heading", { name: "小雨的待办清单" })).toHaveCount(0);
-  await expect(childPage.getByText("今日听写（3项）", { exact: true })).toHaveCount(0);
+  await expect(childPage.locator(".growth-heading").getByRole("heading", { name: "小川的待办清单" })).toBeVisible();
+  await expect(childPage.locator(".growth-heading").getByRole("heading", { name: "小雨的待办清单" })).toHaveCount(0);
+  await expect(childPage.getByRole("button", { name: "今日听写（3项）", exact: true })).toHaveCount(0);
   await expect(childPage.getByText("桂花", { exact: true })).toHaveCount(0);
   await expectDocumentReplaced(childPage, firstSecondChildDocumentId);
   const firstBackDocumentId = await readDocumentId(childPage);
   await childPage.goForward();
-  await expect(childPage.getByRole("heading", { name: "小川的待办清单" })).toBeVisible();
+  await expect(childPage.locator(".growth-heading").getByRole("heading", { name: "小川的待办清单" })).toBeVisible();
   await expectDocumentReplaced(childPage, firstBackDocumentId);
   await childPage.waitForLoadState("networkidle");
   const secondHomeDocumentId = await readDocumentId(childPage);
@@ -398,7 +400,7 @@ test("连续听写、刷新、切换孩子、批改恢复和错题循环", async
   ]);
   await expectDocumentReplaced(childPage, secondHomeDocumentId);
   await childPage.getByRole("button", { name: /小雨/ }).click();
-  await expect(childPage.getByRole("heading", { name: "小雨的待办清单" })).toBeVisible();
+  await expect(childPage.locator(".growth-heading").getByRole("heading", { name: "小雨的待办清单" })).toBeVisible();
   await childPage.waitForLoadState("networkidle");
   await childPage.getByRole("button", { name: "开始听写" }).click();
   await expect(childPage).toHaveURL(/\/child\/dictation\//);
@@ -472,17 +474,17 @@ test("连续听写、刷新、切换孩子、批改恢复和错题循环", async
     childPage.waitForURL(/\/child$/, { waitUntil: "domcontentloaded" }),
     childPage.getByRole("button", { name: /小川/ }).click(),
   ]);
-  await expect(childPage.getByRole("heading", { name: "小川的待办清单" })).toBeVisible();
+  await expect(childPage.locator(".growth-heading").getByRole("heading", { name: "小川的待办清单" })).toBeVisible();
   await expectDocumentReplaced(childPage, switchDocumentId);
   expect(nativeNavigationDialogs).toEqual([]);
   childPage.off("dialog", recordNativeDialog);
   await childPage.goBack();
-  await expect(childPage.getByRole("heading", { name: "小川的待办清单" })).toBeVisible();
-  await expect(childPage.getByRole("heading", { name: "小雨的待办清单" })).toHaveCount(0);
-  await expect(childPage.getByText("今日听写（3项）", { exact: true })).toHaveCount(0);
+  await expect(childPage.locator(".growth-heading").getByRole("heading", { name: "小川的待办清单" })).toBeVisible();
+  await expect(childPage.locator(".growth-heading").getByRole("heading", { name: "小雨的待办清单" })).toHaveCount(0);
+  await expect(childPage.getByRole("button", { name: "今日听写（3项）", exact: true })).toHaveCount(0);
   await expect(childPage.getByText("桂花", { exact: true })).toHaveCount(0);
   await childPage.goForward();
-  await expect(childPage.getByRole("heading", { name: "小川的待办清单" })).toBeVisible();
+  await expect(childPage.locator(".growth-heading").getByRole("heading", { name: "小川的待办清单" })).toBeVisible();
   await childPage.waitForLoadState("networkidle");
   await childPage.getByRole("button", { name: "切换孩子" }).click();
   await childPage.getByRole("button", { name: /小雨/ }).click();
@@ -506,14 +508,14 @@ test("连续听写、刷新、切换孩子、批改恢复和错题循环", async
     () => (globalThis as typeof globalThis & { __e2eDocumentId: string }).__e2eDocumentId,
   )).not.toBe(gradingDocumentId);
   await childPage.getByRole("button", { name: /小川/ }).click();
-  await expect(childPage.getByRole("heading", { name: "小川的待办清单" })).toBeVisible();
+  await expect(childPage.locator(".growth-heading").getByRole("heading", { name: "小川的待办清单" })).toBeVisible();
   const gradingSwitchDocumentId = await childPage.evaluate(
     () => (globalThis as typeof globalThis & { __e2eDocumentId: string }).__e2eDocumentId,
   );
   await childPage.goBack();
-  await expect(childPage.getByRole("heading", { name: "小川的待办清单" })).toBeVisible();
+  await expect(childPage.locator(".growth-heading").getByRole("heading", { name: "小川的待办清单" })).toBeVisible();
   await expect(childPage.getByRole("heading", { name: "请认真核对每一题" })).toHaveCount(0);
-  await expect(childPage.getByRole("heading", { name: "小雨的待办清单" })).toHaveCount(0);
+  await expect(childPage.locator(".growth-heading").getByRole("heading", { name: "小雨的待办清单" })).toHaveCount(0);
   await expect(childPage.getByText("桂花", { exact: true })).toHaveCount(0);
   await expect(childPage.getByText("故乡", { exact: true })).toHaveCount(0);
   await expect(childPage.getByText("清晨", { exact: true })).toHaveCount(0);
@@ -521,7 +523,7 @@ test("连续听写、刷新、切换孩子、批改恢复和错题循环", async
     () => (globalThis as typeof globalThis & { __e2eDocumentId: string }).__e2eDocumentId,
   )).not.toBe(gradingSwitchDocumentId);
   await childPage.goForward();
-  await expect(childPage.getByRole("heading", { name: "小川的待办清单" })).toBeVisible();
+  await expect(childPage.locator(".growth-heading").getByRole("heading", { name: "小川的待办清单" })).toBeVisible();
   await childPage.waitForLoadState("networkidle");
   await childPage.getByRole("button", { name: "切换孩子" }).click();
   await childPage.getByRole("button", { name: /小雨/ }).click();
@@ -612,11 +614,13 @@ test("连续听写、刷新、切换孩子、批改恢复和错题循环", async
   }
   await childPage.getByRole("button", { name: "提交家长审核" }).click();
   await expect(childPage.getByText("等待家长审核")).toBeVisible();
+  await childPage.waitForLoadState("networkidle");
   await childPage.goto("/child");
-  await expect(childPage.getByText("等待家长审核")).toBeVisible();
+  await expect(childPage.getByRole("row").filter({ hasText: "今日听写（3项）" })).toContainText("待审核");
   await page.goto("/parent/todos");
   await page.locator(".todo-filters").getByLabel("日期").fill(completedTodo.date);
   await page.locator(".todo-filters").getByLabel("孩子").selectOption({ label: "小雨" });
+  await page.getByRole("row").filter({ hasText: "今日听写（3项）" }).getByRole("button", { name: "审核", exact: true }).click();
   await expect(page.getByRole("button", { name: /通过并发放/ })).toBeVisible();
   expect(await childPage.evaluate(() => Object.keys(localStorage).filter((key) => key.startsWith("dictation:")))).toEqual([]);
   const audioEvidence = await childPage.evaluate(() => ({
@@ -679,6 +683,7 @@ test("完成听写后可在待办清单上传照片，家长可打开凭证", as
   const childPage = await pairAndSelect(childContext, setup.pairingCode, "小雨");
   await expect(childPage.getByText("听写已完成，待提交")).toBeVisible();
   const photo = Buffer.from("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+X6uoAAAAASUVORK5CYII=", "base64");
+  await childPage.getByRole("row").filter({ hasText: "今日听写（3项）" }).getByRole("button", { name: "提交", exact: true }).click();
   await childPage.getByLabel("上传照片（可选）").setInputFiles({ name: "dictation.png", mimeType: "image/png", buffer: photo });
   let releaseSubmission!: () => void;
   let submissionStarted!: () => void;
@@ -701,6 +706,7 @@ test("完成听写后可在待办清单上传照片，家长可打开凭证", as
   const submittedRow = page.getByRole("row").filter({ hasText: "今日听写（3项）" });
   await expect(submittedRow).toBeVisible();
   await expect(submittedRow.getByRole("button", { name: "编辑" })).toHaveCount(0);
+  await submittedRow.getByRole("button", { name: "审核", exact: true }).click();
   const evidenceLink = page.getByRole("link", { name: "完成任务的图片" });
   await expect(evidenceLink).toBeVisible();
   const [evidencePage] = await Promise.all([page.waitForEvent("popup"), evidenceLink.click()]);
@@ -710,8 +716,10 @@ test("完成听写后可在待办清单上传照片，家长可打开凭证", as
   expect(evidence.headers()["content-type"]).toBe("image/png");
   await page.getByPlaceholder("退回时必填").fill("请确认照片");
   await page.getByRole("button", { name: "退回，不发积分" }).click();
+  await childPage.getByRole("dialog").getByRole("button", { name: "关闭", exact: true }).click();
   await childPage.getByRole("button", { name: "刷新" }).click();
   await expect(childPage.getByText("听写已完成，待提交")).toBeVisible();
+  await childPage.getByRole("row").filter({ hasText: "今日听写（3项）" }).getByRole("button", { name: "提交", exact: true }).click();
   await expect(childPage.getByLabel("上传照片（可选）")).toBeVisible();
   await childContext.close();
 });

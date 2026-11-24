@@ -1,3 +1,4 @@
+import { cleanupEngagement } from './engagement-cleanup';
 import { readFile } from "node:fs/promises";
 import { expect, test } from "@playwright/test";
 
@@ -149,6 +150,7 @@ test("回听、从头听写、照片家长逐词批改、错词订正完成", as
         await tx.delete(tables.childCardStates).where(eq(tables.childCardStates.familyId, familyId!));
         if (jobKeys.length) await tx.delete(jobs).where(inArray(jobs.dedupeKey, jobKeys));
         await tx.delete(tables.learningCards).where(eq(tables.learningCards.familyId, familyId!));
+        await cleanupEngagement(tx, familyId!);
         await tx.delete(tables.families).where(eq(tables.families.id, familyId!));
       });
     }

@@ -26,7 +26,13 @@ export async function todosHandler(request: Request, role: 'parent' | 'child') {
             return Response.json({ error: '请求来源无效。' }, { status: 403 });
         if (role === 'parent' && actor.role === 'guardian') {
             const v = await request.json();
-            if (v.action === 'review')
+            if (v.action === 'skip' || v.action === 'postpone') {
+                const { createEngagementService } = await import('@/modules/engagement/service');
+                await createEngagementService().adjustOccurrence(actor, v.id, v.action, z.iso.datetime().parse(v.expectedUpdatedAt));
+            }
+            else if (v.action === 'rewards')
+                await service.configureRewards(actor, v.id, v);
+            else if (v.action === 'review')
                 await service.review(actor, v.id, v);
             else if (v.action === 'update') {
                 isParentUpdate = true;
@@ -64,7 +70,7 @@ export async function todosHandler(request: Request, role: 'parent' | 'child') {
     }
     catch (error) {
         const m = error instanceof Error ? error.message : '';
-        const message = m === 'TODO_STALE' ? isParentUpdate ? '任务状态已更新，请刷新清单，取消编辑后重新打开。' : '任务状态已更新，请刷新后重试。' : m === 'TODO_KIND' ? '听写任务请在听写页面管理。' : m === 'TODO_REWARDED' ? '任务已审核并发放积分，不能撤回。' : m === 'DICTATION_INCOMPLETE' ? '请先完成听写及订正。' : m === 'DICTATION_IMAGE_ONLY' ? '听写只能上传图片，也可以不上传照片直接提交。' : m.startsWith('ATTACHMENT') ? '请选择8MB以内的图片、音频或视频，或不带附件提交。' : m === 'TODO_NOT_FOUND' ? '任务不存在或无权访问。' : '请检查填写内容后重试。';
+        const message = m === 'TODO_STALE' ? isParentUpdate ? '任务状态已更新，请刷新清单，取消编辑后重新打开。' : '任务状态已更新，请刷新后重试。' : m === 'TODO_KIND' ? '听写任务请在听写页面管理。' : m === 'TODO_REWARDED' ? '任务已审核并发放积分，不能撤回。' : m === 'DICTATION_INCOMPLETE' ? '请先完成听写及订正。' : m === 'DICTATION_IMAGE_ONLY' ? '听写只能上传图片，也可以不上传照片直接提交。' : m.startsWith('ATTACHMENT') ? '请选择8MB以内的图片、音频或视频，或不带附件提交。' : m === 'HABIT_DATE' ? '每周次数习惯请完成当天任务；习惯改期请使用延到明天。' : m === 'WEEKLY_LIMIT' ? '这个习惯当天已完成，或本周次数已经达标。' : m === 'TODO_NOT_FOUND' ? '任务不存在或无权访问。' : '请检查填写内容后重试。';
         return Response.json({ error: message }, { status: m === 'TODO_NOT_FOUND' ? 404 : error instanceof z.ZodError ? 400 : 409 });
     }
 }

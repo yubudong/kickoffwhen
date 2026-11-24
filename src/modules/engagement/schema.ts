@@ -1,0 +1,33 @@
+import { sql } from 'drizzle-orm';
+import { pgTable, uuid, text, integer, timestamp, date, jsonb, boolean, unique, foreignKey, check } from 'drizzle-orm/pg-core';
+import { children, families } from '@/modules/families/schema';
+const identity = () => ({ familyId: uuid('family_id').notNull().references(() => families.id), childId: uuid('child_id').notNull() });
+export const habits = pgTable('habits', {
+    id: uuid('id').primaryKey().defaultRandom(), ...identity(), guardianId: uuid('guardian_id').notNull(), commandId: uuid('command_id').notNull(),
+    title: text('title').notNull(), requirements: text('requirements').notNull().default(''), schedule: text('schedule').notNull(), weekdays: jsonb('weekdays').$type<number[]>().notNull().default([]), weeklyTarget: integer('weekly_target').notNull().default(1), startDate: date('start_date').notNull(), stoppedOn: date('stopped_on'),
+    confirmation: text('confirmation').notNull().default('parent'), coins: integer('coins').notNull().default(1), growth: integer('growth').notNull().default(10), createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+}, t => [unique().on(t.familyId, t.commandId), foreignKey({ columns: [t.familyId, t.childId], foreignColumns: [children.familyId, children.id] }), check('habit_rules', sql `${t.schedule} in ('daily','weekdays','weekly') and ${t.confirmation} in ('self','parent') and ${t.weeklyTarget} between 1 and 7 and ${t.coins} between 0 and 10000 and ${t.growth} between 0 and 10000`)]);
+export const wallets = pgTable('growth_wallets', {
+    childId: uuid('child_id').primaryKey(), familyId: uuid('family_id').notNull(), coins: integer('coins').notNull().default(0), held: integer('held').notNull().default(0), growth: integer('growth').notNull().default(0), fed: integer('fed').notNull().default(0),
+}, t => [foreignKey({ columns: [t.familyId, t.childId], foreignColumns: [children.familyId, children.id] }), check('wallet_nonnegative', sql `${t.coins}>=0 and ${t.held}>=0 and ${t.coins}>=${t.held} and ${t.growth}>=0 and ${t.fed}>=0`)]);
+export const growthEntries = pgTable('growth_entries', {
+    id: uuid('id').primaryKey().defaultRandom(), ...identity(), sourceKey: text('source_key').notNull(), kind: text('kind').notNull(), coins: integer('coins').notNull().default(0), held: integer('held').notNull().default(0), growth: integer('growth').notNull().default(0), fed: integer('fed').notNull().default(0), details: jsonb('details').$type<Record<string, unknown>>().notNull().default({}), createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+}, t => [unique().on(t.childId, t.sourceKey), foreignKey({ columns: [t.familyId, t.childId], foreignColumns: [children.familyId, children.id] })]);
+export const companions = pgTable('companions', {
+    childId: uuid('child_id').primaryKey(), familyId: uuid('family_id').notNull(), species: text('species').notNull(), name: text('name').notNull(), stage: integer('stage').notNull().default(0), appearance: text('appearance').notNull().default('animal'), humanStyle: text('human_style').notNull().default('girl'), equipped: jsonb('equipped').$type<Record<string, string>>().notNull().default({}),
+}, t => [foreignKey({ columns: [t.familyId, t.childId], foreignColumns: [children.familyId, children.id] }), check('companion_rules', sql `${t.species} in ('dragon','fox','phoenix') and ${t.stage} between 0 and 3 and ${t.appearance} in ('animal','human') and ${t.humanStyle} in ('boy','girl')`)]);
+export const companionMemories = pgTable('companion_memories', {
+    id: uuid('id').primaryKey().defaultRandom(), ...identity(), stage: integer('stage').notNull(), species: text('species').notNull(), createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+}, t => [unique().on(t.childId, t.stage), foreignKey({ columns: [t.familyId, t.childId], foreignColumns: [children.familyId, children.id] })]);
+export const inventories = pgTable('companion_inventory', {
+    id: uuid('id').primaryKey().defaultRandom(), ...identity(), itemKey: text('item_key').notNull(), quantity: integer('quantity').notNull().default(0),
+}, t => [unique().on(t.childId, t.itemKey), foreignKey({ columns: [t.familyId, t.childId], foreignColumns: [children.familyId, children.id] }), check('inventory_nonnegative', sql `${t.quantity}>=0`)]);
+export const growthBoosts = pgTable('growth_boosts', {
+    id: uuid('id').primaryKey().defaultRandom(), ...identity(), itemKey: text('item_key').notNull(), percent: integer('percent').notNull(), startsAt: timestamp('starts_at', { withTimezone: true }).notNull(), expiresAt: timestamp('expires_at', { withTimezone: true }).notNull(),
+}, t => [unique().on(t.childId, t.itemKey), foreignKey({ columns: [t.familyId, t.childId], foreignColumns: [children.familyId, children.id] }), check('boost_rules', sql `${t.percent} between 1 and 30 and ${t.expiresAt}>${t.startsAt}`)]);
+export const familyRewards = pgTable('family_rewards', {
+    id: uuid('id').primaryKey().defaultRandom(), familyId: uuid('family_id').notNull().references(() => families.id), commandId: uuid('command_id').notNull(), title: text('title').notNull(), description: text('description').notNull().default(''), price: integer('price').notNull(), repeatable: boolean('repeatable').notNull().default(true), weeklyLimit: integer('weekly_limit'), active: boolean('active').notNull().default(true), createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+}, t => [unique().on(t.familyId, t.commandId), check('reward_rules', sql `${t.price} between 1 and 1000000 and (${t.weeklyLimit} is null or ${t.weeklyLimit} between 1 and 100)`)]);
+export const rewardRequests = pgTable('family_reward_requests', {
+    id: uuid('id').primaryKey().defaultRandom(), ...identity(), rewardId: uuid('reward_id').notNull().references(() => familyRewards.id), commandId: uuid('command_id').notNull(), title: text('title').notNull(), price: integer('price').notNull(), week: date('week').notNull(), status: text('status').notNull().default('pending'), note: text('note').notNull().default(''), createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(), updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
+}, t => [unique().on(t.childId, t.commandId), foreignKey({ columns: [t.familyId, t.childId], foreignColumns: [children.familyId, children.id] }), check('reward_request_rules', sql `${t.price}>0 and ${t.status} in ('pending','approved','completed','rejected','cancelled')`)]);
