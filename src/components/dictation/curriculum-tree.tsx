@@ -1,5 +1,8 @@
 "use client";
 
+import { EnglishBookNote } from "@/components/content/english-book-note";
+import { curriculumGroupLabel } from "@/modules/learning-content/english-catalog";
+import { officialTextbookInfo } from "@/modules/learning-content/official-catalog";
 import type { CurriculumEdition } from "@/modules/dictation/curriculum-selection";
 import { toggleUnitSections } from "@/modules/dictation/curriculum-selection";
 
@@ -28,7 +31,9 @@ export function CurriculumTree({ editions, selected, onChange }: {
   if (editions.length === 0) return <p>这门科目的教材词库还没有内容。</p>;
   return <div className="curriculum-tree">
     {editions.map((edition) => <details key={edition.id} className="curriculum-edition">
-      <summary>{edition.grade}年级{edition.subject === "chinese" ? "语文" : "英语"} · {edition.volume} · {edition.publisher}{edition.editionText ? `（${edition.editionText}）` : ""}<span>{edition.units.length} 个单元</span></summary>
+      <summary>{edition.grade}年级{edition.subject === "chinese" ? "语文" : "英语"} · {edition.volume} · {edition.publisher}{edition.editionText ? `（${edition.editionText}）` : ""}<span>{curriculumGroupLabel(edition)}</span></summary>
+      {officialTextbookInfo(edition) && <p className="muted">教材词语＋分级写字练习 · <a href={officialTextbookInfo(edition)!.sourceUrl} target="_blank" rel="noreferrer">国家平台教材来源</a>。{edition.grade === 1 ? "一年级单字使用简单组词播报。" : "按本年级水平组词，优先选用课文原词。"}全部配有拼音和语境。</p>}
+      <EnglishBookNote edition={edition}/>
       <div className="curriculum-units">
         {edition.units.map((unit) => {
           const selectable = unit.sections.filter((section) => section.availableCount > 0).map((section) => section.id);
@@ -36,14 +41,14 @@ export function CurriculumTree({ editions, selected, onChange }: {
           return <div key={unit.id} className="curriculum-unit">
             <UnitCheckbox label={unit.title} ids={selectable} selected={selected} onChange={onChange} />
             <details>
-              <summary>{unit.title}<span>{unit.sections.length} 课 · {available} 个可选词</span></summary>
+              <summary>{unit.title}<span>{unit.sections.length} 课 · {available} 项可选字词</span></summary>
               <div className="curriculum-sections">
                 {unit.sections.map((section) => <label key={section.id}>
                   <input type="checkbox" checked={selected.includes(section.id)} disabled={section.availableCount === 0}
                     onChange={(event) => onChange(event.target.checked
                       ? [...selected, section.id]
                       : selected.filter((id) => id !== section.id))}/>
-                  <span>{section.title}</span><small>{section.availableCount} 个可选词{section.totalCount > section.availableCount ? `，${section.totalCount - section.availableCount} 个已学或进行中` : ""}</small>
+                  <span>{section.title}</span><small>{section.availableCount} 项可选字词{(section.excludedOptionalCount ?? 0) > 0 ? `，${section.excludedOptionalCount} 项认读或注释词形可自选` : ""}{section.totalCount - section.availableCount - (section.excludedOptionalCount ?? 0) > 0 ? `，${section.totalCount - section.availableCount - (section.excludedOptionalCount ?? 0)} 个已学或进行中` : ""}</small>
                 </label>)}
               </div>
             </details>

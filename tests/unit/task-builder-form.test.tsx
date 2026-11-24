@@ -26,14 +26,15 @@ vi.mock("react", async () => {
 
 import { TaskBuilderForm } from "@/app/(parent)/parent/tasks/new/task-builder-form";
 import { CurriculumTree } from "@/components/dictation/curriculum-tree";
+import { CurriculumFilters } from "@/components/content/curriculum-filters";
 
 const childId = "018f3b5d-1111-7111-8111-111111111111";
 const cardId = "018f3b5d-2222-7222-8222-222222222222";
 const sectionId = "018f3b5d-3333-7333-8333-333333333333";
 
-function renderForm(subject: "chinese" | "english" = "chinese") {
+function renderForm(subject: "chinese" | "english" = "chinese", subjectFilter: "all" | "chinese" | "english" = subject, gradeFilter: number | "all" = "all") {
   componentState.stateIndex = 0;
-  componentState.values = [childId, [sectionId], [], "", false, subject];
+  componentState.values = [childId, [sectionId], [], "", false, subject, subjectFilter, gradeFilter];
   return TaskBuilderForm({
     childOptions: [{ id: childId, nickname: "孩子", dueCount: 3, dueCounts: { chinese: 1, english: 2 } }],
     catalog: [
@@ -78,8 +79,8 @@ afterEach(() => { vi.unstubAllGlobals(); });
 
 test("切换科目或孩子会清除先前选中的课次和加练词", () => {
   const tree = elements(renderForm());
-  const subject = tree.find((element) => element.type === "select" && element.props["aria-label"] === "科目")!;
-  (subject.props.onChange as (event: unknown) => void)({ target: { value: "english" } });
+  const filters = tree.find(element => element.type === CurriculumFilters)!;
+  (filters.props.onSubjectChange as (value: string) => void)("english");
   expect(componentState.setters[5]).toHaveBeenCalledWith("english");
   expect(componentState.setters[1]).toHaveBeenCalledWith([]);
   expect(componentState.setters[2]).toHaveBeenCalledWith([]);
@@ -152,4 +153,26 @@ test("批量发布提供孩子自批和家长照片批改选择", () => {
   const choices = tree.filter((element) => element.type === "input" && element.props.name === "gradingMode");
   expect(choices.map((element) => element.props.value)).toEqual(["self", "parent"]);
   expect(choices.find((element) => element.props.value === "self")?.props.defaultChecked).toBe(true);
+});
+
+
+test("只选年级时展示两门科目，组合条件按交集筛选", () => {
+  const tree = elements(renderForm("chinese", "all", 5));
+  const curriculum = tree.find(element => element.type === CurriculumTree)!;
+  expect((curriculum.props.editions as Array<{subject:string}>).map(item => item.subject)).toEqual(["chinese", "english"]);
+  expect(elements(renderForm("chinese", "all", 3)).some(element => element.type === CurriculumTree)).toBe(false);
+  const english = elements(renderForm("english", "english", 5)).find(element => element.type === CurriculumTree)!;
+  expect((english.props.editions as Array<{subject:string}>).map(item => item.subject)).toEqual(["english"]);
+});
+
+test("年级切换清空未下发勾选，全部科目下改选英语不会混入语文课次", () => {
+  const tree = elements(renderForm("chinese", "all"));
+  const filters = tree.find(element => element.type === CurriculumFilters)!;
+  (filters.props.onGradeChange as (value: number) => void)(5);
+  expect(componentState.setters[7]).toHaveBeenCalledWith(5);
+  expect(componentState.setters[1]).toHaveBeenCalledWith([]);
+  const curriculum = tree.find(element => element.type === CurriculumTree)!;
+  (curriculum.props.onChange as (ids:string[]) => void)([sectionId,"en-part-a"]);
+  expect(componentState.setters[5]).toHaveBeenCalledWith("english");
+  expect(componentState.setters[1]).toHaveBeenLastCalledWith(["en-part-a"]);
 });

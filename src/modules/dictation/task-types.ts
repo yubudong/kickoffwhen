@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { englishStudyOptionsSchema } from "@/modules/learning-content/english-types";
 
 export const buildTaskInputSchema = z.object({
   childId: z.string().uuid(),
@@ -13,6 +14,7 @@ export const buildTaskInputSchema = z.object({
   speechRate: z.number().finite().min(0.5).max(2),
   allowManualReplay: z.boolean(),
   gradingMode: z.enum(["self", "parent"]).default("self"),
+  englishStudyOptions: englishStudyOptionsSchema.optional(),
 }).strict();
 
 export type BuildTaskInput = z.input<typeof buildTaskInputSchema>;

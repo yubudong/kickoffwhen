@@ -5,7 +5,7 @@ import { requireParentActor } from '@/modules/auth/parent-access';
 import { requireChildActor } from '@/modules/devices/child-actor';
 import { createTodoService } from './service';
 import { saveAttachment, removeAttachment } from './attachments';
-import { todayShanghai } from './validation';
+import { todayShanghai, todoViewSchema } from './validation';
 export async function todosHandler(request: Request, role: 'parent' | 'child') {
     let actor;
     try {
@@ -19,7 +19,7 @@ export async function todosHandler(request: Request, role: 'parent' | 'child') {
     try {
         if (request.method === 'GET') {
             const u = new URL(request.url);
-            return Response.json(await service.list(actor, u.searchParams.get('date') ?? todayShanghai(), role === 'parent' ? u.searchParams.get('childId') ?? undefined : undefined), { headers: { 'Cache-Control': 'no-store' } });
+            return Response.json(await service.list(actor, u.searchParams.get('date') ?? todayShanghai(), role === 'parent' ? u.searchParams.get('childId') ?? undefined : undefined, todoViewSchema.parse(u.searchParams.get('view') ?? 'day')), { headers: { 'Cache-Control': 'no-store' } });
         }
         const origin = request.headers.get('origin');
         if (!isTodoOriginAllowed(origin, env.appUrl))

@@ -192,3 +192,32 @@ test('待办保留家长批改阶段、听写音频状态及退回审核附件�
  expect(childList.tasks.some(todo=>todo.id===withdrawn.id)).toBe(false);
  expect((await service.list(parent,'2026-10-13')).tasks.find(todo=>todo.id===withdrawn.id)?.status).toBe('cancelled');
 }));
+
+test('日周月范围只返回范围内任务，积分也只累计该范围',async()=>withDatabaseRollback(async tx=>{
+ const id=crypto.randomUUID();await tx.insert(user).values({id,name:'范围测试',email:id+'@example.test'});
+ const [family]=await tx.insert(families).values({name:'范围测试'}).returning();
+ const [guardian]=await tx.insert(guardians).values({familyId:family.id,authUserId:id}).returning();
+ const [childRow]=await tx.insert(children).values({familyId:family.id,nickname:'甲',grade:5}).returning();
+ const parent={role:'guardian' as const,familyId:family.id,guardianId:guardian.id};
+ const child={role:'child' as const,familyId:family.id,childId:childRow.id,deviceId:crypto.randomUUID()};
+ const service=createTodoService(tx);
+ async function add(date:string,title:string,bonus:number){
+  const task=await service.create(parent,{childId:childRow.id,title,requirements:'',date,commandId:crypto.randomUUID()});
+  await service.submit(child,task.id,0);
+  await service.review(parent,task.id,{number:1,decision:'approved',bonus,note:''});
+ }
+ await add('2026-11-07','周六',1);
+ await add('2026-11-03','周二',2);
+ await add('2026-11-20','月内',3);
+ await add('2026-10-31','上月',10);
+ const day=await service.list(child,'2026-11-07',undefined,'day');
+ expect(day.tasks.map(task=>task.title)).toEqual(['周六']);
+ expect(day.points).toBe(2);
+ const week=await service.list(child,'2026-11-07',undefined,'week');
+ expect(week.tasks.map(task=>task.title).sort()).toEqual(['周二','周六']);
+ expect(week.points).toBe(5);
+ const month=await service.list(child,'2026-11-07',undefined,'month');
+ expect(month.tasks.map(task=>task.title).sort()).toEqual(['周二','周六','月内']);
+ expect(month.points).toBe(9);
+ expect((await service.list(child,'2026-10-31')).points).toBe(11);
+}));

@@ -1,4 +1,7 @@
+import type { EnglishPronunciation } from "./english-pronunciation";
+
 export type TtsInput = {
+  pronunciation?: EnglishPronunciation;
   text: string;
   language: "zh-CN" | "en-US";
   voice: "zh-CN-XiaoxiaoNeural" | "en-US-JennyNeural";

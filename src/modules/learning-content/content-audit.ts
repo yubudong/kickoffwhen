@@ -1,6 +1,9 @@
 import type { SeedContent } from "./seed-validator";
+import { assertOfficialTextbookAudit } from "./official-textbook-audit";
 
 export type ChineseContentRequirements = {
+  auditProfile?: "official_textbook";
+  teachingProfile?: "grade_aware_v2";
   publisher: string;
   series: string;
   grade: number;
@@ -23,6 +26,10 @@ export function chineseContentIdentity(content: SeedContent) {
 
 export function assertChineseSeedAudit(content: SeedContent, requirements: ChineseContentRequirements): ChineseContentAudit {
   if (chineseContentIdentity(content) !== chineseRequirementsIdentity(requirements)) throw new Error("SEED_REQUIREMENTS_IDENTITY_MISMATCH");
+  if (content.auditProfile === "official_textbook" || requirements.auditProfile === "official_textbook") {
+    assertOfficialTextbookAudit(content, requirements);
+    return auditChineseSeed(content, requirements);
+  }
   const hasCards = content.units.some((unit) => unit.sections.some((section) => section.cards.length > 0));
   const hasRequirements = requirements.requiredVocabulary.length > 0 || requirements.requiredCharacters.length > 0 || requirements.originalWritingPractice.length > 0;
   if (!hasCards && !hasRequirements) return auditChineseSeed(content, requirements);

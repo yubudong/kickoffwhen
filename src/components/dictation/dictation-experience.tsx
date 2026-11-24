@@ -249,7 +249,7 @@ export function DictationExperience({ initialSession }: { initialSession: ChildS
           onRestart={expectedVersion => sendCommand({ type: "restart", expectedVersion, roundNumber: session.roundNumber })} />
       ) : session.phase === "grading" ? (
         <BatchGrader
-          key={`${session.roundNumber}:${session.version}`}
+          key={`${session.sessionId}:${session.childId}:${session.roundNumber}`}
           pending={pending || retryLocked}
           session={session}
           onDirtyChange={setDirtyMarks}

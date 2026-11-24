@@ -121,7 +121,7 @@ describe("儿童听写视图", () => {
         items: [{ itemId: data.item.id, audioUrl: `/api/private-media/${data.mediaId}` }],
       });
       expect(JSON.stringify(listening)).not.toMatch(/private-answer|private-broadcast|answerText|broadcastText/);
-      expect(observedProjections).toEqual([["itemId", "mediaId", "pinyinText", "contextText"]]);
+      expect(observedProjections).toEqual([["itemId", "mediaId", "pinyinText", "contextText", "subject", "builtinKey"]]);
 
       const grading = await sessionService.recordPlayback(data.actor, {
         commandId: crypto.randomUUID(),
@@ -137,8 +137,8 @@ describe("儿童听写视图", () => {
         items: [{ itemId: data.item.id, answerText: "private-answer-1" }],
       });
       expect(observedProjections).toEqual([
-        ["itemId", "mediaId", "pinyinText", "contextText"],
-        ["itemId", "position", "answerText", "mediaId"],
+        ["itemId", "mediaId", "pinyinText", "contextText", "subject", "builtinKey"],
+        ["itemId", "position", "answerText", "mediaId", "subject", "builtinKey"],
       ]);
     });
   });

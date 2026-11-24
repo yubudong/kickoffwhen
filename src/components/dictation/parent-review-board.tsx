@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import { EnglishAnswerSupport } from "./english-answer-support";
 import { useRef, useState } from "react";
 import type { ParentDictationReview } from "@/modules/dictation/grading-types";
 
@@ -57,7 +58,7 @@ function ReviewCard({ review, onSaved }: { review: ParentDictationReview; onSave
       return <a key={photo.id} href={url} target="_blank" rel="noreferrer"><Image src={url} unoptimized width={800} height={600} alt={`${review.childName}的听写照片 ${index + 1}`} /><span>打开原图查看</span></a>;
     })}</div>
     <div className="answer-list">{review.items.map(item => <fieldset key={item.itemId}>
-      <legend>第 {item.position + 1} 题：<strong>{item.answerText}</strong></legend><div className="mark-actions">
+      <legend>第 {item.position + 1} 题：<strong>{item.answerText}</strong></legend>{item.english && <EnglishAnswerSupport answer={item.answerText} details={item.english} disabled={pending || retryLocked} onSuggest={correct=>setMarks(current=>({...current,[item.itemId]:correct}))}/>}<div className="mark-actions">
         <button type="button" aria-pressed={marks[item.itemId] === true} className={marks[item.itemId] === true ? "selected-correct" : ""} disabled={pending || retryLocked} onClick={() => setMarks(current => ({ ...current, [item.itemId]: true }))}>正确</button>
         <button type="button" aria-pressed={marks[item.itemId] === false} className={marks[item.itemId] === false ? "selected-wrong" : ""} disabled={pending || retryLocked} onClick={() => setMarks(current => ({ ...current, [item.itemId]: false }))}>错了</button>
       </div></fieldset>)}</div></div>

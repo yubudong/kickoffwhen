@@ -26,8 +26,8 @@ export default async function ChildHomePage() {
       <ChildHeader avatarKey={child.avatarKey} nickname={child.nickname} />
       <main className="page-shell child-page-shell">
         <section className="hero-card child-home-card">
-          <h1>{child.nickname}的今日待办</h1>
-          <TodoBoard role="child" />
+          <h1>{child.nickname}的待办清单</h1>
+          <TodoBoard role="child" childName={child.nickname} />
         </section>
       </main>
     </div>

@@ -1,3 +1,4 @@
+import { englishGradingDetails } from "@/modules/learning-content/english-metadata";
 import { createHash } from "node:crypto";
 
 import { and, asc, desc, eq, inArray, sql } from "drizzle-orm";
@@ -526,14 +527,17 @@ export function createDictationSessionService(
       const ids = state.mode === "item_by_item"
         ? state.currentRoundItemIds.slice(state.markedItemIds.length, state.markedItemIds.length + 1)
         : state.currentRoundItemIds;
-      const items = await database.select({ itemId: dictationSessionItems.taskItemId, answerText: learningCards.answerText })
+      const items = await database.select({ itemId: dictationSessionItems.taskItemId, answerText: learningCards.answerText, builtinKey: learningCards.builtinKey })
         .from(dictationSessionItems).innerJoin(learningCards, eq(learningCards.id, dictationSessionItems.cardId))
         .where(and(eq(dictationSessionItems.sessionId, row.session.id), eq(dictationSessionItems.familyId, actor.familyId),
           inArray(dictationSessionItems.taskItemId, ids)));
       const byId = new Map(items.map(item => [item.itemId, item]));
       reviews.push({ sessionId: row.session.id, childName: row.childName, version: row.session.version,
         roundNumber: row.session.roundNumber, submittedAt: row.submission.createdAt.toISOString(), photos: row.submission.photos,
-        items: ids.map((id, position) => ({ ...byId.get(id)!, position: state.mode === "item_by_item" ? state.markedItemIds.length : position })) });
+        items: ids.map((id, position) => {
+          const item=byId.get(id)!;const english=englishGradingDetails(item.builtinKey);
+          return {itemId:item.itemId,answerText:item.answerText,...(english?{english}:{}),position:state.mode === "item_by_item" ? state.markedItemIds.length : position};
+        }) });
     }
     return reviews;
   }

@@ -1,3 +1,4 @@
+import { activeLearningCardPredicate } from "@/modules/learning-content/active-cards";
 import { createHash } from "node:crypto";
 
 import { and, asc, count, eq, isNull, lte, or, sql } from "drizzle-orm";
@@ -122,6 +123,7 @@ function buildReviewService(
           eq(childCardStates.familyId, actor.familyId),
           eq(childCardStates.childId, actor.childId),
           lte(childCardStates.dueAt, z.date().parse(at)),
+          activeLearningCardPredicate(),
           or(eq(learningCards.familyId, actor.familyId), isNull(learningCards.familyId)),
         ),
       );
@@ -144,6 +146,7 @@ function buildReviewService(
           eq(childCardStates.familyId, actor.familyId),
           eq(childCardStates.childId, actor.childId),
           lte(childCardStates.dueAt, parsedAt),
+          activeLearningCardPredicate(),
           or(
             eq(learningCards.familyId, actor.familyId),
             isNull(learningCards.familyId),

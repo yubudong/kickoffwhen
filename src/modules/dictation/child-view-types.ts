@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { englishDetailsSchema, englishListeningHintsSchema, englishWritingHintSchema } from "@/modules/learning-content/english-types";
 
 const uuidSchema = z.string().uuid();
 
@@ -35,12 +36,15 @@ const listeningItemSchema = z.object({
   audioUrl: z.string().regex(/^\/api\/private-media\/[0-9a-f-]+$/),
   pinyinText: z.string().nullable(),
   contextText: z.string().nullable(),
+  englishHints: englishListeningHintsSchema.optional(),
+  writingHint: englishWritingHintSchema.optional(),
 }).strict();
 
 const gradingItemSchema = z.object({
   itemId: uuidSchema,
   position: z.number().int().nonnegative(),
   answerText: z.string().min(1),
+  english: englishDetailsSchema.optional(),
 }).strict();
 
 const todoSubmissionSchema = z.object({

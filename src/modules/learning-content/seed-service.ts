@@ -1,3 +1,4 @@
+import { assertEnglishSeedAudit, type EnglishContentRequirements } from "./english-content-audit";
 import { and, eq, isNull } from "drizzle-orm";
 
 import { db, type DbTransaction } from "@/db/client";
@@ -51,14 +52,26 @@ async function importEdition(tx: DbTransaction, content: SeedContent): Promise<S
   return { edition: `${content.publisher}｜${content.series}｜${content.editionText}`, insertedCards, updatedCards };
 }
 
-export async function applySeedContents(database: SeedDatabase, inputs: unknown[], requirements: ChineseContentRequirements[]): Promise<SeedApplySummary[]> {
+export async function applySeedContents(database: SeedDatabase, inputs: unknown[], requirements: ChineseContentRequirements[], englishRequirements: EnglishContentRequirements[] = []): Promise<SeedApplySummary[]> {
   const contents = validateSeedContents(inputs);
   const requirementsByIdentity = new Map(requirements.map((item) => [chineseRequirementsIdentity(item), item]));
   for (const content of contents) {
+    if (content.auditProfile === "official_english") {
+      const reference = englishRequirements.find(item => item.publisher === content.publisher && item.series === content.series && item.grade === content.grade && item.volume === content.volume && item.editionText === content.editionText);
+      if (!reference) throw new Error("ENGLISH_REQUIREMENTS_NOT_FOUND");
+      assertEnglishSeedAudit(content, reference);
+    }
     if (content.subject !== "chinese") continue;
     const matchingRequirements = requirementsByIdentity.get(chineseContentIdentity(content));
     if (!matchingRequirements) throw new Error("SEED_REQUIREMENTS_NOT_FOUND");
     assertChineseSeedAudit(content, matchingRequirements);
+  }
+  if (contents.length > 0 && contents.every(content => content.auditProfile === "official_english")) {
+    return database.transaction(async tx => {
+      const result: SeedApplySummary[] = [];
+      for (const content of contents) result.push(await importEdition(tx, content));
+      return result;
+    });
   }
   const summaries: SeedApplySummary[] = [];
   for (const content of contents) summaries.push(await database.transaction((tx) => importEdition(tx, content)));

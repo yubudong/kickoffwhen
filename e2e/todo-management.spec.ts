@@ -36,6 +36,7 @@ async function createFamily(page: Page) {
 
 async function addTodo(page: Page, title: string) {
   const form = page.locator(".todo-create");
+  if (!(await form.isVisible())) await page.getByRole("button", { name: "添加待办" }).click();
   await form.getByLabel("待办任务").fill(title);
   await form.getByRole("button", { name: "添加到清单" }).click();
   await expect(page.getByRole("row").filter({ hasText: title })).toBeVisible();
@@ -172,9 +173,11 @@ test("家长确认撤回后孩子看不到任务，已提交任务没有编辑�
     await expect(childPage.getByText("误建的任务")).toHaveCount(0);
 
     const childRow = childPage.getByRole("row").filter({ hasText: "整理书桌" });
-    await childRow.getByRole("button", { name: "不上传" }).click();
-    await childRow.getByRole("button", { name: "完成并提交" }).click();
-    await expect(childRow).toContainText("等待家长审核");
+    await childRow.getByRole("button", { name: "提交" }).click();
+    const panel = childPage.getByRole("dialog");
+    await panel.getByRole("button", { name: "不上传" }).click();
+    await panel.getByRole("button", { name: "完成并提交" }).click();
+    await expect(childRow).toContainText("待审核");
     await page.getByRole("button", { name: "刷新" }).click();
     const submittedRow = page.getByRole("row").filter({ hasText: "整理书桌" });
     await expect(submittedRow).toContainText("待审核");

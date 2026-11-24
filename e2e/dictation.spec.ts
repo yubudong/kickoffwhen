@@ -355,13 +355,13 @@ test("连续听写、刷新、切换孩子、批改恢复和错题循环", async
   let blockAudio = true;
   await childPage.route("**/api/private-media/**", (route) => blockAudio ? route.abort() : route.continue());
 
-  await expect(childPage.getByRole("heading", { name: "小雨的今日待办" })).toBeVisible();
+  await expect(childPage.getByRole("heading", { name: "小雨的待办清单" })).toBeVisible();
   await expect(childPage.getByText("今日听写（3项）", { exact: true })).toBeVisible();
   // Leave a genuine previous child document in history, then prove that the
   // header switch and new-child selection both replace the current document.
   await childPage.goto("/child/tasks");
   await expect(childPage).toHaveURL(/\/child$/);
-  await expect(childPage.getByRole("heading", { name: "小雨的今日待办" })).toBeVisible();
+  await expect(childPage.getByRole("heading", { name: "小雨的待办清单" })).toBeVisible();
   await expect(childPage.getByText("今日听写（3项）", { exact: true })).toBeVisible();
   await childPage.goto("/child");
   await childPage.waitForLoadState("networkidle");
@@ -376,19 +376,19 @@ test("连续听写、刷新、切换孩子、批改恢复和错题循环", async
     childPage.waitForURL(/\/child$/, { waitUntil: "domcontentloaded" }),
     childPage.getByRole("button", { name: /小川/ }).click(),
   ]);
-  await expect(childPage.getByRole("heading", { name: "小川的今日待办" })).toBeVisible();
+  await expect(childPage.getByRole("heading", { name: "小川的待办清单" })).toBeVisible();
   await expectDocumentReplaced(childPage, firstSwitchDocumentId);
   await childPage.waitForLoadState("networkidle");
   const firstSecondChildDocumentId = await readDocumentId(childPage);
   await childPage.goBack();
-  await expect(childPage.getByRole("heading", { name: "小川的今日待办" })).toBeVisible();
-  await expect(childPage.getByRole("heading", { name: "小雨的今日待办" })).toHaveCount(0);
+  await expect(childPage.getByRole("heading", { name: "小川的待办清单" })).toBeVisible();
+  await expect(childPage.getByRole("heading", { name: "小雨的待办清单" })).toHaveCount(0);
   await expect(childPage.getByText("今日听写（3项）", { exact: true })).toHaveCount(0);
   await expect(childPage.getByText("桂花", { exact: true })).toHaveCount(0);
   await expectDocumentReplaced(childPage, firstSecondChildDocumentId);
   const firstBackDocumentId = await readDocumentId(childPage);
   await childPage.goForward();
-  await expect(childPage.getByRole("heading", { name: "小川的今日待办" })).toBeVisible();
+  await expect(childPage.getByRole("heading", { name: "小川的待办清单" })).toBeVisible();
   await expectDocumentReplaced(childPage, firstBackDocumentId);
   await childPage.waitForLoadState("networkidle");
   const secondHomeDocumentId = await readDocumentId(childPage);
@@ -398,7 +398,7 @@ test("连续听写、刷新、切换孩子、批改恢复和错题循环", async
   ]);
   await expectDocumentReplaced(childPage, secondHomeDocumentId);
   await childPage.getByRole("button", { name: /小雨/ }).click();
-  await expect(childPage.getByRole("heading", { name: "小雨的今日待办" })).toBeVisible();
+  await expect(childPage.getByRole("heading", { name: "小雨的待办清单" })).toBeVisible();
   await childPage.waitForLoadState("networkidle");
   await childPage.getByRole("button", { name: "开始听写" }).click();
   await expect(childPage).toHaveURL(/\/child\/dictation\//);
@@ -472,17 +472,17 @@ test("连续听写、刷新、切换孩子、批改恢复和错题循环", async
     childPage.waitForURL(/\/child$/, { waitUntil: "domcontentloaded" }),
     childPage.getByRole("button", { name: /小川/ }).click(),
   ]);
-  await expect(childPage.getByRole("heading", { name: "小川的今日待办" })).toBeVisible();
+  await expect(childPage.getByRole("heading", { name: "小川的待办清单" })).toBeVisible();
   await expectDocumentReplaced(childPage, switchDocumentId);
   expect(nativeNavigationDialogs).toEqual([]);
   childPage.off("dialog", recordNativeDialog);
   await childPage.goBack();
-  await expect(childPage.getByRole("heading", { name: "小川的今日待办" })).toBeVisible();
-  await expect(childPage.getByRole("heading", { name: "小雨的今日待办" })).toHaveCount(0);
+  await expect(childPage.getByRole("heading", { name: "小川的待办清单" })).toBeVisible();
+  await expect(childPage.getByRole("heading", { name: "小雨的待办清单" })).toHaveCount(0);
   await expect(childPage.getByText("今日听写（3项）", { exact: true })).toHaveCount(0);
   await expect(childPage.getByText("桂花", { exact: true })).toHaveCount(0);
   await childPage.goForward();
-  await expect(childPage.getByRole("heading", { name: "小川的今日待办" })).toBeVisible();
+  await expect(childPage.getByRole("heading", { name: "小川的待办清单" })).toBeVisible();
   await childPage.waitForLoadState("networkidle");
   await childPage.getByRole("button", { name: "切换孩子" }).click();
   await childPage.getByRole("button", { name: /小雨/ }).click();
@@ -490,7 +490,12 @@ test("连续听写、刷新、切换孩子、批改恢复和错题循环", async
   await expect(childPage.getByLabel("第 2 / 3 题")).toBeVisible();
   await childPage.getByRole("button", { name: "继续听写" }).click();
 
-  await expect(childPage.getByRole("heading", { name: "请认真核对每一题" })).toBeVisible({ timeout: 20_000 });
+  await expect(childPage.getByRole("button", { name: "查看本轮答案" })).toBeVisible({ timeout: 20_000 });
+  await expect(childPage.getByText("桂花", { exact: true })).toHaveCount(0);
+  await expect(childPage.getByText("故乡", { exact: true })).toHaveCount(0);
+  await expect(childPage.getByText("清晨", { exact: true })).toHaveCount(0);
+  await childPage.getByRole("button", { name: "查看本轮答案" }).click();
+  await expect(childPage.getByRole("heading", { name: "请认真核对每一题" })).toBeVisible();
   await expect(childPage.getByText("桂花", { exact: true })).toBeVisible();
   const gradingDocumentId = await childPage.evaluate(
     () => (globalThis as typeof globalThis & { __e2eDocumentId: string }).__e2eDocumentId,
@@ -501,14 +506,14 @@ test("连续听写、刷新、切换孩子、批改恢复和错题循环", async
     () => (globalThis as typeof globalThis & { __e2eDocumentId: string }).__e2eDocumentId,
   )).not.toBe(gradingDocumentId);
   await childPage.getByRole("button", { name: /小川/ }).click();
-  await expect(childPage.getByRole("heading", { name: "小川的今日待办" })).toBeVisible();
+  await expect(childPage.getByRole("heading", { name: "小川的待办清单" })).toBeVisible();
   const gradingSwitchDocumentId = await childPage.evaluate(
     () => (globalThis as typeof globalThis & { __e2eDocumentId: string }).__e2eDocumentId,
   );
   await childPage.goBack();
-  await expect(childPage.getByRole("heading", { name: "小川的今日待办" })).toBeVisible();
+  await expect(childPage.getByRole("heading", { name: "小川的待办清单" })).toBeVisible();
   await expect(childPage.getByRole("heading", { name: "请认真核对每一题" })).toHaveCount(0);
-  await expect(childPage.getByRole("heading", { name: "小雨的今日待办" })).toHaveCount(0);
+  await expect(childPage.getByRole("heading", { name: "小雨的待办清单" })).toHaveCount(0);
   await expect(childPage.getByText("桂花", { exact: true })).toHaveCount(0);
   await expect(childPage.getByText("故乡", { exact: true })).toHaveCount(0);
   await expect(childPage.getByText("清晨", { exact: true })).toHaveCount(0);
@@ -516,16 +521,22 @@ test("连续听写、刷新、切换孩子、批改恢复和错题循环", async
     () => (globalThis as typeof globalThis & { __e2eDocumentId: string }).__e2eDocumentId,
   )).not.toBe(gradingSwitchDocumentId);
   await childPage.goForward();
-  await expect(childPage.getByRole("heading", { name: "小川的今日待办" })).toBeVisible();
+  await expect(childPage.getByRole("heading", { name: "小川的待办清单" })).toBeVisible();
   await childPage.waitForLoadState("networkidle");
   await childPage.getByRole("button", { name: "切换孩子" }).click();
   await childPage.getByRole("button", { name: /小雨/ }).click();
   await childPage.getByRole("button", { name: "继续听写" }).click();
+  await expect(childPage.getByRole("button", { name: "查看本轮答案" })).toBeVisible();
+  await expect(childPage.getByText("桂花", { exact: true })).toHaveCount(0);
+  await childPage.getByRole("button", { name: "查看本轮答案" }).click();
   await expect(childPage.getByRole("heading", { name: "请认真核对每一题" })).toBeVisible();
   await childPage.waitForLoadState("networkidle");
   const firstAnswer = childPage.locator("fieldset").nth(0);
   await firstAnswer.getByRole("button", { name: "正确" }).click();
   await childPage.reload();
+  await expect(childPage.getByRole("button", { name: "查看本轮答案" })).toBeVisible();
+  await expect(childPage.getByText("桂花", { exact: true })).toHaveCount(0);
+  await childPage.getByRole("button", { name: "查看本轮答案" }).click();
   await expect(childPage.locator("fieldset").nth(0).getByRole("button", { name: "正确" })).toHaveAttribute("aria-pressed", "true");
   await childPage.locator("fieldset").nth(1).getByRole("button", { name: "错了" }).click();
   await childPage.locator("fieldset").nth(2).getByRole("button", { name: "正确" }).click();
@@ -561,7 +572,10 @@ test("连续听写、刷新、切换孩子、批改恢复和错题循环", async
 
   await expect(childPage.getByText("再听一次，共 1 题")).toBeVisible();
   await childPage.getByRole("button", { name: "开始听写" }).click();
-  await expect(childPage.getByRole("heading", { name: "请认真核对每一题" })).toBeVisible({ timeout: 15_000 });
+  await expect(childPage.getByRole("button", { name: "查看本轮答案" })).toBeVisible({ timeout: 15_000 });
+  await expect(childPage.locator("fieldset")).toHaveCount(0);
+  await childPage.getByRole("button", { name: "查看本轮答案" }).click();
+  await expect(childPage.getByRole("heading", { name: "请认真核对每一题" })).toBeVisible();
   await childPage.getByRole("button", { name: "正确" }).click();
   await childPage.getByRole("button", { name: "提交本轮" }).click();
   await expect(childPage.getByRole("heading", { name: "本次听写已完成" })).toBeVisible();

@@ -1,5 +1,6 @@
 "use client";
 
+import { EnglishAnswerSupport } from "./english-answer-support";
 import { useEffect, useMemo, useState } from "react";
 
 import type { GradingSessionView } from "@/modules/dictation/child-view-types";
@@ -21,7 +22,10 @@ export function BatchGrader({
   onDirtyChange: (dirty: boolean) => void;
 }) {
   const storageKey = recoveryStorageKey(session.familyId, session.childId, session.sessionId);
+  const revealIdentity = `${session.familyId}:${session.childId}:${session.sessionId}:${session.roundNumber}`;
+  const [openedIdentity, setOpenedIdentity] = useState<string | null>(null);
   const [marks, setMarks] = useState<Record<string, boolean>>({});
+  const opened = openedIdentity === revealIdentity;
 
   useEffect(() => {
     let active = true;
@@ -63,6 +67,19 @@ export function BatchGrader({
     [marks, session.items],
   );
 
+  if (!opened) {
+    return (
+      <section aria-labelledby="grading-title" className="dictation-card">
+        <p className="eyebrow">自己批改</p>
+        <h1 id="grading-title">听写完成，准备好后查看答案，自己核对纸上写的内容</h1>
+        <p>共 {session.items.length} 题。</p>
+        <button className="dictation-primary" onClick={() => setOpenedIdentity(revealIdentity)} type="button">
+          查看本轮答案
+        </button>
+      </section>
+    );
+  }
+
   return (
     <section aria-labelledby="grading-title" className="dictation-card">
       <p className="eyebrow">自己批改</p>
@@ -73,6 +90,8 @@ export function BatchGrader({
             <legend>
               第 {item.position + 1} 题：<strong>{item.answerText}</strong>
             </legend>
+            {item.english && <EnglishAnswerSupport answer={item.answerText} details={item.english} disabled={pending}
+              onSuggest={correct=>setMarks(current=>({...current,[item.itemId]:correct}))}/>}
             <div className="mark-actions">
               <button
                 aria-pressed={marks[item.itemId] === true}

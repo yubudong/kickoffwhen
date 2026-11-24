@@ -6,6 +6,7 @@ import {
   index,
   integer,
   numeric,
+  jsonb,
   pgTable,
   text,
   timestamp,
@@ -14,6 +15,7 @@ import {
   uuid,
 } from "drizzle-orm/pg-core";
 
+import type { EnglishStudyOptions } from "@/modules/learning-content/english-types";
 import { children, families, guardians } from "@/modules/families/schema";
 import { learningCards, textbookSections } from "@/modules/learning-content/schema";
 
@@ -35,6 +37,7 @@ export const learningTasks = pgTable(
     speechRate: numeric("speech_rate", { precision: 4, scale: 2 }).notNull(),
     allowManualReplay: boolean("allow_manual_replay").notNull(),
     gradingMode: text("grading_mode").notNull().default("self"),
+    englishStudyOptions: jsonb("english_study_options").$type<EnglishStudyOptions>(),
     maxReviewCards: integer("max_review_cards").notNull(),
     origin: text("origin").notNull().default("manual"),
     title: text("title").notNull().default("今日听写"),
@@ -62,6 +65,11 @@ export const learningTasks = pgTable(
       foreignColumns: [guardians.familyId, guardians.id],
     }).onDelete("restrict"),
     check("learning_tasks_mode_check", sql`${table.mode} in ('continuous_batch', 'item_by_item')`),
+    check("learning_tasks_english_study_check", sql`${table.englishStudyOptions} is null or (
+      jsonb_typeof(${table.englishStudyOptions}) = 'object'
+      and ${table.englishStudyOptions} ? 'version' and jsonb_typeof(${table.englishStudyOptions}->'version') = 'number' and ${table.englishStudyOptions}->>'version' = '1'
+      and ${table.englishStudyOptions} ? 'mode' and ${table.englishStudyOptions}->>'mode' in ('standard','assisted')
+      and ${table.englishStudyOptions} ? 'includeRecognition' and jsonb_typeof(${table.englishStudyOptions}->'includeRecognition') = 'boolean')`),
     check("learning_tasks_grading_mode_check", sql`${table.gradingMode} in ('self', 'parent')`),
     check("learning_tasks_order_check", sql`${table.taskOrder} in ('source', 'random')`),
     check("learning_tasks_interval_check", sql`${table.intervalSeconds} between 2 and 120`),

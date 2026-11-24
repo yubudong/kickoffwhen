@@ -1,3 +1,4 @@
+import { renderEnglishPronunciation } from "./english-pronunciation";
 import type { TtsInput, TtsProvider } from "./tts-provider";
 
 type FetchLike = (input: string | URL, init?: RequestInit) => Promise<Response>;
@@ -30,7 +31,9 @@ export function buildSafeSsml(input: TtsInput): string {
 
   // Azure numeric rates are multipliers; percentages mean relative increases.
   const rate = String(input.rate);
-  return `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="${input.language}"><voice name="${input.voice}"><prosody rate="${rate}">${escapeXml(input.text)}</prosody></voice></speak>`;
+  if (input.pronunciation && input.language !== "en-US") throw new Error("TTS_PRONUNCIATION_LANGUAGE_INVALID");
+  const text = input.pronunciation ? renderEnglishPronunciation(input.text, input.pronunciation) : escapeXml(input.text);
+  return `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="${input.language}"><voice name="${input.voice}"><prosody rate="${rate}">${text}</prosody></voice></speak>`;
 }
 
 export class AzureTtsProvider implements TtsProvider {

@@ -3,36 +3,387 @@
   "title": "Family Learning textbook seed",
   "type": "object",
   "additionalProperties": false,
-  "required": ["publisher", "series", "subject", "grade", "volume", "editionText", "units"],
+  "required": [
+    "publisher",
+    "series",
+    "subject",
+    "grade",
+    "volume",
+    "editionText",
+    "units"
+  ],
   "properties": {
-    "publisher": { "type": "string", "minLength": 1 },
-    "series": { "type": "string", "minLength": 1 },
-    "subject": { "enum": ["chinese", "english"] },
-    "grade": { "type": "integer", "minimum": 1 },
-    "volume": { "type": "string", "minLength": 1 },
-    "editionText": { "type": "string", "minLength": 1 },
-    "units": { "type": "array", "items": { "$ref": "#/$defs/unit" } }
+    "publisher": {
+      "type": "string",
+      "minLength": 1
+    },
+    "series": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subject": {
+      "enum": [
+        "chinese",
+        "english"
+      ]
+    },
+    "grade": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "volume": {
+      "type": "string",
+      "minLength": 1
+    },
+    "editionText": {
+      "type": "string",
+      "minLength": 1
+    },
+    "units": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/unit"
+      }
+    },
+    "auditProfile": {
+      "enum": [
+        "official_textbook",
+        "official_english"
+      ]
+    },
+    "teachingProfile": {
+      "const": "grade_aware_v2"
+    }
   },
   "$defs": {
     "unit": {
-      "type": "object", "additionalProperties": false,
-      "required": ["order", "title", "sections"],
-      "properties": { "order": { "type": "integer", "minimum": 1 }, "title": { "type": "string", "minLength": 1 }, "sections": { "type": "array", "items": { "$ref": "#/$defs/section" } } }
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "order",
+        "title",
+        "sections"
+      ],
+      "properties": {
+        "order": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sections": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/section"
+          }
+        }
+      }
     },
     "section": {
-      "type": "object", "additionalProperties": false,
-      "required": ["key", "order", "title", "type", "cards"],
-      "properties": { "key": { "type": "string", "minLength": 1 }, "order": { "type": "integer", "minimum": 1 }, "title": { "type": "string", "minLength": 1 }, "type": { "enum": ["lesson", "language_garden", "other"] }, "cards": { "type": "array", "items": { "$ref": "#/$defs/card" } } }
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "key",
+        "order",
+        "title",
+        "type",
+        "cards"
+      ],
+      "properties": {
+        "key": {
+          "type": "string",
+          "minLength": 1
+        },
+        "order": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "enum": [
+            "lesson",
+            "language_garden",
+            "other"
+          ]
+        },
+        "cards": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/card"
+          }
+        }
+      }
     },
     "card": {
-      "type": "object", "additionalProperties": false,
-      "required": ["answerText", "broadcastText", "builtinKey"],
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "answerText",
+        "broadcastText",
+        "builtinKey"
+      ],
       "properties": {
-        "answerText": { "type": "string", "minLength": 1 }, "broadcastText": { "type": "string", "minLength": 1 },
-        "pinyinText": { "type": "string", "minLength": 1 }, "hintText": { "type": "string", "minLength": 1 },
-        "curriculumSource": { "enum": ["required_vocabulary", "writing_practice"] },
-        "adaptation": { "enum": ["retained", "replaced", "coverage_added"] },
-        "originalAnswerText": { "type": "string", "minLength": 1 }, "builtinKey": { "type": "string", "minLength": 1 }
+        "answerText": {
+          "type": "string",
+          "minLength": 1
+        },
+        "broadcastText": {
+          "type": "string",
+          "minLength": 1
+        },
+        "pinyinText": {
+          "type": "string",
+          "minLength": 1
+        },
+        "hintText": {
+          "type": "string",
+          "minLength": 1
+        },
+        "curriculumSource": {
+          "enum": [
+            "required_vocabulary",
+            "writing_practice"
+          ]
+        },
+        "adaptation": {
+          "enum": [
+            "retained",
+            "replaced",
+            "coverage_added"
+          ]
+        },
+        "originalAnswerText": {
+          "type": "string",
+          "minLength": 1
+        },
+        "builtinKey": {
+          "type": "string",
+          "minLength": 1
+        },
+        "writingExample": {
+          "type": "string",
+          "minLength": 1
+        },
+        "practiceOrigin": {
+          "enum": [
+            "grade_one_character",
+            "lesson_text",
+            "age_appropriate"
+          ]
+        },
+        "practiceCharacters": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1
+          }
+        },
+        "lessonImagePages": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "english": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "version": {
+              "type": "number",
+              "const": 1
+            },
+            "learningTarget": {
+              "type": "string",
+              "enum": [
+                "spelling",
+                "core",
+                "recognition"
+              ]
+            },
+            "meaningZh": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "phonetic": {
+              "type": "string",
+              "maxLength": 120
+            },
+            "exampleWithBlank": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 500
+            },
+            "exampleSentence": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 500
+            },
+            "exampleTranslation": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 300
+            },
+            "spellingRules": {
+              "type": "object",
+              "properties": {
+                "caseRule": {
+                  "type": "string",
+                  "enum": [
+                    "initial_optional",
+                    "required"
+                  ]
+                },
+                "acceptedAnswers": {
+                  "maxItems": 8,
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200
+                  }
+                },
+                "note": {
+                  "type": "string",
+                  "maxLength": 400
+                }
+              },
+              "required": [
+                "caseRule",
+                "acceptedAnswers"
+              ],
+              "additionalProperties": false
+            },
+            "grammarForm": {
+              "type": "string",
+              "enum": [
+                "past",
+                "comparative",
+                "ing",
+                "plural"
+              ]
+            },
+            "baseForm": {
+              "type": "string",
+              "maxLength": 100
+            },
+            "kind": {
+              "type": "string",
+              "enum": [
+                "word",
+                "phrase",
+                "abbreviation",
+                "pattern_example",
+                "form_note"
+              ]
+            },
+            "sourceRole": {
+              "type": "string",
+              "enum": [
+                "head",
+                "past_form",
+                "plural_note"
+              ]
+            },
+            "sourceWord": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "sourcePrintedPage": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "sourceImagePage": {
+              "type": "integer",
+              "exclusiveMinimum": 0,
+              "maximum": 9007199254740991
+            },
+            "pronunciation": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "kind": {
+                      "type": "string",
+                      "const": "ipa"
+                    },
+                    "target": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 100,
+                      "pattern": "^[A-Za-z][A-Za-z .'-]*$"
+                    },
+                    "ipa": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 100,
+                      "pattern": "^[a-zɡɑɒæɔəɚɛɜɝɪʊʌŋθðʃʒˈˌː. ]+$"
+                    }
+                  },
+                  "required": [
+                    "kind",
+                    "target",
+                    "ipa"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "kind": {
+                      "type": "string",
+                      "const": "characters"
+                    },
+                    "target": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 100,
+                      "pattern": "^[A-Za-z][A-Za-z .'-]*$"
+                    },
+                    "letters": {
+                      "type": "string",
+                      "pattern": "^[A-Z]{1,8}$"
+                    }
+                  },
+                  "required": [
+                    "kind",
+                    "target",
+                    "letters"
+                  ],
+                  "additionalProperties": false
+                }
+              ]
+            },
+            "spokenContext": {
+              "type": "string",
+              "maxLength": 400
+            }
+          },
+          "required": [
+            "version",
+            "learningTarget",
+            "meaningZh",
+            "exampleWithBlank",
+            "exampleSentence",
+            "exampleTranslation",
+            "spellingRules",
+            "kind",
+            "sourceRole",
+            "sourceWord",
+            "sourcePrintedPage",
+            "sourceImagePage"
+          ],
+          "additionalProperties": false
+        }
       }
     }
   }

@@ -1,4 +1,4 @@
-import { and, eq, sql, asc, ne, inArray } from 'drizzle-orm';
+import { and, eq, sql, asc, ne, inArray, gte, lte } from 'drizzle-orm';
 import { z } from 'zod';
 import { db, type DbTransaction } from '@/db/client';
 import type { Actor, GuardianActor, ChildActor } from '@/modules/auth/actor';
@@ -8,7 +8,7 @@ import { dictationSessions } from '@/modules/dictation/session-schema';
 import { activeTtsMediaPredicate } from '@/modules/media/active-cache';
 import { privateMedia } from '@/modules/media/schema';
 import { todoTasks, todoSubmissions, todoReviews, todoRewards } from './schema';
-import { bonusSchema, dateSchema, taskInputSchema, updateManualSchema } from './validation';
+import { bonusSchema, taskInputSchema, todoDateRange, updateManualSchema, type TodoView } from './validation';
 type Database = typeof db | DbTransaction;
 export type Attachment = {
     id: string;
@@ -73,11 +73,12 @@ export function createTodoService(database: Database = db) {
             await tx.update(todoTasks).set({ status: 'cancelled', updatedAt: new Date() }).where(eq(todoTasks.id, id));
         });
     }
-    async function list(actor: Actor, date: string, childId?: string) {
-        dateSchema.parse(date);
+    async function list(actor: Actor, date: string, childId?: string, view: TodoView = 'day') {
+        const range = todoDateRange(date, view);
         if (childId)
             z.string().uuid().parse(childId);
-        const rows = await database.select({ task: todoTasks, childName: children.nickname, dictationPhase: dictationSessions.phase, gradingMode: learningTasks.gradingMode, attachmentId: todoSubmissions.attachmentId, mimeType: todoSubmissions.mimeType, base: todoRewards.basePoints, bonus: todoRewards.bonusPoints }).from(todoTasks).innerJoin(children, eq(children.id, todoTasks.childId)).leftJoin(learningTasks, and(eq(learningTasks.id, todoTasks.dictationTaskId), eq(learningTasks.familyId, todoTasks.familyId), eq(learningTasks.childId, todoTasks.childId))).leftJoin(dictationSessions, and(eq(dictationSessions.taskId, learningTasks.id), eq(dictationSessions.familyId, todoTasks.familyId), eq(dictationSessions.childId, todoTasks.childId))).leftJoin(todoSubmissions, and(eq(todoSubmissions.todoId, todoTasks.id), eq(todoSubmissions.number, todoTasks.submissionNumber))).leftJoin(todoRewards, eq(todoRewards.todoId, todoTasks.id)).where(and(scope(actor), eq(todoTasks.date, date), childId ? eq(todoTasks.childId, childId) : undefined, actor.role === 'child' ? ne(todoTasks.status, 'cancelled') : undefined)).orderBy(asc(todoTasks.createdAt));
+        const inRange = and(gte(todoTasks.date, range.from), lte(todoTasks.date, range.to));
+        const rows = await database.select({ task: todoTasks, childName: children.nickname, dictationPhase: dictationSessions.phase, gradingMode: learningTasks.gradingMode, attachmentId: todoSubmissions.attachmentId, mimeType: todoSubmissions.mimeType, base: todoRewards.basePoints, bonus: todoRewards.bonusPoints }).from(todoTasks).innerJoin(children, eq(children.id, todoTasks.childId)).leftJoin(learningTasks, and(eq(learningTasks.id, todoTasks.dictationTaskId), eq(learningTasks.familyId, todoTasks.familyId), eq(learningTasks.childId, todoTasks.childId))).leftJoin(dictationSessions, and(eq(dictationSessions.taskId, learningTasks.id), eq(dictationSessions.familyId, todoTasks.familyId), eq(dictationSessions.childId, todoTasks.childId))).leftJoin(todoSubmissions, and(eq(todoSubmissions.todoId, todoTasks.id), eq(todoSubmissions.number, todoTasks.submissionNumber))).leftJoin(todoRewards, eq(todoRewards.todoId, todoTasks.id)).where(and(scope(actor), inRange, childId ? eq(todoTasks.childId, childId) : undefined, actor.role === 'child' ? ne(todoTasks.status, 'cancelled') : undefined)).orderBy(asc(todoTasks.date), asc(todoTasks.createdAt));
         const taskIds = rows.flatMap(({ task }) => task.dictationTaskId ? [task.dictationTaskId] : []);
         const mediaRows = taskIds.length ? await database.select({ taskId: learningTaskItems.taskId, mediaId: privateMedia.id })
             .from(learningTaskItems).leftJoin(privateMedia, activeTtsMediaPredicate({
@@ -95,7 +96,7 @@ export function createTodoService(database: Database = db) {
             mediaCounts.set(row.taskId, counts);
         }
         const sessionStatus = new Map(sessionRows.map((row) => [row.taskId, row.status]));
-        const [points] = await database.select({ total: sql<number> `coalesce(sum(${todoRewards.basePoints}+${todoRewards.bonusPoints}),0)::int` }).from(todoRewards).innerJoin(todoTasks, eq(todoTasks.id, todoRewards.todoId)).where(and(scope(actor), childId ? eq(todoTasks.childId, childId) : undefined));
+        const [points] = await database.select({ total: sql<number> `coalesce(sum(${todoRewards.basePoints}+${todoRewards.bonusPoints}),0)::int` }).from(todoRewards).innerJoin(todoTasks, eq(todoTasks.id, todoRewards.todoId)).where(and(scope(actor), inRange, childId ? eq(todoTasks.childId, childId) : undefined));
         return { tasks: rows.map(r => { const counts = r.task.dictationTaskId ? mediaCounts.get(r.task.dictationTaskId) : undefined;
             return { ...r.task, childName: r.childName, dictationPhase: r.dictationPhase, gradingMode: r.gradingMode, attachment: r.attachmentId ? { id: r.attachmentId, mimeType: r.mimeType! } : null,
                 points: r.base === null ? null : r.base + (r.bonus ?? 0),

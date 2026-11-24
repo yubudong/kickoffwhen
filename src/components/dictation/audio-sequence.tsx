@@ -67,6 +67,13 @@ export function AudioSequence({ session, pending, onPlayback, onRestart }: {
     <h1 id="listening-title">听清楚，再写下来</h1>
     <SessionProgress current={Math.min(view.currentIndex + 1, session.itemCount)} roundNumber={session.roundNumber} total={session.itemCount} />
     <div className="dictation-cue" aria-live="polite">
+      {currentItem?.writingHint && <p className="english-writing-hint">{currentItem.writingHint}</p>}
+      {currentItem?.englishHints && <div className="english-listening-hints">
+        {currentItem.englishHints.meaningZh && <p>释义：{currentItem.englishHints.meaningZh}</p>}
+        {currentItem.englishHints.exampleWithBlank && <p lang="en">{currentItem.englishHints.exampleWithBlank}</p>}
+        {currentItem.englishHints.exampleTranslation && <p>{currentItem.englishHints.exampleTranslation}</p>}
+        {currentItem.englishHints.notice && <p>{currentItem.englishHints.notice}</p>}
+      </div>}
       {currentItem?.pinyinText ? <p className="dictation-pinyin">{currentItem.pinyinText}</p> : null}
       {currentItem?.contextText ? <p>语境：{currentItem.contextText}</p> : null}
     </div>
@@ -87,7 +94,7 @@ export function AudioSequence({ session, pending, onPlayback, onRestart }: {
       {session.allowManualReplay ? <button disabled={pending || loading || confirmRestart || view.index < 1} onClick={() => void controller.current?.replayPrevious()} type="button">回听上一个词</button> : null}
       <button ref={restartButton} disabled={pending || loading || confirmRestart} onClick={requestRestart} type="button">从头重新听写</button>
     </div>
-    <p className="answer-secret-note">{session.gradingMode === "parent" ? "听完后拍照，提交给家长批改。" : "答案会在全部听完后显示。"}</p>
+    <p className="answer-secret-note">{session.gradingMode === "parent" ? "听完后拍照，提交给家长批改。" : "全部听完后，点一下查看答案并自己批改。"}</p>
     {confirmRestart ? <div className="confirm-overlay" role="dialog" aria-modal="true" aria-labelledby="restart-title" onKeyDown={event => {
       if (event.key === "Escape" && !pending) cancelRestart();
       if (event.key === "Tab") {

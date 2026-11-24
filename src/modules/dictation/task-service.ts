@@ -1,3 +1,5 @@
+import { getEnglishMetadata, englishTextbookSelectionPredicate } from "@/modules/learning-content/english-metadata";
+import { activeLearningCardPredicate } from "@/modules/learning-content/active-cards";
 import { addDictationTodo } from "@/modules/todos/dictation";
 import { createHash } from "node:crypto";
 
@@ -115,6 +117,7 @@ function ttsPayload(
         language: "en-US",
         voice: "en-US-JennyNeural",
         rate,
+        ...(getEnglishMetadata(card.builtinKey)?.pronunciation ? { pronunciation: getEnglishMetadata(card.builtinKey)!.pronunciation } : {}),
       };
 }
 
@@ -196,6 +199,7 @@ export function createDictationTaskService(
     metadata?: TaskMetadata,
   ): Promise<LearningTask> {
     const input = buildTaskInputSchema.parse(rawInput);
+    if (input.englishStudyOptions && input.subject !== "english") throw new Error("TASK_CARD_SUBJECT_MISMATCH");
     if (new Set(input.newCardIds).size !== input.newCardIds.length) {
       throw new Error("TASK_CARD_DUPLICATE");
     }
@@ -233,10 +237,12 @@ export function createDictationTaskService(
           speechRate: String(input.speechRate),
           allowManualReplay: input.allowManualReplay,
           gradingMode: input.gradingMode,
+          englishStudyOptions: input.englishStudyOptions,
           maxReviewCards: input.maxReviewCards,
+          ...(!metadata && input.englishStudyOptions?.mode === "assisted" ? { title: "英语听写（辅助练习）" } : {}),
           ...(metadata ? {
             origin: metadata.origin,
-            title: metadata.title,
+            title: input.englishStudyOptions?.mode === "assisted" ? `${metadata.title}（辅助练习）` : metadata.title,
             sectionId: metadata.sectionId ?? null,
             batchCommandId: metadata.batchCommandId ?? null,
           } : {}),
@@ -277,6 +283,7 @@ export function createDictationTaskService(
                 eq(childCardStates.familyId, actor.familyId),
                 eq(childCardStates.childId, child.id),
                 lte(childCardStates.dueAt, now()),
+                activeLearningCardPredicate(),
                 ...(input.subject ? [eq(learningCards.subject, input.subject)] : []),
                 or(eq(learningCards.familyId, actor.familyId), isNull(learningCards.familyId)),
                 ...(activeCardIds.length > 0
@@ -297,6 +304,7 @@ export function createDictationTaskService(
             .where(
               and(
                 inArray(learningCards.id, input.newCardIds),
+                activeLearningCardPredicate(),
                 or(eq(learningCards.familyId, actor.familyId), isNull(learningCards.familyId)),
               ),
             );
@@ -378,13 +386,14 @@ export function createDictationTaskService(
         });
       }
       await tx.insert(learningTaskItems).values(values);
-      await addDictationTodo(tx, created, values.length, metadata?.title);
+      await addDictationTodo(tx, created, values.length, input.englishStudyOptions?.mode === "assisted" ? created.title : metadata?.title);
       return loadTask(tx, actor, created.id);
     });
   }
 
   async function buildTaskBatch(actor: GuardianActor, rawInput: BuildTaskBatchInput): Promise<LearningTask[]> {
     const input = buildTaskBatchInputSchema.parse(rawInput);
+    if (input.englishStudyOptions && input.subject !== "english") throw new Error("TASK_CARD_SUBJECT_MISMATCH");
     if (new Set(input.sectionIds).size !== input.sectionIds.length || input.sectionIds.length > 30 || input.extraCardIds.length > 100) {
       throw new Error("TASK_BATCH_INVALID");
     }
@@ -419,16 +428,18 @@ export function createDictationTaskService(
         return Promise.all(existing.map((task) => loadTask(tx, actor, task.id)));
       }
       const extraCards = input.extraCardIds.length === 0 ? [] : await tx.select({ id: learningCards.id })
-        .from(learningCards).where(and(inArray(learningCards.id, input.extraCardIds),
+        .from(learningCards).where(and(inArray(learningCards.id, input.extraCardIds), activeLearningCardPredicate(),
           eq(learningCards.subject, input.subject),
           or(eq(learningCards.familyId, actor.familyId), isNull(learningCards.familyId))));
       if (extraCards.length !== input.extraCardIds.length || new Set(input.extraCardIds).size !== input.extraCardIds.length) {
         throw new Error("TASK_CARD_NOT_FOUND");
       }
       const actorCards = await tx.select({ card: learningCards }).from(learningCards).where(and(
+        activeLearningCardPredicate(),
         eq(learningCards.subject, input.subject),
         or(eq(learningCards.familyId, actor.familyId), isNull(learningCards.familyId)),
         inArray(learningCards.sectionId, input.sectionIds),
+        englishTextbookSelectionPredicate(input.englishStudyOptions?.includeRecognition ?? false),
       ));
       const active = new Set((await getActiveTaskCards(tx, actor.familyId, [input.childId])).map((row) => row.cardId));
       const started = actorCards.length === 0 ? new Set<string>() : new Set((await tx.select({ cardId: childCardStates.cardId })
@@ -445,6 +456,7 @@ export function createDictationTaskService(
           mode: input.mode, order: input.order, intervalSeconds: input.intervalSeconds,
           repeatCount: input.repeatCount, speechRate: input.speechRate, allowManualReplay: input.allowManualReplay,
           gradingMode: input.gradingMode,
+          englishStudyOptions: input.englishStudyOptions,
         }, { origin: "curriculum", title, sectionId: section.id, batchCommandId: input.commandId, batchFingerprint }));
       }
       if (input.extraCardIds.length > 0) {
@@ -455,6 +467,7 @@ export function createDictationTaskService(
           mode: input.mode, order: input.order, intervalSeconds: input.intervalSeconds,
           repeatCount: input.repeatCount, speechRate: input.speechRate, allowManualReplay: input.allowManualReplay,
           gradingMode: input.gradingMode,
+          englishStudyOptions: input.englishStudyOptions,
         }, { origin: "extra_practice", title, batchCommandId: input.commandId, batchFingerprint }));
       }
       if (result.length === 0) throw new Error("TASK_EMPTY");

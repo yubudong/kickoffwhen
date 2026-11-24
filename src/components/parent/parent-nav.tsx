@@ -11,7 +11,7 @@ export function ParentNav({
     <nav aria-label="家长中心" className="parent-nav">
       <Link href="/parent">概览</Link>
       <Link href="/parent/children">孩子档案</Link>
-      <Link href="/parent/todos">今日待办清单</Link>
+      <Link href="/parent/todos">待办清单</Link>
       <Link href="/parent/tasks/new">今日听写</Link>
       <Link href="/parent/dictation-reviews">听写批改</Link>
       <Link href="/parent/reports">学习报告</Link>

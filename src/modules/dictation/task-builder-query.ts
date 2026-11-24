@@ -1,3 +1,5 @@
+import { getEnglishMetadata } from "@/modules/learning-content/english-metadata";
+import { activeLearningCardPredicate } from "@/modules/learning-content/active-cards";
 import { and, asc, eq, inArray, isNull, or, sql } from "drizzle-orm";
 
 import { db, type DbTransaction } from "@/db/client";
@@ -36,7 +38,7 @@ export function createTaskBuilderQueryService(
       .leftJoin(textbookEditions, eq(textbookEditions.id, learningCards.textbookEditionId))
       .leftJoin(textbookUnits, eq(textbookUnits.id, learningCards.unitId))
       .leftJoin(textbookSections, eq(textbookSections.id, learningCards.sectionId))
-      .where(or(eq(learningCards.familyId, actor.familyId), isNull(learningCards.familyId)))
+      .where(and(or(eq(learningCards.familyId, actor.familyId), isNull(learningCards.familyId)), activeLearningCardPredicate()))
       .orderBy(asc(sql`case when ${learningCards.unitId} is null then 1 else 0 end`), asc(learningCards.subject), asc(learningCards.textbookEditionId), asc(textbookUnits.unitOrder), asc(textbookSections.sectionOrder), asc(learningCards.sourceOrder), asc(sql`case ${learningCards.source} when 'builtin' then 0 when 'manual' then 1 when 'bulk' then 2 else 3 end`), asc(learningCards.createdAt), asc(learningCards.id));
 
     const catalogRows = await database.select({ edition: textbookEditions, unit: textbookUnits,
@@ -121,6 +123,10 @@ export function createTaskBuilderQueryService(
       })),
       catalog: [...catalogById.values()],
       cards: cardRows.map(({ card, grade, volume, unitTitle, unitOrder, sectionTitle, sectionOrder }) => ({
+        ...(getEnglishMetadata(card.builtinKey) ? {
+          englishLearningTarget: getEnglishMetadata(card.builtinKey)!.learningTarget,
+          englishMeaningZh: getEnglishMetadata(card.builtinKey)!.meaningZh,
+        } : {}),
         id: card.id,
         answerText: card.answerText,
         subject: card.subject === "chinese" ? "chinese" : "english",

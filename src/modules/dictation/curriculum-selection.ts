@@ -6,6 +6,7 @@ export type CurriculumSection = {
   order: number;
   availableCount: number;
   totalCount: number;
+  excludedOptionalCount?: number;
 };
 export type CurriculumUnit = { id: string; title: string; order: number; sections: CurriculumSection[] };
 export type CurriculumCatalogEdition = {
@@ -26,11 +27,12 @@ export function buildCurriculumTree(
   childId: string,
   subject: "chinese" | "english",
   catalog: CurriculumCatalogEdition[],
+  includeRecognition = false,
 ): CurriculumEdition[] {
   const editions = new Map(catalog.filter((edition) => edition.subject === subject).map((edition) => [
     edition.id,
     { ...edition, units: edition.units.map((unit) => ({ ...unit,
-      sections: unit.sections.map((section) => ({ ...section, availableCount: 0, totalCount: 0 })),
+      sections: unit.sections.map((section) => ({ ...section, availableCount: 0, totalCount: 0, excludedOptionalCount: 0 })),
     })) },
   ] as const));
   for (const card of cards) {
@@ -40,12 +42,15 @@ export function buildCurriculumTree(
     const section = unit?.sections.find((item) => item.id === card.sectionId);
     if (!section) continue;
     section.totalCount += 1;
+    if (card.englishLearningTarget === "recognition" && !includeRecognition) { section.excludedOptionalCount += 1; continue; }
     if (!card.startedChildIds.includes(childId) && !card.activeChildIds?.includes(childId)) section.availableCount += 1;
   }
   return [...editions.values()]
     .sort((a, b) => a.grade - b.grade || a.volume.localeCompare(b.volume))
     .map((edition) => ({ ...edition, units: edition.units.sort((a, b) => a.order - b.order)
-      .map((unit) => ({ ...unit, sections: unit.sections.sort((a, b) => a.order - b.order) })) }));
+      .map((unit) => ({ ...unit, sections: unit.sections.filter(section => section.totalCount > 0).sort((a, b) => a.order - b.order) }))
+      .filter(unit => unit.sections.length > 0) }))
+    .filter(edition => edition.units.length > 0);
 }
 
 export function toggleUnitSections(current: string[], sectionIds: string[]): string[] {

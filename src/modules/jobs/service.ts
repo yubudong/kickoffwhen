@@ -1,3 +1,4 @@
+import { englishPronunciationSchema } from "@/modules/learning-content/english-pronunciation";
 import { createHash } from "node:crypto";
 
 import { and, eq } from "drizzle-orm";
@@ -57,6 +58,7 @@ export const generateTtsJobPayloadSchema = z
     language: z.enum(["zh-CN", "en-US"]),
     voice: z.enum(["zh-CN-XiaoxiaoNeural", "en-US-JennyNeural"]),
     rate: z.number().finite().min(0.5).max(2),
+    pronunciation: englishPronunciationSchema.optional(),
   })
   .strict();
 
@@ -85,6 +87,7 @@ export function buildTtsDedupeKey(payload: GenerateTtsJobPayload): string {
     payload.voice,
     rate,
     textHash,
+    ...(payload.pronunciation ? ["pron-v1-" + createHash("sha256").update(JSON.stringify(englishPronunciationSchema.parse(payload.pronunciation))).digest("hex")] : []),
   ].join(":");
 }
 

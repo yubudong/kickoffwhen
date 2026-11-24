@@ -1,3 +1,4 @@
+import { englishGradingDetails, englishListeningProjection, getEnglishMetadata } from "@/modules/learning-content/english-metadata";
 import { and, asc, eq, inArray, sql } from "drizzle-orm";
 import { z } from "zod";
 
@@ -19,7 +20,7 @@ import {
 
 type ViewDatabase = typeof db | DbTransaction;
 const uuidSchema = z.string().uuid();
-type ItemProjection = readonly ("itemId" | "position" | "answerText" | "mediaId" | "pinyinText" | "contextText")[];
+type ItemProjection = readonly ("itemId" | "position" | "answerText" | "mediaId" | "pinyinText" | "contextText" | "subject" | "builtinKey")[];
 
 export function createChildDictationViewService(
   database: ViewDatabase = db,
@@ -178,12 +179,13 @@ export function createChildDictationViewService(
     }
 
     if (snapshot.phase === "listening") {
-      observeItemProjection(["itemId", "mediaId", "pinyinText", "contextText"]);
+      observeItemProjection(["itemId", "mediaId", "pinyinText", "contextText", "subject", "builtinKey"]);
       const listeningRows = await database
         .select({
           itemId: dictationSessionItems.taskItemId,
           mediaId: privateMedia.id,
           pinyinText: learningCards.pinyinText,
+          subject: learningCards.subject, builtinKey: learningCards.builtinKey,
           // Only audited built-in curriculum contexts are safe to disclose.
           // Older parent/OCR hints are unrestricted text and may contain answers.
           contextText: sql<string | null>`case when ${learningCards.source} = 'builtin' and ${learningCards.curriculumSource} is not null then ${learningCards.hintText} else null end`,
@@ -209,16 +211,19 @@ export function createChildDictationViewService(
       if (ordered.some((item) => !item!.mediaId)) throw new Error("TASK_AUDIO_NOT_READY");
       return childSessionViewSchema.parse({ ...base, phase: "listening", items: ordered.map((item, position) => ({
         itemId: item!.itemId, position, audioUrl: `/api/private-media/${item!.mediaId}`,
-        pinyinText: item!.pinyinText, contextText: item!.contextText,
+        pinyinText: item!.subject === "english" && (getEnglishMetadata(item!.builtinKey) || row.task.englishStudyOptions) ? null : item!.pinyinText,
+        contextText: item!.subject === "english" && (getEnglishMetadata(item!.builtinKey) || row.task.englishStudyOptions) ? null : item!.contextText,
+        ...(item!.subject === "english" ? englishListeningProjection(item!.builtinKey, row.task.englishStudyOptions) : {}),
       })) });
     }
 
-    observeItemProjection(["itemId", "position", "answerText", "mediaId"]);
+    observeItemProjection(["itemId", "position", "answerText", "mediaId", "subject", "builtinKey"]);
     const itemRows = await database
       .select({
         itemId: dictationSessionItems.taskItemId,
         position: dictationSessionItems.position,
         answerText: learningCards.answerText,
+        subject: learningCards.subject, builtinKey: learningCards.builtinKey,
         mediaId: privateMedia.id,
       })
       .from(dictationSessionItems)
@@ -265,6 +270,7 @@ export function createChildDictationViewService(
           ? snapshot.markedItemIds.length
           : position,
         answerText: item!.answerText,
+        ...(item!.subject === "english" && englishGradingDetails(item!.builtinKey) ? { english: englishGradingDetails(item!.builtinKey) } : {}),
       })),
     });
   }

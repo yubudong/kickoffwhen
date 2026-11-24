@@ -1,0 +1,2961 @@
+{
+  "auditProfile": "official_english",
+  "publisher": "人民教育出版社",
+  "series": "义务教育教科书英语（三年级起点）",
+  "subject": "english",
+  "grade": 3,
+  "volume": "下册",
+  "editionText": "PEP（2022课标修订）·2026-11整理",
+  "units": [
+    {
+      "order": 1,
+      "title": "Unit 1 Meeting new people",
+      "sections": [
+        {
+          "key": "en-pep-g3-v2-u1-a",
+          "order": 1,
+          "title": "Part A · 词汇",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "where",
+              "broadcastText": "where. Where is my book?",
+              "hintText": "（　　）is my book?",
+              "builtinKey": "en-pep-202611-g3-v2-u1-a-e3a0593a48a909",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "在哪里；到哪里",
+                "exampleWithBlank": "（　　）is my book?",
+                "exampleSentence": "Where is my book?",
+                "exampleTranslation": "我的书在哪里？",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "where",
+                "sourcePrintedPage": 4,
+                "sourceImagePage": 85,
+                "phonetic": "weə(r)",
+                "spokenContext": "Where is my book?"
+              }
+            },
+            {
+              "answerText": "from",
+              "broadcastText": "from",
+              "hintText": "I am（　　）China.",
+              "builtinKey": "en-pep-202611-g3-v2-u1-a-1f325db52467bb",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "来自；从……来",
+                "exampleWithBlank": "I am（　　）China.",
+                "exampleSentence": "I am from China.",
+                "exampleTranslation": "我来自中国。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "from",
+                "sourcePrintedPage": 4,
+                "sourceImagePage": 85,
+                "phonetic": "frɒm"
+              }
+            },
+            {
+              "answerText": "about",
+              "broadcastText": "about",
+              "hintText": "This book is（　　）cats.",
+              "builtinKey": "en-pep-202611-g3-v2-u1-a-25385a35d87e2e",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "关于；大约",
+                "exampleWithBlank": "This book is（　　）cats.",
+                "exampleSentence": "This book is about cats.",
+                "exampleTranslation": "这本书是关于猫的。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "about",
+                "sourcePrintedPage": 4,
+                "sourceImagePage": 85,
+                "phonetic": "əˈbaʊt"
+              }
+            },
+            {
+              "answerText": "today",
+              "broadcastText": "today",
+              "hintText": "I go to the zoo（　　）.",
+              "builtinKey": "en-pep-202611-g3-v2-u1-a-7bc8a44f617ec8",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "今天",
+                "exampleWithBlank": "I go to the zoo（　　）.",
+                "exampleSentence": "I go to the zoo today.",
+                "exampleTranslation": "我今天去动物园。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "today",
+                "sourcePrintedPage": 5,
+                "sourceImagePage": 85,
+                "phonetic": "təˈdeɪ"
+              }
+            },
+            {
+              "answerText": "teacher",
+              "broadcastText": "teacher",
+              "hintText": "Our（　　）helps us learn.",
+              "builtinKey": "en-pep-202611-g3-v2-u1-a-e32e88046885ea",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "教师",
+                "exampleWithBlank": "Our（　　）helps us learn.",
+                "exampleSentence": "Our teacher helps us learn.",
+                "exampleTranslation": "老师帮助我们学习。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "teacher",
+                "sourcePrintedPage": 5,
+                "sourceImagePage": 85,
+                "phonetic": "ˈtiːtʃə(r)"
+              }
+            },
+            {
+              "answerText": "student",
+              "broadcastText": "student",
+              "hintText": "She is a good（　　）.",
+              "builtinKey": "en-pep-202611-g3-v2-u1-a-992df647f76e4f",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "学生",
+                "exampleWithBlank": "She is a good（　　）.",
+                "exampleSentence": "She is a good student.",
+                "exampleTranslation": "她是一名好学生。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "student",
+                "sourcePrintedPage": 5,
+                "sourceImagePage": 85,
+                "phonetic": "ˈstjuːdnt"
+              }
+            },
+            {
+              "answerText": "UK",
+              "broadcastText": "UK",
+              "hintText": "I am from the（　　）.",
+              "builtinKey": "en-pep-202611-g3-v2-u1-a-11b85e3f2b69f2",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "英国",
+                "exampleWithBlank": "I am from the（　　）.",
+                "exampleSentence": "I am from the UK.",
+                "exampleTranslation": "我来自英国。",
+                "spellingRules": {
+                  "caseRule": "required",
+                  "acceptedAnswers": [
+                    "U.K."
+                  ],
+                  "note": "本卡练教材中的规范缩写。"
+                },
+                "kind": "abbreviation",
+                "sourceRole": "head",
+                "sourceWord": "UK",
+                "sourcePrintedPage": 4,
+                "sourceImagePage": 85,
+                "phonetic": "ˌjuː ˈkeɪ",
+                "pronunciation": {
+                  "kind": "characters",
+                  "target": "UK",
+                  "letters": "UK"
+                }
+              }
+            },
+            {
+              "answerText": "China",
+              "broadcastText": "China",
+              "hintText": "I live in（　　）.",
+              "builtinKey": "en-pep-202611-g3-v2-u1-a-38fa93e04db4db",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "中国",
+                "exampleWithBlank": "I live in（　　）.",
+                "exampleSentence": "I live in China.",
+                "exampleTranslation": "我住在中国。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": [],
+                  "note": "请保留名称、星期、月份等词中的必要大写。"
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "China",
+                "sourcePrintedPage": 4,
+                "sourceImagePage": 85,
+                "phonetic": "ˈtʃaɪnə"
+              }
+            },
+            {
+              "answerText": "Canada",
+              "broadcastText": "Canada",
+              "hintText": "I am from（　　）.",
+              "builtinKey": "en-pep-202611-g3-v2-u1-a-b0d6f645f498de",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "加拿大",
+                "exampleWithBlank": "I am from（　　）.",
+                "exampleSentence": "I am from Canada.",
+                "exampleTranslation": "我来自加拿大。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": [],
+                  "note": "请保留名称、星期、月份等词中的必要大写。"
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "Canada",
+                "sourcePrintedPage": 5,
+                "sourceImagePage": 85,
+                "phonetic": "ˈkænədə"
+              }
+            },
+            {
+              "answerText": "USA",
+              "broadcastText": "USA",
+              "hintText": "I am from the（　　）.",
+              "builtinKey": "en-pep-202611-g3-v2-u1-a-3a01cc0444a071",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "美国",
+                "exampleWithBlank": "I am from the（　　）.",
+                "exampleSentence": "I am from the USA.",
+                "exampleTranslation": "我来自美国。",
+                "spellingRules": {
+                  "caseRule": "required",
+                  "acceptedAnswers": [
+                    "U.S.A."
+                  ],
+                  "note": "本卡练教材中的规范缩写。"
+                },
+                "kind": "abbreviation",
+                "sourceRole": "head",
+                "sourceWord": "USA",
+                "sourcePrintedPage": 5,
+                "sourceImagePage": 85,
+                "phonetic": "ˌjuː es ˈeɪ",
+                "pronunciation": {
+                  "kind": "characters",
+                  "target": "USA",
+                  "letters": "USA"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "key": "en-pep-g3-v2-u1-b",
+          "order": 2,
+          "title": "Part B · 词汇",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "after",
+              "broadcastText": "after",
+              "hintText": "The dog runs（　　）the cat.",
+              "builtinKey": "en-pep-202611-g3-v2-u1-b-8b84779163494f",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "在……后面",
+                "exampleWithBlank": "The dog runs（　　）the cat.",
+                "exampleSentence": "The dog runs after the cat.",
+                "exampleTranslation": "狗跟着猫跑。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "after",
+                "sourcePrintedPage": 7,
+                "sourceImagePage": 85,
+                "phonetic": "ˈɑːftə(r)"
+              }
+            },
+            {
+              "answerText": "who",
+              "broadcastText": "who",
+              "hintText": "（　　）is that girl?",
+              "builtinKey": "en-pep-202611-g3-v2-u1-b-0c43816a034f6e",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "谁；什么人",
+                "exampleWithBlank": "（　　）is that girl?",
+                "exampleSentence": "Who is that girl?",
+                "exampleTranslation": "那个女孩是谁？",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "who",
+                "sourcePrintedPage": 7,
+                "sourceImagePage": 85,
+                "phonetic": "huː"
+              }
+            },
+            {
+              "answerText": "girl",
+              "broadcastText": "girl",
+              "hintText": "The（　　）is my sister.",
+              "builtinKey": "en-pep-202611-g3-v2-u1-b-56d71abd2ec1d9",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "女孩",
+                "exampleWithBlank": "The（　　）is my sister.",
+                "exampleSentence": "The girl is my sister.",
+                "exampleTranslation": "那个女孩是我姐姐。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "girl",
+                "sourcePrintedPage": 7,
+                "sourceImagePage": 85,
+                "phonetic": "ɡɜːl"
+              }
+            },
+            {
+              "answerText": "neighbour",
+              "broadcastText": "neighbour",
+              "hintText": "My（　　）lives next door.",
+              "builtinKey": "en-pep-202611-g3-v2-u1-b-a7d172d77dda3e",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "邻居",
+                "exampleWithBlank": "My（　　）lives next door.",
+                "exampleSentence": "My neighbour lives next door.",
+                "exampleTranslation": "我的邻居住在隔壁。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "neighbour",
+                "sourcePrintedPage": 7,
+                "sourceImagePage": 85,
+                "phonetic": "ˈneɪbə(r)"
+              }
+            },
+            {
+              "answerText": "boy",
+              "broadcastText": "boy",
+              "hintText": "The（　　）is my brother.",
+              "builtinKey": "en-pep-202611-g3-v2-u1-b-89b7d91441fb6d",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "男孩",
+                "exampleWithBlank": "The（　　）is my brother.",
+                "exampleSentence": "The boy is my brother.",
+                "exampleTranslation": "那个男孩是我弟弟。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "boy",
+                "sourcePrintedPage": 8,
+                "sourceImagePage": 85,
+                "phonetic": "bɔɪ"
+              }
+            },
+            {
+              "answerText": "woman",
+              "broadcastText": "woman",
+              "hintText": "That（　　）is my mother.",
+              "builtinKey": "en-pep-202611-g3-v2-u1-b-76edb15338106e",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "成年女子；妇女",
+                "exampleWithBlank": "That（　　）is my mother.",
+                "exampleSentence": "That woman is my mother.",
+                "exampleTranslation": "那个女人是我妈妈。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "woman",
+                "sourcePrintedPage": 8,
+                "sourceImagePage": 85,
+                "phonetic": "ˈwʊmən"
+              }
+            },
+            {
+              "answerText": "man",
+              "broadcastText": "man",
+              "hintText": "That（　　）is my dad.",
+              "builtinKey": "en-pep-202611-g3-v2-u1-b-5a6718ef791b3d",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "成年男子；男人",
+                "exampleWithBlank": "That（　　）is my dad.",
+                "exampleSentence": "That man is my dad.",
+                "exampleTranslation": "那个男人是我爸爸。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "man",
+                "sourcePrintedPage": 8,
+                "sourceImagePage": 85,
+                "phonetic": "mæn"
+              }
+            },
+            {
+              "answerText": "Mr",
+              "broadcastText": "Mr",
+              "hintText": "（　　）Li is our teacher.",
+              "builtinKey": "en-pep-202611-g3-v2-u1-b-7acb43672116a5",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "先生（用于男子的姓氏或姓名前）",
+                "exampleWithBlank": "（　　）Li is our teacher.",
+                "exampleSentence": "Mr Li is our teacher.",
+                "exampleTranslation": "李先生是我们的老师。",
+                "spellingRules": {
+                  "caseRule": "required",
+                  "acceptedAnswers": [
+                    "Mr."
+                  ],
+                  "note": "本卡练教材中的规范缩写。"
+                },
+                "kind": "abbreviation",
+                "sourceRole": "head",
+                "sourceWord": "Mr",
+                "sourcePrintedPage": 8,
+                "sourceImagePage": 85,
+                "phonetic": "ˈmɪstə(r)",
+                "pronunciation": {
+                  "kind": "ipa",
+                  "target": "Mr",
+                  "ipa": "ˈmɪstɚ"
+                }
+              }
+            },
+            {
+              "answerText": "classmate",
+              "broadcastText": "classmate",
+              "hintText": "She is my new（　　）.",
+              "builtinKey": "en-pep-202611-g3-v2-u1-b-d48a57d6bc2490",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "同班同学",
+                "exampleWithBlank": "She is my new（　　）.",
+                "exampleSentence": "She is my new classmate.",
+                "exampleTranslation": "她是我的新同班同学。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "classmate",
+                "sourcePrintedPage": 9,
+                "sourceImagePage": 85,
+                "phonetic": "ˈklɑːsmeɪt"
+              }
+            },
+            {
+              "answerText": "he",
+              "broadcastText": "he",
+              "hintText": "（　　）is my brother.",
+              "builtinKey": "en-pep-202611-g3-v2-u1-b-90d94dd7fe0fa7",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "他",
+                "exampleWithBlank": "（　　）is my brother.",
+                "exampleSentence": "He is my brother.",
+                "exampleTranslation": "他是我弟弟。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "he",
+                "sourcePrintedPage": 9,
+                "sourceImagePage": 85,
+                "phonetic": "hiː"
+              }
+            },
+            {
+              "answerText": "also",
+              "broadcastText": "also",
+              "hintText": "She can（　　）sing.",
+              "builtinKey": "en-pep-202611-g3-v2-u1-b-0bf3a231530930",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "也",
+                "exampleWithBlank": "She can（　　）sing.",
+                "exampleSentence": "She can also sing.",
+                "exampleTranslation": "她也会唱歌。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "also",
+                "sourcePrintedPage": 9,
+                "sourceImagePage": 85,
+                "phonetic": "ˈɔːlsəʊ"
+              }
+            },
+            {
+              "answerText": "English",
+              "broadcastText": "English",
+              "hintText": "I can speak（　　）.",
+              "builtinKey": "en-pep-202611-g3-v2-u1-b-5a828ced2de32b",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "英语的；英语",
+                "exampleWithBlank": "I can speak（　　）.",
+                "exampleSentence": "I can speak English.",
+                "exampleTranslation": "我会说英语。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": [],
+                  "note": "请保留名称、星期、月份等词中的必要大写。"
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "English",
+                "sourcePrintedPage": 9,
+                "sourceImagePage": 85,
+                "phonetic": "ˈɪŋɡlɪʃ"
+              }
+            },
+            {
+              "answerText": "she",
+              "broadcastText": "she",
+              "hintText": "（　　）is my mother.",
+              "builtinKey": "en-pep-202611-g3-v2-u1-b-5981498b79526e",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "她",
+                "exampleWithBlank": "（　　）is my mother.",
+                "exampleSentence": "She is my mother.",
+                "exampleTranslation": "她是我妈妈。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "she",
+                "sourcePrintedPage": 9,
+                "sourceImagePage": 85,
+                "phonetic": "ʃiː"
+              }
+            },
+            {
+              "answerText": "very",
+              "broadcastText": "very",
+              "hintText": "The boy is（　　）tall.",
+              "builtinKey": "en-pep-202611-g3-v2-u1-b-3f0e16919eba98",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "很；非常；十分",
+                "exampleWithBlank": "The boy is（　　）tall.",
+                "exampleSentence": "The boy is very tall.",
+                "exampleTranslation": "这个男孩个子很高。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "very",
+                "sourcePrintedPage": 9,
+                "sourceImagePage": 85,
+                "phonetic": "ˈveri"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "title": "Unit 2 My words and actions",
+      "sections": [
+        {
+          "key": "en-pep-g3-v2-u2-a",
+          "order": 1,
+          "title": "Part A · 词汇",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "has",
+              "broadcastText": "has",
+              "hintText": "She（　　）a cat.",
+              "builtinKey": "en-pep-202611-g3-v2-u2-a-81a6fb7db5bbf5",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "有；具有",
+                "exampleWithBlank": "She（　　）a cat.",
+                "exampleSentence": "She has a cat.",
+                "exampleTranslation": "她有一只猫。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "has",
+                "sourcePrintedPage": 16,
+                "sourceImagePage": 85,
+                "phonetic": "hæz"
+              }
+            },
+            {
+              "answerText": "long",
+              "broadcastText": "long",
+              "hintText": "The snake is（　　）.",
+              "builtinKey": "en-pep-202611-g3-v2-u2-a-2b01b3682068aa",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "长的",
+                "exampleWithBlank": "The snake is（　　）.",
+                "exampleSentence": "The snake is long.",
+                "exampleTranslation": "这条蛇很长。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "long",
+                "sourcePrintedPage": 16,
+                "sourceImagePage": 85,
+                "phonetic": "lɒŋ"
+              }
+            },
+            {
+              "answerText": "body",
+              "broadcastText": "body",
+              "hintText": "The elephant has a big（　　）.",
+              "builtinKey": "en-pep-202611-g3-v2-u2-a-6d7703607fe448",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "身体",
+                "exampleWithBlank": "The elephant has a big（　　）.",
+                "exampleSentence": "The elephant has a big body.",
+                "exampleTranslation": "大象有庞大的身体。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "body",
+                "sourcePrintedPage": 16,
+                "sourceImagePage": 85,
+                "phonetic": "ˈbɒdi"
+              }
+            },
+            {
+              "answerText": "short",
+              "broadcastText": "short",
+              "hintText": "The pencil is（　　）.",
+              "builtinKey": "en-pep-202611-g3-v2-u2-a-37d337f7bca456",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "短的；个子矮的",
+                "exampleWithBlank": "The pencil is（　　）.",
+                "exampleSentence": "The pencil is short.",
+                "exampleTranslation": "这支铅笔很短。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "short",
+                "sourcePrintedPage": 16,
+                "sourceImagePage": 85,
+                "phonetic": "ʃɔːt"
+              }
+            },
+            {
+              "answerText": "leg",
+              "broadcastText": "leg",
+              "hintText": "Touch your（　　）.",
+              "builtinKey": "en-pep-202611-g3-v2-u2-a-425e43adc53070",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "腿",
+                "exampleWithBlank": "Touch your（　　）.",
+                "exampleSentence": "Touch your leg.",
+                "exampleTranslation": "摸摸你的腿。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "leg",
+                "sourcePrintedPage": 16,
+                "sourceImagePage": 85,
+                "phonetic": "leɡ"
+              }
+            },
+            {
+              "answerText": "right",
+              "broadcastText": "right. You are right.",
+              "hintText": "You are（　　）.",
+              "builtinKey": "en-pep-202611-g3-v2-u2-a-8b7239ec91c5ed",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "准确；确切；恰当",
+                "exampleWithBlank": "You are（　　）.",
+                "exampleSentence": "You are right.",
+                "exampleTranslation": "你说得对。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "right",
+                "sourcePrintedPage": 16,
+                "sourceImagePage": 85,
+                "phonetic": "raɪt",
+                "spokenContext": "You are right."
+              }
+            },
+            {
+              "answerText": "fat",
+              "broadcastText": "fat",
+              "hintText": "The pig is（　　）.",
+              "builtinKey": "en-pep-202611-g3-v2-u2-a-9cb73baff0acef",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "肥的；肥胖的",
+                "exampleWithBlank": "The pig is（　　）.",
+                "exampleSentence": "The pig is fat.",
+                "exampleTranslation": "这只猪胖胖的。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "fat",
+                "sourcePrintedPage": 17,
+                "sourceImagePage": 85,
+                "phonetic": "fæt"
+              }
+            },
+            {
+              "answerText": "thin",
+              "broadcastText": "thin",
+              "hintText": "The cat is（　　）.",
+              "builtinKey": "en-pep-202611-g3-v2-u2-a-c076f23d2bc087",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "瘦的",
+                "exampleWithBlank": "The cat is（　　）.",
+                "exampleSentence": "The cat is thin.",
+                "exampleTranslation": "这只猫很瘦。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "thin",
+                "sourcePrintedPage": 17,
+                "sourceImagePage": 85,
+                "phonetic": "θɪn"
+              }
+            },
+            {
+              "answerText": "slow",
+              "broadcastText": "slow",
+              "hintText": "The turtle is（　　）.",
+              "builtinKey": "en-pep-202611-g3-v2-u2-a-50a463578bc553",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "缓慢的；慢的",
+                "exampleWithBlank": "The turtle is（　　）.",
+                "exampleSentence": "The turtle is slow.",
+                "exampleTranslation": "乌龟爬得慢。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "slow",
+                "sourcePrintedPage": 17,
+                "sourceImagePage": 85,
+                "phonetic": "sləʊ"
+              }
+            },
+            {
+              "answerText": "love",
+              "broadcastText": "love",
+              "hintText": "I（　　）my family.",
+              "builtinKey": "en-pep-202611-g3-v2-u2-a-dda3245ecf747c",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "喜爱；爱",
+                "exampleWithBlank": "I（　　）my family.",
+                "exampleSentence": "I love my family.",
+                "exampleTranslation": "我爱我的家人。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "love",
+                "sourcePrintedPage": 17,
+                "sourceImagePage": 85,
+                "phonetic": "lʌv"
+              }
+            },
+            {
+              "answerText": "tail",
+              "broadcastText": "tail",
+              "hintText": "The cat has a long（　　）.",
+              "builtinKey": "en-pep-202611-g3-v2-u2-a-eab5520dbd577c",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "尾；尾巴",
+                "exampleWithBlank": "The cat has a long（　　）.",
+                "exampleSentence": "The cat has a long tail.",
+                "exampleTranslation": "猫有长尾巴。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "tail",
+                "sourcePrintedPage": 17,
+                "sourceImagePage": 85,
+                "phonetic": "teɪl"
+              }
+            }
+          ]
+        },
+        {
+          "key": "en-pep-g3-v2-u2-b",
+          "order": 2,
+          "title": "Part B · 词汇",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "her",
+              "broadcastText": "her",
+              "hintText": "This is（　　）bag.",
+              "builtinKey": "en-pep-202611-g3-v2-u2-b-30ed9c2b5f6936",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "她；她的",
+                "exampleWithBlank": "This is（　　）bag.",
+                "exampleSentence": "This is her bag.",
+                "exampleTranslation": "这是她的包。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "her",
+                "sourcePrintedPage": 19,
+                "sourceImagePage": 85,
+                "phonetic": "hɜː(r)"
+              }
+            },
+            {
+              "answerText": "gift",
+              "broadcastText": "gift",
+              "hintText": "This（　　）is for you.",
+              "builtinKey": "en-pep-202611-g3-v2-u2-b-61af1ac812d25d",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "礼物",
+                "exampleWithBlank": "This（　　）is for you.",
+                "exampleSentence": "This gift is for you.",
+                "exampleTranslation": "这份礼物是给你的。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "gift",
+                "sourcePrintedPage": 19,
+                "sourceImagePage": 85,
+                "phonetic": "ɡɪft"
+              }
+            },
+            {
+              "answerText": "picture",
+              "broadcastText": "picture",
+              "hintText": "I draw a（　　）for Mum.",
+              "builtinKey": "en-pep-202611-g3-v2-u2-b-001c5abd8c7b3e",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "图画；绘画",
+                "exampleWithBlank": "I draw a（　　）for Mum.",
+                "exampleSentence": "I draw a picture for Mum.",
+                "exampleTranslation": "我给妈妈画一幅画。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "picture",
+                "sourcePrintedPage": 20,
+                "sourceImagePage": 85,
+                "phonetic": "ˈpɪktʃə(r)"
+              }
+            },
+            {
+              "answerText": "card",
+              "broadcastText": "card",
+              "hintText": "I make a（　　）for Mum.",
+              "builtinKey": "en-pep-202611-g3-v2-u2-b-774ab9638f3636",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "贺卡；慰问卡；卡片",
+                "exampleWithBlank": "I make a（　　）for Mum.",
+                "exampleSentence": "I make a card for Mum.",
+                "exampleTranslation": "我给妈妈做一张贺卡。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "card",
+                "sourcePrintedPage": 20,
+                "sourceImagePage": 85,
+                "phonetic": "kɑːd"
+              }
+            },
+            {
+              "answerText": "sing",
+              "broadcastText": "sing",
+              "hintText": "I can（　　）a song.",
+              "builtinKey": "en-pep-202611-g3-v2-u2-b-82ce5ff9a3eb2f",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "唱歌；演唱",
+                "exampleWithBlank": "I can（　　）a song.",
+                "exampleSentence": "I can sing a song.",
+                "exampleTranslation": "我会唱歌。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "sing",
+                "sourcePrintedPage": 20,
+                "sourceImagePage": 85,
+                "phonetic": "sɪŋ"
+              }
+            },
+            {
+              "answerText": "dance",
+              "broadcastText": "dance",
+              "hintText": "I can（　　）.",
+              "builtinKey": "en-pep-202611-g3-v2-u2-b-be69aa3f719382",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "跳舞",
+                "exampleWithBlank": "I can（　　）.",
+                "exampleSentence": "I can dance.",
+                "exampleTranslation": "我会跳舞。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "dance",
+                "sourcePrintedPage": 20,
+                "sourceImagePage": 85,
+                "phonetic": "dɑːns"
+              }
+            },
+            {
+              "answerText": "talk",
+              "broadcastText": "talk",
+              "hintText": "I（　　）to my friend.",
+              "builtinKey": "en-pep-202611-g3-v2-u2-b-04c8d5772198e8",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "说话；讲话；谈话",
+                "exampleWithBlank": "I（　　）to my friend.",
+                "exampleSentence": "I talk to my friend.",
+                "exampleTranslation": "我和朋友交谈。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "talk",
+                "sourcePrintedPage": 21,
+                "sourceImagePage": 85,
+                "phonetic": "tɔːk"
+              }
+            },
+            {
+              "answerText": "face",
+              "broadcastText": "face",
+              "hintText": "Wash your（　　）, please.",
+              "builtinKey": "en-pep-202611-g3-v2-u2-b-46bc4b85a9d20d",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "脸；面孔",
+                "exampleWithBlank": "Wash your（　　）, please.",
+                "exampleSentence": "Wash your face, please.",
+                "exampleTranslation": "请洗脸。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "face",
+                "sourcePrintedPage": 21,
+                "sourceImagePage": 85,
+                "phonetic": "feɪs"
+              }
+            },
+            {
+              "answerText": "all",
+              "broadcastText": "all",
+              "hintText": "（　　）the birds can sing.",
+              "builtinKey": "en-pep-202611-g3-v2-u2-b-6547b6f4a120a1",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "所有；全部",
+                "exampleWithBlank": "（　　）the birds can sing.",
+                "exampleSentence": "All the birds can sing.",
+                "exampleTranslation": "所有这些鸟都会唱歌。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "all",
+                "sourcePrintedPage": 21,
+                "sourceImagePage": 86,
+                "phonetic": "ɔːl"
+              }
+            },
+            {
+              "answerText": "song",
+              "broadcastText": "song",
+              "hintText": "This（　　）is nice.",
+              "builtinKey": "en-pep-202611-g3-v2-u2-b-ea2cb9d5c5d6c5",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "歌；歌曲",
+                "exampleWithBlank": "This（　　）is nice.",
+                "exampleSentence": "This song is nice.",
+                "exampleTranslation": "这首歌很好听。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "song",
+                "sourcePrintedPage": 21,
+                "sourceImagePage": 86,
+                "phonetic": "sɒŋ"
+              }
+            },
+            {
+              "answerText": "or",
+              "broadcastText": "or",
+              "hintText": "Do you want milk（　　）juice?",
+              "builtinKey": "en-pep-202611-g3-v2-u2-b-3525c887bfa7d7",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "或；或者；还是",
+                "exampleWithBlank": "Do you want milk（　　）juice?",
+                "exampleSentence": "Do you want milk or juice?",
+                "exampleTranslation": "你想要奶还是果汁？",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "or",
+                "sourcePrintedPage": 21,
+                "sourceImagePage": 86,
+                "phonetic": "ɔː(r)"
+              }
+            },
+            {
+              "answerText": "so",
+              "broadcastText": "so",
+              "hintText": "I am（　　）happy!",
+              "builtinKey": "en-pep-202611-g3-v2-u2-b-42c970af452dc5",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "这么；那么",
+                "exampleWithBlank": "I am（　　）happy!",
+                "exampleSentence": "I am so happy!",
+                "exampleTranslation": "我真高兴！",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "so",
+                "sourcePrintedPage": 21,
+                "sourceImagePage": 86,
+                "phonetic": "səʊ"
+              }
+            },
+            {
+              "answerText": "much",
+              "broadcastText": "much",
+              "hintText": "Thank you so（　　）.",
+              "builtinKey": "en-pep-202611-g3-v2-u2-b-f9c9414ae264e5",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "许多；大量",
+                "exampleWithBlank": "Thank you so（　　）.",
+                "exampleSentence": "Thank you so much.",
+                "exampleTranslation": "非常感谢你。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "much",
+                "sourcePrintedPage": 21,
+                "sourceImagePage": 86,
+                "phonetic": "mʌtʃ"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "title": "Unit 3 Tools and senses for learning",
+      "sections": [
+        {
+          "key": "en-pep-g3-v2-u3-a",
+          "order": 1,
+          "title": "Part A · 词汇",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "eraser",
+              "broadcastText": "eraser",
+              "hintText": "This（　　）is white.",
+              "builtinKey": "en-pep-202611-g3-v2-u3-a-c4e69daf8d6084",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "橡皮",
+                "exampleWithBlank": "This（　　）is white.",
+                "exampleSentence": "This eraser is white.",
+                "exampleTranslation": "这块橡皮是白色的。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "eraser",
+                "sourcePrintedPage": 28,
+                "sourceImagePage": 86,
+                "phonetic": "ɪˈreɪzə(r)"
+              }
+            },
+            {
+              "answerText": "find",
+              "broadcastText": "find",
+              "hintText": "I can（　　）my pen.",
+              "builtinKey": "en-pep-202611-g3-v2-u3-a-fb910345925545",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "找到；找回",
+                "exampleWithBlank": "I can（　　）my pen.",
+                "exampleSentence": "I can find my pen.",
+                "exampleTranslation": "我能找到我的钢笔。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "find",
+                "sourcePrintedPage": 28,
+                "sourceImagePage": 86,
+                "phonetic": "faɪnd"
+              }
+            },
+            {
+              "answerText": "ruler",
+              "broadcastText": "ruler",
+              "hintText": "I draw a line with my（　　）.",
+              "builtinKey": "en-pep-202611-g3-v2-u3-a-1f524ed3a9bf8f",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "直尺",
+                "exampleWithBlank": "I draw a line with my（　　）.",
+                "exampleSentence": "I draw a line with my ruler.",
+                "exampleTranslation": "我用尺子画一条线。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "ruler",
+                "sourcePrintedPage": 28,
+                "sourceImagePage": 86,
+                "phonetic": "ˈruːlə(r)"
+              }
+            },
+            {
+              "answerText": "pen",
+              "broadcastText": "pen",
+              "hintText": "I write with a（　　）.",
+              "builtinKey": "en-pep-202611-g3-v2-u3-a-6416f201c73781",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "钢笔",
+                "exampleWithBlank": "I write with a（　　）.",
+                "exampleSentence": "I write with a pen.",
+                "exampleTranslation": "我用钢笔写字。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "pen",
+                "sourcePrintedPage": 29,
+                "sourceImagePage": 86,
+                "phonetic": "pen"
+              }
+            },
+            {
+              "answerText": "pencil",
+              "broadcastText": "pencil",
+              "hintText": "This（　　）is long.",
+              "builtinKey": "en-pep-202611-g3-v2-u3-a-8f452f8667cab8",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "铅笔",
+                "exampleWithBlank": "This（　　）is long.",
+                "exampleSentence": "This pencil is long.",
+                "exampleTranslation": "这支铅笔很长。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "pencil",
+                "sourcePrintedPage": 29,
+                "sourceImagePage": 86,
+                "phonetic": "ˈpensl"
+              }
+            },
+            {
+              "answerText": "book",
+              "broadcastText": "book",
+              "hintText": "I have a new（　　）.",
+              "builtinKey": "en-pep-202611-g3-v2-u3-a-d08e762ab7cd19",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "书；书籍",
+                "exampleWithBlank": "I have a new（　　）.",
+                "exampleSentence": "I have a new book.",
+                "exampleTranslation": "我有一本新书。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "book",
+                "sourcePrintedPage": 29,
+                "sourceImagePage": 86,
+                "phonetic": "bʊk"
+              }
+            },
+            {
+              "answerText": "bag",
+              "broadcastText": "bag",
+              "hintText": "My（　　）is blue.",
+              "builtinKey": "en-pep-202611-g3-v2-u3-a-568ae8c4ef5560",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "包；袋",
+                "exampleWithBlank": "My（　　）is blue.",
+                "exampleSentence": "My bag is blue.",
+                "exampleTranslation": "我的包是蓝色的。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "bag",
+                "sourcePrintedPage": 29,
+                "sourceImagePage": 86,
+                "phonetic": "bæɡ"
+              }
+            },
+            {
+              "answerText": "paper",
+              "broadcastText": "paper",
+              "hintText": "Please give me some（　　）.",
+              "builtinKey": "en-pep-202611-g3-v2-u3-a-a42d8333023350",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "纸",
+                "exampleWithBlank": "Please give me some（　　）.",
+                "exampleSentence": "Please give me some paper.",
+                "exampleTranslation": "请给我一些纸。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "paper",
+                "sourcePrintedPage": 29,
+                "sourceImagePage": 86,
+                "phonetic": "ˈpeɪpə(r)"
+              }
+            }
+          ]
+        },
+        {
+          "key": "en-pep-g3-v2-u3-b",
+          "order": 2,
+          "title": "Part B · 词汇",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "these",
+              "broadcastText": "these",
+              "hintText": "（　　）are my books.",
+              "builtinKey": "en-pep-202611-g3-v2-u3-b-7d9529acea0386",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "这些",
+                "exampleWithBlank": "（　　）are my books.",
+                "exampleSentence": "These are my books.",
+                "exampleTranslation": "这些是我的书。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "these",
+                "sourcePrintedPage": 31,
+                "sourceImagePage": 86,
+                "phonetic": "ðiːz"
+              }
+            },
+            {
+              "answerText": "see",
+              "broadcastText": "see. I can see a bird.",
+              "hintText": "I can（　　）a bird.",
+              "builtinKey": "en-pep-202611-g3-v2-u3-b-aec0e53b99acf9",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "看见",
+                "exampleWithBlank": "I can（　　）a bird.",
+                "exampleSentence": "I can see a bird.",
+                "exampleTranslation": "我能看见一只鸟。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "see",
+                "sourcePrintedPage": 32,
+                "sourceImagePage": 86,
+                "phonetic": "siː",
+                "spokenContext": "I can see a bird."
+              }
+            },
+            {
+              "answerText": "smell",
+              "broadcastText": "smell",
+              "hintText": "I can（　　）the flower.",
+              "builtinKey": "en-pep-202611-g3-v2-u3-b-8d6bcb77895bac",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "闻气味",
+                "exampleWithBlank": "I can（　　）the flower.",
+                "exampleSentence": "I can smell the flower.",
+                "exampleTranslation": "我能闻到花香。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "smell",
+                "sourcePrintedPage": 32,
+                "sourceImagePage": 86,
+                "phonetic": "smel"
+              }
+            },
+            {
+              "answerText": "taste",
+              "broadcastText": "taste",
+              "hintText": "Please（　　）the soup.",
+              "builtinKey": "en-pep-202611-g3-v2-u3-b-a46eb9bccd0699",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "尝味道",
+                "exampleWithBlank": "Please（　　）the soup.",
+                "exampleSentence": "Please taste the soup.",
+                "exampleTranslation": "请尝尝这道汤。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "taste",
+                "sourcePrintedPage": 32,
+                "sourceImagePage": 86,
+                "phonetic": "teɪst"
+              }
+            },
+            {
+              "answerText": "hear",
+              "broadcastText": "hear. I can hear a bird.",
+              "hintText": "I can（　　）a bird.",
+              "builtinKey": "en-pep-202611-g3-v2-u3-b-27aba850c4ad5e",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "听见；听到",
+                "exampleWithBlank": "I can（　　）a bird.",
+                "exampleSentence": "I can hear a bird.",
+                "exampleTranslation": "我能听见鸟叫。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "hear",
+                "sourcePrintedPage": 32,
+                "sourceImagePage": 86,
+                "phonetic": "hɪə(r)",
+                "spokenContext": "I can hear a bird."
+              }
+            },
+            {
+              "answerText": "touch",
+              "broadcastText": "touch",
+              "hintText": "Please（　　）your nose.",
+              "builtinKey": "en-pep-202611-g3-v2-u3-b-d0c4933b47eb15",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "接触；碰",
+                "exampleWithBlank": "Please（　　）your nose.",
+                "exampleSentence": "Please touch your nose.",
+                "exampleTranslation": "请摸摸你的鼻子。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "touch",
+                "sourcePrintedPage": 32,
+                "sourceImagePage": 86,
+                "phonetic": "tʌtʃ"
+              }
+            },
+            {
+              "answerText": "nose",
+              "broadcastText": "nose",
+              "hintText": "I smell with my（　　）.",
+              "builtinKey": "en-pep-202611-g3-v2-u3-b-6987f669a12e66",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "鼻；鼻子",
+                "exampleWithBlank": "I smell with my（　　）.",
+                "exampleSentence": "I smell with my nose.",
+                "exampleTranslation": "我用鼻子闻气味。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "nose",
+                "sourcePrintedPage": 33,
+                "sourceImagePage": 86,
+                "phonetic": "nəʊz"
+              }
+            },
+            {
+              "answerText": "tongue",
+              "broadcastText": "tongue",
+              "hintText": "I taste with my（　　）.",
+              "builtinKey": "en-pep-202611-g3-v2-u3-b-eb28bfce7ffedb",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "舌；舌头",
+                "exampleWithBlank": "I taste with my（　　）.",
+                "exampleSentence": "I taste with my tongue.",
+                "exampleTranslation": "我用舌头尝味道。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "tongue",
+                "sourcePrintedPage": 33,
+                "sourceImagePage": 86,
+                "phonetic": "tʌŋ"
+              }
+            },
+            {
+              "answerText": "class",
+              "broadcastText": "class",
+              "hintText": "Our English（　　）is fun.",
+              "builtinKey": "en-pep-202611-g3-v2-u3-b-6216220df51d35",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "课；班级",
+                "exampleWithBlank": "Our English（　　）is fun.",
+                "exampleSentence": "Our English class is fun.",
+                "exampleTranslation": "我们的英语课很有趣。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "class",
+                "sourcePrintedPage": 33,
+                "sourceImagePage": 86,
+                "phonetic": "klɑːs"
+              }
+            },
+            {
+              "answerText": "in class",
+              "broadcastText": "in class",
+              "hintText": "We listen carefully（　　）.",
+              "builtinKey": "en-pep-202611-g3-v2-u3-b-8774abd1475d23",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "在课堂上",
+                "exampleWithBlank": "We listen carefully（　　）.",
+                "exampleSentence": "We listen carefully in class.",
+                "exampleTranslation": "我们在课堂上认真听讲。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "in class",
+                "sourcePrintedPage": 33,
+                "sourceImagePage": 86
+              }
+            },
+            {
+              "answerText": "computer",
+              "broadcastText": "computer",
+              "hintText": "I learn on the（　　）.",
+              "builtinKey": "en-pep-202611-g3-v2-u3-b-dcece46d4c524e",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "计算机；电脑",
+                "exampleWithBlank": "I learn on the（　　）.",
+                "exampleSentence": "I learn on the computer.",
+                "exampleTranslation": "我用电脑学习。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "computer",
+                "sourcePrintedPage": 33,
+                "sourceImagePage": 86,
+                "phonetic": "kəmˈpjuːtə(r)"
+              }
+            },
+            {
+              "answerText": "learn",
+              "broadcastText": "learn",
+              "hintText": "We（　　）English at school.",
+              "builtinKey": "en-pep-202611-g3-v2-u3-b-fdef3d336eda3c",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "学；学习",
+                "exampleWithBlank": "We（　　）English at school.",
+                "exampleSentence": "We learn English at school.",
+                "exampleTranslation": "我们在学校学英语。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "learn",
+                "sourcePrintedPage": 33,
+                "sourceImagePage": 86,
+                "phonetic": "lɜːn"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "title": "Unit 4 Healthy food",
+      "sections": [
+        {
+          "key": "en-pep-g3-v2-u4-a",
+          "order": 1,
+          "title": "Part A · 词汇",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "breakfast",
+              "broadcastText": "breakfast",
+              "hintText": "I have（　　）at seven.",
+              "builtinKey": "en-pep-202611-g3-v2-u4-a-31613ec2f8518a",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "早餐；早饭",
+                "exampleWithBlank": "I have（　　）at seven.",
+                "exampleSentence": "I have breakfast at seven.",
+                "exampleTranslation": "我七点吃早饭。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "breakfast",
+                "sourcePrintedPage": 40,
+                "sourceImagePage": 86,
+                "phonetic": "ˈbrekfəst"
+              }
+            },
+            {
+              "answerText": "time",
+              "broadcastText": "time",
+              "hintText": "It is（　　）for lunch.",
+              "builtinKey": "en-pep-202611-g3-v2-u4-a-4059f9085b360c",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "时间",
+                "exampleWithBlank": "It is（　　）for lunch.",
+                "exampleSentence": "It is time for lunch.",
+                "exampleTranslation": "该吃午饭了。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "time",
+                "sourcePrintedPage": 40,
+                "sourceImagePage": 86,
+                "phonetic": "taɪm"
+              }
+            },
+            {
+              "answerText": "bread",
+              "broadcastText": "bread",
+              "hintText": "I eat（　　）for breakfast.",
+              "builtinKey": "en-pep-202611-g3-v2-u4-a-b2225b5188146b",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "面包",
+                "exampleWithBlank": "I eat（　　）for breakfast.",
+                "exampleSentence": "I eat bread for breakfast.",
+                "exampleTranslation": "我早餐吃面包。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "bread",
+                "sourcePrintedPage": 40,
+                "sourceImagePage": 86,
+                "phonetic": "bred"
+              }
+            },
+            {
+              "answerText": "egg",
+              "broadcastText": "egg",
+              "hintText": "I have an（　　）for breakfast.",
+              "builtinKey": "en-pep-202611-g3-v2-u4-a-87871de811e2f5",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "蛋；鸡蛋",
+                "exampleWithBlank": "I have an（　　）for breakfast.",
+                "exampleSentence": "I have an egg for breakfast.",
+                "exampleTranslation": "我早餐吃一个鸡蛋。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "egg",
+                "sourcePrintedPage": 40,
+                "sourceImagePage": 86,
+                "phonetic": "eɡ"
+              }
+            },
+            {
+              "answerText": "milk",
+              "broadcastText": "milk",
+              "hintText": "I drink（　　）at breakfast.",
+              "builtinKey": "en-pep-202611-g3-v2-u4-a-5a97e8bac3c72a",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "奶",
+                "exampleWithBlank": "I drink（　　）at breakfast.",
+                "exampleSentence": "I drink milk at breakfast.",
+                "exampleTranslation": "我早餐喝奶。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "milk",
+                "sourcePrintedPage": 40,
+                "sourceImagePage": 86,
+                "phonetic": "mɪlk"
+              }
+            },
+            {
+              "answerText": "noodle",
+              "broadcastText": "noodle",
+              "hintText": "This（　　）is long.",
+              "builtinKey": "en-pep-202611-g3-v2-u4-a-c37f6b1df78342",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "面条（常用复数）",
+                "exampleWithBlank": "This（　　）is long.",
+                "exampleSentence": "This noodle is long.",
+                "exampleTranslation": "这根面条很长。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "noodle",
+                "sourcePrintedPage": 41,
+                "sourceImagePage": 86,
+                "phonetic": "ˈnuːdl"
+              }
+            },
+            {
+              "answerText": "juice",
+              "broadcastText": "juice",
+              "hintText": "I drink orange（　　）.",
+              "builtinKey": "en-pep-202611-g3-v2-u4-a-73d09d66af75c1",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "果汁",
+                "exampleWithBlank": "I drink orange（　　）.",
+                "exampleSentence": "I drink orange juice.",
+                "exampleTranslation": "我喝橙汁。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "juice",
+                "sourcePrintedPage": 41,
+                "sourceImagePage": 86,
+                "phonetic": "dʒuːs"
+              }
+            }
+          ]
+        },
+        {
+          "key": "en-pep-g3-v2-u4-b",
+          "order": 2,
+          "title": "Part B · 词汇",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "rice",
+              "broadcastText": "rice",
+              "hintText": "We eat（　　）for lunch.",
+              "builtinKey": "en-pep-202611-g3-v2-u4-b-decb338d60ca42",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "大米",
+                "exampleWithBlank": "We eat（　　）for lunch.",
+                "exampleSentence": "We eat rice for lunch.",
+                "exampleTranslation": "我们午餐吃米饭。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "rice",
+                "sourcePrintedPage": 43,
+                "sourceImagePage": 86,
+                "phonetic": "raɪs"
+              }
+            },
+            {
+              "answerText": "meat",
+              "broadcastText": "meat. We eat meat for lunch.",
+              "hintText": "We eat（　　）for lunch.",
+              "builtinKey": "en-pep-202611-g3-v2-u4-b-3a8998f48148dc",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "肉",
+                "exampleWithBlank": "We eat（　　）for lunch.",
+                "exampleSentence": "We eat meat for lunch.",
+                "exampleTranslation": "我们午餐吃肉。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "meat",
+                "sourcePrintedPage": 43,
+                "sourceImagePage": 86,
+                "phonetic": "miːt",
+                "spokenContext": "We eat meat for lunch."
+              }
+            },
+            {
+              "answerText": "vegetable",
+              "broadcastText": "vegetable",
+              "hintText": "This（　　）is green.",
+              "builtinKey": "en-pep-202611-g3-v2-u4-b-f37bc42416455e",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "蔬菜",
+                "exampleWithBlank": "This（　　）is green.",
+                "exampleSentence": "This vegetable is green.",
+                "exampleTranslation": "这种蔬菜是绿色的。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "vegetable",
+                "sourcePrintedPage": 43,
+                "sourceImagePage": 86,
+                "phonetic": "ˈvedʒtəbl"
+              }
+            },
+            {
+              "answerText": "healthy",
+              "broadcastText": "healthy",
+              "hintText": "Fruit is（　　）food.",
+              "builtinKey": "en-pep-202611-g3-v2-u4-b-c868963224f53a",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "健康的",
+                "exampleWithBlank": "Fruit is（　　）food.",
+                "exampleSentence": "Fruit is healthy food.",
+                "exampleTranslation": "水果是有益健康的食物。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "healthy",
+                "sourcePrintedPage": 44,
+                "sourceImagePage": 86,
+                "phonetic": "ˈhelθi"
+              }
+            },
+            {
+              "answerText": "plate",
+              "broadcastText": "plate",
+              "hintText": "The egg is on the（　　）.",
+              "builtinKey": "en-pep-202611-g3-v2-u4-b-f50d1cbf33f5e8",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "盘子",
+                "exampleWithBlank": "The egg is on the（　　）.",
+                "exampleSentence": "The egg is on the plate.",
+                "exampleTranslation": "鸡蛋在盘子上。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "plate",
+                "sourcePrintedPage": 44,
+                "sourceImagePage": 86,
+                "phonetic": "pleɪt"
+              }
+            },
+            {
+              "answerText": "soup",
+              "broadcastText": "soup",
+              "hintText": "The（　　）is hot.",
+              "builtinKey": "en-pep-202611-g3-v2-u4-b-5ff94aa1eb0629",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "汤",
+                "exampleWithBlank": "The（　　）is hot.",
+                "exampleSentence": "The soup is hot.",
+                "exampleTranslation": "汤是热的。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "soup",
+                "sourcePrintedPage": 44,
+                "sourceImagePage": 86,
+                "phonetic": "suːp"
+              }
+            },
+            {
+              "answerText": "fruit",
+              "broadcastText": "fruit",
+              "hintText": "I like fresh（　　）.",
+              "builtinKey": "en-pep-202611-g3-v2-u4-b-a0fba7c6975412",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "水果",
+                "exampleWithBlank": "I like fresh（　　）.",
+                "exampleSentence": "I like fresh fruit.",
+                "exampleTranslation": "我喜欢新鲜的水果。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "fruit",
+                "sourcePrintedPage": 44,
+                "sourceImagePage": 86,
+                "phonetic": "fruːt"
+              }
+            },
+            {
+              "answerText": "colourful",
+              "broadcastText": "colourful",
+              "hintText": "The flowers are（　　）.",
+              "builtinKey": "en-pep-202611-g3-v2-u4-b-091ffe70beaa03",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "五彩缤纷的",
+                "exampleWithBlank": "The flowers are（　　）.",
+                "exampleSentence": "The flowers are colourful.",
+                "exampleTranslation": "这些花五颜六色。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "colourful",
+                "sourcePrintedPage": 45,
+                "sourceImagePage": 86,
+                "phonetic": "ˈkʌləfl"
+              }
+            },
+            {
+              "answerText": "candy",
+              "broadcastText": "candy",
+              "hintText": "This（　　）is sweet.",
+              "builtinKey": "en-pep-202611-g3-v2-u4-b-bf6dd220d77856",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "糖果",
+                "exampleWithBlank": "This（　　）is sweet.",
+                "exampleSentence": "This candy is sweet.",
+                "exampleTranslation": "这颗糖很甜。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "candy",
+                "sourcePrintedPage": 45,
+                "sourceImagePage": 86,
+                "phonetic": "ˈkændi"
+              }
+            },
+            {
+              "answerText": "yummy",
+              "broadcastText": "yummy",
+              "hintText": "The cake is（　　）!",
+              "builtinKey": "en-pep-202611-g3-v2-u4-b-2e8199f8d1c222",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "很好吃的",
+                "exampleWithBlank": "The cake is（　　）!",
+                "exampleSentence": "The cake is yummy!",
+                "exampleTranslation": "这个蛋糕很好吃！",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "yummy",
+                "sourcePrintedPage": 45,
+                "sourceImagePage": 86,
+                "phonetic": "ˈjʌmi"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 5,
+      "title": "Unit 5 Old things!",
+      "sections": [
+        {
+          "key": "en-pep-g3-v2-u5-a",
+          "order": 1,
+          "title": "Part A · 词汇",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "boat",
+              "broadcastText": "boat",
+              "hintText": "The（　　）is on the water.",
+              "builtinKey": "en-pep-202611-g3-v2-u5-a-0d7f0e8e6e75f5",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "小船；舟",
+                "exampleWithBlank": "The（　　）is on the water.",
+                "exampleSentence": "The boat is on the water.",
+                "exampleTranslation": "小船在水上。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "boat",
+                "sourcePrintedPage": 52,
+                "sourceImagePage": 86,
+                "phonetic": "bəʊt"
+              }
+            },
+            {
+              "answerText": "cool",
+              "broadcastText": "cool",
+              "hintText": "Your toy car is（　　）!",
+              "builtinKey": "en-pep-202611-g3-v2-u5-a-c8a0caa8b032a3",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "酷的；绝妙的",
+                "exampleWithBlank": "Your toy car is（　　）!",
+                "exampleSentence": "Your toy car is cool!",
+                "exampleTranslation": "你的玩具车真酷！",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "cool",
+                "sourcePrintedPage": 52,
+                "sourceImagePage": 86,
+                "phonetic": "kuːl"
+              }
+            },
+            {
+              "answerText": "keep",
+              "broadcastText": "keep",
+              "hintText": "You can（　　）this card.",
+              "builtinKey": "en-pep-202611-g3-v2-u5-a-f3d4d7bffe474f",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "保有；留着",
+                "exampleWithBlank": "You can（　　）this card.",
+                "exampleSentence": "You can keep this card.",
+                "exampleTranslation": "你可以留着这张卡片。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "keep",
+                "sourcePrintedPage": 52,
+                "sourceImagePage": 86,
+                "phonetic": "kiːp"
+              }
+            },
+            {
+              "answerText": "at",
+              "broadcastText": "at",
+              "hintText": "I am（　　）home.",
+              "builtinKey": "en-pep-202611-g3-v2-u5-a-33ed0f2aa744a2",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "在某处",
+                "exampleWithBlank": "I am（　　）home.",
+                "exampleSentence": "I am at home.",
+                "exampleTranslation": "我在家。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "at",
+                "sourcePrintedPage": 53,
+                "sourceImagePage": 86,
+                "phonetic": "æt"
+              }
+            },
+            {
+              "answerText": "home",
+              "broadcastText": "home",
+              "hintText": "I go（　　）at four.",
+              "builtinKey": "en-pep-202611-g3-v2-u5-a-aadb3bc051d5cd",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "家；住所",
+                "exampleWithBlank": "I go（　　）at four.",
+                "exampleSentence": "I go home at four.",
+                "exampleTranslation": "我四点回家。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "home",
+                "sourcePrintedPage": 53,
+                "sourceImagePage": 86,
+                "phonetic": "həʊm"
+              }
+            },
+            {
+              "answerText": "ball",
+              "broadcastText": "ball",
+              "hintText": "This（　　）is red.",
+              "builtinKey": "en-pep-202611-g3-v2-u5-a-11a19d0bf95678",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "球",
+                "exampleWithBlank": "This（　　）is red.",
+                "exampleSentence": "This ball is red.",
+                "exampleTranslation": "这个球是红色的。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "ball",
+                "sourcePrintedPage": 53,
+                "sourceImagePage": 86,
+                "phonetic": "bɔːl"
+              }
+            },
+            {
+              "answerText": "doll",
+              "broadcastText": "doll",
+              "hintText": "This（　　）has long hair.",
+              "builtinKey": "en-pep-202611-g3-v2-u5-a-c0fc661ffcc016",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "玩偶；玩具娃娃",
+                "exampleWithBlank": "This（　　）has long hair.",
+                "exampleSentence": "This doll has long hair.",
+                "exampleTranslation": "这个玩偶有长头发。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "doll",
+                "sourcePrintedPage": 53,
+                "sourceImagePage": 86,
+                "phonetic": "dɒl"
+              }
+            },
+            {
+              "answerText": "car",
+              "broadcastText": "car",
+              "hintText": "This toy（　　）is small.",
+              "builtinKey": "en-pep-202611-g3-v2-u5-a-9f04ba86da52ed",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "小汽车；轿车",
+                "exampleWithBlank": "This toy（　　）is small.",
+                "exampleSentence": "This toy car is small.",
+                "exampleTranslation": "这辆玩具汽车很小。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "car",
+                "sourcePrintedPage": 53,
+                "sourceImagePage": 86,
+                "phonetic": "kɑː(r)"
+              }
+            }
+          ]
+        },
+        {
+          "key": "en-pep-g3-v2-u5-b",
+          "order": 2,
+          "title": "Part B · 词汇",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "on",
+              "broadcastText": "on",
+              "hintText": "The cap is（　　）the box.",
+              "builtinKey": "en-pep-202611-g3-v2-u5-b-ce297fb0ff4946",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "在……上",
+                "exampleWithBlank": "The cap is（　　）the box.",
+                "exampleSentence": "The cap is on the box.",
+                "exampleTranslation": "帽子在盒子上。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "on",
+                "sourcePrintedPage": 55,
+                "sourceImagePage": 86,
+                "phonetic": "ɒn"
+              }
+            },
+            {
+              "answerText": "shelf",
+              "broadcastText": "shelf",
+              "hintText": "The book is on the（　　）.",
+              "builtinKey": "en-pep-202611-g3-v2-u5-b-4a70f50d60cc46",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "架子",
+                "exampleWithBlank": "The book is on the（　　）.",
+                "exampleSentence": "The book is on the shelf.",
+                "exampleTranslation": "书在架子上。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "shelf",
+                "sourcePrintedPage": 55,
+                "sourceImagePage": 86,
+                "phonetic": "ʃelf"
+              }
+            },
+            {
+              "answerText": "shelves",
+              "broadcastText": "shelves",
+              "hintText": "The（　　）are full of books.",
+              "builtinKey": "en-pep-202611-g3-v2-u5-b-8cd9db40186582",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "架子（复数形式）",
+                "exampleWithBlank": "The（　　）are full of books.",
+                "exampleSentence": "The shelves are full of books.",
+                "exampleTranslation": "架子上放满了书。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": [],
+                  "note": "教材括注中的复数形式，作为自选拼写练习提供。"
+                },
+                "kind": "form_note",
+                "sourceRole": "plural_note",
+                "sourceWord": "shelf",
+                "sourcePrintedPage": 55,
+                "sourceImagePage": 86,
+                "phonetic": "ʃelvz",
+                "grammarForm": "plural",
+                "baseForm": "shelf"
+              }
+            },
+            {
+              "answerText": "in",
+              "broadcastText": "in",
+              "hintText": "The pen is（　　）the box.",
+              "builtinKey": "en-pep-202611-g3-v2-u5-b-50e71d83beb0f0",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "在……内；在……中",
+                "exampleWithBlank": "The pen is（　　）the box.",
+                "exampleSentence": "The pen is in the box.",
+                "exampleTranslation": "钢笔在盒子里。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "in",
+                "sourcePrintedPage": 55,
+                "sourceImagePage": 87,
+                "phonetic": "ɪn"
+              }
+            },
+            {
+              "answerText": "box",
+              "broadcastText": "box",
+              "hintText": "The ball is in the（　　）.",
+              "builtinKey": "en-pep-202611-g3-v2-u5-b-09b6d849aade0b",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "盒子",
+                "exampleWithBlank": "The ball is in the（　　）.",
+                "exampleSentence": "The ball is in the box.",
+                "exampleTranslation": "球在盒子里。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "box",
+                "sourcePrintedPage": 55,
+                "sourceImagePage": 87,
+                "phonetic": "bɒks"
+              }
+            },
+            {
+              "answerText": "cap",
+              "broadcastText": "cap",
+              "hintText": "My（　　）is on the bed.",
+              "builtinKey": "en-pep-202611-g3-v2-u5-b-48f0453c9709bb",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "帽子",
+                "exampleWithBlank": "My（　　）is on the bed.",
+                "exampleSentence": "My cap is on the bed.",
+                "exampleTranslation": "我的帽子在床上。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "cap",
+                "sourcePrintedPage": 55,
+                "sourceImagePage": 87,
+                "phonetic": "kæp"
+              }
+            },
+            {
+              "answerText": "map",
+              "broadcastText": "map",
+              "hintText": "This（　　）shows our school.",
+              "builtinKey": "en-pep-202611-g3-v2-u5-b-3ce3f5c98f1006",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "地图",
+                "exampleWithBlank": "This（　　）shows our school.",
+                "exampleSentence": "This map shows our school.",
+                "exampleTranslation": "这张地图标出了我们学校。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "map",
+                "sourcePrintedPage": 56,
+                "sourceImagePage": 87,
+                "phonetic": "mæp"
+              }
+            },
+            {
+              "answerText": "under",
+              "broadcastText": "under",
+              "hintText": "The cat is（　　）the chair.",
+              "builtinKey": "en-pep-202611-g3-v2-u5-b-522b3a4d70c1ac",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "在……下面",
+                "exampleWithBlank": "The cat is（　　）the chair.",
+                "exampleSentence": "The cat is under the chair.",
+                "exampleTranslation": "猫在椅子下面。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "under",
+                "sourcePrintedPage": 56,
+                "sourceImagePage": 87,
+                "phonetic": "ˈʌndə(r)"
+              }
+            },
+            {
+              "answerText": "still",
+              "broadcastText": "still",
+              "hintText": "My cap is（　　）in the box.",
+              "builtinKey": "en-pep-202611-g3-v2-u5-b-111f86a5870088",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "还是；仍然",
+                "exampleWithBlank": "My cap is（　　）in the box.",
+                "exampleSentence": "My cap is still in the box.",
+                "exampleTranslation": "我的帽子还在盒子里。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "still",
+                "sourcePrintedPage": 57,
+                "sourceImagePage": 87,
+                "phonetic": "stɪl"
+              }
+            },
+            {
+              "answerText": "put",
+              "broadcastText": "put",
+              "hintText": "Please（　　）the pen here.",
+              "builtinKey": "en-pep-202611-g3-v2-u5-b-771aae5934a6f5",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "放；安置",
+                "exampleWithBlank": "Please（　　）the pen here.",
+                "exampleSentence": "Please put the pen here.",
+                "exampleTranslation": "请把钢笔放在这里。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "put",
+                "sourcePrintedPage": 57,
+                "sourceImagePage": 87,
+                "phonetic": "pʊt"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 6,
+      "title": "Unit 6 Numbers in life",
+      "sections": [
+        {
+          "key": "en-pep-g3-v2-u6-a",
+          "order": 1,
+          "title": "Part A · 词汇",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "fifteen",
+              "broadcastText": "fifteen",
+              "hintText": "I can see（　　）birds.",
+              "builtinKey": "en-pep-202611-g3-v2-u6-a-cf5a39bd79590f",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "十五",
+                "exampleWithBlank": "I can see（　　）birds.",
+                "exampleSentence": "I can see fifteen birds.",
+                "exampleTranslation": "我能看见十五只鸟。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "fifteen",
+                "sourcePrintedPage": 64,
+                "sourceImagePage": 87,
+                "phonetic": "ˌfɪfˈtiːn"
+              }
+            },
+            {
+              "answerText": "twelve",
+              "broadcastText": "twelve",
+              "hintText": "I can see（　　）birds.",
+              "builtinKey": "en-pep-202611-g3-v2-u6-a-4c1182a26e1482",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "十二",
+                "exampleWithBlank": "I can see（　　）birds.",
+                "exampleSentence": "I can see twelve birds.",
+                "exampleTranslation": "我能看见十二只鸟。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "twelve",
+                "sourcePrintedPage": 64,
+                "sourceImagePage": 87,
+                "phonetic": "twelv"
+              }
+            },
+            {
+              "answerText": "fourteen",
+              "broadcastText": "fourteen",
+              "hintText": "I can see（　　）birds.",
+              "builtinKey": "en-pep-202611-g3-v2-u6-a-54740cb34f8843",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "十四",
+                "exampleWithBlank": "I can see（　　）birds.",
+                "exampleSentence": "I can see fourteen birds.",
+                "exampleTranslation": "我能看见十四只鸟。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "fourteen",
+                "sourcePrintedPage": 65,
+                "sourceImagePage": 87,
+                "phonetic": "ˌfɔːˈtiːn"
+              }
+            },
+            {
+              "answerText": "thirteen",
+              "broadcastText": "thirteen",
+              "hintText": "I can see（　　）birds.",
+              "builtinKey": "en-pep-202611-g3-v2-u6-a-036f8e3856aad2",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "十三",
+                "exampleWithBlank": "I can see（　　）birds.",
+                "exampleSentence": "I can see thirteen birds.",
+                "exampleTranslation": "我能看见十三只鸟。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "thirteen",
+                "sourcePrintedPage": 65,
+                "sourceImagePage": 87,
+                "phonetic": "ˌθɜːˈtiːn"
+              }
+            },
+            {
+              "answerText": "eleven",
+              "broadcastText": "eleven",
+              "hintText": "I can see（　　）birds.",
+              "builtinKey": "en-pep-202611-g3-v2-u6-a-9bfd04d5f9a5a2",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "十一",
+                "exampleWithBlank": "I can see（　　）birds.",
+                "exampleSentence": "I can see eleven birds.",
+                "exampleTranslation": "我能看见十一只鸟。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "eleven",
+                "sourcePrintedPage": 65,
+                "sourceImagePage": 87,
+                "phonetic": "ɪˈlevn"
+              }
+            }
+          ]
+        },
+        {
+          "key": "en-pep-g3-v2-u6-b",
+          "order": 2,
+          "title": "Part B · 词汇",
+          "type": "lesson",
+          "cards": [
+            {
+              "answerText": "twenty",
+              "broadcastText": "twenty",
+              "hintText": "I can see（　　）birds.",
+              "builtinKey": "en-pep-202611-g3-v2-u6-b-e598bb80943543",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "二十",
+                "exampleWithBlank": "I can see（　　）birds.",
+                "exampleSentence": "I can see twenty birds.",
+                "exampleTranslation": "我能看见二十只鸟。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "twenty",
+                "sourcePrintedPage": 67,
+                "sourceImagePage": 87,
+                "phonetic": "ˈtwenti"
+              }
+            },
+            {
+              "answerText": "seventeen",
+              "broadcastText": "seventeen",
+              "hintText": "I can see（　　）birds.",
+              "builtinKey": "en-pep-202611-g3-v2-u6-b-01c47d44354394",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "十七",
+                "exampleWithBlank": "I can see（　　）birds.",
+                "exampleSentence": "I can see seventeen birds.",
+                "exampleTranslation": "我能看见十七只鸟。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "seventeen",
+                "sourcePrintedPage": 67,
+                "sourceImagePage": 87,
+                "phonetic": "ˌsevnˈtiːn"
+              }
+            },
+            {
+              "answerText": "sixteen",
+              "broadcastText": "sixteen",
+              "hintText": "I can see（　　）birds.",
+              "builtinKey": "en-pep-202611-g3-v2-u6-b-d7d9ca08ff6090",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "十六",
+                "exampleWithBlank": "I can see（　　）birds.",
+                "exampleSentence": "I can see sixteen birds.",
+                "exampleTranslation": "我能看见十六只鸟。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "sixteen",
+                "sourcePrintedPage": 67,
+                "sourceImagePage": 87,
+                "phonetic": "ˌsɪksˈtiːn"
+              }
+            },
+            {
+              "answerText": "eighteen",
+              "broadcastText": "eighteen",
+              "hintText": "I can see（　　）birds.",
+              "builtinKey": "en-pep-202611-g3-v2-u6-b-030bcb668c858f",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "十八",
+                "exampleWithBlank": "I can see（　　）birds.",
+                "exampleSentence": "I can see eighteen birds.",
+                "exampleTranslation": "我能看见十八只鸟。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "eighteen",
+                "sourcePrintedPage": 68,
+                "sourceImagePage": 87,
+                "phonetic": "ˌeɪˈtiːn"
+              }
+            },
+            {
+              "answerText": "nineteen",
+              "broadcastText": "nineteen",
+              "hintText": "I can see（　　）birds.",
+              "builtinKey": "en-pep-202611-g3-v2-u6-b-3e02d20427a7ce",
+              "english": {
+                "version": 1,
+                "learningTarget": "core",
+                "meaningZh": "十九",
+                "exampleWithBlank": "I can see（　　）birds.",
+                "exampleSentence": "I can see nineteen birds.",
+                "exampleTranslation": "我能看见十九只鸟。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "nineteen",
+                "sourcePrintedPage": 68,
+                "sourceImagePage": 87,
+                "phonetic": "ˌnaɪnˈtiːn"
+              }
+            },
+            {
+              "answerText": "piggy bank",
+              "broadcastText": "piggy bank",
+              "hintText": "I put money in my（　　）.",
+              "builtinKey": "en-pep-202611-g3-v2-u6-b-8f3953caafe8d4",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "猪形储钱罐",
+                "exampleWithBlank": "I put money in my（　　）.",
+                "exampleSentence": "I put money in my piggy bank.",
+                "exampleTranslation": "我把钱放进我的储钱罐。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "piggy bank",
+                "sourcePrintedPage": 69,
+                "sourceImagePage": 87,
+                "phonetic": "ˈpɪɡi bæŋk"
+              }
+            },
+            {
+              "answerText": "pay",
+              "broadcastText": "pay",
+              "hintText": "I（　　）for the toy.",
+              "builtinKey": "en-pep-202611-g3-v2-u6-b-82f8e61605f81e",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "付费",
+                "exampleWithBlank": "I（　　）for the toy.",
+                "exampleSentence": "I pay for the toy.",
+                "exampleTranslation": "我付钱买这件玩具。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "pay",
+                "sourcePrintedPage": 69,
+                "sourceImagePage": 87,
+                "phonetic": "peɪ"
+              }
+            },
+            {
+              "answerText": "back",
+              "broadcastText": "back",
+              "hintText": "Put the book（　　）, please.",
+              "builtinKey": "en-pep-202611-g3-v2-u6-b-cc05a409fdbeea",
+              "english": {
+                "version": 1,
+                "learningTarget": "recognition",
+                "meaningZh": "回到原处",
+                "exampleWithBlank": "Put the book（　　）, please.",
+                "exampleSentence": "Put the book back, please.",
+                "exampleTranslation": "请把书放回去。",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "back",
+                "sourcePrintedPage": 69,
+                "sourceImagePage": 87,
+                "phonetic": "bæk"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

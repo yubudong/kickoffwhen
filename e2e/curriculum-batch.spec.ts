@@ -85,7 +85,7 @@ test("家长展开教材、勾选整个单元后按课下发", async ({ page }) 
 
   await page.goto("/parent/tasks/content");
   const libraryEdition = page.locator("details.library-edition").filter({ hasText: editionText });
-  await expect(libraryEdition.locator("summary").first()).toContainText("1 个单元 · 2 个词");
+  await expect(libraryEdition.locator("summary").first()).toContainText("1 个单元 · 2 项字词");
   await expect(libraryEdition.getByText("桂花", { exact: true })).toBeHidden();
   await expect(page.locator("article.card-row")).toHaveCount(0);
   await libraryEdition.locator("summary").first().click();
@@ -93,7 +93,7 @@ test("家长展开教材、勾选整个单元后按课下发", async ({ page }) 
   await expect(libraryUnit.locator(":scope > summary")).toBeVisible();
   await expect(libraryEdition.getByText("第1课", { exact: true })).toBeHidden();
   await libraryUnit.locator(":scope > summary").click();
-  await expect(libraryUnit.locator(":scope > summary")).toContainText("2 个小节 · 2 个词");
+  await expect(libraryUnit.locator(":scope > summary")).toContainText("2 个小节 · 2 项字词");
   const librarySection = libraryUnit.locator("details.library-section").first();
   await expect(librarySection.locator(":scope > summary")).toBeVisible();
   await expect(libraryEdition.getByText("桂花", { exact: true })).toBeHidden();
@@ -129,7 +129,7 @@ test("家长展开教材、勾选整个单元后按课下发", async ({ page }) 
   await expect(page.getByText("将创建 2 项任务：2 课、2 个教材新词。")).toBeVisible();
   await page.getByRole("button", { name: "下发所选任务" }).click();
   await expect(page.getByRole("status")).toContainText("已创建 2 项任务、共 2 词");
-  await page.getByRole("link", { name: "今日待办清单" }).click();
+  await page.getByRole("link", { name: "待办清单" }).click();
   await expect(page).toHaveURL(/\/parent\/todos$/);
   await expect(page.getByText("语文 · 第一单元 · 第1课（1词）")).toBeVisible();
   await expect(page.getByText("语文 · 第一单元 · 第2课（1词）")).toBeVisible();
@@ -149,14 +149,14 @@ test("家长展开教材、勾选整个单元后按课下发", async ({ page }) 
   ]);
 
   await page.goto("/parent/tasks/content");
-  await expect(libraryEdition.locator(":scope > summary")).toContainText("1 个单元 · 4 个词");
+  await expect(libraryEdition.locator(":scope > summary")).toContainText("1 个单元 · 4 项字词");
   await libraryEdition.locator(":scope > summary").click();
   await expect(libraryEdition.locator(":scope > .library-edition-content > .library-unplaced")).toContainText("教材散词");
-  await expect(libraryUnit.locator(":scope > summary")).toContainText("2 个小节 · 3 个词");
+  await expect(libraryUnit.locator(":scope > summary")).toContainText("2 个小节 · 3 项字词");
   await libraryUnit.locator(":scope > summary").click();
   await expect(libraryUnit.locator(":scope > .library-unit-content > .library-unplaced")).toContainText("单元散词");
   const personalEnglish = page.locator("details.library-personal").filter({ hasText: "英语" });
-  await expect(personalEnglish.locator(":scope > summary")).toContainText("1 个词");
+  await expect(personalEnglish.locator(":scope > summary")).toContainText("1 项字词");
   await personalEnglish.locator(":scope > summary").click();
   await expect(personalEnglish.getByText("hello", { exact: true })).toBeVisible();
 });

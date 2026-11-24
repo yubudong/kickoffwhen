@@ -1,4 +1,5 @@
 import { z } from "zod";
+import type { EnglishDetails } from "@/modules/learning-content/english-types";
 
 export const dictationPhotoSchema = z.object({
   id: z.string().uuid(),
@@ -30,5 +31,5 @@ export type ParentDictationReview = {
   roundNumber: number;
   submittedAt: string;
   photos: DictationPhoto[];
-  items: Array<{ itemId: string; position: number; answerText: string }>;
+  items: Array<{ itemId: string; position: number; answerText: string; english?: EnglishDetails }>;
 };
