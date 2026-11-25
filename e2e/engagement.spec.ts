@@ -55,14 +55,22 @@ test('重复习惯到自主奖励、宠物投喂进化、虚拟购买祝福与�
         await drawer.getByRole('button', { name: '关闭', exact: true }).click();
         await child.getByRole('link', { name: /我的伙伴/ }).click();
         await expect(child.locator('.growth-balances')).toContainText('2,000');
-        await expect(child.locator('.expanded-eggs > button')).toHaveCount(8);
+        await expect(child.locator('.expanded-eggs > button')).toHaveCount(10);
         await child.getByRole('button', { name: '动物／神兽路线 · 4', exact: true }).click();
         await expect(child.locator('.expanded-eggs > button')).toHaveCount(4);
         await expect(child.locator('.expanded-eggs')).toContainText('森屿水豚蛋');
-        await child.getByRole('button', { name: '可解锁人形 · 4', exact: true }).click();
+        await child.getByRole('button', { name: '男性化形 · 2', exact: true }).click();
+        await expect(child.locator('.expanded-eggs > button')).toHaveCount(2);
+        await child.getByRole('button', { name: /赤焰灵猿蛋/ }).click();
+        await child.getByRole('group', { name: '预览形态', exact: true }).getByRole('button', { name: '男性形态', exact: true }).click();
+        await expect(child.locator('.companion-preview img').last()).toHaveAttribute('src', /ape-4-human-boy/);
+        await expect(child.getByRole('group', { name: '预览形态', exact: true }).getByRole('button', { name: '女性形态', exact: true })).toHaveCount(0);
+        await child.getByRole('button', { name: '男女可选 · 4', exact: true }).click();
         await expect(child.locator('.expanded-eggs > button')).toHaveCount(4);
         await child.getByRole('button', { name: /星羽凤凰蛋/ }).click();
-        await child.getByRole('button', { name: '预览化形路线', exact: true }).click();
+        await child.getByRole('group', { name: '预览形态', exact: true }).getByRole('button', { name: '男性形态', exact: true }).click();
+        await expect(child.locator('.companion-preview img').last()).toHaveAttribute('src', /phoenix-4-human-boy/);
+        await child.getByRole('group', { name: '预览形态', exact: true }).getByRole('button', { name: '女性形态', exact: true }).click();
         await expect(child.locator('.companion-preview img').last()).toHaveAttribute('src', /phoenix-4-human-girl/);
         await child.getByRole('button', { name: /月灵狐蛋/ }).click();
         await child.getByLabel('伙伴的名字').fill('月月');
@@ -81,18 +89,22 @@ test('重复习惯到自主奖励、宠物投喂进化、虚拟购买祝福与�
             await child.getByRole('button', { name: '见证成长', exact: true }).click();
             await child.getByRole('button', { name: '一起继续成长' }).click();
         }
-        await child.getByRole('button', { name: '化为人形', exact: true }).click();
-        await expect(child.getByRole('button', { name: '变回月灵狐', exact: true })).toBeVisible();
+        const forms = child.getByRole('group', { name: '形态选择', exact: true });
+        await expect(forms.getByRole('button', { name: '男性形态', exact: true })).toBeVisible();
+        await expect(forms.getByRole('button', { name: '女性形态', exact: true })).toBeVisible();
+        await forms.getByRole('button', { name: '男性形态', exact: true }).click();
+        await expect(child.locator('.companion-scene img')).toHaveAttribute('src', /fox-4-human-boy/);
+        await forms.getByRole('button', { name: '女性形态', exact: true }).click();
         await expect(child.locator('.companion-scene img')).toHaveAttribute('src', /fox-4-human-girl/);
-        await child.getByRole('button', { name: '切换成年男／女形象' }).click();
+        await forms.getByRole('button', { name: '男性形态', exact: true }).click();
         await expect(child.locator('.companion-scene img')).toHaveAttribute('src', /fox-4-human-boy/);
         await child.getByLabel('展示年龄', { exact: true }).selectOption('1');
         await expect(child.locator('.companion-scene img')).toHaveAttribute('src', /fox-1.webp/);
-        await expect(child.getByRole('button', { name: '化为人形', exact: true })).toHaveCount(0);
+        await expect(forms.getByRole('button', { name: '男性形态', exact: true })).toBeDisabled();
         const unchanged = await child.evaluate(async () => (await fetch('/api/child/engagement')).json());
         expect(unchanged.pet.stage).toBe(4); expect(unchanged.wallet.fed).toBe(1800);
         await child.getByLabel('展示年龄', { exact: true }).selectOption('3');
-        await child.getByRole('button', { name: '化为人形', exact: true }).click();
+        await forms.getByRole('button', { name: '男性形态', exact: true }).click();
         await expect(child.locator('.companion-scene img')).toHaveAttribute('src', /fox-3-human-boy/);
         await child.getByLabel('展示年龄', { exact: true }).selectOption('4');
         await expect(child.locator('.companion-scene img')).toHaveAttribute('src', /fox-4-human-boy/);
@@ -107,10 +119,10 @@ test('重复习惯到自主奖励、宠物投喂进化、虚拟购买祝福与�
         await child.getByRole('dialog').getByRole('button', { name: '确认', exact: true }).click();
         await expect(child.locator('.boost-list')).toContainText('＋10%');
         await mkdir('docs/screenshots', { recursive: true });
-        await child.locator('.companion-home').screenshot({ path: `docs/screenshots/companion-v2-desktop-${testInfo.project.name}.png` });
+        await child.locator('.companion-home').screenshot({ path: `docs/screenshots/companion-male-desktop-${testInfo.project.name}.png` });
         await child.setViewportSize({ width: 390, height: 844 });
         await mkdir('docs/screenshots', { recursive: true });
-        await child.screenshot({ path: `docs/screenshots/companion-v2-${testInfo.project.name}.png`, fullPage: true });
+        await child.screenshot({ path: `docs/screenshots/companion-male-${testInfo.project.name}.png`, fullPage: true });
         expect(await child.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
         await child.getByRole('button', { name: '家庭奖励', exact: true }).click();
         await child.getByRole('button', { name: '申请兑换', exact: true }).click();
@@ -136,8 +148,35 @@ test('重复习惯到自主奖励、宠物投喂进化、虚拟购买祝福与�
         await page.getByRole('dialog').getByRole('button', { name: '确认', exact: true }).click();
         await child.reload();
         await expect(child.locator('.companion-scene img')).toHaveAttribute('src', /capybara-4.webp/);
-        await expect(child.getByRole('button', { name: '化为人形', exact: true })).toHaveCount(0);
+        await expect(child.getByRole('group', { name: '形态选择', exact: true }).getByRole('button', { name: '男性形态', exact: true })).toHaveCount(0);
         await expect(child.locator('.growth-balances')).toContainText('1,800');
+        await child.setViewportSize({ width: 1280, height: 900 });
+        for (const species of ['ape', 'tortoise']) {
+            const details = page.locator('.companion-info details');
+            if (await details.getAttribute('open') === null) await details.locator('summary').click();
+            await page.getByRole('combobox', { name: '伙伴', exact: true }).selectOption(species);
+            await page.getByLabel('名字', { exact: true }).fill(species === 'ape' ? '赤焰' : '玄甲');
+            await page.getByRole('button', { name: '确认更换', exact: true }).click();
+            await page.getByRole('dialog').getByRole('button', { name: '确认', exact: true }).click();
+            await child.reload();
+            // Replacing a companion keeps the previously chosen display age; choose adult explicitly.
+            await child.getByLabel('展示年龄', { exact: true }).selectOption('4');
+            const maleForms = child.getByRole('group', { name: '形态选择', exact: true });
+            await expect(maleForms.getByRole('button', { name: '男性形态', exact: true })).toBeVisible();
+            await expect(maleForms.getByRole('button', { name: '女性形态', exact: true })).toHaveCount(0);
+            await maleForms.getByRole('button', { name: '男性形态', exact: true }).click();
+            await expect(child.locator('.companion-scene img')).toHaveAttribute('src', new RegExp(species + '-4-human-boy'));
+            await child.locator('.companion-home').screenshot({ path: `docs/screenshots/${species}-male-${testInfo.project.name}.png` });
+            const forbidden = await child.evaluate(async () => (await fetch('/api/child/engagement', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ action: 'appearance', appearance: 'human', humanStyle: 'girl' }) })).status);
+            expect(forbidden).toBe(409);
+            await child.getByLabel('展示年龄', { exact: true }).selectOption('3');
+            await expect(child.locator('.companion-scene img')).toHaveAttribute('src', new RegExp(species + '-3-human-boy'));
+            await child.getByLabel('展示年龄', { exact: true }).selectOption('1');
+            await expect(maleForms.getByRole('button', { name: '男性形态', exact: true })).toBeDisabled();
+            const preserved = await child.evaluate(async () => (await fetch('/api/child/engagement')).json());
+            expect(preserved.pet.stage).toBe(4); expect(preserved.wallet.fed).toBe(1800); expect(preserved.wallet.coins).toBe(18);
+        }
+
 
     }
     finally {

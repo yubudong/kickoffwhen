@@ -1,9 +1,16 @@
 {
-  "version": 2,
+  "version": 3,
   "generatedFor": "family-learning",
   "animalStages": 5,
   "growthStages": 4,
   "files": [
+    "ape-0.webp",
+    "ape-1.webp",
+    "ape-2.webp",
+    "ape-3-human-boy.webp",
+    "ape-3.webp",
+    "ape-4-human-boy.webp",
+    "ape-4.webp",
     "capybara-0.webp",
     "capybara-1.webp",
     "capybara-2.webp",
@@ -46,6 +53,13 @@
     "rabbit-2.webp",
     "rabbit-3.webp",
     "rabbit-4.webp",
+    "tortoise-0.webp",
+    "tortoise-1.webp",
+    "tortoise-2.webp",
+    "tortoise-3-human-boy.webp",
+    "tortoise-3.webp",
+    "tortoise-4-human-boy.webp",
+    "tortoise-4.webp",
     "unicorn-0.webp",
     "unicorn-1.webp",
     "unicorn-2.webp",
@@ -115,6 +129,29 @@
         "wolf"
       ],
       "columns": "teen-boy,teen-girl,adult-boy,adult-girl"
+    },
+    {
+      "source": "eefd5366-8358-4b16-b02e-7d6520207009/exec-2e8687f3-078a-4914-9779-98c029483d7c.png",
+      "sha256": "be57582bd0a5b41612ce68c6a0f95839402fe62bd8b10ac3afc31b91d16ee2a1",
+      "species": [
+        "ape",
+        "tortoise"
+      ],
+      "columns": "egg,infant,young,teen,adult"
+    },
+    {
+      "source": "f357cb7c-4fc0-4f1f-97f2-be643dd4770b/exec-30bac9ce-5786-4d72-b159-c2f007a204f0.png",
+      "sha256": "e6fdd38d9014de32e89d6c52e586d57144404361ef101ee60ea3ac80fbec45d6",
+      "species": [
+        "ape",
+        "tortoise"
+      ],
+      "columns": "teen-boy,adult-boy"
     }
+  ],
+  "speciesCount": 10,
+  "maleOnlySpecies": [
+    "ape",
+    "tortoise"
   ]
 }
