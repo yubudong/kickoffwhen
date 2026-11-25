@@ -30,7 +30,7 @@ function card(answerText: string, sourceOrder: number | null, placement: Partial
   };
 }
 
-test("内容库单元计数包含课文和语文园地时统一称为小节", () => {
+test("内容库首屏只渲染教材概要，不预渲染折叠的小节和词条", () => {
   const mixedEdition: CatalogEdition = {
     ...edition,
     units: [{ id: "unit-1", title: "第一单元", order: 1, sections: [
@@ -41,8 +41,10 @@ test("内容库单元计数包含课文和语文园地时统一称为小节", ()
   const library = buildContentLibrary([mixedEdition], [card("桂花", 1)]);
   const html = renderToStaticMarkup(createElement(ContentLibraryTree, { library }));
 
-  expect(html).toContain("1 个小节 · 1 项字词");
+  expect(html).toContain("1 个单元 · 1 项字词");
   expect(html).not.toContain("语文园地");
+  expect(html).not.toContain("桂花");
+  expect(html).not.toContain("library-section");
 });
 
 test("零词教材不列空行，空库提示还没有内容", () => {

@@ -1,0 +1,501 @@
+{
+  "auditProfile": "verified_english",
+  "publisher": "陕西旅游出版社",
+  "series": "陕旅版",
+  "subject": "english",
+  "grade": 6,
+  "volume": "下册",
+  "editionText": "平台原版资源 · 2026-11核对整理",
+  "units": [
+    {
+      "order": 1,
+      "title": "Unit 1",
+      "sections": []
+    },
+    {
+      "order": 2,
+      "title": "Unit 2",
+      "sections": []
+    },
+    {
+      "order": 3,
+      "title": "Unit 3",
+      "sections": [
+        {
+          "key": "en-multi-shanlv-4d2c8c36-g6-v2-u3-l0",
+          "order": 1,
+          "title": "本单元词表",
+          "type": "lesson",
+          "cards": [
+            {
+              "builtinKey": "en-multi-shanlv-4d2c8c36-g6-v2-u3-l0-62c0acdc913f2b",
+              "answerText": "pupil",
+              "broadcastText": "pupil",
+              "hintText": "小学生",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "小学生",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "pupil",
+                "sourceImagePage": 81,
+                "sourcePrintedPage": 74
+              }
+            },
+            {
+              "builtinKey": "en-multi-shanlv-4d2c8c36-g6-v2-u3-l0-cac23428fc8c11",
+              "answerText": "reporter",
+              "broadcastText": "reporter",
+              "hintText": "记者",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "记者",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "reporter",
+                "sourceImagePage": 81,
+                "sourcePrintedPage": 74
+              }
+            },
+            {
+              "builtinKey": "en-multi-shanlv-4d2c8c36-g6-v2-u3-l0-5a9e48f1a64488",
+              "answerText": "police",
+              "broadcastText": "police",
+              "hintText": "警方；警察",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "警方；警察",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "police",
+                "sourceImagePage": 81,
+                "sourcePrintedPage": 74
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "title": "Unit 4",
+      "sections": []
+    },
+    {
+      "order": 5,
+      "title": "Unit 5",
+      "sections": [
+        {
+          "key": "en-multi-shanlv-4d2c8c36-g6-v2-u5-l0",
+          "order": 1,
+          "title": "本单元词表",
+          "type": "lesson",
+          "cards": [
+            {
+              "builtinKey": "en-multi-shanlv-4d2c8c36-g6-v2-u5-l0-fa9e8eb74a7bae",
+              "answerText": "shy",
+              "broadcastText": "shy",
+              "hintText": "害羞的；内向的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "害羞的；内向的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "shy",
+                "sourceImagePage": 82,
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-shanlv-4d2c8c36-g6-v2-u5-l0-af0b153e5eb7ac",
+              "answerText": "kind",
+              "broadcastText": "kind",
+              "hintText": "和蔼的；温和的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "和蔼的；温和的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "kind",
+                "sourceImagePage": 82,
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-shanlv-4d2c8c36-g6-v2-u5-l0-1564581b6195a3",
+              "answerText": "friendly",
+              "broadcastText": "friendly",
+              "hintText": "友好的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "友好的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "friendly",
+                "sourceImagePage": 82,
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-shanlv-4d2c8c36-g6-v2-u5-l0-a555c6dbeb7339",
+              "answerText": "easy",
+              "broadcastText": "easy",
+              "hintText": "容易的；简单的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "容易的；简单的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "easy",
+                "sourceImagePage": 82,
+                "phonetic": "ˈiːzi",
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-shanlv-4d2c8c36-g6-v2-u5-l0-ed1e206a5e3b9b",
+              "answerText": "understand",
+              "broadcastText": "understand",
+              "hintText": "理解；明白",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "理解；明白",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "understand",
+                "sourceImagePage": 82,
+                "phonetic": "ˌʌndəˈstænd",
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-shanlv-4d2c8c36-g6-v2-u5-l0-68ddf6c81a5862",
+              "answerText": "find",
+              "broadcastText": "find",
+              "hintText": "发现；找到",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "发现；找到",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "find",
+                "sourceImagePage": 82,
+                "phonetic": "faɪnd",
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-shanlv-4d2c8c36-g6-v2-u5-l0-081f4f4153db28",
+              "answerText": "Ms.",
+              "broadcastText": "Ms.",
+              "hintText": "女士",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "女士",
+                "spellingRules": {
+                  "caseRule": "required",
+                  "acceptedAnswers": [
+                    "ms."
+                  ]
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "Ms.",
+                "sourceImagePage": 82,
+                "phonetic": "mɪz",
+                "pronunciation": {
+                  "kind": "ipa",
+                  "target": "Ms.",
+                  "ipa": "mɪz"
+                },
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-shanlv-4d2c8c36-g6-v2-u5-l0-1a446b49eae610",
+              "answerText": "without",
+              "broadcastText": "without",
+              "hintText": "无；没有",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "无；没有",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "without",
+                "sourceImagePage": 82,
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-shanlv-4d2c8c36-g6-v2-u5-l0-beb0229a7996eb",
+              "answerText": "Mrs.",
+              "broadcastText": "Mrs.",
+              "hintText": "夫人",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "夫人",
+                "spellingRules": {
+                  "caseRule": "required",
+                  "acceptedAnswers": [
+                    "mrs."
+                  ]
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "Mrs.",
+                "sourceImagePage": 82,
+                "phonetic": "ˈmɪsɪz",
+                "pronunciation": {
+                  "kind": "ipa",
+                  "target": "Mrs.",
+                  "ipa": "ˈmɪsɪz"
+                },
+                "sourcePrintedPage": 75
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 6,
+      "title": "Unit 6",
+      "sections": []
+    },
+    {
+      "order": 7,
+      "title": "Unit7",
+      "sections": [
+        {
+          "key": "en-multi-shanlv-4d2c8c36-g6-v2-u7-l0",
+          "order": 1,
+          "title": "本单元词表",
+          "type": "lesson",
+          "cards": [
+            {
+              "builtinKey": "en-multi-shanlv-4d2c8c36-g6-v2-u7-l0-1b6f6fb5408be1",
+              "answerText": "northeast",
+              "broadcastText": "northeast",
+              "hintText": "东北",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "东北",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "northeast",
+                "sourceImagePage": 83
+              }
+            },
+            {
+              "builtinKey": "en-multi-shanlv-4d2c8c36-g6-v2-u7-l0-581c72a46ddc79",
+              "answerText": "southwest",
+              "broadcastText": "southwest",
+              "hintText": "西南",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "西南",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "southwest",
+                "sourceImagePage": 83
+              }
+            },
+            {
+              "builtinKey": "en-multi-shanlv-4d2c8c36-g6-v2-u7-l0-496acee893ac92",
+              "answerText": "south",
+              "broadcastText": "south",
+              "hintText": "南；南方",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "南；南方",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "south",
+                "sourceImagePage": 83
+              }
+            },
+            {
+              "builtinKey": "en-multi-shanlv-4d2c8c36-g6-v2-u7-l0-e6ba73baedc1e2",
+              "answerText": "hope",
+              "broadcastText": "hope",
+              "hintText": "希望；期望",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "希望；期望",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "hope",
+                "sourceImagePage": 83
+              }
+            },
+            {
+              "builtinKey": "en-multi-shanlv-4d2c8c36-g6-v2-u7-l0-aa6b8372e38701",
+              "answerText": "somewhere",
+              "broadcastText": "somewhere",
+              "hintText": "某处；某地",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "某处；某地",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "somewhere",
+                "sourceImagePage": 83
+              }
+            },
+            {
+              "builtinKey": "en-multi-shanlv-4d2c8c36-g6-v2-u7-l0-dc747b6674f90d",
+              "answerText": "by",
+              "broadcastText": "by. The boy is standing by the window.",
+              "hintText": "沿着；在⋯⋯旁边",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "沿着；在⋯⋯旁边",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "by",
+                "sourceImagePage": 83,
+                "spokenContext": "The boy is standing by the window."
+              }
+            },
+            {
+              "builtinKey": "en-multi-shanlv-4d2c8c36-g6-v2-u7-l0-38bcbeb4f1a980",
+              "answerText": "famous",
+              "broadcastText": "famous",
+              "hintText": "著名的；出名的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "著名的；出名的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "famous",
+                "sourceImagePage": 83,
+                "phonetic": "ˈfeɪməs"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 8,
+      "title": "Unit 8",
+      "sections": [
+        {
+          "key": "en-multi-shanlv-4d2c8c36-g6-v2-u8-l0",
+          "order": 1,
+          "title": "本单元词表",
+          "type": "lesson",
+          "cards": [
+            {
+              "builtinKey": "en-multi-shanlv-4d2c8c36-g6-v2-u8-l0-e7696190e31be8",
+              "answerText": "dream",
+              "broadcastText": "dream",
+              "hintText": "梦想；愿望；梦",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "梦想；愿望；梦",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "dream",
+                "sourceImagePage": 83,
+                "phonetic": "driːm"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

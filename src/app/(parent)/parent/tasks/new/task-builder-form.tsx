@@ -146,10 +146,10 @@ export function TaskBuilderForm({
         {subjectFilter === "all" && <p className="muted">当前下发科目：{subject === "chinese" ? "语文" : "英语"}。每批任务只含一个科目，改选另一科目的课次会替换当前勾选。</p>}
         {subjectFilter !== "chinese" && editions.some(item=>item.subject === "english") && <div className="english-study-settings">
           <label>英语练习方式<select aria-label="英语练习方式" value={englishMode} disabled={pending} onChange={event=>setEnglishMode(event.target.value as typeof englishMode)}>
-            <option value="standard">标准听写（只听英语）</option><option value="assisted">辅助练习（词义与填空语境）</option>
+            <option value="standard">标准听写（只听英语）</option><option value="assisted">辅助练习（词义与可用语境）</option>
           </select></label>
           <label><input type="checkbox" checked={includeRecognition} disabled={pending} onChange={event=>{setIncludeRecognition(event.target.checked);clearSelection();}}/> 包含认读词与教材注释词形（自选拼写练习）</label>
-          <p className="muted">默认新课范围为明确读写词与理解运用核心词，后者不冒称强制默写。调整范围后请重新勾选；已学词照常到期复习，也可在下方单独加练认读词。标准模式不显示英文、音标或词义；同音词补读短语境。缩写题会提示填写形式。</p>
+          <p className="muted">PEP默认新课范围为明确读写词与理解运用核心词；其他版本提供已核对教材词表，由家长自选练习，不推定全部词汇都要求四会。调整范围后请重新勾选；已学词照常到期复习，也可在下方单独加练认读词。标准模式不显示英文、音标或词义；同音词补读短语境。缩写题会提示填写形式。</p>
         </div>}
         <p className="muted">展开教材和单元后勾选课次。勾选整个单元会按课生成任务。</p>
         {editions.length > 0 && <CurriculumTree editions={editions} selected={selectedSectionIds} onChange={selectSections}/>}

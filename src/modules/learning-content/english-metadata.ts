@@ -1,10 +1,12 @@
 // Server-side content lookup. Client components receive projected details, never this index.
 import rawIndex from "../../../content/official-english-metadata.json";
+import multiIndex from '../../../content/english-multi/metadata.json';
 import { or, isNull, notInArray } from "drizzle-orm";
 import { learningCards } from "./schema";
 import type { EnglishCardMetadata, EnglishDetails, EnglishStudyOptions } from "./english-types";
 
-const index = new Map<string, EnglishCardMetadata>(Object.entries(rawIndex as unknown as Record<string, EnglishCardMetadata>));
+for (const key of Object.keys(multiIndex)) if (Object.hasOwn(rawIndex,key)) throw new Error('ENGLISH_RUNTIME_INDEX_COLLISION');
+const index = new Map<string, EnglishCardMetadata>(Object.entries({...rawIndex,...multiIndex} as unknown as Record<string, EnglishCardMetadata>));
 export const optionalEnglishBuiltinKeys = [...index].filter(([, meta]) => meta.learningTarget === "recognition").map(([key]) => key);
 export function getEnglishMetadata(key: string | null | undefined) { return key ? index.get(key) : undefined; }
 export function englishTextbookSelectionPredicate(includeRecognition = false) {
@@ -13,8 +15,8 @@ export function englishTextbookSelectionPredicate(includeRecognition = false) {
 export function englishPublicDetails(meta: EnglishCardMetadata): EnglishDetails {
   return {
     meaningZh: meta.meaningZh, phonetic: meta.phonetic ?? null,
-    exampleWithBlank: meta.exampleWithBlank, exampleSentence: meta.exampleSentence,
-    exampleTranslation: meta.exampleTranslation, spellingRules: meta.spellingRules,
+    exampleWithBlank: meta.exampleWithBlank ?? null, exampleSentence: meta.exampleSentence ?? null,
+    exampleTranslation: meta.exampleTranslation ?? null, spellingRules: meta.spellingRules,
     learningTarget: meta.learningTarget, kind: meta.kind, sourceRole: meta.sourceRole,
     sourceWord: meta.sourceWord, sourcePrintedPage: meta.sourcePrintedPage,
     ...(meta.grammarForm ? { grammarForm: meta.grammarForm } : {}),

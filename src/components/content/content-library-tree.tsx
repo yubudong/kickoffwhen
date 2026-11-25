@@ -1,5 +1,6 @@
 "use client";
 
+import { LazyDetails } from './lazy-details';
 import { EnglishBookNote } from "./english-book-note";
 import { EnglishCardDetails } from "./english-card-details";
 import { englishTargetLabel } from "@/modules/learning-content/english-types";
@@ -47,11 +48,16 @@ function UnplacedWords({ cards }: { cards: LearningCard[] }) {
 export function ContentLibraryTree({ library: allLibrary }: { library: ContentLibrary }) {
   const [subjectFilter, setSubjectFilter] = useState<SubjectFilter>("all");
   const [gradeFilter, setGradeFilter] = useState<GradeFilter>("all");
-  const library = filterContentLibrary(allLibrary, subjectFilter, gradeFilter);
+  const [versionFilter,setVersionFilter]=useState('all');
+  const filtered=filterContentLibrary(allLibrary,subjectFilter,gradeFilter);
+  const versions=[...new Set(filtered.editions.filter(e=>e.count>0).map(e=>e.label))];
+  const chosen=filtered.editions.filter(e=>versionFilter==='all'||e.label===versionFilter);
+  const library=versionFilter==='all'?filtered:{editions:chosen,personal:{chinese:[],english:[]},total:chosen.reduce((n,e)=>n+e.count,0)};
   const hasPersonal = library.personal.chinese.length > 0 || library.personal.english.length > 0;
   return (
     <div className="content-library">
-      <CurriculumFilters subject={subjectFilter} grade={gradeFilter} onSubjectChange={setSubjectFilter} onGradeChange={setGradeFilter}/>
+      <CurriculumFilters subject={subjectFilter} grade={gradeFilter} onSubjectChange={value=>{setSubjectFilter(value);setVersionFilter('all')}} onGradeChange={value=>{setGradeFilter(value);setVersionFilter('all')}}/>
+      <label className="catalog-version-filter">教材版本<select aria-label="教材版本" value={versionFilter} onChange={event=>setVersionFilter(event.target.value)}><option value="all">全部教材版本</option>{versions.map(value=><option key={value} value={value}>{value}</option>)}</select></label>
       <p className="catalog-filter-summary" aria-live="polite">筛选结果：{library.editions.filter(edition => edition.count > 0).length} 册教材，{library.total} 项字词。</p>
       {allLibrary.total === 0 && <p className="library-empty">还没有听写内容</p>}
       {allLibrary.total > 0 && library.total === 0 && <p className="library-empty">没有符合当前科目和年级的听写内容。</p>}
@@ -59,38 +65,35 @@ export function ContentLibraryTree({ library: allLibrary }: { library: ContentLi
       {library.editions.some(edition => edition.count > 0) && (
         <div className="library-editions">
           {library.editions.filter(edition => edition.count > 0).map((edition) => (
-            <details className="library-edition" key={edition.id}>
-              <summary>
+            <LazyDetails className="library-edition" key={edition.id} summary={<>
                 <span className="library-title">{subjectNames[edition.subject]} · {edition.grade} 年级{edition.volume} · {edition.label}</span>
                 <span className="library-count">{curriculumGroupLabel(edition)} · {edition.count} 项字词</span>
-              </summary>
+              </>}>
               <div className="library-edition-content">
                 {officialTextbookInfo(edition) && <p className="muted">依据国家中小学智慧教育平台教材的词语表、写字表整理。一年级采用单字组词播报；二至六年级采用词语听写，课文组词优先。全部配有拼音和语境，课文组词与适龄补充分别标明。<a href={officialTextbookInfo(edition)!.sourceUrl} target="_blank" rel="noreferrer">查看教材来源</a></p>}
                 <EnglishBookNote edition={edition}/>
                 {edition.count === 0 && <p className="library-empty">该教材暂无词条</p>}
                 {edition.units.map((unit) => (
-                  <details className="library-unit" key={unit.id}>
-                    <summary>
+                  <LazyDetails className="library-unit" key={unit.id} summary={<>
                       <span className="library-title">{unit.title}</span>
                       <span className="library-count">{unit.sections.length} 个小节 · {unit.count} 项字词</span>
-                    </summary>
+                    </>}>
                     <div className="library-unit-content">
                       {unit.sections.map((section) => (
-                        <details className="library-section" key={section.id}>
-                          <summary>
+                        <LazyDetails className="library-section" key={section.id} summary={<>
                             <span className="library-title">{section.title}</span>
                             <span className="library-count">{section.cards.length} 项字词</span>
-                          </summary>
+                          </>}>
                           <WordList cards={section.cards} />
-                        </details>
+                        </LazyDetails>
                       ))}
                       <UnplacedWords cards={unit.unplaced} />
                     </div>
-                  </details>
+                  </LazyDetails>
                 ))}
                 <UnplacedWords cards={edition.unplaced} />
               </div>
-            </details>
+            </LazyDetails>
           ))}
         </div>
       )}
@@ -103,13 +106,12 @@ export function ContentLibraryTree({ library: allLibrary }: { library: ContentLi
           {(["chinese", "english"] as const).map((subject) => {
             const cards = library.personal[subject];
             return cards.length > 0 ? (
-              <details className="library-personal" key={subject}>
-                <summary>
+              <LazyDetails className="library-personal" key={subject} summary={<>
                   <span className="library-title">{subjectNames[subject]}</span>
                   <span className="library-count">{cards.length} 项字词</span>
-                </summary>
+                </>}>
                 <WordList cards={cards} />
-              </details>
+              </LazyDetails>
             ) : null;
           })}
         </section>

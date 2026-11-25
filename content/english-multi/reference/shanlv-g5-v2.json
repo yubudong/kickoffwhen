@@ -1,0 +1,141 @@
+{
+  "auditProfile": "verified_english",
+  "publisher": "陕西旅游出版社",
+  "series": "陕旅版",
+  "subject": "english",
+  "grade": 5,
+  "volume": "下册",
+  "editionText": "平台原版资源 · 2026-11核对整理",
+  "source": {
+    "provider": "国家中小学智慧教育平台",
+    "resourceId": "0d42a7db-b850-4c0d-b505-f26579d2aab3",
+    "url": "https://basic.smartedu.cn/tchMaterial/detail?contentType=assets_document&contentId=0d42a7db-b850-4c0d-b505-f26579d2aab3&catalogType=tchMaterial&subCatalog=dzjc",
+    "activeImageBase": "https://r1-ndr.ykt.cbern.com.cn/edu_product/esp/assets/0d42a7db-b850-4c0d-b505-f26579d2aab3.t/zh-CN/1772437818478/transcode/image",
+    "evidence": [
+      {
+        "imagePage": 1,
+        "url": "https://r3-ndr.ykt.cbern.com.cn/edu_product/esp/assets/0d42a7db-b850-4c0d-b505-f26579d2aab3.t/zh-CN/1772437818478/transcode/image/1.jpg",
+        "sha256": "d4cba69f31498c96b4de24001aec0ecc3dfa84c525ba3a25145db1efce56941d",
+        "role": "cover"
+      },
+      {
+        "imagePage": 2,
+        "url": "https://r3-ndr.ykt.cbern.com.cn/edu_product/esp/assets/0d42a7db-b850-4c0d-b505-f26579d2aab3.t/zh-CN/1772437818478/transcode/image/2.jpg",
+        "sha256": "f029b374163cb1d873218343987b56d48b4bd963ad52f722ee95b0430e9c540a",
+        "role": "copyright"
+      },
+      {
+        "imagePage": 5,
+        "url": "https://r3-ndr.ykt.cbern.com.cn/edu_product/esp/assets/0d42a7db-b850-4c0d-b505-f26579d2aab3.t/zh-CN/1772437818478/transcode/image/5.jpg",
+        "sha256": "cc66664ec0e8599181e4f0fbaee4b2a9eaad3c142e838991cc02ae4775ae24a8",
+        "role": "contents"
+      },
+      {
+        "imagePage": 80,
+        "url": "https://r1-ndr.ykt.cbern.com.cn/edu_product/esp/assets/0d42a7db-b850-4c0d-b505-f26579d2aab3.t/zh-CN/1772437818478/transcode/image/80.jpg",
+        "sha256": "89d210d7317ca7ebb0230cb9a36965da7f8d61e37a7a74c3b88393f499a8993d",
+        "role": "vocabulary"
+      }
+    ],
+    "title": "义务教育教科书·英语（三年级起点） 五年级 下册"
+  },
+  "unitTitles": [
+    "Unit 1",
+    "Unit 2",
+    "Unit 3"
+  ],
+  "entries": [
+    {
+      "builtinKey": "en-multi-shanlv-0d42a7db-g5-v2-u1-l0-357104c730d4bf",
+      "answerText": "happy",
+      "broadcastText": "happy",
+      "unitOrder": 1,
+      "sectionKey": "en-multi-shanlv-0d42a7db-g5-v2-u1-l0",
+      "sourceWord": "happy",
+      "sourceImagePage": 80,
+      "meaningZh": "高兴的；快乐的",
+      "metadataDigest": "cc46c79abc0a68dc3ed6cbebfe316c0361d95def29c83196e749a46ecccdac18",
+      "sourceRaw": "happy. 高兴的；快乐的",
+      "meaningOrigin": "textbook OCR, source-bound and editorially checked"
+    },
+    {
+      "builtinKey": "en-multi-shanlv-0d42a7db-g5-v2-u1-l0-cea3f87fb0a68b",
+      "answerText": "sad",
+      "broadcastText": "sad",
+      "unitOrder": 1,
+      "sectionKey": "en-multi-shanlv-0d42a7db-g5-v2-u1-l0",
+      "sourceWord": "sad",
+      "sourceImagePage": 80,
+      "meaningZh": "悲伤的；难过的",
+      "metadataDigest": "b125a7d0f47d8122ec5b1e605dbc578dcfc5138ea4fb4ced996956a20d707a0e",
+      "sourceRaw": "sad.悲伤的；难过的",
+      "meaningOrigin": "textbook OCR, source-bound and editorially checked"
+    },
+    {
+      "builtinKey": "en-multi-shanlv-0d42a7db-g5-v2-u2-l0-f5f11176ddf0a7",
+      "answerText": "summer",
+      "broadcastText": "summer",
+      "unitOrder": 2,
+      "sectionKey": "en-multi-shanlv-0d42a7db-g5-v2-u2-l0",
+      "sourceWord": "summer",
+      "sourceImagePage": 80,
+      "meaningZh": "夏天",
+      "metadataDigest": "f04e67b0d4782e6f3e95b43a243c6b4de09209af4d116ad75135fbe799e64aab",
+      "sourceRaw": "summer.",
+      "meaningOrigin": "textbook OCR, source-bound and editorially checked"
+    },
+    {
+      "builtinKey": "en-multi-shanlv-0d42a7db-g5-v2-u2-l0-ee05c46dde4472",
+      "answerText": "autumn",
+      "broadcastText": "autumn",
+      "unitOrder": 2,
+      "sectionKey": "en-multi-shanlv-0d42a7db-g5-v2-u2-l0",
+      "sourceWord": "autumn",
+      "sourceImagePage": 80,
+      "meaningZh": "秋天",
+      "metadataDigest": "5ac6b2d5838f5cad577ec07b4fdd0c725c7a76d9a89ebf14618e61429749d0a3",
+      "sourceRaw": "autumn.",
+      "meaningOrigin": "textbook OCR, source-bound and editorially checked"
+    },
+    {
+      "builtinKey": "en-multi-shanlv-0d42a7db-g5-v2-u2-l0-667873af455578",
+      "answerText": "season",
+      "broadcastText": "season",
+      "unitOrder": 2,
+      "sectionKey": "en-multi-shanlv-0d42a7db-g5-v2-u2-l0",
+      "sourceWord": "season",
+      "sourceImagePage": 80,
+      "meaningZh": "季节",
+      "metadataDigest": "03329e94cd1c53cdd9d4e86fedc3d89ff7e030c793fb91b2120e45b2fd00a60a",
+      "sourceRaw": "season",
+      "meaningOrigin": "textbook OCR, source-bound and editorially checked"
+    },
+    {
+      "builtinKey": "en-multi-shanlv-0d42a7db-g5-v2-u2-l0-9052b7bfb4b3f7",
+      "answerText": "plant",
+      "broadcastText": "plant",
+      "unitOrder": 2,
+      "sectionKey": "en-multi-shanlv-0d42a7db-g5-v2-u2-l0",
+      "sourceWord": "plant",
+      "sourceImagePage": 80,
+      "meaningZh": "种植",
+      "metadataDigest": "411a2a9827f107a3448d4f89c38243679f8c0013b5eeae3290f29bfc31bf10bc",
+      "sourceRaw": "plant",
+      "meaningOrigin": "textbook OCR, source-bound and editorially checked"
+    }
+  ],
+  "review": {
+    "status": "verified",
+    "vocabularyPages": [
+      80
+    ],
+    "unresolvedRows": 0,
+    "notes": [
+      "Unit vocabulary and phrases only; source sentences, placeholders and captions excluded.",
+      "Source markers do not establish four-skill requirements.",
+      "Some Chinese assistance meanings and audible homophone practice contexts supplied editorially, not claimed as textbook quotations."
+    ],
+    "normalizations": [],
+    "excludedRows": []
+  }
+}

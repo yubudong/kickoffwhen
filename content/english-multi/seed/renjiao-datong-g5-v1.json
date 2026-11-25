@@ -1,0 +1,1212 @@
+{
+  "auditProfile": "verified_english",
+  "publisher": "大同出版传媒有限公司",
+  "series": "人教大同版",
+  "subject": "english",
+  "grade": 5,
+  "volume": "上册",
+  "editionText": "平台2022课标修订资源 · 2026-11核对整理",
+  "units": [
+    {
+      "order": 1,
+      "title": "Starter",
+      "sections": [
+        {
+          "key": "en-multi-renjiao-datong-7ed767b2-g5-v1-u0-l0",
+          "order": 1,
+          "title": "本单元词表",
+          "type": "lesson",
+          "cards": [
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u0-l0-50f714fd0de869",
+              "answerText": "clean",
+              "broadcastText": "clean",
+              "hintText": "干净的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "干净的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "clean",
+                "sourceImagePage": 103,
+                "phonetic": "kliːn",
+                "sourcePrintedPage": 98
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u0-l0-114853d7c32635",
+              "answerText": "dirty",
+              "broadcastText": "dirty",
+              "hintText": "脏的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "脏的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "dirty",
+                "sourceImagePage": 103,
+                "phonetic": "ˈdɜːti",
+                "sourcePrintedPage": 98
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u0-l0-e2afe6f2046f1e",
+              "answerText": "heavy",
+              "broadcastText": "heavy",
+              "hintText": "重的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "重的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "heavy",
+                "sourceImagePage": 103,
+                "phonetic": "ˈhevi",
+                "sourcePrintedPage": 98
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u0-l0-c4a0ff915ace51",
+              "answerText": "light",
+              "broadcastText": "light",
+              "hintText": "轻的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "轻的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "light",
+                "sourceImagePage": 103,
+                "sourcePrintedPage": 98
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u0-l0-57923a81c24337",
+              "answerText": "fast",
+              "broadcastText": "fast",
+              "hintText": "快的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "快的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "fast",
+                "sourceImagePage": 103,
+                "phonetic": "fɑːst",
+                "sourcePrintedPage": 98
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u0-l0-b046c7bcbdbda3",
+              "answerText": "slow",
+              "broadcastText": "slow",
+              "hintText": "慢的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "慢的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "slow",
+                "sourceImagePage": 103,
+                "phonetic": "sləʊ",
+                "sourcePrintedPage": 98
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u0-l0-6ccdb28f3353ae",
+              "answerText": "strong",
+              "broadcastText": "strong",
+              "hintText": "强壮的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "强壮的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "strong",
+                "sourceImagePage": 103,
+                "phonetic": "strɒŋ",
+                "sourcePrintedPage": 98
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u0-l0-f38eaaef0387e3",
+              "answerText": "hard",
+              "broadcastText": "hard",
+              "hintText": "坚硬的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "坚硬的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "hard",
+                "sourceImagePage": 103,
+                "sourcePrintedPage": 98
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "title": "Unit 1",
+      "sections": [
+        {
+          "key": "en-multi-renjiao-datong-7ed767b2-g5-v1-u1-l0",
+          "order": 1,
+          "title": "本单元词表",
+          "type": "lesson",
+          "cards": [
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u1-l0-e8d99f6e163ac3",
+              "answerText": "ask questions",
+              "broadcastText": "ask questions",
+              "hintText": "提问",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "提问",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "ask questions",
+                "sourceImagePage": 103,
+                "sourcePrintedPage": 98
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u1-l0-972a2b2d4006d4",
+              "answerText": "do exercise",
+              "broadcastText": "do exercise",
+              "hintText": "锻炼",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "锻炼",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "do exercise",
+                "sourceImagePage": 103,
+                "sourcePrintedPage": 98
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u1-l0-16c8cb6a7a3450",
+              "answerText": "have a healthy diet",
+              "broadcastText": "have a healthy diet",
+              "hintText": "有健康的饮食习惯",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "有健康的饮食习惯",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "have a healthy diet",
+                "sourceImagePage": 103,
+                "sourcePrintedPage": 98
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u1-l0-b7e5a20f8652c3",
+              "answerText": "join a school club",
+              "broadcastText": "join a school club",
+              "hintText": "参加学校社团",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "参加学校社团",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "join a school club",
+                "sourceImagePage": 103,
+                "sourcePrintedPage": 98
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u1-l0-53cf679fa48ffb",
+              "answerText": "keep a diary",
+              "broadcastText": "keep a diary",
+              "hintText": "写日记",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "写日记",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "keep a diary",
+                "sourceImagePage": 103,
+                "sourcePrintedPage": 98
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u1-l0-4ffd0007f2cd79",
+              "answerText": "make a plan",
+              "broadcastText": "make a plan",
+              "hintText": "制订计划",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "制订计划",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "make a plan",
+                "sourceImagePage": 103,
+                "sourcePrintedPage": 98
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u1-l0-4dafeefe36920d",
+              "answerText": "read widely",
+              "broadcastText": "read widely",
+              "hintText": "广泛阅读",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "广泛阅读",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "read widely",
+                "sourceImagePage": 103,
+                "sourcePrintedPage": 98
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u1-l0-1d8f293a5da903",
+              "answerText": "take notes",
+              "broadcastText": "take notes",
+              "hintText": "做笔记",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "做笔记",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "take notes",
+                "sourceImagePage": 103,
+                "sourcePrintedPage": 98
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "title": "Unit 2",
+      "sections": [
+        {
+          "key": "en-multi-renjiao-datong-7ed767b2-g5-v1-u2-l0",
+          "order": 1,
+          "title": "本单元词表",
+          "type": "lesson",
+          "cards": [
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u2-l0-2cd08ce3332c3d",
+              "answerText": "Morality and Law",
+              "broadcastText": "Morality and Law",
+              "hintText": "道德与法治",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "道德与法治",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": [
+                    "morality and Law"
+                  ]
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "Morality and Law",
+                "sourceImagePage": 103,
+                "sourcePrintedPage": 98
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u2-l0-1200a25a82819b",
+              "answerText": "Chinese",
+              "broadcastText": "Chinese",
+              "hintText": "语文",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "语文",
+                "spellingRules": {
+                  "caseRule": "required",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "Chinese",
+                "sourceImagePage": 103,
+                "sourcePrintedPage": 98
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u2-l0-888b569425d127",
+              "answerText": "Maths",
+              "broadcastText": "Maths",
+              "hintText": "数学",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "数学",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": [
+                    "maths"
+                  ]
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "Maths",
+                "sourceImagePage": 103,
+                "phonetic": "mæθs",
+                "sourcePrintedPage": 98
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u2-l0-6baf433499997f",
+              "answerText": "Labour Education",
+              "broadcastText": "Labour Education",
+              "hintText": "劳动",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "劳动",
+                "spellingRules": {
+                  "caseRule": "required",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "Labour Education",
+                "sourceImagePage": 103,
+                "sourcePrintedPage": 98
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u2-l0-99c9e13ce1f343",
+              "answerText": "PE and Health",
+              "broadcastText": "PE and Health",
+              "hintText": "体育与健康",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "体育与健康",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": [
+                    "pE and Health"
+                  ]
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "PE and Health",
+                "sourceImagePage": 103,
+                "sourcePrintedPage": 98
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u2-l0-d41c8bd29a0335",
+              "answerText": "Science",
+              "broadcastText": "Science",
+              "hintText": "科学",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "科学",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": [
+                    "science"
+                  ]
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "Science",
+                "sourceImagePage": 103,
+                "phonetic": "ˈsaɪəns",
+                "sourcePrintedPage": 98
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u2-l0-e7037bc25a99c2",
+              "answerText": "English",
+              "broadcastText": "English",
+              "hintText": "英语",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "英语",
+                "spellingRules": {
+                  "caseRule": "required",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "English",
+                "sourceImagePage": 103,
+                "phonetic": "ˈɪŋɡlɪʃ",
+                "sourcePrintedPage": 98
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u2-l0-89f87f583e4a28",
+              "answerText": "Music",
+              "broadcastText": "Music",
+              "hintText": "音乐",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "音乐",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": [
+                    "music"
+                  ]
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "Music",
+                "sourceImagePage": 103,
+                "phonetic": "ˈmjuːzɪk",
+                "sourcePrintedPage": 98
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u2-l0-8b7b80c21dd49b",
+              "answerText": "IT",
+              "broadcastText": "IT",
+              "hintText": "信息科技",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "信息科技",
+                "spellingRules": {
+                  "caseRule": "required",
+                  "acceptedAnswers": []
+                },
+                "kind": "abbreviation",
+                "sourceRole": "head",
+                "sourceWord": "IT",
+                "sourceImagePage": 103,
+                "pronunciation": {
+                  "kind": "characters",
+                  "target": "IT",
+                  "letters": "IT"
+                },
+                "sourcePrintedPage": 98
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "title": "Unit 3",
+      "sections": [
+        {
+          "key": "en-multi-renjiao-datong-7ed767b2-g5-v1-u3-l0",
+          "order": 1,
+          "title": "本单元词表",
+          "type": "lesson",
+          "cards": [
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u3-l0-3f188a40516d08",
+              "answerText": "cook food",
+              "broadcastText": "cook food",
+              "hintText": "烹饪食物",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "烹饪食物",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "cook food",
+                "sourceImagePage": 103,
+                "sourcePrintedPage": 98
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u3-l0-6154560bc49f63",
+              "answerText": "do kung fu",
+              "broadcastText": "do kung fu",
+              "hintText": "练武术",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "练武术",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "do kung fu",
+                "sourceImagePage": 103,
+                "sourcePrintedPage": 98
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u3-l0-a03b8ba316e5d4",
+              "answerText": "listen to music",
+              "broadcastText": "listen to music",
+              "hintText": "听音乐",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "听音乐",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "listen to music",
+                "sourceImagePage": 103,
+                "sourcePrintedPage": 98
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u3-l0-143aa424d904d3",
+              "answerText": "make models",
+              "broadcastText": "make models",
+              "hintText": "制作模型",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "制作模型",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "make models",
+                "sourceImagePage": 103,
+                "sourcePrintedPage": 98
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u3-l0-797ac29bed26d9",
+              "answerText": "make paper-cuts",
+              "broadcastText": "make paper-cuts",
+              "hintText": "剪纸",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "剪纸",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "make paper-cuts",
+                "sourceImagePage": 103,
+                "sourcePrintedPage": 98
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u3-l0-15f9e0db021bcf",
+              "answerText": "play Go",
+              "broadcastText": "play Go",
+              "hintText": "下围棋",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "下围棋",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "play Go",
+                "sourceImagePage": 103,
+                "sourcePrintedPage": 98
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u3-l0-8f87ece1ffd733",
+              "answerText": "play the drums",
+              "broadcastText": "play the drums",
+              "hintText": "打鼓",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "打鼓",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "play the drums",
+                "sourceImagePage": 103,
+                "sourcePrintedPage": 98
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u3-l0-e8e2aa6c719ceb",
+              "answerText": "surf the internet",
+              "broadcastText": "surf the internet",
+              "hintText": "上网；网上冲浪",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "上网；网上冲浪",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "surf the internet",
+                "sourceImagePage": 103,
+                "sourcePrintedPage": 98
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 5,
+      "title": "Unit 4",
+      "sections": [
+        {
+          "key": "en-multi-renjiao-datong-7ed767b2-g5-v1-u4-l0",
+          "order": 1,
+          "title": "本单元词表",
+          "type": "lesson",
+          "cards": [
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u4-l0-e317ef5eba3515",
+              "answerText": "Basketball Club",
+              "broadcastText": "Basketball Club",
+              "hintText": "篮球社团",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "篮球社团",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": [
+                    "basketball Club"
+                  ]
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "Basketball Club",
+                "sourceImagePage": 104,
+                "sourcePrintedPage": 99
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u4-l0-6efd709bef1443",
+              "answerText": "Book Club",
+              "broadcastText": "Book Club",
+              "hintText": "阅读社团；读书会",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "阅读社团；读书会",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": [
+                    "book Club"
+                  ]
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "Book Club",
+                "sourceImagePage": 104,
+                "sourcePrintedPage": 99
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u4-l0-f77cba25e9b259",
+              "answerText": "Chess Club",
+              "broadcastText": "Chess Club",
+              "hintText": "国际象棋社团",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "国际象棋社团",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": [
+                    "chess Club"
+                  ]
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "Chess Club",
+                "sourceImagePage": 104,
+                "sourcePrintedPage": 99
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u4-l0-e0b63a37cad1e2",
+              "answerText": "Dance Club",
+              "broadcastText": "Dance Club",
+              "hintText": "舞蹈社团",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "舞蹈社团",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": [
+                    "dance Club"
+                  ]
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "Dance Club",
+                "sourceImagePage": 104,
+                "sourcePrintedPage": 99
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u4-l0-da7224dd71cde7",
+              "answerText": "Drama Club",
+              "broadcastText": "Drama Club",
+              "hintText": "戏剧社团",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "戏剧社团",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": [
+                    "drama Club"
+                  ]
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "Drama Club",
+                "sourceImagePage": 104,
+                "sourcePrintedPage": 99
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u4-l0-b20d1511b91f73",
+              "answerText": "Film Club",
+              "broadcastText": "Film Club",
+              "hintText": "电影社团",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "电影社团",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": [
+                    "film Club"
+                  ]
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "Film Club",
+                "sourceImagePage": 104,
+                "sourcePrintedPage": 99
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u4-l0-aadfa3a30417a5",
+              "answerText": "Music Club",
+              "broadcastText": "Music Club",
+              "hintText": "音乐社团",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "音乐社团",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": [
+                    "music Club"
+                  ]
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "Music Club",
+                "sourceImagePage": 104,
+                "sourcePrintedPage": 99
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u4-l0-ecf3c3ec72c742",
+              "answerText": "Science Club",
+              "broadcastText": "Science Club",
+              "hintText": "科学社团",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "科学社团",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": [
+                    "science Club"
+                  ]
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "Science Club",
+                "sourceImagePage": 104,
+                "sourcePrintedPage": 99
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 6,
+      "title": "Unit 5",
+      "sections": [
+        {
+          "key": "en-multi-renjiao-datong-7ed767b2-g5-v1-u5-l0",
+          "order": 1,
+          "title": "本单元词表",
+          "type": "lesson",
+          "cards": [
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u5-l0-c1f03f69889fdd",
+              "answerText": "hill",
+              "broadcastText": "hill",
+              "hintText": "山丘；小山",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "山丘；小山",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "hill",
+                "sourceImagePage": 104,
+                "sourcePrintedPage": 99
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u5-l0-bde017ce5cd57b",
+              "answerText": "lake",
+              "broadcastText": "lake",
+              "hintText": "湖泊",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "湖泊",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "lake",
+                "sourceImagePage": 104,
+                "phonetic": "leɪk",
+                "sourcePrintedPage": 99
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u5-l0-f0a0688b5f6798",
+              "answerText": "river",
+              "broadcastText": "river",
+              "hintText": "河；江",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "河；江",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "river",
+                "sourceImagePage": 104,
+                "phonetic": "ˈrɪvə(r)",
+                "sourcePrintedPage": 99
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u5-l0-176f3bb8b5ade2",
+              "answerText": "city",
+              "broadcastText": "city",
+              "hintText": "城市",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "城市",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "city",
+                "sourceImagePage": 104,
+                "sourcePrintedPage": 99
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 7,
+      "title": "Unit 6",
+      "sections": [
+        {
+          "key": "en-multi-renjiao-datong-7ed767b2-g5-v1-u6-l0",
+          "order": 1,
+          "title": "本单元词表",
+          "type": "lesson",
+          "cards": [
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u6-l0-5ecde98f5d6030",
+              "answerText": "buy gifts",
+              "broadcastText": "buy gifts",
+              "hintText": "购买礼物",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "购买礼物",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "buy gifts",
+                "sourceImagePage": 104,
+                "sourcePrintedPage": 99
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u6-l0-8d011bf72865f4",
+              "answerText": "enjoy the view",
+              "broadcastText": "enjoy the view",
+              "hintText": "欣赏风景",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "欣赏风景",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "enjoy the view",
+                "sourceImagePage": 104,
+                "sourcePrintedPage": 99
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u6-l0-1524352aa0b789",
+              "answerText": "have hot pot",
+              "broadcastText": "have hot pot",
+              "hintText": "吃火锅",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "吃火锅",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "have hot pot",
+                "sourceImagePage": 104,
+                "sourcePrintedPage": 99
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u6-l0-c12180ef476c91",
+              "answerText": "have noodles",
+              "broadcastText": "have noodles",
+              "hintText": "吃面条",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "吃面条",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "have noodles",
+                "sourceImagePage": 104,
+                "sourcePrintedPage": 99
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u6-l0-363fccd6a86448",
+              "answerText": "have street food",
+              "broadcastText": "have street food",
+              "hintText": "吃街头食品",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "吃街头食品",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "have street food",
+                "sourceImagePage": 104,
+                "sourcePrintedPage": 99
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u6-l0-0dc05c75497bcb",
+              "answerText": "see pandas",
+              "broadcastText": "see pandas",
+              "hintText": "看熊猫",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "看熊猫",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "see pandas",
+                "sourceImagePage": 104,
+                "sourcePrintedPage": 99
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u6-l0-d46a0abc03783c",
+              "answerText": "take a boat ride",
+              "broadcastText": "take a boat ride",
+              "hintText": "乘船游览",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "乘船游览",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "take a boat ride",
+                "sourceImagePage": 104,
+                "sourcePrintedPage": 99
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-7ed767b2-g5-v1-u6-l0-d5f6e1e3a7ac99",
+              "answerText": "visit old buildings",
+              "broadcastText": "visit old buildings",
+              "hintText": "参观古建筑",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "参观古建筑",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "visit old buildings",
+                "sourceImagePage": 104,
+                "sourcePrintedPage": 99
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

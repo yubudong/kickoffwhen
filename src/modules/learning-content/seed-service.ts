@@ -1,3 +1,4 @@
+import { assertMultiEnglishAudit, type MultiEnglishReference } from './english-multi-audit';
 import { assertEnglishSeedAudit, type EnglishContentRequirements } from "./english-content-audit";
 import { and, eq, isNull } from "drizzle-orm";
 
@@ -52,10 +53,15 @@ async function importEdition(tx: DbTransaction, content: SeedContent): Promise<S
   return { edition: `${content.publisher}｜${content.series}｜${content.editionText}`, insertedCards, updatedCards };
 }
 
-export async function applySeedContents(database: SeedDatabase, inputs: unknown[], requirements: ChineseContentRequirements[], englishRequirements: EnglishContentRequirements[] = []): Promise<SeedApplySummary[]> {
+export async function applySeedContents(database: SeedDatabase, inputs: unknown[], requirements: ChineseContentRequirements[], englishRequirements: EnglishContentRequirements[] = [], multiRequirements: MultiEnglishReference[] = []): Promise<SeedApplySummary[]> {
   const contents = validateSeedContents(inputs);
   const requirementsByIdentity = new Map(requirements.map((item) => [chineseRequirementsIdentity(item), item]));
   for (const content of contents) {
+    if (content.auditProfile === 'verified_english') {
+      const reference = multiRequirements.find(item => item.publisher===content.publisher && item.series===content.series && item.grade===content.grade && item.volume===content.volume && item.editionText===content.editionText);
+      if (!reference) throw new Error('MULTI_ENGLISH_REQUIREMENTS_NOT_FOUND');
+      assertMultiEnglishAudit(content,reference);
+    }
     if (content.auditProfile === "official_english") {
       const reference = englishRequirements.find(item => item.publisher === content.publisher && item.series === content.series && item.grade === content.grade && item.volume === content.volume && item.editionText === content.editionText);
       if (!reference) throw new Error("ENGLISH_REQUIREMENTS_NOT_FOUND");
@@ -66,7 +72,7 @@ export async function applySeedContents(database: SeedDatabase, inputs: unknown[
     if (!matchingRequirements) throw new Error("SEED_REQUIREMENTS_NOT_FOUND");
     assertChineseSeedAudit(content, matchingRequirements);
   }
-  if (contents.length > 0 && contents.every(content => content.auditProfile === "official_english")) {
+  if (contents.length > 0 && contents.every(content => content.auditProfile === "official_english" || content.auditProfile === 'verified_english')) {
     return database.transaction(async tx => {
       const result: SeedApplySummary[] = [];
       for (const content of contents) result.push(await importEdition(tx, content));

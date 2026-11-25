@@ -1,0 +1,3664 @@
+{
+  "auditProfile": "verified_english",
+  "publisher": "福建教育出版社",
+  "series": "闽教版",
+  "subject": "english",
+  "grade": 3,
+  "volume": "上册",
+  "editionText": "平台2022课标修订资源 · 2026-11核对整理",
+  "units": [
+    {
+      "order": 1,
+      "title": "Unit 1",
+      "sections": [
+        {
+          "key": "en-multi-minjiao-3f67a011-g3-v1-u1-l0",
+          "order": 1,
+          "title": "本单元词表",
+          "type": "lesson",
+          "cards": [
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-7e823610abf182",
+              "answerText": "meet",
+              "broadcastText": "meet. I will meet my friend at the gate.",
+              "hintText": "遇见",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "遇见",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "meet",
+                "sourceImagePage": 81,
+                "spokenContext": "I will meet my friend at the gate.",
+                "sourcePrintedPage": 74
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-bbeb3f07792b5f",
+              "answerText": "friend",
+              "broadcastText": "friend",
+              "hintText": "朋友",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "朋友",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "friend",
+                "sourceImagePage": 81,
+                "phonetic": "frend",
+                "sourcePrintedPage": 74
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-12b2cc1aa5151d",
+              "answerText": "nice",
+              "broadcastText": "nice",
+              "hintText": "高兴的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "高兴的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "nice",
+                "sourceImagePage": 81,
+                "sourcePrintedPage": 74
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-43a18bfc6044bf",
+              "answerText": "to",
+              "broadcastText": "to. I go to school every day.",
+              "hintText": "对；向",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "对；向",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "to",
+                "sourceImagePage": 81,
+                "spokenContext": "I go to school every day.",
+                "sourcePrintedPage": 74
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-76744a30c80bf4",
+              "answerText": "you",
+              "broadcastText": "you",
+              "hintText": "你；您；你们",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "你；您；你们",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "you",
+                "sourceImagePage": 81,
+                "sourcePrintedPage": 74
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-9f7e010d2acecb",
+              "answerText": "in",
+              "broadcastText": "in",
+              "hintText": "在⋯内；在⋯…状态中",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "在⋯内；在⋯…状态中",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "in",
+                "sourceImagePage": 81,
+                "phonetic": "ɪn",
+                "sourcePrintedPage": 74
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-f0f0dc04a7ad2b",
+              "answerText": "the",
+              "broadcastText": "the",
+              "hintText": "这(那)个；这(那)些",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "这(那)个；这(那)些",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "the",
+                "sourceImagePage": 81,
+                "sourcePrintedPage": 74
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-69d77b19659680",
+              "answerText": "classroom",
+              "broadcastText": "classroom",
+              "hintText": "教室",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "教室",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "classroom",
+                "sourceImagePage": 81,
+                "phonetic": "ˈklɑːsruːm",
+                "sourcePrintedPage": 74
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-c26e6c38734445",
+              "answerText": "hello",
+              "broadcastText": "hello",
+              "hintText": "你好",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "你好",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "hello",
+                "sourceImagePage": 81,
+                "sourcePrintedPage": 74
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-e10661b9c27d28",
+              "answerText": "boy",
+              "broadcastText": "boy",
+              "hintText": "男孩",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "男孩",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "boy",
+                "sourceImagePage": 81,
+                "phonetic": "bɔɪ",
+                "sourcePrintedPage": 74
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-0172e7ccad116b",
+              "answerText": "and",
+              "broadcastText": "and",
+              "hintText": "和",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "和",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "and",
+                "sourceImagePage": 81,
+                "sourcePrintedPage": 74
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-c55d660a37a98d",
+              "answerText": "girl",
+              "broadcastText": "girl",
+              "hintText": "女孩",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "女孩",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "girl",
+                "sourceImagePage": 81,
+                "phonetic": "ɡɜːl",
+                "sourcePrintedPage": 74
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-37689f19e35fcd",
+              "answerText": "I",
+              "broadcastText": "I. I am a student.",
+              "hintText": "我",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "我",
+                "spellingRules": {
+                  "caseRule": "required",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "I",
+                "sourceImagePage": 81,
+                "spokenContext": "I am a student.",
+                "sourcePrintedPage": 74
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-8040da5ce0ed2d",
+              "answerText": "am",
+              "broadcastText": "am",
+              "hintText": "是我是",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "是我是",
+                "spellingRules": {
+                  "caseRule": "required",
+                  "acceptedAnswers": []
+                },
+                "kind": "abbreviation",
+                "sourceRole": "head",
+                "sourceWord": "am",
+                "sourceImagePage": 81,
+                "pronunciation": {
+                  "kind": "characters",
+                  "target": "am",
+                  "letters": "AM"
+                },
+                "sourcePrintedPage": 74
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-45ab1ac4cc45d7",
+              "answerText": "Miss",
+              "broadcastText": "Miss",
+              "hintText": "女士；小姐",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "女士；小姐",
+                "spellingRules": {
+                  "caseRule": "required",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "Miss",
+                "sourceImagePage": 81,
+                "sourcePrintedPage": 74
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-b44b237c1642b1",
+              "answerText": "too",
+              "broadcastText": "too. The bag is too heavy for me.",
+              "hintText": "也；太",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "也；太",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "too",
+                "sourceImagePage": 81,
+                "spokenContext": "The bag is too heavy for me.",
+                "sourcePrintedPage": 74
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-b9535f68f1554a",
+              "answerText": "apple",
+              "broadcastText": "apple",
+              "hintText": "苹果",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "苹果",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "apple",
+                "sourceImagePage": 81,
+                "phonetic": "ˈæpl",
+                "sourcePrintedPage": 74
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-8d39065795512b",
+              "answerText": "banana",
+              "broadcastText": "banana",
+              "hintText": "香蕉",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "香蕉",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "banana",
+                "sourceImagePage": 81,
+                "phonetic": "bəˈnɑːnə",
+                "sourcePrintedPage": 74
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-b84b23f6d8f848",
+              "answerText": "what",
+              "broadcastText": "what",
+              "hintText": "什么",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "什么",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "what",
+                "sourceImagePage": 81,
+                "sourcePrintedPage": 74
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-d8e6f4d857d7a4",
+              "answerText": "is",
+              "broadcastText": "is",
+              "hintText": "是",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "是",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "is",
+                "sourceImagePage": 81,
+                "sourcePrintedPage": 74
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-45389610b95b8c",
+              "answerText": "what's",
+              "broadcastText": "what's",
+              "hintText": "是什么",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "是什么",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "what's",
+                "sourceImagePage": 81,
+                "sourcePrintedPage": 74
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-c8275c32845bcb",
+              "answerText": "your",
+              "broadcastText": "your",
+              "hintText": "你的；你们的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "你的；你们的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "your",
+                "sourceImagePage": 81,
+                "sourcePrintedPage": 74
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-2dd42c3a1a1efc",
+              "answerText": "name",
+              "broadcastText": "name",
+              "hintText": "名字",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "名字",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "name",
+                "sourceImagePage": 81,
+                "phonetic": "neɪm",
+                "sourcePrintedPage": 74
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-ed145dccdb91d5",
+              "answerText": "please",
+              "broadcastText": "please",
+              "hintText": "请",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "请",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "please",
+                "sourceImagePage": 81,
+                "sourcePrintedPage": 74
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-8771e06487183c",
+              "answerText": "at",
+              "broadcastText": "at",
+              "hintText": "在(某处)；在(几点钟)",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "在(某处)；在(几点钟)",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "at",
+                "sourceImagePage": 81,
+                "phonetic": "æt",
+                "sourcePrintedPage": 74
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-941f542da2b029",
+              "answerText": "school",
+              "broadcastText": "school",
+              "hintText": "学校",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "学校",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "school",
+                "sourceImagePage": 81,
+                "phonetic": "skuːl",
+                "sourcePrintedPage": 74
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-040b2e7cf9ecd8",
+              "answerText": "gate",
+              "broadcastText": "gate",
+              "hintText": "大门",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "大门",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "gate",
+                "sourceImagePage": 81,
+                "sourcePrintedPage": 74
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-581c865fd89f63",
+              "answerText": "hi",
+              "broadcastText": "hi. We say hi when we meet.",
+              "hintText": "你好",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "你好",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "hi",
+                "sourceImagePage": 81,
+                "spokenContext": "We say hi when we meet.",
+                "sourcePrintedPage": 74
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-619a9281dabf16",
+              "answerText": "my",
+              "broadcastText": "my",
+              "hintText": "我的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "我的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "my",
+                "sourceImagePage": 81,
+                "sourcePrintedPage": 74
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-83135fe8fb9373",
+              "answerText": "cat",
+              "broadcastText": "cat",
+              "hintText": "猫",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "猫",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "cat",
+                "sourceImagePage": 81,
+                "phonetic": "kæt",
+                "sourcePrintedPage": 74
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-e5ee76c0d7b0ae",
+              "answerText": "dog",
+              "broadcastText": "dog",
+              "hintText": "狗",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "狗",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "dog",
+                "sourceImagePage": 81,
+                "phonetic": "dɒɡ",
+                "sourcePrintedPage": 74
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-88ba915968dcd6",
+              "answerText": "how",
+              "broadcastText": "how",
+              "hintText": "怎样；多少；多么",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "怎样；多少；多么",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "how",
+                "sourceImagePage": 81,
+                "sourcePrintedPage": 74
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-6a86ccb7d3cd43",
+              "answerText": "are",
+              "broadcastText": "are. They are my friends.",
+              "hintText": "是",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "是",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "are",
+                "sourceImagePage": 81,
+                "spokenContext": "They are my friends.",
+                "sourcePrintedPage": 74
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-70754ca95fd536",
+              "answerText": "home",
+              "broadcastText": "home",
+              "hintText": "家",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "家",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "home",
+                "sourceImagePage": 81,
+                "phonetic": "həʊm",
+                "sourcePrintedPage": 74
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-924b0b8402ed2c",
+              "answerText": "good",
+              "broadcastText": "good",
+              "hintText": "好的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "好的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "good",
+                "sourceImagePage": 81,
+                "phonetic": "ɡʊd",
+                "sourcePrintedPage": 74
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-093fddb37c00a5",
+              "answerText": "morning",
+              "broadcastText": "morning",
+              "hintText": "早晨；上午",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "早晨；上午",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "morning",
+                "sourceImagePage": 81,
+                "sourcePrintedPage": 74
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-fa00aef2a6d7df",
+              "answerText": "mom",
+              "broadcastText": "mom",
+              "hintText": "妈妈",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "妈妈",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "mom",
+                "sourceImagePage": 81,
+                "sourcePrintedPage": 74
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-23c11044f1f653",
+              "answerText": "woof",
+              "broadcastText": "woof",
+              "hintText": "(狗叫声)汪",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "(狗叫声)汪",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "woof",
+                "sourceImagePage": 81,
+                "sourcePrintedPage": 74
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-be576476d570ea",
+              "answerText": "fine",
+              "broadcastText": "fine",
+              "hintText": "健康的；晴朗的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "健康的；晴朗的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "fine",
+                "sourceImagePage": 81,
+                "phonetic": "faɪn",
+                "sourcePrintedPage": 74
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-bac1eb24ea84aa",
+              "answerText": "thank",
+              "broadcastText": "thank",
+              "hintText": "谢谢",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "谢谢",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "thank",
+                "sourceImagePage": 81,
+                "sourcePrintedPage": 74
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-4335ec67cd98f8",
+              "answerText": "afternoon",
+              "broadcastText": "afternoon",
+              "hintText": "下午",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "下午",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "afternoon",
+                "sourceImagePage": 81,
+                "phonetic": "ˌɑːftəˈnuːn",
+                "sourcePrintedPage": 74
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-f2e8d61e3f12bc",
+              "answerText": "egg",
+              "broadcastText": "egg",
+              "hintText": "蛋",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "蛋",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "egg",
+                "sourceImagePage": 81,
+                "phonetic": "eɡ",
+                "sourcePrintedPage": 74
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-2071bbc031ad22",
+              "answerText": "fish",
+              "broadcastText": "fish",
+              "hintText": "鱼；鱼肉",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "鱼；鱼肉",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "fish",
+                "sourceImagePage": 81,
+                "phonetic": "fɪʃ",
+                "sourcePrintedPage": 74
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-21c8ec63615300",
+              "answerText": "have",
+              "broadcastText": "have",
+              "hintText": "有；吃,喝",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "有；吃,喝",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "have",
+                "sourceImagePage": 82,
+                "phonetic": "hæv",
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-c1532688d8fcc8",
+              "answerText": "day",
+              "broadcastText": "day",
+              "hintText": "(一)天；(一)日",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "(一)天；(一)日",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "day",
+                "sourceImagePage": 82,
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-512cbf1698270b",
+              "answerText": "street",
+              "broadcastText": "street",
+              "hintText": "大街；街道",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "大街；街道",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "street",
+                "sourceImagePage": 82,
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-33aed79acd3177",
+              "answerText": "this",
+              "broadcastText": "this",
+              "hintText": "这个",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "这个",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "this",
+                "sourceImagePage": 82,
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-41002d055297fc",
+              "answerText": "goodbye",
+              "broadcastText": "goodbye",
+              "hintText": "再见",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "再见",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "goodbye",
+                "sourceImagePage": 82,
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-f8acf9f55b919d",
+              "answerText": "bye",
+              "broadcastText": "bye. We say bye when we leave.",
+              "hintText": "再见",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "再见",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "bye",
+                "sourceImagePage": 82,
+                "spokenContext": "We say bye when we leave.",
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-a432f75111c2d4",
+              "answerText": "hen",
+              "broadcastText": "hen",
+              "hintText": "母鸡",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "母鸡",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "hen",
+                "sourceImagePage": 82,
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-abc2c55303a27d",
+              "answerText": "a",
+              "broadcastText": "a",
+              "hintText": "一个",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "一个",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "a",
+                "sourceImagePage": 81,
+                "sourcePrintedPage": 74
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u1-l0-5d06213bc3fd4d",
+              "answerText": "an",
+              "broadcastText": "an",
+              "hintText": "一个",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "一个",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "an",
+                "sourceImagePage": 81,
+                "sourcePrintedPage": 74
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "title": "Unit 2",
+      "sections": [
+        {
+          "key": "en-multi-minjiao-3f67a011-g3-v1-u2-l0",
+          "order": 1,
+          "title": "本单元词表",
+          "type": "lesson",
+          "cards": [
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u2-l0-993f9e5be25e29",
+              "answerText": "fun",
+              "broadcastText": "fun",
+              "hintText": "有趣的；乐趣",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "有趣的；乐趣",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "fun",
+                "sourceImagePage": 82,
+                "phonetic": "fʌn",
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u2-l0-36f43771b356ca",
+              "answerText": "number",
+              "broadcastText": "number",
+              "hintText": "号码；数字",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "号码；数字",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "number",
+                "sourceImagePage": 82,
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u2-l0-5dc2ccc98f3c22",
+              "answerText": "Let",
+              "broadcastText": "Let",
+              "hintText": "让",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "让",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": [
+                    "let"
+                  ]
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "Let",
+                "sourceImagePage": 82,
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u2-l0-892e81ddab0d47",
+              "answerText": "us",
+              "broadcastText": "us",
+              "hintText": "我们(宾格)",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "我们(宾格)",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "us",
+                "sourceImagePage": 82,
+                "phonetic": "ʌs",
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u2-l0-83eefb26a2c94c",
+              "answerText": "Let's",
+              "broadcastText": "Let's",
+              "hintText": "让我们",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "让我们",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": [
+                    "let's"
+                  ]
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "Let's",
+                "sourceImagePage": 82,
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u2-l0-bd64bd48e01f58",
+              "answerText": "play",
+              "broadcastText": "play",
+              "hintText": "玩耍；演奏",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "玩耍；演奏",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "play",
+                "sourceImagePage": 82,
+                "phonetic": "pleɪ",
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u2-l0-8033a602006b5a",
+              "answerText": "park",
+              "broadcastText": "park",
+              "hintText": "公园；停车场；停放(车辆等)",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "公园；停车场；停放(车辆等)",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "park",
+                "sourceImagePage": 82,
+                "phonetic": "pɑːk",
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u2-l0-ae95388c807f24",
+              "answerText": "OK",
+              "broadcastText": "OK",
+              "hintText": "行,好；不错的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "行,好；不错的",
+                "spellingRules": {
+                  "caseRule": "required",
+                  "acceptedAnswers": []
+                },
+                "kind": "abbreviation",
+                "sourceRole": "head",
+                "sourceWord": "OK",
+                "sourceImagePage": 82,
+                "pronunciation": {
+                  "kind": "characters",
+                  "target": "OK",
+                  "letters": "OK"
+                },
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u2-l0-a4397977da8399",
+              "answerText": "two",
+              "broadcastText": "two. I have two hands.",
+              "hintText": "二",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "二",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "two",
+                "sourceImagePage": 82,
+                "phonetic": "tuː",
+                "spokenContext": "I have two hands.",
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u2-l0-9724f9d4ae0685",
+              "answerText": "four",
+              "broadcastText": "four. There are four chairs in the room.",
+              "hintText": "四",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "四",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "four",
+                "sourceImagePage": 82,
+                "phonetic": "fɔː(r)",
+                "spokenContext": "There are four chairs in the room.",
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u2-l0-103612d5ca49a8",
+              "answerText": "five",
+              "broadcastText": "five",
+              "hintText": "五",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "五",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "five",
+                "sourceImagePage": 82,
+                "phonetic": "faɪv",
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u2-l0-8d7a7d0062f935",
+              "answerText": "six",
+              "broadcastText": "six",
+              "hintText": "六",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "六",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "six",
+                "sourceImagePage": 82,
+                "phonetic": "sɪks",
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u2-l0-3520a8f465de4f",
+              "answerText": "seven",
+              "broadcastText": "seven",
+              "hintText": "七",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "七",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "seven",
+                "sourceImagePage": 82,
+                "phonetic": "ˈsevn",
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u2-l0-faaa3cf92ff110",
+              "answerText": "eight",
+              "broadcastText": "eight. A spider has eight legs.",
+              "hintText": "八",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "八",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "eight",
+                "sourceImagePage": 82,
+                "phonetic": "eɪt",
+                "spokenContext": "A spider has eight legs.",
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u2-l0-87bcc81c8c3cee",
+              "answerText": "nine",
+              "broadcastText": "nine",
+              "hintText": "九",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "九",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "nine",
+                "sourceImagePage": 82,
+                "phonetic": "naɪn",
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u2-l0-d0c5b898399aba",
+              "answerText": "great",
+              "broadcastText": "great",
+              "hintText": "极好的；杰出的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "极好的；杰出的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "great",
+                "sourceImagePage": 82,
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u2-l0-cb045eddada3c9",
+              "answerText": "ice cream",
+              "broadcastText": "ice cream",
+              "hintText": "冰激凌",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "冰激凌",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "ice cream",
+                "sourceImagePage": 82,
+                "phonetic": "ˌaɪs ˈkriːm",
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u2-l0-c73082b2be73ce",
+              "answerText": "jacket",
+              "broadcastText": "jacket",
+              "hintText": "夹克",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "夹克",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "jacket",
+                "sourceImagePage": 82,
+                "phonetic": "ˈdʒækɪt",
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u2-l0-824dd8935dc8b9",
+              "answerText": "how many",
+              "broadcastText": "how many",
+              "hintText": "多少",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "多少",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "how many",
+                "sourceImagePage": 82,
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u2-l0-b4ef72a7cb5dfd",
+              "answerText": "duck",
+              "broadcastText": "duck",
+              "hintText": "鸭子",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "鸭子",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "duck",
+                "sourceImagePage": 82,
+                "phonetic": "dʌk",
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u2-l0-244cb6903c77ca",
+              "answerText": "Look",
+              "broadcastText": "Look",
+              "hintText": "看",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "看",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": [
+                    "look"
+                  ]
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "Look",
+                "sourceImagePage": 82,
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u2-l0-34c8eae1a4c47f",
+              "answerText": "many",
+              "broadcastText": "many",
+              "hintText": "许多的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "许多的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "many",
+                "sourceImagePage": 82,
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u2-l0-4e50b8700879fa",
+              "answerText": "really",
+              "broadcastText": "really",
+              "hintText": "(表示惊奇、兴趣、怀疑等)当真；真正地",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "(表示惊奇、兴趣、怀疑等)当真；真正地",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "really",
+                "sourceImagePage": 82,
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u2-l0-aa576c3a7dbb72",
+              "answerText": "yes",
+              "broadcastText": "yes",
+              "hintText": "是,是的；同意",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "是,是的；同意",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "yes",
+                "sourceImagePage": 82,
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u2-l0-bdc39dbb766cb4",
+              "answerText": "that",
+              "broadcastText": "that",
+              "hintText": "那；那个",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "那；那个",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "that",
+                "sourceImagePage": 82,
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u2-l0-4033920825660e",
+              "answerText": "that's",
+              "broadcastText": "that's",
+              "hintText": "那是",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "那是",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "that's",
+                "sourceImagePage": 82,
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u2-l0-36fabe61c8d902",
+              "answerText": "right",
+              "broadcastText": "right. Your answer is right.",
+              "hintText": "正确的；右边的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "正确的；右边的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "right",
+                "sourceImagePage": 82,
+                "spokenContext": "Your answer is right.",
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u2-l0-ae6c8188b22555",
+              "answerText": "kite",
+              "broadcastText": "kite",
+              "hintText": "风筝",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "风筝",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "kite",
+                "sourceImagePage": 82,
+                "phonetic": "kaɪt",
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u2-l0-2cd89d5eb32bed",
+              "answerText": "lion",
+              "broadcastText": "lion",
+              "hintText": "狮子",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "狮子",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "lion",
+                "sourceImagePage": 82,
+                "phonetic": "ˈlaɪən",
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u2-l0-563cd1d78f73e2",
+              "answerText": "how old",
+              "broadcastText": "how old",
+              "hintText": "多大(年龄)",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "多大(年龄)",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "how old",
+                "sourceImagePage": 82,
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u2-l0-6be7e3f2778f7a",
+              "answerText": "go",
+              "broadcastText": "go",
+              "hintText": "去；走",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "去；走",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "go",
+                "sourceImagePage": 82,
+                "phonetic": "ɡəʊ",
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u2-l0-73d937ad4ff0c9",
+              "answerText": "year",
+              "broadcastText": "year",
+              "hintText": "年",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "年",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "year",
+                "sourceImagePage": 82,
+                "phonetic": "jɪə(r)",
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u2-l0-586c77e11a48a5",
+              "answerText": "oh",
+              "broadcastText": "oh",
+              "hintText": "啊,呀",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "啊,呀",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "oh",
+                "sourceImagePage": 82,
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u2-l0-47c0a860fa568c",
+              "answerText": "sorry",
+              "broadcastText": "sorry",
+              "hintText": "对不起,抱歉",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "对不起,抱歉",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "sorry",
+                "sourceImagePage": 82,
+                "phonetic": "ˈsɒri",
+                "sourcePrintedPage": 75
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u2-l0-26846d4e56d26b",
+              "answerText": "how about",
+              "broadcastText": "how about",
+              "hintText": "怎么样",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "怎么样",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "how about",
+                "sourceImagePage": 83,
+                "sourcePrintedPage": 76
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u2-l0-5cdc7637445f02",
+              "answerText": "yeah",
+              "broadcastText": "yeah",
+              "hintText": "是的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "是的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "yeah",
+                "sourceImagePage": 83,
+                "sourcePrintedPage": 76
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u2-l0-24ed614578bd5b",
+              "answerText": "monkey",
+              "broadcastText": "monkey",
+              "hintText": "猴子",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "猴子",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "monkey",
+                "sourceImagePage": 83,
+                "phonetic": "ˈmʌŋki",
+                "sourcePrintedPage": 76
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u2-l0-dd6cac02fdf208",
+              "answerText": "noodle",
+              "broadcastText": "noodle",
+              "hintText": "面条",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "面条",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "noodle",
+                "sourceImagePage": 83,
+                "phonetic": "ˈnuːdl",
+                "sourcePrintedPage": 76
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u2-l0-e80296a06a1128",
+              "answerText": "phone",
+              "broadcastText": "phone",
+              "hintText": "电话",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "电话",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "phone",
+                "sourceImagePage": 83,
+                "phonetic": "fəʊn",
+                "sourcePrintedPage": 76
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u2-l0-f921022c3abc93",
+              "answerText": "it",
+              "broadcastText": "it",
+              "hintText": "它",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "它",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "it",
+                "sourceImagePage": 83,
+                "sourcePrintedPage": 76
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u2-l0-3fbe4438dbf37d",
+              "answerText": "it's",
+              "broadcastText": "it's",
+              "hintText": "它是",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "它是",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "it's",
+                "sourceImagePage": 83,
+                "sourcePrintedPage": 76
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u2-l0-2b37c8b4de8775",
+              "answerText": "pet",
+              "broadcastText": "pet",
+              "hintText": "宠物",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "宠物",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "pet",
+                "sourceImagePage": 83,
+                "phonetic": "pet",
+                "sourcePrintedPage": 76
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u2-l0-8f32ce1f104f88",
+              "answerText": "orange",
+              "broadcastText": "orange",
+              "hintText": "橙子；橙色；橙色的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "橙子；橙色；橙色的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "orange",
+                "sourceImagePage": 83,
+                "phonetic": "ˈɒrɪndʒ",
+                "sourcePrintedPage": 76
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u2-l0-d5af2b3ce200bb",
+              "answerText": "pig",
+              "broadcastText": "pig",
+              "hintText": "猪",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "猪",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "pig",
+                "sourceImagePage": 83,
+                "phonetic": "pɪɡ",
+                "sourcePrintedPage": 76
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u2-l0-6a495e081d44c5",
+              "answerText": "three",
+              "broadcastText": "three",
+              "hintText": "三",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "三",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "three",
+                "sourceImagePage": 82,
+                "phonetic": "θriː",
+                "sourcePrintedPage": 75
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "title": "Unit 3",
+      "sections": [
+        {
+          "key": "en-multi-minjiao-3f67a011-g3-v1-u3-l0",
+          "order": 1,
+          "title": "本单元词表",
+          "type": "lesson",
+          "cards": [
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u3-l0-0b1cfb7779f2c2",
+              "answerText": "color",
+              "broadcastText": "color",
+              "hintText": "颜色；给•着色",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "颜色；给•着色",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "color",
+                "sourceImagePage": 83,
+                "sourcePrintedPage": 76
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u3-l0-7a1ba97ae37727",
+              "answerText": "around",
+              "broadcastText": "around",
+              "hintText": "围绕",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "围绕",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "around",
+                "sourceImagePage": 83,
+                "sourcePrintedPage": 76
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u3-l0-b36b018dd2bf25",
+              "answerText": "green",
+              "broadcastText": "green",
+              "hintText": "绿色；绿色的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "绿色；绿色的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "green",
+                "sourceImagePage": 83,
+                "phonetic": "ɡriːn",
+                "sourcePrintedPage": 76
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u3-l0-4ad32b88fa7ca5",
+              "answerText": "on",
+              "broadcastText": "on",
+              "hintText": "在⋯⋯之上；在⋯时候",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "在⋯⋯之上；在⋯时候",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "on",
+                "sourceImagePage": 83,
+                "phonetic": "ɒn",
+                "sourcePrintedPage": 76
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u3-l0-9606d0f0de62d6",
+              "answerText": "way",
+              "broadcastText": "way. Please show me the way to the library.",
+              "hintText": "路,道路；方式",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "路,道路；方式",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "way",
+                "sourceImagePage": 83,
+                "spokenContext": "Please show me the way to the library.",
+                "sourcePrintedPage": 76
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u3-l0-21a902abea698b",
+              "answerText": "stop",
+              "broadcastText": "stop",
+              "hintText": "停止,停下；车站",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "停止,停下；车站",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "stop",
+                "sourceImagePage": 83,
+                "sourcePrintedPage": 76
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u3-l0-c10edfd14c1223",
+              "answerText": "Light",
+              "broadcastText": "Light",
+              "hintText": "灯；光线；浅色的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "灯；光线；浅色的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": [
+                    "light"
+                  ]
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "Light",
+                "sourceImagePage": 83,
+                "phonetic": "laɪt",
+                "sourcePrintedPage": 76
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u3-l0-25f4a30a8a5164",
+              "answerText": "red",
+              "broadcastText": "red. The apple is red.",
+              "hintText": "红色；红色的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "红色；红色的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "red",
+                "sourceImagePage": 83,
+                "phonetic": "red",
+                "spokenContext": "The apple is red.",
+                "sourcePrintedPage": 76
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u3-l0-ed23a553c949c3",
+              "answerText": "now",
+              "broadcastText": "now",
+              "hintText": "现在",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "现在",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "now",
+                "sourceImagePage": 83,
+                "phonetic": "naʊ",
+                "sourcePrintedPage": 76
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u3-l0-fe7fc69317a60c",
+              "answerText": "question",
+              "broadcastText": "question",
+              "hintText": "问题",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "问题",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "question",
+                "sourceImagePage": 83,
+                "phonetic": "ˈkwestʃən",
+                "sourcePrintedPage": 76
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u3-l0-cee2a365c582e4",
+              "answerText": "rabbit",
+              "broadcastText": "rabbit",
+              "hintText": "兔子",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "兔子",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "rabbit",
+                "sourceImagePage": 83,
+                "phonetic": "ˈræbɪt",
+                "sourcePrintedPage": 76
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u3-l0-fb244a1b3e33b7",
+              "answerText": "class",
+              "broadcastText": "class",
+              "hintText": "课；班级",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "课；班级",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "class",
+                "sourceImagePage": 83,
+                "phonetic": "klɑːs",
+                "sourcePrintedPage": 76
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u3-l0-82892c0005b527",
+              "answerText": "game",
+              "broadcastText": "game",
+              "hintText": "游戏；比赛",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "游戏；比赛",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "game",
+                "sourceImagePage": 83,
+                "phonetic": "ɡeɪm",
+                "sourcePrintedPage": 76
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u3-l0-93a7b504ca5726",
+              "answerText": "blue",
+              "broadcastText": "blue. My bag is blue.",
+              "hintText": "蓝色；蓝色的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "蓝色；蓝色的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "blue",
+                "sourceImagePage": 83,
+                "phonetic": "bluː",
+                "spokenContext": "My bag is blue.",
+                "sourcePrintedPage": 76
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u3-l0-0bbd3183d1f75a",
+              "answerText": "yellow",
+              "broadcastText": "yellow",
+              "hintText": "黄色；黄色的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "黄色；黄色的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "yellow",
+                "sourceImagePage": 83,
+                "phonetic": "ˈjeləʊ",
+                "sourcePrintedPage": 76
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u3-l0-79b450eac9b5ce",
+              "answerText": "wow",
+              "broadcastText": "wow",
+              "hintText": "呀,哇",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "呀,哇",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "wow",
+                "sourceImagePage": 83,
+                "sourcePrintedPage": 76
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u3-l0-7eb6bd9d4a8d4f",
+              "answerText": "white",
+              "broadcastText": "white",
+              "hintText": "白色；白色的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "白色；白色的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "white",
+                "sourceImagePage": 83,
+                "phonetic": "waɪt",
+                "sourcePrintedPage": 76
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u3-l0-52a19ab932750f",
+              "answerText": "pink",
+              "broadcastText": "pink",
+              "hintText": "粉红色；粉红色的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "粉红色；粉红色的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "pink",
+                "sourceImagePage": 83,
+                "phonetic": "pɪŋk",
+                "sourcePrintedPage": 76
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u3-l0-4dda7c0658d6a1",
+              "answerText": "star",
+              "broadcastText": "star",
+              "hintText": "星星",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "星星",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "star",
+                "sourceImagePage": 83,
+                "phonetic": "stɑː(r)",
+                "sourcePrintedPage": 76
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u3-l0-0a6467871ad847",
+              "answerText": "teacher",
+              "broadcastText": "teacher",
+              "hintText": "老师",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "老师",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "teacher",
+                "sourceImagePage": 83,
+                "phonetic": "ˈtiːtʃə(r)",
+                "sourcePrintedPage": 76
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u3-l0-6f4f889bfba350",
+              "answerText": "show",
+              "broadcastText": "show",
+              "hintText": "给⋯…看；展示；展览(会)",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "给⋯…看；展示；展览(会)",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "show",
+                "sourceImagePage": 83,
+                "phonetic": "ʃəʊ",
+                "sourcePrintedPage": 76
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u3-l0-7a49155ee92aae",
+              "answerText": "me",
+              "broadcastText": "me",
+              "hintText": "我(宾格)",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "我(宾格)",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "me",
+                "sourceImagePage": 83,
+                "phonetic": "miː",
+                "sourcePrintedPage": 76
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u3-l0-bbbb5c5df6627b",
+              "answerText": "schoolbag",
+              "broadcastText": "schoolbag",
+              "hintText": "书包",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "书包",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "schoolbag",
+                "sourceImagePage": 83,
+                "phonetic": "ˈskuːlbæɡ",
+                "sourcePrintedPage": 76
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u3-l0-33cc875d108661",
+              "answerText": "pencil box",
+              "broadcastText": "pencil box",
+              "hintText": "笔盒",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "笔盒",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "pencil box",
+                "sourceImagePage": 83,
+                "sourcePrintedPage": 76
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u3-l0-f621f33d8987b9",
+              "answerText": "black",
+              "broadcastText": "black",
+              "hintText": "黑色；黑色的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "黑色；黑色的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "black",
+                "sourceImagePage": 83,
+                "phonetic": "blæk",
+                "sourcePrintedPage": 76
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u3-l0-92c8c3765ade7d",
+              "answerText": "pen",
+              "broadcastText": "pen",
+              "hintText": "钢笔",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "钢笔",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "pen",
+                "sourceImagePage": 83,
+                "phonetic": "pen",
+                "sourcePrintedPage": 76
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u3-l0-9da35ce210393c",
+              "answerText": "pencil",
+              "broadcastText": "pencil",
+              "hintText": "铅笔",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "铅笔",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "pencil",
+                "sourceImagePage": 83,
+                "phonetic": "ˈpensl",
+                "sourcePrintedPage": 76
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u3-l0-046dc39f8096a7",
+              "answerText": "ruler",
+              "broadcastText": "ruler",
+              "hintText": "尺子",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "尺子",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "ruler",
+                "sourceImagePage": 83,
+                "phonetic": "ˈruːlə(r)",
+                "sourcePrintedPage": 76
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u3-l0-17f0e2e32d06b8",
+              "answerText": "book",
+              "broadcastText": "book",
+              "hintText": "书",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "书",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "book",
+                "sourceImagePage": 83,
+                "phonetic": "bʊk",
+                "sourcePrintedPage": 76
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u3-l0-56cfa56f965dd5",
+              "answerText": "eraser",
+              "broadcastText": "eraser",
+              "hintText": "橡皮擦",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "橡皮擦",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "eraser",
+                "sourceImagePage": 83,
+                "phonetic": "ɪˈreɪzə(r)",
+                "sourcePrintedPage": 76
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u3-l0-667f15e0ddc0d7",
+              "answerText": "umbrella",
+              "broadcastText": "umbrella",
+              "hintText": "雨伞",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "雨伞",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "umbrella",
+                "sourceImagePage": 83,
+                "phonetic": "ʌmˈbrelə",
+                "sourcePrintedPage": 76
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u3-l0-b74171bb24324d",
+              "answerText": "violin",
+              "broadcastText": "violin",
+              "hintText": "小提琴",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "小提琴",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "violin",
+                "sourceImagePage": 83,
+                "sourcePrintedPage": 76
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u3-l0-7106b6201cb9f3",
+              "answerText": "they",
+              "broadcastText": "they",
+              "hintText": "他们；她们；它们",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "他们；她们；它们",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "they",
+                "sourceImagePage": 83,
+                "sourcePrintedPage": 76
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u3-l0-0bf729de45fade",
+              "answerText": "colorful",
+              "broadcastText": "colorful",
+              "hintText": "多彩的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "多彩的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "colorful",
+                "sourceImagePage": 83,
+                "sourcePrintedPage": 76
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u3-l0-85340895963001",
+              "answerText": "flower",
+              "broadcastText": "flower. This flower is pink.",
+              "hintText": "花",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "花",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "flower",
+                "sourceImagePage": 83,
+                "phonetic": "ˈflaʊə(r)",
+                "spokenContext": "This flower is pink.",
+                "sourcePrintedPage": 76
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u3-l0-5ca1e81f9ff42e",
+              "answerText": "after",
+              "broadcastText": "after",
+              "hintText": "在⋯之后",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "在⋯之后",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "after",
+                "sourceImagePage": 83,
+                "phonetic": "ˈɑːftə(r)",
+                "sourcePrintedPage": 76
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u3-l0-4858ded225311b",
+              "answerText": "step",
+              "broadcastText": "step",
+              "hintText": "步骤；脚步",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "步骤；脚步",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "step",
+                "sourceImagePage": 84,
+                "sourcePrintedPage": 77
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u3-l0-150ff897f6694f",
+              "answerText": "draw",
+              "broadcastText": "draw",
+              "hintText": "回",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "回",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "draw",
+                "sourceImagePage": 84,
+                "sourcePrintedPage": 77
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u3-l0-10a636d278f9cc",
+              "answerText": "cut",
+              "broadcastText": "cut",
+              "hintText": "剪；切",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "剪；切",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "cut",
+                "sourceImagePage": 84,
+                "phonetic": "kʌt",
+                "sourcePrintedPage": 77
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u3-l0-312e3f8995f9d0",
+              "answerText": "make",
+              "broadcastText": "make",
+              "hintText": "制作；使变得",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "制作；使变得",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "make",
+                "sourceImagePage": 84,
+                "sourcePrintedPage": 77
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u3-l0-ce67417e6843db",
+              "answerText": "window",
+              "broadcastText": "window",
+              "hintText": "窗户",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "窗户",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "window",
+                "sourceImagePage": 84,
+                "phonetic": "ˈwɪndəʊ",
+                "sourcePrintedPage": 77
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u3-l0-3419f58e226e62",
+              "answerText": "X-ray X",
+              "broadcastText": "X-ray X",
+              "hintText": "光",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "光",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": [
+                    "x-ray X"
+                  ]
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "X-ray X",
+                "sourceImagePage": 84,
+                "sourcePrintedPage": 77
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "title": "Unit 4",
+      "sections": [
+        {
+          "key": "en-multi-minjiao-3f67a011-g3-v1-u4-l0",
+          "order": 1,
+          "title": "本单元词表",
+          "type": "lesson",
+          "cards": [
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u4-l0-2bacb73d604ae5",
+              "answerText": "Love",
+              "broadcastText": "Love",
+              "hintText": "爱；喜爱",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "爱；喜爱",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": [
+                    "love"
+                  ]
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "Love",
+                "sourceImagePage": 84,
+                "phonetic": "lʌv",
+                "sourcePrintedPage": 77
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u4-l0-c191cbd55d63bd",
+              "answerText": "family",
+              "broadcastText": "family",
+              "hintText": "家庭",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "家庭",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "family",
+                "sourceImagePage": 84,
+                "phonetic": "ˈfæməli",
+                "sourcePrintedPage": 77
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u4-l0-88a396c683c54e",
+              "answerText": "father",
+              "broadcastText": "father",
+              "hintText": "父亲；爸爸",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "父亲；爸爸",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "father",
+                "sourceImagePage": 84,
+                "phonetic": "ˈfɑːðə(r)",
+                "sourcePrintedPage": 77
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u4-l0-500e3cb4bb0e3a",
+              "answerText": "brother",
+              "broadcastText": "brother",
+              "hintText": "哥哥；弟弟",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "哥哥；弟弟",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "brother",
+                "sourceImagePage": 84,
+                "phonetic": "ˈbrʌðə(r)",
+                "sourcePrintedPage": 77
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u4-l0-e35afd3b360c3a",
+              "answerText": "sister",
+              "broadcastText": "sister",
+              "hintText": "姐姐；妹妹",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "姐姐；妹妹",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "sister",
+                "sourceImagePage": 84,
+                "phonetic": "ˈsɪstə(r)",
+                "sourcePrintedPage": 77
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u4-l0-5c97977113f4f0",
+              "answerText": "welcome",
+              "broadcastText": "welcome",
+              "hintText": "欢迎",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "欢迎",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "welcome",
+                "sourceImagePage": 84,
+                "sourcePrintedPage": 77
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u4-l0-b02b695b42f267",
+              "answerText": "mother",
+              "broadcastText": "mother",
+              "hintText": "母亲；妈妈",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "母亲；妈妈",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "mother",
+                "sourceImagePage": 84,
+                "phonetic": "ˈmʌðə(r)",
+                "sourcePrintedPage": 77
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u4-l0-209a7f44cd52fd",
+              "answerText": "here",
+              "broadcastText": "here. Please come here.",
+              "hintText": "这里",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "这里",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "here",
+                "sourceImagePage": 84,
+                "spokenContext": "Please come here.",
+                "sourcePrintedPage": 77
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u4-l0-2fffca45b19822",
+              "answerText": "cake",
+              "broadcastText": "cake",
+              "hintText": "蛋糕动物园",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "蛋糕动物园",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "cake",
+                "sourceImagePage": 84,
+                "phonetic": "keɪk",
+                "sourcePrintedPage": 77
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u4-l0-68f2909dd35232",
+              "answerText": "who",
+              "broadcastText": "who",
+              "hintText": "谁",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "谁",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "who",
+                "sourceImagePage": 84,
+                "phonetic": "huː",
+                "sourcePrintedPage": 77
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u4-l0-76b2c4e02662f1",
+              "answerText": "he",
+              "broadcastText": "he",
+              "hintText": "他",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "他",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "he",
+                "sourceImagePage": 84,
+                "phonetic": "hiː",
+                "sourcePrintedPage": 77
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u4-l0-357104c730d4bf",
+              "answerText": "happy",
+              "broadcastText": "happy",
+              "hintText": "开心的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "开心的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "happy",
+                "sourceImagePage": 84,
+                "sourcePrintedPage": 77
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u4-l0-ce87eba99628dc",
+              "answerText": "birthday",
+              "broadcastText": "birthday",
+              "hintText": "生日",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "生日",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "birthday",
+                "sourceImagePage": 84,
+                "sourcePrintedPage": 77
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u4-l0-faf180dbbdeabd",
+              "answerText": "we",
+              "broadcastText": "we",
+              "hintText": "我们",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "我们",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "we",
+                "sourceImagePage": 84,
+                "sourcePrintedPage": 77
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u4-l0-8b5ab1760bfde4",
+              "answerText": "present",
+              "broadcastText": "present",
+              "hintText": "礼物",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "礼物",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "present",
+                "sourceImagePage": 84,
+                "sourcePrintedPage": 77
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u4-l0-4791266bcdb210",
+              "answerText": "for",
+              "broadcastText": "for. This gift is for you.",
+              "hintText": "(表示对象、用途等)给；因为……；对于……",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "(表示对象、用途等)给；因为……；对于……",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "for",
+                "sourceImagePage": 84,
+                "spokenContext": "This gift is for you.",
+                "sourcePrintedPage": 77
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u4-l0-639e10cae29c43",
+              "answerText": "grandpa",
+              "broadcastText": "grandpa",
+              "hintText": "爷爷；外公",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "爷爷；外公",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "grandpa",
+                "sourceImagePage": 84,
+                "phonetic": "ˈɡrænpɑː",
+                "sourcePrintedPage": 77
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u4-l0-2102f5861614e9",
+              "answerText": "she",
+              "broadcastText": "she",
+              "hintText": "她",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "她",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "she",
+                "sourceImagePage": 84,
+                "phonetic": "ʃiː",
+                "sourcePrintedPage": 77
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u4-l0-d9e9d1cd3ccc17",
+              "answerText": "grandma",
+              "broadcastText": "grandma",
+              "hintText": "奶奶；外婆",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "奶奶；外婆",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "grandma",
+                "sourceImagePage": 84,
+                "phonetic": "ˈɡrænmɑː",
+                "sourcePrintedPage": 77
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u4-l0-753c9c9b315296",
+              "answerText": "wish",
+              "broadcastText": "wish",
+              "hintText": "愿望；希望",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "愿望；希望",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "wish",
+                "sourceImagePage": 84,
+                "sourcePrintedPage": 77
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u4-l0-35e31e83f819aa",
+              "answerText": "blow out",
+              "broadcastText": "blow out",
+              "hintText": "吹灭",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "吹灭",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "blow out",
+                "sourceImagePage": 84,
+                "sourcePrintedPage": 77
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u4-l0-6dda0c129ef705",
+              "answerText": "candle",
+              "broadcastText": "candle",
+              "hintText": "蜡烛",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "蜡烛",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "candle",
+                "sourceImagePage": 84,
+                "sourcePrintedPage": 77
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u4-l0-9f19bff851e19f",
+              "answerText": "photo",
+              "broadcastText": "photo",
+              "hintText": "照片",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "照片",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "photo",
+                "sourceImagePage": 84,
+                "phonetic": "ˈfəʊtəʊ",
+                "sourcePrintedPage": 77
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u4-l0-2d755ace87b8d0",
+              "answerText": "so",
+              "broadcastText": "so",
+              "hintText": "如此,这么；所以",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "如此,这么；所以",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "so",
+                "sourceImagePage": 84,
+                "phonetic": "səʊ",
+                "sourcePrintedPage": 77
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u4-l0-cb4c26b75b8d1a",
+              "answerText": "cute",
+              "broadcastText": "cute",
+              "hintText": "可爱的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "可爱的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "cute",
+                "sourceImagePage": 84,
+                "phonetic": "kjuːt",
+                "sourcePrintedPage": 77
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u4-l0-3d062ba7c4a019",
+              "answerText": "doctor",
+              "broadcastText": "doctor",
+              "hintText": "医生",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "医生",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "doctor",
+                "sourceImagePage": 84,
+                "phonetic": "ˈdɒktə(r)",
+                "sourcePrintedPage": 77
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u4-l0-e7037bc25a99c2",
+              "answerText": "English",
+              "broadcastText": "English",
+              "hintText": "英语；英语的；英国人的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "英语；英语的；英国人的",
+                "spellingRules": {
+                  "caseRule": "required",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "English",
+                "sourceImagePage": 84,
+                "phonetic": "ˈɪŋɡlɪʃ",
+                "sourcePrintedPage": 77
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u4-l0-30547a74ec9087",
+              "answerText": "farmer",
+              "broadcastText": "farmer",
+              "hintText": "农民",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "农民",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "farmer",
+                "sourceImagePage": 84,
+                "phonetic": "ˈfɑːmə(r)",
+                "sourcePrintedPage": 77
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u4-l0-56dd8804cfbf96",
+              "answerText": "cook",
+              "broadcastText": "cook",
+              "hintText": "厨师；煮",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "厨师；煮",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "cook",
+                "sourceImagePage": 84,
+                "phonetic": "kʊk",
+                "sourcePrintedPage": 77
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u4-l0-4f6538c7982df6",
+              "answerText": "uncle",
+              "broadcastText": "uncle",
+              "hintText": "叔；伯；姨夫",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "叔；伯；姨夫",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "uncle",
+                "sourceImagePage": 84,
+                "phonetic": "ˈʌŋkl",
+                "sourcePrintedPage": 77
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u4-l0-1938a3f6eb947f",
+              "answerText": "worker",
+              "broadcastText": "worker",
+              "hintText": "工人",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "工人",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "worker",
+                "sourceImagePage": 84,
+                "sourcePrintedPage": 77
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u4-l0-1768243f8ae529",
+              "answerText": "aunt",
+              "broadcastText": "aunt. My aunt is my mother's sister.",
+              "hintText": "婶母；伯母；姨母",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "婶母；伯母；姨母",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "aunt",
+                "sourceImagePage": 84,
+                "phonetic": "ɑːnt",
+                "spokenContext": "My aunt is my mother's sister.",
+                "sourcePrintedPage": 77
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u4-l0-9b0d5e262a8337",
+              "answerText": "nurse",
+              "broadcastText": "nurse",
+              "hintText": "护士",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "护士",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "nurse",
+                "sourceImagePage": 84,
+                "phonetic": "nɜːs",
+                "sourcePrintedPage": 77
+              }
+            },
+            {
+              "builtinKey": "en-multi-minjiao-3f67a011-g3-v1-u4-l0-dd5035e9bdea03",
+              "answerText": "big",
+              "broadcastText": "big",
+              "hintText": "大的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "大的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "big",
+                "sourceImagePage": 84,
+                "phonetic": "bɪɡ",
+                "sourcePrintedPage": 77
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

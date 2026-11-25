@@ -19,7 +19,8 @@ test("八册英语覆盖999项，保留真实教材目标和单元，没有混�
     expect(audit.cards).toBe(book.cardCount);
     for(const unit of content!.units)for(const section of unit.sections)for(const card of section.cards){
       all.push(card);expect(getEnglishMetadata(card.builtinKey)).toEqual(card.english);
-      expect(card.english!.exampleWithBlank.split("（　　）")).toHaveLength(2);
+      const metadata=card.english!;expect(metadata.version).toBe(1);if(metadata.version!==1)throw new Error('PEP metadata must remain v1');
+      expect(metadata.exampleWithBlank.split("（　　）")).toHaveLength(2);
       expect(card.english!.meaningZh).toMatch(/[\u4e00-\u9fff]/);
     }
   }

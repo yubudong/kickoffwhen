@@ -1,0 +1,1966 @@
+{
+  "auditProfile": "verified_english",
+  "publisher": "四川教育出版社",
+  "series": "川教版",
+  "subject": "english",
+  "grade": 3,
+  "volume": "上册",
+  "editionText": "平台2022课标修订资源 · 2026-11核对整理",
+  "units": [
+    {
+      "order": 1,
+      "title": "Unit 1 Good Morning!",
+      "sections": [
+        {
+          "key": "en-multi-sichuan-72c5aed6-g3-v1-u1-l0",
+          "order": 1,
+          "title": "本单元词表",
+          "type": "lesson",
+          "cards": [
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u1-l0-6cef61a8e8e893",
+              "answerText": "mum",
+              "broadcastText": "mum",
+              "hintText": "妈妈",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "妈妈",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "mum",
+                "sourceImagePage": 87,
+                "phonetic": "mʌm"
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u1-l0-1db65831d44443",
+              "answerText": "dad",
+              "broadcastText": "dad",
+              "hintText": "爸爸",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "爸爸",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "dad",
+                "sourceImagePage": 87,
+                "phonetic": "dæd"
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u1-l0-d9e9d1cd3ccc17",
+              "answerText": "grandma",
+              "broadcastText": "grandma",
+              "hintText": "奶奶；外婆",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "奶奶；外婆",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "grandma",
+                "sourceImagePage": 87,
+                "phonetic": "ˈɡrænmɑː"
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u1-l0-639e10cae29c43",
+              "answerText": "grandpa",
+              "broadcastText": "grandpa",
+              "hintText": "爷爷；外公",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "爷爷；外公",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "grandpa",
+                "sourceImagePage": 87,
+                "phonetic": "ˈɡrænpɑː"
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u1-l0-1768243f8ae529",
+              "answerText": "aunt",
+              "broadcastText": "aunt. My aunt is my mother's sister.",
+              "hintText": "阿姨；姑妈；伯母；舅妈",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "阿姨；姑妈；伯母；舅妈",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "aunt",
+                "sourceImagePage": 87,
+                "phonetic": "ɑːnt",
+                "spokenContext": "My aunt is my mother's sister."
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u1-l0-4f6538c7982df6",
+              "answerText": "uncle",
+              "broadcastText": "uncle",
+              "hintText": "叔叔；姑父；伯父；舅舅",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "叔叔；姑父；伯父；舅舅",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "uncle",
+                "sourceImagePage": 87,
+                "phonetic": "ˈʌŋkl"
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u1-l0-500e3cb4bb0e3a",
+              "answerText": "brother",
+              "broadcastText": "brother",
+              "hintText": "兄弟",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "兄弟",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "brother",
+                "sourceImagePage": 87,
+                "phonetic": "ˈbrʌðə(r)"
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u1-l0-9ae599e43efc0f",
+              "answerText": "Sister",
+              "broadcastText": "Sister",
+              "hintText": "姐妹",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "姐妹",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": [
+                    "sister"
+                  ]
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "Sister",
+                "sourceImagePage": 87,
+                "phonetic": "ˈsɪstə(r)"
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u1-l0-6f6cd7f945df97",
+              "answerText": "Sir",
+              "broadcastText": "Sir",
+              "hintText": "先生",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "先生",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": [
+                    "sir"
+                  ]
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "Sir",
+                "sourceImagePage": 87
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u1-l0-c7fd4ef788687c",
+              "answerText": "letter card",
+              "broadcastText": "letter card",
+              "hintText": "字母卡片",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "字母卡片",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "letter card",
+                "sourceImagePage": 87
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u1-l0-c11ddcbc2365c7",
+              "answerText": "Good morning",
+              "broadcastText": "Good morning",
+              "hintText": "早上好!",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "早上好!",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": [
+                    "good morning"
+                  ]
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "Good morning",
+                "sourceImagePage": 87
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u1-l0-77e9aecd5e0795",
+              "answerText": "Goodbye",
+              "broadcastText": "Goodbye",
+              "hintText": "再见!",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "再见!",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": [
+                    "goodbye"
+                  ]
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "Goodbye",
+                "sourceImagePage": 87
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u1-l0-741c5782b9a538",
+              "answerText": "Hello",
+              "broadcastText": "Hello",
+              "hintText": "你好!",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "你好!",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": [
+                    "hello"
+                  ]
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "Hello",
+                "sourceImagePage": 87
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "title": "Unit 2 I'm Li Le",
+      "sections": [
+        {
+          "key": "en-multi-sichuan-72c5aed6-g3-v1-u2-l0",
+          "order": 1,
+          "title": "本单元词表",
+          "type": "lesson",
+          "cards": [
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u2-l0-62a2bb8a0baa39",
+              "answerText": "the UK",
+              "broadcastText": "the UK",
+              "hintText": "英国",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "英国",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "the UK",
+                "sourceImagePage": 87
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u2-l0-e10661b9c27d28",
+              "answerText": "boy",
+              "broadcastText": "boy",
+              "hintText": "男孩",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "男孩",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "boy",
+                "sourceImagePage": 87,
+                "phonetic": "bɔɪ"
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u2-l0-c5a52113f898f8",
+              "answerText": "boys",
+              "broadcastText": "boys",
+              "hintText": "男孩们",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "男孩们",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "boys",
+                "sourceImagePage": 87
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u2-l0-c55d660a37a98d",
+              "answerText": "girl",
+              "broadcastText": "girl",
+              "hintText": "女孩",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "女孩",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "girl",
+                "sourceImagePage": 87,
+                "phonetic": "ɡɜːl"
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u2-l0-839c89ead07096",
+              "answerText": "girls",
+              "broadcastText": "girls",
+              "hintText": "女孩们",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "女孩们",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "girls",
+                "sourceImagePage": 87
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u2-l0-89fb361424a088",
+              "answerText": "Miss Yang",
+              "broadcastText": "Miss Yang",
+              "hintText": "杨老师",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "杨老师",
+                "spellingRules": {
+                  "caseRule": "required",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "Miss Yang",
+                "sourceImagePage": 87
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u2-l0-aad493315b28f7",
+              "answerText": "Mr Green",
+              "broadcastText": "Mr Green",
+              "hintText": "格林先生",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "格林先生",
+                "spellingRules": {
+                  "caseRule": "required",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "Mr Green",
+                "sourceImagePage": 88
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u2-l0-22b789f6924208",
+              "answerText": "Mrs Green",
+              "broadcastText": "Mrs Green",
+              "hintText": "格林夫人我是……",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "格林夫人我是……",
+                "spellingRules": {
+                  "caseRule": "required",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "Mrs Green",
+                "sourceImagePage": 88
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "title": "Unit 3 ICan Sing",
+      "sections": [
+        {
+          "key": "en-multi-sichuan-72c5aed6-g3-v1-u3-l0",
+          "order": 1,
+          "title": "本单元词表",
+          "type": "lesson",
+          "cards": [
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u3-l0-a2f2477dbfae92",
+              "answerText": "kid",
+              "broadcastText": "kid",
+              "hintText": "小孩",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "小孩",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "kid",
+                "sourceImagePage": 88,
+                "phonetic": "kɪd"
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u3-l0-486e218013f6fe",
+              "answerText": "listen",
+              "broadcastText": "listen",
+              "hintText": "听",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "听",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "listen",
+                "sourceImagePage": 88,
+                "phonetic": "ˈlɪsn"
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u3-l0-5b1cfb89298bc8",
+              "answerText": "write",
+              "broadcastText": "write. Please write your name on the paper.",
+              "hintText": "写",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "写",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "write",
+                "sourceImagePage": 88,
+                "spokenContext": "Please write your name on the paper."
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u3-l0-1591732867795a",
+              "answerText": "read",
+              "broadcastText": "read. I read a book every day.",
+              "hintText": "读",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "读",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "read",
+                "sourceImagePage": 88,
+                "phonetic": "riːd",
+                "pronunciation": {
+                  "kind": "ipa",
+                  "target": "read",
+                  "ipa": "riːd"
+                },
+                "spokenContext": "I read a book every day."
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u3-l0-d66b776db51acd",
+              "answerText": "sing",
+              "broadcastText": "sing",
+              "hintText": "唱",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "唱",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "sing",
+                "sourceImagePage": 88,
+                "phonetic": "sɪŋ"
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u3-l0-150ff897f6694f",
+              "answerText": "draw",
+              "broadcastText": "draw",
+              "hintText": "画(画)",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "画(画)",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "draw",
+                "sourceImagePage": 88,
+                "phonetic": "drɔː"
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u3-l0-d0f75f675992ba",
+              "answerText": "dance",
+              "broadcastText": "dance",
+              "hintText": "跳舞",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "跳舞",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "dance",
+                "sourceImagePage": 88,
+                "phonetic": "dɑːns"
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u3-l0-88ba915968dcd6",
+              "answerText": "how",
+              "broadcastText": "how",
+              "hintText": "现在",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "现在",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "how",
+                "sourceImagePage": 88
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u3-l0-5cb7230a7014cd",
+              "answerText": "see",
+              "broadcastText": "see. I can see a bird in the tree.",
+              "hintText": "看见",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "看见",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "see",
+                "sourceImagePage": 88,
+                "phonetic": "siː",
+                "spokenContext": "I can see a bird in the tree."
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u3-l0-c978b3b11ace9a",
+              "answerText": "The ABC Song",
+              "broadcastText": "The ABC Song",
+              "hintText": "字母歌》",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "字母歌》",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": [
+                    "the ABC Song"
+                  ]
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "The ABC Song",
+                "sourceImagePage": 88
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u3-l0-426c13649657c0",
+              "answerText": "Good evening",
+              "broadcastText": "Good evening",
+              "hintText": "晚上好!",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "晚上好!",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": [
+                    "good evening"
+                  ]
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "Good evening",
+                "sourceImagePage": 88
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u3-l0-036011e4c45f92",
+              "answerText": "Great",
+              "broadcastText": "Great",
+              "hintText": "太棒了!",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "太棒了!",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": [
+                    "great"
+                  ]
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "Great",
+                "sourceImagePage": 88
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "title": "Unit 4",
+      "sections": [
+        {
+          "key": "en-multi-sichuan-72c5aed6-g3-v1-u4-l0",
+          "order": 1,
+          "title": "本单元词表",
+          "type": "lesson",
+          "cards": [
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u4-l0-b1c0152bc8fe8b",
+              "answerText": "colour",
+              "broadcastText": "colour",
+              "hintText": "颜色",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "颜色",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "colour",
+                "sourceImagePage": 89,
+                "phonetic": "ˈkʌlə(r)"
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u4-l0-25f4a30a8a5164",
+              "answerText": "red",
+              "broadcastText": "red. The apple is red.",
+              "hintText": "红色的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "红色的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "red",
+                "sourceImagePage": 89,
+                "phonetic": "red",
+                "spokenContext": "The apple is red."
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u4-l0-8f32ce1f104f88",
+              "answerText": "orange",
+              "broadcastText": "orange",
+              "hintText": "橙色的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "橙色的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "orange",
+                "sourceImagePage": 89,
+                "phonetic": "ˈɒrɪndʒ"
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u4-l0-0bbd3183d1f75a",
+              "answerText": "yellow",
+              "broadcastText": "yellow",
+              "hintText": "黄色的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "黄色的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "yellow",
+                "sourceImagePage": 89,
+                "phonetic": "ˈjeləʊ"
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u4-l0-b36b018dd2bf25",
+              "answerText": "green",
+              "broadcastText": "green",
+              "hintText": "绿色的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "绿色的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "green",
+                "sourceImagePage": 89,
+                "phonetic": "ɡriːn"
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u4-l0-93a7b504ca5726",
+              "answerText": "blue",
+              "broadcastText": "blue. My bag is blue.",
+              "hintText": "蓝色的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "蓝色的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "blue",
+                "sourceImagePage": 89,
+                "phonetic": "bluː",
+                "spokenContext": "My bag is blue."
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u4-l0-828b85623586c3",
+              "answerText": "purple",
+              "broadcastText": "purple",
+              "hintText": "紫色的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "紫色的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "purple",
+                "sourceImagePage": 89,
+                "phonetic": "ˈpɜːpl"
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u4-l0-f621f33d8987b9",
+              "answerText": "black",
+              "broadcastText": "black",
+              "hintText": "黑色的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "黑色的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "black",
+                "sourceImagePage": 89,
+                "phonetic": "blæk"
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u4-l0-83594adbe70626",
+              "answerText": "shake",
+              "broadcastText": "shake",
+              "hintText": "摇动",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "摇动",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "shake",
+                "sourceImagePage": 89
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 5,
+      "title": "Unit5",
+      "sections": [
+        {
+          "key": "en-multi-sichuan-72c5aed6-g3-v1-u5-l0",
+          "order": 1,
+          "title": "本单元词表",
+          "type": "lesson",
+          "cards": [
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u5-l0-2f1676448e7dc3",
+              "answerText": "picture",
+              "broadcastText": "picture",
+              "hintText": "图画",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "图画",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "picture",
+                "sourceImagePage": 89,
+                "phonetic": "ˈpɪktʃə(r)"
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u5-l0-6d27e684725773",
+              "answerText": "house",
+              "broadcastText": "house",
+              "hintText": "房子",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "房子",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "house",
+                "sourceImagePage": 89,
+                "phonetic": "haʊs"
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u5-l0-0b5e26f5a36b1c",
+              "answerText": "tree",
+              "broadcastText": "tree",
+              "hintText": "树",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "树",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "tree",
+                "sourceImagePage": 90,
+                "phonetic": "triː"
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u5-l0-83135fe8fb9373",
+              "answerText": "cat",
+              "broadcastText": "cat",
+              "hintText": "猫",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "猫",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "cat",
+                "sourceImagePage": 90,
+                "phonetic": "kæt"
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u5-l0-e5ee76c0d7b0ae",
+              "answerText": "dog",
+              "broadcastText": "dog",
+              "hintText": "狗",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "狗",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "dog",
+                "sourceImagePage": 90,
+                "phonetic": "dɒɡ"
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u5-l0-7eb6bd9d4a8d4f",
+              "answerText": "white",
+              "broadcastText": "white",
+              "hintText": "白色的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "白色的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "white",
+                "sourceImagePage": 90,
+                "phonetic": "waɪt"
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u5-l0-72096ee667beaf",
+              "answerText": "brown",
+              "broadcastText": "brown",
+              "hintText": "棕色的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "棕色的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "brown",
+                "sourceImagePage": 90,
+                "phonetic": "braʊn"
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u5-l0-52a19ab932750f",
+              "answerText": "pink",
+              "broadcastText": "pink",
+              "hintText": "粉红色的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "粉红色的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "pink",
+                "sourceImagePage": 90,
+                "phonetic": "pɪŋk"
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u5-l0-0172e7ccad116b",
+              "answerText": "and",
+              "broadcastText": "and",
+              "hintText": "和",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "和",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "and",
+                "sourceImagePage": 90
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u5-l0-b1c0152bc8fe8b",
+              "answerText": "colour",
+              "broadcastText": "colour",
+              "hintText": "涂色",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "涂色",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "colour",
+                "sourceImagePage": 90,
+                "phonetic": "ˈkʌlə(r)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 6,
+      "title": "Unit 6",
+      "sections": [
+        {
+          "key": "en-multi-sichuan-72c5aed6-g3-v1-u6-l0",
+          "order": 1,
+          "title": "本单元词表",
+          "type": "lesson",
+          "cards": [
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u6-l0-1399164b583207",
+              "answerText": "Our",
+              "broadcastText": "Our. This is our classroom.",
+              "hintText": "我们的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "我们的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": [
+                    "our"
+                  ]
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "Our",
+                "sourceImagePage": 90,
+                "spokenContext": "This is our classroom."
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u6-l0-c8275c32845bcb",
+              "answerText": "your",
+              "broadcastText": "your",
+              "hintText": "你的；你们的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "你的；你们的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "your",
+                "sourceImagePage": 90
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u6-l0-cd7d136361b259",
+              "answerText": "favourite",
+              "broadcastText": "favourite",
+              "hintText": "最喜欢的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "最喜欢的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "favourite",
+                "sourceImagePage": 90,
+                "phonetic": "ˈfeɪvərɪt"
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u6-l0-619a9281dabf16",
+              "answerText": "my",
+              "broadcastText": "my",
+              "hintText": "我的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "我的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "my",
+                "sourceImagePage": 90
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u6-l0-019e8093e537c4",
+              "answerText": "her",
+              "broadcastText": "her",
+              "hintText": "她的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "她的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "her",
+                "sourceImagePage": 90,
+                "phonetic": "hɜː(r)"
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u6-l0-818a5b3cc01c3e",
+              "answerText": "his",
+              "broadcastText": "his",
+              "hintText": "他的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "他的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "his",
+                "sourceImagePage": 90,
+                "phonetic": "hɪz"
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u6-l0-7d5c0ba4fa5151",
+              "answerText": "their",
+              "broadcastText": "their. This is their classroom.",
+              "hintText": "他们的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "他们的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "their",
+                "sourceImagePage": 90,
+                "phonetic": "ðeə(r)",
+                "spokenContext": "This is their classroom."
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u6-l0-7f53740fd5af24",
+              "answerText": "its",
+              "broadcastText": "its",
+              "hintText": "它的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "它的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "its",
+                "sourceImagePage": 90,
+                "phonetic": "ɪts"
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u6-l0-fb244a1b3e33b7",
+              "answerText": "class",
+              "broadcastText": "class",
+              "hintText": "课",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "课",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "class",
+                "sourceImagePage": 90,
+                "phonetic": "klɑːs"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 7,
+      "title": "Unit 7 How Old Are You?",
+      "sections": [
+        {
+          "key": "en-multi-sichuan-72c5aed6-g3-v1-u7-l0",
+          "order": 1,
+          "title": "本单元词表",
+          "type": "lesson",
+          "cards": [
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u7-l0-46107522804be2",
+              "answerText": "age",
+              "broadcastText": "age",
+              "hintText": "年龄",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "年龄",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "age",
+                "sourceImagePage": 91
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u7-l0-3bd60f674c0fb4",
+              "answerText": "one",
+              "broadcastText": "one. I have one brother.",
+              "hintText": "一",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "一",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "one",
+                "sourceImagePage": 91,
+                "phonetic": "wʌn",
+                "spokenContext": "I have one brother."
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u7-l0-a4397977da8399",
+              "answerText": "two",
+              "broadcastText": "two. I have two hands.",
+              "hintText": "二",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "二",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "two",
+                "sourceImagePage": 91,
+                "phonetic": "tuː",
+                "spokenContext": "I have two hands."
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u7-l0-6a495e081d44c5",
+              "answerText": "three",
+              "broadcastText": "three",
+              "hintText": "三",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "三",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "three",
+                "sourceImagePage": 91,
+                "phonetic": "θriː"
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u7-l0-9724f9d4ae0685",
+              "answerText": "four",
+              "broadcastText": "four. There are four chairs in the room.",
+              "hintText": "四",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "四",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "four",
+                "sourceImagePage": 91,
+                "phonetic": "fɔː(r)",
+                "spokenContext": "There are four chairs in the room."
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u7-l0-103612d5ca49a8",
+              "answerText": "five",
+              "broadcastText": "five",
+              "hintText": "五",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "五",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "five",
+                "sourceImagePage": 91,
+                "phonetic": "faɪv"
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u7-l0-8d7a7d0062f935",
+              "answerText": "six",
+              "broadcastText": "six",
+              "hintText": "六",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "六",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "six",
+                "sourceImagePage": 91,
+                "phonetic": "sɪks"
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u7-l0-3520a8f465de4f",
+              "answerText": "seven",
+              "broadcastText": "seven",
+              "hintText": "七",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "七",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "seven",
+                "sourceImagePage": 91,
+                "phonetic": "ˈsevn"
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u7-l0-faaa3cf92ff110",
+              "answerText": "eight",
+              "broadcastText": "eight. A spider has eight legs.",
+              "hintText": "八",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "八",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "eight",
+                "sourceImagePage": 91,
+                "phonetic": "eɪt",
+                "spokenContext": "A spider has eight legs."
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u7-l0-87bcc81c8c3cee",
+              "answerText": "nine",
+              "broadcastText": "nine",
+              "hintText": "九",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "九",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "nine",
+                "sourceImagePage": 91,
+                "phonetic": "naɪn"
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u7-l0-1cf974d7ba4054",
+              "answerText": "ten",
+              "broadcastText": "ten",
+              "hintText": "十",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "十",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "ten",
+                "sourceImagePage": 91,
+                "phonetic": "ten"
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u7-l0-7e73cc547f333e",
+              "answerText": "zero",
+              "broadcastText": "zero",
+              "hintText": "零",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "零",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "zero",
+                "sourceImagePage": 91
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 8,
+      "title": "Unit 8 CanI Help You?",
+      "sections": [
+        {
+          "key": "en-multi-sichuan-72c5aed6-g3-v1-u8-l0",
+          "order": 1,
+          "title": "本单元词表",
+          "type": "lesson",
+          "cards": [
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u8-l0-24d27a2c4c1647",
+              "answerText": "fruit",
+              "broadcastText": "fruit",
+              "hintText": "水果",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "水果",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "fruit",
+                "sourceImagePage": 92,
+                "phonetic": "fruːt"
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u8-l0-b9535f68f1554a",
+              "answerText": "apple",
+              "broadcastText": "apple",
+              "hintText": "苹果",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "苹果",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "apple",
+                "sourceImagePage": 92,
+                "phonetic": "ˈæpl"
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u8-l0-8d39065795512b",
+              "answerText": "banana",
+              "broadcastText": "banana",
+              "hintText": "香蕉",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "香蕉",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "banana",
+                "sourceImagePage": 92,
+                "phonetic": "bəˈnɑːnə"
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u8-l0-38a282ac50f3b3",
+              "answerText": "pear",
+              "broadcastText": "pear. The pear is a kind of fruit.",
+              "hintText": "梨子",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "梨子",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "pear",
+                "sourceImagePage": 92,
+                "spokenContext": "The pear is a kind of fruit."
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u8-l0-8f32ce1f104f88",
+              "answerText": "orange",
+              "broadcastText": "orange",
+              "hintText": "橙子",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "橙子",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "orange",
+                "sourceImagePage": 92,
+                "phonetic": "ˈɒrɪndʒ"
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u8-l0-a0cac1c5a92673",
+              "answerText": "grape",
+              "broadcastText": "grape",
+              "hintText": "葡萄",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "葡萄",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "grape",
+                "sourceImagePage": 92,
+                "phonetic": "ɡreɪp"
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u8-l0-e051ea92c07d54",
+              "answerText": "lemon",
+              "broadcastText": "lemon",
+              "hintText": "柠檬",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "柠檬",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "lemon",
+                "sourceImagePage": 92
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 9,
+      "title": "Unit 9 ILike Fruit Salad",
+      "sections": [
+        {
+          "key": "en-multi-sichuan-72c5aed6-g3-v1-u9-l0",
+          "order": 1,
+          "title": "本单元词表",
+          "type": "lesson",
+          "cards": [
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u9-l0-596103ccc2c7e5",
+              "answerText": "new",
+              "broadcastText": "new",
+              "hintText": "新的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "新的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "new",
+                "sourceImagePage": 92,
+                "phonetic": "njuː"
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u9-l0-38954331258f94",
+              "answerText": "old",
+              "broadcastText": "old",
+              "hintText": "旧的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "旧的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "old",
+                "sourceImagePage": 92,
+                "phonetic": "əʊld"
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u9-l0-46664660ea3492",
+              "answerText": "today",
+              "broadcastText": "today",
+              "hintText": "今天",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "今天",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "today",
+                "sourceImagePage": 92,
+                "phonetic": "təˈdeɪ"
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u9-l0-2ebcf1d19d6fff",
+              "answerText": "salad",
+              "broadcastText": "salad",
+              "hintText": "沙拉",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "沙拉",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "salad",
+                "sourceImagePage": 92,
+                "phonetic": "ˈsæləd"
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u9-l0-a3ad66b5da5e35",
+              "answerText": "watermelon",
+              "broadcastText": "watermelon",
+              "hintText": "西瓜",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "西瓜",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "watermelon",
+                "sourceImagePage": 92
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u9-l0-bae46a22ad6d03",
+              "answerText": "strawberry",
+              "broadcastText": "strawberry",
+              "hintText": "草莓",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "草莓",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "strawberry",
+                "sourceImagePage": 92
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u9-l0-43665d01ef407d",
+              "answerText": "juice",
+              "broadcastText": "juice",
+              "hintText": "果汁",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "果汁",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "juice",
+                "sourceImagePage": 92,
+                "phonetic": "dʒuːs"
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u9-l0-25cd5f24fb9725",
+              "answerText": "make a fruit salad",
+              "broadcastText": "make a fruit salad",
+              "hintText": "做一份水果沙拉",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "做一份水果沙拉",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "make a fruit salad",
+                "sourceImagePage": 92
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u9-l0-027d36449f4ea3",
+              "answerText": "try it",
+              "broadcastText": "try it",
+              "hintText": "试试",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "试试",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "try it",
+                "sourceImagePage": 92
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u9-l0-d0786a021a35d1",
+              "answerText": "Happy New Year",
+              "broadcastText": "Happy New Year",
+              "hintText": "新年快乐!",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "新年快乐!",
+                "spellingRules": {
+                  "caseRule": "required",
+                  "acceptedAnswers": [
+                    "happy New Year"
+                  ]
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "Happy New Year",
+                "sourceImagePage": 92
+              }
+            },
+            {
+              "builtinKey": "en-multi-sichuan-72c5aed6-g3-v1-u9-l0-3c8bca5bd97763",
+              "answerText": "Good idea",
+              "broadcastText": "Good idea",
+              "hintText": "好主意!",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "好主意!",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": [
+                    "good idea"
+                  ]
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "Good idea",
+                "sourceImagePage": 92
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

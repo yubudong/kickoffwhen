@@ -1,0 +1,2872 @@
+{
+  "auditProfile": "verified_english",
+  "publisher": "教育科学出版社",
+  "series": "教科版（主编：龚亚夫）",
+  "subject": "english",
+  "grade": 3,
+  "volume": "上册",
+  "editionText": "平台2022课标修订资源 · 2026-11核对整理",
+  "units": [
+    {
+      "order": 1,
+      "title": "Unit 1",
+      "sections": [
+        {
+          "key": "en-multi-jiaoke-gong-835bebfe-g3-v1-u1-l0",
+          "order": 1,
+          "title": "本单元词表",
+          "type": "lesson",
+          "cards": [
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u1-l0-7a49155ee92aae",
+              "answerText": "me",
+              "broadcastText": "me",
+              "hintText": "我",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "我",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "me",
+                "sourceImagePage": 80,
+                "phonetic": "miː",
+                "sourcePrintedPage": 71
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u1-l0-f921022c3abc93",
+              "answerText": "it",
+              "broadcastText": "it",
+              "hintText": "它",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "它",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "it",
+                "sourceImagePage": 80,
+                "sourcePrintedPage": 71
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u1-l0-e19ae662957c4b",
+              "answerText": "be",
+              "broadcastText": "be. I want to be a teacher.",
+              "hintText": "是",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "是",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "be",
+                "sourceImagePage": 80,
+                "spokenContext": "I want to be a teacher.",
+                "sourcePrintedPage": 71
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u1-l0-4ad32b88fa7ca5",
+              "answerText": "on",
+              "broadcastText": "on",
+              "hintText": "在⋯•上面",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "在⋯•上面",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "on",
+                "sourceImagePage": 80,
+                "phonetic": "ɒn",
+                "sourcePrintedPage": 71
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u1-l0-33aed79acd3177",
+              "answerText": "this",
+              "broadcastText": "this",
+              "hintText": "这,这个",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "这,这个",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "this",
+                "sourceImagePage": 80,
+                "sourcePrintedPage": 71
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u1-l0-046dc39f8096a7",
+              "answerText": "ruler",
+              "broadcastText": "ruler",
+              "hintText": "尺子",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "尺子",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "ruler",
+                "sourceImagePage": 80,
+                "phonetic": "ˈruːlə(r)",
+                "sourcePrintedPage": 71
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u1-l0-76744a30c80bf4",
+              "answerText": "you",
+              "broadcastText": "you",
+              "hintText": "你,你们",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "你,你们",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "you",
+                "sourceImagePage": 80,
+                "sourcePrintedPage": 71
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u1-l0-37689f19e35fcd",
+              "answerText": "I",
+              "broadcastText": "I. I am a student.",
+              "hintText": "我",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "我",
+                "spellingRules": {
+                  "caseRule": "required",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "I",
+                "sourceImagePage": 80,
+                "spokenContext": "I am a student.",
+                "sourcePrintedPage": 71
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u1-l0-bac1eb24ea84aa",
+              "answerText": "thank",
+              "broadcastText": "thank",
+              "hintText": "感谢,向1m.表示感谢",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "感谢,向1m.表示感谢",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "thank",
+                "sourceImagePage": 80,
+                "sourcePrintedPage": 71
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u1-l0-12b2cc1aa5151d",
+              "answerText": "nice",
+              "broadcastText": "nice",
+              "hintText": "令人愉快的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "令人愉快的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "nice",
+                "sourceImagePage": 80,
+                "phonetic": "naɪs",
+                "sourcePrintedPage": 71
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u1-l0-43a18bfc6044bf",
+              "answerText": "to",
+              "broadcastText": "to. I go to school every day.",
+              "hintText": "到,向,往",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "到,向,往",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "to",
+                "sourceImagePage": 80,
+                "spokenContext": "I go to school every day.",
+                "sourcePrintedPage": 71
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u1-l0-7e823610abf182",
+              "answerText": "meet",
+              "broadcastText": "meet. I will meet my friend at the gate.",
+              "hintText": "结识；遇见",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "结识；遇见",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "meet",
+                "sourceImagePage": 80,
+                "spokenContext": "I will meet my friend at the gate.",
+                "sourcePrintedPage": 71
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u1-l0-f6e746a7621670",
+              "answerText": "too",
+              "broadcastText": "too. I like apples too.",
+              "hintText": "也",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "也",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "too",
+                "sourceImagePage": 80,
+                "spokenContext": "I like apples too.",
+                "sourcePrintedPage": 71
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u1-l0-581c865fd89f63",
+              "answerText": "hi",
+              "broadcastText": "hi. We say hi when we meet.",
+              "hintText": "嗨,喂,你好",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "嗨,喂,你好",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "hi",
+                "sourceImagePage": 80,
+                "spokenContext": "We say hi when we meet.",
+                "sourcePrintedPage": 71
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u1-l0-2ed249a76be3b0",
+              "answerText": "but",
+              "broadcastText": "but",
+              "hintText": "但,但是",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "但,但是",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "but",
+                "sourceImagePage": 80,
+                "sourcePrintedPage": 71
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "title": "Unit 2",
+      "sections": [
+        {
+          "key": "en-multi-jiaoke-gong-835bebfe-g3-v1-u2-l0",
+          "order": 1,
+          "title": "本单元词表",
+          "type": "lesson",
+          "cards": [
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u2-l0-571d6bdc716fa6",
+              "answerText": "chocolate",
+              "broadcastText": "chocolate",
+              "hintText": "巧克力",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "巧克力",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "chocolate",
+                "sourceImagePage": 80,
+                "sourcePrintedPage": 71
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u2-l0-fd301798ce372b",
+              "answerText": "coffee",
+              "broadcastText": "coffee",
+              "hintText": "咖啡",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "咖啡",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "coffee",
+                "sourceImagePage": 80,
+                "sourcePrintedPage": 71
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u2-l0-1200a25a82819b",
+              "answerText": "Chinese",
+              "broadcastText": "Chinese",
+              "hintText": "中文",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "中文",
+                "spellingRules": {
+                  "caseRule": "required",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "Chinese",
+                "sourceImagePage": 80,
+                "phonetic": "ˌtʃaɪˈniːz",
+                "sourcePrintedPage": 71
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u2-l0-388587520d42e0",
+              "answerText": "sofa",
+              "broadcastText": "sofa",
+              "hintText": "沙发",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "沙发",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "sofa",
+                "sourceImagePage": 80,
+                "sourcePrintedPage": 71
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u2-l0-dafe10fb8dae89",
+              "answerText": "hamburger",
+              "broadcastText": "hamburger",
+              "hintText": "汉堡",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "汉堡",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "hamburger",
+                "sourceImagePage": 80,
+                "phonetic": "ˈhæmbɜːɡə(r)",
+                "sourcePrintedPage": 71
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u2-l0-d7ec151a2590da",
+              "answerText": "cookie",
+              "broadcastText": "cookie",
+              "hintText": "饼干",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "饼干",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "cookie",
+                "sourceImagePage": 80,
+                "sourcePrintedPage": 71
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u2-l0-2ebcf1d19d6fff",
+              "answerText": "salad",
+              "broadcastText": "salad",
+              "hintText": "沙拉",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "沙拉",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "salad",
+                "sourceImagePage": 80,
+                "phonetic": "ˈsæləd",
+                "sourcePrintedPage": 71
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u2-l0-b84b23f6d8f848",
+              "answerText": "what",
+              "broadcastText": "what",
+              "hintText": "什么茄基、熬、堃面",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "什么茄基、熬、堃面",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "what",
+                "sourceImagePage": 80,
+                "sourcePrintedPage": 71
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u2-l0-e7037bc25a99c2",
+              "answerText": "English",
+              "broadcastText": "English",
+              "hintText": "英语",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "英语",
+                "spellingRules": {
+                  "caseRule": "required",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "English",
+                "sourceImagePage": 80,
+                "phonetic": "ˈɪŋɡlɪʃ",
+                "sourcePrintedPage": 71
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u2-l0-d87097328ed2d8",
+              "answerText": "know",
+              "broadcastText": "know. I know the answer.",
+              "hintText": "知道；认识",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "知道；认识",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "know",
+                "sourceImagePage": 80,
+                "phonetic": "nəʊ",
+                "spokenContext": "I know the answer.",
+                "sourcePrintedPage": 71
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u2-l0-aa576c3a7dbb72",
+              "answerText": "yes",
+              "broadcastText": "yes",
+              "hintText": "是,对",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "是,对",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "yes",
+                "sourceImagePage": 80,
+                "sourcePrintedPage": 71
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u2-l0-910a66d171380b",
+              "answerText": "can",
+              "broadcastText": "can",
+              "hintText": "能,可以",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "能,可以",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "can",
+                "sourceImagePage": 80,
+                "phonetic": "kən, kæn",
+                "sourcePrintedPage": 71
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u2-l0-a88fcbf30c3a7f",
+              "answerText": "get",
+              "broadcastText": "get",
+              "hintText": "得到",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "得到",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "get",
+                "sourceImagePage": 80,
+                "sourcePrintedPage": 71
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u2-l0-abc2c55303a27d",
+              "answerText": "a",
+              "broadcastText": "a",
+              "hintText": "一,一个",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "一,一个",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "a",
+                "sourceImagePage": 80,
+                "sourcePrintedPage": 71
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u2-l0-8c107912702ff0",
+              "answerText": "word",
+              "broadcastText": "word",
+              "hintText": "单词",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "单词",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "word",
+                "sourceImagePage": 80,
+                "phonetic": "wɜːd",
+                "sourcePrintedPage": 71
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u2-l0-0fc42bd6c79bd8",
+              "answerText": "guess",
+              "broadcastText": "guess",
+              "hintText": "猜,猜测",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "猜,猜测",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "guess",
+                "sourceImagePage": 81,
+                "sourcePrintedPage": 72
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u2-l0-3bd60f674c0fb4",
+              "answerText": "one",
+              "broadcastText": "one. I have one brother.",
+              "hintText": "一",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "一",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "one",
+                "sourceImagePage": 81,
+                "phonetic": "wʌn",
+                "spokenContext": "I have one brother.",
+                "sourcePrintedPage": 72
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u2-l0-6588a332bf12ff",
+              "answerText": "like",
+              "broadcastText": "like",
+              "hintText": "喜欢",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "喜欢",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "like",
+                "sourceImagePage": 81,
+                "phonetic": "laɪk",
+                "sourcePrintedPage": 72
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "title": "Unit 3",
+      "sections": [
+        {
+          "key": "en-multi-jiaoke-gong-835bebfe-g3-v1-u3-l0",
+          "order": 1,
+          "title": "本单元词表",
+          "type": "lesson",
+          "cards": [
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u3-l0-924b0b8402ed2c",
+              "answerText": "good",
+              "broadcastText": "good",
+              "hintText": "好的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "好的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "good",
+                "sourceImagePage": 81,
+                "phonetic": "ɡʊd",
+                "sourcePrintedPage": 72
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u3-l0-093fddb37c00a5",
+              "answerText": "morning",
+              "broadcastText": "morning",
+              "hintText": "早晨；上午",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "早晨；上午",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "morning",
+                "sourceImagePage": 81,
+                "sourcePrintedPage": 72
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u3-l0-c8275c32845bcb",
+              "answerText": "your",
+              "broadcastText": "your",
+              "hintText": "你的；你们的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "你的；你们的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "your",
+                "sourceImagePage": 81,
+                "sourcePrintedPage": 72
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u3-l0-2dd42c3a1a1efc",
+              "answerText": "name",
+              "broadcastText": "name",
+              "hintText": "名字",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "名字",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "name",
+                "sourceImagePage": 81,
+                "phonetic": "neɪm",
+                "sourcePrintedPage": 72
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u3-l0-619a9281dabf16",
+              "answerText": "my",
+              "broadcastText": "my",
+              "hintText": "我的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "我的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "my",
+                "sourceImagePage": 81,
+                "sourcePrintedPage": 72
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u3-l0-6dbb564c9d7122",
+              "answerText": "Mr",
+              "broadcastText": "Mr",
+              "hintText": "先生",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "先生",
+                "spellingRules": {
+                  "caseRule": "required",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "Mr",
+                "sourceImagePage": 81,
+                "phonetic": "ˈmɪstɚ",
+                "pronunciation": {
+                  "kind": "ipa",
+                  "target": "Mr",
+                  "ipa": "ˈmɪstɚ"
+                },
+                "sourcePrintedPage": 72
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u3-l0-e10661b9c27d28",
+              "answerText": "boy",
+              "broadcastText": "boy",
+              "hintText": "男孩教一育",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "男孩教一育",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "boy",
+                "sourceImagePage": 81,
+                "phonetic": "bɔɪ",
+                "sourcePrintedPage": 72
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u3-l0-0172e7ccad116b",
+              "answerText": "and",
+              "broadcastText": "and",
+              "hintText": "和",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "和",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "and",
+                "sourceImagePage": 81,
+                "sourcePrintedPage": 72
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u3-l0-c55d660a37a98d",
+              "answerText": "girl",
+              "broadcastText": "girl",
+              "hintText": "女孩",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "女孩",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "girl",
+                "sourceImagePage": 81,
+                "phonetic": "ɡɜːl",
+                "sourcePrintedPage": 72
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u3-l0-c26e6c38734445",
+              "answerText": "hello",
+              "broadcastText": "hello",
+              "hintText": "你好",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "你好",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "hello",
+                "sourceImagePage": 81,
+                "sourcePrintedPage": 72
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u3-l0-e5d03d7e62522c",
+              "answerText": "everyone",
+              "broadcastText": "everyone",
+              "hintText": "每个人,人人",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "每个人,人人",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "everyone",
+                "sourceImagePage": 81,
+                "phonetic": "ˈevriwʌn",
+                "sourcePrintedPage": 72
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u3-l0-53539b9f3f6e64",
+              "answerText": "card",
+              "broadcastText": "card",
+              "hintText": "卡片",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "卡片",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "card",
+                "sourceImagePage": 81,
+                "phonetic": "kɑːd",
+                "sourcePrintedPage": 72
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u3-l0-fe9e60e5f650b0",
+              "answerText": "student",
+              "broadcastText": "student",
+              "hintText": "学生",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "学生",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "student",
+                "sourceImagePage": 81,
+                "phonetic": "ˈstjuːdnt",
+                "sourcePrintedPage": 72
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u3-l0-46cc41c5b63966",
+              "answerText": "want",
+              "broadcastText": "want",
+              "hintText": "想要",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "想要",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "want",
+                "sourceImagePage": 81,
+                "phonetic": "wɒnt",
+                "sourcePrintedPage": 72
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u3-l0-2b10acc8754a2d",
+              "answerText": "help",
+              "broadcastText": "help",
+              "hintText": "帮助,帮忙",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "帮助,帮忙",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "help",
+                "sourceImagePage": 81,
+                "phonetic": "help",
+                "sourcePrintedPage": 72
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u3-l0-88ba915968dcd6",
+              "answerText": "how",
+              "broadcastText": "how",
+              "hintText": "多少；怎样,如何",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "多少；怎样,如何",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "how",
+                "sourceImagePage": 81,
+                "sourcePrintedPage": 72
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u3-l0-50fa61c436e713",
+              "answerText": "last",
+              "broadcastText": "last",
+              "hintText": "最后",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "最后",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "last",
+                "sourceImagePage": 81,
+                "sourcePrintedPage": 72
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u3-l0-4791266bcdb210",
+              "answerText": "for",
+              "broadcastText": "for. This gift is for you.",
+              "hintText": "为了",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "为了",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "for",
+                "sourceImagePage": 81,
+                "spokenContext": "This gift is for you.",
+                "sourcePrintedPage": 72
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u3-l0-6466d39f91f520",
+              "answerText": "Ms",
+              "broadcastText": "Ms",
+              "hintText": "女士",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "女士",
+                "spellingRules": {
+                  "caseRule": "required",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "Ms",
+                "sourceImagePage": 81,
+                "phonetic": "mɪz",
+                "pronunciation": {
+                  "kind": "ipa",
+                  "target": "Ms",
+                  "ipa": "mɪz"
+                },
+                "sourcePrintedPage": 72
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u3-l0-45ab1ac4cc45d7",
+              "answerText": "Miss",
+              "broadcastText": "Miss",
+              "hintText": "小姐",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "小姐",
+                "spellingRules": {
+                  "caseRule": "required",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "Miss",
+                "sourceImagePage": 81,
+                "sourcePrintedPage": 72
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u3-l0-bc55fe268daf88",
+              "answerText": "Mrs",
+              "broadcastText": "Mrs",
+              "hintText": "女士,夫人",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "女士,夫人",
+                "spellingRules": {
+                  "caseRule": "required",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "Mrs",
+                "sourceImagePage": 81,
+                "phonetic": "ˈmɪsɪz",
+                "pronunciation": {
+                  "kind": "ipa",
+                  "target": "Mrs",
+                  "ipa": "ˈmɪsɪz"
+                },
+                "sourcePrintedPage": 72
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "title": "Unit 4",
+      "sections": [
+        {
+          "key": "en-multi-jiaoke-gong-835bebfe-g3-v1-u4-l0",
+          "order": 1,
+          "title": "本单元词表",
+          "type": "lesson",
+          "cards": [
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u4-l0-25f4a30a8a5164",
+              "answerText": "red",
+              "broadcastText": "red. The apple is red.",
+              "hintText": "红色",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "红色",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "red",
+                "sourceImagePage": 81,
+                "phonetic": "red",
+                "spokenContext": "The apple is red.",
+                "sourcePrintedPage": 72
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u4-l0-0bbd3183d1f75a",
+              "answerText": "yellow",
+              "broadcastText": "yellow",
+              "hintText": "黄色",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "黄色",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "yellow",
+                "sourceImagePage": 81,
+                "phonetic": "ˈjeləʊ",
+                "sourcePrintedPage": 72
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u4-l0-b36b018dd2bf25",
+              "answerText": "green",
+              "broadcastText": "green",
+              "hintText": "绿色社",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "绿色社",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "green",
+                "sourceImagePage": 81,
+                "phonetic": "ɡriːn",
+                "sourcePrintedPage": 72
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u4-l0-93a7b504ca5726",
+              "answerText": "blue",
+              "broadcastText": "blue. My bag is blue.",
+              "hintText": "蓝色",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "蓝色",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "blue",
+                "sourceImagePage": 81,
+                "phonetic": "bluː",
+                "spokenContext": "My bag is blue.",
+                "sourcePrintedPage": 72
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u4-l0-7eb6bd9d4a8d4f",
+              "answerText": "white",
+              "broadcastText": "white",
+              "hintText": "白色",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "白色",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "white",
+                "sourceImagePage": 81,
+                "phonetic": "waɪt",
+                "sourcePrintedPage": 72
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u4-l0-b1c0152bc8fe8b",
+              "answerText": "colour",
+              "broadcastText": "colour",
+              "hintText": "颜色",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "颜色",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "colour",
+                "sourceImagePage": 81,
+                "phonetic": "ˈkʌlə(r)",
+                "sourcePrintedPage": 72
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u4-l0-9da35ce210393c",
+              "answerText": "pencil",
+              "broadcastText": "pencil",
+              "hintText": "铅笔",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "铅笔",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "pencil",
+                "sourceImagePage": 81,
+                "phonetic": "ˈpensl",
+                "sourcePrintedPage": 72
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u4-l0-1b26fe75fff3ac",
+              "answerText": "left",
+              "broadcastText": "left",
+              "hintText": "左边",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "左边",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "left",
+                "sourceImagePage": 81,
+                "sourcePrintedPage": 72
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u4-l0-6ed4529d50284e",
+              "answerText": "hand",
+              "broadcastText": "hand",
+              "hintText": "手",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "手",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "hand",
+                "sourceImagePage": 81,
+                "phonetic": "hænd",
+                "sourcePrintedPage": 72
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u4-l0-1ae6ba71bf726b",
+              "answerText": "right",
+              "broadcastText": "right. Please turn right at the corner.",
+              "hintText": "右边",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "右边",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "right",
+                "sourceImagePage": 81,
+                "spokenContext": "Please turn right at the corner.",
+                "sourcePrintedPage": 72
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u4-l0-5f292eda94b7ad",
+              "answerText": "finger",
+              "broadcastText": "finger",
+              "hintText": "手指",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "手指",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "finger",
+                "sourceImagePage": 81,
+                "sourcePrintedPage": 72
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u4-l0-d43d11d8caf648",
+              "answerText": "do",
+              "broadcastText": "do",
+              "hintText": "做",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "做",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "do",
+                "sourceImagePage": 82,
+                "sourcePrintedPage": 73
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u4-l0-44eb8fc466a997",
+              "answerText": "spell",
+              "broadcastText": "spell",
+              "hintText": "拼写",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "拼写",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "spell",
+                "sourceImagePage": 82,
+                "sourcePrintedPage": 73
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u4-l0-bdc39dbb766cb4",
+              "answerText": "that",
+              "broadcastText": "that",
+              "hintText": "那,那个",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "那,那个",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "that",
+                "sourceImagePage": 82,
+                "sourcePrintedPage": 73
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u4-l0-399c7bc07cd5d3",
+              "answerText": "look",
+              "broadcastText": "look",
+              "hintText": "看,瞧,望",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "看,瞧,望",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "look",
+                "sourceImagePage": 82,
+                "sourcePrintedPage": 73
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u4-l0-4d333c31dce744",
+              "answerText": "cool",
+              "broadcastText": "cool",
+              "hintText": "酷的,帅的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "酷的,帅的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "cool",
+                "sourceImagePage": 82,
+                "phonetic": "kuːl",
+                "sourcePrintedPage": 73
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u4-l0-936706743f15cb",
+              "answerText": "teach",
+              "broadcastText": "teach",
+              "hintText": "教",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "教",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "teach",
+                "sourceImagePage": 82,
+                "phonetic": "tiːtʃ",
+                "sourcePrintedPage": 73
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u4-l0-a00d3181fb9a87",
+              "answerText": "first",
+              "broadcastText": "first",
+              "hintText": "第一的；首先；最初",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "第一的；首先；最初",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "first",
+                "sourceImagePage": 82,
+                "phonetic": "fɜːst",
+                "sourcePrintedPage": 73
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u4-l0-ae95388c807f24",
+              "answerText": "OK",
+              "broadcastText": "OK",
+              "hintText": "好,可以",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "好,可以",
+                "spellingRules": {
+                  "caseRule": "required",
+                  "acceptedAnswers": []
+                },
+                "kind": "abbreviation",
+                "sourceRole": "head",
+                "sourceWord": "OK",
+                "sourceImagePage": 82,
+                "pronunciation": {
+                  "kind": "characters",
+                  "target": "OK",
+                  "letters": "OK"
+                },
+                "sourcePrintedPage": 73
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 5,
+      "title": "Unit 5",
+      "sections": [
+        {
+          "key": "en-multi-jiaoke-gong-835bebfe-g3-v1-u5-l0",
+          "order": 1,
+          "title": "本单元词表",
+          "type": "lesson",
+          "cards": [
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u5-l0-a4397977da8399",
+              "answerText": "two",
+              "broadcastText": "two. I have two hands.",
+              "hintText": "二",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "二",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "two",
+                "sourceImagePage": 82,
+                "phonetic": "tuː",
+                "spokenContext": "I have two hands.",
+                "sourcePrintedPage": 73
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u5-l0-6a495e081d44c5",
+              "answerText": "three",
+              "broadcastText": "three",
+              "hintText": "三教育料",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "三教育料",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "three",
+                "sourceImagePage": 82,
+                "phonetic": "θriː",
+                "sourcePrintedPage": 73
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u5-l0-9724f9d4ae0685",
+              "answerText": "four",
+              "broadcastText": "four. There are four chairs in the room.",
+              "hintText": "四",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "四",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "four",
+                "sourceImagePage": 82,
+                "phonetic": "fɔː(r)",
+                "spokenContext": "There are four chairs in the room.",
+                "sourcePrintedPage": 73
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u5-l0-103612d5ca49a8",
+              "answerText": "five",
+              "broadcastText": "five",
+              "hintText": "五",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "五",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "five",
+                "sourceImagePage": 82,
+                "phonetic": "faɪv",
+                "sourcePrintedPage": 73
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u5-l0-8d7a7d0062f935",
+              "answerText": "six",
+              "broadcastText": "six",
+              "hintText": "六",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "六",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "six",
+                "sourceImagePage": 82,
+                "phonetic": "sɪks",
+                "sourcePrintedPage": 73
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u5-l0-3520a8f465de4f",
+              "answerText": "seven",
+              "broadcastText": "seven",
+              "hintText": "七",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "七",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "seven",
+                "sourceImagePage": 82,
+                "phonetic": "ˈsevn",
+                "sourcePrintedPage": 73
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u5-l0-87bcc81c8c3cee",
+              "answerText": "nine",
+              "broadcastText": "nine",
+              "hintText": "九",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "九",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "nine",
+                "sourceImagePage": 82,
+                "phonetic": "naɪn",
+                "sourcePrintedPage": 73
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u5-l0-f0f0dc04a7ad2b",
+              "answerText": "the",
+              "broadcastText": "the",
+              "hintText": "这,那",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "这,那",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "the",
+                "sourceImagePage": 82,
+                "sourcePrintedPage": 73
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u5-l0-d1c7731c567f9b",
+              "answerText": "again",
+              "broadcastText": "again",
+              "hintText": "再,再次",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "再,再次",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "again",
+                "sourceImagePage": 82,
+                "sourcePrintedPage": 73
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u5-l0-4858ded225311b",
+              "answerText": "step",
+              "broadcastText": "step",
+              "hintText": "步骤",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "步骤",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "step",
+                "sourceImagePage": 82,
+                "sourcePrintedPage": 73
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u5-l0-d4334f0cb37409",
+              "answerText": "letter",
+              "broadcastText": "letter",
+              "hintText": "字母",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "字母",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "letter",
+                "sourceImagePage": 82,
+                "sourcePrintedPage": 73
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u5-l0-ab29616500e23b",
+              "answerText": "from",
+              "broadcastText": "from",
+              "hintText": "从",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "从",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "from",
+                "sourceImagePage": 82,
+                "phonetic": "frɒm",
+                "sourcePrintedPage": 73
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u5-l0-c4a506b4c5c1b2",
+              "answerText": "each",
+              "broadcastText": "each",
+              "hintText": "每个",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "每个",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "each",
+                "sourceImagePage": 82,
+                "phonetic": "iːtʃ",
+                "sourcePrintedPage": 73
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u5-l0-8791d589b50525",
+              "answerText": "put",
+              "broadcastText": "put",
+              "hintText": "放",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "放",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "put",
+                "sourceImagePage": 82,
+                "phonetic": "pʊt",
+                "sourcePrintedPage": 73
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u5-l0-83cbf2e65fbb7b",
+              "answerText": "them",
+              "broadcastText": "them",
+              "hintText": "它们",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "它们",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "them",
+                "sourceImagePage": 82,
+                "phonetic": "ðəm, ðem",
+                "sourcePrintedPage": 73
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 6,
+      "title": "Unit 6",
+      "sections": [
+        {
+          "key": "en-multi-jiaoke-gong-835bebfe-g3-v1-u6-l0",
+          "order": 1,
+          "title": "本单元词表",
+          "type": "lesson",
+          "cards": [
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u6-l0-07c23f77235624",
+              "answerText": "face",
+              "broadcastText": "face",
+              "hintText": "脸,面部",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "脸,面部",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "face",
+                "sourceImagePage": 82,
+                "phonetic": "feɪs",
+                "sourcePrintedPage": 73
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u6-l0-471b0d4da049f7",
+              "answerText": "ear",
+              "broadcastText": "ear",
+              "hintText": "耳朵",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "耳朵",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "ear",
+                "sourceImagePage": 82,
+                "phonetic": "ɪə(r)",
+                "sourcePrintedPage": 73
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u6-l0-ca307ab6f56d1f",
+              "answerText": "eye",
+              "broadcastText": "eye. I can see with my eye.",
+              "hintText": "眼睛",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "眼睛",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "eye",
+                "sourceImagePage": 82,
+                "phonetic": "aɪ",
+                "spokenContext": "I can see with my eye.",
+                "sourcePrintedPage": 73
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u6-l0-58fa59ec0b128f",
+              "answerText": "nose",
+              "broadcastText": "nose",
+              "hintText": "鼻子",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "鼻子",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "nose",
+                "sourceImagePage": 82,
+                "phonetic": "nəʊz",
+                "sourcePrintedPage": 73
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u6-l0-e1c99a70d5587f",
+              "answerText": "mouth",
+              "broadcastText": "mouth",
+              "hintText": "嘴巴",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "嘴巴",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "mouth",
+                "sourceImagePage": 82,
+                "phonetic": "maʊθ",
+                "sourcePrintedPage": 73
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u6-l0-7f53740fd5af24",
+              "answerText": "its",
+              "broadcastText": "its",
+              "hintText": "它的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "它的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "its",
+                "sourceImagePage": 82,
+                "phonetic": "ɪts",
+                "sourcePrintedPage": 73
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u6-l0-18c5e4da259cd5",
+              "answerText": "these",
+              "broadcastText": "these",
+              "hintText": "这些",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "这些",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "these",
+                "sourceImagePage": 82,
+                "phonetic": "ðiːz",
+                "sourcePrintedPage": 73
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u6-l0-20594d4495d745",
+              "answerText": "hair",
+              "broadcastText": "hair. My hair is black.",
+              "hintText": "头发",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "头发",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "hair",
+                "sourceImagePage": 82,
+                "phonetic": "heə(r)",
+                "spokenContext": "My hair is black.",
+                "sourcePrintedPage": 73
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u6-l0-5b1cfb89298bc8",
+              "answerText": "write",
+              "broadcastText": "write. Please write your name on the paper.",
+              "hintText": "写",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "写",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "write",
+                "sourceImagePage": 82,
+                "spokenContext": "Please write your name on the paper.",
+                "sourcePrintedPage": 73
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u6-l0-dd5035e9bdea03",
+              "answerText": "big",
+              "broadcastText": "big",
+              "hintText": "大的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "大的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "big",
+                "sourceImagePage": 82,
+                "phonetic": "bɪɡ",
+                "sourcePrintedPage": 73
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u6-l0-bce8eb40922686",
+              "answerText": "under",
+              "broadcastText": "under",
+              "hintText": "在⋯⋯下面",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "在⋯⋯下面",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "under",
+                "sourceImagePage": 82,
+                "phonetic": "ˈʌndə(r)",
+                "sourcePrintedPage": 73
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u6-l0-818a5b3cc01c3e",
+              "answerText": "his",
+              "broadcastText": "his",
+              "hintText": "他的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "他的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "his",
+                "sourceImagePage": 82,
+                "phonetic": "hɪz",
+                "sourcePrintedPage": 73
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u6-l0-ed23a553c949c3",
+              "answerText": "now",
+              "broadcastText": "now",
+              "hintText": "现在",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "现在",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "now",
+                "sourceImagePage": 82,
+                "phonetic": "naʊ",
+                "sourcePrintedPage": 73
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u6-l0-f95287bc6bd965",
+              "answerText": "head",
+              "broadcastText": "head",
+              "hintText": "头",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "头",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "head",
+                "sourceImagePage": 83,
+                "phonetic": "hed"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 7,
+      "title": "Unit 7",
+      "sections": [
+        {
+          "key": "en-multi-jiaoke-gong-835bebfe-g3-v1-u7-l0",
+          "order": 1,
+          "title": "本单元词表",
+          "type": "lesson",
+          "cards": [
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u7-l0-5cb7230a7014cd",
+              "answerText": "see",
+              "broadcastText": "see. I can see a bird in the tree.",
+              "hintText": "看见；明白",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "看见；明白",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "see",
+                "sourceImagePage": 83,
+                "phonetic": "siː",
+                "spokenContext": "I can see a bird in the tree."
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u7-l0-fc3da5cec016d6",
+              "answerText": "nod",
+              "broadcastText": "nod",
+              "hintText": "点头",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "点头",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "nod",
+                "sourceImagePage": 83
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u7-l0-5bd4f380a8e357",
+              "answerText": "keep",
+              "broadcastText": "keep",
+              "hintText": "保持",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "保持",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "keep",
+                "sourceImagePage": 83,
+                "phonetic": "kiːp"
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u7-l0-b0d1932e09396a",
+              "answerText": "quiet",
+              "broadcastText": "quiet",
+              "hintText": "安静",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "安静",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "quiet",
+                "sourceImagePage": 83,
+                "phonetic": "ˈkwaɪət"
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u7-l0-486e218013f6fe",
+              "answerText": "listen",
+              "broadcastText": "listen",
+              "hintText": "听",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "听",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "listen",
+                "sourceImagePage": 83,
+                "phonetic": "ˈlɪsn"
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u7-l0-0a6467871ad847",
+              "answerText": "teacher",
+              "broadcastText": "teacher",
+              "hintText": "老师",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "老师",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "teacher",
+                "sourceImagePage": 83,
+                "phonetic": "ˈtiːtʃə(r)"
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u7-l0-21c8ec63615300",
+              "answerText": "have",
+              "broadcastText": "have",
+              "hintText": "有,拥有",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "有,拥有",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "have",
+                "sourceImagePage": 83,
+                "phonetic": "hæv"
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u7-l0-3710a623d456be",
+              "answerText": "up",
+              "broadcastText": "up",
+              "hintText": "向上",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "向上",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "up",
+                "sourceImagePage": 83
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u7-l0-7106b6201cb9f3",
+              "answerText": "they",
+              "broadcastText": "they",
+              "hintText": "他们一教育",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "他们一教育",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "they",
+                "sourceImagePage": 83
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u7-l0-9a3c3fc1bc66ed",
+              "answerText": "body",
+              "broadcastText": "body",
+              "hintText": "身体",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "身体",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "body",
+                "sourceImagePage": 83,
+                "phonetic": "ˈbɒdi"
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u7-l0-bbeb3f07792b5f",
+              "answerText": "friend",
+              "broadcastText": "friend",
+              "hintText": "朋友",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "朋友",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "friend",
+                "sourceImagePage": 83,
+                "phonetic": "frend"
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u7-l0-0b2af3713b1f8e",
+              "answerText": "myself",
+              "broadcastText": "myself",
+              "hintText": "我自己",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "我自己",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "myself",
+                "sourceImagePage": 83
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u7-l0-d89d7a74ff0d90",
+              "answerText": "heart",
+              "broadcastText": "heart",
+              "hintText": "心,心脏；内心",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "心,心脏；内心",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "heart",
+                "sourceImagePage": 83
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 8,
+      "title": "Unit 8",
+      "sections": [
+        {
+          "key": "en-multi-jiaoke-gong-835bebfe-g3-v1-u8-l0",
+          "order": 1,
+          "title": "本单元词表",
+          "type": "lesson",
+          "cards": [
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u8-l0-39cc6d1e5a188f",
+              "answerText": "bird",
+              "broadcastText": "bird",
+              "hintText": "鸟",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "鸟",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "bird",
+                "sourceImagePage": 83,
+                "phonetic": "bɜːd"
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u8-l0-94b3d41c89c360",
+              "answerText": "horse",
+              "broadcastText": "horse",
+              "hintText": "马",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "马",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "horse",
+                "sourceImagePage": 83,
+                "phonetic": "hɔːs"
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u8-l0-24ed614578bd5b",
+              "answerText": "monkey",
+              "broadcastText": "monkey",
+              "hintText": "猴子",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "猴子",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "monkey",
+                "sourceImagePage": 83,
+                "phonetic": "ˈmʌŋki"
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u8-l0-2071bbc031ad22",
+              "answerText": "fish",
+              "broadcastText": "fish",
+              "hintText": "鱼",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "鱼",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "fish",
+                "sourceImagePage": 83,
+                "phonetic": "fɪʃ"
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u8-l0-fdd50264677c56",
+              "answerText": "bear",
+              "broadcastText": "bear",
+              "hintText": "熊",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "熊",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "bear",
+                "sourceImagePage": 83,
+                "phonetic": "beə(r)"
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u8-l0-1b29ae4e0003eb",
+              "answerText": "swim",
+              "broadcastText": "swim",
+              "hintText": "游泳",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "游泳",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "swim",
+                "sourceImagePage": 83,
+                "phonetic": "swɪm"
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u8-l0-c03b38ae7d5ed0",
+              "answerText": "walk",
+              "broadcastText": "walk",
+              "hintText": "走,走路",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "走,走路",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "walk",
+                "sourceImagePage": 83,
+                "phonetic": "wɔːk"
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u8-l0-113fc520736848",
+              "answerText": "fly",
+              "broadcastText": "fly",
+              "hintText": "飞,飞翔",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "飞,飞翔",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "fly",
+                "sourceImagePage": 83
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u8-l0-27e84155d22c5f",
+              "answerText": "jump",
+              "broadcastText": "jump",
+              "hintText": "跳,跳跃",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "跳,跳跃",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "jump",
+                "sourceImagePage": 83,
+                "phonetic": "dʒʌmp"
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u8-l0-f5e3feaf832644",
+              "answerText": "arm",
+              "broadcastText": "arm",
+              "hintText": "手臂",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "手臂",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "arm",
+                "sourceImagePage": 83,
+                "phonetic": "ɑːm"
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u8-l0-f675fd11b81339",
+              "answerText": "leg",
+              "broadcastText": "leg",
+              "hintText": "腿",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "腿",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "leg",
+                "sourceImagePage": 83,
+                "phonetic": "leɡ"
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u8-l0-b6c1cb0a3fd4b6",
+              "answerText": "tiger",
+              "broadcastText": "tiger",
+              "hintText": "老虎",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "老虎",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "tiger",
+                "sourceImagePage": 83,
+                "phonetic": "ˈtaɪɡə(r)"
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u8-l0-d8ea29bb9d619a",
+              "answerText": "then",
+              "broadcastText": "then",
+              "hintText": "然后,接下来",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "然后,接下来",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "then",
+                "sourceImagePage": 83,
+                "phonetic": "ðen"
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u8-l0-66d098c59d8953",
+              "answerText": "let",
+              "broadcastText": "let",
+              "hintText": "让",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "让",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "let",
+                "sourceImagePage": 83
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u8-l0-892e81ddab0d47",
+              "answerText": "us",
+              "broadcastText": "us",
+              "hintText": "我们",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "我们",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "us",
+                "sourceImagePage": 83,
+                "phonetic": "ʌs"
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u8-l0-90d8a66bde4cc0",
+              "answerText": "move",
+              "broadcastText": "move",
+              "hintText": "移动",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "移动",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "move",
+                "sourceImagePage": 83,
+                "phonetic": "muːv"
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u8-l0-fefdd936bf163f",
+              "answerText": "our",
+              "broadcastText": "our. This is our classroom.",
+              "hintText": "我们的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "我们的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "our",
+                "sourceImagePage": 83,
+                "spokenContext": "This is our classroom."
+              }
+            },
+            {
+              "builtinKey": "en-multi-jiaoke-gong-835bebfe-g3-v1-u8-l0-3486ebb5015bd8",
+              "answerText": "foot",
+              "broadcastText": "foot",
+              "hintText": "脚",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "脚",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "foot",
+                "sourceImagePage": 83
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
