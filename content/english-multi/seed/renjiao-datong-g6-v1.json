@@ -1,0 +1,964 @@
+{
+  "auditProfile": "verified_english",
+  "publisher": "大同出版传媒有限公司",
+  "series": "人教大同版",
+  "subject": "english",
+  "grade": 6,
+  "volume": "上册",
+  "editionText": "平台2022课标修订资源 · 2026-11核对整理",
+  "units": [
+    {
+      "order": 1,
+      "title": "Starter",
+      "sections": [
+        {
+          "key": "en-multi-renjiao-datong-05e7f636-g6-v1-u0-l0",
+          "order": 1,
+          "title": "本单元词表",
+          "type": "lesson",
+          "cards": [
+            {
+              "builtinKey": "en-multi-renjiao-datong-05e7f636-g6-v1-u0-l0-08cff359d6934f",
+              "answerText": "the Earth",
+              "broadcastText": "the Earth",
+              "hintText": "地球",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "地球",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "the Earth",
+                "sourceImagePage": 103,
+                "sourcePrintedPage": 98
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-05e7f636-g6-v1-u0-l0-5f0e8a316a3dc4",
+              "answerText": "North America",
+              "broadcastText": "North America",
+              "hintText": "北美洲",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "北美洲",
+                "spellingRules": {
+                  "caseRule": "required",
+                  "acceptedAnswers": [
+                    "north America"
+                  ]
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "North America",
+                "sourceImagePage": 103,
+                "sourcePrintedPage": 98
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-05e7f636-g6-v1-u0-l0-8676bc3ca2a4af",
+              "answerText": "South America",
+              "broadcastText": "South America",
+              "hintText": "南美洲",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "南美洲",
+                "spellingRules": {
+                  "caseRule": "required",
+                  "acceptedAnswers": [
+                    "south America"
+                  ]
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "South America",
+                "sourceImagePage": 103,
+                "sourcePrintedPage": 98
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "title": "Unit 1",
+      "sections": [
+        {
+          "key": "en-multi-renjiao-datong-05e7f636-g6-v1-u1-l0",
+          "order": 1,
+          "title": "本单元词表",
+          "type": "lesson",
+          "cards": [
+            {
+              "builtinKey": "en-multi-renjiao-datong-05e7f636-g6-v1-u1-l0-bdab31d79947a1",
+              "answerText": "angry",
+              "broadcastText": "angry",
+              "hintText": "生气的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "生气的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "angry",
+                "sourceImagePage": 103,
+                "phonetic": "ˈæŋɡri",
+                "sourcePrintedPage": 98
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-05e7f636-g6-v1-u1-l0-f0962645756d92",
+              "answerText": "busy",
+              "broadcastText": "busy",
+              "hintText": "忙碌的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "忙碌的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "busy",
+                "sourceImagePage": 103,
+                "phonetic": "ˈbɪzi",
+                "sourcePrintedPage": 98
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-05e7f636-g6-v1-u1-l0-837cd76cd5edb5",
+              "answerText": "difficult",
+              "broadcastText": "difficult",
+              "hintText": "困难的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "困难的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "difficult",
+                "sourceImagePage": 103,
+                "sourcePrintedPage": 98
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-05e7f636-g6-v1-u1-l0-a555c6dbeb7339",
+              "answerText": "easy",
+              "broadcastText": "easy",
+              "hintText": "容易的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "容易的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "easy",
+                "sourceImagePage": 103,
+                "phonetic": "ˈiːzi",
+                "sourcePrintedPage": 98
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-05e7f636-g6-v1-u1-l0-fa7475b353aa7d",
+              "answerText": "excited",
+              "broadcastText": "excited",
+              "hintText": "兴奋的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "兴奋的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "excited",
+                "sourceImagePage": 103,
+                "phonetic": "ɪkˈsaɪtɪd",
+                "sourcePrintedPage": 98
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-05e7f636-g6-v1-u1-l0-7a4587a350e8fe",
+              "answerText": "hungry",
+              "broadcastText": "hungry",
+              "hintText": "感到饿的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "感到饿的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "hungry",
+                "sourceImagePage": 103,
+                "phonetic": "ˈhʌŋɡri",
+                "sourcePrintedPage": 98
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-05e7f636-g6-v1-u1-l0-278b9eecca4889",
+              "answerText": "tired",
+              "broadcastText": "tired",
+              "hintText": "疲劳的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "疲劳的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "tired",
+                "sourceImagePage": 103,
+                "phonetic": "ˈtaɪəd",
+                "sourcePrintedPage": 98
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-05e7f636-g6-v1-u1-l0-9c9c7178a6bac6",
+              "answerText": "worried",
+              "broadcastText": "worried",
+              "hintText": "担心的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "担心的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "worried",
+                "sourceImagePage": 103,
+                "phonetic": "ˈwʌrid",
+                "sourcePrintedPage": 98
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "title": "Unit 2",
+      "sections": [
+        {
+          "key": "en-multi-renjiao-datong-05e7f636-g6-v1-u2-l0",
+          "order": 1,
+          "title": "本单元词表",
+          "type": "lesson",
+          "cards": [
+            {
+              "builtinKey": "en-multi-renjiao-datong-05e7f636-g6-v1-u2-l0-b4987dc0e3ad4f",
+              "answerText": "get along",
+              "broadcastText": "get along",
+              "hintText": "相处融洽",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "相处融洽",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "get along",
+                "sourceImagePage": 103,
+                "sourcePrintedPage": 98
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-05e7f636-g6-v1-u2-l0-cfe201de02cf3e",
+              "answerText": "care for",
+              "broadcastText": "care for",
+              "hintText": "照顾",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "照顾",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "care for",
+                "sourceImagePage": 103,
+                "sourcePrintedPage": 98
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-05e7f636-g6-v1-u2-l0-97ab8d019a0189",
+              "answerText": "help out",
+              "broadcastText": "help out",
+              "hintText": "帮助⋯⋯摆脫(困境)",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "帮助⋯⋯摆脫(困境)",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "help out",
+                "sourceImagePage": 103,
+                "sourcePrintedPage": 98
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-05e7f636-g6-v1-u2-l0-c9984c92380875",
+              "answerText": "listen to",
+              "broadcastText": "listen to",
+              "hintText": "倾听",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "倾听",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "listen to",
+                "sourceImagePage": 103,
+                "sourcePrintedPage": 98
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-05e7f636-g6-v1-u2-l0-aa30a787b577ab",
+              "answerText": "look after",
+              "broadcastText": "look after",
+              "hintText": "照料",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "照料",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "look after",
+                "sourceImagePage": 103,
+                "sourcePrintedPage": 98
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-05e7f636-g6-v1-u2-l0-84c50dafe527d8",
+              "answerText": "play with",
+              "broadcastText": "play with",
+              "hintText": "与⋯⋯一起玩",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "与⋯⋯一起玩",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "play with",
+                "sourceImagePage": 103,
+                "sourcePrintedPage": 98
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-05e7f636-g6-v1-u2-l0-12cddc2a1864c6",
+              "answerText": "say sorry to",
+              "broadcastText": "say sorry to",
+              "hintText": "向⋯•道歉",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "向⋯•道歉",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "say sorry to",
+                "sourceImagePage": 103,
+                "sourcePrintedPage": 98
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-05e7f636-g6-v1-u2-l0-4761b7b0b23936",
+              "answerText": "share with",
+              "broadcastText": "share with",
+              "hintText": "和⋯⋯分享",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "和⋯⋯分享",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "share with",
+                "sourceImagePage": 103,
+                "sourcePrintedPage": 98
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-05e7f636-g6-v1-u2-l0-d7d0c96fb059ec",
+              "answerText": "talk to",
+              "broadcastText": "talk to",
+              "hintText": "与⋯…交谈",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "与⋯…交谈",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "talk to",
+                "sourceImagePage": 103,
+                "sourcePrintedPage": 98
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "title": "Unit 3",
+      "sections": [
+        {
+          "key": "en-multi-renjiao-datong-05e7f636-g6-v1-u3-l0",
+          "order": 1,
+          "title": "本单元词表",
+          "type": "lesson",
+          "cards": [
+            {
+              "builtinKey": "en-multi-renjiao-datong-05e7f636-g6-v1-u3-l0-733ce18ba2c4eb",
+              "answerText": "beautiful",
+              "broadcastText": "beautiful",
+              "hintText": "美丽的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "美丽的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "beautiful",
+                "sourceImagePage": 103,
+                "phonetic": "ˈbjuːtɪfl",
+                "sourcePrintedPage": 98
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-05e7f636-g6-v1-u3-l0-edf9d7c9d60ada",
+              "answerText": "unkind",
+              "broadcastText": "unkind",
+              "hintText": "不友善的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "不友善的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "unkind",
+                "sourceImagePage": 104,
+                "sourcePrintedPage": 99
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-05e7f636-g6-v1-u3-l0-adbf33de6ec2e1",
+              "answerText": "hard-working",
+              "broadcastText": "hard-working",
+              "hintText": "辛勤的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "辛勤的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "hard-working",
+                "sourceImagePage": 104,
+                "phonetic": "ˌhɑːdˈwɜːkɪŋ",
+                "sourcePrintedPage": 99
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 5,
+      "title": "Unit 4",
+      "sections": [
+        {
+          "key": "en-multi-renjiao-datong-05e7f636-g6-v1-u4-l0",
+          "order": 1,
+          "title": "本单元词表",
+          "type": "lesson",
+          "cards": [
+            {
+              "builtinKey": "en-multi-renjiao-datong-05e7f636-g6-v1-u4-l0-5d2377c4b7e6c1",
+              "answerText": "be nice",
+              "broadcastText": "be nice",
+              "hintText": "友善待人",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "友善待人",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "be nice",
+                "sourceImagePage": 104,
+                "sourcePrintedPage": 99
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-05e7f636-g6-v1-u4-l0-e4692210082899",
+              "answerText": "be on time",
+              "broadcastText": "be on time",
+              "hintText": "准时",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "准时",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "be on time",
+                "sourceImagePage": 104,
+                "sourcePrintedPage": 99
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-05e7f636-g6-v1-u4-l0-bbc3f78a07cc13",
+              "answerText": "be polite",
+              "broadcastText": "be polite",
+              "hintText": "有礼貌",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "有礼貌",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "be polite",
+                "sourceImagePage": 104,
+                "sourcePrintedPage": 99
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-05e7f636-g6-v1-u4-l0-e6c4842f8700ac",
+              "answerText": "give up your seat",
+              "broadcastText": "give up your seat",
+              "hintText": "让座",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "让座",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "give up your seat",
+                "sourceImagePage": 104,
+                "sourcePrintedPage": 99
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-05e7f636-g6-v1-u4-l0-bebca6c48c9f53",
+              "answerText": "greet people",
+              "broadcastText": "greet people",
+              "hintText": "问候别人",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "问候别人",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "greet people",
+                "sourceImagePage": 104,
+                "sourcePrintedPage": 99
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-05e7f636-g6-v1-u4-l0-0e0340787d0e4f",
+              "answerText": "Line up",
+              "broadcastText": "Line up",
+              "hintText": "排队",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "排队",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": [
+                    "line up"
+                  ]
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "Line up",
+                "sourceImagePage": 104,
+                "sourcePrintedPage": 99
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-05e7f636-g6-v1-u4-l0-6a44074c12fcd7",
+              "answerText": "respect old people",
+              "broadcastText": "respect old people",
+              "hintText": "尊敬老人",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "尊敬老人",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "respect old people",
+                "sourceImagePage": 104,
+                "sourcePrintedPage": 99
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-05e7f636-g6-v1-u4-l0-3027665d39ae20",
+              "answerText": "talk quietly",
+              "broadcastText": "talk quietly",
+              "hintText": "轻声交谈",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "轻声交谈",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "talk quietly",
+                "sourceImagePage": 104,
+                "sourcePrintedPage": 99
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 6,
+      "title": "Unit 5",
+      "sections": [
+        {
+          "key": "en-multi-renjiao-datong-05e7f636-g6-v1-u5-l0",
+          "order": 1,
+          "title": "本单元词表",
+          "type": "lesson",
+          "cards": [
+            {
+              "builtinKey": "en-multi-renjiao-datong-05e7f636-g6-v1-u5-l0-e54e3d9c9e3faa",
+              "answerText": "the United Kingdom",
+              "broadcastText": "the United Kingdom",
+              "hintText": "英国",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "英国",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "the United Kingdom",
+                "sourceImagePage": 104,
+                "sourcePrintedPage": 99
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-05e7f636-g6-v1-u5-l0-6156b206958ec7",
+              "answerText": "the United States of America",
+              "broadcastText": "the United States of America",
+              "hintText": "美国",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "美国",
+                "spellingRules": {
+                  "caseRule": "required",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "the United States of America",
+                "sourceImagePage": 104,
+                "sourcePrintedPage": 99
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 7,
+      "title": "Unit 6",
+      "sections": [
+        {
+          "key": "en-multi-renjiao-datong-05e7f636-g6-v1-u6-l0",
+          "order": 1,
+          "title": "本单元词表",
+          "type": "lesson",
+          "cards": [
+            {
+              "builtinKey": "en-multi-renjiao-datong-05e7f636-g6-v1-u6-l0-144c4063521f0f",
+              "answerText": "eat special food",
+              "broadcastText": "eat special food",
+              "hintText": "吃特色食物",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "吃特色食物",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "eat special food",
+                "sourceImagePage": 104,
+                "sourcePrintedPage": 99
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-05e7f636-g6-v1-u6-l0-b7f4b3eeda516e",
+              "answerText": "have a street party",
+              "broadcastText": "have a street party",
+              "hintText": "举办街头派对",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "举办街头派对",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "have a street party",
+                "sourceImagePage": 104,
+                "sourcePrintedPage": 99
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-05e7f636-g6-v1-u6-l0-c0099766efa557",
+              "answerText": "wear special clothes",
+              "broadcastText": "wear special clothes",
+              "hintText": "穿特别的服装",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "穿特别的服装",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "wear special clothes",
+                "sourceImagePage": 104,
+                "sourcePrintedPage": 99
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-05e7f636-g6-v1-u6-l0-a1d42240f2053a",
+              "answerText": "win prizes",
+              "broadcastText": "win prizes",
+              "hintText": "获奖",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "获奖",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "win prizes",
+                "sourceImagePage": 104,
+                "sourcePrintedPage": 99
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-05e7f636-g6-v1-u6-l0-a3e52009d16e52",
+              "answerText": "have a play-fight",
+              "broadcastText": "have a play-fight",
+              "hintText": "打闹嬉戏",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "打闹嬉戏",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "have a play-fight",
+                "sourceImagePage": 104,
+                "sourcePrintedPage": 99
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-05e7f636-g6-v1-u6-l0-87903eec3c9176",
+              "answerText": "light Lanterns",
+              "broadcastText": "light Lanterns",
+              "hintText": "点灯笼",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "点灯笼",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "light Lanterns",
+                "sourceImagePage": 104,
+                "sourcePrintedPage": 99
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-05e7f636-g6-v1-u6-l0-3c6cbea006c752",
+              "answerText": "perform traditional dances",
+              "broadcastText": "perform traditional dances",
+              "hintText": "表演传统舞蹈",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "表演传统舞蹈",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "perform traditional dances",
+                "sourceImagePage": 104,
+                "sourcePrintedPage": 99
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-05e7f636-g6-v1-u6-l0-b74821f81d18e6",
+              "answerText": "watch fireworks",
+              "broadcastText": "watch fireworks",
+              "hintText": "观看烟花",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "观看烟花",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "phrase",
+                "sourceRole": "head",
+                "sourceWord": "watch fireworks",
+                "sourceImagePage": 104,
+                "sourcePrintedPage": 99
+              }
+            },
+            {
+              "builtinKey": "en-multi-renjiao-datong-05e7f636-g6-v1-u6-l0-a4c9dde6dd4fec",
+              "answerText": "Christmas",
+              "broadcastText": "Christmas",
+              "hintText": "在十二月,许多人都会庆祝圣诞节。",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "在十二月,许多人都会庆祝圣诞节。",
+                "spellingRules": {
+                  "caseRule": "required",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "Christmas",
+                "sourceImagePage": 104,
+                "sourcePrintedPage": 99
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

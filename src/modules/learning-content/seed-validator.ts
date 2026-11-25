@@ -36,7 +36,7 @@ const unitSchema = z.object({
 });
 
 export const seedContentSchema = z.object({
-  auditProfile: z.enum(["official_textbook", "official_english"]).optional(),
+  auditProfile: z.enum(["official_textbook", "official_english", "verified_english"]).optional(),
   teachingProfile: z.literal("grade_aware_v2").optional(),
   publisher: cardText,
   series: cardText,
@@ -72,7 +72,7 @@ function validateUniqueStructure(content: SeedContent, seenBuiltinKeys: Set<stri
       for (const card of section.cards) {
         if (seenBuiltinKeys.has(card.builtinKey)) throw new Error("DUPLICATE_BUILTIN_KEY");
         seenBuiltinKeys.add(card.builtinKey);
-        const answerIdentity = content.auditProfile === "official_english" && card.english
+        const answerIdentity = (content.auditProfile === "official_english" || content.auditProfile === 'verified_english') && card.english
           ? `${card.answerText}\0${card.english.grammarForm ?? "word"}` : card.answerText;
         if (answers.has(answerIdentity)) throw new Error("DUPLICATE_SECTION_ANSWER");
         answers.add(answerIdentity);

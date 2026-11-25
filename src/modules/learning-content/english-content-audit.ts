@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import { validateMultiEnglishMetadata } from './english-multi-audit';
 import approvedIndex from "../../../content/official-english-metadata.json";
 import type { SeedContent } from "./seed-validator";
 import { englishCardMetadataSchema } from "./english-types";
@@ -24,6 +25,7 @@ function hasAnswer(text: string, answer: string) {
   return new RegExp(`(?<![A-Za-z])${answer.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(?![A-Za-z])`, "i").test(text);
 }
 export function validateEnglishSeedMetadata(content: SeedContent) {
+  if (content.auditProfile === 'verified_english') { validateMultiEnglishMetadata(content); return; }
   if (content.auditProfile !== "official_english") {
     if (content.units.some(unit=>unit.sections.some(section=>section.cards.some(card=>card.english)))) throw new Error("ENGLISH_METADATA_PROFILE_REQUIRED");
     return;
@@ -31,6 +33,7 @@ export function validateEnglishSeedMetadata(content: SeedContent) {
   if (content.subject !== "english" || content.grade < 3 || content.grade > 6) throw new Error("ENGLISH_EDITION_SCOPE_INVALID");
   for (const unit of content.units) for (const section of unit.sections) for (const card of section.cards) {
     const meta = englishCardMetadataSchema.parse(card.english);
+    if (meta.version !== 1) throw new Error('ENGLISH_PEP_METADATA_VERSION_INVALID');
     if (!/^[A-Za-z][A-Za-z .'-]*$/.test(card.answerText) || card.broadcastText.length > 500 || /[\u4e00-\u9fff]/.test(card.broadcastText)) throw new Error("ENGLISH_CARD_TEXT_INVALID");
     if (!/^en-pep-\d{6}-g[3-6]-v[12]-u[1-7]-(a|b|numbers)-[0-9a-f]{14}$/.test(card.builtinKey)) throw new Error("ENGLISH_BUILTIN_KEY_INVALID");
     if (meta.exampleWithBlank.split("（　　）").length !== 2) throw new Error("ENGLISH_CLOZE_INVALID");

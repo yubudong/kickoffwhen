@@ -1,0 +1,169 @@
+{
+  "auditProfile": "verified_english",
+  "publisher": "陕西旅游出版社",
+  "series": "陕旅版",
+  "subject": "english",
+  "grade": 5,
+  "volume": "下册",
+  "editionText": "平台原版资源 · 2026-11核对整理",
+  "units": [
+    {
+      "order": 1,
+      "title": "Unit 1",
+      "sections": [
+        {
+          "key": "en-multi-shanlv-0d42a7db-g5-v2-u1-l0",
+          "order": 1,
+          "title": "本单元词表",
+          "type": "lesson",
+          "cards": [
+            {
+              "builtinKey": "en-multi-shanlv-0d42a7db-g5-v2-u1-l0-357104c730d4bf",
+              "answerText": "happy",
+              "broadcastText": "happy",
+              "hintText": "高兴的；快乐的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "高兴的；快乐的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "happy",
+                "sourceImagePage": 80,
+                "sourcePrintedPage": 73
+              }
+            },
+            {
+              "builtinKey": "en-multi-shanlv-0d42a7db-g5-v2-u1-l0-cea3f87fb0a68b",
+              "answerText": "sad",
+              "broadcastText": "sad",
+              "hintText": "悲伤的；难过的",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "悲伤的；难过的",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "sad",
+                "sourceImagePage": 80,
+                "phonetic": "sæd",
+                "sourcePrintedPage": 73
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "title": "Unit 2",
+      "sections": [
+        {
+          "key": "en-multi-shanlv-0d42a7db-g5-v2-u2-l0",
+          "order": 1,
+          "title": "本单元词表",
+          "type": "lesson",
+          "cards": [
+            {
+              "builtinKey": "en-multi-shanlv-0d42a7db-g5-v2-u2-l0-f5f11176ddf0a7",
+              "answerText": "summer",
+              "broadcastText": "summer",
+              "hintText": "夏天",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "夏天",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "summer",
+                "sourceImagePage": 80,
+                "phonetic": "ˈsʌmə(r)",
+                "sourcePrintedPage": 73
+              }
+            },
+            {
+              "builtinKey": "en-multi-shanlv-0d42a7db-g5-v2-u2-l0-ee05c46dde4472",
+              "answerText": "autumn",
+              "broadcastText": "autumn",
+              "hintText": "秋天",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "秋天",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "autumn",
+                "sourceImagePage": 80,
+                "phonetic": "ˈɔːtəm",
+                "sourcePrintedPage": 73
+              }
+            },
+            {
+              "builtinKey": "en-multi-shanlv-0d42a7db-g5-v2-u2-l0-667873af455578",
+              "answerText": "season",
+              "broadcastText": "season",
+              "hintText": "季节",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "季节",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "season",
+                "sourceImagePage": 80,
+                "phonetic": "ˈsiːzn",
+                "sourcePrintedPage": 73
+              }
+            },
+            {
+              "builtinKey": "en-multi-shanlv-0d42a7db-g5-v2-u2-l0-9052b7bfb4b3f7",
+              "answerText": "plant",
+              "broadcastText": "plant",
+              "hintText": "种植",
+              "english": {
+                "version": 2,
+                "learningTarget": "vocabulary",
+                "meaningZh": "种植",
+                "spellingRules": {
+                  "caseRule": "initial_optional",
+                  "acceptedAnswers": []
+                },
+                "kind": "word",
+                "sourceRole": "head",
+                "sourceWord": "plant",
+                "sourceImagePage": 80,
+                "phonetic": "plɑːnt",
+                "sourcePrintedPage": 73
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "title": "Unit 3",
+      "sections": []
+    }
+  ]
+}

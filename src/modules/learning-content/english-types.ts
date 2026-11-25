@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { englishPronunciationSchema } from "./english-pronunciation";
 
-export const englishLearningTargetSchema = z.enum(["spelling", "core", "recognition"]);
+export const englishLearningTargetSchema = z.enum(["spelling", "core", "recognition", "vocabulary"]);
 export type EnglishLearningTarget = z.infer<typeof englishLearningTargetSchema>;
 export const englishStudyOptionsSchema = z.object({
   version: z.literal(1), mode: z.enum(["standard", "assisted"]), includeRecognition: z.boolean(),
@@ -16,8 +16,8 @@ export type EnglishSpellingRules = z.infer<typeof englishSpellingRulesSchema>;
 const grammarFormSchema = z.enum(["past", "comparative", "ing", "plural"]);
 const sourceRoleSchema = z.enum(["head", "past_form", "plural_note"]);
 const kindSchema = z.enum(["word", "phrase", "abbreviation", "pattern_example", "form_note"]);
-export const englishCardMetadataSchema = z.object({
-  version: z.literal(1), learningTarget: englishLearningTargetSchema,
+const englishV1MetadataSchema = z.object({
+  version: z.literal(1), learningTarget: z.enum(['spelling','core','recognition']),
   meaningZh: z.string().trim().min(1).max(200),
   phonetic: z.string().max(120).optional(),
   exampleWithBlank: z.string().min(1).max(500),
@@ -31,6 +31,16 @@ export const englishCardMetadataSchema = z.object({
   pronunciation: englishPronunciationSchema.optional(),
   spokenContext: z.string().max(400).optional(),
 }).strict();
+const englishV2MetadataSchema = z.object({
+  version: z.literal(2), learningTarget: z.literal('vocabulary'), meaningZh: z.string().trim().min(1).max(300),
+  phonetic: z.string().max(120).optional(), exampleWithBlank: z.string().min(1).max(500).optional(),
+  exampleSentence: z.string().min(1).max(500).optional(), exampleTranslation: z.string().min(1).max(300).optional(),
+  spellingRules: englishSpellingRulesSchema, grammarForm: grammarFormSchema.optional(), baseForm: z.string().max(100).optional(),
+  kind: kindSchema, sourceRole: sourceRoleSchema, sourceWord: z.string().min(1).max(200),
+  sourcePrintedPage: z.number().int().nonnegative().optional(), sourceImagePage: z.number().int().positive(),
+  sourceMarker: z.string().max(20).optional(), pronunciation: englishPronunciationSchema.optional(), spokenContext: z.string().max(400).optional(),
+}).strict();
+export const englishCardMetadataSchema = z.discriminatedUnion('version',[englishV1MetadataSchema,englishV2MetadataSchema]);
 export type EnglishCardMetadata = z.infer<typeof englishCardMetadataSchema>;
 
 // This is the only complete English detail shape allowed in parent or grading views.
@@ -55,6 +65,7 @@ export const englishWritingHintSchema = z.enum([
 ]);
 export function englishTargetLabel(meta: { learningTarget?: EnglishLearningTarget; sourceRole?: string }) {
   if (meta.sourceRole === "plural_note") return "教材注释词形 · 自选练习";
+  if (meta.learningTarget === 'vocabulary') return '教材词表 · 自选听写';
   return meta.learningTarget === "spelling" ? "教材明确读写词"
     : meta.learningTarget === "core" ? "理解运用核心词"
       : meta.learningTarget === "recognition" ? "语境认读词 · 自选练习" : "自建词";

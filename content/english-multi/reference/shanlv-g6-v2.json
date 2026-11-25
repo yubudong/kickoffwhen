@@ -1,0 +1,361 @@
+{
+  "auditProfile": "verified_english",
+  "publisher": "陕西旅游出版社",
+  "series": "陕旅版",
+  "subject": "english",
+  "grade": 6,
+  "volume": "下册",
+  "editionText": "平台原版资源 · 2026-11核对整理",
+  "source": {
+    "provider": "国家中小学智慧教育平台",
+    "resourceId": "4d2c8c36-d8c4-45dd-8703-fe32dcba0b5d",
+    "url": "https://basic.smartedu.cn/tchMaterial/detail?contentType=assets_document&contentId=4d2c8c36-d8c4-45dd-8703-fe32dcba0b5d&catalogType=tchMaterial&subCatalog=dzjc",
+    "activeImageBase": "https://r1-ndr.ykt.cbern.com.cn/edu_product/esp/assets/4d2c8c36-d8c4-45dd-8703-fe32dcba0b5d.t/zh-CN/1772437819188/transcode/image",
+    "evidence": [
+      {
+        "imagePage": 1,
+        "url": "https://r3-ndr.ykt.cbern.com.cn/edu_product/esp/assets/4d2c8c36-d8c4-45dd-8703-fe32dcba0b5d.t/zh-CN/1772437819188/transcode/image/1.jpg",
+        "sha256": "23d84a33821d8a1ae40f8df33d4d2a69341d6805696d82688dc0e3e5cf33c755",
+        "role": "cover"
+      },
+      {
+        "imagePage": 2,
+        "url": "https://r2-ndr.ykt.cbern.com.cn/edu_product/esp/assets/4d2c8c36-d8c4-45dd-8703-fe32dcba0b5d.t/zh-CN/1772437819188/transcode/image/2.jpg",
+        "sha256": "3b2ec286bcbd958a7ad811dda75ef09fa6232513c09dbca03ad447d796a3295e",
+        "role": "copyright"
+      },
+      {
+        "imagePage": 5,
+        "url": "https://r1-ndr.ykt.cbern.com.cn/edu_product/esp/assets/4d2c8c36-d8c4-45dd-8703-fe32dcba0b5d.t/zh-CN/1772437819188/transcode/image/5.jpg",
+        "sha256": "c9cda26b6fbfb5d1ea640fdd9673f9579f95a69856cf1e56cd0aa9ff56cc812f",
+        "role": "contents"
+      },
+      {
+        "imagePage": 81,
+        "url": "https://r1-ndr.ykt.cbern.com.cn/edu_product/esp/assets/4d2c8c36-d8c4-45dd-8703-fe32dcba0b5d.t/zh-CN/1772437819188/transcode/image/81.jpg",
+        "sha256": "d6f6ae7530e038949d9e9d1d417577daeaf7e57452eafb01d8d17bf2c8d2feff",
+        "role": "vocabulary"
+      },
+      {
+        "imagePage": 82,
+        "url": "https://r1-ndr.ykt.cbern.com.cn/edu_product/esp/assets/4d2c8c36-d8c4-45dd-8703-fe32dcba0b5d.t/zh-CN/1772437819188/transcode/image/82.jpg",
+        "sha256": "71ba8f0a4b733ae7379df8ea3395cf2361bb5b4ef1875e425c6715a722447c69",
+        "role": "vocabulary"
+      },
+      {
+        "imagePage": 83,
+        "url": "https://r1-ndr.ykt.cbern.com.cn/edu_product/esp/assets/4d2c8c36-d8c4-45dd-8703-fe32dcba0b5d.t/zh-CN/1772437819188/transcode/image/83.jpg",
+        "sha256": "f619e4aa49f4bc259f61634e6c89c64608f9e4c8cd7b65eb44705286527dfb2a",
+        "role": "vocabulary"
+      }
+    ],
+    "title": "义务教育教科书·英语（三年级起点）六年级下册"
+  },
+  "unitTitles": [
+    "Unit 1",
+    "Unit 2",
+    "Unit 3",
+    "Unit 4",
+    "Unit 5",
+    "Unit 6",
+    "Unit7",
+    "Unit 8"
+  ],
+  "entries": [
+    {
+      "builtinKey": "en-multi-shanlv-4d2c8c36-g6-v2-u3-l0-62c0acdc913f2b",
+      "answerText": "pupil",
+      "broadcastText": "pupil",
+      "unitOrder": 3,
+      "sectionKey": "en-multi-shanlv-4d2c8c36-g6-v2-u3-l0",
+      "sourceWord": "pupil",
+      "sourceImagePage": 81,
+      "meaningZh": "小学生",
+      "metadataDigest": "83ce2678cec4c954ff187384513a84021e6673df9fbd0c8004ab6922a1511410",
+      "sourceRaw": "pupil",
+      "meaningOrigin": "textbook OCR, source-bound and editorially checked"
+    },
+    {
+      "builtinKey": "en-multi-shanlv-4d2c8c36-g6-v2-u3-l0-cac23428fc8c11",
+      "answerText": "reporter",
+      "broadcastText": "reporter",
+      "unitOrder": 3,
+      "sectionKey": "en-multi-shanlv-4d2c8c36-g6-v2-u3-l0",
+      "sourceWord": "reporter",
+      "sourceImagePage": 81,
+      "meaningZh": "记者",
+      "metadataDigest": "9173e262f1960eb4f49253de3f0dda399453c382e3b3f681e346456f811497d2",
+      "sourceRaw": "reporter.",
+      "meaningOrigin": "textbook OCR, source-bound and editorially checked"
+    },
+    {
+      "builtinKey": "en-multi-shanlv-4d2c8c36-g6-v2-u3-l0-5a9e48f1a64488",
+      "answerText": "police",
+      "broadcastText": "police",
+      "unitOrder": 3,
+      "sectionKey": "en-multi-shanlv-4d2c8c36-g6-v2-u3-l0",
+      "sourceWord": "police",
+      "sourceImagePage": 81,
+      "meaningZh": "警方；警察",
+      "metadataDigest": "434c3a0656efc52c6d399c2078a76e305cdceea75923d3ba8a8915f12242246d",
+      "sourceRaw": "police",
+      "meaningOrigin": "textbook OCR, source-bound and editorially checked"
+    },
+    {
+      "builtinKey": "en-multi-shanlv-4d2c8c36-g6-v2-u5-l0-fa9e8eb74a7bae",
+      "answerText": "shy",
+      "broadcastText": "shy",
+      "unitOrder": 5,
+      "sectionKey": "en-multi-shanlv-4d2c8c36-g6-v2-u5-l0",
+      "sourceWord": "shy",
+      "sourceImagePage": 82,
+      "meaningZh": "害羞的；内向的",
+      "metadataDigest": "595d50c55c4bfe035311702e9be7aace5d3f49391e3eb8cdab184834eff2b65b",
+      "sourceRaw": "shy.害羞的；内向的",
+      "meaningOrigin": "textbook OCR, source-bound and editorially checked"
+    },
+    {
+      "builtinKey": "en-multi-shanlv-4d2c8c36-g6-v2-u5-l0-af0b153e5eb7ac",
+      "answerText": "kind",
+      "broadcastText": "kind",
+      "unitOrder": 5,
+      "sectionKey": "en-multi-shanlv-4d2c8c36-g6-v2-u5-l0",
+      "sourceWord": "kind",
+      "sourceImagePage": 82,
+      "meaningZh": "和蔼的；温和的",
+      "metadataDigest": "9da771f2f2b268bf92931ebb217fc69cdf2bbeddda6efc3c980a0b1ef2a41c0d",
+      "sourceRaw": "kind 和蔼的；温和的",
+      "meaningOrigin": "textbook OCR, source-bound and editorially checked"
+    },
+    {
+      "builtinKey": "en-multi-shanlv-4d2c8c36-g6-v2-u5-l0-1564581b6195a3",
+      "answerText": "friendly",
+      "broadcastText": "friendly",
+      "unitOrder": 5,
+      "sectionKey": "en-multi-shanlv-4d2c8c36-g6-v2-u5-l0",
+      "sourceWord": "friendly",
+      "sourceImagePage": 82,
+      "meaningZh": "友好的",
+      "metadataDigest": "716006f4410ec2a66d313762d66f42dbad5334a1103a72c2df2f70e38f3714e9",
+      "sourceRaw": "friendly .友好的",
+      "meaningOrigin": "textbook OCR, source-bound and editorially checked"
+    },
+    {
+      "builtinKey": "en-multi-shanlv-4d2c8c36-g6-v2-u5-l0-a555c6dbeb7339",
+      "answerText": "easy",
+      "broadcastText": "easy",
+      "unitOrder": 5,
+      "sectionKey": "en-multi-shanlv-4d2c8c36-g6-v2-u5-l0",
+      "sourceWord": "easy",
+      "sourceImagePage": 82,
+      "meaningZh": "容易的；简单的",
+      "metadataDigest": "b0f6da36b706e279588e110f558b560a88dfa43319f597b605d1312efca276c1",
+      "sourceRaw": "casy.容易的；简单的",
+      "meaningOrigin": "textbook OCR, source-bound and editorially checked"
+    },
+    {
+      "builtinKey": "en-multi-shanlv-4d2c8c36-g6-v2-u5-l0-ed1e206a5e3b9b",
+      "answerText": "understand",
+      "broadcastText": "understand",
+      "unitOrder": 5,
+      "sectionKey": "en-multi-shanlv-4d2c8c36-g6-v2-u5-l0",
+      "sourceWord": "understand",
+      "sourceImagePage": 82,
+      "meaningZh": "理解；明白",
+      "metadataDigest": "6fc2a7c6f068a4ef38aa5bf189d35f6061c60392d5fd8846c8b80966842fa498",
+      "sourceRaw": "understand. 理解；明白",
+      "meaningOrigin": "textbook OCR, source-bound and editorially checked"
+    },
+    {
+      "builtinKey": "en-multi-shanlv-4d2c8c36-g6-v2-u5-l0-68ddf6c81a5862",
+      "answerText": "find",
+      "broadcastText": "find",
+      "unitOrder": 5,
+      "sectionKey": "en-multi-shanlv-4d2c8c36-g6-v2-u5-l0",
+      "sourceWord": "find",
+      "sourceImagePage": 82,
+      "meaningZh": "发现；找到",
+      "metadataDigest": "5b123e4f47f573014a517ac57e1bf2c87f8218fce48f0531da40944fcb15cef5",
+      "sourceRaw": "find",
+      "meaningOrigin": "textbook OCR, source-bound and editorially checked"
+    },
+    {
+      "builtinKey": "en-multi-shanlv-4d2c8c36-g6-v2-u5-l0-081f4f4153db28",
+      "answerText": "Ms.",
+      "broadcastText": "Ms.",
+      "unitOrder": 5,
+      "sectionKey": "en-multi-shanlv-4d2c8c36-g6-v2-u5-l0",
+      "sourceWord": "Ms.",
+      "sourceImagePage": 82,
+      "meaningZh": "女士",
+      "metadataDigest": "bf18cfb739ee76b5ff9a49ba2264844a045ae06d4fb4ddd35327db09b8c81416",
+      "sourceRaw": "Ms.",
+      "meaningOrigin": "textbook OCR, source-bound and editorially checked"
+    },
+    {
+      "builtinKey": "en-multi-shanlv-4d2c8c36-g6-v2-u5-l0-1a446b49eae610",
+      "answerText": "without",
+      "broadcastText": "without",
+      "unitOrder": 5,
+      "sectionKey": "en-multi-shanlv-4d2c8c36-g6-v2-u5-l0",
+      "sourceWord": "without",
+      "sourceImagePage": 82,
+      "meaningZh": "无；没有",
+      "metadataDigest": "2bb3993835e7c1d5772c0a78a318a7b67838c929081958dc9f495342aa24485d",
+      "sourceRaw": "without",
+      "meaningOrigin": "textbook OCR, source-bound and editorially checked"
+    },
+    {
+      "builtinKey": "en-multi-shanlv-4d2c8c36-g6-v2-u5-l0-beb0229a7996eb",
+      "answerText": "Mrs.",
+      "broadcastText": "Mrs.",
+      "unitOrder": 5,
+      "sectionKey": "en-multi-shanlv-4d2c8c36-g6-v2-u5-l0",
+      "sourceWord": "Mrs.",
+      "sourceImagePage": 82,
+      "meaningZh": "夫人",
+      "metadataDigest": "9dc8f6249e837b37b87693f52edcb202605ea9e47830ef243ab71d447759b12d",
+      "sourceRaw": "Mrs.",
+      "meaningOrigin": "textbook OCR, source-bound and editorially checked"
+    },
+    {
+      "builtinKey": "en-multi-shanlv-4d2c8c36-g6-v2-u7-l0-1b6f6fb5408be1",
+      "answerText": "northeast",
+      "broadcastText": "northeast",
+      "unitOrder": 7,
+      "sectionKey": "en-multi-shanlv-4d2c8c36-g6-v2-u7-l0",
+      "sourceWord": "northeast",
+      "sourceImagePage": 83,
+      "meaningZh": "东北",
+      "metadataDigest": "a78d7b78c82f990e44bfbe5f36948a9c2265ecaaf76ff93767c44a34149aaae8",
+      "sourceRaw": "northeast",
+      "meaningOrigin": "textbook OCR, source-bound and editorially checked"
+    },
+    {
+      "builtinKey": "en-multi-shanlv-4d2c8c36-g6-v2-u7-l0-581c72a46ddc79",
+      "answerText": "southwest",
+      "broadcastText": "southwest",
+      "unitOrder": 7,
+      "sectionKey": "en-multi-shanlv-4d2c8c36-g6-v2-u7-l0",
+      "sourceWord": "southwest",
+      "sourceImagePage": 83,
+      "meaningZh": "西南",
+      "metadataDigest": "d46bea93556080ffdbd7cd1b557f50cb7aa47a7a8a52ddd56674b25bec6e38bd",
+      "sourceRaw": "southwest",
+      "meaningOrigin": "textbook OCR, source-bound and editorially checked"
+    },
+    {
+      "builtinKey": "en-multi-shanlv-4d2c8c36-g6-v2-u7-l0-496acee893ac92",
+      "answerText": "south",
+      "broadcastText": "south",
+      "unitOrder": 7,
+      "sectionKey": "en-multi-shanlv-4d2c8c36-g6-v2-u7-l0",
+      "sourceWord": "south",
+      "sourceImagePage": 83,
+      "meaningZh": "南；南方",
+      "metadataDigest": "40c97f5fb7f87d97f957c4b2897dd7cea2e1cc00b295f6d90ba1ba092d4712f1",
+      "sourceRaw": "south",
+      "meaningOrigin": "textbook OCR, source-bound and editorially checked"
+    },
+    {
+      "builtinKey": "en-multi-shanlv-4d2c8c36-g6-v2-u7-l0-e6ba73baedc1e2",
+      "answerText": "hope",
+      "broadcastText": "hope",
+      "unitOrder": 7,
+      "sectionKey": "en-multi-shanlv-4d2c8c36-g6-v2-u7-l0",
+      "sourceWord": "hope",
+      "sourceImagePage": 83,
+      "meaningZh": "希望；期望",
+      "metadataDigest": "e6e01f4f450ff7476f9f6df57dcc34feb2f2eb6b6426a10c7493ed68daddecfa",
+      "sourceRaw": "hope .希望；期望",
+      "meaningOrigin": "textbook OCR, source-bound and editorially checked"
+    },
+    {
+      "builtinKey": "en-multi-shanlv-4d2c8c36-g6-v2-u7-l0-aa6b8372e38701",
+      "answerText": "somewhere",
+      "broadcastText": "somewhere",
+      "unitOrder": 7,
+      "sectionKey": "en-multi-shanlv-4d2c8c36-g6-v2-u7-l0",
+      "sourceWord": "somewhere",
+      "sourceImagePage": 83,
+      "meaningZh": "某处；某地",
+      "metadataDigest": "690091cd29653880bb1329339630cbff39121cf2ce5c1b6d56e9cdf5344a86c3",
+      "sourceRaw": "somewhere某处；某地",
+      "meaningOrigin": "textbook OCR, source-bound and editorially checked"
+    },
+    {
+      "builtinKey": "en-multi-shanlv-4d2c8c36-g6-v2-u7-l0-dc747b6674f90d",
+      "answerText": "by",
+      "broadcastText": "by. The boy is standing by the window.",
+      "unitOrder": 7,
+      "sectionKey": "en-multi-shanlv-4d2c8c36-g6-v2-u7-l0",
+      "sourceWord": "by",
+      "sourceImagePage": 83,
+      "meaningZh": "沿着；在⋯⋯旁边",
+      "metadataDigest": "f53f500b65331171ed98919aafa1eba745f973a22e1df9afea6f8eacaf35db52",
+      "sourceRaw": "by.沿着；在⋯⋯旁边",
+      "meaningOrigin": "textbook OCR, source-bound and editorially checked"
+    },
+    {
+      "builtinKey": "en-multi-shanlv-4d2c8c36-g6-v2-u7-l0-38bcbeb4f1a980",
+      "answerText": "famous",
+      "broadcastText": "famous",
+      "unitOrder": 7,
+      "sectionKey": "en-multi-shanlv-4d2c8c36-g6-v2-u7-l0",
+      "sourceWord": "famous",
+      "sourceImagePage": 83,
+      "meaningZh": "著名的；出名的",
+      "metadataDigest": "825be68658715bbab24488b073b429e01e0df34f6a5bc466689509a8ebe64e99",
+      "sourceRaw": "famous. 著名的；出名的",
+      "meaningOrigin": "textbook OCR, source-bound and editorially checked"
+    },
+    {
+      "builtinKey": "en-multi-shanlv-4d2c8c36-g6-v2-u8-l0-e7696190e31be8",
+      "answerText": "dream",
+      "broadcastText": "dream",
+      "unitOrder": 8,
+      "sectionKey": "en-multi-shanlv-4d2c8c36-g6-v2-u8-l0",
+      "sourceWord": "dream",
+      "sourceImagePage": 83,
+      "meaningZh": "梦想；愿望；梦",
+      "metadataDigest": "8ed0ce0f18d9a26f5bc3bdc9db375fc42bc09dfba4eeebc83471a41f95fa2173",
+      "sourceRaw": "dream.梦想；愿望；梦",
+      "meaningOrigin": "textbook OCR, source-bound and editorially checked"
+    }
+  ],
+  "review": {
+    "status": "verified",
+    "vocabularyPages": [
+      81,
+      82,
+      83
+    ],
+    "unresolvedRows": 0,
+    "notes": [
+      "Unit vocabulary and phrases only; source sentences, placeholders and captions excluded.",
+      "Source markers do not establish four-skill requirements.",
+      "Some Chinese assistance meanings and audible homophone practice contexts supplied editorially, not claimed as textbook quotations."
+    ],
+    "normalizations": [
+      {
+        "page": 82,
+        "from": "friendly ",
+        "to": "friendly",
+        "reason": "editorially normalized OCR against source spelling and dictionary"
+      },
+      {
+        "page": 82,
+        "from": "casy",
+        "to": "easy",
+        "reason": "editorially normalized OCR against source spelling and dictionary"
+      },
+      {
+        "page": 83,
+        "from": "hope ",
+        "to": "hope",
+        "reason": "editorially normalized OCR against source spelling and dictionary"
+      }
+    ],
+    "excludedRows": []
+  }
+}

@@ -1,7 +1,7 @@
 import manifest from "../../../content/official-english-manifest.json";
 
 export function officialEnglishInfo(edition: {
-  subject: string; grade: number; volume: string; editionText?: string; label?: string;
+  subject: string; grade: number; volume: string; publisher?: string; series?: string; editionText?: string; label?: string;
 }) {
   if (edition.subject !== "english") return undefined;
   return manifest.books.find(book => book.grade === edition.grade && book.volumeText === edition.volume
