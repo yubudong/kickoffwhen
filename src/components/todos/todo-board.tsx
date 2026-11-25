@@ -1,5 +1,6 @@
 'use client';
 import Image from 'next/image';
+import { CorrectionInbox } from './homework-inline';
 import Link from 'next/link';
 import { TaskManagementControls } from '@/components/dictation/task-management-controls';
 import { DictationEvidenceSubmit } from '@/components/dictation/dictation-evidence-submit';
@@ -32,6 +33,7 @@ type Task = {
     submissionNumber: number;
     reviewNote: string;
     points: number | null;
+    pageCount?:number;
     attachment: {
         id: string;
         mimeType: string;
@@ -41,8 +43,8 @@ type Data = {
     tasks: Task[];
     points: number;
 };
-const labels: Record<string, string> = { open: '待完成', submitted: '待审核', approved: '审核通过', rejected: '审核未通过，请重新完成', cancelled: '已撤回' };
-const filters: TodoStatusFilter[] = ['all', 'remaining', 'submitted', 'approved'];
+const labels: Record<string, string> = { open: '待完成', submitted: '待审核', approved: '审核通过', rejected: '待订正', cancelled: '已撤回' };
+const filters: TodoStatusFilter[] = ['all', 'remaining', 'rejected', 'submitted', 'approved'];
 export function TodoBoard({ role, childOptions = [], childName }: {
     role: 'parent' | 'child';
     childOptions?: Array<{
@@ -120,7 +122,7 @@ export function TodoBoard({ role, childOptions = [], childName }: {
         data.set('id', t.id); data.set('date', t.date); data.set('number', String(t.submissionNumber));
         return send(data);
     }
-    async function review(event: FormEvent<HTMLFormElement>, t: Task) { event.preventDefault(); const v = new FormData(event.currentTarget); const decision = (event.nativeEvent as SubmitEvent).submitter?.getAttribute('value'); await send({ action: 'review', id: t.id, number: t.submissionNumber, decision, bonus: Number(v.get('bonus') ?? 0), note: String(v.get('note') ?? '') }); }
+    async function review(event: FormEvent<HTMLFormElement>, t: Task) { event.preventDefault(); const v = new FormData(event.currentTarget); const decision = (event.nativeEvent as SubmitEvent).submitter?.getAttribute('value'); await send({ action: 'review', id: t.id, number: t.submissionNumber, decision, expectedUpdatedAt:t.updatedAt, bonus: Number(v.get('bonus') ?? 0), note: String(v.get('note') ?? '') }); }
     async function update(event: FormEvent<HTMLFormElement>, t: Task) {
         event.preventDefault();
         if (!editingTodo || editingTodo.id !== t.id) return;
@@ -202,8 +204,10 @@ export function TodoBoard({ role, childOptions = [], childName }: {
             {role === 'parent' && t.kind === 'manual' && ['open', 'rejected'].includes(t.status) && <div className="todo-manual-actions"><button disabled={pending} onClick={() => void send({ action: 'skip', id: t.id, expectedUpdatedAt: t.updatedAt })}>今天跳过</button><button disabled={pending} onClick={() => void send({ action: 'postpone', id: t.id, expectedUpdatedAt: t.updatedAt })}>延到明天</button></div>}
             {t.reviewNote && <p className="todo-review-note">家长反馈：{t.reviewNote}</p>}
             {t.points !== null && <p className="todo-points">已获得 {t.points} 星币</p>}
+            <Link className="hw-inline-link" href={`/${role==='parent'?'parent':'child'}/homework/${t.id}`}>{role==='parent'?(t.status==='submitted'?'开始批改／订正对照':'查看作业与批改历史'):(t.status==='rejected'?'查看批改并订正上传':'查看作业与提交记录')}</Link>
+            {!!t.pageCount&&<p>本次提交 {t.pageCount} 页／份资料，可进入上方工作区逐页查看。</p>}
             {t.attachment && <Evidence attachment={t.attachment}/>}
-            {role === 'child' && !done && t.status !== 'cancelled' && (dictationCompleted ? (
+            {role==='child'&&t.status==='rejected'?<p>请打开上面的批改与订正入口，查看要求、补拍订正页后重新提交。</p>:role === 'child' && !done && t.status !== 'cancelled' && (dictationCompleted ? (
                 <DictationEvidenceSubmit todo={{ id: t.id, date: t.date, number: t.submissionNumber }}
                     disabled={pending || recordingTaskId !== null}
                     onSubmitted={() => void refresh().catch(() => setError('提交已保存，刷新清单失败，请手动刷新。'))} />
@@ -212,7 +216,7 @@ export function TodoBoard({ role, childOptions = [], childName }: {
                     onClick={() => void start(t)}>{awaitingParent ? '查看批改进度' : t.dictationSessionStatus === 'active' ? '继续听写' : t.dictationAudioStatus === 'ready' ? '开始听写' : '音频准备中'}</button>
             ) : (
                 <TodoSubmission taskId={t.id} disabled={pending || (recordingTaskId !== null && recordingTaskId !== t.id)}
-                    onActivityChange={recordingActivity} onSubmit={data => submit(data, t)}/>
+                    onActivityChange={recordingActivity} onSubmitted={()=>void refresh().catch(()=>setError('提交已保存，请刷新清单。'))} onSubmit={data => submit(data, t)}/>
             ))}
             {role === 'child' && done && <p>{t.status === 'submitted' ? '等待家长审核' : '已通过审核，星币与成长值已到账'}</p>}
             {role === 'parent' && t.status === 'submitted' && <ReviewForm base={t.rewardCoins ?? 1} pending={pending} onSubmit={e => void review(e, t)}/>}
@@ -229,10 +233,10 @@ export function TodoBoard({ role, childOptions = [], childName }: {
             {role === 'parent' && t.kind === 'dictation' && t.dictationTaskId && t.status !== 'approved' && <TaskManagementControls taskId={t.dictationTaskId} onChanged={refresh}/>}
         </>;
     }
-    return <section className="todo-board"><div className="todo-filters"><div className="todo-views" role="group" aria-label="查看范围">{(['day', 'week', 'month'] as const).map(item => <button key={item} type="button" aria-pressed={view === item} disabled={recordingTaskId !== null} onClick={() => switchView(item)}>{item === 'day' ? '日视图' : item === 'week' ? '周视图' : '月视图'}</button>)}</div><label>日期<input type="date" disabled={recordingTaskId !== null} value={date} onChange={e => { requestGuard.current.select(`${endpoint}:${view}:${e.target.value}:${childId}`); resetRange(); setDate(e.target.value); }} required/></label>{role === 'parent' && <label>孩子<select value={childId} onChange={e => { requestGuard.current.select(`${endpoint}:${view}:${date}:${e.target.value}`); resetRange(); setChildId(e.target.value); }}>{childOptions.map(c => <option key={c.id} value={c.id}>{c.nickname}</option>)}</select></label>}<button type="button" onClick={() => void refresh().catch(() => setError('刷新失败，请稍后重试。'))}>刷新</button><button type="button" className="secondary-button" disabled={!loaded} onClick={() => void exportPdf()}>导出 PDF</button><button type="button" className="secondary-button" disabled={!loaded} onClick={() => window.print()}>打印</button>{role === 'parent' && <button type="button" aria-expanded={addOpen} onClick={() => setAddOpen(open => !open)}>{addOpen ? '收起添加' : '添加待办'}</button>}</div>
+    return <section className="todo-board">{role==='child'&&<CorrectionInbox/>}<div className="todo-filters"><div className="todo-views" role="group" aria-label="查看范围">{(['day', 'week', 'month'] as const).map(item => <button key={item} type="button" aria-pressed={view === item} disabled={recordingTaskId !== null} onClick={() => switchView(item)}>{item === 'day' ? '日视图' : item === 'week' ? '周视图' : '月视图'}</button>)}</div><label>日期<input type="date" disabled={recordingTaskId !== null} value={date} onChange={e => { requestGuard.current.select(`${endpoint}:${view}:${e.target.value}:${childId}`); resetRange(); setDate(e.target.value); }} required/></label>{role === 'parent' && <label>孩子<select value={childId} onChange={e => { requestGuard.current.select(`${endpoint}:${view}:${date}:${e.target.value}`); resetRange(); setChildId(e.target.value); }}>{childOptions.map(c => <option key={c.id} value={c.id}>{c.nickname}</option>)}</select></label>}<button type="button" onClick={() => void refresh().catch(() => setError('刷新失败，请稍后重试。'))}>刷新</button><button type="button" className="secondary-button" disabled={!loaded} onClick={() => void exportPdf()}>导出 PDF</button><button type="button" className="secondary-button" disabled={!loaded} onClick={() => window.print()}>打印</button>{role === 'parent' && <button type="button" aria-expanded={addOpen} onClick={() => setAddOpen(open => !open)}>{addOpen ? '收起添加' : '添加待办'}</button>}</div>
         {view !== 'day' && parsedDate.success && <p className="todo-range muted">{view === 'week' ? '本周' : '本月'} {formatTodoDay(range.from)} 至 {formatTodoDay(range.to)}</p>}
         <div className="todo-summary" aria-live="polite"><strong>共 {counts.total} 项 · 已完成 {counts.completed} 项 · 待完成 {counts.remaining} 项 · 待审核 {data.tasks.filter(task => task.status === 'submitted').length} 项</strong><span>本范围获得星币：{data.points}</span></div>
-        <div className="todo-status-filters" role="group" aria-label="任务状态">{filters.map(filter => <button key={filter} type="button" aria-pressed={statusFilter === filter} onClick={() => setStatusFilter(filter)}>{todoFilterLabel(filter)} {filter === 'all' ? data.tasks.length : filter === 'remaining' ? counts.remaining : filter === 'submitted' ? data.tasks.filter(task => task.status === 'submitted').length : data.tasks.filter(task => task.status === 'approved').length}</button>)}</div>
+        <div className="todo-status-filters" role="group" aria-label="任务状态">{filters.map(filter => <button key={filter} type="button" aria-pressed={statusFilter === filter} onClick={() => setStatusFilter(filter)}>{todoFilterLabel(filter)} {filter === 'all' ? data.tasks.length : filter === 'remaining' ? counts.remaining : filter === 'submitted' ? data.tasks.filter(task => task.status === 'submitted').length : filter === 'rejected'?data.tasks.filter(task=>task.status==='rejected').length:data.tasks.filter(task => task.status === 'approved').length}</button>)}</div>
         <p className="muted">提交后显示“待审核”，需要家长审核的任务，通过后到账星币和成长值；自主确认的任务直接发放奖励。纸上勾选不会自动同步。</p>
         {role === 'parent' && addOpen && <form className="auth-form todo-create" onSubmit={create}><h2>添加待办</h2>{view !== 'day' && <label>添加到哪一天<input type="date" value={createDate} onChange={e => setCreateDate(e.target.value)} required/></label>}{view !== 'day' && parsedDate.success && (createDate < range.from || createDate > range.to) && <p className="muted">所选日期不在当前查看范围内，添加后请切换到对应日期查看。</p>}<label>待办任务<input name="title" maxLength={120} placeholder="例如：阅读20分钟" required/></label><label>任务要求<textarea name="requirements" maxLength={2000} placeholder="说明完成标准（可选）" rows={2}/></label><div className="growth-form-row"><label>基础星币<input name="rewardCoins" type="number" min={0} max={10000} defaultValue={1} required/></label><label>基础成长值<input name="rewardGrowth" type="number" min={0} max={10000} defaultValue={10} required/></label></div><label>确认方式<select name="confirmation"><option value="parent">家长审核</option><option value="self">孩子自行确认</option></select></label><p>审核时可另加奖励星币。<Link href="/parent/growth">设置每天、指定星期或每周次数的重复习惯 →</Link></p><button disabled={pending || !childId}>添加到清单</button></form>}
         {error && <p role="alert" className="todo-error">{error}</p>}

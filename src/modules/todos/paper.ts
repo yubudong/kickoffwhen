@@ -1,7 +1,8 @@
-export type TodoStatusFilter = 'all' | 'remaining' | 'submitted' | 'approved';
+export type TodoStatusFilter = 'all' | 'remaining' | 'submitted' | 'approved' | 'rejected';
 
 const filterLabels: Record<TodoStatusFilter, string> = {
     all: '全部',
+    rejected: '待订正',
     remaining: '待完成',
     submitted: '待审核',
     approved: '已通过',
@@ -12,6 +13,7 @@ export function todoFilterLabel(filter: TodoStatusFilter) {
 }
 
 export function filterTodoTasks<T extends { status: string }>(tasks: T[], filter: TodoStatusFilter) {
+    if(filter==='rejected')return tasks.filter(task=>task.status==='rejected');
     if (filter === 'remaining') return tasks.filter(task => task.status === 'open' || task.status === 'rejected');
     if (filter === 'submitted') return tasks.filter(task => task.status === 'submitted');
     if (filter === 'approved') return tasks.filter(task => task.status === 'approved');
@@ -19,7 +21,8 @@ export function filterTodoTasks<T extends { status: string }>(tasks: T[], filter
 }
 
 function statusRank(status: string) {
-    if (status === 'open' || status === 'rejected') return 0;
+    if(status==='rejected')return -1;
+    if (status === 'open') return 0;
     if (status === 'submitted') return 1;
     if (status === 'approved') return 2;
     return 3;
