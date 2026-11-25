@@ -1,5 +1,6 @@
 "use client";
 
+import Link from 'next/link';
 import { useRef, useState, type FormEvent } from "react";
 
 type TodoSubmission = { id: string; date: string; number: number };
@@ -41,6 +42,7 @@ export function DictationEvidenceSubmit({ todo, onSubmitted, disabled = false, k
 
   return (
     <form className="dictation-evidence-submit" onSubmit={submit}>
+      {!keyboard&&<p><Link href={`/child/homework/${todo.id}`}>上传多页听写照片／查看订正记录 →</Link></p>}
       {!keyboard&&<label>上传照片（可选）
         <input name="file" type="file" accept="image/jpeg,image/png,image/webp" capture="environment" disabled={pending || disabled} />
       </label>}

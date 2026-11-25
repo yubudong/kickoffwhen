@@ -724,7 +724,9 @@ test("完成听写后可在待办清单上传照片，家长可打开凭证", as
   await childPage.getByRole("button", { name: "刷新" }).click();
   await expect(childPage.getByText("听写已完成，待提交")).toBeVisible();
   await childPage.getByRole("row").filter({ hasText: "今日听写（3项）" }).getByRole("button", { name: "提交", exact: true }).click();
-  await expect(childPage.getByLabel("上传照片（可选）")).toBeVisible();
+  await childPage.getByRole("dialog").getByRole("link", { name: "查看批改并订正上传" }).click();
+  await expect(childPage.locator(".hw-feedback")).toContainText("请确认照片");
+  await expect(childPage.getByLabel("选择多张作业照片")).toBeVisible();
   await childContext.close();
 });
 

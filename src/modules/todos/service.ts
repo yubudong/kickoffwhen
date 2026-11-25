@@ -7,6 +7,7 @@ import { learningTasks, learningTaskItems } from '@/modules/dictation/task-schem
 import { dictationSessions } from '@/modules/dictation/session-schema';
 import { activeTtsMediaPredicate } from '@/modules/media/active-cache';
 import { privateMedia } from '@/modules/media/schema';
+import { homeworkUploads,homeworkPages,homeworkReviewDrafts } from './homework-schema';
 import { todoTasks, todoSubmissions, todoReviews, todoRewards } from './schema';
 import { createEngagementService } from '@/modules/engagement/service';
 import { habits, habitVersions } from '@/modules/engagement/schema';
@@ -19,7 +20,7 @@ export type Attachment = {
     mimeType: string;
     byteSize: number;
 };
-const reviewSchema = z.object({ number: z.number().int().positive(), decision: z.enum(['approved', 'rejected']), bonus: bonusSchema, note: z.string().trim().max(2000) }).refine(v => v.decision !== 'rejected' || v.note.length > 0);
+const reviewSchema = z.object({ number: z.number().int().positive(), decision: z.enum(['approved', 'rejected']), bonus: bonusSchema, note: z.string().trim().max(2000), expectedUpdatedAt:z.iso.datetime().optional() }).refine(v => v.decision !== 'rejected' || v.note.length > 0);
 export function createTodoService(database: Database = db, clock: () => Date = () => new Date()) {
     const scope = (actor: Actor) => and(eq(todoTasks.familyId, actor.familyId), actor.role === 'child' ? eq(todoTasks.childId, actor.childId) : undefined);
     async function lockTaskOwner(tx: DbTransaction, actor: Actor, id: string) {
@@ -104,6 +105,8 @@ export function createTodoService(database: Database = db, clock: () => Date = (
         if (actor.role === 'child' || childId) await createEngagementService(database).ensureHabits(actor, range.from, range.to, childId);
         const inRange = and(gte(todoTasks.date, range.from), lte(todoTasks.date, range.to));
         const rows = await database.select({ task: todoTasks, childName: children.nickname, dictationPhase: dictationSessions.phase, gradingMode: learningTasks.gradingMode, attachmentId: todoSubmissions.attachmentId, mimeType: todoSubmissions.mimeType, base: todoRewards.basePoints, bonus: todoRewards.bonusPoints }).from(todoTasks).innerJoin(children, eq(children.id, todoTasks.childId)).leftJoin(learningTasks, and(eq(learningTasks.id, todoTasks.dictationTaskId), eq(learningTasks.familyId, todoTasks.familyId), eq(learningTasks.childId, todoTasks.childId))).leftJoin(dictationSessions, and(eq(dictationSessions.taskId, learningTasks.id), eq(dictationSessions.familyId, todoTasks.familyId), eq(dictationSessions.childId, todoTasks.childId))).leftJoin(todoSubmissions, and(eq(todoSubmissions.todoId, todoTasks.id), eq(todoSubmissions.number, todoTasks.submissionNumber))).leftJoin(todoRewards, eq(todoRewards.todoId, todoTasks.id)).where(and(scope(actor), inRange, childId ? eq(todoTasks.childId, childId) : undefined, actor.role === 'child' ? ne(todoTasks.status, 'cancelled') : undefined)).orderBy(asc(todoTasks.date), asc(todoTasks.createdAt));
+        const pageRows=rows.length?await database.select({todoId:todoSubmissions.todoId,number:todoSubmissions.number,attachmentId:homeworkPages.attachmentId,mimeType:homeworkPages.mimeType,position:homeworkPages.position}).from(homeworkPages).innerJoin(todoSubmissions,eq(todoSubmissions.id,homeworkPages.submissionId)).where(inArray(todoSubmissions.todoId,rows.map(r=>r.task.id))).orderBy(asc(homeworkPages.position)):[];
+        const pageFacts=new Map<string,{count:number;first:{id:string;mimeType:string}}>();for(const p of pageRows){const key=p.todoId+':'+p.number;const existing=pageFacts.get(key);pageFacts.set(key,{count:(existing?.count??0)+1,first:existing?.first??{id:p.attachmentId,mimeType:p.mimeType}})}
         const taskIds = rows.flatMap(({ task }) => task.dictationTaskId ? [task.dictationTaskId] : []);
         const mediaRows = taskIds.length ? await database.select({ taskId: learningTaskItems.taskId, mediaId: privateMedia.id })
             .from(learningTaskItems).leftJoin(privateMedia, activeTtsMediaPredicate({
@@ -132,7 +135,7 @@ export function createTodoService(database: Database = db, clock: () => Date = (
             const week = habitDateRange(r.task.date, 'week');
             const facts = habitFacts.filter(f => f.habitId === r.task.habitId && f.date >= week.from && f.date <= week.to);
             const habitProgress = habit?.schedule === 'weekly' ? { target: habit.weeklyTarget, completed: facts.filter(f => f.status === 'approved').length, pending: facts.filter(f => f.status === 'submitted').length } : null;
-            return { ...r.task, habitProgress, childName: r.childName, dictationPhase: r.dictationPhase, gradingMode: r.gradingMode, attachment: r.attachmentId ? { id: r.attachmentId, mimeType: r.mimeType! } : null,
+            return { ...r.task, habitProgress, childName: r.childName, dictationPhase: r.dictationPhase, gradingMode: r.gradingMode, pageCount:pageFacts.get(r.task.id+':'+r.task.submissionNumber)?.count??(r.attachmentId?1:0), attachment: r.attachmentId ? { id: r.attachmentId, mimeType: r.mimeType! } : pageFacts.get(r.task.id+':'+r.task.submissionNumber)?.first??null,
                 points: r.base === null ? null : r.base + (r.bonus ?? 0),
                 dictationAudioStatus: r.task.dictationTaskId ? counts && counts.total > 0 && counts.total === counts.ready ? 'ready' : 'preparing' : null,
                 dictationSessionStatus: r.task.dictationTaskId ? sessionStatus.get(r.task.dictationTaskId) ?? null : null };
@@ -168,7 +171,7 @@ export function createTodoService(database: Database = db, clock: () => Date = (
                     const week = habitDateRange(row.date, 'week');
                     const [count] = await tx.select({ n: sql<number>`count(*)::int` }).from(todoTasks).where(and(eq(todoTasks.habitId, habit.id), gte(todoTasks.date, week.from), lte(todoTasks.date, week.to), inArray(todoTasks.status, ['submitted','approved'])));
                     if (count.n >= rule.weeklyTarget) throw new Error('WEEKLY_LIMIT');
-                    if (row.date !== todayShanghai(clock())) throw new Error('HABIT_DATE');
+                    if (row.date !== todayShanghai(clock()) && !(row.status==='rejected'&&row.submissionNumber>0)) throw new Error('HABIT_DATE');
                 }
             }
             const submittedBoost = await boostAt(tx, row, clock());
@@ -181,7 +184,7 @@ export function createTodoService(database: Database = db, clock: () => Date = (
             await tx.update(todoTasks).set({ status: autonomous ? 'approved' : 'submitted', submittedBoost, submissionNumber: number + 1, reviewNote: '', updatedAt: new Date() }).where(eq(todoTasks.id, id));
         });
     }
-    async function review(actor: GuardianActor, id: string, input: unknown) {
+    async function review(actor: GuardianActor, id: string, input: unknown, fromWorkspace=false) {
         if (actor.role !== 'guardian')
             throw new Error('FORBIDDEN');
         z.string().uuid().parse(id);
@@ -197,6 +200,8 @@ export function createTodoService(database: Database = db, clock: () => Date = (
                 return;
             if (row.status !== 'submitted')
                 throw new Error('TODO_STALE');
+            if(v.expectedUpdatedAt&&row.updatedAt.toISOString()!==v.expectedUpdatedAt)throw new Error('TODO_STALE');
+            if(!fromWorkspace){const [draft]=await tx.select().from(homeworkReviewDrafts).where(and(eq(homeworkReviewDrafts.todoId,id),eq(homeworkReviewDrafts.submissionNumber,v.number))).limit(1);if(draft&&(draft.document.note||draft.document.pages.some(p=>p.note||p.marks.length)))throw new Error('HOMEWORK_WORKSPACE_REQUIRED');}
             await tx.insert(todoReviews).values({ todoId: id, submissionNumber: v.number, guardianId: actor.guardianId, decision: v.decision, note: v.note });
             if (v.decision === 'approved') {
                 await tx.insert(todoRewards).values({ todoId: id, basePoints: row.rewardCoins, bonusPoints: v.bonus });
@@ -208,9 +213,11 @@ export function createTodoService(database: Database = db, clock: () => Date = (
     async function attachment(actor: Actor, id: string) {
         z.string().uuid().parse(id);
         const [row] = await database.select({ id: todoSubmissions.attachmentId, mimeType: todoSubmissions.mimeType, byteSize: todoSubmissions.byteSize }).from(todoSubmissions).innerJoin(todoTasks, eq(todoTasks.id, todoSubmissions.todoId)).where(and(scope(actor), eq(todoSubmissions.attachmentId, id)));
-        if (!row)
-            throw new Error('TODO_NOT_FOUND');
-        return row;
+        if (row)return row;
+        const [page]=await database.select({id:homeworkPages.attachmentId,mimeType:homeworkPages.mimeType,byteSize:homeworkPages.byteSize}).from(homeworkPages).innerJoin(todoSubmissions,eq(todoSubmissions.id,homeworkPages.submissionId)).innerJoin(todoTasks,eq(todoTasks.id,todoSubmissions.todoId)).where(and(scope(actor),eq(homeworkPages.attachmentId,id))).limit(1);
+        if(page)return page;
+        const [upload]=await database.select({id:homeworkUploads.id,mimeType:homeworkUploads.mimeType,byteSize:homeworkUploads.byteSize}).from(homeworkUploads).where(and(eq(homeworkUploads.id,id),eq(homeworkUploads.familyId,actor.familyId),actor.role==='child'?eq(homeworkUploads.childId,actor.childId):undefined)).limit(1);
+        if(!upload)throw new Error('TODO_NOT_FOUND');return upload;
     }
     return { create, updateManual, configureRewards, cancelManual, list, submit, review, attachment };
 }

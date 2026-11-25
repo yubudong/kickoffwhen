@@ -53,7 +53,7 @@ afterEach(() => { vi.unstubAllGlobals(); });
 test("待家长批改的听写清单显示等待状态和照片批改入口", () => {
   const tree = render("parent", {}, true);
   expect(textContent(tree)).toContain("听写已提交，等待家长批改");
-  const link = elements(tree).find((element) => element.type === Link);
+  const link = elements(tree).find((element) => element.type === Link && element.props.href === "/parent/dictation-reviews");
   expect(link?.props.href).toBe("/parent/dictation-reviews");
   expect(elements(tree).some((element) => element.type === TaskManagementControls)).toBe(true);
 });
