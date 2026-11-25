@@ -1,5 +1,7 @@
 # 家长管理收尾、备份与PWA
 
+已于2026-11-25 12:15:46（Asia/Singapore）上线，详见[正式发布记录](runbooks/parent-workflows-deployment-20261125.md)。
+
 2026-11-25用户确认执行推荐顺序，基线a1e4fe6 / 20261125-male-companions。保留全部学习、积分、宠物与媒体数据。
 
 ## 家长管理

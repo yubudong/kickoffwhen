@@ -2,7 +2,7 @@
 
 ## 最新接续：2026-11-25
 
-十种伙伴与直接男女形态入口已于10:08:50（Asia/Singapore）部署，镜像`family-learning:20261125-male-companions`，源码`9505c50`，GitHub PR #4已合并main且CI通过。新增赤焰灵猿、曜石玄龟男性路线，共70张素材；306项单元、200项集成、30项浏览器用例通过。生产28条迁移，原50张表指纹及444私有媒体保持；详细备份、验收与回退见[最新发布记录](runbooks/male-companions-deployment-20261125.md)。此前[八种伙伴发布](runbooks/companion-v2-deployment-20261125.md)保留作历史。
+家长集中审核、全家奖励独立设置、次日起生效的习惯版本编辑及PWA已于12:15:46（Asia/Singapore）上线，镜像`family-learning:20261125-parent-workflows`、源码`70084ab`、GitHub PR #5已合并main且CI通过。318项单元、205项集成、34项浏览器、5项备份安全测试通过；迁移29、业务表51，原50表旧字段和444媒体保持。自动age加密备份与Mac异机同步已启用，限制与恢复结果见[最新发布记录](runbooks/parent-workflows-deployment-20261125.md)及[备份手册](../ops/backups/README.md)。此前[男性伙伴版本](runbooks/male-companions-deployment-20261125.md)保留作历史。
 
 最新工作树在项目`.worktrees/habits-pets`，以GitHub main及该工作树为准。下方2026-10-13内容是历史快照，不要将旧源码或版本全量覆盖线上。
 
