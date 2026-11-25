@@ -44,6 +44,8 @@ export type SessionReport = SessionMetrics & {
   completedAt: Date;
   withdrawn: boolean;
   selfGraded: boolean;
+  responseMode?: "paper"|"keyboard";
+  assisted?: boolean;
 };
 
 export type WeeklyTrendDay = {

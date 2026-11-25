@@ -100,6 +100,7 @@ export function ReportsOverview({ dashboard }: { dashboard: ReportDashboard }) {
 export function SessionReportView({ report }: { report: SessionReport }) {
   return (
     <div className="report-stack">
+      <p className="report-notice">{report.responseMode==='keyboard'?'键盘听写 · 系统核对（待确认写法由家长复核）':'纸笔听写'}{report.assisted?' · 辅助练习':''}{report.responseMode==='keyboard'&&<> · <Link href="/parent/keyboard-dictation">查看原始输入与订正记录</Link></>}</p>
       {report.withdrawn ? (
         <p className="report-notice">本次听写任务已撤回，历史报告及指标保留。</p>
       ) : null}

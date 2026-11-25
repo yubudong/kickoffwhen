@@ -45,6 +45,7 @@ test("家长任务 API 只把已验证 actor 交给服务层", async () => {
   const buildTask = vi.fn(async () => ({
     id: crypto.randomUUID(),
     childId: validInput.childId,
+    responseMode: "paper" as const,
     mode: "continuous_batch" as const,
     order: "source" as const,
     intervalSeconds: 8,

@@ -1,3 +1,4 @@
+import { createKeyboardSnapshot } from './keyboard-grading';
 import { getEnglishMetadata, englishTextbookSelectionPredicate } from "@/modules/learning-content/english-metadata";
 import { activeLearningCardPredicate } from "@/modules/learning-content/active-cards";
 import { addDictationTodo } from "@/modules/todos/dictation";
@@ -177,6 +178,7 @@ export function createDictationTaskService(
     }));
     return {
       id: task.id,
+      responseMode: task.responseMode === "keyboard" ? "keyboard" : "paper",
       childId: task.childId,
       mode: z.enum(["continuous_batch", "item_by_item"]).parse(task.mode),
       order: z.enum(["source", "random"]).parse(task.taskOrder),
@@ -199,6 +201,7 @@ export function createDictationTaskService(
     metadata?: TaskMetadata,
   ): Promise<LearningTask> {
     const input = buildTaskInputSchema.parse(rawInput);
+    if (input.responseMode==='keyboard' && (input.subject!=='english'||input.mode!=='continuous_batch'||input.gradingMode!=='self')) throw new Error('TASK_CARD_SUBJECT_MISMATCH');
     if (input.englishStudyOptions && input.subject !== "english") throw new Error("TASK_CARD_SUBJECT_MISMATCH");
     if (new Set(input.newCardIds).size !== input.newCardIds.length) {
       throw new Error("TASK_CARD_DUPLICATE");
@@ -237,6 +240,7 @@ export function createDictationTaskService(
           speechRate: String(input.speechRate),
           allowManualReplay: input.allowManualReplay,
           gradingMode: input.gradingMode,
+          responseMode: input.responseMode ?? "paper",
           englishStudyOptions: input.englishStudyOptions,
           maxReviewCards: input.maxReviewCards,
           ...(!metadata && input.englishStudyOptions?.mode === "assisted" ? { title: "英语听写（辅助练习）" } : {}),
@@ -383,6 +387,7 @@ export function createDictationTaskService(
           kind: item.kind,
           position,
           ttsDedupeKey,
+          keyboardSnapshot: input.responseMode === "keyboard" ? createKeyboardSnapshot(item.card.answerText, getEnglishMetadata(item.card.builtinKey)) : null,
         });
       }
       await tx.insert(learningTaskItems).values(values);
@@ -393,6 +398,7 @@ export function createDictationTaskService(
 
   async function buildTaskBatch(actor: GuardianActor, rawInput: BuildTaskBatchInput): Promise<LearningTask[]> {
     const input = buildTaskBatchInputSchema.parse(rawInput);
+    if (input.responseMode==='keyboard' && (input.subject!=='english'||input.mode!=='continuous_batch'||input.gradingMode!=='self')) throw new Error('TASK_CARD_SUBJECT_MISMATCH');
     if (input.englishStudyOptions && input.subject !== "english") throw new Error("TASK_CARD_SUBJECT_MISMATCH");
     if (new Set(input.sectionIds).size !== input.sectionIds.length || input.sectionIds.length > 30 || input.extraCardIds.length > 100) {
       throw new Error("TASK_BATCH_INVALID");
@@ -456,6 +462,7 @@ export function createDictationTaskService(
           mode: input.mode, order: input.order, intervalSeconds: input.intervalSeconds,
           repeatCount: input.repeatCount, speechRate: input.speechRate, allowManualReplay: input.allowManualReplay,
           gradingMode: input.gradingMode,
+          responseMode: input.responseMode,
           englishStudyOptions: input.englishStudyOptions,
         }, { origin: "curriculum", title, sectionId: section.id, batchCommandId: input.commandId, batchFingerprint }));
       }
@@ -467,6 +474,7 @@ export function createDictationTaskService(
           mode: input.mode, order: input.order, intervalSeconds: input.intervalSeconds,
           repeatCount: input.repeatCount, speechRate: input.speechRate, allowManualReplay: input.allowManualReplay,
           gradingMode: input.gradingMode,
+          responseMode: input.responseMode,
           englishStudyOptions: input.englishStudyOptions,
         }, { origin: "extra_practice", title, batchCommandId: input.commandId, batchFingerprint }));
       }

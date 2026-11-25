@@ -1,4 +1,4 @@
-import { and, asc, eq, isNull, or } from "drizzle-orm";
+import { and, asc, eq, isNull, or, sql } from "drizzle-orm";
 import { z } from "zod";
 
 import type { DbTransaction } from "@/db/client";
@@ -213,6 +213,8 @@ export function createSessionReportService(database?: ReportDatabase) {
         sessionCompletedAt: dictationSessions.completedAt,
         taskStatus: learningTasks.status,
         gradingMode: learningTasks.gradingMode,
+        responseMode: learningTasks.responseMode,
+        englishStudyOptions: learningTasks.englishStudyOptions,
         taskCompletedAt: learningTasks.completedAt,
         completedAt: dictationCompletionEvents.completedAt,
       })
@@ -277,7 +279,7 @@ export function createSessionReportService(database?: ReportDatabase) {
         .select({
           itemId: dictationAnswerEvents.taskItemId,
           cardId: dictationSessionItems.cardId,
-          answerText: learningCards.answerText,
+          answerText:sql<string>`coalesce(${learningTaskItems.keyboardSnapshot}->>'answer',${learningCards.answerText})`,
           round: dictationAnswerEvents.roundNumber,
           correct: dictationAnswerEvents.correct,
           eventRole: dictationAnswerEvents.eventRole,
@@ -395,7 +397,9 @@ export function createSessionReportService(database?: ReportDatabase) {
       ...metrics,
       completedAt: base.completedAt,
       withdrawn,
-      selfGraded: base.gradingMode === "self",
+      selfGraded: base.responseMode!=='keyboard'&&base.gradingMode === "self",
+      responseMode:base.responseMode==='keyboard'?'keyboard':'paper',
+      assisted:base.englishStudyOptions?.mode==='assisted',
     };
   }
 

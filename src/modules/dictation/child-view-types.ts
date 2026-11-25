@@ -1,10 +1,12 @@
 import { z } from "zod";
+import { responseModeSchema,keyboardViewSchema } from "./keyboard-types";
 import { englishDetailsSchema, englishListeningHintsSchema, englishWritingHintSchema } from "@/modules/learning-content/english-types";
 
 const uuidSchema = z.string().uuid();
 
 export const childTaskSummarySchema = z.object({
   taskId: uuidSchema,
+  responseMode: responseModeSchema.optional(),
   sessionId: uuidSchema.nullable(),
   itemCount: z.number().int().positive(),
   mode: z.enum(["continuous_batch", "item_by_item"]),
@@ -28,6 +30,8 @@ const sessionBaseSchema = z.object({
   speechRate: z.number().min(0.5).max(2),
   allowManualReplay: z.boolean(),
   gradingMode: z.enum(["self", "parent"]).default("self"),
+  responseMode: responseModeSchema.optional(),
+  keyboard: keyboardViewSchema.optional(),
 });
 
 const listeningItemSchema = z.object({

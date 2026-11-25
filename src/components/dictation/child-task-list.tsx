@@ -49,7 +49,7 @@ export function ChildTaskList({ tasks }: { tasks: ChildTaskSummary[] }) {
         <article className="child-task-row" key={task.taskId}>
           <div>
             <strong>听写任务 {index + 1}</strong>
-            <span>{task.itemCount} 题 · {task.mode === "continuous_batch" ? "连续听写" : "逐题练习"}</span>
+            <span>{task.itemCount} 题 · {task.responseMode==='keyboard'?'键盘听写':task.mode === "continuous_batch" ? "纸笔连续听写" : "纸笔逐题练习"}</span>
           </div>
           {task.sessionId ? (
             <Link className="dictation-primary" href={`/child/dictation/${task.sessionId}`}>继续听写</Link>

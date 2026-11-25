@@ -15,6 +15,7 @@ import {
   uuid,
 } from "drizzle-orm/pg-core";
 
+import type { KeyboardSnapshot } from './keyboard-types';
 import type { EnglishStudyOptions } from "@/modules/learning-content/english-types";
 import { children, families, guardians } from "@/modules/families/schema";
 import { learningCards, textbookSections } from "@/modules/learning-content/schema";
@@ -36,6 +37,7 @@ export const learningTasks = pgTable(
     repeatCount: integer("repeat_count").notNull(),
     speechRate: numeric("speech_rate", { precision: 4, scale: 2 }).notNull(),
     allowManualReplay: boolean("allow_manual_replay").notNull(),
+    responseMode: text("response_mode").notNull().default("paper"),
     gradingMode: text("grading_mode").notNull().default("self"),
     englishStudyOptions: jsonb("english_study_options").$type<EnglishStudyOptions>(),
     maxReviewCards: integer("max_review_cards").notNull(),
@@ -64,6 +66,7 @@ export const learningTasks = pgTable(
       columns: [table.familyId, table.guardianId],
       foreignColumns: [guardians.familyId, guardians.id],
     }).onDelete("restrict"),
+    check('learning_tasks_response_mode_check',sql`${table.responseMode} in ('paper','keyboard') and (${table.responseMode}='paper' or (${table.mode}='continuous_batch' and ${table.gradingMode}='self'))`),
     check("learning_tasks_mode_check", sql`${table.mode} in ('continuous_batch', 'item_by_item')`),
     check("learning_tasks_english_study_check", sql`${table.englishStudyOptions} is null or (
       jsonb_typeof(${table.englishStudyOptions}) = 'object'
@@ -97,6 +100,7 @@ export const learningTaskItems = pgTable(
     kind: text("kind").notNull(),
     position: integer("position").notNull(),
     ttsDedupeKey: text("tts_dedupe_key").notNull(),
+    keyboardSnapshot: jsonb("keyboard_snapshot").$type<KeyboardSnapshot>(),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
   },
   (table) => [

@@ -1,0 +1,10 @@
+import { expect,test } from 'vitest';
+import { createKeyboardSnapshot,gradeKeyboardAnswer,knownSpellingVariants } from '@/modules/dictation/keyboard-grading';
+import { keyboardCommandSchema } from '@/modules/dictation/keyboard-types';
+const id='1fd650b8-25b7-4ad8-8fd6-2b91660bf0cf';
+function grade(answer:string,input:string){return gradeKeyboardAnswer(id,input,createKeyboardSnapshot(answer))}
+test('统一输入法引号与空格，保留单词之间空格和词形要求',()=>{expect(grade("don't",' don’t ')).toMatchObject({status:'correct',correct:true});expect(grade('ice cream','ice   cream').correct).toBe(true);expect(grade('ice cream','icecream')).toMatchObject({reason:'spacing',correct:false});expect(grade('played','play')).toMatchObject({reason:'spelling',correct:false});expect(grade('four','4').correct).toBe(false)});
+test('普通单词允许首字母大写，必要大小写仍核对',()=>{expect(grade('pencil','Pencil').correct).toBe(true);expect(grade('pencil','PENCIL').reason).toBe('case');expect(grade('Monday','monday').reason).toBe('case');expect(grade('I','i').reason).toBe('case')});
+test('明确认可写法自动通过，规范变体由家长复核而非猜测正确',()=>{expect(grade('colour','color')).toMatchObject({status:'pending',correct:null,reason:'variant'});expect(knownSpellingVariants('Labour Day')).toContain('Labor Day');const s=createKeyboardSnapshot('colour');s.rules.acceptedAnswers=['color'];expect(gradeKeyboardAnswer(id,'color',s).correct).toBe(true);expect(grade('colour','colur').correct).toBe(false);expect(grade('favourite','favorite').status).toBe('pending')});
+test('空白明确保留，复杂未经审定目标进入复核',()=>{expect(grade('pencil','   ')).toMatchObject({reason:'blank',correct:false,input:'   '});expect(grade('a / an','a')).toMatchObject({status:'pending',reason:'manual'});expect(createKeyboardSnapshot('manual').hints).toBeUndefined()});
+test('孩子提交只接收输入，不能传成绩、答案或跨轮覆盖参数',()=>{const input={type:'submit',commandId:id,expectedVersion:0,roundNumber:1,draftRevision:0,answers:[{itemId:id,input:'word',correct:true}]};expect(()=>keyboardCommandSchema.parse(input)).toThrow();expect(()=>keyboardCommandSchema.parse({...input,answers:[{itemId:id,input:'a'.repeat(501)}]})).toThrow()});

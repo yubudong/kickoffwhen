@@ -36,6 +36,8 @@ export function TaskBuilderForm({
   const [subjectFilter, setSubjectFilter] = useState<SubjectFilter>("all");
   const [gradeFilter, setGradeFilter] = useState<GradeFilter>("all");
   const [englishMode, setEnglishMode] = useState<"standard" | "assisted">("standard");
+  const [responseMode,setResponseMode]=useState<"paper"|"keyboard">("paper");
+  const keyboard=subject==='english'&&responseMode==='keyboard';
   const [includeRecognition, setIncludeRecognition] = useState(false);
   const submissionRef = useRef<ReturnType<typeof createTaskSubmissionController> | null>(null);
   if (submissionRef.current === null) {
@@ -86,13 +88,14 @@ export function TaskBuilderForm({
           sectionIds: selectedSectionIds,
           extraCardIds,
           commandId,
-          mode: formData.get("mode"),
+          ...(keyboard?{responseMode:"keyboard"}:{}),
+          mode: keyboard?"continuous_batch":formData.get("mode"),
           order: formData.get("order"),
-          intervalSeconds: Number(formData.get("intervalSeconds")),
+          intervalSeconds: keyboard?2:Number(formData.get("intervalSeconds")),
           repeatCount: Number(formData.get("repeatCount")),
           speechRate: Number(formData.get("speechRate")),
           allowManualReplay: formData.get("allowManualReplay") === "on",
-          gradingMode: formData.get("gradingMode") ?? "self",
+          gradingMode: keyboard?"self":formData.get("gradingMode") ?? "self",
           ...(subject === "english" ? { englishStudyOptions: { version: 1, mode: englishMode, includeRecognition } } : {}),
         }),
       });
@@ -157,20 +160,22 @@ export function TaskBuilderForm({
       <ExtraPracticePicker includeRecognition={includeRecognition} cards={filteredCards} childId={childId} subject={subject} selectedSectionIds={selectedSectionIds} selected={extraCardIds} onChange={setExtraCardIds}/>
       <p className="task-batch-preview" aria-live="polite">将创建 {selectedSections.length + (extraCardIds.length ? 1 : 0)} 项任务：{selectedSections.length} 课、{selectedNewWords} 个教材新词{extraCardIds.length ? `，另加练 ${extraCardIds.length} 词` : ""}。</p>
 
+      {subject==='english'&&<fieldset><legend>作答方式</legend><label><input type="radio" name="responseMode" checked={responseMode==='paper'} onChange={()=>setResponseMode('paper')}/>纸笔听写 · 电脑读，纸上写</label><label><input type="radio" name="responseMode" checked={responseMode==='keyboard'} onChange={()=>setResponseMode('keyboard')}/>键盘听写 · 听音后直接输入</label><p>{keyboard?'逐题作答、手动下一题，整轮交卷后系统核对；规范变体交家长复核，首次成绩与订正记录保留。':'沿用原来的连续或逐题朗读、自己核对或拍照交家长批改。'}</p></fieldset>}
+      <p className="task-assignment-summary">{child?.nickname} · {subject==='english'?'英语':'语文'} · {keyboard?'键盘听写 · 系统核对':'纸笔听写'}{subject==='english'?` · ${englishMode==='assisted'?'辅助练习':'只听英语'}`:''}</p>
       <div className="grid two">
-        <label>模式<select name="mode" defaultValue="continuous_batch"><option value="continuous_batch">连续听写</option><option value="item_by_item">逐题练习</option></select></label>
+        {!keyboard&&<label>模式<select name="mode" defaultValue="continuous_batch"><option value="continuous_batch">连续听写</option><option value="item_by_item">逐题练习</option></select></label>}
         <label>顺序<select name="order" defaultValue="source"><option value="source">原顺序</option><option value="random">随机</option></select></label>
-        <label>题间隔（秒）<input name="intervalSeconds" type="number" min="2" max="120" defaultValue="8" /></label>
+        {!keyboard&&<label>题间隔（秒）<input name="intervalSeconds" type="number" min="2" max="120" defaultValue="8" /></label>}
         <label>播报次数<select name="repeatCount" defaultValue="1"><option value="1">1</option><option value="2">2</option><option value="3">3</option></select></label>
         <label>朗读速度<input name="speechRate" type="number" min="0.5" max="2" step="0.05" defaultValue="1" /></label>
       </div>
       <label><input name="allowManualReplay" type="checkbox" defaultChecked /> 允许孩子手动重听</label>
-      <fieldset>
+      {!keyboard&&<fieldset>
         <legend>批改方式</legend>
         <label><input type="radio" name="gradingMode" value="self" defaultChecked /> 孩子自己批改</label>
         <label><input type="radio" name="gradingMode" value="parent" /> 提交给家长批改</label>
         <p>家长批改：孩子听完后拍照上传，家长逐词判对错；错词继续听写订正。</p>
-      </fieldset>
+      </fieldset>}
       <p>当前孩子有 {child?.dueCounts[subject] ?? 0} 张{subject === "chinese" ? "语文" : "英语"}到期卡片，会自动汇总成复习任务。</p>
       <button disabled={pending || !childId || (selectedSections.length === 0 && extraCardIds.length === 0)} type="submit">{pending ? "正在创建…" : "下发所选任务"}</button>
       {message ? <p role="status">{message}</p> : null}
