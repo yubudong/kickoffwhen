@@ -1,0 +1,120 @@
+{
+  "version": 2,
+  "generatedFor": "family-learning",
+  "animalStages": 5,
+  "growthStages": 4,
+  "files": [
+    "capybara-0.webp",
+    "capybara-1.webp",
+    "capybara-2.webp",
+    "capybara-3.webp",
+    "capybara-4.webp",
+    "cat-0.webp",
+    "cat-1.webp",
+    "cat-2.webp",
+    "cat-3-human-boy.webp",
+    "cat-3-human-girl.webp",
+    "cat-3.webp",
+    "cat-4-human-boy.webp",
+    "cat-4-human-girl.webp",
+    "cat-4.webp",
+    "dragon-0.webp",
+    "dragon-1.webp",
+    "dragon-2.webp",
+    "dragon-3.webp",
+    "dragon-4.webp",
+    "fox-0.webp",
+    "fox-1.webp",
+    "fox-2.webp",
+    "fox-3-human-boy.webp",
+    "fox-3-human-girl.webp",
+    "fox-3.webp",
+    "fox-4-human-boy.webp",
+    "fox-4-human-girl.webp",
+    "fox-4.webp",
+    "phoenix-0.webp",
+    "phoenix-1.webp",
+    "phoenix-2.webp",
+    "phoenix-3-human-boy.webp",
+    "phoenix-3-human-girl.webp",
+    "phoenix-3.webp",
+    "phoenix-4-human-boy.webp",
+    "phoenix-4-human-girl.webp",
+    "phoenix-4.webp",
+    "rabbit-0.webp",
+    "rabbit-1.webp",
+    "rabbit-2.webp",
+    "rabbit-3.webp",
+    "rabbit-4.webp",
+    "unicorn-0.webp",
+    "unicorn-1.webp",
+    "unicorn-2.webp",
+    "unicorn-3.webp",
+    "unicorn-4.webp",
+    "wolf-0.webp",
+    "wolf-1.webp",
+    "wolf-2.webp",
+    "wolf-3-human-boy.webp",
+    "wolf-3-human-girl.webp",
+    "wolf-3.webp",
+    "wolf-4-human-boy.webp",
+    "wolf-4-human-girl.webp",
+    "wolf-4.webp"
+  ],
+  "atlases": [
+    {
+      "source": "d5895632-a330-4aab-85aa-0f934e0fcc78/pet-growth-atlas.png",
+      "sha256": "5a0ca997667572a48dcc08bd49730e77290dcab3212321196ba9f409242e153f",
+      "species": [
+        "dragon",
+        "fox"
+      ],
+      "columns": "egg,infant,young,teen,adult"
+    },
+    {
+      "source": "34fa2ecd-8f1d-4c54-8c24-e7eb189eddb5/pet-growth-atlas.png",
+      "sha256": "85aabb2d6eeb3a53b999961ca2de5055e58c3752bcaecbc40f0e54bac272b8aa",
+      "species": [
+        "phoenix",
+        "capybara"
+      ],
+      "columns": "egg,infant,young,teen,adult"
+    },
+    {
+      "source": "483939f8-d0b5-40b0-93df-ff800aaeb1c3/pet-growth-atlas.png",
+      "sha256": "bb11756d4436a1a8367911f08578bc7ea620b2dde95b0fec779a973017e154bc",
+      "species": [
+        "rabbit",
+        "cat"
+      ],
+      "columns": "egg,infant,young,teen,adult"
+    },
+    {
+      "source": "aae20ebb-4028-416b-a372-2d2bac32db43/frost-wolf-rainbow-unicorn-atlas.png",
+      "sha256": "dbf65009908397b772eca1ceb2f99d0b34d03cd150fce8add1dd9187aa84741b",
+      "species": [
+        "wolf",
+        "unicorn"
+      ],
+      "columns": "egg,infant,young,teen,adult"
+    },
+    {
+      "source": "c3e84979-adce-4e86-afac-03e94ac35a66/pet-human-form-atlas.png",
+      "sha256": "25969a742434096224fa78e33ff308e3ebdef15925519e99af4c54087fc9f917",
+      "species": [
+        "fox",
+        "phoenix"
+      ],
+      "columns": "teen-boy,teen-girl,adult-boy,adult-girl"
+    },
+    {
+      "source": "234a41df-8627-4029-b818-fae94dd8aeab/pet-human-form-atlas.png",
+      "sha256": "d8ebafdb9acb1cb9f6963012ebc0900c93e3ddaca30e42fb76227e0602e95e5f",
+      "species": [
+        "cat",
+        "wolf"
+      ],
+      "columns": "teen-boy,teen-girl,adult-boy,adult-girl"
+    }
+  ]
+}

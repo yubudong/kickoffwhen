@@ -4,6 +4,7 @@ import { mkdir } from 'node:fs/promises';
 test.use({ extraHTTPHeaders: { 'x-forwarded-for': uniqueTestIp() } });
 test('重复习惯到自主奖励、宠物投喂进化、虚拟购买祝福与现实奖励兑现', async ({ page, browser }, testInfo) => {
     test.setTimeout(150000);
+    page.setDefaultTimeout(10000);
     const email = `growth-${crypto.randomUUID()}@example.test`;
     await page.goto('/sign-up');
     await page.getByLabel('称呼').fill('成长家长');
@@ -37,6 +38,7 @@ test('重复习惯到自主奖励、宠物投喂进化、虚拟购买祝福与�
     const pairing = await page.evaluate(async () => { const { children } = await (await fetch('/api/parent/children')).json(); const r = await fetch('/api/parent/devices/pairing-code', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ childIds: [children[0].id] }) }); return (await r.json()).code as string; });
     const childContext = await browser.newContext({ extraHTTPHeaders: { 'x-forwarded-for': uniqueTestIp() } });
     const child = await childContext.newPage();
+    child.setDefaultTimeout(10000);
     try {
         await child.goto('/pair');
         await child.getByLabel('配对码').fill(pairing);
@@ -53,6 +55,15 @@ test('重复习惯到自主奖励、宠物投喂进化、虚拟购买祝福与�
         await drawer.getByRole('button', { name: '关闭', exact: true }).click();
         await child.getByRole('link', { name: /我的伙伴/ }).click();
         await expect(child.locator('.growth-balances')).toContainText('2,000');
+        await expect(child.locator('.expanded-eggs > button')).toHaveCount(8);
+        await child.getByRole('button', { name: '动物／神兽路线 · 4', exact: true }).click();
+        await expect(child.locator('.expanded-eggs > button')).toHaveCount(4);
+        await expect(child.locator('.expanded-eggs')).toContainText('森屿水豚蛋');
+        await child.getByRole('button', { name: '可解锁人形 · 4', exact: true }).click();
+        await expect(child.locator('.expanded-eggs > button')).toHaveCount(4);
+        await child.getByRole('button', { name: /星羽凤凰蛋/ }).click();
+        await child.getByRole('button', { name: '预览化形路线', exact: true }).click();
+        await expect(child.locator('.companion-preview img').last()).toHaveAttribute('src', /phoenix-4-human-girl/);
         await child.getByRole('button', { name: /月灵狐蛋/ }).click();
         await child.getByLabel('伙伴的名字').fill('月月');
         await child.getByRole('button', { name: '领养这颗蛋' }).click();
@@ -64,7 +75,7 @@ test('重复习惯到自主奖励、宠物投喂进化、虚拟购买祝福与�
         await expect(child.getByRole('button', { name: '开始孵化', exact: true })).toBeVisible();
         await child.getByRole('button', { name: '开始孵化', exact: true }).click();
         await child.getByRole('button', { name: '一起继续成长' }).click();
-        for (let i = 0; i < 2; i++) {
+        for (let i = 0; i < 3; i++) {
             await child.getByLabel('投喂成长值', { exact: true }).fill('2000');
             await child.getByRole('button', { name: '投喂成长值', exact: true }).click();
             await child.getByRole('button', { name: '见证成长', exact: true }).click();
@@ -72,9 +83,19 @@ test('重复习惯到自主奖励、宠物投喂进化、虚拟购买祝福与�
         }
         await child.getByRole('button', { name: '化为人形', exact: true }).click();
         await expect(child.getByRole('button', { name: '变回月灵狐', exact: true })).toBeVisible();
-        await expect(child.locator('.companion-scene img')).toHaveAttribute('src', /fox-human-girl/);
-        await child.getByRole('button', { name: '切换少年／少女形象' }).click();
-        await expect(child.locator('.companion-scene img')).toHaveAttribute('src', /fox-human-boy/);
+        await expect(child.locator('.companion-scene img')).toHaveAttribute('src', /fox-4-human-girl/);
+        await child.getByRole('button', { name: '切换成年男／女形象' }).click();
+        await expect(child.locator('.companion-scene img')).toHaveAttribute('src', /fox-4-human-boy/);
+        await child.getByLabel('展示年龄', { exact: true }).selectOption('1');
+        await expect(child.locator('.companion-scene img')).toHaveAttribute('src', /fox-1.webp/);
+        await expect(child.getByRole('button', { name: '化为人形', exact: true })).toHaveCount(0);
+        const unchanged = await child.evaluate(async () => (await fetch('/api/child/engagement')).json());
+        expect(unchanged.pet.stage).toBe(4); expect(unchanged.wallet.fed).toBe(1800);
+        await child.getByLabel('展示年龄', { exact: true }).selectOption('3');
+        await child.getByRole('button', { name: '化为人形', exact: true }).click();
+        await expect(child.locator('.companion-scene img')).toHaveAttribute('src', /fox-3-human-boy/);
+        await child.getByLabel('展示年龄', { exact: true }).selectOption('4');
+        await expect(child.locator('.companion-scene img')).toHaveAttribute('src', /fox-4-human-boy/);
         await child.getByRole('button', { name: '星币商店', exact: true }).click();
         const focus = child.locator('.growth-item-grid article').filter({ has: child.getByRole('heading', { name: '专注祝福', exact: true }) });
         await focus.getByRole('button', { name: '购买', exact: true }).click();
@@ -86,10 +107,10 @@ test('重复习惯到自主奖励、宠物投喂进化、虚拟购买祝福与�
         await child.getByRole('dialog').getByRole('button', { name: '确认', exact: true }).click();
         await expect(child.locator('.boost-list')).toContainText('＋10%');
         await mkdir('docs/screenshots', { recursive: true });
-        await child.locator('.companion-home').screenshot({ path: `docs/screenshots/companion-desktop-${testInfo.project.name}.png` });
+        await child.locator('.companion-home').screenshot({ path: `docs/screenshots/companion-v2-desktop-${testInfo.project.name}.png` });
         await child.setViewportSize({ width: 390, height: 844 });
         await mkdir('docs/screenshots', { recursive: true });
-        await child.screenshot({ path: `docs/screenshots/companion-${testInfo.project.name}.png`, fullPage: true });
+        await child.screenshot({ path: `docs/screenshots/companion-v2-${testInfo.project.name}.png`, fullPage: true });
         expect(await child.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
         await child.getByRole('button', { name: '家庭奖励', exact: true }).click();
         await child.getByRole('button', { name: '申请兑换', exact: true }).click();
@@ -107,6 +128,17 @@ test('重复习惯到自主奖励、宠物投喂进化、虚拟购买祝福与�
         await child.getByRole('button', { name: '家庭奖励', exact: true }).click();
         await expect(child.locator('.reward-request')).toContainText('已兑现');
         await expect(child.locator('.growth-balances')).toContainText('18');
+        await page.getByRole('button', { name: '我的伙伴', exact: true }).click();
+        await page.getByText('更换伙伴（家长操作）', { exact: true }).click();
+        await page.getByRole('combobox', { name: '伙伴', exact: true }).selectOption('capybara');
+        await page.getByLabel('名字', { exact: true }).fill('慢慢');
+        await page.getByRole('button', { name: '确认更换', exact: true }).click();
+        await page.getByRole('dialog').getByRole('button', { name: '确认', exact: true }).click();
+        await child.reload();
+        await expect(child.locator('.companion-scene img')).toHaveAttribute('src', /capybara-4.webp/);
+        await expect(child.getByRole('button', { name: '化为人形', exact: true })).toHaveCount(0);
+        await expect(child.locator('.growth-balances')).toContainText('1,800');
+
     }
     finally {
         await childContext.close();
