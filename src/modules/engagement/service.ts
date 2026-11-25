@@ -9,6 +9,7 @@ import { todayShanghai, dateSchema, eachTodoDate, todoDateRange } from '@/module
 import { habits, growthEntries, companions, companionMemories, inventories, growthBoosts, familyRewards, rewardRequests } from './schema';
 import { habitInput, rewardInput, speciesSchema, scheduled, weekOf, nextDate, feedAmount, stages, shopItems, shopItem } from './rules';
 import { lockWallet, changeWallet, entryExists, type Scope } from './wallet';
+import { canTransform, maxStage } from './companion-catalog';
 type Database = typeof db | DbTransaction;
 const uuid = z.string().uuid();
 const counted = ['pending', 'approved', 'completed'];
@@ -162,15 +163,26 @@ export function createEngagementService(database: Database = db, clock: () => Da
             const [pet] = await tx.select().from(companions).where(eq(companions.childId, scope.childId));
             if (!pet)
                 throw new Error('PET_REQUIRED');
-            if (pet.stage === 3 || wallet.fed < stages[pet.stage + 1])
+            if (pet.stage >= maxStage || wallet.fed < stages[pet.stage + 1])
                 throw new Error('NOT_READY');
             const stage = pet.stage + 1;
-            await tx.update(companions).set({ stage }).where(eq(companions.childId, scope.childId));
+            await tx.update(companions).set({ stage, displayStage: stage }).where(eq(companions.childId, scope.childId));
             await tx.insert(companionMemories).values({ ...scope, stage, species: pet.species, createdAt: clock() }).onConflictDoNothing();
         });
     }
-    async function appearance(actor: Actor, input: unknown) { const v = z.object({ childId: uuid.optional(), appearance: z.enum(['animal', 'human']), humanStyle: z.enum(['boy', 'girl']) }).parse(input); const scope = scopeFor(actor, v.childId); return database.transaction(async (tx) => { await lockWallet(tx, scope); const [pet] = await tx.select().from(companions).where(eq(companions.childId, scope.childId)); if (!pet || pet.species !== 'fox' || pet.stage !== 3)
-        throw new Error('NOT_READY'); await tx.update(companions).set({ appearance: v.appearance, humanStyle: v.humanStyle }).where(eq(companions.childId, scope.childId)); }); }
+    async function appearance(actor: Actor, input: unknown) {
+        const v = z.object({ childId: uuid.optional(), displayStage: z.number().int().min(1).max(maxStage).optional(), appearance: z.enum(['animal', 'human']), humanStyle: z.enum(['boy', 'girl']).default('girl') }).parse(input);
+        const scope = scopeFor(actor, v.childId);
+        return database.transaction(async tx => {
+            await lockWallet(tx, scope);
+            const [pet] = await tx.select().from(companions).where(eq(companions.childId, scope.childId));
+            if (!pet || pet.stage === 0) throw new Error('NOT_READY');
+            const displayStage = v.displayStage ?? pet.displayStage;
+            if (displayStage > pet.stage) throw new Error('FORM_LOCKED');
+            if (v.appearance === 'human' && !canTransform(pet.species, displayStage)) throw new Error('TRANSFORM_UNAVAILABLE');
+            await tx.update(companions).set({ displayStage, appearance: v.appearance, humanStyle: v.humanStyle }).where(eq(companions.childId, scope.childId));
+        });
+    }
     async function buy(actor: Actor, input: unknown) {
         const v = z.object({ childId: uuid.optional(), commandId: uuid, itemKey: z.string(), expectedPrice: z.number().int().optional() }).parse(input);
         const scope = scopeFor(actor, v.childId);
