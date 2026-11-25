@@ -9,7 +9,7 @@ import { todayShanghai, dateSchema, eachTodoDate, todoDateRange } from '@/module
 import { habits, growthEntries, companions, companionMemories, inventories, growthBoosts, familyRewards, rewardRequests } from './schema';
 import { habitInput, rewardInput, speciesSchema, scheduled, weekOf, nextDate, feedAmount, stages, shopItems, shopItem } from './rules';
 import { lockWallet, changeWallet, entryExists, type Scope } from './wallet';
-import { canTransform, maxStage } from './companion-catalog';
+import { canTransform, canUseHumanStyle, humanStylesFor, maxStage } from './companion-catalog';
 type Database = typeof db | DbTransaction;
 const uuid = z.string().uuid();
 const counted = ['pending', 'approved', 'completed'];
@@ -129,14 +129,18 @@ export function createEngagementService(database: Database = db, clock: () => Da
         });
     }
     async function choosePet(actor: Actor, input: unknown) {
-        const v = z.object({ childId: uuid.optional(), species: speciesSchema, name: z.string().trim().min(1).max(24) }).parse(input);
+        const v = z.object({ childId: uuid.optional(), species: speciesSchema, name: z.string().trim().min(1).max(24), humanStyle: z.enum(['boy', 'girl']).optional() }).parse(input);
         const scope = scopeFor(actor, v.childId);
         return database.transaction(async (tx) => {
             await lockWallet(tx, scope);
             const [pet] = await tx.select().from(companions).where(eq(companions.childId, scope.childId));
             if (pet && pet.stage > 0 && actor.role !== 'guardian')
                 throw new Error('PARENT_CHANGE_REQUIRED');
-            await tx.insert(companions).values({ ...scope, species: v.species, name: v.name }).onConflictDoUpdate({ target: companions.childId, set: { species: v.species, name: v.name, appearance: 'animal' } });
+            const styles = humanStylesFor(v.species);
+            if (v.humanStyle && styles.length > 0 && !styles.includes(v.humanStyle)) throw new Error('HUMAN_STYLE_UNAVAILABLE');
+            const requested = v.humanStyle ?? pet?.humanStyle ?? 'boy';
+            const humanStyle = styles.length === 1 ? styles[0] : requested;
+            await tx.insert(companions).values({ ...scope, species: v.species, name: v.name, humanStyle }).onConflictDoUpdate({ target: companions.childId, set: { species: v.species, name: v.name, appearance: 'animal', humanStyle } });
         });
     }
     async function feed(actor: Actor, input: unknown) {
@@ -171,7 +175,7 @@ export function createEngagementService(database: Database = db, clock: () => Da
         });
     }
     async function appearance(actor: Actor, input: unknown) {
-        const v = z.object({ childId: uuid.optional(), displayStage: z.number().int().min(1).max(maxStage).optional(), appearance: z.enum(['animal', 'human']), humanStyle: z.enum(['boy', 'girl']).default('girl') }).parse(input);
+        const v = z.object({ childId: uuid.optional(), displayStage: z.number().int().min(1).max(maxStage).optional(), appearance: z.enum(['animal', 'human']), humanStyle: z.enum(['boy', 'girl']).optional() }).parse(input);
         const scope = scopeFor(actor, v.childId);
         return database.transaction(async tx => {
             await lockWallet(tx, scope);
@@ -180,7 +184,9 @@ export function createEngagementService(database: Database = db, clock: () => Da
             const displayStage = v.displayStage ?? pet.displayStage;
             if (displayStage > pet.stage) throw new Error('FORM_LOCKED');
             if (v.appearance === 'human' && !canTransform(pet.species, displayStage)) throw new Error('TRANSFORM_UNAVAILABLE');
-            await tx.update(companions).set({ displayStage, appearance: v.appearance, humanStyle: v.humanStyle }).where(eq(companions.childId, scope.childId));
+            const humanStyle = v.humanStyle ?? pet.humanStyle;
+            if ((v.appearance === 'human' && !canUseHumanStyle(pet.species, displayStage, humanStyle)) || (humanStylesFor(pet.species).length === 1 && humanStyle !== 'boy')) throw new Error('HUMAN_STYLE_UNAVAILABLE');
+            await tx.update(companions).set({ displayStage, appearance: v.appearance, humanStyle }).where(eq(companions.childId, scope.childId));
         });
     }
     async function buy(actor: Actor, input: unknown) {

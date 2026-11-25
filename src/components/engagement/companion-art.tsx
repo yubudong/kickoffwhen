@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { speciesNames, stageNames, companionAsset } from '@/modules/engagement/companion-catalog';
-export function CompanionArt({ species, stage, name, appearance = 'animal', humanStyle = 'girl', large = false }: {
+export function CompanionArt({ species, stage, name, appearance = 'animal', humanStyle = 'boy', large = false }: {
     species: keyof typeof speciesNames;
     stage: number;
     name?: string;

@@ -1,11 +1,13 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { expect, test } from 'vitest';
-import { canTransform, companionAsset, companionCatalog, legacyStageToCurrent, speciesKeys, stageNames, stages } from '@/modules/engagement/companion-catalog';
+import { canTransform, canUseHumanStyle, humanStylesFor, companionRoute, companionAsset, companionCatalog, legacyStageToCurrent, speciesKeys, stageNames, stages } from '@/modules/engagement/companion-catalog';
 
-test('八种伙伴明确分为四种可化形和四种动物神兽路线', () => {
-  expect(speciesKeys).toEqual(['dragon', 'fox', 'phoenix', 'capybara', 'rabbit', 'cat', 'wolf', 'unicorn']);
-  expect(speciesKeys.filter(s => companionCatalog[s].canTransform)).toEqual(['fox', 'phoenix', 'cat', 'wolf']);
+test('十种伙伴分为四种男女可选、两种男性化形和四种动物神兽路线', () => {
+  expect(speciesKeys).toEqual(['dragon', 'fox', 'phoenix', 'capybara', 'rabbit', 'cat', 'wolf', 'unicorn', 'ape', 'tortoise']);
+  expect(speciesKeys.filter(s => companionCatalog[s].canTransform)).toEqual(['fox', 'phoenix', 'cat', 'wolf', 'ape', 'tortoise']);
   expect(speciesKeys.filter(s => !companionCatalog[s].canTransform)).toEqual(['dragon', 'capybara', 'rabbit', 'unicorn']);
+  expect(speciesKeys.filter(s => companionRoute(s) === 'male')).toEqual(['ape', 'tortoise']);
+  expect(speciesKeys.filter(s => companionRoute(s) === 'dual')).toEqual(['fox', 'phoenix', 'cat', 'wolf']);
   expect(stages).toEqual([0, 50, 300, 900, 1800]);
   expect(stageNames).toEqual(['宠物蛋', '初生期', '幼年期', '少年期', '成年期']);
 });
@@ -24,13 +26,13 @@ test('旧宠物按语义保留已解锁年龄，最终形态仍为成年，成�
   expect(stages[4]).toBe(1800);
 });
 
-test('56个成长和化形素材完整且不同年龄不共用同一张图', () => {
+test('70个成长和化形素材完整且不同年龄不共用同一张图', () => {
   const files: string[] = [];
   for (const species of speciesKeys) for (let stage = 0; stage <= 4; stage++) {
     files.push(companionAsset(species, stage));
-    if (canTransform(species, stage)) for (const style of ['boy', 'girl']) files.push(companionAsset(species, stage, 'human', style));
+    if (canTransform(species, stage)) for (const style of humanStylesFor(species)) files.push(companionAsset(species, stage, 'human', style));
   }
-  expect(new Set(files).size).toBe(56);
+  expect(new Set(files).size).toBe(70);
   for (const file of files) {
     expect(existsSync('public' + file), file).toBe(true);
     const bytes = readFileSync('public' + file);
@@ -43,4 +45,16 @@ test('56个成长和化形素材完整且不同年龄不共用同一张图', () 
     const adult = readFileSync('public' + companionAsset(species, 4));
     expect(teen.equals(adult), species).toBe(false);
   }
+});
+
+test('男性路线不能选择女性，资产解析也不会返回不存在的女性文件', () => {
+  for (const species of ['ape', 'tortoise'] as const) for (const stage of [3, 4]) {
+    expect(humanStylesFor(species)).toEqual(['boy']);
+    expect(canUseHumanStyle(species, stage, 'boy')).toBe(true);
+    expect(canUseHumanStyle(species, stage, 'girl')).toBe(false);
+    expect(companionAsset(species, stage, 'human', 'girl')).toBe(`/pets/v2/${species}-${stage}-human-boy.webp`);
+  }
+  expect(canUseHumanStyle('fox', 3, 'girl')).toBe(true);
+  expect(canUseHumanStyle('fox', 3, 'boy')).toBe(true);
+  expect(canUseHumanStyle('ape', 2, 'boy')).toBe(false);
 });

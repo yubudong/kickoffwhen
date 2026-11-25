@@ -7,7 +7,7 @@ import { shopItems, speciesNames, stageNames } from '@/modules/engagement/rules'
 import { todayShanghai } from '@/modules/todos/validation';
 import { CompanionArt } from './companion-art';
 import { CompanionPanel } from './companion-panel';
-import { canTransform } from '@/modules/engagement/companion-catalog';
+import { CompanionFormChoices } from './companion-forms';
 type Species = keyof typeof speciesNames;
 type Children = Array<{
     id: string;
@@ -32,6 +32,7 @@ export function EngagementBoard({ role, childOptions = [] }: {
         species: Species;
         stage: number;
         appearance?: string;
+        humanStyle?: 'boy' | 'girl';
     } | null>(null);
     const [confirm, setConfirm] = useState<{
         title: string;
@@ -118,6 +119,6 @@ export function EngagementBoard({ role, childOptions = [] }: {
   </>}
   {confirm && <div className="growth-modal-backdrop"><section className="growth-modal" role="dialog" aria-modal="true" aria-label={confirm.title}><h2>{confirm.title}</h2><p>{confirm.text}</p><div className="growth-actions"><button disabled={pending} onClick={() => void send(confirm.body, confirm.notice).then(ok => { if (ok)
         setConfirm(null); })}>{pending ? '处理中…' : '确认'}</button><button className="secondary-button" disabled={pending} onClick={() => setConfirm(null)}>取消</button></div>{error && <p role="alert">{error}</p>}</section></div>}
-  {memory && <div className="growth-modal-backdrop"><section className="growth-modal evolution-celebration" role="dialog" aria-modal="true" aria-label="见证伙伴成长"><p className="eyebrow">把这一刻，留在成长相册</p><h2>{memory.stage === 1 ? '你好，新伙伴！' : '每一份努力，都让我们更靠近。'}</h2><CompanionArt species={memory.species} stage={memory.stage} appearance={memory.appearance ?? 'animal'} large/><p>{speciesNames[memory.species]} · {stageNames[memory.stage]}</p>{canTransform(memory.species, memory.stage) && <button className="secondary-button" onClick={() => setMemory({ ...memory, appearance: memory.appearance === 'human' ? 'animal' : 'human' })}>{memory.appearance === 'human' ? '查看动物形态' : '预览这一阶段的人形'}</button>}<button onClick={() => setMemory(null)}>一起继续成长</button></section></div>}
+  {memory && <div className="growth-modal-backdrop"><section className="growth-modal evolution-celebration" role="dialog" aria-modal="true" aria-label="见证伙伴成长"><p className="eyebrow">把这一刻，留在成长相册</p><h2>{memory.stage === 1 ? '你好，新伙伴！' : '每一份努力，都让我们更靠近。'}</h2><CompanionArt species={memory.species} stage={memory.stage} appearance={memory.appearance ?? 'animal'} humanStyle={memory.humanStyle ?? 'boy'} large/><p>{speciesNames[memory.species]} · {stageNames[memory.stage]}</p><CompanionFormChoices species={memory.species} stage={memory.stage} label="相册形态" value={memory.appearance === 'human' ? memory.humanStyle ?? 'boy' : 'animal'} onChange={mode => setMemory({ ...memory, appearance: mode === 'animal' ? 'animal' : 'human', humanStyle: mode === 'animal' ? memory.humanStyle ?? 'boy' : mode })}/><button onClick={() => setMemory(null)}>一起继续成长</button></section></div>}
  </div>;
 }

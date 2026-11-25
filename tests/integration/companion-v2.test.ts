@@ -7,7 +7,7 @@ import { families, guardians, children } from '@/modules/families/schema';
 import { wallets } from '@/modules/engagement/schema';
 import { changeWallet } from '@/modules/engagement/wallet';
 import { createEngagementService } from '@/modules/engagement/service';
-import { companionCatalog, legacyStageToCurrent, speciesKeys, stages } from '@/modules/engagement/companion-catalog';
+import { companionCatalog, humanStylesFor, legacyStageToCurrent, speciesKeys, stages } from '@/modules/engagement/companion-catalog';
 import { withDatabaseRollback } from '../helpers/database';
 
 async function fixture(tx: DbTransaction) {
@@ -45,10 +45,10 @@ test.each(speciesKeys)('%s完整经历四个成长阶段，外观切换不影响
   if (!companionCatalog[species].canTransform) {
     await expect(service.appearance(child, { appearance: 'human', humanStyle: 'girl' })).rejects.toThrow('TRANSFORM_UNAVAILABLE');
   } else {
-    await service.appearance(child, { appearance: 'human', humanStyle: 'girl' });
+    await service.appearance(child, { appearance: 'human', humanStyle: humanStylesFor(species).includes('girl') ? 'girl' : 'boy' });
     expect((await service.list(child)).pet).toMatchObject({ stage: 4, displayStage: 4, appearance: 'human' });
   }
-  await service.appearance(child, { displayStage: 1, appearance: 'animal', humanStyle: 'girl' });
+  await service.appearance(child, { displayStage: 1, appearance: 'animal' });
   await expect(service.appearance(child, { displayStage: 1, appearance: 'human', humanStyle: 'girl' })).rejects.toThrow('TRANSFORM_UNAVAILABLE');
   await service.feed(child, { commandId: crypto.randomUUID(), amount: 7 });
   const state = await service.list(child);
@@ -122,4 +122,49 @@ test('0026真实SQL迁移保留旧宠物年龄、相册ID与日期，补入低�
   const [after] = await tx.select().from(wallets).where(eq(wallets.childId, scope.childId));
   expect(after).toEqual(before);
   await expect(tx.transaction(sub => sub.execute(sql`UPDATE companions SET species='dragon',appearance='human' WHERE stage=4`))).rejects.toThrow();
+}));
+
+test.each(['ape', 'tortoise'] as const)('%s默认男性且不能选择女性，换自女性伙伴不丢成长与余额', species => withDatabaseRollback(async tx => {
+  const { child, parent, scope } = await fixture(tx); const service = createEngagementService(tx);
+  await expect(service.choosePet(child, { species, name: '男伙伴', humanStyle: 'girl' })).rejects.toThrow('HUMAN_STYLE_UNAVAILABLE');
+  await service.choosePet(child, { species: 'fox', name: '原伙伴', humanStyle: 'girl' });
+  await changeWallet(tx, scope, 'fixture', 'fixture', { coins: 42, growth: 2000 });
+  for (let i = 0; i < 4; i++) { await service.feed(child, { commandId: crypto.randomUUID(), amount: 2000 }); await service.evolve(child); }
+  await service.appearance(child, { appearance: 'human', humanStyle: 'girl' }); const before = await service.list(child);
+  await service.choosePet(parent, { childId: child.childId, species, name: '新伙伴' });
+  let state = await service.list(child); expect(state.pet).toMatchObject({ species, stage: 4, displayStage: 4, humanStyle: 'boy', appearance: 'animal' });
+  expect(state.wallet).toEqual(before.wallet); expect(state.memories).toEqual(before.memories);
+  await service.appearance(child, { displayStage: 3, appearance: 'human' });
+  await expect(service.appearance(child, { appearance: 'human', humanStyle: 'girl' })).rejects.toThrow('HUMAN_STYLE_UNAVAILABLE');
+  await expect(service.appearance(child, { appearance: 'animal', humanStyle: 'girl' })).rejects.toThrow('HUMAN_STYLE_UNAVAILABLE');
+  state = await service.list(child); expect(state.pet).toMatchObject({ appearance: 'human', humanStyle: 'boy', displayStage: 3 });
+  await expect(tx.transaction(sub => sub.execute(sql`UPDATE companions SET human_style='girl' WHERE child_id=${child.childId}`))).rejects.toThrow();
+}));
+
+test('0027仅扩展约束，原有男女外观和钱包记录完全不改写', () => withDatabaseRollback(async tx => {
+  const { scope } = await fixture(tx);
+  await changeWallet(tx, scope, 'fixture', 'fixture', { coins: 42, growth: 100, fed: 900 });
+  const [beforeWallet] = await tx.select().from(wallets).where(eq(wallets.childId, scope.childId));
+  await tx.execute(sql.raw('CREATE TEMP TABLE companions (LIKE public.companions INCLUDING DEFAULTS);'));
+  const oldConstraint = readFileSync('drizzle/0026_lyrical_switch.sql', 'utf8').split('--> statement-breakpoint').find(statement => statement.trim().startsWith('ALTER TABLE "companions" ADD CONSTRAINT "companion_rules"'))!;
+  await tx.execute(sql.raw(oldConstraint));
+  for (const [species, stage, appearance, humanStyle] of [['fox', 4, 'human', 'girl'], ['phoenix', 3, 'human', 'boy'], ['wolf', 2, 'animal', 'girl'], ['dragon', 4, 'animal', 'girl']] as const) {
+    await tx.execute(sql`INSERT INTO companions (child_id,family_id,species,name,stage,display_stage,appearance,human_style) VALUES (${crypto.randomUUID()},${scope.familyId},${species},'原伙伴',${stage},${stage},${appearance},${humanStyle})`);
+  }
+  const before = (await tx.execute(sql`SELECT * FROM companions ORDER BY child_id`)).rows;
+  for (const statement of readFileSync('drizzle/0027_slippery_wild_child.sql', 'utf8').split('--> statement-breakpoint')) await tx.execute(sql.raw(statement));
+  expect((await tx.execute(sql`SELECT * FROM companions ORDER BY child_id`)).rows).toEqual(before);
+  const [afterWallet] = await tx.select().from(wallets).where(eq(wallets.childId, scope.childId)); expect(afterWallet).toEqual(beforeWallet);
+  const id = crypto.randomUUID();
+  await tx.execute(sql`INSERT INTO companions (child_id,family_id,species,name,stage,display_stage,appearance,human_style) VALUES (${id},${scope.familyId},'ape','新男性伙伴',3,3,'human','boy')`);
+  await expect(tx.transaction(sub => sub.execute(sql`UPDATE companions SET human_style='girl' WHERE child_id=${id}`))).rejects.toThrow();
+}));
+
+test('原有女性形态在省略性别的动物/人形切换中仍然保留', () => withDatabaseRollback(async tx => {
+  const { child, scope } = await fixture(tx); const service = createEngagementService(tx);
+  await changeWallet(tx, scope, 'fixture', 'fixture', { growth: 2000 });
+  await service.choosePet(child, { species: 'phoenix', name: '星羽', humanStyle: 'girl' });
+  for (let i = 0; i < 3; i++) { await service.feed(child, { commandId: crypto.randomUUID(), amount: 2000 }); await service.evolve(child); }
+  await service.appearance(child, { appearance: 'human' }); expect((await service.list(child)).pet!.humanStyle).toBe('girl');
+  await service.appearance(child, { appearance: 'animal' }); expect((await service.list(child)).pet!.humanStyle).toBe('girl');
 }));
