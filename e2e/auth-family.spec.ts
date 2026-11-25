@@ -2,7 +2,7 @@ import { expect, test } from "@playwright/test";
 
 import { testEmailSecret, uniqueTestIp } from "./test-config";
 
-test.use({ extraHTTPHeaders: { "x-forwarded-for": uniqueTestIp() } });
+test.use({ serviceWorkers: "block", extraHTTPHeaders: { "x-forwarded-for": uniqueTestIp() } });
 
 const initialPassword = "Family-Test-Password-1";
 const resetPassword = "Family-Test-Password-2";
@@ -34,7 +34,7 @@ test("家长可注册、退出、重新登录并完成密码重置", async ({
   await page.goto("/forgot-password");
   await page.getByLabel("邮箱").fill(email);
   await page.getByRole("button", { name: "发送重置邮件" }).click();
-  await expect(page.getByRole("status")).toHaveText(
+  await expect(page.locator('.auth-form').getByRole("status")).toHaveText(
     "如果该邮箱已注册，我们会发送重置邮件。邮件可能需要几分钟送达，请同时检查垃圾邮件。",
   );
 
@@ -51,7 +51,7 @@ test("家长可注册、退出、重新登录并完成密码重置", async ({
   await expect(page).toHaveURL(/\/reset-password\?token=/);
   await page.getByLabel("新密码").fill(resetPassword);
   await page.getByRole("button", { name: "更新密码" }).click();
-  await expect(page.getByRole("status")).toHaveText("密码已更新，请重新登录。");
+  await expect(page.locator('.auth-form').getByRole("status")).toHaveText("密码已更新，请重新登录。");
 
   await page.goto("/parent");
   await expect(page).toHaveURL(/\/sign-in/);
@@ -77,7 +77,7 @@ test("忘记密码页不泄露邮箱是否注册", async ({ page }) => {
   await page.getByLabel("邮箱").fill(`missing-${Date.now()}@example.test`);
   await page.getByRole("button", { name: "发送重置邮件" }).click();
 
-  await expect(page.getByRole("status")).toHaveText(
+  await expect(page.locator('.auth-form').getByRole("status")).toHaveText(
     "如果该邮箱已注册，我们会发送重置邮件。邮件可能需要几分钟送达，请同时检查垃圾邮件。",
   );
 });

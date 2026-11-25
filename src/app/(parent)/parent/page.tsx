@@ -2,6 +2,7 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
 import { requireParentActor } from "@/modules/auth/parent-access";
+import { ParentActionCenter } from '@/components/engagement/parent-action-center';
 import { getFamilySetupStage } from "@/modules/families/service";
 
 export default async function ParentPage() {
@@ -35,11 +36,7 @@ export default async function ParentPage() {
 
   return (
     <main className="page-shell parent-page-shell">
-      <section className="hero-card">
-        <p className="eyebrow">家长中心</p>
-        <h1>家长中心</h1>
-        <p>家庭学习概览将在后续阶段开放。</p>
-      </section>
+      <ParentActionCenter />
     </main>
   );
 }

@@ -13,3 +13,5 @@ tsconfig.tsbuildinfo
 !ops/*.env.example
 
 .next-todo-preview/
+__pycache__/
+*.py[cod]

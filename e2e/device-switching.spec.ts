@@ -1,6 +1,11 @@
 import { cleanupEngagement } from './engagement-cleanup';
 import { expect, type BrowserContext, type Page, test } from "@playwright/test";
 
+// The fixture cleanup must be safe and independent of which other specs ran first.
+process.env.DATABASE_URL = process.env.E2E_DATABASE_URL ?? 'postgres://app:app@127.0.0.1:5433/family_learning_test';
+process.env.APP_URL = 'http://127.0.0.1:3105';
+process.env.BETTER_AUTH_SECRET = 'test-only-secret-123456789012345678901234567890';
+process.env.FAMILY_LEARNING_TEST_MODE = 'e2e';
 const password = "Switching-Test-Password-1";
 const parentPin = "482731";
 

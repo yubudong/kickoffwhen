@@ -1,0 +1,2 @@
+import type { MetadataRoute } from 'next';
+export default function manifest():MetadataRoute.Manifest{return {id:'/',name:'家庭学习工具',short_name:'家庭学习',description:'听写、习惯、成长伙伴与家庭奖励',start_url:'/',scope:'/',display:'standalone',background_color:'#f6f3eb',theme_color:'#276851',lang:'zh-CN',icons:[{src:'/icons/icon-192.png',sizes:'192x192',type:'image/png'},{src:'/icons/icon-512.png',sizes:'512x512',type:'image/png',purpose:'any'},{src:'/icons/icon-maskable-512.png',sizes:'512x512',type:'image/png',purpose:'maskable'}]};}

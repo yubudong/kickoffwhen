@@ -47,6 +47,7 @@ export function AudioSequence({ session, pending, onPlayback, onRestart }: {
     };
   }, [signature, attempt]);
 
+  useEffect(() => { const pause = () => controller.current?.pause(); window.addEventListener('offline',pause); return () => window.removeEventListener('offline',pause); }, []);
   useEffect(() => { if (confirmRestart) cancelButton.current?.focus(); }, [confirmRestart]);
   function requestRestart() {
     resumeAfterCancel.current = view.state === "playing" || view.state === "waiting";

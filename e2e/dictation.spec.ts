@@ -6,7 +6,7 @@ import { expect, type BrowserContext, type Page, test } from "@playwright/test";
 import { hasExactFixtureJobKeys, mergeFixtureJobIds } from "./job-fixture";
 import { uniqueTestIp } from "./test-config";
 
-test.use({ extraHTTPHeaders: { "x-forwarded-for": uniqueTestIp() } });
+test.use({ serviceWorkers: "block", extraHTTPHeaders: { "x-forwarded-for": uniqueTestIp() } });
 
 process.env.DATABASE_URL =
   process.env.E2E_DATABASE_URL ??
@@ -311,6 +311,7 @@ test("连续听写、刷新、切换孩子、批改恢复和错题循环", async
   const setup = await createFamilyAndTask(page);
   const childIp = test.info().project.name === "webkit" ? "198.51.100.20" : "192.0.2.20";
   const childContext = await browser.newContext({
+    serviceWorkers: "block",
     extraHTTPHeaders: { "x-forwarded-for": childIp },
   });
   await childContext.addInitScript(() => {
@@ -420,7 +421,10 @@ test("连续听写、刷新、切换孩子、批改恢复和错题循环", async
   await expect(childPage.getByRole("button", { name: "重听当前词语" })).toBeDisabled();
   await childPage.getByRole("button", { name: "开始听写" }).click();
   const beforePause = await audioEvidenceNow();
-  await childPage.getByRole("button", { name: "暂停" }).click();
+  await childContext.setOffline(true);
+  await expect(childPage.getByRole('heading', { name: '网络暂时断开' })).toBeVisible();
+  expect((await audioEvidenceNow()).pauses.length).toBeGreaterThan(beforePause.pauses.length);
+  await childContext.setOffline(false);
   await expect(childPage.getByRole("button", { name: "继续" })).toBeVisible();
   expect((await audioEvidenceNow()).pauses.length).toBeGreaterThan(beforePause.pauses.length);
   await childPage.waitForTimeout(500);
@@ -679,7 +683,7 @@ test("完成听写后可在待办清单上传照片，家长可打开凭证", as
     mode: "continuous_batch", status: "completed", phase: "completed",
     completedAt: new Date(), currentRoundItemIds: [],
   });
-  const childContext = await browser.newContext();
+  const childContext = await browser.newContext({ serviceWorkers: "block" });
   const childPage = await pairAndSelect(childContext, setup.pairingCode, "小雨");
   await expect(childPage.getByText("听写已完成，待提交")).toBeVisible();
   const photo = Buffer.from("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+X6uoAAAAASUVORK5CYII=", "base64");

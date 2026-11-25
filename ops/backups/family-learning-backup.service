@@ -1,0 +1,16 @@
+[Unit]
+Description=Encrypted consistent backup for family learning
+After=docker.service network-online.target
+Requires=docker.service
+StartLimitIntervalSec=3600
+StartLimitBurst=3
+
+[Service]
+Type=oneshot
+User=root
+UMask=0077
+ExecStart=/usr/bin/python3 /root/family-learning/backup/bin/server_backup.py run
+TimeoutStartSec=1800
+Restart=on-failure
+RestartSec=600
+Nice=10

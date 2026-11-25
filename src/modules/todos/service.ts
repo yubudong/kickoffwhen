@@ -9,7 +9,7 @@ import { activeTtsMediaPredicate } from '@/modules/media/active-cache';
 import { privateMedia } from '@/modules/media/schema';
 import { todoTasks, todoSubmissions, todoReviews, todoRewards } from './schema';
 import { createEngagementService } from '@/modules/engagement/service';
-import { habits } from '@/modules/engagement/schema';
+import { habits, habitVersions } from '@/modules/engagement/schema';
 import { boostAt, grantTodo, lockWallet } from '@/modules/engagement/wallet';
 import { todoDateRange as habitDateRange } from './validation';
 import { bonusSchema, taskInputSchema, todoDateRange, updateManualSchema, type TodoView, todayShanghai } from './validation';
@@ -124,9 +124,11 @@ export function createTodoService(database: Database = db, clock: () => Date = (
         const [points] = await database.select({ total: sql<number> `coalesce(sum(${todoRewards.basePoints}+${todoRewards.bonusPoints}),0)::int` }).from(todoRewards).innerJoin(todoTasks, eq(todoTasks.id, todoRewards.todoId)).where(and(scope(actor), inRange, childId ? eq(todoTasks.childId, childId) : undefined));
         const habitIds = [...new Set(rows.flatMap(r => r.task.habitId ? [r.task.habitId] : []))];
         const habitConfigs = habitIds.length ? await database.select().from(habits).where(and(eq(habits.familyId, actor.familyId), inArray(habits.id, habitIds))) : [];
+        const versions = habitIds.length ? await database.select().from(habitVersions).where(and(eq(habitVersions.familyId,actor.familyId),inArray(habitVersions.habitId,habitIds))) : [];
         const habitFacts = habitIds.length ? await database.select({ habitId: todoTasks.habitId, date: todoTasks.date, status: todoTasks.status }).from(todoTasks).where(and(scope(actor), inArray(todoTasks.habitId, habitIds), gte(todoTasks.date, habitDateRange(range.from, 'week').from), lte(todoTasks.date, habitDateRange(range.to, 'week').to))) : [];
         return { tasks: rows.map(r => { const counts = r.task.dictationTaskId ? mediaCounts.get(r.task.dictationTaskId) : undefined;
-            const habit = habitConfigs.find(h => h.id === r.task.habitId);
+            const base = habitConfigs.find(h => h.id === r.task.habitId);
+            const habit = versions.find(v => v.id === r.task.habitRevisionId)?.config ?? base;
             const week = habitDateRange(r.task.date, 'week');
             const facts = habitFacts.filter(f => f.habitId === r.task.habitId && f.date >= week.from && f.date <= week.to);
             const habitProgress = habit?.schedule === 'weekly' ? { target: habit.weeklyTarget, completed: facts.filter(f => f.status === 'approved').length, pending: facts.filter(f => f.status === 'submitted').length } : null;
@@ -160,10 +162,12 @@ export function createTodoService(database: Database = db, clock: () => Date = (
                 if (!habit || (habit.stoppedOn && row.date >= habit.stoppedOn)) throw new Error('TODO_STALE');
                 const [sameDay] = await tx.select({ id: todoTasks.id }).from(todoTasks).where(and(eq(todoTasks.habitId, habit.id), eq(todoTasks.date, row.date), ne(todoTasks.id, row.id), inArray(todoTasks.status, ['submitted','approved'])));
                 if (sameDay) throw new Error('WEEKLY_LIMIT');
-                if (habit.schedule === 'weekly') {
+                const [version] = row.habitRevisionId ? await tx.select().from(habitVersions).where(and(eq(habitVersions.id,row.habitRevisionId),eq(habitVersions.habitId,habit.id))) : [];
+                const rule = version?.config ?? habit;
+                if (rule.schedule === 'weekly') {
                     const week = habitDateRange(row.date, 'week');
                     const [count] = await tx.select({ n: sql<number>`count(*)::int` }).from(todoTasks).where(and(eq(todoTasks.habitId, habit.id), gte(todoTasks.date, week.from), lte(todoTasks.date, week.to), inArray(todoTasks.status, ['submitted','approved'])));
-                    if (count.n >= habit.weeklyTarget) throw new Error('WEEKLY_LIMIT');
+                    if (count.n >= rule.weeklyTarget) throw new Error('WEEKLY_LIMIT');
                     if (row.date !== todayShanghai(clock())) throw new Error('HABIT_DATE');
                 }
             }

@@ -1,12 +1,19 @@
 import { sql } from 'drizzle-orm';
 import { pgTable, uuid, text, integer, timestamp, date, jsonb, boolean, unique, foreignKey, check } from 'drizzle-orm/pg-core';
 import { children, families } from '@/modules/families/schema';
+import type { HabitConfig } from './habit-rules';
 const identity = () => ({ familyId: uuid('family_id').notNull().references(() => families.id), childId: uuid('child_id').notNull() });
 export const habits = pgTable('habits', {
     id: uuid('id').primaryKey().defaultRandom(), ...identity(), guardianId: uuid('guardian_id').notNull(), commandId: uuid('command_id').notNull(),
     title: text('title').notNull(), requirements: text('requirements').notNull().default(''), schedule: text('schedule').notNull(), weekdays: jsonb('weekdays').$type<number[]>().notNull().default([]), weeklyTarget: integer('weekly_target').notNull().default(1), startDate: date('start_date').notNull(), stoppedOn: date('stopped_on'),
+    revision: integer('revision').notNull().default(1), updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
     confirmation: text('confirmation').notNull().default('parent'), coins: integer('coins').notNull().default(1), growth: integer('growth').notNull().default(10), createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
 }, t => [unique().on(t.familyId, t.commandId), foreignKey({ columns: [t.familyId, t.childId], foreignColumns: [children.familyId, children.id] }), check('habit_rules', sql `${t.schedule} in ('daily','weekdays','weekly') and ${t.confirmation} in ('self','parent') and ${t.weeklyTarget} between 1 and 7 and ${t.coins} between 0 and 10000 and ${t.growth} between 0 and 10000`)]);
+export const habitVersions = pgTable('habit_versions', {
+    id: uuid('id').primaryKey().defaultRandom(), ...identity(), habitId: uuid('habit_id').notNull().references(() => habits.id, { onDelete: 'cascade' }),
+    version: integer('version').notNull(), commandId: uuid('command_id').notNull(), effectiveFrom: date('effective_from').notNull(), config: jsonb('config').$type<HabitConfig>().notNull(),
+    createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+}, t => [unique().on(t.habitId, t.version), unique().on(t.familyId, t.commandId), foreignKey({ columns: [t.familyId, t.childId], foreignColumns: [children.familyId, children.id] }), check('habit_version_positive', sql`${t.version}>0`)]);
 export const wallets = pgTable('growth_wallets', {
     childId: uuid('child_id').primaryKey(), familyId: uuid('family_id').notNull(), coins: integer('coins').notNull().default(0), held: integer('held').notNull().default(0), growth: integer('growth').notNull().default(0), fed: integer('fed').notNull().default(0),
 }, t => [foreignKey({ columns: [t.familyId, t.childId], foreignColumns: [children.familyId, children.id] }), check('wallet_nonnegative', sql `${t.coins}>=0 and ${t.held}>=0 and ${t.coins}>=${t.held} and ${t.growth}>=0 and ${t.fed}>=0`)]);

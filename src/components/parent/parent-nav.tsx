@@ -1,4 +1,5 @@
 import Link from "next/link";
+import './parent-nav.css';
 
 import { ParentSignOutButton } from "./parent-sign-out-button";
 
@@ -13,6 +14,7 @@ export function ParentNav({
       <Link href="/parent/children">孩子档案</Link>
       <Link href="/parent/todos">待办清单</Link>
       <Link href="/parent/growth">习惯与成长</Link>
+      <Link href="/parent/rewards">家庭奖励</Link>
       <Link href="/parent/tasks/new">今日听写</Link>
       <Link href="/parent/dictation-reviews">听写批改</Link>
       <Link href="/parent/reports">学习报告</Link>
