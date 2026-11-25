@@ -4,10 +4,11 @@ import { useRef, useState, type FormEvent } from "react";
 
 type TodoSubmission = { id: string; date: string; number: number };
 
-export function DictationEvidenceSubmit({ todo, onSubmitted, disabled = false }: {
+export function DictationEvidenceSubmit({ todo, onSubmitted, disabled = false, keyboard = false }: {
   todo: TodoSubmission;
   onSubmitted?: () => void;
   disabled?: boolean;
+  keyboard?: boolean;
 }) {
   const submitting = useRef(false);
   const [pending, setPending] = useState(false);
@@ -40,10 +41,10 @@ export function DictationEvidenceSubmit({ todo, onSubmitted, disabled = false }:
 
   return (
     <form className="dictation-evidence-submit" onSubmit={submit}>
-      <label>上传照片（可选）
+      {!keyboard&&<label>上传照片（可选）
         <input name="file" type="file" accept="image/jpeg,image/png,image/webp" capture="environment" disabled={pending || disabled} />
-      </label>
-      <p>可以拍下听写纸，也可以不上传照片直接提交。</p>
+      </label>}
+      <p>{keyboard?'键盘作答与订正记录已保存，可直接提交家长审核任务奖励。':'可以拍下听写纸，也可以不上传照片直接提交。'}</p>
       <button className="dictation-primary" type="submit" disabled={pending || disabled}>
         {pending ? "正在提交…" : "提交家长审核"}
       </button>

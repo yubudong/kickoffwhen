@@ -57,7 +57,7 @@ function parseMarks(value: unknown): Record<string, boolean> {
   return z.record(z.string().uuid(), z.boolean()).parse(value);
 }
 
-function stateFromRow(row: typeof dictationSessions.$inferSelect): DictationState {
+export function stateFromRow(row: typeof dictationSessions.$inferSelect): DictationState {
   return {
     mode: modeSchema.parse(row.mode),
     phase: phaseSchema.parse(row.phase),
@@ -87,7 +87,7 @@ async function replayCounts(
   return Object.fromEntries(rows.map((row) => [row.taskItemId, row.replayCount]));
 }
 
-async function snapshotFromRow(
+export async function snapshotFromRow(
   tx: DbTransaction,
   row: typeof dictationSessions.$inferSelect,
 ): Promise<DictationSnapshot> {
@@ -118,7 +118,7 @@ function stateUpdate(state: DictationState, at: Date) {
   };
 }
 
-async function lockSession(
+export async function lockSession(
   tx: DbTransaction,
   actor: Actor,
   sessionId: string,
@@ -198,7 +198,7 @@ async function storeCommand(
   });
 }
 
-function ensureMutableVersion(
+export function ensureMutableVersion(
   session: typeof dictationSessions.$inferSelect,
   expectedVersion: number,
   roundNumber: number,
@@ -208,7 +208,7 @@ function ensureMutableVersion(
   if (session.roundNumber !== roundNumber) throw new Error("DICTATION_ROUND_CONFLICT");
 }
 
-async function ensureTaskActive(
+export async function ensureTaskActive(
   tx: DbTransaction,
   session: typeof dictationSessions.$inferSelect,
   requireActive = true,
@@ -218,6 +218,7 @@ async function ensureTaskActive(
       status: learningTasks.status,
       allowManualReplay: learningTasks.allowManualReplay,
       gradingMode: learningTasks.gradingMode,
+      responseMode: learningTasks.responseMode,
     })
     .from(learningTasks)
     .where(
@@ -231,6 +232,212 @@ async function ensureTaskActive(
     .for("update");
   if (!task || (requireActive && task.status !== "active")) throw new Error("TASK_NOT_ACTIVE");
   return task;
+}
+
+export async function applyMarksInTransaction(tx: DbTransaction, session: typeof dictationSessions.$inferSelect, command: SubmitBatchMarksInput, now: () => Date) {
+  const reviewScope = { familyId: session.familyId, childId: session.childId };
+  const next = reduceSession(stateFromRow(session), {
+    type: "BATCH_MARKED",
+    roundNumber: command.roundNumber,
+    marks: command.marks,
+  });
+
+  const itemRows = await tx
+    .select()
+    .from(dictationSessionItems)
+    .where(
+      and(
+        eq(dictationSessionItems.familyId, session.familyId),
+        eq(dictationSessionItems.childId, session.childId),
+        eq(dictationSessionItems.sessionId, session.id),
+        inArray(dictationSessionItems.taskItemId, command.marks.map((mark) => mark.itemId)),
+      ),
+    );
+  if (itemRows.length !== command.marks.length) throw new Error("DICTATION_ITEM_SCOPE_INVALID");
+  const itemById = new Map(itemRows.map((item) => [item.taskItemId, item]));
+  await lockReviewCardsInTransaction(tx, reviewScope, itemRows.map((item) => item.cardId));
+  const cardStates = itemRows.length === 0
+    ? []
+    : await tx
+        .select()
+        .from(childCardStates)
+        .where(
+          and(
+            eq(childCardStates.familyId, session.familyId),
+            eq(childCardStates.childId, session.childId),
+            inArray(childCardStates.cardId, itemRows.map((item) => item.cardId)),
+          ),
+        );
+  const cardStateById = new Map(cardStates.map((state) => [state.cardId, state]));
+  const reviewService = createTransactionalReviewService(tx);
+  const [previousAnswer] = await tx
+    .select({ answeredAt: dictationAnswerEvents.answeredAt })
+    .from(dictationAnswerEvents)
+    .where(eq(dictationAnswerEvents.sessionId, session.id))
+    .orderBy(desc(dictationAnswerEvents.answeredAt))
+    .limit(1);
+  const [previousReview] = await tx
+    .select({ reviewedAt: reviewEvents.reviewedAt })
+    .from(reviewEvents)
+    .where(
+      and(
+        eq(reviewEvents.familyId, session.familyId),
+        eq(reviewEvents.childId, session.childId),
+        inArray(reviewEvents.cardId, itemRows.map((item) => item.cardId)),
+      ),
+    )
+    .orderBy(desc(reviewEvents.reviewedAt))
+    .limit(1);
+  const baseTime = Math.max(
+    now().getTime(),
+    session.updatedAt.getTime() + 1,
+    previousAnswer ? previousAnswer.answeredAt.getTime() + 1 : 0,
+    previousReview ? previousReview.reviewedAt.getTime() + 1 : 0,
+  );
+  let timestampCursor = Math.max(
+    baseTime,
+    previousAnswer ? previousAnswer.answeredAt.getTime() + 1 : 0,
+  );
+  const actualAnswerTimes: number[] = [];
+  const orderedMarks = [...command.marks].sort(
+    (left, right) => itemById.get(left.itemId)!.position - itemById.get(right.itemId)!.position,
+  );
+  for (const mark of orderedMarks) {
+    const item = itemById.get(mark.itemId)!;
+    const storedState = cardStateById.get(item.cardId);
+    const minimumTime = Math.max(
+      timestampCursor,
+      storedState ? storedState.updatedAt.getTime() + 1 : 0,
+      item.firstCorrect === null && item.kind === "due_review" && storedState
+        ? storedState.dueAt.getTime()
+        : 0,
+    );
+    const answeredAt = new Date(minimumTime);
+    actualAnswerTimes.push(minimumTime);
+    timestampCursor = minimumTime + 1;
+    let eventRole: "first_pass" | "continued_error" | "same_session_relearning";
+    let reviewEventId: string | null = null;
+    if (item.firstCorrect === null) {
+      eventRole = "first_pass";
+      const result = await reviewService.recordFirstResult(reviewScope, {
+        cardId: item.cardId,
+        commandId: deriveReviewCommandId(command.commandId, item.taskItemId, "first_pass"),
+        correct: mark.correct,
+        reviewedAt: answeredAt,
+        eventType: item.kind === "new" ? "new_first" : item.kind === "manual_review" ? "manual_first" : "scheduled_first",
+      });
+      reviewEventId = result.reviewEventId;
+    } else if (mark.correct && !item.finalCorrect) {
+      eventRole = "same_session_relearning";
+      if (!item.firstReviewEventId) throw new Error("DICTATION_FIRST_REVIEW_MISSING");
+      const result = await reviewService.markRelearningComplete(reviewScope, {
+        cardId: item.cardId,
+        commandId: deriveReviewCommandId(
+          command.commandId,
+          item.taskItemId,
+          "same_session_relearning",
+        ),
+        correctedAt: answeredAt,
+        sourceReviewEventId: item.firstReviewEventId,
+      });
+      reviewEventId = result.reviewEventId;
+    } else {
+      eventRole = "continued_error";
+    }
+
+    await tx.insert(dictationAnswerEvents).values({
+      familyId: session.familyId,
+      childId: session.childId,
+      sessionId: session.id,
+      commandId: command.commandId,
+      roundNumber: command.roundNumber,
+      taskItemId: item.taskItemId,
+      correct: mark.correct,
+      eventRole,
+      reviewEventId,
+      replayCount: item.replayCount,
+      answeredAt,
+    });
+    await tx
+      .update(dictationSessionItems)
+      .set({
+        ...(item.firstCorrect === null
+          ? { firstCorrect: mark.correct, firstReviewEventId: reviewEventId }
+          : {}),
+        finalCorrect: mark.correct,
+      })
+      .where(
+        and(
+          eq(dictationSessionItems.sessionId, session.id),
+          eq(dictationSessionItems.taskItemId, item.taskItemId),
+        ),
+      );
+  }
+
+  const at = new Date(Math.max(baseTime, ...actualAnswerTimes) + 1);
+  if (next.phase === "completed" || next.roundNumber !== session.roundNumber) {
+    await tx
+      .update(dictationRounds)
+      .set({ completedAt: at })
+      .where(
+        and(
+          eq(dictationRounds.sessionId, session.id),
+          eq(dictationRounds.roundNumber, command.roundNumber),
+        ),
+      );
+  }
+  if (next.phase !== "completed" && next.roundNumber !== session.roundNumber) {
+    await tx.insert(dictationRounds).values({
+      familyId: session.familyId,
+      childId: session.childId,
+      sessionId: session.id,
+      roundNumber: next.roundNumber,
+      itemIds: next.currentRoundItemIds,
+      createdAt: at,
+    });
+    await tx.insert(dictationRoundItems).values(
+      next.currentRoundItemIds.map((taskItemId, position) => ({
+        familyId: session.familyId,
+        childId: session.childId,
+        sessionId: session.id,
+        roundNumber: next.roundNumber,
+        taskItemId,
+        position,
+      })),
+    );
+  }
+
+  const completed = next.phase === "completed";
+  const [updated] = await tx
+    .update(dictationSessions)
+    .set({
+      ...stateUpdate(next, at),
+      version: session.version + 1,
+      ...(completed ? { status: "completed", completedAt: at } : {}),
+    })
+    .where(eq(dictationSessions.id, session.id))
+    .returning();
+  if (completed) {
+    await tx
+      .update(learningTasks)
+      .set({ status: "completed", completedAt: at })
+      .where(
+        and(
+          eq(learningTasks.id, session.taskId),
+          eq(learningTasks.familyId, session.familyId),
+          eq(learningTasks.childId, session.childId),
+          eq(learningTasks.status, "active"),
+        ),
+      );
+    await tx.insert(dictationCompletionEvents).values({
+      familyId: session.familyId,
+      childId: session.childId,
+      taskId: session.taskId,
+      sessionId: session.id,
+      completedAt: at,
+    });
+  }
+  return updated;
 }
 
 export function createDictationSessionService(
@@ -389,6 +596,7 @@ export function createDictationSessionService(
       if (replay) return replay;
       const task = await ensureTaskActive(tx, session);
       ensureMutableVersion(session, command.expectedVersion, command.roundNumber);
+      if(task.responseMode==='keyboard' && command.sequenceFinished) throw new Error('KEYBOARD_SUBMIT_REQUIRED');
       const currentState = stateFromRow(session);
       const replaysCurrent =
         command.playedItemIds.length === 1 &&
@@ -453,7 +661,8 @@ export function createDictationSessionService(
       const session = await lockSession(tx, actor, command.sessionId);
       const replay = await commandReplay(tx, session.id, command.commandId, inputFingerprint);
       if (replay) return replay;
-      await ensureTaskActive(tx, session);
+      const task=await ensureTaskActive(tx, session);
+      if(task.responseMode==='keyboard')throw new Error('KEYBOARD_SUBMIT_REQUIRED');
       ensureMutableVersion(session, command.expectedVersion, command.roundNumber);
       const next = reduceSession(stateFromRow(session), { type: "ROUND_RESTARTED", roundNumber: command.roundNumber });
       const [updated] = await tx.update(dictationSessions).set({
@@ -474,6 +683,7 @@ export function createDictationSessionService(
     return database.transaction(async (tx) => {
       const session = await lockSession(tx, actor, command.sessionId);
       const task = await ensureTaskActive(tx, session, false);
+      if(task.responseMode==='keyboard')throw new Error('KEYBOARD_SUBMIT_REQUIRED');
       if (task.gradingMode !== "parent") throw new Error("SELF_GRADING_REQUIRED");
       const replay = await commandReplay(tx, session.id, command.commandId, inputFingerprint);
       if (replay) return replay;
@@ -557,6 +767,7 @@ export function createDictationSessionService(
     return database.transaction(async (tx) => {
       const session = await lockSession(tx, actor, command.sessionId);
       const task = await ensureTaskActive(tx, session, false);
+      if(task.responseMode==='keyboard')throw new Error('KEYBOARD_SUBMIT_REQUIRED');
       if (task.gradingMode === "parent" && actor.role !== "guardian") throw new Error("PARENT_GRADING_REQUIRED");
       if (task.gradingMode === "self" && actor.role !== "child") throw new Error("SELF_GRADING_REQUIRED");
       const replay = await commandReplay(tx, session.id, command.commandId, inputFingerprint);
@@ -564,208 +775,8 @@ export function createDictationSessionService(
       if (task.status !== "active") throw new Error("TASK_NOT_ACTIVE");
       ensureMutableVersion(session, command.expectedVersion, command.roundNumber);
       if (task.gradingMode === "parent" && session.phase !== "awaiting_parent") throw new Error("PHOTO_REQUIRED");
-      const reviewScope = { familyId: session.familyId, childId: session.childId };
-      const next = reduceSession(stateFromRow(session), {
-        type: "BATCH_MARKED",
-        roundNumber: command.roundNumber,
-        marks: command.marks,
-      });
-
-      const itemRows = await tx
-        .select()
-        .from(dictationSessionItems)
-        .where(
-          and(
-            eq(dictationSessionItems.familyId, actor.familyId),
-            eq(dictationSessionItems.childId, session.childId),
-            eq(dictationSessionItems.sessionId, session.id),
-            inArray(dictationSessionItems.taskItemId, command.marks.map((mark) => mark.itemId)),
-          ),
-        );
-      if (itemRows.length !== command.marks.length) throw new Error("DICTATION_ITEM_SCOPE_INVALID");
-      const itemById = new Map(itemRows.map((item) => [item.taskItemId, item]));
-      await lockReviewCardsInTransaction(tx, reviewScope, itemRows.map((item) => item.cardId));
-      const cardStates = itemRows.length === 0
-        ? []
-        : await tx
-            .select()
-            .from(childCardStates)
-            .where(
-              and(
-                eq(childCardStates.familyId, actor.familyId),
-                eq(childCardStates.childId, session.childId),
-                inArray(childCardStates.cardId, itemRows.map((item) => item.cardId)),
-              ),
-            );
-      const cardStateById = new Map(cardStates.map((state) => [state.cardId, state]));
-      const reviewService = createTransactionalReviewService(tx);
-      const [previousAnswer] = await tx
-        .select({ answeredAt: dictationAnswerEvents.answeredAt })
-        .from(dictationAnswerEvents)
-        .where(eq(dictationAnswerEvents.sessionId, session.id))
-        .orderBy(desc(dictationAnswerEvents.answeredAt))
-        .limit(1);
-      const [previousReview] = await tx
-        .select({ reviewedAt: reviewEvents.reviewedAt })
-        .from(reviewEvents)
-        .where(
-          and(
-            eq(reviewEvents.familyId, actor.familyId),
-            eq(reviewEvents.childId, session.childId),
-            inArray(reviewEvents.cardId, itemRows.map((item) => item.cardId)),
-          ),
-        )
-        .orderBy(desc(reviewEvents.reviewedAt))
-        .limit(1);
-      const baseTime = Math.max(
-        now().getTime(),
-        session.updatedAt.getTime() + 1,
-        previousAnswer ? previousAnswer.answeredAt.getTime() + 1 : 0,
-        previousReview ? previousReview.reviewedAt.getTime() + 1 : 0,
-      );
-      let timestampCursor = Math.max(
-        baseTime,
-        previousAnswer ? previousAnswer.answeredAt.getTime() + 1 : 0,
-      );
-      const actualAnswerTimes: number[] = [];
-      const orderedMarks = [...command.marks].sort(
-        (left, right) => itemById.get(left.itemId)!.position - itemById.get(right.itemId)!.position,
-      );
-      for (const mark of orderedMarks) {
-        const item = itemById.get(mark.itemId)!;
-        const storedState = cardStateById.get(item.cardId);
-        const minimumTime = Math.max(
-          timestampCursor,
-          storedState ? storedState.updatedAt.getTime() + 1 : 0,
-          item.firstCorrect === null && item.kind === "due_review" && storedState
-            ? storedState.dueAt.getTime()
-            : 0,
-        );
-        const answeredAt = new Date(minimumTime);
-        actualAnswerTimes.push(minimumTime);
-        timestampCursor = minimumTime + 1;
-        let eventRole: "first_pass" | "continued_error" | "same_session_relearning";
-        let reviewEventId: string | null = null;
-        if (item.firstCorrect === null) {
-          eventRole = "first_pass";
-          const result = await reviewService.recordFirstResult(reviewScope, {
-            cardId: item.cardId,
-            commandId: deriveReviewCommandId(command.commandId, item.taskItemId, "first_pass"),
-            correct: mark.correct,
-            reviewedAt: answeredAt,
-            eventType: item.kind === "new" ? "new_first" : item.kind === "manual_review" ? "manual_first" : "scheduled_first",
-          });
-          reviewEventId = result.reviewEventId;
-        } else if (mark.correct && !item.finalCorrect) {
-          eventRole = "same_session_relearning";
-          if (!item.firstReviewEventId) throw new Error("DICTATION_FIRST_REVIEW_MISSING");
-          const result = await reviewService.markRelearningComplete(reviewScope, {
-            cardId: item.cardId,
-            commandId: deriveReviewCommandId(
-              command.commandId,
-              item.taskItemId,
-              "same_session_relearning",
-            ),
-            correctedAt: answeredAt,
-            sourceReviewEventId: item.firstReviewEventId,
-          });
-          reviewEventId = result.reviewEventId;
-        } else {
-          eventRole = "continued_error";
-        }
-
-        await tx.insert(dictationAnswerEvents).values({
-          familyId: actor.familyId,
-          childId: session.childId,
-          sessionId: session.id,
-          commandId: command.commandId,
-          roundNumber: command.roundNumber,
-          taskItemId: item.taskItemId,
-          correct: mark.correct,
-          eventRole,
-          reviewEventId,
-          replayCount: item.replayCount,
-          answeredAt,
-        });
-        await tx
-          .update(dictationSessionItems)
-          .set({
-            ...(item.firstCorrect === null
-              ? { firstCorrect: mark.correct, firstReviewEventId: reviewEventId }
-              : {}),
-            finalCorrect: mark.correct,
-          })
-          .where(
-            and(
-              eq(dictationSessionItems.sessionId, session.id),
-              eq(dictationSessionItems.taskItemId, item.taskItemId),
-            ),
-          );
-      }
-
-      const at = new Date(Math.max(baseTime, ...actualAnswerTimes) + 1);
-      if (next.phase === "completed" || next.roundNumber !== session.roundNumber) {
-        await tx
-          .update(dictationRounds)
-          .set({ completedAt: at })
-          .where(
-            and(
-              eq(dictationRounds.sessionId, session.id),
-              eq(dictationRounds.roundNumber, command.roundNumber),
-            ),
-          );
-      }
-      if (next.phase !== "completed" && next.roundNumber !== session.roundNumber) {
-        await tx.insert(dictationRounds).values({
-          familyId: actor.familyId,
-          childId: session.childId,
-          sessionId: session.id,
-          roundNumber: next.roundNumber,
-          itemIds: next.currentRoundItemIds,
-          createdAt: at,
-        });
-        await tx.insert(dictationRoundItems).values(
-          next.currentRoundItemIds.map((taskItemId, position) => ({
-            familyId: actor.familyId,
-            childId: session.childId,
-            sessionId: session.id,
-            roundNumber: next.roundNumber,
-            taskItemId,
-            position,
-          })),
-        );
-      }
-
-      const completed = next.phase === "completed";
-      const [updated] = await tx
-        .update(dictationSessions)
-        .set({
-          ...stateUpdate(next, at),
-          version: session.version + 1,
-          ...(completed ? { status: "completed", completedAt: at } : {}),
-        })
-        .where(eq(dictationSessions.id, session.id))
-        .returning();
-      if (completed) {
-        await tx
-          .update(learningTasks)
-          .set({ status: "completed", completedAt: at })
-          .where(
-            and(
-              eq(learningTasks.id, session.taskId),
-              eq(learningTasks.familyId, actor.familyId),
-              eq(learningTasks.childId, session.childId),
-              eq(learningTasks.status, "active"),
-            ),
-          );
-        await tx.insert(dictationCompletionEvents).values({
-          familyId: actor.familyId,
-          childId: session.childId,
-          taskId: session.taskId,
-          sessionId: session.id,
-          completedAt: at,
-        });
-      }
+      const updated = await applyMarksInTransaction(tx, session, command, now);
+      const at = updated.updatedAt;
       if (actor.role === "guardian") {
         const [submission] = await tx.update(dictationSubmissions).set({
           status: "reviewed", marks: command.marks, reviewedBy: actor.guardianId, reviewedAt: at,

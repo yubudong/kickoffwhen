@@ -1,3 +1,4 @@
+import { keyboardChildView } from './keyboard-view';
 import { englishGradingDetails, englishListeningProjection, getEnglishMetadata } from "@/modules/learning-content/english-metadata";
 import { and, asc, eq, inArray, sql } from "drizzle-orm";
 import { z } from "zod";
@@ -32,6 +33,7 @@ export function createChildDictationViewService(
       .select({
         id: learningTasks.id,
         mode: learningTasks.mode,
+        responseMode:learningTasks.responseMode,
         sessionId: dictationSessions.id,
       })
       .from(learningTasks)
@@ -77,6 +79,7 @@ export function createChildDictationViewService(
       if (items.length === 0) continue;
       result.push({
         taskId: task.id,
+        responseMode:task.responseMode==='keyboard'?'keyboard':'paper',
         sessionId: task.sessionId,
         itemCount: items.length,
         mode: z.enum(["continuous_batch", "item_by_item"]).parse(task.mode),
@@ -134,7 +137,7 @@ export function createChildDictationViewService(
     if (currentActive && resultSnapshot?.phase === "completed") {
       throw new Error("DICTATION_SESSION_NOT_FOUND");
     }
-    const snapshot = currentCompleted ? currentSnapshot : resultSnapshot ?? currentSnapshot;
+    const snapshot = currentCompleted || row.task.responseMode==='keyboard' ? currentSnapshot : resultSnapshot ?? currentSnapshot;
 
     const base = {
       sessionId: row.session.id,
@@ -153,7 +156,9 @@ export function createChildDictationViewService(
       speechRate: Number(row.task.speechRate),
       allowManualReplay: row.task.allowManualReplay,
       gradingMode: row.task.gradingMode,
+      responseMode: row.task.responseMode,
     };
+    const keyboardData=row.task.responseMode==='keyboard'?await keyboardChildView(database,row.session,row.task,now()):undefined;
     if (snapshot.phase === "completed") {
       const [todo] = await database.select({
         id: todoTasks.id,
@@ -166,13 +171,14 @@ export function createChildDictationViewService(
         eq(todoTasks.childId, actor.childId),
       )).limit(1);
       return childSessionViewSchema.parse({
-        ...base, phase: "completed", items: [],
+        ...base, phase: "completed", items: [],...(keyboardData?{keyboard:keyboardData.keyboard}:{}),
         todoSubmission: todo ? { ...todo, status: z.enum([
           "open", "submitted", "approved", "rejected", "cancelled",
         ]).parse(todo.status) } : null,
       });
     }
 
+    if(keyboardData)return childSessionViewSchema.parse({...base,...keyboardData});
     if (row.task.gradingMode === "parent" && (snapshot.phase === "grading" || snapshot.phase === "awaiting_parent")) {
       return childSessionViewSchema.parse({ ...base,
         phase: snapshot.phase === "grading" ? "submission" : "awaiting_parent", items: [] });

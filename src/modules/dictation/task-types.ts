@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { responseModeSchema } from "./keyboard-types";
 import { englishStudyOptionsSchema } from "@/modules/learning-content/english-types";
 
 export const buildTaskInputSchema = z.object({
@@ -13,6 +14,7 @@ export const buildTaskInputSchema = z.object({
   repeatCount: z.union([z.literal(1), z.literal(2), z.literal(3)]),
   speechRate: z.number().finite().min(0.5).max(2),
   allowManualReplay: z.boolean(),
+  responseMode: responseModeSchema.optional(),
   gradingMode: z.enum(["self", "parent"]).default("self"),
   englishStudyOptions: englishStudyOptionsSchema.optional(),
 }).strict();
@@ -49,6 +51,7 @@ export const learningTaskSchema = z.object({
   speechRate: buildTaskInputSchema.shape.speechRate,
   allowManualReplay: buildTaskInputSchema.shape.allowManualReplay,
   gradingMode: buildTaskInputSchema.shape.gradingMode,
+  responseMode: responseModeSchema.default("paper"),
   maxReviewCards: buildTaskInputSchema.shape.maxReviewCards,
   audioStatus: z.enum(["preparing", "ready"]),
   items: z.array(learningTaskItemSchema),

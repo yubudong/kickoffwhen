@@ -4,6 +4,7 @@ import type { GuardianActor } from '@/modules/auth/actor';
 import { children } from '@/modules/families/schema';
 import { todoTasks, todoSubmissions } from '@/modules/todos/schema';
 import { dictationSessions, dictationSubmissions } from '@/modules/dictation/session-schema';
+import { keyboardAttempts } from '@/modules/dictation/keyboard-schema';
 import { learningTasks } from '@/modules/dictation/task-schema';
 import type { Json } from './types';
 import { familyRewards, rewardRequests, wallets } from './schema';
@@ -27,7 +28,8 @@ export function createParentWorkflows(database: typeof db | DbTransaction = db) 
     const [tc]=await database.select({n:sql<number>`count(*)::int`}).from(todoTasks).where(taskScope);
     const [rc]=await database.select({pending:sql<number>`count(*) filter (where status='pending')::int`,approved:sql<number>`count(*) filter (where status='approved')::int`}).from(rewardRequests).where(requestScope);
     const [pc]=await database.select({n:sql<number>`count(*)::int`}).from(dictationSubmissions).innerJoin(dictationSessions,eq(dictationSessions.id,dictationSubmissions.sessionId)).innerJoin(learningTasks,eq(learningTasks.id,dictationSessions.taskId)).where(photoScope);
-    return {tasks,requests,photos,counts:{tasks:tc.n,pending:rc.pending,approved:rc.approved,photos:pc.n}};
+    const [kc]=await database.select({n:sql<number>`count(*)::int`}).from(keyboardAttempts).innerJoin(dictationSessions,eq(dictationSessions.id,keyboardAttempts.sessionId)).innerJoin(learningTasks,eq(learningTasks.id,dictationSessions.taskId)).where(and(eq(keyboardAttempts.familyId,actor.familyId),eq(keyboardAttempts.status,'pending'),eq(dictationSessions.status,'active'),eq(learningTasks.status,'active')));
+    return {tasks,requests,photos,keyboardPending:kc.n,counts:{tasks:tc.n,pending:rc.pending,approved:rc.approved,photos:pc.n}};
   }
   return {family,actions};
 }

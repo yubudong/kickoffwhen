@@ -15,12 +15,14 @@ import {
   type PendingCommand,
 } from "@/modules/dictation/client-resume";
 
+import { KeyboardExperience } from './keyboard-experience';
 import { AudioSequence } from "./audio-sequence";
 import { BatchGrader } from "./batch-grader";
 import { DictationEvidenceSubmit } from "./dictation-evidence-submit";
 import { PhotoSubmission } from "./photo-submission";
 
-export function DictationExperience({ initialSession }: { initialSession: ChildSessionView }) {
+export function DictationExperience({initialSession}:{initialSession:ChildSessionView}) { return initialSession.responseMode==='keyboard'?<KeyboardExperience initialSession={initialSession}/>:<PaperDictationExperience initialSession={initialSession}/>; }
+function PaperDictationExperience({ initialSession }: { initialSession: ChildSessionView }) {
   const router = useRouter();
   const [session, setSession] = useState(initialSession);
   const [pending, setPending] = useState(false);
