@@ -2,7 +2,7 @@
 
 ## 最新接续：2026-11-25
 
-多版本英语资料库于15:58:14（Asia/Singapore）上线，镜像`family-learning:20261125-english-multi`、源码`b54d155`，GitHub PR #6已合并main且CI通过。新增23系列170册19,553词/短语；原PEP八册999条保持，卡片总数25,503。323单元/209集成/36浏览器/5备份安全测试通过；生产仍29迁移51表，旧行ID/内容、444媒体、当前伙伴及历史奖励保持。来源覆盖、历史版缺口和备份/隔离双次导入/公网验收见[最新发布记录](runbooks/english-multi-deployment-20261125.md)。此前[家长/PWA版本](runbooks/parent-workflows-deployment-20261125.md)及更早记录保留作历史。
+英语纸笔/键盘二选一于19:20:31（Asia/Singapore）上线，镜像`family-learning:20261125-keyboard-dictation`、源码`d0da70c`，PR #7已合并main且CI通过。家长选择作答方式，键盘逐题输入、整轮交卷后服务端核对、在线草稿/重试、规范变体复核、首次/订正记录及报告已验收。328单元/216集成/38浏览器/5备份安全测试和生产构建通过。生产30迁移53表，原51表旧列/记录指纹、25,503卡、444媒体、43历史奖励/47历史积分及当前2伙伴保持，旧任务默认纸笔；820生产文件哈希一致。备份/恢复/迁移和真实候选镜像完整接口验收见[最新发布记录](runbooks/keyboard-dictation-deployment-20261125.md)。此前[英语词库发布](runbooks/english-multi-deployment-20261125.md)及更早记录保留作历史。
 
 最新工作树在项目`.worktrees/habits-pets`，以GitHub main及该工作树为准。下方2026-10-13内容是历史快照，不要将旧源码或版本全量覆盖线上。
 
