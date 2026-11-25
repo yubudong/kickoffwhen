@@ -1,0 +1,11 @@
+[Unit]
+Description=Daily family learning backup at 02:15 Asia/Singapore
+
+[Timer]
+OnCalendar=*-*-* 18:15:00 UTC
+Persistent=true
+RandomizedDelaySec=0
+Unit=family-learning-backup.service
+
+[Install]
+WantedBy=timers.target

@@ -6,9 +6,10 @@ import type { Actor, GuardianActor } from '@/modules/auth/actor';
 import { children } from '@/modules/families/schema';
 import { todoTasks } from '@/modules/todos/schema';
 import { todayShanghai, dateSchema, eachTodoDate, todoDateRange } from '@/modules/todos/validation';
-import { habits, growthEntries, companions, companionMemories, inventories, growthBoosts, familyRewards, rewardRequests } from './schema';
+import { habits, habitVersions, growthEntries, companions, companionMemories, inventories, growthBoosts, familyRewards, rewardRequests } from './schema';
 import { habitInput, rewardInput, speciesSchema, scheduled, weekOf, nextDate, feedAmount, stages, shopItems, shopItem } from './rules';
 import { lockWallet, changeWallet, entryExists, type Scope } from './wallet';
+import { habitConfig, habitChangeDate, effectiveHabit } from './habit-rules';
 import { canTransform, canUseHumanStyle, humanStylesFor, maxStage } from './companion-catalog';
 type Database = typeof db | DbTransaction;
 const uuid = z.string().uuid();
@@ -27,7 +28,14 @@ export function createEngagementService(database: Database = db, clock: () => Da
                 childId: AnyPgColumn;
             }) => and(eq(t.familyId, scope.familyId), eq(t.childId, scope.childId));
             const [pet] = await tx.select().from(companions).where(scoped(companions));
-            return { wallet: { ...wallet, available: wallet.coins - wallet.held }, pet: pet ?? null, habits: await tx.select().from(habits).where(scoped(habits)).orderBy(asc(habits.createdAt)), inventory: await tx.select().from(inventories).where(scoped(inventories)), boosts: await tx.select().from(growthBoosts).where(scoped(growthBoosts)), memories: await tx.select().from(companionMemories).where(scoped(companionMemories)).orderBy(asc(companionMemories.stage)), entries: await tx.select().from(growthEntries).where(scoped(growthEntries)).orderBy(desc(growthEntries.createdAt)).limit(100), rewards: await tx.select().from(familyRewards).where(eq(familyRewards.familyId, scope.familyId)).orderBy(asc(familyRewards.createdAt)), requests: await tx.select().from(rewardRequests).where(scoped(rewardRequests)).orderBy(desc(rewardRequests.createdAt)), shop: shopItems, now: clock().toISOString() };
+            const rows = await tx.select().from(habits).where(scoped(habits)).orderBy(asc(habits.createdAt));
+            const versions = await tx.select().from(habitVersions).where(scoped(habitVersions));
+            const today = todayShanghai(clock());
+            const resolved = rows.map(h => {
+                const future = versions.filter(v => v.habitId === h.id && v.effectiveFrom > today).sort((a,b) => b.version-a.version)[0];
+                return { ...effectiveHabit(h, versions, today), pendingChange: !h.stoppedOn && future ? { config: future.config, effectiveFrom: future.effectiveFrom } : null };
+            });
+            return { wallet: { ...wallet, available: wallet.coins - wallet.held }, pet: pet ?? null, habits: resolved, inventory: await tx.select().from(inventories).where(scoped(inventories)), boosts: await tx.select().from(growthBoosts).where(scoped(growthBoosts)), memories: await tx.select().from(companionMemories).where(scoped(companionMemories)).orderBy(asc(companionMemories.stage)), entries: await tx.select().from(growthEntries).where(scoped(growthEntries)).orderBy(desc(growthEntries.createdAt)).limit(100), rewards: await tx.select().from(familyRewards).where(eq(familyRewards.familyId, scope.familyId)).orderBy(asc(familyRewards.createdAt)), requests: await tx.select().from(rewardRequests).where(scoped(rewardRequests)).orderBy(desc(rewardRequests.createdAt)), shop: shopItems, now: clock().toISOString() };
         });
     }
     async function createHabit(actor: Actor, input: unknown) {
@@ -42,7 +50,29 @@ export function createEngagementService(database: Database = db, clock: () => Da
             if (active.length >= 5)
                 throw new Error('HABIT_LIMIT');
             const [row] = await tx.insert(habits).values({ ...v, familyId: actor.familyId, guardianId: actor.guardianId }).returning();
+            await tx.insert(habitVersions).values({ familyId: row.familyId, childId: row.childId, habitId: row.id, version: 1, commandId: row.commandId, effectiveFrom: row.startDate, config: habitConfig(row) });
             return row;
+        });
+    }
+    async function editHabit(actor: Actor, id: string, input: unknown) {
+        parent(actor); uuid.parse(id);
+        const v = z.object({ commandId: uuid, expectedRevision: z.number().int().positive() }).parse(input);
+        const config = habitConfig(input);
+        return database.transaction(async tx => {
+            const [initial] = await tx.select().from(habits).where(and(eq(habits.id,id),eq(habits.familyId,actor.familyId)));
+            if (!initial) throw new Error('NOT_FOUND');
+            await lockWallet(tx,initial);
+            const [h] = await tx.select().from(habits).where(and(eq(habits.id,id),eq(habits.familyId,actor.familyId))).for('update');
+            if (!h) throw new Error('NOT_FOUND');
+            const [replay] = await tx.select().from(habitVersions).where(and(eq(habitVersions.familyId,actor.familyId),eq(habitVersions.commandId,v.commandId)));
+            if (replay) { if (replay.habitId !== id || JSON.stringify(habitConfig(replay.config)) !== JSON.stringify(config)) throw new Error('HABIT_STALE'); return replay; }
+            if (h.stoppedOn) throw new Error('HABIT_STOPPED');
+            if (h.revision !== v.expectedRevision) throw new Error('HABIT_STALE');
+            const version = h.revision+1, effectiveFrom = habitChangeDate(todayShanghai(clock()),h.startDate);
+            await tx.insert(habitVersions).values({ familyId:h.familyId,childId:h.childId,habitId:id,version:1,commandId:h.commandId,effectiveFrom:h.startDate,config:habitConfig(h) }).onConflictDoNothing();
+            const [saved] = await tx.insert(habitVersions).values({ familyId:h.familyId,childId:h.childId,habitId:id,version,commandId:v.commandId,effectiveFrom,config }).returning();
+            await tx.update(habits).set({ revision:version,updatedAt:clock() }).where(eq(habits.id,id));
+            return saved;
         });
     }
     async function stopHabit(actor: Actor, id: string) {
@@ -74,8 +104,10 @@ export function createEngagementService(database: Database = db, clock: () => Da
         await database.transaction(async (tx) => {
             await lockWallet(tx, scope);
             const rows = await tx.select().from(habits).where(and(eq(habits.familyId, scope.familyId), eq(habits.childId, scope.childId)));
-            for (const h of rows)
+            const versions = await tx.select().from(habitVersions).where(and(eq(habitVersions.familyId,scope.familyId),eq(habitVersions.childId,scope.childId)));
+            for (const original of rows)
                 for (const day of eachTodoDate(from, until)) {
+                    const h = effectiveHabit(original,versions,day);
                     if (h.stoppedOn !== null) continue;
                     if (!scheduled(h, day))
                         continue;
@@ -88,7 +120,7 @@ export function createEngagementService(database: Database = db, clock: () => Da
                         if (count.n >= h.weeklyTarget)
                             continue;
                     }
-                    await tx.insert(todoTasks).values({ ...scope, guardianId: h.guardianId, commandId: crypto.randomUUID(), habitId: h.id, occurrenceDate: day, title: h.title, requirements: h.requirements, date: day, confirmation: h.confirmation, rewardCoins: h.coins, rewardGrowth: h.growth }).onConflictDoNothing();
+                    await tx.insert(todoTasks).values({ ...scope, guardianId: h.guardianId, commandId: crypto.randomUUID(), habitId: h.id, habitRevisionId: h.habitRevisionId, occurrenceDate: day, title: h.title, requirements: h.requirements, date: day, confirmation: h.confirmation, rewardCoins: h.coins, rewardGrowth: h.growth }).onConflictDoNothing();
                 }
         });
     }
@@ -123,7 +155,7 @@ export function createEngagementService(database: Database = db, clock: () => Da
                     return;
                 }
                 // Reserve the next occurrence key so lazy generation cannot duplicate the postponed task.
-                await tx.insert(todoTasks).values({ familyId: row.familyId, childId: row.childId, guardianId: row.guardianId, commandId: crypto.randomUUID(), habitId: row.habitId, occurrenceDate: tomorrow, title: row.title, requirements: row.requirements, date: tomorrow, status: 'cancelled', reviewNote: '与延期任务合并' }).onConflictDoNothing();
+                await tx.insert(todoTasks).values({ familyId: row.familyId, childId: row.childId, guardianId: row.guardianId, commandId: crypto.randomUUID(), habitId: row.habitId, habitRevisionId: row.habitRevisionId, occurrenceDate: tomorrow, title: row.title, requirements: row.requirements, date: tomorrow, status: 'cancelled', reviewNote: '与延期任务合并' }).onConflictDoNothing();
             }
             await tx.update(todoTasks).set({ date: tomorrow, reviewNote: '家长延后一天', updatedAt: new Date(Math.max(clock().getTime(), row.updatedAt.getTime() + 1)) }).where(eq(todoTasks.id, id));
         });
@@ -307,5 +339,5 @@ export function createEngagementService(database: Database = db, clock: () => Da
     }
     async function adjustBalance(actor: Actor, input: unknown) { parent(actor); const v = z.object({ childId: uuid, commandId: uuid, coins: z.number().int().min(-1000000).max(1000000), growth: z.number().int().min(0).max(1000000).default(0), reason: z.string().trim().min(1).max(500) }).refine(v => v.coins !== 0 || v.growth !== 0).parse(input); const scope = scopeFor(actor, v.childId); return database.transaction(tx => changeWallet(tx, scope, 'manual:' + v.commandId, 'manual_adjustment', { coins: v.coins, growth: v.growth }, { reason: v.reason, guardianId: actor.guardianId })); }
     async function childrenList(actor: Actor) { parent(actor); return database.select({ id: children.id, nickname: children.nickname }).from(children).where(and(eq(children.familyId, actor.familyId), eq(children.active, true))); }
-    return { list, createHabit, stopHabit, ensureHabits, adjustOccurrence, choosePet, feed, evolve, appearance, buy, useItem, saveReward, requestReward, decideReward, adjustBalance, childrenList };
+    return { list, createHabit, editHabit, stopHabit, ensureHabits, adjustOccurrence, choosePet, feed, evolve, appearance, buy, useItem, saveReward, requestReward, decideReward, adjustBalance, childrenList };
 }

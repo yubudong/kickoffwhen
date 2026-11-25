@@ -1,0 +1,10 @@
+import { beforeEach,expect,test,vi } from 'vitest';
+const mocks=vi.hoisted(()=>({auth:vi.fn(),family:vi.fn(),actions:vi.fn()}));
+vi.mock('@/modules/auth/parent-access',()=>({requireParentActor:mocks.auth}));
+vi.mock('@/modules/engagement/parent-workflows',()=>({createParentWorkflows:()=>({family:mocks.family,actions:mocks.actions})}));
+import { parentWorkflowsGet } from '@/modules/engagement/parent-http';
+const actor={role:'guardian',familyId:'own-family',guardianId:'guardian'};
+beforeEach(()=>{vi.clearAllMocks();mocks.auth.mockResolvedValue(actor);mocks.family.mockResolvedValue({rewards:[],requests:[],balances:[]});mocks.actions.mockResolvedValue({counts:{tasks:0}})});
+test('家庭设置按认证身份读取，查询字符串不能指定其他家庭且响应禁止缓存',async()=>{const r=await parentWorkflowsGet(new Request('https://example.test/api/parent/family-rewards?familyId=other'),'family');expect(r.status).toBe(200);expect(mocks.family).toHaveBeenCalledWith(actor);expect(r.headers.get('cache-control')).toBe('no-store')});
+test('集中审核使用同一认证家庭，不接受孩子选择作为跨家庭范围',async()=>{const r=await parentWorkflowsGet(new Request('https://example.test/api/parent/actions?childId=other'),'actions');expect(r.status).toBe(200);expect(mocks.actions).toHaveBeenCalledWith(actor)});
+test.each([['AUTHENTICATION_REQUIRED',401],['PARENT_UNLOCK_INVALID',403],['GUARDIAN_MEMBERSHIP_REQUIRED',403]])('认证失败%s不查询任何私人数据',async(code,status)=>{mocks.auth.mockRejectedValue(new Error(code));const r=await parentWorkflowsGet(new Request('https://example.test/api/parent/actions'),'actions');expect(r.status).toBe(status);expect(mocks.actions).not.toHaveBeenCalled();expect(r.headers.get('cache-control')).toBe('no-store')});

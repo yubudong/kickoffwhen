@@ -42,5 +42,7 @@ jobs:
         run: pnpm typecheck
       - name: Unit tests
         run: pnpm test
+      - name: Backup retention and restore guards
+        run: python3 -m unittest discover -s tests/ops -v
       - name: Build
         run: pnpm build
