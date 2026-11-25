@@ -1,5 +1,7 @@
 # 男性化形伙伴与直接形态选择
 
+已于2026-11-25 10:08:50（Asia/Singapore）上线，详见[正式发布记录](runbooks/male-companions-deployment-20261125.md)。
+
 2026-11-25用户确认两种新增男性路线，并授权开发；基线GitHub main 147f73c、线上20261125-companion-v2。
 
 ## 确认范围
