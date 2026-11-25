@@ -1,5 +1,7 @@
 # 八种伙伴与四阶段成长
 
+已于2026-11-25 09:08:04（Asia/Singapore）上线，正式版本与验收见[发布记录](runbooks/companion-v2-deployment-20261125.md)。
+
 2026-11-25用户确认并授权实施；沿用已授权的GitHub上传与生产发布流程。当前基线GitHub main b2842df、线上20261124-engagement1。
 
 ## 范围

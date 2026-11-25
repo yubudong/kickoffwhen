@@ -1,5 +1,11 @@
 # 开发进度与新窗口交接
 
+## 最新接续：2026-11-25
+
+八种伙伴、蛋期外四阶段、少年起化形、已解锁年龄回看已于09:08:04（Asia/Singapore）部署，镜像`family-learning:20261125-companion-v2`，源码`ba66ad9`，GitHub PR #3已合并main且CI通过。生产27条迁移、5950卡片和444私有媒体保留，钱包与学习数据指纹保持。详细备份、演练、接口验收和回退限制见[最新发布记录](runbooks/companion-v2-deployment-20261125.md)。
+
+最新工作树在项目`.worktrees/habits-pets`，以GitHub main及该工作树为准。下方2026-10-13内容是历史快照，不要将旧源码或版本全量覆盖线上。
+
 更新时间：2026-10-13（Asia/Singapore）。用户：Tom，默认用中文沟通。
 
 ## 当前结论
