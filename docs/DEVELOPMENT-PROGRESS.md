@@ -2,7 +2,7 @@
 
 ## 最新接续：2026-11-25
 
-家长集中审核、全家奖励独立设置、次日起生效的习惯版本编辑及PWA已于12:15:46（Asia/Singapore）上线，镜像`family-learning:20261125-parent-workflows`、源码`70084ab`、GitHub PR #5已合并main且CI通过。318项单元、205项集成、34项浏览器、5项备份安全测试通过；迁移29、业务表51，原50表旧字段和444媒体保持。自动age加密备份与Mac异机同步已启用，限制与恢复结果见[最新发布记录](runbooks/parent-workflows-deployment-20261125.md)及[备份手册](../ops/backups/README.md)。此前[男性伙伴版本](runbooks/male-companions-deployment-20261125.md)保留作历史。
+多版本英语资料库于15:58:14（Asia/Singapore）上线，镜像`family-learning:20261125-english-multi`、源码`b54d155`，GitHub PR #6已合并main且CI通过。新增23系列170册19,553词/短语；原PEP八册999条保持，卡片总数25,503。323单元/209集成/36浏览器/5备份安全测试通过；生产仍29迁移51表，旧行ID/内容、444媒体、当前伙伴及历史奖励保持。来源覆盖、历史版缺口和备份/隔离双次导入/公网验收见[最新发布记录](runbooks/english-multi-deployment-20261125.md)。此前[家长/PWA版本](runbooks/parent-workflows-deployment-20261125.md)及更早记录保留作历史。
 
 最新工作树在项目`.worktrees/habits-pets`，以GitHub main及该工作树为准。下方2026-10-13内容是历史快照，不要将旧源码或版本全量覆盖线上。
 
