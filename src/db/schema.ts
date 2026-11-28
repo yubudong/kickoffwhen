@@ -14,3 +14,5 @@ export * from "@/modules/engagement/schema";
 export * from "@/modules/dictation/keyboard-schema";
 
 export * from "@/modules/todos/homework-schema";
+
+export * from "@/modules/todos/template-schema";
