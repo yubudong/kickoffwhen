@@ -1,5 +1,7 @@
 'use client';
 import Image from 'next/image';
+import { TaskTemplatePicker } from './task-template-picker';
+import { templateFormFields,type TaskTemplateFields } from '@/modules/todos/template-types';
 import { CorrectionInbox } from './homework-inline';
 import Link from 'next/link';
 import { TaskManagementControls } from '@/components/dictation/task-management-controls';
@@ -55,6 +57,7 @@ export function TodoBoard({ role, childOptions = [], childName }: {
 }) {
     const router = useRouter();
     const createCommand = useRef<string | null>(null);
+    const createForm=useRef<HTMLFormElement|null>(null);
     const [date, setDate] = useState(todayShanghai());
     const [childId, setChildId] = useState(childOptions[0]?.id ?? '');
     const [data, setData] = useState<Data>({ tasks: [], points: 0 });
@@ -113,6 +116,7 @@ export function TodoBoard({ role, childOptions = [], childName }: {
     finally {
         setPending(false);
     } }
+    function applyTemplate(fields:TaskTemplateFields){const form=createForm.current;if(!form)return;for(const [name,value] of Object.entries(fields)){const input=form.elements.namedItem(name);if(input instanceof HTMLInputElement||input instanceof HTMLTextAreaElement||input instanceof HTMLSelectElement){input.value=String(value);input.dispatchEvent(new Event('input',{bubbles:true}))}}}
     async function create(event: FormEvent<HTMLFormElement>) { event.preventDefault(); const form = event.currentTarget; const v = new FormData(form); const targetDate = view === 'day' ? date : createDate; createCommand.current ??= crypto.randomUUID(); if (await send({ childId, date: targetDate, title: v.get('title'), requirements: v.get('requirements'), rewardCoins: Number(v.get('rewardCoins') ?? 1), rewardGrowth: Number(v.get('rewardGrowth') ?? 10), confirmation: v.get('confirmation') ?? 'parent', commandId: createCommand.current })) {
         form.reset();
         createCommand.current = null;
@@ -238,7 +242,7 @@ export function TodoBoard({ role, childOptions = [], childName }: {
         <div className="todo-summary" aria-live="polite"><strong>共 {counts.total} 项 · 已完成 {counts.completed} 项 · 待完成 {counts.remaining} 项 · 待审核 {data.tasks.filter(task => task.status === 'submitted').length} 项</strong><span>本范围获得星币：{data.points}</span></div>
         <div className="todo-status-filters" role="group" aria-label="任务状态">{filters.map(filter => <button key={filter} type="button" aria-pressed={statusFilter === filter} onClick={() => setStatusFilter(filter)}>{todoFilterLabel(filter)} {filter === 'all' ? data.tasks.length : filter === 'remaining' ? counts.remaining : filter === 'submitted' ? data.tasks.filter(task => task.status === 'submitted').length : filter === 'rejected'?data.tasks.filter(task=>task.status==='rejected').length:data.tasks.filter(task => task.status === 'approved').length}</button>)}</div>
         <p className="muted">提交后显示“待审核”，需要家长审核的任务，通过后到账星币和成长值；自主确认的任务直接发放奖励。纸上勾选不会自动同步。</p>
-        {role === 'parent' && addOpen && <form className="auth-form todo-create" onSubmit={create}><h2>添加待办</h2>{view !== 'day' && <label>添加到哪一天<input type="date" value={createDate} onChange={e => setCreateDate(e.target.value)} required/></label>}{view !== 'day' && parsedDate.success && (createDate < range.from || createDate > range.to) && <p className="muted">所选日期不在当前查看范围内，添加后请切换到对应日期查看。</p>}<label>待办任务<input name="title" maxLength={120} placeholder="例如：阅读20分钟" required/></label><label>任务要求<textarea name="requirements" maxLength={2000} placeholder="说明完成标准（可选）" rows={2}/></label><div className="growth-form-row"><label>基础星币<input name="rewardCoins" type="number" min={0} max={10000} defaultValue={1} required/></label><label>基础成长值<input name="rewardGrowth" type="number" min={0} max={10000} defaultValue={10} required/></label></div><label>确认方式<select name="confirmation"><option value="parent">家长审核</option><option value="self">孩子自行确认</option></select></label><p>审核时可另加奖励星币。<Link href="/parent/growth">设置每天、指定星期或每周次数的重复习惯 →</Link></p><button disabled={pending || !childId}>添加到清单</button></form>}
+        {role === 'parent' && addOpen && <form ref={createForm} className="auth-form todo-create" onSubmit={create}><h2>添加待办</h2><TaskTemplatePicker disabled={pending} readFields={()=>{if(!createForm.current)throw new Error('FORM_REQUIRED');return templateFormFields(createForm.current)}} applyFields={applyTemplate}/>{view !== 'day' && <label>添加到哪一天<input type="date" value={createDate} onChange={e => setCreateDate(e.target.value)} required/></label>}{view !== 'day' && parsedDate.success && (createDate < range.from || createDate > range.to) && <p className="muted">所选日期不在当前查看范围内，添加后请切换到对应日期查看。</p>}<label>待办任务<input name="title" maxLength={120} placeholder="例如：阅读20分钟" required/></label><label>任务要求<textarea name="requirements" maxLength={2000} placeholder="说明完成标准（可选）" rows={2}/></label><div className="growth-form-row"><label>基础星币<input name="rewardCoins" type="number" min={0} max={10000} defaultValue={1} required/></label><label>基础成长值<input name="rewardGrowth" type="number" min={0} max={10000} defaultValue={10} required/></label></div><label>确认方式<select name="confirmation"><option value="parent">家长审核</option><option value="self">孩子自行确认</option></select></label><p>审核时可另加奖励星币。<Link href="/parent/growth">设置每天、指定星期或每周次数的重复习惯 →</Link></p><button disabled={pending || !childId}>添加到清单</button></form>}
         {error && <p role="alert" className="todo-error">{error}</p>}
         {view !== 'day' && loaded && <button type="button" className="secondary-button todo-expand" onClick={toggleGroups}>{groupedOpen ? '全部收起' : '全部展开'}</button>}
         {!loaded ? <p>正在读取清单…</p> : view === 'day' && !data.tasks.length ? <p>这一天还没有待办任务。</p> : view === 'day' && !visibleTasks.length ? <p>当前筛选下没有待办。</p> : days.map(day => {
